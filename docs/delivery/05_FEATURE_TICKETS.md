@@ -17,6 +17,10 @@
 The user approved continued local development through VS2 while AWS verification is pending.
 D35 controls the isolated workspaces and combined release sequence.
 Keep local acceptance and AWS acceptance records separate.
+VS2 local implementation passed 178 combined Python checks and 20 combined browser checks.
+The user approved VS2 local acceptance and authorized VS3 local development.
+VS2 integration merge and AWS acceptance stay pending.
+The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
 Extend the accepted local case flow through evidence inspection, one assessment, citation inspection, and a saved review.
 
 The measurement contract controls reviewer outcomes, retrieval scores, assessment quality, traces, and cost calculations.
@@ -136,7 +140,7 @@ Acceptance:
 - [x] Worker-process checks permit loopback traffic and block external Python network calls. This control is not an operating-system firewall.
 - [x] Filesystem, SQLite, local job runner, and controlled model adapters satisfy the original shared contracts. D24 additions are pending.
 - [x] Regulatory schemas and controlled responses include request, retry, timeout, pagination, and size limits. A live transport is pending.
-- [x] Extracted-size and page-equivalent rules passed contract tests. Actual file parsers and upload-limit enforcement are pending under T3.
+- [x] Extracted-size and page-equivalent rules passed contract tests. VS2 local parsers and upload limits passed their API checks.
 - [ ] Write schemas for immutable review items, saved review events, cohort filters, cutoffs, and aggregate reports under the measurement contract.
 - [ ] Write schemas for stage and attempt records with stable IDs, versions, status, timing, usage, and safe error fields.
 - [ ] Write different contracts for retrieval evaluation and assessment evaluation. Keep controlled tests in a different result group from live quality measurements.
@@ -148,7 +152,7 @@ Write each behavior test before its application code. Use the recorded failing a
 
 ## T3 — Documents and traceability
 
-**Status:** Not started.
+**Status:** In progress. Local bank-file upload and inspection passed VS2 checks. Regulatory retrieval and AWS source storage stay pending.
 
 **Dependencies:** VS2 and later slices use the corresponding T2 contracts. Complete the necessary document behavior before assessment.
 
@@ -158,9 +162,9 @@ Write code for bank-file validation, extraction, source locations, immutable ver
 Write code for regulatory API refresh and current-source verification.
 
 Acceptance:
-- [ ] PDF, DOCX, TXT, and CSV keep the applicable source locations.
-- [ ] Input rejection gives a clear reason for invalid, encrypted, scanned, unreadable, unsupported, or oversized input.
-- [ ] File and aggregate limits apply without silent truncation.
+- [x] Local PDF, DOCX, TXT, and CSV keep the applicable source locations. AWS extraction checks stay pending.
+- [x] Local input rejection gives safe reasons for tested invalid, encrypted, scanned, unreadable, unsupported, and oversized files.
+- [x] Local file and aggregate limits apply without silent truncation. Concurrent upload checks passed.
 - [ ] Citation quotes resolve to the exact selected document version.
 - [ ] Refresh before selection and revalidate before assessment. Block failures and changed selections.
 - [ ] Find amendments, replacements, withdrawals, and effective-date changes. Keep historical assessment evidence.

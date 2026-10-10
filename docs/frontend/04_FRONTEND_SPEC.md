@@ -232,4 +232,17 @@ The tests cover local sign-in, case creation, saved case inspection, error state
 AWS sign-in remains unverified until account setup and deployment.
 See the [first-slice contract](../delivery/spec-slice-01-cases.md) and [browser results](../../runs/2026-10-10-autonomous-build/frontend-green.txt).
 
+The VS2 local case view now adds Documents and Source evidence panels.
+The upload form shows format limits, document roles, replacement selection, and fictional-data confirmation.
+The source panel shows the exact version, source locations, content hash, and original download.
+Each replacement keeps the earlier version unchanged.
+The selected version opens again after refresh and local sign-in.
+An uncertain upload needs a document-list refresh before another upload.
+
+The combined local browser suite passed 20 checks, including six document checks.
+The user approved VS2 local acceptance.
+AWS document storage stays pending.
+Regulatory retrieval, assessment execution, and comparison tabs stay pending.
+Read the [VS2 contract](../delivery/spec-slice-02-documents.md) and [current browser result](../../runs/2026-10-10-slice-02-documents/browser-green-v2.txt).
+
 [Next: Feature tickets](../delivery/05_FEATURE_TICKETS.md)

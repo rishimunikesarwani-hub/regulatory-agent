@@ -37,13 +37,7 @@ jobs:
         run: npm --prefix src/web run build
       - name: Check the complete local slice
         run: |
-          mkdir -p runs/private
-          APP_ENV=local DEVELOPMENT_USER=local-operator CASES_DB_PATH=runs/private/ci-cases.sqlite PYTHONPATH=src \
-            python -m uvicorn regulatory_agent.api:app --host 127.0.0.1 --port 8110 --no-proxy-headers > runs/private/api.log 2>&1 &
-          api_pid=$!
-          trap 'kill "$api_pid"' EXIT
-          python ops/wait_for_api.py http://127.0.0.1:8110/api/health
-          npm --prefix src/web test
+          npm --prefix src/web test -- --config playwright.documents.config.ts
       - name: Keep check evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -52,6 +46,7 @@ jobs:
           path: |
             runs/ci-python.txt
             runs/2026-10-10-autonomous-build/frontend-browser-artifacts/
+            runs/2026-10-10-slice-02-documents/frontend-browser-artifacts/
           if-no-files-found: warn
   deploy-development:
     needs: [checks]

@@ -1,0 +1,170 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.documents.config.ts
+[WebServer] (node:20764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [24276]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8121 (Press CTRL+C to quit)
+
+Running 20 tests using 1 worker
+
+(node:19552) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\cases.spec.ts:19:1 › VS1-BT03 requested sign-in stays centered on desktop and mobile (684ms)
+  ok  2 tests\cases.spec.ts:43:1 › VS1-BT01 sign in, create, leave, reopen and reload a real saved case (1.1s)
+  ok  3 tests\cases.spec.ts:63:1 › VS1-BT02 empty and loading states have a clear action (416ms)
+  ok  4 tests\cases.spec.ts:78:1 › VS1-BT02 failed save keeps the draft and never shows success (598ms)
+  ok  5 tests\cases.spec.ts:95:1 › VS1-BT02 save is disabled in flight and uncertain transport needs a list check (583ms)
+  ok  6 tests\cases.spec.ts:115:1 › VS1-BT02 expired session clears case data and returns to sign in (565ms)
+  ok  7 tests\cases.spec.ts:124:1 › VS1-BT02 unavailable or denied case provides return navigation (921ms)
+  ok  8 tests\cases.spec.ts:138:1 › VS1-BT03 narrow viewport and keyboard complete the saved case flow (901ms)
+  ok  9 tests\cases.spec.ts:158:1 › VS1 authentication configuration fails closed without Cognito settings (501ms)
+  x  10 tests\cases.spec.ts:165:1 › VS1 AWS mode never fabricates a local signed-in session (5.3s)
+(node:39364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  11 tests\cases.spec.ts:176:1 › VS1 callback state mismatch is rejected and temporary values are removed (5.4s)
+(node:39800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 12 tests\cases.spec.ts:187:1 › VS1 malformed configuration also clears an OAuth callback (563ms)
+  x  13 tests\cases.spec.ts:196:1 › VS1-BT01 cloud sign-in returns to the selected case after a reload (30.1s)
+(node:6936) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  14 tests\cases.spec.ts:229:1 › VS1 case resume rejects a return URL before exchanging a sign-in code (5.4s)
+(node:23988) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 15 tests\documents.spec.ts:24:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version (1.3s)
+  ok 16 tests\documents.spec.ts:39:1 › VS2-BT02 replacement leaves the earlier version available (1.2s)
+  ok 17 tests\documents.spec.ts:51:1 › VS2-BT03 malformed input is rejected and source text cannot execute HTML (1.4s)
+  ok 18 tests\documents.spec.ts:62:1 › VS2-BT04 source inspection supports keyboard focus and mobile layout (1.1s)
+  ok 19 tests\documents.spec.ts:73:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry (1.4s)
+  ok 20 tests\documents.spec.ts:91:1 › VS2-BT06 original download preserves the uploaded bytes (1.6s)
+
+
+  1) tests\cases.spec.ts:165:1 › VS1 AWS mode never fabricates a local signed-in session ───────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Sign in securely' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Sign in securely' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Sign in securely' })
+
+
+      167 |     cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: 'http://127.0.0.1:5173/' } }));
+      168 |   await page.goto('/');
+    > 169 |   await expect(page.getByRole('button', { name: 'Sign in securely' })).toBeVisible();
+          |                                                                        ^
+      170 |   await expect(page.getByRole('button', { name: 'Continue with local identity' })).toHaveCount(0);
+      171 |   expect(await page.evaluate(() => localStorage.length)).toBe(0);
+      172 |   await page.reload();
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\cases.spec.ts:169:72
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-AWS-mode-never-f-c25e3-s-a-local-signed-in-session\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-AWS-mode-never-f-c25e3-s-a-local-signed-in-session\error-context.md
+
+  2) tests\cases.spec.ts:176:1 › VS1 callback state mismatch is rejected and temporary values are removed
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Sign-in could not be completed"
+    Received string:    "Application configuration is unavailable. Contact the deployment administrator."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+        14 × locator resolved to <div role="alert" class="alert">Application configuration is unavailable. Contact…</div>
+           - unexpected value "Application configuration is unavailable. Contact the deployment administrator."
+
+
+      179 |   await page.addInitScript(() => sessionStorage.setItem('regulatory-agent.pkce', JSON.stringify({ state: 'expected-state', verifier: 'fictional-verifier' })));
+      180 |   await page.goto('/?code=fictional-code&state=wrong-state');
+    > 181 |   await expect(page.getByRole('alert')).toContainText('Sign-in could not be completed');
+          |                                         ^
+      182 |   expect(new URL(page.url()).search).toBe('');
+      183 |   expect(await page.evaluate(() => sessionStorage.length)).toBe(0);
+      184 |   expect(await page.evaluate(() => localStorage.length)).toBe(0);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\cases.spec.ts:181:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-callback-state-m-ffaab-emporary-values-are-removed\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-callback-state-m-ffaab-emporary-values-are-removed\error-context.md
+
+  3) tests\cases.spec.ts:196:1 › VS1-BT01 cloud sign-in returns to the selected case after a reload
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Sign in securely' })
+
+
+      218 |   await page.goto(`/?case=${record.case_id}`);
+      219 |   for (let attempt = 0; attempt < 2; attempt++) {
+    > 220 |     await page.getByRole('button', { name: 'Sign in securely' }).click();
+          |                                                                  ^
+      221 |     await expect(page.getByRole('heading', { name: record.bank_profile.name, level: 1 })).toBeVisible();
+      222 |     expect(new URL(page.url()).searchParams.get('case')).toBe(record.case_id);
+      223 |     expect(new URL(page.url()).searchParams.has('code')).toBe(false);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\cases.spec.ts:220:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-BT01-cloud-sign--4adc9-elected-case-after-a-reload\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-BT01-cloud-sign--4adc9-elected-case-after-a-reload\error-context.md
+
+  4) tests\cases.spec.ts:229:1 › VS1 case resume rejects a return URL before exchanging a sign-in code
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('alert')
+    Expected substring: "Sign-in could not be completed"
+    Received string:    "Application configuration is unavailable. Contact the deployment administrator."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('alert')
+        14 × locator resolved to <div role="alert" class="alert">Application configuration is unavailable. Contact…</div>
+           - unexpected value "Application configuration is unavailable. Contact the deployment administrator."
+
+
+      237 |   })), state);
+      238 |   await page.goto(`/?code=fictional-code&state=${encodeURIComponent(state)}`);
+    > 239 |   await expect(page.getByRole('alert')).toContainText('Sign-in could not be completed');
+          |                                         ^
+      240 |   expect(new URL(page.url()).origin).toBe('http://127.0.0.1:5173');
+      241 |   expect(new URL(page.url()).search).toBe('');
+      242 |   expect(await page.evaluate(() => sessionStorage.length)).toBe(0);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\cases.spec.ts:239:41
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-case-resume-reje-387bb-e-exchanging-a-sign-in-code\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\cases-VS1-case-resume-reje-387bb-e-exchanging-a-sign-in-code\error-context.md
+
+  4 failed
+    tests\cases.spec.ts:165:1 › VS1 AWS mode never fabricates a local signed-in session ────────────
+    tests\cases.spec.ts:176:1 › VS1 callback state mismatch is rejected and temporary values are removed
+    tests\cases.spec.ts:196:1 › VS1-BT01 cloud sign-in returns to the selected case after a reload ─
+    tests\cases.spec.ts:229:1 › VS1 case resume rejects a return URL before exchanging a sign-in code
+  16 passed (1.1m)

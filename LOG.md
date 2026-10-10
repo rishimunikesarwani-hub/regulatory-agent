@@ -448,3 +448,40 @@ All 166 backend checks and 14 local browser checks passed before the release.
 
 Next: obtain AWS account verification and review the failed stack recovery.
 Live AWS acceptance remains pending.
+
+### VS2 local document slice
+
+The user approved VS1 locally and authorized VS2 while AWS verification is pending.
+D35 controls the isolated branch, worktree, ports, and databases.
+D36 and the VS2 source contract were recorded before implementation.
+The new HTTP tests failed for missing document routes.
+The browser tests failed for the missing document interface.
+The port guard found the old API address before any writes.
+
+Local upload now supports text PDF, DOCX, TXT, and CSV.
+Each source version keeps its original bytes and exact text locations.
+Replacements keep earlier versions accessible.
+Case access checks apply to upload, inspection, replacement, and original download.
+File and case limits reject excess input without a partial save.
+One different extraction process stops after 10 seconds.
+The timeout test failed before its safe rejection correction.
+The uncertain-save test failed before its retry guard.
+
+All 178 backend checks and 20 combined browser checks passed.
+The frontend build passed.
+The source screen was inspected in Chrome with the fictional policy fixture.
+The feedback interface uses port `5182` and API port `8120`.
+Its database is `runs/private/slice-02/feedback.sqlite`.
+Browser tests use API port `8121` and their own database.
+The VS1 feedback services and unrelated worktree changes stay unchanged.
+
+Read the [local evidence](runs/2026-10-10-slice-02-documents/review-local.md) and [development guide](docs/delivery/guide-slice-02-development.md).
+The user approved VS2 local acceptance and authorized VS3 local development.
+The VS2 integration merge stays pending until GitHub checks pass.
+AWS source adapters, service permissions, and deployed browser acceptance stay pending.
+The Support verification request has not been sent by this session.
+No cloud resources were deleted manually.
+
+Next: complete the checked VS2 integration merge.
+Start the authorized VS3 local slice after that merge.
+Keep the CloudFront verification handoff open.

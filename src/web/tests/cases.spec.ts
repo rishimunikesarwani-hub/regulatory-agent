@@ -2,6 +2,7 @@ import { expect, test, type Page } from '@playwright/test';
 
 const testApi = process.env.LOCAL_TEST_API_URL || 'http://127.0.0.1:8110';
 const api = `${testApi}/api/cases`;
+const testWeb = process.env.LOCAL_TEST_WEB_URL || 'http://127.0.0.1:5173';
 
 test.beforeEach(async ({ page }) => {
   if (process.env.LOCAL_TEST_API_URL) {
@@ -31,7 +32,7 @@ test('VS1-BT03 requested sign-in stays centered on desktop and mobile', async ({
     expect(bounds).not.toBeNull();
     expect(Math.abs(bounds!.x + bounds!.width / 2 - viewport.width / 2)).toBeLessThan(2);
     expect(Math.abs(bounds!.y + bounds!.height / 2 - viewport.height / 2)).toBeLessThan(40);
-    await page.screenshot({ path: `../../runs/2026-10-10-slice-01-feedback/sign-in-${viewport.width > 767 ? 'desktop' : 'mobile'}.png` });
+    await page.screenshot({ path: `${process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-slice-01-feedback'}/sign-in-${viewport.width > 767 ? 'desktop' : 'mobile'}.png` });
   }
 });
 
@@ -50,7 +51,7 @@ test('VS1-BT01 sign in, create, leave, reopen and reload a real saved case', asy
   await expect(page.getByRole('heading', { name })).toBeVisible();
   await expect(page.getByText('Case saved', { exact: true })).toBeVisible();
   await expect(page.getByText('Not started', { exact: true })).toBeVisible();
-  await page.screenshot({ path: '../../runs/2026-10-10-autonomous-build/frontend-desktop.png', fullPage: true });
+  await page.screenshot({ path: `${process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-autonomous-build'}/frontend-desktop.png`, fullPage: true });
   await page.getByRole('button', { name: 'Back to cases' }).click();
   await page.getByRole('button', { name: `Open ${name}`, exact: true }).click();
   await expect(page.getByRole('heading', { name })).toBeVisible();
@@ -152,7 +153,7 @@ test('VS1-BT03 narrow viewport and keyboard complete the saved case flow', async
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({ path: '../../runs/2026-10-10-autonomous-build/frontend-mobile.png', fullPage: true });
+  await page.screenshot({ path: `${process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-autonomous-build'}/frontend-mobile.png`, fullPage: true });
 });
 
 test('VS1 authentication configuration fails closed without Cognito settings', async ({ page }) => {
@@ -164,7 +165,7 @@ test('VS1 authentication configuration fails closed without Cognito settings', a
 
 test('VS1 AWS mode never fabricates a local signed-in session', async ({ page }) => {
   await page.route('**/config.json', route => route.fulfill({ json: { mode: 'aws', api_url: 'https://api.example.test',
-    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: 'http://127.0.0.1:5173/' } }));
+    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: `${testWeb}/` } }));
   await page.goto('/');
   await expect(page.getByRole('button', { name: 'Sign in securely' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Continue with local identity' })).toHaveCount(0);
@@ -175,7 +176,7 @@ test('VS1 AWS mode never fabricates a local signed-in session', async ({ page })
 
 test('VS1 callback state mismatch is rejected and temporary values are removed', async ({ page }) => {
   await page.route('**/config.json', route => route.fulfill({ json: { mode: 'aws', api_url: 'https://api.example.test',
-    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: 'http://127.0.0.1:5173/' } }));
+    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: `${testWeb}/` } }));
   await page.addInitScript(() => sessionStorage.setItem('regulatory-agent.pkce', JSON.stringify({ state: 'expected-state', verifier: 'fictional-verifier' })));
   await page.goto('/?code=fictional-code&state=wrong-state');
   await expect(page.getByRole('alert')).toContainText('Sign-in could not be completed');
@@ -199,11 +200,11 @@ test('VS1-BT01 cloud sign-in returns to the selected case after a reload', async
     created_at: '2026-10-10T12:00:00Z' };
   const identity = 'https://demo.auth.ap-south-1.amazoncognito.com';
   await page.route('**/config.json', route => route.fulfill({ json: { mode: 'aws', api_url: 'https://api.example.test',
-    cognito_domain: identity, user_pool_client_id: 'test-client', redirect_uri: 'http://127.0.0.1:5173/' } }));
+    cognito_domain: identity, user_pool_client_id: 'test-client', redirect_uri: `${testWeb}/` } }));
   await page.route(`${identity}/**`, route => {
     const url = new URL(route.request().url());
     if (url.pathname === '/oauth2/authorize') {
-      const callback = new URL('http://127.0.0.1:5173/');
+      const callback = new URL(`${testWeb}/`);
       callback.searchParams.set('code', 'fictional-code');
       callback.searchParams.set('state', url.searchParams.get('state')!);
       return route.fulfill({ status: 302, headers: { location: callback.href } });
@@ -230,14 +231,14 @@ test('VS1 case resume rejects a return URL before exchanging a sign-in code', as
   const state = 'fictional-state.https://untrusted.example/';
   let tokenRequests = 0;
   await page.route('**/config.json', route => route.fulfill({ json: { mode: 'aws', api_url: 'https://api.example.test',
-    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: 'http://127.0.0.1:5173/' } }));
+    cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: `${testWeb}/` } }));
   await page.route('https://demo.auth.ap-south-1.amazoncognito.com/**', route => { tokenRequests++; return route.abort(); });
   await page.addInitScript(value => sessionStorage.setItem('regulatory-agent.pkce', JSON.stringify({
     state: value, verifier: 'fictional-verifier',
   })), state);
   await page.goto(`/?code=fictional-code&state=${encodeURIComponent(state)}`);
   await expect(page.getByRole('alert')).toContainText('Sign-in could not be completed');
-  expect(new URL(page.url()).origin).toBe('http://127.0.0.1:5173');
+  expect(new URL(page.url()).origin).toBe(testWeb);
   expect(new URL(page.url()).search).toBe('');
   expect(await page.evaluate(() => sessionStorage.length)).toBe(0);
   expect(tokenRequests).toBe(0);

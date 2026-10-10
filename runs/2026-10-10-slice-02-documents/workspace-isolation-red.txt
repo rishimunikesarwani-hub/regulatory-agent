@@ -1,0 +1,25 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+
+At line:1 char:1
+
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+npm notice run playwright test --config playwright.documents.config.ts --grep VS2-BT01
+
+[WebServer] (node:37432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] '..' is not recognized as an internal or external command,
+
+[WebServer] operable program or batch file.
+
+Error: Process from config.webServer was not able to start. Exit code: 1

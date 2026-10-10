@@ -1,0 +1,226 @@
+test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) ...
+  test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.txt') ... FAIL
+  test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='controls.csv') ... FAIL
+  test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.docx') ... FAIL
+  test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.pdf') ... FAIL
+test_ct02_documents_reopen_with_a_new_application_instance (test_slice02_documents.DocumentSliceTests.test_ct02_documents_reopen_with_a_new_application_instance) ... FAIL
+test_ct03_other_owners_and_cases_cannot_read_or_replace_sources (test_slice02_documents.DocumentSliceTests.test_ct03_other_owners_and_cases_cannot_read_or_replace_sources) ... FAIL
+test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) ...
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='../policy.txt', headers={}) ... FAIL
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.exe', headers={}) ... FAIL
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.pdf', headers={}) ... FAIL
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={'X-Synthetic': 'false'}) ... FAIL
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={'X-Document-Kind': 'regulation'}) ... FAIL
+  test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={}) ... FAIL
+test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) ... ERROR
+test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) ...
+  test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='encrypted.pdf') ... FAIL
+  test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='scan.pdf') ... FAIL
+  test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='empty.txt') ... FAIL
+  test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='invalid.docx') ... FAIL
+  test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='invalid.csv') ... FAIL
+test_ct06_document_count_and_replacement_versions_share_the_allowance (test_slice02_documents.DocumentSliceTests.test_ct06_document_count_and_replacement_versions_share_the_allowance) ... FAIL
+test_ct06_file_and_aggregate_limits_reject_without_partial_persistence (test_slice02_documents.DocumentSliceTests.test_ct06_file_and_aggregate_limits_reject_without_partial_persistence) ... FAIL
+test_ct07_replacement_preserves_the_old_version_and_rejected_replacements (test_slice02_documents.DocumentSliceTests.test_ct07_replacement_preserves_the_old_version_and_rejected_replacements) ... ERROR
+test_ct08_concurrent_uploads_cannot_exceed_the_case_count (test_slice02_documents.DocumentSliceTests.test_ct08_concurrent_uploads_cannot_exceed_the_case_count) ... FAIL
+test_ct09_altered_original_content_is_rejected (test_slice02_documents.DocumentSliceTests.test_ct09_altered_original_content_is_rejected) ... FAIL
+test_workspace_port_and_upload_headers_have_explicit_loopback_cors (test_slice02_documents.DocumentSliceTests.test_workspace_port_and_upload_headers_have_explicit_loopback_cors) ... FAIL
+
+======================================================================
+ERROR: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 128, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.call("GET", self.url).json()["sources"], [])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'sources'
+
+======================================================================
+ERROR: test_ct07_replacement_preserves_the_old_version_and_rejected_replacements (test_slice02_documents.DocumentSliceTests.test_ct07_replacement_preserves_the_old_version_and_rejected_replacements)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 156, in test_ct07_replacement_preserves_the_old_version_and_rejected_replacements
+    newer = self.upload(b"Revised fictional policy.\n", source=old["document"]["source_id"])
+                                                               ~~~^^^^^^^^^^^^
+KeyError: 'document'
+
+======================================================================
+FAIL: test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 85, in test_ct01_supported_files_keep_original_bytes_and_exact_locations
+    self.assertEqual(response.status_code, 201, response.text)
+AssertionError: 404 != 201 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"4c428dcf1f2d47c58815cc619b00f52b"}
+
+======================================================================
+FAIL: test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='controls.csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 85, in test_ct01_supported_files_keep_original_bytes_and_exact_locations
+    self.assertEqual(response.status_code, 201, response.text)
+AssertionError: 404 != 201 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"e8668295785a40e7840aecfc64d0e406"}
+
+======================================================================
+FAIL: test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.docx')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 85, in test_ct01_supported_files_keep_original_bytes_and_exact_locations
+    self.assertEqual(response.status_code, 201, response.text)
+AssertionError: 404 != 201 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"8840119a090b40d0840a480f509f2e4c"}
+
+======================================================================
+FAIL: test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) (name='policy.pdf')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 85, in test_ct01_supported_files_keep_original_bytes_and_exact_locations
+    self.assertEqual(response.status_code, 201, response.text)
+AssertionError: 404 != 201 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"26467e3d9e1745e0a90ff4acb5631cd0"}
+
+======================================================================
+FAIL: test_ct02_documents_reopen_with_a_new_application_instance (test_slice02_documents.DocumentSliceTests.test_ct02_documents_reopen_with_a_new_application_instance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 96, in test_ct02_documents_reopen_with_a_new_application_instance
+    self.assertEqual(response.status_code, 201)
+AssertionError: 404 != 201
+
+======================================================================
+FAIL: test_ct03_other_owners_and_cases_cannot_read_or_replace_sources (test_slice02_documents.DocumentSliceTests.test_ct03_other_owners_and_cases_cannot_read_or_replace_sources)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 106, in test_ct03_other_owners_and_cases_cannot_read_or_replace_sources
+    self.assertEqual(response.status_code, 201)
+AssertionError: 404 != 201
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='../policy.txt', headers={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.exe', headers={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.pdf', headers={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={'X-Synthetic': 'false'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={'X-Document-Kind': 'regulation'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) (filename='policy.txt', headers={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 127, in test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources
+    self.assertEqual(self.upload(content, filename, headers=headers).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='encrypted.pdf')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 136, in test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='scan.pdf')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 136, in test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='empty.txt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 136, in test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='invalid.docx')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 136, in test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) (name='invalid.csv')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 136, in test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct06_document_count_and_replacement_versions_share_the_allowance (test_slice02_documents.DocumentSliceTests.test_ct06_document_count_and_replacement_versions_share_the_allowance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 150, in test_ct06_document_count_and_replacement_versions_share_the_allowance
+    self.assertEqual(self.upload().status_code, 201)
+AssertionError: 404 != 201
+
+======================================================================
+FAIL: test_ct06_file_and_aggregate_limits_reject_without_partial_persistence (test_slice02_documents.DocumentSliceTests.test_ct06_file_and_aggregate_limits_reject_without_partial_persistence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 141, in test_ct06_file_and_aggregate_limits_reject_without_partial_persistence
+    self.assertEqual(self.upload(b"x" * 10_000_001).status_code, 413)
+AssertionError: 404 != 413
+
+======================================================================
+FAIL: test_ct08_concurrent_uploads_cannot_exceed_the_case_count (test_slice02_documents.DocumentSliceTests.test_ct08_concurrent_uploads_cannot_exceed_the_case_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 165, in test_ct08_concurrent_uploads_cannot_exceed_the_case_count
+    self.assertEqual(self.upload().status_code, 201)
+AssertionError: 404 != 201
+
+======================================================================
+FAIL: test_ct09_altered_original_content_is_rejected (test_slice02_documents.DocumentSliceTests.test_ct09_altered_original_content_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 173, in test_ct09_altered_original_content_is_rejected
+    self.assertEqual(response.status_code, 201)
+AssertionError: 404 != 201
+
+======================================================================
+FAIL: test_workspace_port_and_upload_headers_have_explicit_loopback_cors (test_slice02_documents.DocumentSliceTests.test_workspace_port_and_upload_headers_have_explicit_loopback_cors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 184, in test_workspace_port_and_upload_headers_have_explicit_loopback_cors
+    self.assertEqual(response.status_code, 200)
+AssertionError: 400 != 200
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.492s
+
+FAILED (failures=22, errors=2)
