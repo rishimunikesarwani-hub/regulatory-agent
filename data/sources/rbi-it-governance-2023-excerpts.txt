@@ -1,0 +1,26 @@
+Clause 2(a)
+These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):
+
+Clause 2(a)(i)
+all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter).
+
+Clause 2(b)
+These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies
+
+Clause 19(a)
+Access to information assets shall be allowed only where a valid business need exists. REs shall have documented standards and procedures, which are approved by the ITSC and kept up to date for administering need-based access to an information system.
+
+Clause 19(b)
+Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed.
+
+Clause 19(c)
+REs shall adopt multi-factor authentication for privileged users of i) critical information systems and ii) for critical activities, basis the RE’s risk assessment.
+
+Clause 29(a)
+Periodicity of DR drills for critical information systems shall be at least on a half-yearly basis and for other information systems, as per RE’s risk assessment.
+
+Clause 29(b)
+Any major issues observed during the DR drill shall be resolved and tested again to ensure successful conduct of drill before the next cycle.
+
+Clause 29(e)
+REs shall backup data and periodically restore such backed-up data to check its usability. The integrity of such backup data shall be preserved along with securing it from unauthorised access.

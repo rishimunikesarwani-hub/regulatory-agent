@@ -1,0 +1,33 @@
+{
+  "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "tests_passed": 30,
+  "clean_copy_passed": true,
+  "credential_environment_removed": true,
+  "network_blocked_in_test_process": true,
+  "protected_files_unchanged": [
+    "AGENTS.md",
+    "README.md",
+    "pyproject.toml",
+    "docs/product/01_PRD.md",
+    "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+    "docs/security/03_SECURITY_ACCESS.md",
+    "docs/frontend/04_FRONTEND_SPEC.md",
+    "docs/delivery/05_FEATURE_TICKETS.md",
+    "docs/delivery/guide-parallel-development.md",
+    "docs/decisions/gov-decision-log.md"
+  ],
+  "development_cases": 3,
+  "held_out_cases": 20,
+  "source_versions": 5,
+  "real_historical_versions": 1,
+  "synthetic_versions": 4,
+  "live_model_evaluation": "not run",
+  "external_provider": "undecided",
+  "current_regulatory_coverage": "unverified",
+  "application_features_implemented": 0,
+  "new_local_links_resolve": 21,
+  "implementation_sha256": {
+    "ops/session_a_fixtures.py": "8e8b68e12ff3be0cd1c0b1c2eac923b95cff3ddc676842d883fe916544225b97",
+    "tests/test_session_a_fixtures.py": "63578f6a24014093087ba438f434512d0d0ec3b728c5cfabd3bfcd1c50272ec8"
+  }
+}

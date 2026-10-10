@@ -1,0 +1,25 @@
+Command: py -X utf8 -B -m unittest discover -s tests -p test_session_a_fixtures.py -v
+Exit: 1
+test_session_a_fixtures (unittest.loader._FailedTest.test_session_a_fixtures) ... ERROR
+
+======================================================================
+ERROR: test_session_a_fixtures (unittest.loader._FailedTest.test_session_a_fixtures)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_session_a_fixtures
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Be Flith Rich\AppData\Local\Python\pythoncore-3.14-64\Lib\unittest\loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-session-a\tests\test_session_a_fixtures.py", line 11, in <module>
+    from ops.session_a_fixtures import (
+        inspect_development, load_pack, resolve_reference, validate_files, validate_pack,
+    )
+ModuleNotFoundError: No module named 'ops.session_a_fixtures'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

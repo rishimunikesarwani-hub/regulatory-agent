@@ -1,0 +1,15 @@
+{
+  "base_commit": "20743635e68c57257432de655f6f02a669b956a8",
+  "protected_files": {
+    "AGENTS.md": "1660b130d42ef2f33eb064f9347e0c4d1be2461ae49de375d086228d07a38e53",
+    "README.md": "f96eeddbead2a39183fd422adaa75ae8ba9ef3c8ea0ebbf969f67d292e3adde3",
+    "pyproject.toml": "6b47e644e6ee277b8f38ba1416418d0392d3454b4392a54032109bc075399d2d",
+    "docs/product/01_PRD.md": "bd34fba43b4c91421d835898d5ac29401a655a0e776175ae254428123d4cd240",
+    "docs/architecture/02_TECHNICAL_BLUEPRINT.md": "04bd290a8d11267bcf202dd98f2211e708071ce2a2cac38b5404a406efd94ad5",
+    "docs/security/03_SECURITY_ACCESS.md": "d78d8a0c6128a49a92557454aaae43d26aec81f0df3411d4a835e45a0c217c4f",
+    "docs/frontend/04_FRONTEND_SPEC.md": "528b08d8b115d4b23dc723e4061ba1caa3f10d8fe1771084bf87849462a26bb7",
+    "docs/delivery/05_FEATURE_TICKETS.md": "23bd1b4c8cfa360035c40226defdc9ae96422d9db67b9880b51a4139a5155cc7",
+    "docs/delivery/guide-parallel-development.md": "d80a42ca8bf6d03a1888e03e020188e3e882e93c43afc3b5fca72647488279a5",
+    "docs/decisions/gov-decision-log.md": "e333737f50d5154a49d052787972eb07292607182dc56c6744e7bb61ec9879f9"
+  }
+}

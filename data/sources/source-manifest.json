@@ -1,0 +1,148 @@
+{
+  "format_version": 1,
+  "purpose": "Fixed historical test source; not live regulatory coverage",
+  "current_coverage_verified": false,
+  "provider": null,
+  "acquired_at": "2026-10-10T02:25:19.174030+00:00",
+  "acquisition_method": "Direct HTTPS GET to RBI official HTML page",
+  "normalization": "HTML entities decoded; whitespace collapsed for quote matching. Footnote markers retained. Original bytes preserved.",
+  "versions": [
+    {
+      "document_id": "RBI-IT-2023",
+      "version_id": "2023-11-07",
+      "authority": "Reserve Bank of India",
+      "title": "Master Direction on Information Technology Governance, Risk, Controls and Assurance Practices",
+      "source_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12562",
+      "publication_date": "2023-11-07",
+      "effective_date": "2024-04-01",
+      "scope": "See clauses 2(a), 2(a)(i), and 2(b). Fixtures select commercial banks or Local Area Banks.",
+      "raw_path": "data/sources/rbi-it-governance-2023.html",
+      "sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+      "synthetic": false,
+      "label": "Official historical source; current status unverified",
+      "passages": [
+        {
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "text": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "text": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "text": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "passage_id": "19a",
+          "locator": "Clause 19(a)",
+          "text": "Access to information assets shall be allowed only where a valid business need exists. REs shall have documented standards and procedures, which are approved by the ITSC and kept up to date for administering need-based access to an information system."
+        },
+        {
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "text": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "passage_id": "19c",
+          "locator": "Clause 19(c)",
+          "text": "REs shall adopt multi-factor authentication for privileged users of i) critical information systems and ii) for critical activities, basis the RE’s risk assessment."
+        },
+        {
+          "passage_id": "29a",
+          "locator": "Clause 29(a)",
+          "text": "Periodicity of DR drills for critical information systems shall be at least on a half-yearly basis and for other information systems, as per RE’s risk assessment."
+        },
+        {
+          "passage_id": "29b",
+          "locator": "Clause 29(b)",
+          "text": "Any major issues observed during the DR drill shall be resolved and tested again to ensure successful conduct of drill before the next cycle."
+        },
+        {
+          "passage_id": "29e",
+          "locator": "Clause 29(e)",
+          "text": "REs shall backup data and periodically restore such backed-up data to check its usability. The integrity of such backup data shall be preserved along with securing it from unauthorised access."
+        }
+      ]
+    },
+    {
+      "document_id": "SIM-ACCESS",
+      "version_id": "v1",
+      "authority": "Fictional benchmark author",
+      "title": "Synthetic access-review rule",
+      "source_url": null,
+      "publication_date": "2024-04-01",
+      "effective_date": "2024-04-01",
+      "scope": "Fictional commercial-bank rule for historical change tests",
+      "synthetic": true,
+      "label": "Synthetic regulatory simulation",
+      "passages": [
+        {
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "text": "Privileged sessions must be logged and reviewed each week."
+        }
+      ]
+    },
+    {
+      "document_id": "SIM-ACCESS",
+      "version_id": "v2-added",
+      "authority": "Fictional benchmark author",
+      "title": "Synthetic access-review rule",
+      "source_url": null,
+      "publication_date": "2024-04-20",
+      "effective_date": "2024-05-01",
+      "scope": "Fictional commercial-bank rule for historical change tests",
+      "synthetic": true,
+      "label": "Synthetic regulatory simulation",
+      "passages": [
+        {
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "text": "Privileged sessions must be logged and reviewed each week. A separate reviewer must approve each weekly review."
+        }
+      ]
+    },
+    {
+      "document_id": "SIM-ACCESS",
+      "version_id": "v2-replaced",
+      "authority": "Fictional benchmark author",
+      "title": "Synthetic access-review rule",
+      "source_url": null,
+      "publication_date": "2024-04-20",
+      "effective_date": "2024-05-01",
+      "scope": "Fictional commercial-bank rule for historical change tests",
+      "synthetic": true,
+      "label": "Synthetic regulatory simulation",
+      "passages": [
+        {
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "text": "Record each privileged session. Review these records each week."
+        }
+      ]
+    },
+    {
+      "document_id": "SIM-ACCESS",
+      "version_id": "v2-cosmetic",
+      "authority": "Fictional benchmark author",
+      "title": "Synthetic access-review rule",
+      "source_url": null,
+      "publication_date": "2024-04-20",
+      "effective_date": "2024-05-01",
+      "scope": "Fictional commercial-bank rule for historical change tests",
+      "synthetic": true,
+      "label": "Synthetic regulatory simulation",
+      "passages": [
+        {
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "text": "Privileged sessions must be logged, and reviewed each week."
+        }
+      ]
+    }
+  ]
+}
