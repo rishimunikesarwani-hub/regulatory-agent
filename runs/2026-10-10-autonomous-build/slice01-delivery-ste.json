@@ -1,0 +1,45 @@
+{
+  "files": [
+    "docs/delivery/guide-parallel-development.md",
+    "docs/delivery/05_FEATURE_TICKETS.md",
+    "docs/delivery/guide-slice-01-development.md"
+  ],
+  "before_sha256": {
+    "docs/delivery/guide-parallel-development.md": "e58c80698906968f452a81bc8ba9023f956569b0f1871c4b19dbed91c3cfdeb2",
+    "docs/delivery/05_FEATURE_TICKETS.md": "4082693f6e8ec6ba42b255ea1a75b46469102811a067d01a56ec37b554bb799c",
+    "docs/delivery/guide-slice-01-development.md": "ccc8785801bfaaf89d6b3e7ab5797063235e9ba7f1cd52ce6dcc341a09d43d3f"
+  },
+  "source_backup": "runs\\private\\delivery-before-vs1-status",
+  "acceptance_rows_preserved": 115,
+  "date": "2026-10-10",
+  "skill": "asd-ste100",
+  "issue": "ASD-STE100 Issue 9, 2025-01-15",
+  "after_sha256": {
+    "docs/delivery/guide-parallel-development.md": "4963804d043d8757098ed4253fc7bf965c5be706d6455651f8ff6320adc25dab",
+    "docs/delivery/05_FEATURE_TICKETS.md": "fab1b04dc83b953ed47c4f6ff24688a51b68094a0986cfa13b14db1f82df81a5",
+    "docs/delivery/guide-slice-01-development.md": "ff40fda632143e6ef60113b681030e308a6a5927788567a539c15edb3781b81b"
+  },
+  "scope": "Final VS1 delivery status, exact deployment-script ownership, and development-guide language review.",
+  "mechanical": {
+    "descriptive": "slice01-delivery-ste-mechanical.json",
+    "procedural_guide": "slice01-guide-ste-procedural.json",
+    "findings": 0
+  },
+  "evidence": {
+    "python": "slice01-combined-green.txt: 151 passed",
+    "browser": "frontend-green.txt: 11 passed",
+    "AWS": "No account or deployed acceptance result. Unverified."
+  },
+  "manual_review": {
+    "meaning": "PASS: all 115 acceptance rows unchanged; commands, links, permissions, conditions, budgets and account uncertainty preserved.",
+    "guide_corrections": [
+      "Replaced validates with does infrastructure checks.",
+      "Replaced creates/Create with makes/Make."
+    ],
+    "dictionary_basis": "Project Issue 9 guide records CHECK as a noun, CREATE as unapproved, and make/do as the selected forms.",
+    "technical_terms": "API, OIDC, CloudFormation, Cognito, pipeline, deployment, IAM, SQLite, PKCE, GitHub Actions, release and commit retain their software meanings.",
+    "limits": "Selected wording and technical meaning reviewed. No claim of full dictionary compliance or ASD approval."
+  },
+  "missing_local_links": [],
+  "other_files_edited": false
+}

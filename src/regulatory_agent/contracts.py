@@ -1,5 +1,5 @@
 """T2 validated request/response contracts. HTTP handlers belong to T6."""
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 import hashlib
 import ipaddress
 import json
@@ -7,21 +7,18 @@ import math
 from typing import Annotated, Literal
 from urllib.parse import urlsplit
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from pydantic import Field, field_validator, model_validator
+from .contract_types import Contract, Identifier
+from .telemetry import StageAttempt
 
 
 class ContractError(ValueError):
     """A safe error code; never attach private content or provider messages."""
 
 
-Identifier = Annotated[str, Field(min_length=1, max_length=128, pattern=r"^[A-Za-z0-9][A-Za-z0-9_.:-]*$")]
 Text = Annotated[str, Field(min_length=1, max_length=400_000)]
 Status = Literal["supported", "partial", "gap", "needs_review", "not_applicable"]
 State = Literal["queued", "running", "completed", "partial", "failed"]
-
-
-class Contract(BaseModel):
-    model_config = ConfigDict(extra="forbid", strict=True, frozen=True)
 
 
 def iso_date(value):
@@ -64,6 +61,14 @@ class Empty(Contract):
 class CaseCreate(Contract):
     bank_profile: dict[str, str | bool | None]
     synthetic: bool = True
+
+    @field_validator("bank_profile")
+    @classmethod
+    def valid_case_name(cls, value):
+        name = value.get("name")
+        if not isinstance(name, str) or not 1 <= len(name.strip()) <= 200:
+            raise ValueError("A case name of 1 to 200 characters is necessary")
+        return value | {"name": name.strip()}
 
 
 class CaseRecord(CaseCreate):
@@ -210,16 +215,196 @@ class Findings(Contract):
     findings: list[Finding]
 
 
+def utc_time(value):
+    iso_time(value)
+    return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+
+
+DataMode = Literal["controlled_simulation", "offline_benchmark", "synthetic_live", "live"]
+
+
+class ReviewContent(Contract):
+    status: Status
+    rationale: Text
+    recommendation: Text
+
+    @field_validator("rationale", "recommendation")
+    @classmethod
+    def nonblank(cls, value):
+        if not value.strip():
+            raise ValueError("Review content must not be blank")
+        return value
+
+    def normalized(self):
+        return {key: value.replace("\r\n", "\n").replace("\r", "\n").strip()
+                for key, value in self.model_dump().items()}
+
+
+class ReviewItem(Finding):
+    run_id: Identifier
+    primary_recommendation: Text
+    available_at: str
+    model_id: Identifier
+    prompt_version: Identifier
+    data_mode: DataMode
+    source_version_ids: list[Identifier] = Field(min_length=1, max_length=10)
+    _available = field_validator("available_at")(utc_time)
+
+    def original_content(self):
+        return ReviewContent(status=self.status, rationale=self.rationale, recommendation=self.primary_recommendation)
+
+
 class ReviewRequest(Contract):
-    disposition: Literal["agree", "disagree", "request_more_evidence"]
-    note: str = Field(max_length=4000)
-    idempotency_key: Identifier = "review"
+    event_kind: Literal["final_review", "evidence_request"]
+    disposition: Literal["approved", "edited", "rejected"] | None = None
+    accepted_content: ReviewContent | None = None
+    reason: str | None = Field(default=None, max_length=4000)
+    expected_revision: int = Field(ge=0)
+    idempotency_key: Identifier
+
+    @model_validator(mode="after")
+    def valid_event(self):
+        if self.event_kind == "evidence_request":
+            if self.disposition is not None or self.accepted_content is not None:
+                raise ValueError("Evidence requests have no final outcome or accepted content")
+        elif self.disposition is None:
+            raise ValueError("Final reviews need an outcome")
+        if self.disposition in {"approved", "edited"} and self.accepted_content is None:
+            raise ValueError("Accepted content is necessary")
+        if self.disposition == "rejected" and self.accepted_content is not None:
+            raise ValueError("Rejected content cannot be accepted")
+        if self.disposition in {"edited", "rejected"} and (self.reason is None or not self.reason.strip()):
+            raise ValueError("A nonblank reason is necessary")
+        return self
 
 
 class ReviewDecision(ReviewRequest):
+    event_id: Identifier
     finding_id: Identifier
     reviewer_id: Identifier
-    timestamp: str
+    committed_at: str
+    revision: int = Field(ge=1)
+    _committed = field_validator("committed_at")(utc_time)
+
+
+class ReviewCohort(Contract):
+    start: str
+    end: str
+    cutoff: str
+    display_timezone: Literal["UTC", "Asia/Kolkata", "Asia/Calcutta"] = "UTC"
+    model_id: Identifier
+    prompt_version: Identifier
+    data_mode: DataMode
+    finding_status: Status | None = None
+    source_version_ids: list[Identifier] = Field(default_factory=list, max_length=10)
+    _times = field_validator("start", "end", "cutoff")(utc_time)
+
+    @model_validator(mode="after")
+    def ordered_window(self):
+        if datetime.fromisoformat(self.start) >= datetime.fromisoformat(self.end):
+            raise ValueError("The start must precede the end")
+        return self
+
+
+class ReviewOutcomeReport(Contract):
+    metric_definition_version: Literal["d24-v1"] = "d24-v1"
+    cohort: ReviewCohort
+    eligible: int = Field(ge=0)
+    reviewed: int = Field(ge=0)
+    approved: int = Field(ge=0)
+    edited: int = Field(ge=0)
+    rejected: int = Field(ge=0)
+    pending: int = Field(ge=0)
+    approval_rate: float | None
+    edit_rate: float | None
+    rejection_rate: float | None
+    adoption_rate: float | None
+    review_coverage: float | None
+    review_delays_seconds: list[float]
+    status_reviewer_groups: list[dict]
+    same_operator_review: Literal[True] = True
+    acceptance_is_accuracy: Literal[False] = False
+
+
+class RunCohort(Contract):
+    start: str
+    end: str
+    cutoff: str
+    model_id: Identifier
+    prompt_version: Identifier
+    data_mode: DataMode
+    _times = field_validator("start", "end", "cutoff")(utc_time)
+
+    @model_validator(mode="after")
+    def ordered_window(self):
+        if datetime.fromisoformat(self.start) >= datetime.fromisoformat(self.end):
+            raise ValueError("The start must precede the end")
+        return self
+
+
+class RunMeasure(Contract):
+    run_id: Identifier
+    job_id: Identifier
+    snapshot_id: Identifier
+    job_admitted_at: str
+    state: State
+    state_recorded_at: str
+    selected_obligations: list[Identifier] = Field(min_length=1, max_length=20)
+    presented_obligations: dict[Identifier, str]
+    model_id: Identifier
+    prompt_version: Identifier
+    data_mode: DataMode
+    _times = field_validator("job_admitted_at", "state_recorded_at")(utc_time)
+
+    @field_validator("presented_obligations")
+    @classmethod
+    def output_times(cls, value):
+        return {key: utc_time(timestamp) for key, timestamp in value.items()}
+
+    @model_validator(mode="after")
+    def valid_scope(self):
+        selected = set(self.selected_obligations)
+        if len(selected) != len(self.selected_obligations) or not set(self.presented_obligations) <= selected:
+            raise ValueError("Invalid obligation scope")
+        admitted = datetime.fromisoformat(self.job_admitted_at)
+        if datetime.fromisoformat(self.state_recorded_at) < admitted:
+            raise ValueError("State precedes admission")
+        if any(datetime.fromisoformat(stamp) < admitted for stamp in self.presented_obligations.values()):
+            raise ValueError("Output precedes admission")
+        return self
+
+
+class ResultCoverageReport(Contract):
+    metric_definition_version: Literal["d24-v1"] = "d24-v1"
+    time_basis: Literal["job_admitted_at"] = "job_admitted_at"
+    cohort: RunCohort
+    admitted: int
+    selected: int
+    presented: int
+    unchecked: int
+    result_coverage: float | None
+    completed_share: float | None
+    completed: int
+    failed: int
+    partial: int
+    queued: int
+    running: int
+    state_unknown_at_cutoff: int
+
+
+class TraceQuery(Contract):
+    run_id: Identifier
+
+
+class StageTrace(Contract):
+    run_id: Identifier
+    attempts: list[StageAttempt]
+
+    @model_validator(mode="after")
+    def scoped(self):
+        if any(attempt.run_id != self.run_id for attempt in self.attempts):
+            raise ValueError("Trace belongs to another run")
+        return self
 
 
 class JobAccepted(Contract):
@@ -385,11 +570,13 @@ API_CONTRACTS = {
     "compare_versions": (ComparisonRequest, JobAccepted), "read_job": (Empty, JobView),
     "read_findings": (Empty, Findings), "save_review": (ReviewRequest, ReviewDecision),
     "export_assessment": (ExportRequest, ExportResponse),
+    "read_reviewer_outcomes": (ReviewCohort, ReviewOutcomeReport),
+    "read_stage_trace": (TraceQuery, StageTrace),
 }
 
 
 def schema_bundle():
-    return {"version": 1, "operations": {name: {"request": req.model_json_schema(), "response": resp.model_json_schema()}
+    return {"version": 2, "operations": {name: {"request": req.model_json_schema(), "response": resp.model_json_schema()}
                                          for name, (req, resp) in API_CONTRACTS.items()},
             "error": SafeError.model_json_schema(), "model_action": ModelAction.model_json_schema(),
             "regulatory_page": RegulatoryPage.model_json_schema()}

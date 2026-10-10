@@ -1,0 +1,199 @@
+{
+  "version": "slice-01-v1",
+  "schemas": {
+    "CaseCreate": {
+      "additionalProperties": false,
+      "properties": {
+        "bank_profile": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Bank Profile",
+          "type": "object"
+        },
+        "synthetic": {
+          "default": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "bank_profile"
+      ],
+      "title": "CaseCreate",
+      "type": "object"
+    },
+    "CaseRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "bank_profile": {
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "title": "Bank Profile",
+          "type": "object"
+        },
+        "synthetic": {
+          "default": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        },
+        "case_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Case Id",
+          "type": "string"
+        },
+        "owner_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Owner Id",
+          "type": "string"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bank_profile",
+        "case_id",
+        "owner_id",
+        "created_at"
+      ],
+      "title": "CaseRecord",
+      "type": "object"
+    },
+    "CaseList": {
+      "$defs": {
+        "CaseRecord": {
+          "additionalProperties": false,
+          "properties": {
+            "bank_profile": {
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "title": "Bank Profile",
+              "type": "object"
+            },
+            "synthetic": {
+              "default": true,
+              "title": "Synthetic",
+              "type": "boolean"
+            },
+            "case_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "title": "Case Id",
+              "type": "string"
+            },
+            "owner_id": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "title": "Owner Id",
+              "type": "string"
+            },
+            "created_at": {
+              "title": "Created At",
+              "type": "string"
+            }
+          },
+          "required": [
+            "bank_profile",
+            "case_id",
+            "owner_id",
+            "created_at"
+          ],
+          "title": "CaseRecord",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "cases": {
+          "items": {
+            "$ref": "#/$defs/CaseRecord"
+          },
+          "title": "Cases",
+          "type": "array"
+        }
+      },
+      "required": [
+        "cases"
+      ],
+      "title": "CaseList",
+      "type": "object"
+    },
+    "SafeError": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 200,
+          "title": "Message",
+          "type": "string"
+        },
+        "next_action": {
+          "maxLength": 200,
+          "title": "Next Action",
+          "type": "string"
+        },
+        "correlation_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "title": "Correlation Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "next_action",
+        "correlation_id"
+      ],
+      "title": "SafeError",
+      "type": "object"
+    }
+  }
+}

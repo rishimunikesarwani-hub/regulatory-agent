@@ -1,0 +1,253 @@
+test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated (test_measurement_telemetry.CostTests.test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated) ... ERROR
+test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs (test_measurement_telemetry.CostTests.test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs) ... ERROR
+test_ut17_currency_scope_and_inference_are_separate (test_measurement_telemetry.CostTests.test_ut17_currency_scope_and_inference_are_separate) ... ERROR
+test_ut17_invalid_money_identity_and_currency_changes_rejected (test_measurement_telemetry.CostTests.test_ut17_invalid_money_identity_and_currency_changes_rejected) ... ERROR
+test_ut17_total_and_components_cannot_double_count (test_measurement_telemetry.CostTests.test_ut17_total_and_components_cannot_double_count) ... ERROR
+test_ut17_unknown_costs_and_missing_components_are_partial (test_measurement_telemetry.CostTests.test_ut17_unknown_costs_and_missing_components_are_partial) ... ERROR
+test_ut16_first_final_review_controls_delay (test_measurement_telemetry.RuntimeTests.test_ut16_first_final_review_controls_delay) ... ERROR
+test_ut16_identity_versions_and_all_stage_names (test_measurement_telemetry.RuntimeTests.test_ut16_identity_versions_and_all_stage_names) ... ERROR
+test_ut16_interrupted_and_unknown_are_final_observations (test_measurement_telemetry.RuntimeTests.test_ut16_interrupted_and_unknown_are_final_observations) ... ERROR
+test_ut16_monotonic_duration_survives_backward_wall_clock (test_measurement_telemetry.RuntimeTests.test_ut16_monotonic_duration_survives_backward_wall_clock) ... ERROR
+test_ut16_nonstreaming_never_records_first_token (test_measurement_telemetry.RuntimeTests.test_ut16_nonstreaming_never_records_first_token) ... ERROR
+test_ut16_saved_stages_require_original_processing_reference (test_measurement_telemetry.RuntimeTests.test_ut16_saved_stages_require_original_processing_reference) ... ERROR
+test_ut16_timing_values_and_utc (test_measurement_telemetry.RuntimeTests.test_ut16_timing_values_and_utc) ... ERROR
+test_ut17_attempt_error_denominator_unknown_and_duplicate_export (test_measurement_telemetry.RuntimeTests.test_ut17_attempt_error_denominator_unknown_and_duplicate_export) ... ERROR
+test_ut17_completion_includes_pending_and_failed_jobs (test_measurement_telemetry.RuntimeTests.test_ut17_completion_includes_pending_and_failed_jobs) ... ERROR
+test_ut17_percentiles_and_empty_sample (test_measurement_telemetry.RuntimeTests.test_ut17_percentiles_and_empty_sample) ... ERROR
+test_ut17_usage_unknown_is_not_zero_and_values_are_numeric (test_measurement_telemetry.RuntimeTests.test_ut17_usage_unknown_is_not_zero_and_values_are_numeric) ... ERROR
+test_ut18_private_fields_are_not_telemetry_or_safe_errors (test_measurement_telemetry.RuntimeTests.test_ut18_private_fields_are_not_telemetry_or_safe_errors) ... ERROR
+
+======================================================================
+ERROR: test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated (test_measurement_telemetry.CostTests.test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 157, in test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated
+    estimate = charge()
+               ^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs (test_measurement_telemetry.CostTests.test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 190, in test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs
+    records = [charge(event_id=f"cost-{i}", charge_id=f"case-{i}", amount=Decimal(amount))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_currency_scope_and_inference_are_separate (test_measurement_telemetry.CostTests.test_ut17_currency_scope_and_inference_are_separate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 169, in test_ut17_currency_scope_and_inference_are_separate
+    records = [charge(), charge(event_id="cost-2", charge_id="tool-charge", component="tool", currency="INR", amount=Decimal("30")),
+               ^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_invalid_money_identity_and_currency_changes_rejected (test_measurement_telemetry.CostTests.test_ut17_invalid_money_identity_and_currency_changes_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 200, in test_ut17_invalid_money_identity_and_currency_changes_rejected
+    charge(amount=value)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_total_and_components_cannot_double_count (test_measurement_telemetry.CostTests.test_ut17_total_and_components_cannot_double_count)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 185, in test_ut17_total_and_components_cannot_double_count
+    total = charge(event_id="total", charge_id="total", component="system_total", included_charge_ids=("charge-1",), amount=Decimal("9"))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_unknown_costs_and_missing_components_are_partial (test_measurement_telemetry.CostTests.test_ut17_unknown_costs_and_missing_components_are_partial)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 177, in test_ut17_unknown_costs_and_missing_components_are_partial
+    result = cost_summary([charge(amount=None)], cutoff=T0, scope_id="eval-1", expected_components=("inference", "tool"))
+                           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 34, in charge
+    return Charge(**values)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_first_final_review_controls_delay (test_measurement_telemetry.RuntimeTests.test_ut16_first_final_review_controls_delay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 98, in test_ut16_first_final_review_controls_delay
+    self.assertEqual(review_delay_seconds(T0, [T0 + timedelta(seconds=40), T0 + timedelta(seconds=20)]), 20)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 13, in pending
+    raise NotImplementedError("D24 calculation is not implemented")
+NotImplementedError: D24 calculation is not implemented
+
+======================================================================
+ERROR: test_ut16_identity_versions_and_all_stage_names (test_measurement_telemetry.RuntimeTests.test_ut16_identity_versions_and_all_stage_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 41, in test_ut16_identity_versions_and_all_stage_names
+    self.assertEqual(attempt(stage=stage).stage, stage)
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_interrupted_and_unknown_are_final_observations (test_measurement_telemetry.RuntimeTests.test_ut16_interrupted_and_unknown_are_final_observations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 91, in test_ut16_interrupted_and_unknown_are_final_observations
+    self.assertEqual(attempt(state=state, finished_at=None, duration_seconds=None).state, state)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_monotonic_duration_survives_backward_wall_clock (test_measurement_telemetry.RuntimeTests.test_ut16_monotonic_duration_survives_backward_wall_clock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 62, in test_ut16_monotonic_duration_survives_backward_wall_clock
+    timer = AttemptTimer(monotonic=lambda: next(mono), utcnow=lambda: next(wall), streaming=True)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_nonstreaming_never_records_first_token (test_measurement_telemetry.RuntimeTests.test_ut16_nonstreaming_never_records_first_token)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 72, in test_ut16_nonstreaming_never_records_first_token
+    AttemptTimer().first_token()
+    ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_saved_stages_require_original_processing_reference (test_measurement_telemetry.RuntimeTests.test_ut16_saved_stages_require_original_processing_reference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 54, in test_ut16_saved_stages_require_original_processing_reference
+    attempt(state=state, dispatched=False)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut16_timing_values_and_utc (test_measurement_telemetry.RuntimeTests.test_ut16_timing_values_and_utc)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 83, in test_ut16_timing_values_and_utc
+    attempt(duration_seconds=value)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_attempt_error_denominator_unknown_and_duplicate_export (test_measurement_telemetry.RuntimeTests.test_ut17_attempt_error_denominator_unknown_and_duplicate_export)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 124, in test_ut17_attempt_error_denominator_unknown_and_duplicate_export
+    records = [attempt(event_id=f"event-{i}", attempt_id=f"attempt-{i}", state=state, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut17_completion_includes_pending_and_failed_jobs (test_measurement_telemetry.RuntimeTests.test_ut17_completion_includes_pending_and_failed_jobs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 137, in test_ut17_completion_includes_pending_and_failed_jobs
+    result = job_outcome_summary(["completed", "completed", "completed", "failed", "running"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 13, in pending
+    raise NotImplementedError("D24 calculation is not implemented")
+NotImplementedError: D24 calculation is not implemented
+
+======================================================================
+ERROR: test_ut17_percentiles_and_empty_sample (test_measurement_telemetry.RuntimeTests.test_ut17_percentiles_and_empty_sample)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 114, in test_ut17_percentiles_and_empty_sample
+    summary = latency_summary([10, 20, 30, 40], cohort_id="model-v1")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 13, in pending
+    raise NotImplementedError("D24 calculation is not implemented")
+NotImplementedError: D24 calculation is not implemented
+
+======================================================================
+ERROR: test_ut17_usage_unknown_is_not_zero_and_values_are_numeric (test_measurement_telemetry.RuntimeTests.test_ut17_usage_unknown_is_not_zero_and_values_are_numeric)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 104, in test_ut17_usage_unknown_is_not_zero_and_values_are_numeric
+    usage = TokenUsage(input_tokens=0, cache_read_tokens=12)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+======================================================================
+ERROR: test_ut18_private_fields_are_not_telemetry_or_safe_errors (test_measurement_telemetry.RuntimeTests.test_ut18_private_fields_are_not_telemetry_or_safe_errors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 147, in test_ut18_private_fields_are_not_telemetry_or_safe_errors
+    attempt(**{key: "PRIVATE MARKER"})
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 21, in attempt
+    duration_seconds=10.0, versions=VersionMetadata(application="app-v1", schema="schema-v1",
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\telemetry.py", line 6, in __init__
+    raise NotImplementedError("D24 telemetry behavior is not implemented")
+NotImplementedError: D24 telemetry behavior is not implemented
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.005s
+
+FAILED (errors=18)

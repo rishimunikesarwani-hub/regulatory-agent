@@ -90,7 +90,7 @@ class Store:
         validated = Snapshot.model_validate(snapshot.model_dump())
         self.put(owner, validated.case_id, "snapshot", validated.snapshot_id, validated.model_dump())
 
-    def enqueue(self, owner, case, snapshot_id, key):
+    def enqueue(self, owner, case, snapshot_id, key, now=None):
         identifier(key)
         self.get(owner, case, "snapshot", snapshot_id)
         with self.transaction() as db:
@@ -101,7 +101,7 @@ class Store:
                     raise ContractError("idempotency_conflict")
                 return json.loads(previous[1])
             job = dict(job_id=uuid.uuid4().hex, case_id=case, snapshot_id=snapshot_id, state="queued", stage=None,
-                       created_at=time.time(), started_at=None, deadline=None, token=None, lease_until=None,
+                       created_at=time.time() if now is None else now, started_at=None, deadline=None, token=None, lease_until=None,
                        model_calls=0, retrieval_calls=0, stages={}, unchecked_obligations=[], stop_reason=None,
                        freshness="unverified", authority_verified_at=None, label="Simulated")
             db.execute("INSERT INTO jobs VALUES (?,?,?,?,?)", (job["job_id"], case, key, snapshot_id, encoded(job)))

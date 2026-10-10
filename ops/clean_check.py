@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory(prefix="regulatory-agent-clean-") as directory:
     target = Path(directory) / "source"
     target.mkdir()
-    for name in ("src", "tests", "ops", "data/fixtures", "data/sources", "evals/fixtures"):
+    for name in ("src/regulatory_agent", "tests", "ops", ".github", "data/fixtures", "data/sources", "data/contracts", "evals/fixtures"):
         shutil.copytree(ROOT / name, target / name, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     env = {k: v for k, v in os.environ.items() if not k.upper().startswith(("AWS_", "OPENAI_", "ANTHROPIC_"))}
     env["UV_CACHE_DIR"] = str(Path(directory) / "empty-cache")

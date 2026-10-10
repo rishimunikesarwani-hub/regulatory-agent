@@ -1,0 +1,34 @@
+
+
+Recorded 2026-10-10. **Status: proposed architecture.**
+
+The user requested an argument comparing one-agent and multi-agent operation.
+The requested direction includes separate jobs, bounded ReAct loops, a master orchestrator, streaming tools, a registry, and governance.
+
+Saved the [comparison](../architecture/arch-agent-operation-comparison.md) and [operating proposal](../architecture/arch-multi-agent-proposal.md).
+The proposal separates model coordination from authentication and runtime enforcement.
+It allocates 22 model calls to roles and two calls to a shared repair reserve.
+The total remains 24 calls within the inherited 600-second deadline.
+
+The detailed roles, local time limits, and reserve policy are proposed allocations.
+Their adequacy remains unverified.
+No comparison evaluation has run.
+D09 and the approved specifications remain unchanged.
+The existing diagrams still describe the one-agent design.
+
+Affected requirements if adopted: REQ-F01 through REQ-F08 and REQ-X01 through REQ-X06.
+Proposed tests: MA-01 through MA-12.
+The proposal identifies the specification and diagram updates required before implementation.
+
+
+
+
+Saved a [comparison table](docs/architecture/arch-agent-operation-comparison.md) and a [multi-agent proposal](docs/architecture/arch-multi-agent-proposal.md).
+The proposal defines one coordinator and six specialist roles.
+It preserves the shared 24-call allowance and 600-second deadline.
+Authentication and governance enforcement remain application responsibilities.
+
+[D22](docs/decisions/gov-decision-log.md#d22---agent-operation-comparison) records the requested direction and proposed allocations.
+The approved specifications and existing diagrams remain unchanged.
+The comparison has no measured performance result.
+See the [verification record](runs/2026-10-10-agent-comparison-verification.md).

@@ -1,0 +1,113 @@
+name: Check and release development
+'on':
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy_development:
+        description: Deploy the reviewed main commit to the configured AWS development account
+        required: true
+        type: boolean
+        default: false
+concurrency:
+  group: regulatory-agent-development
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.12.13'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24.18.0'}
+      - name: Install locked dependencies
+        run: |
+          python -m pip install -r ops/requirements.lock
+          npm --prefix src/web ci --ignore-scripts
+          cd src/web && npx playwright install --with-deps chromium
+      - name: Check backend and shared contracts
+        run: python -X utf8 ops/check.py --report runs/ci-python.txt
+      - name: Build the interface
+        run: npm --prefix src/web run build
+      - name: Check the complete local slice
+        run: |
+          mkdir -p runs/private
+          APP_ENV=local DEVELOPMENT_USER=local-operator CASES_DB_PATH=runs/private/ci-cases.sqlite PYTHONPATH=src \
+            python -m uvicorn regulatory_agent.api:app --host 127.0.0.1 --port 8110 --no-proxy-headers > runs/private/api.log 2>&1 &
+          api_pid=$!
+          trap 'kill "$api_pid"' EXIT
+          python ops/wait_for_api.py http://127.0.0.1:8110/api/health
+          npm --prefix src/web test
+      - name: Keep check evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: checks-${{ github.sha }}
+          path: |
+            runs/ci-python.txt
+            runs/2026-10-10-autonomous-build/frontend-browser-artifacts/
+          if-no-files-found: warn
+  deploy-development:
+    needs: [checks]
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_development && github.ref == 'refs/heads/main' && vars.AWS_DEV_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    environment: development
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      AWS_REGION: ap-south-1
+      AWS_DEV_ACCOUNT_ID: ${{ vars.AWS_DEV_ACCOUNT_ID }}
+      AWS_DEV_STACK: regulatory-agent-dev-s01
+      AWS_DEV_EXECUTION_ROLE_ARN: ${{ vars.AWS_DEV_EXECUTION_ROLE_ARN }}
+      AWS_DEV_ARTIFACT_BUCKET: ${{ vars.AWS_DEV_ARTIFACT_BUCKET }}
+      AWS_DEV_MONTHLY_BUDGET_USD: ${{ vars.AWS_DEV_MONTHLY_BUDGET_USD }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.12.13'}
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with: {node-version: '24.18.0'}
+      - uses: aws-actions/setup-sam@f84ec7d548307efafe33230528756de3c5841a17
+        with: {use-installer: true}
+      - uses: aws-actions/configure-aws-credentials@ff717079ee2060e4bcee96c4779b553acc87447c
+        with:
+          role-to-assume: ${{ vars.AWS_DEV_DEPLOY_ROLE_ARN }}
+          aws-region: ap-south-1
+          allowed-account-ids: ${{ vars.AWS_DEV_ACCOUNT_ID }}
+      - name: Prepare the tested release
+        run: |
+          python -m pip install -r ops/requirements.lock
+          npm --prefix src/web ci --ignore-scripts
+          npm --prefix src/web run build
+          cd src/web && npx playwright install --with-deps chromium
+      - name: Deploy development
+        id: deployment
+        run: python ops/deploy_dev.py
+      - name: Check the deployed browser flow
+        id: browser
+        env:
+          DEPLOYED_URL: ${{ steps.deployment.outputs.frontend_url }}
+          COGNITO_TEST_USERNAME: ${{ secrets.COGNITO_TEST_USERNAME }}
+          COGNITO_TEST_PASSWORD: ${{ secrets.COGNITO_TEST_PASSWORD }}
+        run: npm --prefix src/web run test:deployed
+      - name: Record the release result
+        if: always()
+        env:
+          BROWSER_RESULT: ${{ steps.browser.outcome }}
+          DEPLOYMENT_RESULT: ${{ steps.deployment.outcome }}
+        run: python ops/record_release.py
+      - name: Keep the release evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: development-release-${{ github.sha }}
+          path: runs/releases/*.json
+          if-no-files-found: error

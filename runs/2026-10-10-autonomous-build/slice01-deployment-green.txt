@@ -1,0 +1,9 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_lambda_role_has_no_model_or_document_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_no_model_or_document_access) ... ok
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.160s
+
+OK

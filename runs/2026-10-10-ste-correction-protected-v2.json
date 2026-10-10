@@ -1,0 +1,1329 @@
+{
+  "files": {
+    "AGENTS.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [],
+          "added": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "20",
+            "25",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14"
+          ]
+        },
+        "inline_code": {
+          "removed": [],
+          "added": [
+            "asd-ste100"
+          ]
+        }
+      },
+      "removed_headings": [
+        "## Markdown language"
+      ],
+      "added_headings": [
+        "## Documentation language: always use ASD-STE100"
+      ],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "bb6e0604520d157cf55d76542ad6d379e3e13daeac78cb5a1d21f4b78780ae04"
+    },
+    "README.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "cf3a6ffb3618bfd4cce3e6db84bf0ed45d2b654fc13b83c47234fd4147506cc7"
+    },
+    "LOG.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [],
+          "added": [
+            "2026",
+            "2026",
+            "2026",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "10",
+            "9"
+          ]
+        }
+      },
+      "removed_headings": [],
+      "added_headings": [
+        "## 2026-10-10 - Permanent STE documentation rule"
+      ],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {
+        "D25": 1
+      },
+      "lf_only": true,
+      "sha256": "c0ac6cf604efa06a8b0b8da45d8a97264f663bbfc2c79d839430e5b22478d38b"
+    },
+    "docs/architecture/02_TECHNICAL_BLUEPRINT.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {
+        "T1": 1
+      },
+      "lf_only": true,
+      "sha256": "360d1c6dd1eb5b36fb0990a93430d258b4d94ed043a51a4523752bf86386aaf4"
+    },
+    "docs/architecture/arch-agent-aws-review.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "e6c1b8f710a0482fb0869e8f201d5c917ddf4e4bdd065a908f7a8c25a65e5024"
+    },
+    "docs/architecture/arch-agent-operation-comparison.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "e9e72d5fc1bb1a16bf595f27ea459aa2ae3fc4f74598723b6755b7c5d772df12"
+    },
+    "docs/architecture/arch-multi-agent-proposal.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "62e582039ee3f56c691ec3b92cb919bfd0e36a5853ee7aba771fb4da2f81d06f"
+    },
+    "docs/architecture/arch-retrieval-quality-and-model-routing.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "661c225024e063c917eabe3fa3e62bfa9f59cad079116b25dbd019d62125b292"
+    },
+    "docs/decisions/gov-decision-log.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [],
+          "added": [
+            "2026",
+            "2026",
+            "10",
+            "10",
+            "10",
+            "10",
+            "9"
+          ]
+        }
+      },
+      "removed_headings": [],
+      "added_headings": [
+        "## D25 - Permanent documentation language rule"
+      ],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {
+        "D18": 1,
+        "D25": 1
+      },
+      "lf_only": true,
+      "sha256": "78d7c0a658c1e45c2c271352486d7b286cd485956774e944b417ebb5a5a38252"
+    },
+    "docs/delivery/05_FEATURE_TICKETS.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "ced400652ce3191c58e33c4fb6302a0eaca622508df3c041cde3ed70ef0bf449"
+    },
+    "docs/delivery/guide-parallel-development.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "54e7d44e061a8d006c94cdb2f455dec248e94895050d8b811192535f7d24950d"
+    },
+    "docs/frontend/04_FRONTEND_SPEC.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "61d94740d7052aeef5aec7ede4d0dc5daf2398cb4e555702c491af5006354841"
+    },
+    "docs/guide-start-here.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "04b4532d2bfa1f14a100a51ec771a6fa108fa8628d01b789b4533f9a093763f1"
+    },
+    "docs/guide-ste100-writing.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [
+            "09",
+            "09"
+          ],
+          "added": [
+            "10",
+            "10",
+            "9",
+            "9",
+            "15",
+            "8",
+            "16",
+            "17",
+            "434",
+            "145",
+            "188",
+            "189",
+            "400",
+            "401",
+            "422",
+            "362",
+            "338",
+            "233",
+            "360",
+            "221",
+            "257",
+            "359",
+            "205"
+          ]
+        },
+        "inline_code": {
+          "removed": [],
+          "added": [
+            "asd-ste100",
+            "runs/private/"
+          ]
+        },
+        "urls": {
+          "removed": [
+            "https://www.asd-ste100.org/"
+          ],
+          "added": []
+        }
+      },
+      "removed_headings": [
+        "# ASD-STE100 document language",
+        "## Reference and verification limit",
+        "## Text that must remain exact",
+        "## Project terms",
+        "## Verification procedure"
+      ],
+      "added_headings": [
+        "# ASD-STE100 documentation language",
+        "## Reference",
+        "## Exact text",
+        "## Dictionary decisions",
+        "## Project technical terms",
+        "## Review procedure"
+      ],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "10689610709a40c7acdf6b331cd6e13ddcbc3804b38bda6fce30b9b39a934b5d"
+    },
+    "docs/product/01_PRD.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "f9092426cbb851138e9f7a466b22c2be5c9c715263a5bce0dcf0828190c968c5"
+    },
+    "docs/security/03_SECURITY_ACCESS.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "b989deef2ecc65ad35639cd785569a600e0522a7e6d4a5b9a11590d7d8c18f72"
+    },
+    "docs/testing/eval-model-quality.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [],
+          "added": [
+            "6"
+          ]
+        }
+      },
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "ae211cfd83b5c11d88576eb778d328afd2c20c82af254cfb06e9b3001ce34cdd"
+    },
+    "docs/testing/spec-local-test-plan.md": {
+      "protected_differences": {
+        "numbers": {
+          "removed": [],
+          "added": [
+            "8",
+            "9"
+          ]
+        }
+      },
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {
+        "T2": 1
+      },
+      "lf_only": true,
+      "sha256": "6f6c2024d572f8632d1cecb94fb4c81a7c50df8a2e2139bd355697c5887a69e5"
+    },
+    "docs/testing/spec-measurement-contract.md": {
+      "protected_differences": {},
+      "removed_headings": [],
+      "added_headings": [],
+      "removed_id_occurrences": {},
+      "added_id_occurrences": {},
+      "lf_only": true,
+      "sha256": "c6c98e082b7cf61f745502fa451de03cf3017d72c318d8d2ba3dba52881155ae"
+    }
+  },
+  "links": [
+    {
+      "source": "AGENTS.md",
+      "target": "docs/guide-start-here.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "LOG.md",
+      "status": "ok"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/guide-start-here.md",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "../hackthon_data/6ab20c4818adf_et_hackathon_detailed_problem_statements_branded.pdf",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "LOG.md",
+      "status": "ok"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/guide-start-here.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-08-spec-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-technical-blueprint-before-ste100.txt",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d17--technical-blueprint-language",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-ste100-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d18--project-markdown-language",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-before-project-ste100.zip",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-project-ste100-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d19---project-name",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d20---current-regulatory-retrieval",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-regulatory-api-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/02_TECHNICAL_BLUEPRINT.md#architecture-views",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d21---technical-architecture-views",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-09-archview-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-regulatory-agent-component-v1.drawio",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-regulatory-agent-component-v1.svg",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-architecture-diagrams-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/delivery/guide-parallel-development.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-git-worktree-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-agent-operation-comparison.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-multi-agent-proposal.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d22---agent-operation-comparison",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-agent-comparison-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-agent-aws-review.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-agent-operation-comparison.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d23---aws-review-and-code-orchestration",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-aws-agent-review-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-measurement-spec-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "AGENTS.md#documentation-language-always-use-asd-ste100",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/decisions/gov-decision-log.md#d25---permanent-documentation-language-rule",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "docs/guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-before-ste-language-correction.zip",
+      "status": "ok"
+    },
+    {
+      "source": "LOG.md",
+      "target": "runs/2026-10-10-ste-language-correction-verification.md",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-system.html",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-assessment.html",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-system.json",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-assessment.json",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-system.png",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "arch-assessment.png",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/spec-measurement-contract.md#1-product-metric-and-review-unit",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/spec-measurement-contract.md#4-runtime-traces-and-cost",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-agent-aws-review.md",
+      "target": "../../runs/2026-10-10-aws-agent-review-audit/audit.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-agent-aws-review.md",
+      "target": "../../runs/2026-10-10-aws-agent-review-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-agent-operation-comparison.md",
+      "target": "arch-agent-aws-review.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-agent-operation-comparison.md",
+      "target": "arch-multi-agent-proposal.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-multi-agent-proposal.md",
+      "target": "arch-agent-aws-review.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-multi-agent-proposal.md",
+      "target": "arch-agent-operation-comparison.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-multi-agent-proposal.md",
+      "target": "02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+      "target": "../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+      "target": "02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../guide-start-here.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../AGENTS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-technical-blueprint-before-ste100.txt",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-ste100-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-before-project-ste100.zip",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-ste100-source-manifest.json",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-project-ste100-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md#current-regulatory-sources",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md#architecture-views",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-09-archview-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/arch-agent-operation-comparison.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/arch-multi-agent-proposal.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/arch-agent-aws-review.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/arch-agent-operation-comparison.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-10-aws-agent-review-verification.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../AGENTS.md#documentation-language-always-use-asd-ste100",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../../runs/2026-10-10-ste-language-correction-verification.md",
+      "status": "missing_file"
+    },
+    {
+      "source": "docs/decisions/gov-decision-log.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/05_FEATURE_TICKETS.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/guide-parallel-development.md",
+      "target": "05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/guide-parallel-development.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/delivery/guide-parallel-development.md",
+      "target": "../guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/frontend/04_FRONTEND_SPEC.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "testing/eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "guide-ste100-writing.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "../LOG.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "../AGENTS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "decisions/gov-decision-log.md#d18--project-markdown-language",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "decisions/gov-decision-log.md#d17--technical-blueprint-language",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-start-here.md",
+      "target": "product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-ste100-writing.md",
+      "target": "../AGENTS.md#documentation-language-always-use-asd-ste100",
+      "status": "ok"
+    },
+    {
+      "source": "docs/guide-ste100-writing.md",
+      "target": "testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../decisions/gov-decision-log.md#d20---current-regulatory-retrieval",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../security/03_SECURITY_ACCESS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../../../hackthon_data/6ab20c4818adf_et_hackathon_detailed_problem_statements_branded.pdf",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/product/01_PRD.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../decisions/gov-decision-log.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../testing/spec-measurement-contract.md#5-development-and-controlled-improvement",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../testing/spec-measurement-contract.md#1-product-metric-and-review-unit",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../testing/spec-measurement-contract.md#4-runtime-traces-and-cost",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../testing/spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../testing/spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/security/03_SECURITY_ACCESS.md",
+      "target": "../frontend/04_FRONTEND_SPEC.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "../product/01_PRD.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "spec-local-test-plan.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/eval-model-quality.md",
+      "target": "../guide-start-here.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "../delivery/05_FEATURE_TICKETS.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "../architecture/02_TECHNICAL_BLUEPRINT.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "spec-measurement-contract.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "eval-model-quality.md#6-separate-retrieval-evaluations",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-local-test-plan.md",
+      "target": "eval-model-quality.md",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-measurement-contract.md",
+      "target": "../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline",
+      "status": "ok"
+    },
+    {
+      "source": "docs/testing/spec-measurement-contract.md",
+      "target": "../guide-ste100-writing.md#project-technical-terms",
+      "status": "ok"
+    }
+  ]
+}

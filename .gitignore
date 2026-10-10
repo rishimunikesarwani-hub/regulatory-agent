@@ -29,4 +29,8 @@ build/
 
 # Local browser diagnostics
 .playwright-cli/
-
+src/web/test-results/
+src/web/playwright-report/
+.aws-sam/
+runs/*/frontend-browser-artifacts/
+runs/*/frontend-deployed-artifacts/

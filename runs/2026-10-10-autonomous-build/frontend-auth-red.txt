@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\cases.spec.ts:160:1 › VS1 malformed configuration also clears an OAuth callback (911ms)
+
+
+  1) tests\cases.spec.ts:160:1 › VS1 malformed configuration also clears an OAuth callback ─────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: ""
+    Received: "?code=fictional-code&state=expected-state"
+
+      163 |   await page.goto('/?code=fictional-code&state=expected-state');
+      164 |   await expect(page.getByRole('alert')).toContainText('configuration');
+    > 165 |   expect(new URL(page.url()).search).toBe('');
+          |                                      ^
+      166 |   expect(await page.evaluate(() => sessionStorage.length)).toBe(0);
+      167 | });
+      168 |
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\tests\cases.spec.ts:165:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-autonomous-build\frontend-browser-artifacts\cases-VS1-malformed-config-f4c3e-so-clears-an-OAuth-callback\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-autonomous-build\frontend-browser-artifacts\cases-VS1-malformed-config-f4c3e-so-clears-an-OAuth-callback\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-autonomous-build\frontend-browser-artifacts\cases-VS1-malformed-config-f4c3e-so-clears-an-OAuth-callback\trace.zip
+    Usage:
+
+        npx playwright show-trace ..\..\runs\2026-10-10-autonomous-build\frontend-browser-artifacts\cases-VS1-malformed-config-f4c3e-so-clears-an-OAuth-callback\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\cases.spec.ts:160:1 › VS1 malformed configuration also clears an OAuth callback ──────────
+npm notice run regulatory-agent-web@0.1.0 test
+npm notice run playwright test --grep malformed configuration
+[WebServer] npm notice run regulatory-agent-web@0.1.0 dev
+[WebServer] npm notice run vite --host 127.0.0.1 --port 5173 --strictPort
+[WebServer] (node:36252) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+(node:3520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

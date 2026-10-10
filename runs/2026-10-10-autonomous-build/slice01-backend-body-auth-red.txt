@@ -1,0 +1,25 @@
+test_authentication_precedes_invalid_request_validation (test_slice01_cases.CaseSliceTests.test_authentication_precedes_invalid_request_validation) ... FAIL
+test_existing_store_callers_and_profile_shape_remain_unchanged (test_slice01_cases.CaseSliceTests.test_existing_store_callers_and_profile_shape_remain_unchanged) ... ok
+test_health_is_public_and_contains_no_identity_or_profile (test_slice01_cases.CaseSliceTests.test_health_is_public_and_contains_no_identity_or_profile) ... ok
+test_local_cors_allows_only_the_configured_frontend_origin (test_slice01_cases.CaseSliceTests.test_local_cors_allows_only_the_configured_frontend_origin) ... ok
+test_unknown_routes_use_safe_error_and_service_rejects_forged_repository_record (test_slice01_cases.CaseSliceTests.test_unknown_routes_use_safe_error_and_service_rejects_forged_repository_record) ... ok
+test_vs1_ct01_create_list_and_reopen_through_shared_schemas (test_slice01_cases.CaseSliceTests.test_vs1_ct01_create_list_and_reopen_through_shared_schemas) ... ok
+test_vs1_ct02_fresh_service_reopens_committed_case (test_slice01_cases.CaseSliceTests.test_vs1_ct02_fresh_service_reopens_committed_case) ... ok
+test_vs1_ct02_new_python_process_reopens_case (test_slice01_cases.CaseSliceTests.test_vs1_ct02_new_python_process_reopens_case) ... ok
+test_vs1_ct03_development_identity_requires_loopback_and_explicit_user (test_slice01_cases.CaseSliceTests.test_vs1_ct03_development_identity_requires_loopback_and_explicit_user) ... ok
+test_vs1_ct03_owner_scope_and_missing_case_have_same_404_shape (test_slice01_cases.CaseSliceTests.test_vs1_ct03_owner_scope_and_missing_case_have_same_404_shape) ... ok
+test_vs1_ct04_invalid_profiles_forged_fields_and_real_data_are_rejected (test_slice01_cases.CaseSliceTests.test_vs1_ct04_invalid_profiles_forged_fields_and_real_data_are_rejected) ... ok
+test_vs1_ct04_storage_failure_returns_safe_503_and_no_success (test_slice01_cases.CaseSliceTests.test_vs1_ct04_storage_failure_returns_safe_503_and_no_success) ... ok
+
+======================================================================
+FAIL: test_authentication_precedes_invalid_request_validation (test_slice01_cases.CaseSliceTests.test_authentication_precedes_invalid_request_validation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_cases.py", line 152, in test_authentication_precedes_invalid_request_validation
+    self.assertEqual(status, 401)
+AssertionError: 422 != 401
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.788s
+
+FAILED (failures=1)
