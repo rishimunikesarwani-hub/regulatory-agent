@@ -30,6 +30,10 @@ The target region is `ap-south-1`.
 | Artifact bucket | Stores encrypted deployment packages. Blocks public access and unencrypted transport. Keeps versions. |
 
 The GitHub role can deploy only `regulatory-agent-dev-s01`.
+Its trust condition includes verified owner ID `292392448` and repository ID `1412648942`.
+The required subject is `repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development`.
+The development environment permits deployments from `main` only.
+
 It can pass only the specified CloudFormation role.
 CloudFormation can pass only the case function role to Lambda.
 The application role has no model, document, or IAM permissions.

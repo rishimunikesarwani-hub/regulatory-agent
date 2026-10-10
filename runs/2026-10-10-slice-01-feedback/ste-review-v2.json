@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-10",
+  "standard": "ASD-STE100 Issue 9",
+  "reviewed_changes": ["D29", "access identity conditions", "AWS authentication log entry"],
+  "protected_text": ["account and repository IDs", "OIDC subject", "paths", "commands", "test counts", "URLs"],
+  "meaning_review": "New identity condition preserves the permitted repository and environment. Authentication and deployment remain pending.",
+  "language_review": "Reviewed sentence length, active voice, technical terms, conditions, and paragraph topics.",
+  "dictionary_review": "Incomplete approved-meaning review. Full compliance is not claimed."
+}

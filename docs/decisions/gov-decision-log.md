@@ -388,6 +388,27 @@ It is an alert threshold, not a spending cap.
 Affected acceptance cases: VS1-AWS01 and VS1-REL01.
 The application scope and existing quality gates stay unchanged.
 
+## D29 - Verified GitHub deployment identity
+
+Date: 2026-10-10.
+Status: Implementation clarification within D28.
+
+The repository uses GitHub's immutable subject format for OpenID Connect.
+OpenID Connect supplies a temporary deployment identity without stored AWS access keys.
+The verified owner ID is `292392448`.
+The verified repository ID is `1412648942`.
+The AWS trust condition must include both IDs and the `development` environment.
+The permitted repository, environment, and AWS actions stay unchanged.
+
+The GitHub development environment was created successfully.
+Its deployment branch policy permits only `main`.
+General branch protection is unavailable under the current account plan.
+The successful environment policy is a different control.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+Update the [access setup](../delivery/guide-aws-development-access.md) before installation.
+Use the [GitHub reference](https://docs.github.com/en/actions/reference/security/oidc#immutable-subject-claims) for the subject format.
+
 ## How to add a decision
 
 Add a new entry with:

@@ -176,7 +176,7 @@ Resources:
             Condition:
               StringEquals:
                 token.actions.githubusercontent.com:aud: sts.amazonaws.com
-                token.actions.githubusercontent.com:sub: repo:rishimunikesarwani-hub/regulatory-agent:environment:development
+                token.actions.githubusercontent.com:sub: repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development
       Policies:
         - PolicyName: development-release
           PolicyDocument:

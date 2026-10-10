@@ -348,3 +348,25 @@ They used a separate API on port `8111` and the test database.
 The temporary test API was stopped after verification.
 The feedback API and interface remain available on ports `8110` and `5173`.
 The [updated verification record](runs/2026-10-10-slice-01-feedback/verification-v2.json) identifies the checked files and results.
+
+### AWS authentication and release preparation
+
+The user requested AWS deployment and offered to complete authentication.
+The temporary profile `et-hackathon-admin` has an open AWS sign-in request.
+Authentication has not finished.
+The existing `rishicodex` permissions stay unchanged.
+
+The release changes were saved in commit `9b08e74` and pull request `5`.
+The GitHub integration checks passed for that commit.
+The development environment now permits deployments from `main` only.
+
+Live inspection found that this repository uses immutable GitHub identity subjects.
+Decision D29 records the verified owner and repository IDs.
+A new check failed with the old subject before the template correction.
+All 164 backend checks pass after the correction.
+Both templates pass cfn-lint 1.57.2.
+The application interface and its 13 passing browser checks stay unchanged.
+
+Next: complete AWS authentication, verify account access, and install the reviewed development setup.
+Then configure the spending alert and run the serialized release pipeline.
+AWS deployment and live browser acceptance remain pending.

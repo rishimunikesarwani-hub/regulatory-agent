@@ -48,6 +48,14 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertLess(deployment, browser)
         self.assertEqual(deploy["permissions"]["id-token"], "write")
 
+    def test_deployment_trust_requires_the_verified_repository_and_environment(self):
+        bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
+        trust = bootstrap["Resources"]["GitHubDeploymentRole"]["Properties"]["AssumeRolePolicyDocument"]
+        condition = trust["Statement"][0]["Condition"]["StringEquals"]
+        self.assertEqual(condition["token.actions.githubusercontent.com:aud"], "sts.amazonaws.com")
+        self.assertEqual(condition["token.actions.githubusercontent.com:sub"],
+                         "repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development")
+
     def test_lambda_role_has_no_model_or_document_access(self):
         function = self.template["Resources"]["CaseFunction"]["Properties"]
         self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
