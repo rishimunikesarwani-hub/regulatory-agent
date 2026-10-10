@@ -1,0 +1,68 @@
+# LOG.md
+
+
+## 2026-10-10 - Approved measurement specification
+
+[D24](docs/decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline) adopts the user's one-agent measurement baseline.
+Updated all five specifications and both test plans.
+Added the [measurement contract](docs/testing/spec-measurement-contract.md).
+
+Approval without edits is the north star rate.
+Edited and rejected shares remain separate, with review coverage and pending counts.
+The specifications require separate retrieval and assessment evaluations and a trace for each stage.
+The approved model, 24-call allowance, 600-second worker deadline, India boundaries, and existing correctness gates remain unchanged.
+
+Added 11 planned software and cloud test groups and six retrieval evaluation groups.
+Preserved all 20 existing assessment case rows.
+Verified formula examples, new links, requirement references, and selected STE rules.
+Six earlier ArchView targets remain missing. No new missing target was introduced.
+See the [verification record](runs/2026-10-10-measurement-spec-verification.md).
+
+Application tests and live evaluations remain pending.
+Next: prepare labelled fixtures and write failing contract tests before implementation.
+
+# docs/decisions/gov-decision-log.md
+
+## D24 - Reviewer outcomes and measured agent baseline
+
+Recorded 2026-10-10. **Status: approved direction with implementation definitions.**
+
+The user selected one agent as the baseline, with separate retrieval and assessment evaluations and a trace for each stage.
+The user selected the approved model for the first measured baseline.
+Later routing or a second reviewer must address observed failures through comparison tests.
+The user requested Approved, Edited, and Rejected reviewer ratios as the north star measurements.
+The user requested specification changes and tests during development.
+
+The [measurement contract](../testing/spec-measurement-contract.md) defines the implementation details.
+The primary rate is approval without edits among finally reviewed items.
+Edited and rejected shares remain separate. Adoption including edits is secondary.
+Reports show review coverage, pending items, result coverage, failures, and unchecked obligations.
+
+The formulas, cohort boundaries, zero-denominator rules, and review-event semantics are implementation definitions for the requested direction.
+They are not independently measured results or new numerical quality targets.
+No acceptance-rate target or baseline value has been established.
+
+Use immutable original findings and recommendations with separate saved review events.
+Review revisions cannot increase the counted item total.
+Approval measures reviewer acceptance. It does not establish regulatory correctness or live control operation.
+The existing 90% agreement gate, 20-case minimum, citation requirements, and zero critical false-supported gate remain mandatory.
+
+Measure source coverage, passage retrieval, and assessment quality separately.
+Trace each stage and attempt with safe identifiers, durations, usage, cost coverage, failures, and version references.
+Keep private text and authentication tokens out of operational telemetry.
+Preserve the 24-call allowance, 600-second worker deadline, India-only processing, and external regulatory API boundary.
+
+D24 adopts the one-agent baseline from D09 and the code orchestration recommendation from D23.
+D22 remains unadopted proposal history.
+The three review outcomes replace the earlier Agree and Disagree interface wording.
+Request more evidence remains a pending action, separate from final outcomes.
+No routing service, autonomous second reviewer, extra user role, or cloud deployment is authorized by this specification update.
+
+Affected specifications: [PRD](../product/01_PRD.md), [blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md), [security](../security/03_SECURITY_ACCESS.md), [frontend](../frontend/04_FRONTEND_SPEC.md), and [tickets](../delivery/05_FEATURE_TICKETS.md).
+New requirements: REQ-X07 through REQ-X09, with AC-X07 through AC-X09.
+Development checks: UT-13 through UT-18, CT-06 through CT-08, BT-06, and CLOUD-06.
+Retrieval evaluations: RET-01 through RET-06. Preserve EVAL-01 through EVAL-20.
+
+See the [local test plan](../testing/spec-local-test-plan.md) and [AI quality plan](../testing/eval-model-quality.md).
+Application tests and live evaluations remain pending until development.
+

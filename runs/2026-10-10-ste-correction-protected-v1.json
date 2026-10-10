@@ -1,0 +1,313 @@
+{
+  "AGENTS.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [],
+        "added": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "20",
+          "25",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14"
+        ]
+      },
+      "inline_code": {
+        "removed": [],
+        "added": [
+          "asd-ste100"
+        ]
+      }
+    },
+    "removed_headings": [
+      "## Markdown language"
+    ],
+    "added_headings": [
+      "## Documentation language: always use ASD-STE100"
+    ],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "9cb934b9e488566693a7fc8991a2f59b3b37c96659af7b87e9f0f11c6ec7f4a6"
+  },
+  "README.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "457f751ead43f48d7cb0bf472019d75682626215ddf5ddd1ec5246f6022be259"
+  },
+  "LOG.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [],
+        "added": [
+          "2026",
+          "2026",
+          "2026",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "10",
+          "9"
+        ]
+      }
+    },
+    "removed_headings": [],
+    "added_headings": [
+      "## 2026-10-10 - Permanent STE documentation rule"
+    ],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {
+      "D25": 1
+    },
+    "sha256": "0ad77cd35396324bdd7d86d5c6004c8e5603db0041153175d83a02ddc0a3c822"
+  },
+  "docs/architecture/02_TECHNICAL_BLUEPRINT.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {
+      "T1": 1
+    },
+    "sha256": "460e8a83c2767f61280aa59f3ba010ae61b7ecb92cd0105c12d5e2959c155e05"
+  },
+  "docs/architecture/arch-agent-aws-review.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "7ffec50e209e950de97d73f9c554a6b5ca830a8f09a94f767f3c8859300f3b09"
+  },
+  "docs/architecture/arch-agent-operation-comparison.md": {
+    "protected_differences": {},
+    "removed_headings": [
+      "# One-agent and multi-agent operation\r",
+      "## Recommendation\r",
+      "## Five decision points\r",
+      "## Work that remains in code\r",
+      "## Candidate and evidence gate\r"
+    ],
+    "added_headings": [
+      "# One-agent and multi-agent operation",
+      "## Recommendation",
+      "## Five decision points",
+      "## Work that remains in code",
+      "## Candidate and evidence gate"
+    ],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "016466951724c207571e6b3bdadbe171b5556b48ae8f54303346e09db6e48ce9"
+  },
+  "docs/architecture/arch-multi-agent-proposal.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "e8ae0cd9bc3b8da3a73e7700ab4ea37b4afc6875b4d7eb86269bfd19eb1d4389"
+  },
+  "docs/architecture/arch-retrieval-quality-and-model-routing.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "14e76b526ddfb7549f98de0114f9a20dcb9198eb048bbf4259862f8506c1abf8"
+  },
+  "docs/decisions/gov-decision-log.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [],
+        "added": [
+          "2026",
+          "2026",
+          "10",
+          "10",
+          "10",
+          "10",
+          "9"
+        ]
+      }
+    },
+    "removed_headings": [],
+    "added_headings": [
+      "## D25 - Permanent documentation language rule"
+    ],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {
+      "D18": 1,
+      "D25": 1
+    },
+    "sha256": "341730163d5227f25bc32b45befe5d945d40b5325b6abaa65bed9fb4e8283e50"
+  },
+  "docs/delivery/05_FEATURE_TICKETS.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "7fbbf067c5933d8563a6fd6d327f744c63fce9172564143c7b1c7c4391b7ba0d"
+  },
+  "docs/delivery/guide-parallel-development.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "8933da0e09e5ae437cc85ec906e2305664b16d0dd1f591f577d4215a040dcb0a"
+  },
+  "docs/frontend/04_FRONTEND_SPEC.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "f36204067926b9538aec12f266746f66c66ffbcc8ce3cb324814ac4c6726679a"
+  },
+  "docs/guide-start-here.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "04b4532d2bfa1f14a100a51ec771a6fa108fa8628d01b789b4533f9a093763f1"
+  },
+  "docs/guide-ste100-writing.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [
+          "09",
+          "09"
+        ],
+        "added": [
+          "10",
+          "10",
+          "9",
+          "9",
+          "15",
+          "8",
+          "16",
+          "17",
+          "434",
+          "145",
+          "188",
+          "189",
+          "400",
+          "401",
+          "422",
+          "362",
+          "338",
+          "233",
+          "360",
+          "221",
+          "257",
+          "359",
+          "205"
+        ]
+      },
+      "inline_code": {
+        "removed": [],
+        "added": [
+          "asd-ste100",
+          "runs/private/"
+        ]
+      },
+      "urls": {
+        "removed": [
+          "https://www.asd-ste100.org/"
+        ],
+        "added": []
+      }
+    },
+    "removed_headings": [
+      "# ASD-STE100 document language",
+      "## Reference and verification limit",
+      "## Text that must remain exact",
+      "## Project terms",
+      "## Verification procedure"
+    ],
+    "added_headings": [
+      "# ASD-STE100 documentation language",
+      "## Reference",
+      "## Exact text",
+      "## Dictionary decisions",
+      "## Project technical terms",
+      "## Review procedure"
+    ],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "c76161fac2ab1ca0092afdb0251854c4d6e1f6e40bd92fa90d5ac6cf5ecfb71e"
+  },
+  "docs/product/01_PRD.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "d451b8895edccec5a49bfc7931412ebe5bd361239a730c989cc898815de44d6a"
+  },
+  "docs/security/03_SECURITY_ACCESS.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "b50e6054e1a6cd0fabe52648d5d9193168407a524765f0d7e543915f266c13e5"
+  },
+  "docs/testing/eval-model-quality.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [],
+        "added": [
+          "6"
+        ]
+      }
+    },
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "ce99eb23b0b991776e4976ba1542d3ae5c82dd58d5dd300d9b3c1060927641a0"
+  },
+  "docs/testing/spec-local-test-plan.md": {
+    "protected_differences": {
+      "numbers": {
+        "removed": [],
+        "added": [
+          "8",
+          "9"
+        ]
+      }
+    },
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {
+      "T2": 1
+    },
+    "sha256": "af4a28ec1bdb9b215dc258825072adb0be0b669c7333c3bafa486d568e1f616f"
+  },
+  "docs/testing/spec-measurement-contract.md": {
+    "protected_differences": {},
+    "removed_headings": [],
+    "added_headings": [],
+    "removed_id_occurrences": {},
+    "added_id_occurrences": {},
+    "sha256": "aa80275c682ae32d04d1a88afac7005e7cb79af9baa5c518ca1c06d2df632497"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "AGENTS.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 110,
+    "findings": [
+      {
+        "line": 105,
+        "check": "paragraph",
+        "message": "Review the paragraph: 7 sentences."
+      }
+    ],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "docs\\guide-ste100-writing.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 294,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "docs\\testing\\spec-measurement-contract.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 319,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

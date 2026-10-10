@@ -1,0 +1,32 @@
+{
+  "file": "docs\\testing\\spec-measurement-contract.md",
+  "source_backup": "runs\\measurement-ste-source-20261010-180651.txt",
+  "reference": "ASD-STE100 Issue 9; existing official local reference and project terminology",
+  "review": "Language and meaning review; formulas, identifiers, numbers, code, links and conditions retained. Not external certification.",
+  "checks": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 332,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 332,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  }
+}

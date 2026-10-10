@@ -1,0 +1,13 @@
+{
+  "local_links": 12,
+  "link_check": "PASS",
+  "protected_files_unchanged": 8,
+  "role_base_call_sum": 22,
+  "repair_reserve": 2,
+  "global_calls": 24,
+  "local_time_caps_sum": 495,
+  "global_deadline_seconds": 600,
+  "live_evaluation": "NOT RUN",
+  "architecture_status": "PROPOSAL",
+  "language_check": "0 mechanical findings; dictionary review incomplete"
+}
