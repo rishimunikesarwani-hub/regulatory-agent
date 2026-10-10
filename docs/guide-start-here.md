@@ -41,7 +41,8 @@ The alert is not a spending cap.
 
 The user approved VS1 locally and authorized VS2 local development.
 The VS2 document flow passed 178 combined Python checks and 20 combined browser checks.
-VS2 user acceptance and its integration merge stay pending.
+The user approved VS2 locally and authorized VS3 local development.
+The VS2 integration merge stays pending.
 AWS application acceptance stays pending.
 Read the [VS2 development guide](delivery/guide-slice-02-development.md) for local review.
 The [workspace guide](delivery/guide-slice-workspaces.md) controls the current branches, ports, and databases.

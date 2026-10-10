@@ -1,7 +1,7 @@
 # VS2 local document review
 
 Date: 2026-10-10.
-Status: Local implementation passed checks. User acceptance, integration merge, and AWS acceptance stay pending.
+Status: The user approved local acceptance. Integration merge and AWS acceptance stay pending.
 
 The [source contract](spec-slice-02-documents.md) controls this slice.
 The worktree uses branch `work/t3-documents`.
@@ -86,7 +86,7 @@ Read [the evidence record](../../runs/2026-10-10-slice-02-documents/review-local
 
 ## Remaining acceptance
 
-Obtain user feedback before the integration merge and next slice.
+The user approved VS2 local acceptance and authorized VS3 local development.
 Do the GitHub integration checks before merge.
 Keep local acceptance different from AWS acceptance.
 The AWS interface still exposes only the first case slice.

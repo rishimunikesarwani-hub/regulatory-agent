@@ -18,7 +18,8 @@ The user approved continued local development through VS2 while AWS verification
 D35 controls the isolated workspaces and combined release sequence.
 Keep local acceptance and AWS acceptance records separate.
 VS2 local implementation passed 178 combined Python checks and 20 combined browser checks.
-VS2 user acceptance, integration merge, and AWS acceptance stay pending.
+The user approved VS2 local acceptance and authorized VS3 local development.
+VS2 integration merge and AWS acceptance stay pending.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
 Extend the accepted local case flow through evidence inspection, one assessment, citation inspection, and a saved review.
 

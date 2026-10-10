@@ -517,6 +517,9 @@ Use the Python standard library for DOCX, TXT, and CSV.
 Do not add assessment or regulatory retrieval behavior to this slice.
 Keep private AWS upload and storage acceptance pending until the required cloud checks pass.
 
+The user subsequently approved VS2 local acceptance and authorized VS3 local development.
+Complete the VS2 GitHub integration checks before merge.
+
 ## How to add a decision
 
 Add a new entry with:

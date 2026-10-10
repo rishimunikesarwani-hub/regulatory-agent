@@ -240,7 +240,8 @@ The selected version opens again after refresh and local sign-in.
 An uncertain upload needs a document-list refresh before another upload.
 
 The combined local browser suite passed 20 checks, including six document checks.
-User acceptance and AWS document storage stay pending.
+The user approved VS2 local acceptance.
+AWS document storage stays pending.
 Regulatory retrieval, assessment execution, and comparison tabs stay pending.
 Read the [VS2 contract](../delivery/spec-slice-02-documents.md) and [current browser result](../../runs/2026-10-10-slice-02-documents/browser-green-v2.txt).
 

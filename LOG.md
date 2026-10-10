@@ -476,11 +476,12 @@ Browser tests use API port `8121` and their own database.
 The VS1 feedback services and unrelated worktree changes stay unchanged.
 
 Read the [local evidence](runs/2026-10-10-slice-02-documents/review-local.md) and [development guide](docs/delivery/guide-slice-02-development.md).
-VS2 user acceptance and the integration merge stay pending.
+The user approved VS2 local acceptance and authorized VS3 local development.
+The VS2 integration merge stays pending until GitHub checks pass.
 AWS source adapters, service permissions, and deployed browser acceptance stay pending.
 The Support verification request has not been sent by this session.
 No cloud resources were deleted manually.
 
-Next: obtain VS2 feedback and complete its checked integration merge.
-Start VS3 locally only after that feedback permits it.
+Next: complete the checked VS2 integration merge.
+Start the authorized VS3 local slice after that merge.
 Keep the CloudFront verification handoff open.

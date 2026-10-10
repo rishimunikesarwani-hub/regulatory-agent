@@ -49,7 +49,8 @@ The test configuration guards the API address before any document writes.
 The VS1 feedback database and unrelated worktree changes stay unchanged.
 
 Desktop and mobile screenshots show the checked document interface.
-User feedback and integration merge stay pending.
+The user approved VS2 local acceptance and authorized VS3 local development.
+The integration merge stays pending.
 The current interface and its feedback API are active.
 
 AWS deployment waits for CloudFront account verification.
