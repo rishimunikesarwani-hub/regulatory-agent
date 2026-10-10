@@ -1,0 +1,66 @@
+﻿[
+    {
+        "folder":  "regulatory-agent-foundation",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-foundation",
+        "branch":  "work/foundation-measurements",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8110,
+        "start_condition":  "Integrated Session A, Session B, and approved documents"
+    },
+    {
+        "folder":  "regulatory-agent-t3-documents",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t3-documents",
+        "branch":  "work/t3-documents",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8113,
+        "start_condition":  "D24 foundation completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t4-assessment",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t4-assessment",
+        "branch":  "work/t4-assessment",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8114,
+        "start_condition":  "T3 completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t5-agent",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t5-agent",
+        "branch":  "work/t5-agent",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8115,
+        "start_condition":  "T4 completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t6-persistence",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t6-persistence",
+        "branch":  "work/t6-persistence",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8116,
+        "start_condition":  "T4 completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t7-review-ui",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t7-review-ui",
+        "branch":  "work/t7-review-ui",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8117,
+        "start_condition":  "T5 and T6 completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t8-aws",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t8-aws",
+        "branch":  "work/t8-aws",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8118,
+        "start_condition":  "T6 and T7 completed and merged"
+    },
+    {
+        "folder":  "regulatory-agent-t9-quality",
+        "path":  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t9-quality",
+        "branch":  "work/t9-quality",
+        "preparation_commit":  "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+        "port":  8119,
+        "start_condition":  "T8 completed and merged, with all T1 requirements completed"
+    }
+]
