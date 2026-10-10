@@ -517,3 +517,25 @@ The Support verification request has not been sent by this session.
 Read the [cloud preparation guide](docs/delivery/guide-slice-02-aws-documents.md) and [evidence](runs/2026-10-11-slice-02-aws-documents/review-cloud-preparation.md).
 Next: finish GitHub checks for the cloud document branch.
 Keep VS3 acceptance and AWS verification pending until their required evidence arrives.
+
+## 2026-10-11 - VS2 AWS preparation integrated
+
+PR10 merged after its GitHub checks passed for `88e215479902aad48324af0b3a8535bb07ade27c`.
+The integration commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+Run `38083838645` passed 204 backend checks, 26 browser checks, and the frontend build.
+Deployment was skipped.
+The integration worktree advanced through a fast-forward update.
+The user's untracked frontend reference images remain unchanged.
+
+The cloud extension is integrated under the accepted VS2 scope and existing merge authorization.
+VS3 remains in its review worktree and PR9.
+Its pending user review still controls merge and VS4 development.
+A read-only preview identified the shared files that need reconciliation after VS3 acceptance.
+No change was made to the VS3 review branch or feedback services.
+
+The development stack remains `ROLLBACK_COMPLETE`.
+The new storage and permissions have not been deployed.
+CloudFront verification and failed-stack recovery remain necessary.
+Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
+Next: obtain VS3 user acceptance and AWS verification.
+Keep live assessment integration and the complete project marked incomplete.

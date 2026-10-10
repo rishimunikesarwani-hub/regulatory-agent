@@ -42,7 +42,12 @@ The alert is not a spending cap.
 The user approved VS1 locally and authorized VS2 local development.
 The VS2 document flow passed 178 combined Python checks and 20 combined browser checks.
 The user approved VS2 locally and authorized VS3 local development.
-The VS2 integration merge stays pending.
+VS2 local work merged through PR8 after its checks passed.
+The controlled AWS document extension merged through PR10 after its checks passed.
+Its combined checks passed 204 Python tests and 26 browser tests.
+Read the [cloud preparation guide](delivery/guide-slice-02-aws-documents.md) for the remaining deployment conditions.
+VS3 is ready in its separate review worktree at `http://127.0.0.1:5183/`.
+The user review and subsequent integration remain pending.
 AWS application acceptance stays pending.
 Read the [VS2 development guide](delivery/guide-slice-02-development.md) for local review.
 The [workspace guide](delivery/guide-slice-workspaces.md) controls the current branches, ports, and databases.

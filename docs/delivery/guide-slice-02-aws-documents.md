@@ -79,7 +79,9 @@ Private bank uploads remain disabled until the approved India checks pass.
 VS2 local acceptance and its integration merge are complete.
 VS3 remains in its separate review branch.
 Do not merge VS3 or start VS4 before the pending user review.
-The AWS document branch has not been merged or deployed.
+The AWS document branch merged through PR10 after its GitHub checks passed.
+The integrated commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+It has not been deployed.
 Live AWS upload, source inspection, replacement, and download acceptance remain pending.
 
 ## References

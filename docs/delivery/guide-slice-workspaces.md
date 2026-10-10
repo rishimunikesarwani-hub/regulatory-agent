@@ -19,12 +19,16 @@ Keep database files under ignored `runs/private/` directories.
 |---|---|---|---|---|---|
 | VS1 | `regulatory-agent-autonomous-build` | `work/autonomous-build` | `5173` | `8110` | `runs/private/` with existing `slice-01-*` filenames |
 | VS2 | `regulatory-agent-t3-documents` | `work/t3-documents` | `5182` | `8120` | `runs/private/slice-02/` |
+| VS2 AWS | `regulatory-agent-t3-aws-documents` | `work/t3-aws-documents` | `5192` | `8190` | `runs/private/slice-02-aws/` |
 | VS3 | `regulatory-agent-t4-assessment` | `work/t4-assessment` | `5183` | `8130` | `runs/private/slice-03/` |
 | VS4 | `regulatory-agent-t5-agent` | `work/t5-agent` | `5184` | `8140` | `runs/private/slice-04/` |
 | VS5 | `regulatory-agent-t9-quality` | `work/t9-quality` | `5185` | `8150` | `runs/private/slice-05/` |
 
-VS2 is selected for local development after the user's VS1 acceptance.
-The VS3 through VS5 assignments are reserved until their slice is selected.
+VS2 local work and its controlled AWS extension are integrated.
+VS3 is selected for local development and remains at its user-review checkpoint.
+The VS4 and VS5 assignments remain reserved.
+The VS2 AWS browser checks use API port `8191` and their own browser-test database.
+Its feedback ports are reserved. Feedback services are not running from that worktree.
 Use `browser-tests.sqlite` for browser tests and `feedback.sqlite` for manual feedback in each later database directory.
 Stop only the processes owned by the selected slice.
 Keep unrelated worktrees and feedback services unchanged.
