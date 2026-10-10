@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "frozen_at": "2026-10-10T02:34:17.799416+00:00",
+  "author_role": "Benchmark author (Codex)",
+  "reviewer_role": "No qualified regulatory domain review",
+  "qualified_domain_review": false,
+  "live_model_evaluation": "not run",
+  "prompt_tuning": "not performed",
+  "sha256": {
+    "data/sources/rbi-it-governance-2023.html": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+    "data/sources/rbi-it-governance-2023-excerpts.txt": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+    "data/sources/source-manifest.json": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+    "data/fixtures/development-inputs.json": "db45d91d870bab329a3c47728e9543106bc04eb10ec1bdf2d82cbfa4126b07c8",
+    "data/fixtures/development-labels.json": "d3bf9d644b3b7d82cc4f663adca68a3559c432c0e7eab92b1b0440488d2aa466",
+    "evals/fixtures/held-out-inputs.json": "8addac6de97d03857f6102069dbec51def954fe19d23575e1e63c2476fb5aac8",
+    "evals/fixtures/held-out-labels.json": "cbbb7ace6b9d9d5eab2ac1716c3017b9cc21b983a0217fb26fa6e09629bfd254"
+  }
+}

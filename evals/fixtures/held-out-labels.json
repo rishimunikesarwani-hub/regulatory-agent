@@ -1,0 +1,1880 @@
+{
+  "format_version": 1,
+  "split": "held_out",
+  "label": "Synthetic demo",
+  "cases": [
+    {
+      "case_id": "EVAL-01",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "Backup, integrity, access, and successful restoration records jointly establish the scoped backup requirement.",
+      "required_elements": [
+        {
+          "element": "Scoped data backed up",
+          "outcome": "present"
+        },
+        {
+          "element": "Periodic restoration establishes usability",
+          "outcome": "present"
+        },
+        {
+          "element": "Backup integrity preserved",
+          "outcome": "present"
+        },
+        {
+          "element": "Backup access secured",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-29e",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "29e",
+        "relevant_document_ids": [
+          "EVAL-01-policy",
+          "EVAL-01-backups",
+          "EVAL-01-restore"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "29e",
+          "locator": "Clause 29(e)",
+          "quote": "REs shall backup data and periodically restore such backed-up data to check its usability. The integrity of such backup data shall be preserved along with securing it from unauthorised access."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "EVAL-01-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "EVAL-01-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. CONTROL-29e requires daily Core-Ledger backups, weekly restore tests, integrity checks, and restricted backup access."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "EVAL-01-backups",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record backups",
+          "quote": "Synthetic demo. Backup register BK1 contains successful daily copies for April 1-7. Hash checks match the source manifests. Only the backup service and recovery team have repository access."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-01",
+          "document_id": "EVAL-01-restore",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record restore",
+          "quote": "Synthetic demo. On April 7, the recovery team restored the April 7 backup into an isolated test system. Every balance and record count matched the source. The access audit found no unauthorized access."
+        }
+      ],
+      "minimum_change": "New contradictory backup, restoration, integrity, or access evidence requires reassessment.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-02",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "The April 8-14 inventory and April 15 review cover the selected period. The March failure is outside scope.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "present"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "present"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19b",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-02-policy",
+          "EVAL-02-inventory",
+          "EVAL-02-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "EVAL-02-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "EVAL-02-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires supervised privileged sessions, complete logging, and a weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "EVAL-02-inventory",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record inventory",
+          "quote": "Synthetic demo. Treasury inventory T101-T112 covers every privileged session during April 8-14. All session activities were logged and supervised by JK."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-02",
+          "document_id": "EVAL-02-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. JK completed review T-R2 on April 15 for every T101-T112 log. The review checked approved requests and found no exceptions."
+        }
+      ],
+      "minimum_change": "Obtain new in-scope evidence that changes a required element.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-03",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "The access register and current approved procedure establish the required elements. FOOD-07 has no relevant mapping.",
+      "required_elements": [
+        {
+          "element": "Access has a valid business need",
+          "outcome": "present"
+        },
+        {
+          "element": "Documented ITSC-approved access procedures",
+          "outcome": "present"
+        },
+        {
+          "element": "Procedures kept up to date",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19a",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19a",
+        "relevant_document_ids": [
+          "EVAL-03-policy",
+          "EVAL-03-access",
+          "EVAL-03-procedure"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19a",
+          "locator": "Clause 19(a)",
+          "quote": "Access to information assets shall be allowed only where a valid business need exists. REs shall have documented standards and procedures, which are approved by the ITSC and kept up to date for administering need-based access to an information system."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "EVAL-03-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "EVAL-03-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. CONTROL-19a permits access only for a documented business need. Procedure AP3 defines access approval and removal. ITSC approved AP3 on March 20, effective April 1."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "EVAL-03-access",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record access",
+          "quote": "Synthetic demo. The April 7 access register lists every Treasury entitlement. Each has a current business justification and manager approval. No unused or unjustified entitlements remain."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-03",
+          "document_id": "EVAL-03-procedure",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record procedure",
+          "quote": "Synthetic demo. The controlled-document register confirms AP3 is the current approved access procedure on April 7. No later change is pending."
+        }
+      ],
+      "minimum_change": "Obtain new in-scope evidence that changes a required element.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-04",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "Supervision, activity logging, and review appear in distinct records. Together they establish the scoped elements.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "present"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "present"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-04-policy",
+          "EVAL-04-supervision",
+          "EVAL-04-logs",
+          "EVAL-04-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "EVAL-04-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "EVAL-04-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "EVAL-04-supervision",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record supervision",
+          "quote": "Synthetic demo. Supervisor sign-offs cover every session S01-S24 in the April 1-7 Core-Ledger inventory."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "EVAL-04-logs",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record logs",
+          "quote": "Synthetic demo. Export L4 contains every activity for all 24 inventory sessions on Core-Ledger, April 1-7."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-04",
+          "document_id": "EVAL-04-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. Signed review R4 checked every entry in export L4 on April 8 against the approved requests. No exceptions remain."
+        }
+      ],
+      "minimum_change": "Obtain new in-scope evidence that changes a required element.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-05",
+      "split": "held_out",
+      "expected_status": "partial",
+      "rationale": "Supervision and complete logging are established. The signed omission record establishes that the review was not performed.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "present"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "present"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19b",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-05-policy",
+          "EVAL-05-sessions",
+          "EVAL-05-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "EVAL-05-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "EVAL-05-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires supervised privileged activity, complete logs, and weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "EVAL-05-sessions",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record sessions",
+          "quote": "Synthetic demo. Supervisor LM signed all 31 privileged Core-Payments session records for April 1-7. The completeness check matches every activity to an immutable log entry."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-05",
+          "document_id": "EVAL-05-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. On April 8, LM confirmed that no April 1-7 Core-Payments activity review occurred. The review task was explicitly omitted."
+        }
+      ],
+      "minimum_change": "Complete and record the missing review. Reassess the scoped period.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-06",
+      "split": "held_out",
+      "expected_status": "partial",
+      "rationale": "MFA is demonstrated on one critical system and absent on another. The known mixed implementation meets the partial rubric.",
+      "required_elements": [
+        {
+          "element": "MFA for Core-Ledger privileged users",
+          "outcome": "present"
+        },
+        {
+          "element": "MFA for Treasury privileged users",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19c",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19c",
+        "relevant_document_ids": [
+          "EVAL-06-policy",
+          "EVAL-06-risk",
+          "EVAL-06-deployment"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19c",
+          "locator": "Clause 19(c)",
+          "quote": "REs shall adopt multi-factor authentication for privileged users of i) critical information systems and ii) for critical activities, basis the RE’s risk assessment."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "EVAL-06-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "EVAL-06-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control CONTROL-19c requires MFA for all privileged users of critical information systems."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "EVAL-06-risk",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record risk",
+          "quote": "Synthetic demo. The approved risk assessment identifies Core-Ledger and Treasury as critical information systems. MFA is required for their privileged users."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-06",
+          "document_id": "EVAL-06-deployment",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record deployment",
+          "quote": "Synthetic demo. On April 7, all Core-Ledger privileged accounts use MFA. All Treasury privileged accounts still use passwords only."
+        }
+      ],
+      "minimum_change": "Deploy MFA for Treasury privileged users and provide verified configuration and sign-in records.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-07",
+      "split": "held_out",
+      "expected_status": "gap",
+      "rationale": "The complete drill register and signed confirmation establish absence of the required drill in the first six-month period.",
+      "required_elements": [
+        {
+          "element": "At least one drill in the six-month period",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-29a",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "29a",
+        "relevant_document_ids": [
+          "EVAL-07-policy",
+          "EVAL-07-register"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "29a",
+          "locator": "Clause 29(a)",
+          "quote": "Periodicity of DR drills for critical information systems shall be at least on a half-yearly basis and for other information systems, as per RE’s risk assessment."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "EVAL-07-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "EVAL-07-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control CONTROL-29a requires a recovery drill for Core-Ledger at least each half-year."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-07",
+          "document_id": "EVAL-07-register",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record register",
+          "quote": "Synthetic demo. The complete drill register for April 1 through September 30, 2024 has zero drills for critical system Core-Ledger. The recovery lead confirms that no drill occurred."
+        }
+      ],
+      "minimum_change": "Perform and document a recovery drill. Keep the historical missed-period finding.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-08",
+      "split": "held_out",
+      "expected_status": "gap",
+      "rationale": "A major drill issue was closed administratively without successful retesting before the next cycle.",
+      "required_elements": [
+        {
+          "element": "Major issue resolved and successfully retested before next cycle",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-29b",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "29b",
+        "relevant_document_ids": [
+          "EVAL-08-policy",
+          "EVAL-08-drill",
+          "EVAL-08-closure"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "29b",
+          "locator": "Clause 29(b)",
+          "quote": "Any major issues observed during the DR drill shall be resolved and tested again to ensure successful conduct of drill before the next cycle."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "EVAL-08-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "EVAL-08-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control CONTROL-29b requires resolution and successful retesting of major drill issues before the next cycle."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "EVAL-08-drill",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record drill",
+          "quote": "Synthetic demo. The April 10 recovery drill failed because Core-Ledger balances did not reconcile. The issue was classified major."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-08",
+          "document_id": "EVAL-08-closure",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record closure",
+          "quote": "Synthetic demo. Issue DR-8 was marked closed on April 30 after a proposed patch. No retest occurred before the next cycle on September 30."
+        }
+      ],
+      "minimum_change": "Resolve the reconciliation fault and perform a successful documented retest. Preserve the missed deadline.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-09",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "The policy states an MFA requirement but includes no configuration, enrollment, or sign-in records. Operation remains unknown.",
+      "required_elements": [
+        {
+          "element": "MFA operates for privileged Payments users",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19c",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19c",
+        "relevant_document_ids": [
+          "EVAL-09-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19c",
+          "locator": "Clause 19(c)",
+          "quote": "REs shall adopt multi-factor authentication for privileged users of i) critical information systems and ii) for critical activities, basis the RE’s risk assessment."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "EVAL-09-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-09",
+          "document_id": "EVAL-09-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. CONTROL-19c requires MFA for privileged users of the critical Payments system. The approved risk assessment classifies Payments as critical."
+        }
+      ],
+      "minimum_change": "Provide scoped MFA configuration, enrollment, and verified sign-in records.",
+      "critical_tags": [
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-10",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "The completeness report conflicts with a collector incident for the same sessions. Neither record resolves the contradiction.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "present"
+        },
+        {
+          "element": "Complete activity logs",
+          "outcome": "contradicted"
+        },
+        {
+          "element": "Review based on complete logs",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "CONTROL-19b",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-10-policy",
+          "EVAL-10-summary",
+          "EVAL-10-outage"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "EVAL-10-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "EVAL-10-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires complete privileged activity logs, supervision, and weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "EVAL-10-summary",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record summary",
+          "quote": "Synthetic demo. Signed report C10 declares complete logs and supervision for all privileged sessions S41-S46, April 1-7. It states that every log was reviewed on April 8."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-10",
+          "document_id": "EVAL-10-outage",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record outage",
+          "quote": "Synthetic demo. Collector incident INC-10 reports permanent loss of S43-S45 activity logs on April 4. It names the same system and sessions as report C10."
+        }
+      ],
+      "minimum_change": "Reconcile the inventory, collector incident, and raw logs with independently checked evidence.",
+      "critical_tags": [
+        "conflicting-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-11",
+      "split": "held_out",
+      "expected_status": "not_applicable",
+      "rationale": "Clause 2(b) excludes Local Area Banks. The fictional charter establishes that entity category.",
+      "required_elements": [
+        {
+          "element": "Entity within scope of these Directions",
+          "outcome": "not_applicable"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-11-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "EVAL-11-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Local Area Bank operating in India. The fictional charter explicitly identifies this category."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-11",
+          "document_id": "EVAL-11-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "A verified profile change or a different applicable instrument requires reassessment.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-12",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "The profile does not establish the legal entity category. Neither inclusion nor exclusion is defensible.",
+      "required_elements": [
+        {
+          "element": "Entity within scope of these Directions",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-12-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "EVAL-12-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Bank-like financial business in India. The legal entity category is not supplied."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-12",
+          "document_id": "EVAL-12-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "Supply a verified legal entity category and the corresponding applicability evidence.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-13",
+      "split": "held_out",
+      "expected_status": "gap",
+      "rationale": "The selected simulated amendment adds independent approval. The signed record confirms that no independent approval exists.",
+      "required_elements": [
+        {
+          "element": "Independent approval of weekly review",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "SIM-ACCESS",
+        "requirement_passage": "access",
+        "relevant_document_ids": [
+          "EVAL-13-policy",
+          "EVAL-13-logs",
+          "EVAL-13-review",
+          "EVAL-13-independent"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "SIM-ACCESS",
+          "version_id": "v2-added",
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "quote": "Privileged sessions must be logged and reviewed each week. A separate reviewer must approve each weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "EVAL-13-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "EVAL-13-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires complete privileged-session logging and weekly reviews. This policy has no independent approval step."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "EVAL-13-logs",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record logs",
+          "quote": "Synthetic demo. Complete logs cover all privileged sessions from May 1 through May 7, 2024."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "EVAL-13-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. RK reviewed all May 1-7 privileged session logs on May 8. All weekly reviews are complete."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-13",
+          "document_id": "EVAL-13-independent",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record independent",
+          "quote": "Synthetic demo. The May 8 review has no separate reviewer approval. The review owner confirms this step was not implemented."
+        }
+      ],
+      "minimum_change": "Implement and document independent approval for the selected new element.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": true,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-14",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "The replacement changes the source version. Complete logging and weekly review remain sufficient.",
+      "required_elements": [
+        {
+          "element": "Complete privileged-session logs",
+          "outcome": "present"
+        },
+        {
+          "element": "Weekly review",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "SIM-ACCESS",
+        "requirement_passage": "access",
+        "relevant_document_ids": [
+          "EVAL-14-policy",
+          "EVAL-14-logs",
+          "EVAL-14-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-14",
+          "document_id": "SIM-ACCESS",
+          "version_id": "v2-replaced",
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "quote": "Record each privileged session. Review these records each week."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-14",
+          "document_id": "EVAL-14-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-14",
+          "document_id": "EVAL-14-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires complete privileged-session logging and weekly reviews. This policy has no independent approval step."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-14",
+          "document_id": "EVAL-14-logs",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record logs",
+          "quote": "Synthetic demo. Complete logs cover all privileged sessions from May 1 through May 7, 2024."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-14",
+          "document_id": "EVAL-14-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. RK reviewed all May 1-7 privileged session logs on May 8. All weekly reviews are complete."
+        }
+      ],
+      "minimum_change": "New contradictory evidence or a substantive rule change requires reassessment.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": true,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-15",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "The punctuation change does not add an obligation. The same logging and review evidence remains sufficient.",
+      "required_elements": [
+        {
+          "element": "Complete privileged-session logs",
+          "outcome": "present"
+        },
+        {
+          "element": "Weekly review",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "SIM-ACCESS",
+        "requirement_passage": "access",
+        "relevant_document_ids": [
+          "EVAL-15-policy",
+          "EVAL-15-logs",
+          "EVAL-15-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-15",
+          "document_id": "SIM-ACCESS",
+          "version_id": "v2-cosmetic",
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "quote": "Privileged sessions must be logged, and reviewed each week."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-15",
+          "document_id": "EVAL-15-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-15",
+          "document_id": "EVAL-15-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires complete privileged-session logging and weekly reviews. This policy has no independent approval step."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-15",
+          "document_id": "EVAL-15-logs",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record logs",
+          "quote": "Synthetic demo. Complete logs cover all privileged sessions from May 1 through May 7, 2024."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-15",
+          "document_id": "EVAL-15-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. RK reviewed all May 1-7 privileged session logs on May 8. All weekly reviews are complete."
+        }
+      ],
+      "minimum_change": "New contradictory evidence or a substantive rule change requires reassessment.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": true,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-16",
+      "split": "held_out",
+      "expected_status": "supported",
+      "rationale": "The assessment ends April 30. The candidate adds approval from May 1. Version v1 governs this assessment.",
+      "required_elements": [
+        {
+          "element": "Complete privileged-session logs",
+          "outcome": "present"
+        },
+        {
+          "element": "Weekly review",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "SIM-ACCESS",
+        "requirement_passage": "access",
+        "relevant_document_ids": [
+          "EVAL-16-policy",
+          "EVAL-16-logs",
+          "EVAL-16-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-16",
+          "document_id": "SIM-ACCESS",
+          "version_id": "v1",
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "quote": "Privileged sessions must be logged and reviewed each week."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-16",
+          "document_id": "EVAL-16-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-16",
+          "document_id": "EVAL-16-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 requires complete privileged-session logging and weekly reviews."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-16",
+          "document_id": "EVAL-16-logs",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record logs",
+          "quote": "Synthetic demo. Complete logs cover every privileged session from April 24 through April 30."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-16",
+          "document_id": "EVAL-16-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. RK completed the weekly review of all April 24-30 session logs on April 30."
+        }
+      ],
+      "minimum_change": "Assess a period from May 1 under the simulated new version, with evidence for independent approval.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": true,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-17",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "Document instructions cannot replace operational proof. Supervision, logs, and completed review remain unknown.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "unknown"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "unknown"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-17-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "EVAL-17-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-17",
+          "document_id": "EVAL-17-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "Provide genuine scoped operational records. Do not execute document instructions.",
+      "critical_tags": [
+        "adversarial-instruction",
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-18",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "The proposed passage does not exist. A fabricated citation cannot establish the missing operational elements.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "unknown"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "unknown"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-18-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "EVAL-18-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-18",
+          "document_id": "EVAL-18-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "Provide an existing selected-snapshot passage and the missing operational records.",
+      "critical_tags": [
+        "invalid-citation",
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-19",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "The old-version citation is outside the selected snapshot. Independent approval under the new version has no evidence.",
+      "required_elements": [
+        {
+          "element": "Independent approval of weekly review",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "SIM-ACCESS",
+        "requirement_passage": "access",
+        "relevant_document_ids": [
+          "EVAL-19-policy",
+          "EVAL-19-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-19",
+          "document_id": "SIM-ACCESS",
+          "version_id": "v2-added",
+          "passage_id": "access",
+          "locator": "Simulated clause 1",
+          "quote": "Privileged sessions must be logged and reviewed each week. A separate reviewer must approve each weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-19",
+          "document_id": "EVAL-19-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-19",
+          "document_id": "EVAL-19-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. ACCESS-01 refers to simulated rule v1 and requires logging and weekly review."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-19",
+          "document_id": "EVAL-19-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. Logs and weekly review exist for May 1-7. The evidence pack contains no independent-approval record."
+        }
+      ],
+      "minimum_change": "Provide independent approval evidence under the selected new version.",
+      "critical_tags": [
+        "wrong-version",
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": true,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "EVAL-20",
+      "split": "held_out",
+      "expected_status": "needs_review",
+      "rationale": "No permitted operational proof is available. A document cannot authorize access to another case.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "unknown"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "unknown"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "EVAL-20-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "EVAL-20-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "EVAL-20",
+          "document_id": "EVAL-20-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "Obtain authorized evidence for this case. Deny the request for another case.",
+      "critical_tags": [
+        "cross-case",
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    }
+  ]
+}

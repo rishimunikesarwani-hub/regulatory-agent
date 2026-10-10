@@ -1,0 +1,37 @@
+Command: py -X utf8 -B -m unittest discover -s tests -p test_session_a_fixtures.py -v
+Exit: 0
+test_a01_complete_pack_is_valid (test_session_a_fixtures.FoundationTests.test_a01_complete_pack_is_valid) ... ok
+test_a01_test_process_blocks_network (test_session_a_fixtures.FoundationTests.test_a01_test_process_blocks_network) ... ok
+test_a02_changed_bytes_fail (test_session_a_fixtures.FoundationTests.test_a02_changed_bytes_fail) ... ok
+test_a03_locator_must_match (test_session_a_fixtures.FoundationTests.test_a03_locator_must_match) ... ok
+test_a03_passage_must_exist (test_session_a_fixtures.FoundationTests.test_a03_passage_must_exist) ... ok
+test_a03_quote_must_match (test_session_a_fixtures.FoundationTests.test_a03_quote_must_match) ... ok
+test_a04_ids_must_be_unique (test_session_a_fixtures.FoundationTests.test_a04_ids_must_be_unique) ... ok
+test_a04_operational_records_are_not_reused_across_splits (test_session_a_fixtures.FoundationTests.test_a04_operational_records_are_not_reused_across_splits) ... ok
+test_a04_splits_must_be_separate (test_session_a_fixtures.FoundationTests.test_a04_splits_must_be_separate) ... ok
+test_a05_nested_answers_are_rejected (test_session_a_fixtures.FoundationTests.test_a05_nested_answers_are_rejected) ... ok
+test_a06_bank_labels_required (test_session_a_fixtures.FoundationTests.test_a06_bank_labels_required) ... ok
+test_a06_rule_simulation_labels_required (test_session_a_fixtures.FoundationTests.test_a06_rule_simulation_labels_required) ... ok
+test_a07_catalogue_must_be_complete (test_session_a_fixtures.FoundationTests.test_a07_catalogue_must_be_complete) ... ok
+test_a08_mapping_requires_exact_rule_passage (test_session_a_fixtures.FoundationTests.test_a08_mapping_requires_exact_rule_passage) ... ok
+test_a08_missing_label_rejected (test_session_a_fixtures.FoundationTests.test_a08_missing_label_rejected) ... ok
+test_a08_partial_requires_known_mixed_fulfilment (test_session_a_fixtures.FoundationTests.test_a08_partial_requires_known_mixed_fulfilment) ... ok
+test_a08_rationale_required (test_session_a_fixtures.FoundationTests.test_a08_rationale_required) ... ok
+test_a08_sources_required (test_session_a_fixtures.FoundationTests.test_a08_sources_required) ... ok
+test_a08_supported_requires_present_elements (test_session_a_fixtures.FoundationTests.test_a08_supported_requires_present_elements) ... ok
+test_a09_critical_cases_cannot_expect_supported (test_session_a_fixtures.FoundationTests.test_a09_critical_cases_cannot_expect_supported) ... ok
+test_a09_critical_tag_cannot_be_removed (test_session_a_fixtures.FoundationTests.test_a09_critical_tag_cannot_be_removed) ... ok
+test_a10_inspector_denies_held_out (test_session_a_fixtures.FoundationTests.test_a10_inspector_denies_held_out) ... ok
+test_a10_inspector_shows_development_with_author_label (test_session_a_fixtures.FoundationTests.test_a10_inspector_shows_development_with_author_label) ... ok
+test_a11_download_does_not_establish_current_coverage (test_session_a_fixtures.FoundationTests.test_a11_download_does_not_establish_current_coverage) ... ok
+test_a11_effective_date_boundary_is_enforced (test_session_a_fixtures.FoundationTests.test_a11_effective_date_boundary_is_enforced) ... ok
+test_a12_document_owner_is_checked (test_session_a_fixtures.FoundationTests.test_a12_document_owner_is_checked) ... ok
+test_a12_other_case_is_denied (test_session_a_fixtures.FoundationTests.test_a12_other_case_is_denied) ... ok
+test_a12_other_owner_is_denied (test_session_a_fixtures.FoundationTests.test_a12_other_owner_is_denied) ... ok
+test_a12_unselected_version_is_denied (test_session_a_fixtures.FoundationTests.test_a12_unselected_version_is_denied) ... ok
+test_simulated_change_cases_identify_both_versions (test_session_a_fixtures.FoundationTests.test_simulated_change_cases_identify_both_versions) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.522s
+
+OK

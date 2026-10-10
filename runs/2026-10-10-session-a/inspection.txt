@@ -1,0 +1,45 @@
+Command: py -X utf8 -B ops/session_a_fixtures.py validate
+{
+  "valid": true,
+  "development_cases": 3,
+  "held_out_cases": 20,
+  "held_out_status_counts": {
+    "supported": 7,
+    "partial": 2,
+    "gap": 3,
+    "needs_review": 7,
+    "not_applicable": 1
+  },
+  "current_coverage_verified": false,
+  "model_evaluation": "not run"
+}
+
+Command: py -X utf8 -B ops/session_a_fixtures.py inspect DEV-01
+DEV-01 | Synthetic demo | fixture inspection; no model execution
+Scope: Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.
+Records: profile, policy, evidence, evidence
+Expected answer (benchmark author): supported
+Reason: The session inventory, activity logs, supervisor sign-offs, and completed review establish all three scoped elements.
+Needed next: New contradictory evidence, an expanded scope, or a changed rule requires reassessment.
+Exact allowed citations: 8
+Current regulatory coverage: unverified. Model calls: 0.
+
+Command: py -X utf8 -B ops/session_a_fixtures.py inspect DEV-02
+DEV-02 | Synthetic demo | fixture inspection; no model execution
+Scope: Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.
+Records: profile, policy
+Expected answer (benchmark author): needs_review
+Reason: A policy states the intended control. No operational records establish supervision, logging, or review.
+Needed next: Provide the scoped session inventory, complete logs, supervisor records, and completed review.
+Exact allowed citations: 6
+Current regulatory coverage: unverified. Model calls: 0.
+
+Command: py -X utf8 -B ops/session_a_fixtures.py inspect DEV-03
+DEV-03 | Synthetic demo | fixture inspection; no model execution
+Scope: Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.
+Records: profile, policy, evidence
+Expected answer (benchmark author): gap
+Reason: The incident record establishes that activity logging was disabled for all scoped sessions. This is a demonstrated failure.
+Needed next: Enable logging and demonstrate complete operation in a new assessment period. Historical missing logs remain a gap.
+Exact allowed citations: 7
+Current regulatory coverage: unverified. Model calls: 0.
