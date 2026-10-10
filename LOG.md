@@ -556,3 +556,23 @@ Read the [focus evidence](runs/2026-10-11-slice-02-aws-documents/focus-review.md
 
 VS3 user acceptance and AWS verification remain pending.
 Next: finish GitHub checks and merge the verified focus correction.
+
+## 2026-10-11 - Focus correction integrated after GitHub checks
+
+PR11 merged after run `38084594559` passed for `120c4748862f064856586f00bdb921d31ad69fac`.
+The integration commit is `af59cc6cc8507b5b59d8866ae0899718172e3d47`.
+GitHub verified 204 backend checks, 27 browser checks, and the frontend build.
+Deployment was skipped.
+The correction preserves form focus when a delayed case-list request completes.
+The earlier failed CI result and deterministic red test remain recorded.
+
+The integration worktree advanced through a fast-forward update.
+The user's reference images remain untracked and unchanged.
+VS3 stays in PR9 and its separate review worktree.
+Its feedback API and interface remain active on ports `8130` and `5183`.
+No VS4 work has started.
+
+AWS account verification and failed-stack recovery still block deployment.
+The prepared document storage and runtime permissions have not been applied.
+Live model integration and complete project acceptance remain pending.
+Next: obtain VS3 user acceptance and AWS verification.

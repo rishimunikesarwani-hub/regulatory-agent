@@ -20,7 +20,7 @@ Keep local acceptance and AWS acceptance records separate.
 VS2 local implementation passed 178 combined Python checks and 20 combined browser checks.
 The user approved VS2 local acceptance and authorized VS3 local development.
 VS2 local integration merged through PR8 after its GitHub checks passed.
-The AWS document branch passed 204 backend checks and 26 browser checks.
+The integrated AWS document flow passed 204 backend checks and 27 browser checks after the focus correction.
 Its templates and cloud protocol are prepared. Deployment and AWS acceptance remain pending.
 VS3 has a separate review branch. Its user review remains pending.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
