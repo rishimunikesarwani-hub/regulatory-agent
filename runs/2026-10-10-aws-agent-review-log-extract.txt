@@ -1,0 +1,39 @@
+
+
+Recorded 2026-10-10. **Status: review recommendation.**
+
+The user clarified a single-operator scope and requested code wherever fixed rules suffice.
+The review compares one agent with two specialists from the AWS hosting perspective.
+
+The [AWS review](../architecture/arch-agent-aws-review.md) recommends one bounded agent with orchestration in code.
+It retains two specialists as an evaluation candidate.
+It removes the AI master from the recommendation because the present workflow has fixed dependencies.
+The [comparison](../architecture/arch-agent-operation-comparison.md) now contains five material decision points.
+
+D22's seven-role allocation remains review history and has not been adopted.
+D09, the approved specifications, and the existing diagrams remain unchanged.
+No additional user roles, tenant management, or separate agent services were added.
+
+IAM controls AWS operations. Application code controls case scope and tool access.
+Different agent names within one function do not establish different IAM permissions.
+No slowdown, privacy incident, or candidate quality advantage has been measured.
+The formal performance audit is UNVERIFIED because no runtime samples exist.
+
+Affected areas: REQ-X01 through REQ-X04, T2, T5, T8, and T9.
+Retain the 24-call allowance, 600-second worker deadline, and existing evaluation gates.
+See [the verification record](../../runs/2026-10-10-aws-agent-review-verification.md).
+
+
+
+
+Saved the [AWS review](docs/architecture/arch-agent-aws-review.md).
+Reduced the [comparison](docs/architecture/arch-agent-operation-comparison.md) to five decision points.
+Marked the earlier seven-role proposal as review history.
+The recommendation is one bounded agent with orchestration in code.
+Two specialists remain an evaluation candidate.
+
+[D23](docs/decisions/gov-decision-log.md#d23---aws-review-and-code-orchestration) records the user's clarification and the review outcome.
+The formal audit covers 17 areas and reports UNVERIFIED performance.
+No runtime measurements or cloud actions occurred.
+The approved specifications and existing diagrams remain unchanged.
+See the [verification record](runs/2026-10-10-aws-agent-review-verification.md).

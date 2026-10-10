@@ -1,0 +1,550 @@
+{
+  "AGENTS.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 110,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 110,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "README.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 55,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 55,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "LOG.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 140,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 140,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/architecture/02_TECHNICAL_BLUEPRINT.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 477,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 477,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/architecture/arch-agent-aws-review.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 204,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 204,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/architecture/arch-agent-operation-comparison.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 56,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 56,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/architecture/arch-multi-agent-proposal.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 292,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 292,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/architecture/arch-retrieval-quality-and-model-routing.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 140,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 140,
+      "findings": [
+        {
+          "line": 44,
+          "check": "paragraph",
+          "message": "Review the paragraph: 8 sentences."
+        },
+        {
+          "line": 62,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        },
+        {
+          "line": 98,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        },
+        {
+          "line": 138,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        },
+        {
+          "line": 146,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        },
+        {
+          "line": 176,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        }
+      ],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/decisions/gov-decision-log.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 358,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 358,
+      "findings": [
+        {
+          "line": 25,
+          "check": "paragraph",
+          "message": "Review the paragraph: 9 sentences."
+        }
+      ],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/delivery/05_FEATURE_TICKETS.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 307,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 307,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/delivery/guide-parallel-development.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 99,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 99,
+      "findings": [
+        {
+          "line": 46,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        },
+        {
+          "line": 104,
+          "check": "paragraph",
+          "message": "Review the paragraph: 7 sentences."
+        }
+      ],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/frontend/04_FRONTEND_SPEC.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 213,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 213,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/guide-start-here.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 57,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 57,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/guide-ste100-writing.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 294,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 294,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/product/01_PRD.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 283,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 283,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/security/03_SECURITY_ACCESS.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 275,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 275,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/testing/eval-model-quality.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 386,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 386,
+      "findings": [
+        {
+          "line": 330,
+          "check": "paragraph",
+          "message": "Review the paragraph: 8 sentences."
+        }
+      ],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/testing/spec-local-test-plan.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 397,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 397,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  },
+  "docs/testing/spec-measurement-contract.md": {
+    "procedural": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "procedural",
+      "sentences_examined": 319,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    },
+    "descriptive": {
+      "status": "REVIEW_REQUIRED",
+      "mode": "descriptive",
+      "sentences_examined": 319,
+      "findings": [],
+      "limits": [
+        "The checker covers selected structural rules only.",
+        "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+        "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+        "A protected-content match does not prove that the meaning stayed the same."
+      ]
+    }
+  }
+}

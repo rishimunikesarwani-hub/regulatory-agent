@@ -1,0 +1,15 @@
+{
+  "document": "docs\\architecture\\arch-retrieval-quality-and-model-routing.md",
+  "status": "discussion only",
+  "local_links_checked": 2,
+  "approved_model_changed": false,
+  "application_changed": false,
+  "cloud_actions": false,
+  "runtime_results": "not run",
+  "language_review": {
+    "mechanical_findings": 0,
+    "mode": "descriptive",
+    "manual_review": "Reviewed short sentences, technical terms, authority, uncertainty, and numerical limits.",
+    "full_dictionary": "unverified"
+  }
+}

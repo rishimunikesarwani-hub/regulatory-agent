@@ -1,0 +1,450 @@
+{
+  "scope": {
+    "system": "The Regulatory Agent",
+    "workflow": "Selected regulatory assessment; one agent versus two specialists",
+    "environment": "Design only; no AWS runtime",
+    "window": "2026-10-10 document and placeholder inspection; no runtime samples",
+    "currency": "USD"
+  },
+  "verdict": "UNVERIFIED",
+  "measured_run": "candidate",
+  "run_context": {
+    "baseline": {
+      "dataset_id": "NOT_CREATED; planned held-out 20 cases",
+      "rubric_id": "eval-model-quality.md primary outcome agreement",
+      "workload_id": "one case and at most 20 selected obligations",
+      "load_profile": "one operator; no load measurements",
+      "cost_basis": "All model attempts, external retrieval, and allocated AWS infrastructure; rates unverified"
+    },
+    "candidate": {
+      "dataset_id": "NOT_CREATED; planned held-out 20 cases",
+      "rubric_id": "eval-model-quality.md primary outcome agreement",
+      "workload_id": "one case and at most 20 selected obligations",
+      "load_profile": "one operator; no load measurements",
+      "cost_basis": "All model attempts, external retrieval, and allocated AWS infrastructure; rates unverified"
+    }
+  },
+  "checks": [
+    {
+      "id": "A01",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No runtime paths exist.",
+      "acceptance": "Measure ordinary and adverse assessment paths.",
+      "next_action": "Implement one-agent baseline and record each step.",
+      "area": "Workflow performance",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A02",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No runtime traces exist.",
+      "acceptance": "Join request and stage records without private content.",
+      "next_action": "Record model, tool, queue, and retry spans.",
+      "area": "Observability",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A03",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Call and time limits exist only in specifications.",
+      "acceptance": "Enforce global limits outside the model.",
+      "next_action": "Test dispatch reservation and deadline persistence.",
+      "area": "Budgets and service objectives",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A04",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No token usage, actual rates, or charges exist.",
+      "acceptance": "Reconcile every in-scope attempt and allocated cost.",
+      "next_action": "Record usage and verify rates for the actual configuration.",
+      "area": "Cost drivers",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A05",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No latency samples exist.",
+      "acceptance": "Separate complete duration from first-token time.",
+      "next_action": "Measure queue, initialization, model, and tool time.",
+      "area": "Latency sources",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A06",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Fixed routing and validation do not require model judgment.",
+      "acceptance": "Removal preserves quality and access controls.",
+      "next_action": "Compare code orchestration without an AI master.",
+      "area": "Model call reduction",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A07",
+      "applicable": false,
+      "status": "NOT_APPLICABLE",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Both designs retain the same pinned model.",
+      "acceptance": "No model-router comparison is in scope.",
+      "next_action": "Reopen this check if model selection changes.",
+      "area": "Model routing",
+      "declared_status": "NOT_APPLICABLE"
+    },
+    {
+      "id": "A08",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Context assembly is not implemented.",
+      "acceptance": "Preserve exceptions and contradictions under context reduction.",
+      "next_action": "Test scoped passages and structured state.",
+      "area": "Prompt and context",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A09",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No aggregate token ceiling or usage samples exist.",
+      "acceptance": "Set input, output, and aggregate token limits.",
+      "next_action": "Measure development cases before freezing a common ceiling.",
+      "area": "Token budgets",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A10",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Prompt-cache support and benefit remain unverified.",
+      "acceptance": "Verify support, version separation, and observed hits.",
+      "next_action": "Leave caching optional until measured evidence supports it.",
+      "area": "Caching",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A11",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Tools and progress events are not implemented.",
+      "acceptance": "Only independent work overlaps. Events reveal no private content.",
+      "next_action": "Test safe progress and client disconnect behavior.",
+      "area": "Parallel work and streaming",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A12",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Saved jobs and duplicate-delivery checks are specified only.",
+      "acceptance": "A duplicate cannot reset limits or repeat finalization.",
+      "next_action": "Test restart, redelivery, and expired jobs.",
+      "area": "Background jobs",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A13",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No provider quotas or burst tests exist.",
+      "acceptance": "Bound dispatch and recovery under throttling.",
+      "next_action": "Check actual quotas and repeated user requests.",
+      "area": "Rate limits and backpressure",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A14",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No failure-control tests exist.",
+      "acceptance": "Count uncertain attempts and contain late responses.",
+      "next_action": "Test timeouts, capped retries, and dependency failures.",
+      "area": "Failure controls",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A15",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No cold-start or saved-state recovery measurements exist.",
+      "acceptance": "Keep case state separate from reused service clients.",
+      "next_action": "Test warm reuse with different synthetic cases.",
+      "area": "Scaling and state",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A16",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "Both request arrays are empty.",
+      "acceptance": "Use matched cases, scope, load, and recorded versions.",
+      "next_action": "Collect paired runs without inventing missing values.",
+      "area": "Measurement",
+      "declared_status": "UNVERIFIED"
+    },
+    {
+      "id": "A17",
+      "applicable": true,
+      "status": "UNVERIFIED",
+      "evidence": [
+        {
+          "path": "../docs/architecture/arch-agent-aws-review.md",
+          "locator": "Review evidence and five material differences",
+          "note": "Design inspection and cited primary AWS sources. No runtime measurement."
+        }
+      ],
+      "finding": "No candidate has demonstrated an improvement.",
+      "acceptance": "Pass all quality gates within common limits.",
+      "next_action": "Retain one agent when quality is equal and operation is simpler.",
+      "area": "Cost and quality",
+      "declared_status": "UNVERIFIED"
+    }
+  ],
+  "metrics": {
+    "baseline": {
+      "requests": 0,
+      "missing": {
+        "latency_ms": 0,
+        "cost": 0,
+        "success": 0,
+        "quality_score": 0,
+        "error": 0,
+        "model_calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "retries": 0,
+        "tool_calls": 0,
+        "loop_iterations": 0,
+        "ttft_ms": 0
+      },
+      "p95_latency_ms": null,
+      "p99_latency_ms": null,
+      "total_cost": null,
+      "success_rate": null,
+      "error_rate": null,
+      "mean_quality_score": null,
+      "cost_per_success": null,
+      "total_model_calls": null,
+      "total_input_tokens": null,
+      "total_output_tokens": null,
+      "total_retries": null,
+      "total_tool_calls": null,
+      "total_loop_iterations": null,
+      "p95_ttft_ms": null
+    },
+    "candidate": {
+      "requests": 0,
+      "missing": {
+        "latency_ms": 0,
+        "cost": 0,
+        "success": 0,
+        "quality_score": 0,
+        "error": 0,
+        "model_calls": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "retries": 0,
+        "tool_calls": 0,
+        "loop_iterations": 0,
+        "ttft_ms": 0
+      },
+      "p95_latency_ms": null,
+      "p99_latency_ms": null,
+      "total_cost": null,
+      "success_rate": null,
+      "error_rate": null,
+      "mean_quality_score": null,
+      "cost_per_success": null,
+      "total_model_calls": null,
+      "total_input_tokens": null,
+      "total_output_tokens": null,
+      "total_retries": null,
+      "total_tool_calls": null,
+      "total_loop_iterations": null,
+      "p95_ttft_ms": null
+    }
+  },
+  "gates": [
+    {
+      "metric": "sample_size",
+      "value": 0,
+      "target": 20,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "p95_latency_ms",
+      "value": null,
+      "target": null,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "p99_latency_ms",
+      "value": null,
+      "target": null,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "cost_per_success",
+      "value": null,
+      "target": null,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "success_rate",
+      "value": null,
+      "target": null,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "mean_quality_score",
+      "value": null,
+      "target": 0.9,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "error_rate",
+      "value": null,
+      "target": null,
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "comparison_context",
+      "value": "Insufficient comparison sample",
+      "target": "matched cases and context",
+      "status": "UNVERIFIED"
+    },
+    {
+      "metric": "scope",
+      "value": "complete",
+      "target": "complete",
+      "status": "PASS"
+    }
+  ],
+  "comparison": {
+    "status": "UNVERIFIED",
+    "reasons": [
+      "Insufficient comparison sample"
+    ],
+    "candidate_minus_baseline": {}
+  },
+  "limits": [
+    "Check verdicts are reviewer judgments. File existence does not prove evidence content.",
+    "Metric gates apply only to supplied samples and declared costs.",
+    "No statistical significance, runtime enforcement, or production certification is established."
+  ]
+}

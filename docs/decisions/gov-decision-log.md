@@ -1,31 +1,34 @@
 # Decision log
 
-> Persisted: 2026-10-08.
+> Saved: 2026-10-08.
 > Source of approval: the planning conversation across 7–8 October 2026.
-> Exact per-answer timestamps were not captured. The date below is the persistence date, not an invented approval timestamp.
+> Exact per-answer timestamps were not recorded. The date below is the save date, not an approval timestamp.
 
-This record gives each decision and its reason. It separates approved choices from facts that need verification.
+This record gives each decision and its reason. It identifies approved choices and facts that need verification.
 
-**Approved** means the user selected or accepted it. **Implementation clarification** makes an approved requirement precise without adding a product capability. **Unverified** means evidence is still needed. No entry below establishes that the application is built.
+**Approved** means the user selected or accepted it.
+**Implementation clarification** makes an approved requirement more precise without an additional product capability.
+**Unverified** means evidence is still necessary.
+No entry below proves that the application is built.
 
 ## Approved decisions
 
 | ID | Recorded | Decision and rationale | Specification and acceptance links |
 |---|---|---|---|
 | D01 | 2026-10-08 | **Approved:** Work on Problem 1, banking/financial regulations. Build the traceable regulation-to-remediation workflow described in the source brief. | [PRD](../product/01_PRD.md). REQ-F01–REQ-F08 |
-| D02 | 2026-10-08 | **Approved:** Target F3/D2: at least eight selected features with demonstrable reliability on mostly structured/textual input. This is a target, not an achieved score. | [PRD metrics](../product/01_PRD.md). [quality gates](../testing/eval-model-quality.md) |
-| D03 | 2026-10-08 | **Approved:** Start with India IT controls for a domestic commercial-bank scenario. One bank profile per case keeps applicability and evidence scope concrete. | [PRD audience](../product/01_PRD.md). AC-F03, AC-F05 |
-| D04 | 2026-10-08 | **Approved:** Support both a clearly fictional demo bank and authorized user uploads. Fictional documents must remain labelled. | [PRD inputs](../product/01_PRD.md). UT-01, BT-05 |
-| D05 | 2026-10-08 | **Approved:** Private document storage and AI processing must stay within AWS India. Mumbai is the application region. The selected inference profile may use Mumbai/Hyderabad only after verification. | [Security](../security/03_SECURITY_ACCESS.md). CLOUD-01, CLOUD-02 |
-| D06 | 2026-10-08 | **Approved:** Submission is 10 October 2026. The user corrected the earlier “within seven days” answer. Internal readiness targets 9 October evening IST. Exact organiser cutoff remains unverified. | [Delivery dates](../delivery/05_FEATURE_TICKETS.md) |
-| D07 | 2026-10-08 | **Approved:** Design cloud-native now. Teach AWS hosting/configuration step by step when the local workflow is ready. Local tests must not require AWS setup. | [Architecture](../architecture/02_TECHNICAL_BLUEPRINT.md). CT-01, CLOUD-01–CLOUD-05 |
-| D08 | 2026-10-08 | **Approved:** React/TypeScript/Vite. Python/FastAPI. API Gateway/Lambda. S3. DynamoDB. SQS. Cognito. SAM. Local filesystem, SQLite, worker, and controlled-model adapters share the application contracts. | [Stack and flow](../architecture/02_TECHNICAL_BLUEPRINT.md). CT-01–CT-04 |
-| D09 | 2026-10-08 | **Approved:** One bounded agent, keyword/BM25 retrieval, application-validated actions, and pinned model profile in.openai.gpt-5.6-luna. No silent global fallback or managed-vector-service addition. Quality and account access are unverified. | [Agent/model contract](../architecture/02_TECHNICAL_BLUEPRINT.md). UT-07–UT-10, CLOUD-01 |
+| D02 | 2026-10-08 | **Approved:** Target F3/D2: at least eight selected features with evidence of reliability on mostly structured/textual input. This is a target, not an achieved score. | [PRD metrics](../product/01_PRD.md). [quality gates](../testing/eval-model-quality.md) |
+| D03 | 2026-10-08 | **Approved:** Start with India IT controls for a domestic commercial-bank scenario. One bank profile per case keeps applicability and evidence scope clear. | [PRD audience](../product/01_PRD.md). AC-F03, AC-F05 |
+| D04 | 2026-10-08 | **Approved:** Support both a clearly fictional demo bank and authorized user uploads. Fictional documents must stay labeled. | [PRD inputs](../product/01_PRD.md). UT-01, BT-05 |
+| D05 | 2026-10-08 | **Approved:** Private document storage and AI processing must stay in AWS India. Mumbai is the application region. The selected inference profile may use Mumbai/Hyderabad only after verification. | [Security](../security/03_SECURITY_ACCESS.md). CLOUD-01, CLOUD-02 |
+| D06 | 2026-10-08 | **Approved:** Submission is 10 October 2026. The user corrected the earlier “within seven days” answer. Internal readiness targets 9 October evening IST. Exact organizer cutoff stays unverified. | [Delivery dates](../delivery/05_FEATURE_TICKETS.md) |
+| D07 | 2026-10-08 | **Approved:** Design cloud-native now. Teach AWS hosting/configuration step by step when the local workflow is ready. Local tests must work without AWS setup. | [Architecture](../architecture/02_TECHNICAL_BLUEPRINT.md). CT-01, CLOUD-01–CLOUD-05 |
+| D08 | 2026-10-08 | **Approved:** Use React/TypeScript/Vite, Python/FastAPI, API Gateway/Lambda, S3, DynamoDB, SQS, Cognito, and SAM. Local filesystem, SQLite, worker, and controlled-model adapters share the application contracts. | [Stack and flow](../architecture/02_TECHNICAL_BLUEPRINT.md). CT-01–CT-04 |
+| D09 | 2026-10-08 | **Approved:** One bounded agent, keyword/BM25 retrieval, application-validated actions, and pinned model profile in.openai.gpt-5.6-luna. Do not change to a global profile without a notice. Do not add a managed vector service. Quality and account access are unverified. | [Agent/model contract](../architecture/02_TECHNICAL_BLUEPRINT.md). UT-07–UT-10, CLOUD-01 |
 | D10 | 2026-10-08 | **Approved:** Use Cognito sign-in, own-case permissions, and India processing. Limits: 10 documents/case, 10 MB/file, and 100 extracted pages. Each run permits up to 20 obligations, 24 model calls, and a ten-minute job budget. One operator can review own findings. No independent dual approval is claimed. | [Security](../security/03_SECURITY_ACCESS.md). UT-02, UT-07–UT-12, CT-02–CT-04 |
-| D11 | 2026-10-08 | **Approved:** Default light reviewer workspace, Cases/Documents/Assessment/Changes flows, exact source inspection, separate human review, progress events, and Markdown/JSON exports. Reference screenshots: NONE — design risk, accepted by the user. | [Frontend](../frontend/04_FRONTEND_SPEC.md). BT-01–BT-05 |
-| D12 | 2026-10-08 | **Approved:** Separate nested Markdown specifications under ET-Hackathon/MVP, a start page, and durable decision history. The original style used Rishi Voice with 60% rawness. D18 replaces that style. Preserve literal contracts. | [Handbook](../guide-start-here.md). [project instructions](../../AGENTS.md) |
-| D13 | 2026-10-08 | **Approved:** Use at least 20 held-out cases. Require at least 90% assessment agreement. All citations must resolve and support their claims. Require zero false supported results on designated critical evidence/adversarial cases. These are our gates, not organiser-issued numerical thresholds. | [Evaluation plan](../testing/eval-model-quality.md). EVAL-01–EVAL-20 |
-| D14 | 2026-10-08 | **Approved:** T1–T9 build order and spec → failing test → implementation → refactor → verification loop. Persist documentation first. The present implementation request executes that documentation plan. Application tickets remain pending. | [Tickets](../delivery/05_FEATURE_TICKETS.md). [local checks](../testing/spec-local-test-plan.md) |
+| D11 | 2026-10-08 | **Approved:** Default light-color reviewer workspace with Cases/Documents/Assessment/Changes flows. Exact source inspection, human review in its own records, progress events, and Markdown/JSON exports. Reference screenshots: NONE — design risk, accepted by the user. | [Frontend](../frontend/04_FRONTEND_SPEC.md). BT-01–BT-05 |
+| D12 | 2026-10-08 | **Approved:** Different nested Markdown specifications under ET-Hackathon/MVP, a start page, and durable decision history. The original style used Rishi Voice with 60% rawness. D18 replaces that style. Keep exact contracts unchanged. | [Handbook](../guide-start-here.md). [project instructions](../../AGENTS.md) |
+| D13 | 2026-10-08 | **Approved:** Use at least 20 held-out cases. Make sure assessment agreement is at least 90%. All citations must resolve and support their claims. Make sure designated critical evidence/adversarial cases have zero false supported results. These are our gates, not organizer-issued numerical thresholds. | [Evaluation plan](../testing/eval-model-quality.md). EVAL-01–EVAL-20 |
+| D14 | 2026-10-08 | **Approved:** T1–T9 build order and spec → failing test → implementation → refactor → verification loop. Save documentation first. The implementation request at that time covered that documentation plan. Application tickets stay pending. | [Tickets](../delivery/05_FEATURE_TICKETS.md). [local checks](../testing/spec-local-test-plan.md) |
 
 ## D15 — Unverified facts and later configuration
 
@@ -35,29 +38,29 @@ Recorded 2026-10-08. These are not approvals or established facts.
 |---|---|---|
 | AWS account, permissions, model entitlement | User requested a later teaching walkthrough. Account readiness was not established | T8 |
 | Numerical cloud spending ceiling | User chose credits available / flexible. No amount confirmed | T8 resource/cost review |
-| Actual model quality | No live evaluation has run | T9 |
-| Regulatory corpus and genuine change pair | Source leads exist. The actual authoritative versioned files have not been acquired or validated in this workspace | T1 |
+| Actual model quality | No live evaluation was done | T9 |
+| Regulatory corpus and genuine change pair | Source leads exist. The necessary authoritative versions are not yet available or validated in this workspace | T1 |
 | Runtime/dependency versions and SDK support | Not installed or pinned for this project | T2. Live confirmation T8 |
-| Nonpaginated page-equivalent handling | Must be made explicit before claiming aggregate extraction limits are enforced | T2 |
+| Nonpaginated page-equivalent handling | Must be specified before a claim that the system applies aggregate extraction limits | T2 |
 | Retention, cleanup, and applicable provider terms | No automatic deletion schedule approved. Review before real private uploads | T8 |
-| Exact submission cutoff | User supplied the date only | Before submission. Internal target remains earlier |
+| Exact submission cutoff | User supplied the date only | Before submission. Internal target stays earlier |
 | Market demand and productivity improvement | No user research or measured baseline | Future discovery. Do not invent claims |
 
 ## D16 — Implementation clarifications preserved in the written specs
 
-Recorded 2026-10-08. **Status: implementation clarifications, not separately attributed user answers.**
+Recorded 2026-10-08. **Status: implementation clarifications, not individual answers from the user.**
 
 These make the approved evidence, retry, and review requirements testable:
 - A supported finding needs the required evidence elements. A policy assertion cannot prove an operational act.
-- Missing/conflicting evidence, partial fulfilment, and a demonstrated gap are distinct outcomes.
+- Missing/conflicting evidence, partial fulfillment, and a demonstrated gap are different outcomes.
 - A reviewer decision does not overwrite the AI assessment.
-- Each job freezes the bank profile, selected documents, extracted passages, and model/prompt versions.
-- Citations use the original PDF page, DOCX paragraph/table cell, TXT line, or CSV row. Every quote is checked.
+- Each job keeps the bank profile, selected documents, extracted passages, and model/prompt versions fixed.
+- Citations use the original PDF page, DOCX paragraph/table cell, TXT line, or CSV row. Each quote must pass a check against the source.
 - Model-call allowances are reserved before dispatch and persist through failures, retries, and uncertain outcomes.
-- The ten-minute processing clock begins at worker start and does not restart on redelivery. Queue wait is recorded separately.
-- Completed, partial, and failed jobs must reflect whether all selected obligations were accounted for.
-- Failed outputs and abstentions remain in the evaluation denominator.
-- Supporting UI text/status colours and technical field names are implementation defaults, not additional user-research findings.
+- The ten-minute processing clock begins at worker start and does not restart on redelivery. Code records queue wait independently.
+- Completed, partial, and failed job states must show whether the job accounted for all selected obligations.
+- Failed outputs and abstentions stay in the evaluation denominator.
+- UI support text, status colors, and technical field names are implementation defaults. They are not additional user-research findings.
 
 Affected documents: [architecture](../architecture/02_TECHNICAL_BLUEPRINT.md), [security](../security/03_SECURITY_ACCESS.md), [local tests](../testing/spec-local-test-plan.md), and [evaluation](../testing/eval-model-quality.md).
 
@@ -65,13 +68,17 @@ Affected documents: [architecture](../architecture/02_TECHNICAL_BLUEPRINT.md), [
 
 Recorded 2026-10-09. **Status: approved language change.**
 
-The user requested ASD-STE100 language, then identified the technical architecture as the target document. Rewrite the [technical blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md) with ASD-STE100 Issue 9 writing rules.
+The user requested ASD-STE100 language, then identified the technical architecture as the target document.
+Rewrite the [technical blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md) with ASD-STE100 Issue 9 writing rules.
 
-D17 replaced D12's Rishi Voice style for the technical blueprint only. Other documents retained that style until D18. The change preserved application scope, privacy rules, interfaces, identifiers, limits, quality gates, and approval history. It did not authorize application implementation or deployment.
+D17 replaced D12's Rishi Voice style for the technical blueprint only.
+Other documents kept that style until D18.
+The change kept application scope, privacy rules, interfaces, identifiers, limits, quality gates, and approval history unchanged.
+It did not authorize application implementation or deployment.
 
-Preserve the [original wording](../../runs/2026-10-09-technical-blueprint-before-ste100.txt). Record the language and preservation checks in the [verification record](../../runs/2026-10-09-ste100-verification.md). The rewrite does not establish independently verified compliance with the complete STE dictionary.
+Keep the [original wording](../../runs/2026-10-09-technical-blueprint-before-ste100.txt). Record the language and preservation checks in the [verification record](../../runs/2026-10-09-ste100-verification.md). The rewrite does not establish independently verified compliance with the complete STE dictionary.
 
-Affected specification: [Technical Blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md). Existing requirement, test, and ticket references remain unchanged.
+Affected specification: [Technical Blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md). Existing requirement, test, and ticket references stay unchanged.
 
 ## D18 — Project Markdown language
 
@@ -79,11 +86,11 @@ Recorded 2026-10-09. **Status: approved language change.**
 
 The user requested ASD-STE100 for all current ET-Hackathon Markdown files and all new projects.
 The user requested this rule in the global AGENTS.md.
-Do not rewrite other existing projects without a separate request.
+Do not rewrite other existing projects without another request.
 
 D18 replaces the Rishi Voice style in D12 for all project Markdown.
 It extends the language scope of D17 to the complete project.
-Other approved product decisions remain in effect.
+Other approved product decisions stay in effect.
 
 Apply the [writing guide](../guide-ste100-writing.md).
 Keep requirements, identifiers, numbers, links, commands, uncertainty, and approval history.
@@ -93,9 +100,9 @@ A sentence-length check does not prove full dictionary compliance.
 
 Global instruction file: `C:\Users\Be Flith Rich\AGENTS.md`.
 The global rule applies to new projects and this project.
-A different style requires an explicit document request from the user.
+Use a different style only if the user requests it for the document.
 
-The [backup archive](../../runs/2026-10-09-before-project-ste100.zip) preserves the 14 original Markdown files.
+The [backup archive](../../runs/2026-10-09-before-project-ste100.zip) keeps the 14 original Markdown files.
 The [source manifest](../../runs/2026-10-09-ste100-source-manifest.json) records their paths and hashes.
 The [verification record](../../runs/2026-10-09-project-ste100-verification.md) records the current checks.
 
@@ -107,7 +114,7 @@ The user selected The Regulatory Agent as the project name.
 This name replaces Banking Control Assurance.
 Use `the-regulatory-agent` as the manifest identifier.
 The README and PRD use the selected name.
-The application scope and requirements remain unchanged.
+The application scope and requirements stay unchanged.
 
 ## D20 - Current regulatory retrieval
 
@@ -118,26 +125,26 @@ The user requested only the necessary document corrections.
 The user chose to keep the provider undecided.
 
 The API supplies current public regulations, amendments, replacements, and withdrawals.
-Refresh before source selection.
-Revalidate selected versions before each current assessment.
+Get current source data before source selection.
+Do source verification again for selected versions before each current assessment.
 Record authority verification time and freshness status.
 Block a current assessment if verification fails or selected versions changed.
 
-Keep private bank content and model processing within India.
+Keep private bank content and model processing in India.
 The external regulatory API receives public source queries only.
-S3 retains bank files and immutable assessment evidence copies.
+S3 keeps bank files and fixed assessment evidence copies.
 It does not determine the current regulatory version.
 
 Keep assessment snapshots and historical citations unchanged.
 Compare new versions without overwriting previous findings.
-An independent scheduled monitor remains future work.
+An independent scheduled monitor is still future work.
 Current-source verification does not guarantee zero update delay.
 
 D20 changes the source-retrieval parts of D07–D09 and the PRD's manual regulatory loading process.
-The broader deferred crawling scope remains deferred.
-All model limits, document limits, quality gates, and review rules remain in effect.
+The broader crawling scope stays deferred.
+All model limits, document limits, quality gates, and review rules stay in effect.
 
-Provider endpoint, coverage, update delay, versions, terms, credentials, and pricing remain TBD.
+Provider endpoint, coverage, update delay, versions, terms, credentials, and pricing stay TBD.
 No regulatory API has been selected, implemented, or live-tested.
 
 Affected requirements: REQ-F01, REQ-F02, REQ-X01, REQ-X02, REQ-X03, REQ-X04, REQ-X05, and REQ-X06.
@@ -149,22 +156,171 @@ See the [blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md#current-regulatory
 Recorded 2026-10-09. **Status: approved document change.**
 
 The user requested ArchView diagrams for the full Regulatory Agent.
-The user explicitly excluded a crawler view and retained the external retrieval API.
-Provider selection remains undecided under D20.
+The user excluded a crawler view and kept the external retrieval API.
+Provider selection stays undecided under D20.
 
 The [blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md#architecture-views) links the system and assessment views.
 Each view has an editable JSON source and an HTML output.
 The ASD-STE100 skill reviewed the blueprint again.
-Its complete dictionary review remains unavailable.
+The complete dictionary was unavailable for that review.
 
 This decision changes architecture presentation and wording.
 It does not add application features or authorize deployment.
-All approved models, regions, limits, evidence rules, and access rules remain.
+All approved models, regions, limits, evidence rules, and access rules stay unchanged.
 See the [verification record](../../runs/2026-10-09-archview-verification.md).
+
+## D22 - Agent operation comparison
+
+Recorded 2026-10-10. **Status: proposed architecture.**
+
+The user requested an argument comparing one-agent and multi-agent operation.
+The requested direction includes different jobs, bounded ReAct loops, a master orchestrator, streaming tools, a registry, and governance.
+
+Saved the [comparison](../architecture/arch-agent-operation-comparison.md) and [operating proposal](../architecture/arch-multi-agent-proposal.md).
+The proposal assigns model coordination, authentication, and runtime enforcement to different components.
+It allocates 22 model calls to roles and two calls to a shared repair reserve.
+The total stays at 24 calls in the inherited 600-second deadline.
+
+The detailed roles, local time limits, and reserve policy are proposed allocations.
+Their adequacy stays unverified.
+No comparison evaluation was done.
+D09 and the approved specifications stay unchanged.
+The existing diagrams still describe the one-agent design.
+
+Affected requirements if adopted: REQ-F01 through REQ-F08 and REQ-X01 through REQ-X06.
+Proposed tests: MA-01 through MA-12.
+The proposal identifies the specification and diagram updates required before implementation.
+
+## D23 - AWS review and code orchestration
+
+Recorded 2026-10-10. **Status: review recommendation.**
+
+The user specified one operator and requested code for tasks with fixed rules.
+The review compares one agent with two specialists from the AWS hosting perspective.
+
+The [AWS review](../architecture/arch-agent-aws-review.md) recommends one bounded agent with orchestration in code.
+It keeps two specialists as an evaluation candidate.
+It removes the AI master from the recommendation because the present workflow has fixed dependencies.
+The [comparison](../architecture/arch-agent-operation-comparison.md) now contains five material decision points.
+
+D22's seven-role allocation stays in the review history. It is not an approved design.
+D09, the approved specifications, and the existing diagrams stay unchanged.
+The review added no user roles, tenant management, or individual agent services.
+
+IAM controls AWS operations. Application code controls case scope and tool access.
+Different agent names in one function do not give different IAM permissions.
+No measurements show a slowdown, privacy incident, or candidate quality advantage.
+The formal performance audit is UNVERIFIED because no runtime samples exist.
+
+Affected areas: REQ-X01 through REQ-X04, T2, T5, T8, and T9.
+Keep the 24-call allowance, 600-second worker deadline, and existing evaluation gates.
+See [the verification record](../../runs/2026-10-10-aws-agent-review-verification.md).
+
+## D24 - Reviewer outcomes and measured agent baseline
+
+Recorded 2026-10-10. **Status: approved direction with implementation definitions.**
+
+The user selected one agent as the baseline.
+The user selected different evaluations for retrieval and assessment, with a trace for each stage.
+The user selected the approved model for the first measured baseline.
+Later routing or a second reviewer must address observed failures through comparison tests.
+The user requested Approved, Edited, and Rejected reviewer ratios as the north star measurements.
+The user requested specification changes and tests during development.
+
+The [measurement contract](../testing/spec-measurement-contract.md) specifies the software behavior.
+The primary rate is approval without edits among finally reviewed items.
+Edited and rejected shares have different fields. Adoption including edits is secondary.
+Reports show review coverage, pending items, result coverage, failures, and unchecked obligations.
+
+The formulas, cohort boundaries, zero-denominator rules, and review-event semantics are implementation definitions for the requested direction.
+They are not independently measured results or new numerical quality targets.
+No acceptance-rate target or baseline value exists yet.
+
+Keep original findings and recommendations unchanged.
+Save review events in different records from the AI findings.
+Review revisions cannot increase the counted item total.
+Approval measures reviewer acceptance. It does not establish regulatory correctness or live control operation.
+The existing 90% agreement gate, 20-case minimum, citation requirements, and zero critical false-supported gate stay mandatory.
+
+Measure source coverage, passage retrieval, and assessment quality independently.
+Make a trace for each stage and attempt.
+Include safe identifiers, durations, usage, cost coverage, failures, and version references.
+Keep private text and authentication tokens out of operational telemetry.
+Keep the 24-call allowance, 600-second worker deadline, India-only processing, and external regulatory API boundary.
+
+D24 adopts the one-agent baseline from D09 and the code orchestration recommendation from D23.
+D22 stays unadopted proposal history.
+The three review outcomes replace the earlier Agree and Disagree interface wording.
+Request more evidence stays a pending action. It is not a final outcome.
+No routing service, autonomous second reviewer, extra user role, or cloud deployment is authorized by this specification update.
+
+Affected specifications: [PRD](../product/01_PRD.md), [blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md), [security](../security/03_SECURITY_ACCESS.md), [frontend](../frontend/04_FRONTEND_SPEC.md), and [tickets](../delivery/05_FEATURE_TICKETS.md).
+New requirements: REQ-X07 through REQ-X09, with AC-X07 through AC-X09.
+Development checks: UT-13 through UT-18, CT-06 through CT-08, BT-06, and CLOUD-06.
+Retrieval evaluations: RET-01 through RET-06. Keep EVAL-01 through EVAL-20.
+
+See the [local test plan](../testing/spec-local-test-plan.md) and [AI quality plan](../testing/eval-model-quality.md).
+Application tests and live evaluations stay pending until development.
+
+## D25 - Permanent documentation language rule
+
+Recorded 2026-10-10. **Status: approved language instruction.**
+
+The user repeated the requirement for ASD-STE100 documentation.
+The user requested a permanent rule in the local AGENTS.md.
+Apply the rule to all new documentation and each document change.
+Do not wait for another request to use STE.
+
+The [local instructions](../../AGENTS.md#documentation-language-always-use-asd-ste100) specify the mandatory writing and review steps.
+The [language guide](../guide-ste100-writing.md) records dictionary decisions and project technical terms.
+The complete official Issue 9 standard became available for this correction.
+Earlier records keep the review limits that applied on their dates.
+
+A sentence-length check alone is insufficient.
+Do a manual review of word meanings, parts of speech, technical terms, and applicable rules.
+Keep technical meaning, formulas, permissions, limits, identifiers, and approval history unchanged.
+
+This decision strengthens D18's language process.
+It does not change the approved application design or authorize deployment.
+See the [language review record](../../runs/2026-10-10-ste-language-correction-verification.md).
+
+## D26 - Foundation integration and remaining worktrees
+
+Date: 2026-10-10.
+Status: Approved worktree preparation and implementation clarification.
+
+The user requested integration of Session A and Session B through pull requests.
+The user then requested all remaining worktrees before further implementation.
+The private repository uses GitHub, with `main` as its integration branch.
+
+[PR #1](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/1) contains the final Session A foundation.
+[PR #2](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/2) contains Session B contracts, adapters, and combined test evidence.
+The combined offline checks passed 60 tests with the final Session A fixture revision.
+Historical Session B records keep their original results and fixture hashes.
+
+The [blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md#integrated-t2-limits) now records the implemented T2 extraction and retrieval defaults.
+These defaults do not establish live network behavior or file-parser enforcement.
+The approved model, India boundary, 24-call allowance, and 600-second deadline stay unchanged.
+
+T1 and T2 are incomplete against D24.
+The foundation worktree owns their remaining fixture and executable-contract additions for this phase.
+The integration session must review and merge these shared changes before T3.
+Other shared specification and contract changes still need integration-owner review.
+
+The [worktree guide](../delivery/guide-next-worktrees.md) gives eight task folders, branches, and dependency conditions.
+Its T5 and T6 folders replace the original Session A and Session B folder assignments for later development.
+This change keeps the ticket scope and dependency sequence unchanged.
+Provider selection stays with the user.
+Production deployment and external submission still need explicit authorization.
+
+Affected requirements: REQ-X06 through REQ-X09 and the shared contracts for REQ-F01 through REQ-F08.
+Affected tickets: T1 through T9.
+The [integration record](../../runs/2026-10-10-integration/verification.md) gives evidence and remaining limits.
 
 ## How to add a decision
 
-Append a new entry with:
+Add a new entry with:
+
 1. Stable ID and recorded date.
 2. Status: proposed, approved, implementation clarification, unverified, or superseded.
 3. The decision and its reason.
@@ -172,6 +328,10 @@ Append a new entry with:
 5. Affected specification, requirement IDs, tests, and tickets.
 6. Any decision it replaces.
 
-Update the authoritative spec in the same change. Keep superseded history and link to its replacement. Minor wording changes do not need new product approval. Changes to scope, privacy, budgets, quality gates, or external actions need approval.
+Update the controlling specification in the same change.
+Keep replaced history.
+Add a link to its replacement.
+Minor wording changes do not need new product approval.
+Changes to scope, privacy, budgets, quality gates, or external actions need approval.
 
 [Next: Local test plan](../testing/spec-local-test-plan.md)

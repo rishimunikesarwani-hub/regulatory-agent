@@ -1,0 +1,362 @@
+# Measurement contract
+
+Date: 2026-10-10.
+Decision: [D24](../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline).
+Status: Required for development. No application measurements exist yet.
+
+See the [language guide](../guide-ste100-writing.md#project-technical-terms) for technical terms.
+
+The user selected reviewer outcomes as the primary product measure.
+The user called this measure the "north star" metric.
+The user selected one agent, different evaluations for retrieval and assessment, and a trace for each stage.
+The formulas and event rules below specify the software behavior for that decision.
+The project has no baseline measurements yet.
+The user did not approve a numerical improvement target.
+
+## 1. Product metric and review unit
+
+Use approval without edits as the primary product measure.
+Show edited and rejected shares beside it.
+Also show adoption including edits.
+Show this secondary measure in a different field from approval without edits.
+These rates measure reviewer acceptance, not regulatory correctness or operational compliance.
+
+One review item contains the original finding and its primary recommendation for one selected obligation in one run.
+Keep this original item unchanged.
+Use finding_id to identify the item.
+Keep this ID unchanged.
+
+The recommendation can propose a correction, request evidence, or state that no correction is necessary.
+Do not split one recommendation into several items to increase the numerator.
+Do not include additional supporting observations in this metric denominator.
+
+A new assessment makes new items and keeps the old items unchanged.
+Do not apply an earlier review to a new run automatically.
+
+Use these final outcomes:
+
+| Label | Stored value | Meaning |
+|---|---|---|
+| Approved | approved | The reviewer accepts the original finding and recommendation without changes. |
+| Edited | edited | The reviewer saves changed content and accepts that revised finding or recommendation. |
+| Rejected | rejected | The reviewer does not accept the original item. A reason is necessary. |
+
+An edit must have changed review content and a reason.
+A comment alone is not an edit.
+Ignore outer whitespace and line-ending differences when you compare the content.
+Make sure each edit or rejection has a reason with at least one non-whitespace character.
+
+An unsaved draft is not a final review.
+After Request more evidence, the review stays pending unless the reviewer saves a final outcome.
+An item without a review is also pending.
+A later evidence request does not remove an existing final outcome.
+Use event_kind to identify final_review and evidence_request as different event types.
+Only final_review events can have approved, edited, or rejected as a final outcome.
+
+An AI needs_review status can have any final human outcome.
+Approval of an evidence request does not prove that the bank meets the requirement.
+Human outcomes do not overwrite AI findings or their original citations.
+
+If the reviewer accepts an existing revision, keep the Edited outcome.
+For an Approved outcome, the reviewer must accept the original AI item.
+This rule also applies after an earlier edit.
+
+Select a cohort by the time when recommendations became available for review.
+A cohort is the group of items used in one report.
+
+Record its filters, time zone, inclusive start time, exclusive end time, and report cutoff.
+Include items at the start time.
+Exclude items at the end time.
+The report cutoff is the latest time permitted for the saved review events.
+Use UTC for stored timestamps.
+Convert these timestamps to the display time zone.
+
+At the cutoff, use the latest saved final outcome for each eligible item.
+Give each saved event a server commit timestamp.
+This timestamp records when the server saved the event.
+
+For each finding_id, increase the revision number with each saved event.
+First, apply the cutoff to the server commit time.
+Then put the events in order by committed revision.
+Do not order final outcomes by a client timestamp.
+
+Include the client's last known revision in each save request.
+Reject a request that uses an old revision.
+Keep the user's draft for review.
+Return the original saved event for a repeated request with the same idempotency key and payload.
+Reject a changed payload with the same key.
+Do not count repeated requests or review revisions as additional items.
+
+Keep all review events.
+These events must let the system make the same report for an earlier cutoff.
+Keep a previous final outcome active while a revision is still an unsaved draft.
+Record metric_definition_version as d24-v1 with each report.
+Record model, prompt, and source filters for the cohort.
+Do not calculate a mean from percentages for different groups.
+
+A numerator is the top value in a ratio.
+A denominator is the bottom value.
+
+| Measure | Formula |
+|---|---|
+| Eligible items, G | All presented review items in the selected cohort, including valid items from partial jobs. |
+| Reviewed items, N | A + E + R. |
+| Approved items, A | Items whose latest final outcome is approved. Count each item once. |
+| Edited items, E | Items whose latest final outcome is edited. Count each item once. |
+| Rejected items, R | Items whose latest final outcome is rejected. Count each item once. |
+| Approval rate, primary measure | A / N. |
+| Edit rate | E / N. |
+| Rejection rate | R / N. |
+| Adoption including edits | (A + E) / N. |
+| Review coverage | N / G. |
+| Pending items | G - N. |
+
+Show rates as percentages with the counts and denominator.
+When a denominator is zero, store null.
+Show Not measured for that rate.
+Never show an empty cohort as 100% approval or 0% rejection.
+The three final-outcome shares sum to 100% before display rounding when N is greater than zero.
+
+Show rounding differences.
+Keep the stored counts unchanged.
+
+Show failed jobs, partial jobs, and unchecked obligations beside review coverage.
+Calculate result coverage for the run cohort.
+Divide selected obligations with a review item by all selected obligations in that cohort.
+
+Select the run cohort by job_admitted_at.
+Use an inclusive start and exclusive end before the report cutoff.
+Count each run_id and obligation_id pair once in the result-coverage denominator.
+Select review items by available_at. Select run measures by job_admitted_at.
+
+Show both time bases and date windows.
+The two groups can contain different items.
+Do not limit the run cohort to jobs that produced a recommendation.
+
+Include failed and partial runs in this denominator.
+Do not treat unchecked obligations as generated needs_review findings.
+These measures show missing outputs and items without a review.
+
+Show different result groups by model/prompt version, finding status, and reviewer.
+Put synthetic data results and authorized real data results in different groups.
+Use different groups for live results, controlled model simulations, and offline benchmark runs.
+Use existing reviewer identity. Do not add reviewer roles or tenant management.
+
+Numerical outcome targets and minimum product-report sample sizes are still undecided.
+They stay undecided until after the baseline measurements.
+Show small sample counts.
+Do not claim statistical significance from them.
+
+## 2. Retrieval evaluations
+
+Do different evaluations for provider source coverage, regulatory passage retrieval, and bank-evidence retrieval.
+S3 stores bank files. Application code extracts and searches their passages.
+The external API must receive no private case content.
+
+For each labeled query, identify source versions and required source spans.
+Identify relevant spans, irrelevant examples, and exceptions or conflicts that can change the result.
+Record query identity, retrieval settings, result limit, ranking scores, and context-selection settings.
+
+Add labels to original page, paragraph, or row spans before model execution.
+This keeps labels comparable when chunk boundaries change.
+Record annotation rules and whether a qualified domain expert reviewed the labels.
+Do not use the model under evaluation as the only source of reference labels.
+
+Use different cases for development and held-out evaluations.
+The existing minimum of 20 held-out assessment cases still applies.
+Use their labeled queries where applicable.
+Do not claim that 20 cases prove general coverage.
+
+| Measure | Required definition |
+|---|---|
+| Provider source coverage | Retrieved required source versions divided by labeled required source versions for the specified benchmark. Include required amendments and withdrawals. |
+| Required-span recall | Required spans covered by selected passages divided by all labeled required spans. Count each span once. Calculate regulatory and bank scores independently. |
+| Context relevance | Relevant selected passages divided by all selected passages under the saved annotation rules. Record counts and unknown labels. |
+| Decisive omissions | Count cases with a missing condition, exception, or conflicting record that can change the result. |
+| Retrieval time and volume | Duration, attempts, returned passage count, selected passage count, and selected text size for each query. |
+
+Remove duplicate passage IDs before you calculate the scores.
+Do not count the same required span twice when chunks overlap.
+A missing required span counts as a miss, including when retrieval returns no passages.
+
+When no required spans exist, show recall as not applicable.
+Do an additional test of correct abstention.
+An empty result has undefined context relevance.
+Do not give it a perfect score.
+
+Show unknown labels in their own category.
+Do not classify them as relevant.
+When relevance labels are incomplete, identify the ratio as a lower bound.
+Do not show it as a complete quality score.
+
+Save the counts for each query.
+Save the total numerator and denominator for each source class.
+Use different denominators for provider coverage and passage retrieval.
+Measure the context after selection.
+A measurement of only the larger candidate list is insufficient.
+Keep candidate and selected passage IDs for authorized fault analysis.
+
+Do runtime checks of source status, case scope, snapshot, evidence period, and reference validity.
+Record provider limitations, source URLs, authority verification time, effective dates, and amendment links.
+A fresh response timestamp or high relevance score does not prove complete coverage.
+
+Live requests usually do not have complete reference labels.
+Do not show their recall as measured.
+Live source verification and fixed historical benchmark results have different records.
+Block current assessments after failed source verification or changed selected versions under D20.
+Keep the specified limits on extra retrieval.
+Use needs_review when the evidence is still insufficient.
+
+## 3. Assessment quality and audit
+
+For each claim, keep its obligation element, cited passages, evidence period, and short assessment reason.
+Record the exceptions and conflicting evidence examined during the assessment.
+Do not claim that this record proves that no other conflict exists.
+
+Code does checks of schemas, identities, snapshots, quote matches, access, and limits.
+Human evaluation examines the conclusion and its support in context.
+An optional model judge can identify cases for review, but its agreement is not proof.
+Do not add an autonomous judge to the baseline.
+
+Keep these approved quality gates:
+
+- At least 90% primary assessment agreement on at least 20 held-out cases.
+- All required citations resolve and support their claims in context.
+- Zero false supported results on designated critical evidence and adversarial cases.
+
+Keep errors, malformed results, missing results, and unexpected abstentions in the assessment denominator.
+Show outcomes for each status and a confusion matrix.
+Show unsupported claims, invalid citations, and incorrect mappings in different categories.
+Also show decisive omissions, incorrect status, and poor remedies in different categories.
+
+Human approval is product feedback. It does not replace these reference-based quality gates.
+Record whether the same operator does the review.
+Do not claim an independent review.
+
+## 4. Runtime traces and cost
+
+Use run_id, job_id, snapshot_id, stage_id, and attempt_id to connect the records.
+Stage records include source verification, extraction, retrieval, context selection, model calls, validation, persistence, and review events.
+Use skipped or not_applicable when a stage uses an existing saved artifact.
+Connect that stage to the artifact's original extraction or verification record.
+
+Each attempt that starts must finish or have an unknown or interrupted status.
+
+Record the baseline model ID and model configuration version for each model attempt.
+Also record prompt, schema, extraction, chunking, retrieval, and application versions.
+Record the actual response model ID when available.
+Do not invent missing provider identifiers or usage fields.
+
+| Runtime measure | Required behavior |
+|---|---|
+| Duration | Record queue wait, worker elapsed time, each stage, each attempt, and time until the terminal result. |
+| Latency summary | Show sample count and p50/p95 for a specified comparable group. Use nearest-rank percentiles. Treat small samples as descriptive. |
+| Model use | Record input/output token counts and cache reads/writes when supplied. Record missing values as unknown. |
+| First token | Record only for a streaming model operation. Do not invent it for a non-streaming call. |
+| Attempts | Record dispatches, retries, throttles, schema failures, rejected actions, timeouts, and uncertain outcomes in different categories. |
+| Tools | Record regulatory and storage/retrieval tool attempts, duration, returned size, errors, and unused allowance. |
+| Job outcomes | Record completed, partial, failed, unchecked obligations, and stop reasons. |
+| Cost | Record currency, rate source/date, model/Region, pricing dimensions, and estimated or billed status. Include retries and applicable cache prices. |
+
+Use a monotonic clock to measure elapsed time in an active process.
+This clock does not move backward when the system clock changes.
+Use UTC timestamps to connect records across processes.
+Calculate the attempt error rate for the specified cohort.
+Divide known failed dispatched attempts by all dispatched attempts.
+Count each failed attempt once, even when it has several failure labels.
+
+Group error rates by model or tool operation.
+Use the applicable denominator for each group.
+Show uncertain attempts in their own category.
+Do not count them as successful attempts.
+
+Calculate the completed-job share against all admitted jobs in the cohort.
+Include pending, partial, and failed jobs in the denominator.
+Show queued and running counts at the cutoff.
+These counts show jobs for which observation time is incomplete.
+Keep the saved worker deadline unchanged across restarts.
+Do not add overlapping attempt durations to calculate wall-clock duration.
+
+Show model/tool stage time, queue wait, and operator review delay in different fields.
+Review delay is the time from recommendation availability to the first final review.
+It does not measure active reviewer effort.
+For nearest-rank p95, sort n durations.
+Select position ceil(0.95 * n), with positions starting at one.
+Use the same method with 0.50 for p50.
+
+This contract sets no p95 target or monetary cost limit.
+The 600-second deadline starts at worker start. It is not an end-to-end percentile target.
+
+Add the actual cost records for the specified scope.
+Give each logical charge an ID that does not change.
+Use a compatible measurement scope for that charge.
+Add only amounts with the same currency.
+Otherwise, show a total for each currency.
+
+Use the authoritative bill in place of its earlier estimate for the same charge.
+It does not add another charge.
+Keep the estimate history.
+Select one effective amount per charge at the report cutoff.
+Remove duplicate usage exports before you add the costs.
+Do not add the total system cost to component charges that it already includes.
+
+Show inference cost, total measured system cost, and human review effort in different fields.
+Show partial cost coverage when tool, infrastructure, or provider usage costs are unavailable.
+Unknown costs are not zero.
+Do not show a partial amount as the complete cost.
+
+Cost per correct assessment uses total measured evaluation cost divided by correct primary cases.
+Include the costs of failed and incorrect cases in its numerator.
+If no correct cases exist, show the ratio as undefined.
+Do not use live approval in place of a correctness label for this metric.
+
+AWS runtime metrics give additional data for application traces.
+They do not replace the saved dispatch counter or the quality records.
+The Bedrock Invocations metric excludes throttled and pre-processing rejected requests.
+Count every dispatched model request against the existing 24-call allowance, including uncertain attempts.
+Numeric token counts are permitted telemetry. Authentication tokens and private text are prohibited in operational logs.
+
+Keep source text, query text, review edits, and review reasons in authorized case evidence storage in India.
+Operational logs contain approved identifiers, numeric measurements, and safe error categories only.
+Do not keep hidden model reasoning in traces.
+
+Save the stage references and finalization data necessary for an audit before you show success.
+If that save fails, do not claim a completed assessment with the necessary audit records.
+Record an external metric-export failure safely.
+Retry the export without another model assessment.
+Keep event IDs unchanged during retries and queue redelivery.
+Use these IDs to prevent duplicate metric events.
+
+## 5. Development and controlled improvement
+
+Write failing tests before their application code.
+Include formulas, review history, retrieval scoring, traces, privacy, costs, and limits.
+Use controlled clocks, model responses, and usage records in local tests.
+These tests prove calculations and contracts, not live retrieval or model quality.
+Do authorized integration checks and live held-out evaluations independently.
+
+Start with one agent and the approved model in.openai.gpt-5.6-luna.
+Do not introduce automatic routing or an autonomous second reviewer in the baseline.
+First, measure failure causes and stages with high costs.
+
+Then do tests of routing or a second reviewer against a specified observed failure.
+Keep the cases, source versions, tool permissions, and aggregate job limits comparable.
+Keep candidate model and router versions fixed for the comparison.
+Make sure processing stays in India before private use.
+Make sure the candidate works with the tools before private use.
+If you use held-out answers to adjust a candidate, do not classify those cases as unused.
+
+Keep previous results, including failures.
+Record quality, reviewer outcomes where available, latency, and cost together.
+Select a candidate as the new baseline only after it passes the existing quality gates and shows the intended benefit.
+An experiment does not automatically replace the approved baseline.
+
+## 6. Source references
+
+- [AWS retrieval evaluation metrics](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-eval-llm-results.html).
+- [AWS runtime metrics](https://docs.aws.amazon.com/bedrock/latest/userguide/monitoring-runtime-metrics.html).
+- [AWS prompt routing limits](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-routing.html).
+- [Bedrock pricing](https://aws.amazon.com/bedrock/pricing/).
+
+The formulas and review rules above are project definitions.
+They do not claim that AWS supplies the product acceptance measurements.

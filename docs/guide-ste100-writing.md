@@ -1,47 +1,55 @@
-# ASD-STE100 document language
+# ASD-STE100 documentation language
 
-Date: 2026-10-09.
-Scope: All Markdown files in this project.
+Date: 2026-10-10.
+Scope: All project documentation, including new documents and changes.
 
-The user selected ASD-STE100 Simplified Technical English as the document language.
-The global AGENTS.md also applies this rule to new projects.
-Other existing projects need separate authorization for conversion.
+The user selected ASD-STE100 Simplified Technical English for project documentation.
+The [local instructions](../AGENTS.md#documentation-language-always-use-asd-ste100) make this a permanent project rule.
+This rule replaces the earlier Rishi Voice rule.
+Use this guide with the installed `asd-ste100` skill.
 
-## Reference and verification limit
+## Reference
 
-Use [ASD-STE100 Issue 9](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf), dated 2025-01-15, as the current reference.
-Consult the [official standard website](https://www.asd-ste100.org/) for later issues.
+Use [ASD-STE100 Issue 9](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf), dated 2025-01-15, for this review.
+The complete official PDF became available to this project on 2026-10-10.
+It includes the writing rules and dictionary.
+For standard information, see the [official website](https://www.asd-ste100.org/).
+An earlier request returned HTTP 403. That earlier limit no longer applies to this review.
 
-The official public description and indexed excerpts were available.
-The complete official PDF request returned HTTP 403.
-A complete dictionary and approved-meaning review was not possible.
+The reference copy is in the ignored `runs/private/` folder.
+Do not add the standard or its extracted text to the project repository.
+The standard has its own copyright conditions.
 
-The project uses STE writing rules.
-The report does not certify full compliance with the standard.
-Sentence-length checks do not establish dictionary or part-of-speech compliance.
+The text checker finds selected mechanical errors.
+It does not establish dictionary compliance or ASD approval.
+A manual review must also examine meanings, parts of speech, technical terms, and all applicable writing rules.
 
 ## Writing procedure
 
-1. Identify the instructions and descriptions.
-2. Keep instructions separate from descriptions.
-3. Use direct commands for instructions.
-4. Give one instruction in each sentence.
-5. Keep instruction sentences within 20 words.
-6. Keep descriptive sentences within 25 words.
-7. Use active voice where the actor is known.
-8. Keep one topic in each paragraph.
-9. Use the same term for the same item.
-10. Explain a necessary technical term before further use.
-11. Use dictionary-approved words or permitted technical nouns and technical verbs.
-12. Do not use metaphors or rhetorical questions.
-13. Do not use semicolons in new prose.
-14. Preserve the source meaning.
+1. Read the complete source before you change it.
+2. Identify instructions, descriptions, tables, and exact text.
+3. Put instructions and descriptions in different paragraphs.
+4. Use direct commands for instructions.
+5. Give one instruction in each sentence, unless the actions occur at the same time.
+6. Keep instruction sentences at 20 words or fewer.
+7. Keep descriptive sentences at 25 words or fewer.
+8. Use the active voice when the actor is known.
+9. Keep one topic and no more than six sentences in each paragraph.
+10. Use the same term for the same item.
+11. Explain each necessary technical term at its first use or link to this guide.
+12. Use dictionary words only with their approved meanings and parts of speech.
+13. Use technical nouns and technical verbs only as permitted by the standard.
+14. Use American English spelling in ordinary prose.
+15. Keep articles when the grammar needs them.
+16. Do not use metaphors, rhetorical questions, contractions, or semicolons in new prose.
+17. Keep the source meaning unchanged.
 
-Do not invent an actor to remove passive voice.
+Do not invent an actor to remove the passive voice.
 Do not change a recommendation into an obligation.
 Keep all conditions, exceptions, prohibitions, and uncertainty.
+Do not use a technical-term exception for an ordinary word with an unapproved meaning.
 
-## Text that must remain exact
+## Exact text
 
 Keep these items unchanged when exact text is necessary:
 
@@ -50,62 +58,135 @@ Keep these items unchanged when exact text is necessary:
 - Product names, model IDs, filenames, paths, and links.
 - Numbers, units, dates, limits, and hashes.
 - Source quotations and third-party text.
-- Historic result values and approval records.
+- Historical results and approval records.
 
 Identify exact source text as a quotation.
-Do not use exceptions to avoid a language review of ordinary prose.
+Do a language review of all ordinary prose around exact text.
+Do not change a historical result to match a later result.
 
-## Project terms
+## Dictionary decisions
 
-These definitions control project usage.
-They do not assert that the official dictionary approves each term.
+The page numbers below are PDF page numbers, starting at one.
+They refer to the official Issue 9 PDF with 434 pages.
+These decisions apply to ordinary prose. Fixed identifiers and valid technical terms need their own review.
 
-| Technical term | Project meaning |
-|---|---|
-| Adapter | Code that connects an application interface to a local resource or external service. |
-| Agent | A component that selects permitted tool actions to complete a task. |
-| API | Application programming interface. A defined connection through which software exchanges requests and responses. |
-| Applicability | The conditions that determine whether a requirement applies to a bank or assessment. |
-| Assessment | A comparison of selected requirements, controls, and supplied evidence. |
-| Bounded agent | An agent with explicit limits on tools, data, calls, and time. |
-| Case | A bank profile and the documents, assessments, and review records related to it. |
-| Citation | A reference to the exact source passage that supports a statement. |
-| Control | A bank policy or process that addresses a requirement. |
-| Evidence | Supplied information used to support or challenge an assessment. |
-| Evidence gap | Missing or insufficient information needed for an assessment. |
-| Fixture | Fixed test data with a known purpose and expected result. |
-| Frontend | The browser interface that the user operates. |
-| Hash | A computed value used to identify file content and detect a content change. |
-| Held-out case | An evaluation case not used to develop or tune the model instructions. |
-| IAM | AWS Identity and Access Management. The AWS service for identities and access permissions. |
-| Idempotency key | An identifier for repeated requests that must have one logical effect. |
-| Inference | Processing by an AI model to produce an output. |
-| Integration | The connection and operation of separate application components or services. |
-| Job | A recorded unit of background work with progress and a final state. |
-| Loopback | A network connection from a computer to that same computer. |
-| Model profile | A service configuration that selects the permitted model and processing destinations. |
-| Obligation | A specific regulatory requirement and its conditions. |
-| Operational evidence | Records that show whether an actual activity occurred within the required scope and period. |
-| PKCE | Proof Key for Code Exchange. A method that protects the sign-in code exchange. |
-| Prompt | Instructions and context supplied to an AI model. |
-| Remediation | A proposed correction for an identified gap. |
-| Repository | The project's stored source files and related records. |
-| Retrieval | Selection of relevant passages from permitted documents. |
-| Schema | The specified structure and constraints of data. |
-| Snapshot | A fixed copy of the selected assessment inputs and versions. |
-| Token | A unit of model input or output, or an identity credential where the context explicitly states authentication. |
+| Source wording | Project wording | Reason and PDF page |
+|---|---|---|
+| main product measure | primary product measure | MAIN is not approved as an adjective. PRIMARY is an alternative. Page 145. |
+| check, as a verb | do a check or make sure | CHECK is approved as a noun. Pages 188-189. |
+| test, as a verb | do a test or do the tests | TEST is approved as a noun. Pages 400-401. |
+| verify | make sure | VERIFY is not an approved verb. Page 422. |
+| retain | keep | RETAIN is not an approved verb. Page 362. |
+| preserve, meaning keep unchanged | keep unchanged | The dictionary entry concerns PRESERVATION of materials. Page 338. |
+| ensure | make sure | ENSURE is not approved. Page 233. |
+| require, as a verb | must, necessary, or a direct command | Select wording that keeps the original obligation. Page 360. |
+| distinct item count | count each item once | Keep the calculation clear. DISTINCT is not approved. Page 221. |
+| freeze the evaluation data | keep the evaluation data unchanged | FREEZE has a temperature meaning. Page 257. |
+| report, as a verb | record, show, or give a report | REPORT is approved as a noun. Page 359. |
+| create | make | CREATE is not approved. Page 205. |
+| run, as an ordinary verb | do, start, or operate | Select the verb that keeps the action correct. Page 365. |
+| remain | stay | REMAIN is not approved. REMAINING is an approved adjective. Page 357. |
+| separate or separately | different, independently, or different records | Select the wording from the sentence context. Page 373. |
 
-Product names such as S3, Cognito, DynamoDB, SQS, Lambda, FastAPI, and React retain their official spelling.
-Use “model token” or “access token” when “token” alone is ambiguous.
+Do not replace words without a review of the sentence meaning.
+For example, a fixed UI label or metric name can need its original spelling.
 
-## Verification procedure
+## Project technical terms
 
-1. Compare the revised text with the preserved source.
-2. Make sure all technical requirements and conditions remain.
-3. Make sure all exact identifiers and numeric limits remain.
-4. Make sure local links and section anchors resolve.
+STE permits technical nouns for a specified subject.
+The terms below name software, AI, statistics, or bank assurance concepts used by the approved specifications.
+They are not a list of ordinary words that the project can use without dictionary review.
+Use them only with these meanings.
+
+| Technical term | Subject | Project meaning |
+|---|---|---|
+| Branch | Git | A named sequence of recorded file versions. |
+| Commit | Git | A recorded version of selected files. |
+| Fast-forward merge | Git | A branch update to a later commit without combining different development histories. |
+| Integration owner | Project delivery | The person or session responsible for shared changes and their inclusion in main. |
+| Persistence | Software | Storage that keeps application records after a process restart. |
+| Port | Networking | A numbered network connection point. |
+| Pull request | GitHub | A request to review and combine branch changes. |
+| Virtual environment | Python | A local Python installation with the project's dependency versions. |
+| Worktree | Git | A project folder with its own Git branch. |
+| Abstention | Evaluation | A model decision not to give an assessment. |
+| Adapter | Software | Code that connects an application interface to another service or resource. |
+| AI agent | AI | A software component that selects permitted tool actions to complete a task. |
+| API | Software | Application programming interface. A connection through which software exchanges requests and responses. |
+| Applicability | Bank assurance | The conditions that determine whether a requirement applies to the assessment. |
+| Assessment | Bank assurance | A comparison of selected requirements, controls, and evidence. |
+| Attempt | Software | One recorded start of a tool operation or model call. A retry is another attempt. |
+| Audit record | Bank assurance | A saved record that lets an authorized person examine an action and its result. |
+| Benchmark | Evaluation | A specified set of cases and measures for a comparison. |
+| Bounded agent | AI | An AI agent with specified limits on tools, data, calls, and time. |
+| Cache | Software | Saved data that a later operation can use again. |
+| Case | Bank assurance | A bank profile and its related documents, assessments, and review records. |
+| Chunk | Retrieval | A part of a document used for search or model context. |
+| Citation | Bank assurance | A reference to the source passage that supports a statement. |
+| Cohort | Statistics | A group selected for a report by specified filters and dates. |
+| Confusion matrix | Evaluation | A table of reference labels and model labels that shows correct and incorrect classifications. |
+| Context | AI | Information supplied to a model for the current task. |
+| Context relevance | Evaluation | The share of selected passages that have a relevant label under the saved annotation rules. |
+| Claim support | Bank assurance | The relationship between a claim and the cited evidence that supports it. |
+| Control | Bank assurance | A bank policy or process that addresses a requirement. |
+| Evidence | Bank assurance | Information used to support or challenge an assessment. |
+| Evidence gap | Bank assurance | Missing or insufficient information necessary for an assessment. |
+| Final outcome | Product measurement | The saved approved, edited, or rejected reviewer decision for an item. |
+| Fixture | Software tests | Fixed test data with a specified purpose and result. |
+| Frontend | Software | The browser interface that the user operates. |
+| Hash | Software | A calculated value used to identify file content and find a content change. |
+| Held-out case | Evaluation | An evaluation case not used to develop or adjust the model instructions. |
+| IAM | AWS | AWS Identity and Access Management. The service for identities and access permissions. |
+| Idempotency key | Software | An identifier for repeated requests that must have one logical effect. |
+| Idempotency | Software | The property that repeated requests with the same key and payload have one logical effect. |
+| Inference | AI | Processing by an AI model to produce an output. |
+| Integration | Software | The connection and operation of different application components or services. |
+| Job | Software | A recorded unit of background work with progress and a final state. |
+| Live evaluation | Evaluation | An evaluation that calls the actual model or service instead of a controlled test response. |
+| Loopback | Networks | A network connection from a computer to that same computer. |
+| Model judge | Evaluation | A model used to assess another model's output. Its judgment can be incorrect. |
+| Model profile | AWS | A service configuration that selects the permitted model and processing destinations. |
+| Monotonic clock | Software | A clock for elapsed time that does not move backward after a system clock adjustment. |
+| Obligation | Bank assurance | A specified regulatory requirement and its conditions. |
+| Operational evidence | Bank assurance | Records that show whether an actual activity occurred in the necessary scope and period. |
+| Original AI item | Product measurement | The unchanged finding and primary recommendation that the AI produced. |
+| Percentile | Statistics | A position in a sorted set of measurements. The measurement contract specifies the calculation. |
+| PKCE | Security | Proof Key for Code Exchange. A method that protects the sign-in code exchange. |
+| Prompt | AI | Instructions and context supplied to an AI model. |
+| ReAct | AI | A pattern that repeats assessment, tool selection, tool execution, and observation until a stop condition applies. |
+| Recall | Evaluation | The share of required source spans covered by the selected passages. |
+| Regulatory evidence | Bank assurance | Source text and metadata that support the regulatory part of an assessment. |
+| Remediation | Bank assurance | A proposed correction for an identified gap. |
+| Repository | Software | The project's stored source files and related records. |
+| Retrieval | AI | Selection of passages from permitted documents for the task. |
+| Review item | Product measurement | One original finding and its primary recommendation for one selected obligation in one assessment run. |
+| Run | Software | One recorded execution of an assessment or evaluation. Use this term as a noun. |
+| Schema | Software | The specified structure and constraints of data. |
+| Snapshot | Software | A fixed copy of selected assessment inputs and versions. |
+| Source span | Retrieval | A labeled part of an original page, paragraph, or row. Its identity does not depend on chunk boundaries. |
+| Stage trace | Software | Records that connect the attempts and results in one stage. |
+| Telemetry | Software | Recorded runtime measurements and event data. |
+| Token | AI or security | A unit of model text, or an identity credential when the text specifies authentication. |
+| Trace | Software | Connected records of the stages and attempts in one run. |
+| Unexpected abstention | Evaluation | A model decision not to give an assessment when the labeled case needs one. |
+
+Product names such as S3, Cognito, DynamoDB, SQS, Lambda, FastAPI, and React keep their official spelling.
+Use "model token" or "access token" when "token" alone is not clear.
+The user's term "north star" means the primary product measure: approval without edits.
+Use the metric names and formulas from the [measurement contract](testing/spec-measurement-contract.md).
+
+## Review procedure
+
+1. Compare the changed text with the saved source.
+2. Make sure all technical requirements and conditions stay unchanged.
+3. Make sure all exact identifiers and numeric limits stay unchanged.
+4. Make sure local links and section anchors have the correct targets.
 5. Do the sentence-length and punctuation checks.
-6. Review the technical terms and their use.
-7. Record the checks and their limitations.
+6. Do a dictionary review of uncertain words, meanings, and parts of speech.
+7. Do a review of technical terms in their subject context.
+8. Make sure the text follows all applicable writing rules.
+9. Record the checks, corrected errors, exact-text exceptions, and review limits.
 
-Read [the current verification record](../runs/2026-10-09-project-ste100-verification.md).
+Keep the review record in a different file from the user document.
+Do not claim full compliance from a clean script result.
+Earlier verification records describe their own dates and review limits.

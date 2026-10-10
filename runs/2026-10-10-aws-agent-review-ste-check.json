@@ -1,0 +1,74 @@
+{
+  "docs\\architecture\\arch-agent-aws-review.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 195,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "docs\\architecture\\arch-agent-operation-comparison.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 54,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "docs\\architecture\\arch-multi-agent-proposal.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 286,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-10-aws-agent-review-verification.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 48,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-10-aws-agent-review-audit\\audit.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 260,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-10-aws-agent-review-log-extract.txt": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 29,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}
