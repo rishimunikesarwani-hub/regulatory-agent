@@ -1,112 +1,346 @@
 # Local test plan
 
-> Status: Approved workflow and acceptance requirements. Implementation checklist saved 2026-10-08.
-> Software tests executed so far: **none**. No application or test runner exists yet.
-> Related: [tickets](../delivery/05_FEATURE_TICKETS.md), [architecture](../architecture/02_TECHNICAL_BLUEPRINT.md), [AI quality plan](eval-model-quality.md).
+> Status: Approved workflow and acceptance requirements. Measurement test plans updated 2026-10-10 under D24.
+> Completed software tests: **none**. The application and its test runner do not exist.
+> Related: [tickets](../delivery/05_FEATURE_TICKETS.md), [architecture](../architecture/02_TECHNICAL_BLUEPRINT.md), [AI quality plan](eval-model-quality.md), [measurement contract](spec-measurement-contract.md).
 
-Tests must detect errors that affect review decisions. A returned value alone does not prove correct behavior. For example, a finding can cite the wrong document version.
+Tests must find errors that can change review decisions.
+A response value alone is not sufficient evidence of correct behavior.
+For example, a finding can have a citation for an incorrect document version.
 
 ## 1. Development loop
 
-For each small behaviour:
-1. Name the requirement and acceptance case.
-2. Write a test that fails for the intended missing behaviour.
-3. Record the failure before implementing the behaviour.
-4. Implement the smallest change that satisfies the contract.
-5. Run the relevant test and then the affected regression checks.
-6. Refactor the code. Keep the required tests passing.
-7. Record results and remaining limitations in runs/ and LOG.md.
+Use these steps for each small change in behavior:
 
-T2 must define one runnable local check command and record exact versions. No command is advertised as available before it exists.
+1. Record the requirement and acceptance case.
+2. Write a test that fails because the specified behavior is missing.
+3. Record the test failure before you write the code for that behavior.
+4. Write the smallest code change that meets the contract.
+5. Do the applicable test.
+6. Then, do the affected regression checks.
+7. Change the code structure without changes to its behavior.
+8. Make sure that the necessary tests pass.
+9. Record results and remaining limitations in runs/ and LOG.md.
+
+T2 must supply one command for the local checks.
+T2 must also record the full version identifiers.
+Do not state that a command is available before that command exists.
 
 ## 2. Local boundaries
 
-- Run domain tests with controlled inputs and explicit expected outcomes.
-- Test real local filesystem/SQLite adapters through the same contracts as AWS adapters.
-- Stub AWS requests/responses for adapter contract checks. Do not interpret a stub as proof of real IAM or service behaviour.
-- Use controlled model responses to cover malformed output, tool selection, retries, and evidence validation.
-- Use controlled regulatory API responses. Default tests must not contact the provider.
-- Browser tests may contact loopback services. Default tests block external network calls and need no AWS credentials.
-- Verify the network guard inside actual test workers, not merely in a parent process.
-- Use fictional documents only. Private uploads are never fixtures or CI artifacts.
+- Do domain tests with controlled inputs and specified expected outcomes.
+- Do tests of actual local filesystem/SQLite adapters with the same contracts as AWS adapters.
+- Use simulated AWS requests/responses for adapter contract checks.
+- Do not use a simulated response as proof of actual IAM or service behavior.
+- Use controlled model responses for malformed output, tool selection, retries, and evidence validation.
+- Use controlled regulatory API responses.
+  Default tests must not contact the provider.
+- Browser tests can contact loopback services. Default tests prevent external network calls. AWS credentials are not necessary for default tests.
+- Make sure that the network guard operates in the actual test workers, not only in a parent process.
+- Use fictional documents only.
+  Do not use private uploads as fixtures or CI artifacts.
 
-**Plain explanation:** Tests give the application known problems. The results show whether the application follows the rules. Live AI quality needs a separate evaluation.
+**Plain explanation:** Tests give the application known problems.
+The results show whether the application follows the rules.
+A different evaluation measures live AI quality.
 
 ## 3. Domain tests
 
 | Test ID | Requirement / acceptance | Scenario and required result |
 |---|---|---|
-| UT-01 | REQ-F01 / AC-F01 | Each supported format extracts text with stable source/version IDs and usable source locations. Synthetic labels survive. |
-| UT-02 | REQ-F01, REQ-X01 / AC-X01 | Unsupported, empty, corrupt, encrypted, scanned/unreadable, or oversized files are rejected. Document/page/scope limits never silently truncate. |
-| UT-03 | REQ-F03 / AC-F03 | Obligation extraction retains conditions, exceptions, applicability, and citations. Absent fields are unknown. |
-| UT-04 | REQ-F04, REQ-F05 / AC-F04, AC-F05 | Documented controls retain their stated scope. A merely similar control is not sufficient coverage. |
-| UT-05 | REQ-F06, REQ-F07 / AC-F06, AC-F07 | Policy-only, missing, conflicting, and mixed operational evidence produce the correct distinct statuses. No unsupported pass. |
-| UT-06 | REQ-F08 / AC-F08 | A proposed remedy/evidence request refers to the actual finding and obligation. No action on bank systems occurs. |
-| UT-07 | REQ-X01 / AC-X01 | Untrusted document instructions and unknown tool actions cannot expand scope or execute capabilities. |
-| UT-08 | REQ-X03 / AC-X03 | An invented quote, a valid passage from a different version, or a quote from another case fails validation. |
-| UT-09 | REQ-X01 / AC-X01 | Invalid JSON, rejected actions, timeouts, and uncertain dispatched calls consume the persisted allowance. Call 25 cannot be dispatched. |
-| UT-10 | REQ-F01, REQ-F02, REQ-X03 / AC-F01, AC-F02, AC-X03 | A substantive change selects affected obligations/controls. Cosmetic wording changes do not automatically change the obligation. Snapshots remain immutable. Amendments and withdrawals create new version metadata. |
-| UT-11 | REQ-X04 / AC-X04 | Deadline exhaustion preserves completed findings and lists unchecked work. Partial/failed jobs never masquerade as completed. |
-| UT-12 | REQ-X05 / AC-X05 | Human disposition is stored separately. Disagreeing never erases the original finding or source history. |
+| UT-01 | REQ-F01 / AC-F01 | Text extraction from each supported format keeps stable source/version IDs and usable source locations. The extraction process keeps the Synthetic labels. |
+| UT-02 | REQ-F01, REQ-X01 / AC-X01 | The application rejects unsupported, empty, corrupt, encrypted, scanned/unreadable, or oversized files. Document/page/scope limits must not cause truncation without notice. |
+| UT-03 | REQ-F03 / AC-F03 | Obligation extraction keeps conditions, exceptions, applicability, and citations. Missing fields are unknown. |
+| UT-04 | REQ-F04, REQ-F05 / AC-F04, AC-F05 | Documented controls keep their specified scope. A similar control alone is not sufficient coverage. |
+| UT-05 | REQ-F06, REQ-F07 / AC-F06, AC-F07 | Policy-only, missing, conflicting, and mixed operational evidence must give their specified statuses. Evidence that is not sufficient cannot give a pass result. |
+| UT-06 | REQ-F08 / AC-F08 | A proposed correction or evidence request refers to the actual finding and obligation. No action on bank systems occurs. |
+| UT-07 | REQ-X01 / AC-X01 | Untrusted document instructions and unknown tool actions cannot increase scope or cause capability execution. |
+| UT-08 | REQ-X03 / AC-X03 | Validation rejects an invented quotation, a correct passage from a different version, or a quotation from a different case. |
+| UT-09 | REQ-X01 / AC-X01 | Sent calls with invalid JSON, rejected actions, timeouts, or unknown outcomes count against the saved allowance. The application cannot send call 25. |
+| UT-10 | REQ-F01, REQ-F02, REQ-X03 / AC-F01, AC-F02, AC-X03 | A change to source meaning selects affected obligations/controls. Wording changes alone do not automatically change the obligation. Snapshots must stay unchanged. Amendments and withdrawals cause new version metadata. |
+| UT-11 | REQ-X04 / AC-X04 | At the deadline, the application keeps completed findings and records unchecked work. Partial/failed jobs cannot have completed status. |
+| UT-12 | REQ-X05 / AC-X05 | The application stores human decisions independently. A different human decision must not remove the original finding or source history. |
+| UT-13 | REQ-X07 / AC-X07 | Outcome rates count each review item once in the correct cohort. Pending items, partial jobs, and zero denominators keep their specified meanings. |
+| UT-14 | REQ-X05, REQ-X07 / AC-X05, AC-X07 | Review revisions keep history and original findings. Edited content and rejection reasons are necessary. Simultaneous or repeated requests cannot increase item counts. |
+| UT-15 | REQ-X09 / AC-X09 | Retrieval scores use labeled source spans and selected passages. Duplicate identities, chunk overlap, empty results, and source classes give the specified counts. |
+| UT-16 | REQ-X01, REQ-X04, REQ-X08 / AC-X01, AC-X04, AC-X08 | Stage traces keep timers, attempt states, and limits. Retries and restarts cannot renew the 24-call allowance or 600-second worker deadline. |
+| UT-17 | REQ-X08, REQ-X09 / AC-X08, AC-X09 | Usage, cost, and percentile calculations keep missing values. Cost per correct assessment includes failed and incorrect cases. |
+| UT-18 | REQ-X02, REQ-X03, REQ-X08 / AC-X02, AC-X03, AC-X08 | Operational telemetry contains no private content. Interrupted attempts keep specified states. A success result is not permitted without saved audit records. |
+
+### 3.1 Required measurement fixtures
+
+Before you write the code for each behavior, write a test that fails because that behavior is missing.
+Use controlled clocks, saved events, model responses, and usage records.
+A fixture is fixed input data for a test.
+These fixtures are for tests of application contracts.
+They do not give evidence of live model quality or provider coverage.
+The [measurement contract](spec-measurement-contract.md) controls formulas, event meanings, and missing values.
+
+**UT-13: outcome calculations and cohorts.**
+
+- Use G = 12, A = 6, E = 3, and R = 1.
+- Make sure that N = 10 and that two items are pending.
+- Make sure that approval is 60%, edits are 30%, rejection is 10%, adoption is 90%, and review coverage is 10/12.
+- Make sure that the sum of stored outcome shares is one before display rounding.
+- For G = 0, make sure that rates are null and their labels show Not measured.
+- For G = 5 and N = 0, make sure that review coverage is zero and five items are pending.
+- When N = 0, keep outcome shares null.
+- Select cohort items by the time when recommendations became available.
+- Include the start time in that selection.
+- Do not include the end time in that selection.
+- Use the latest final review saved by the report cutoff.
+- Do checks of UTC storage, display time zones, and saved filters.
+- Make sure that saved events can reproduce reports for earlier cutoffs.
+- Make sure that metric_definition_version = d24-v1.
+- Do checks of the saved model, prompt, and source cohort filters.
+- Before you calculate rates, add the counts.
+- Do not calculate the mean of percentages from different groups.
+- Include valid presented items from partial jobs in G.
+- With seven review items for ten selected obligations, make sure that result coverage is 7/10.
+- Include selected obligations from failed and partial runs in that denominator.
+- Select run cohorts by job_admitted_at, even when a run gave no recommendation.
+- Admit two runs with 20 obligations each.
+- Give 20 review items from one run.
+- Set the other run to failed.
+- Make sure that result coverage is 20/40.
+- Show the failed run beside the review-item cohort.
+- Use different groups for unchecked obligations and needs_review findings that the model gives.
+- Use different report groups for model/prompt versions, statuses, reviewers, and data modes.
+
+**UT-14: review events and revisions.**
+
+- Reject an Edited submission without changed content or a nonblank reason.
+- During the changed-content check, ignore outer whitespace and line-ending differences.
+- Reject a Rejected submission without a nonblank reason.
+- Until the reviewer selects and saves a final outcome, keep comments, evidence requests, and unsaved drafts pending.
+- While a revision is an unsaved draft, keep the previous final outcome.
+- After a later evidence request, keep an existing final outcome.
+- Do not include evidence_request events in final-outcome selection, even when their revision is newer.
+- If the reviewer accepts an existing revision, keep the Edited outcome.
+- Count Approved only when the reviewer accepts the original AI item.
+- Apply this rule after an earlier edit.
+- Make sure that the three report cutoffs give Approved, then Edited, then Rejected.
+- Keep all saved events and the original finding, recommendation, and citations.
+- Send duplicate save requests at the same time.
+- Repeat the request after restart.
+- Make sure that these requests give one saved logical change and one counted finding_id.
+- Save different revisions at the same time against the same expected revision.
+- Accept one revision.
+- Reject the write with the previous expected revision.
+- Use server commit time for report cutoffs.
+- Use increasing per-item revision numbers to put committed events in order.
+- Give two committed revisions the same timestamp.
+- Make sure that the larger revision gives the latest final outcome.
+- After a newer revision, retry a delayed duplicate.
+- Return its original event without a change to the newer outcome.
+- Reject a changed payload with an existing idempotency key.
+- If a revision conflict occurs, keep the user's draft.
+- Make a new run.
+- Make sure that its findings have no review outcomes from previous runs.
+- Make sure that every final human outcome is permitted for an AI needs_review finding.
+- Approval of an evidence request must not change the AI assessment to supported.
+
+**UT-15: retrieval calculations.**
+
+- Use the fixed spans and examples in [the retrieval evaluation plan](eval-model-quality.md#6-separate-retrieval-evaluations).
+- Calculate scores for regulatory passages and bank-evidence passages independently.
+- Use different fields for provider source-version counts and passage counts.
+- Before you calculate scores, remove duplicate passage identities.
+- Count each required source span once, including when chunks overlap.
+- Calculate the score from the selected context.
+- Do not use all retrieved candidates for that score.
+- Keep unknown relevance labels in the selected-passage denominator.
+- Show the count of unknown labels.
+- If relevance labels are incomplete, identify the score as a lower bound.
+- Do not identify it as a full score.
+- When the result is empty, count a missing required span as a miss.
+- With no required spans, give recall the not applicable label.
+- Do the abstention check independently.
+- With no selected passages, give context relevance the undefined label.
+- Keep wrong-case, wrong-version, and invalid-reference failures independent of text similarity.
+
+**UT-16: traces, time, and limits.**
+
+- Connect each stage and attempt through run_id, job_id, snapshot_id, stage_id, and attempt_id.
+- Include verification, extraction, retrieval, context selection, model calls, validation, persistence, and review events.
+- Link a skipped or not_applicable stage to its saved artifact and original processing record.
+- Make sure that a monotonic clock measures elapsed time during a process.
+- Make sure that UTC timestamps can connect records across processes.
+- Change the test clock during processing.
+- Make sure that elapsed durations do not become negative.
+- Use different measurements for queue wait, worker time, and operator review delay.
+- Measure review delay from recommendation availability to its first final outcome.
+- Later revisions must not change that delay.
+- Do not identify review delay as measured active review effort.
+- After restart and queue redelivery, keep the saved worker deadline.
+- Do not add durations of simultaneous attempts to calculate wall-clock time.
+- Count retries, timeouts, unknown dispatch outcomes, and model actions rejected by validation against the saved allowance.
+- Do checks of throttled and provider-rejected dispatched requests, even when provider invocation metrics do not include them.
+- Prevent dispatch 25.
+- At the deadline, keep completed findings.
+- Record first-token time only for streaming model operations.
+
+**UT-17: usage and cost calculations.**
+
+- Keep missing token counts, provider identifiers, and cost fields as unknown.
+- Keep numeric model-token counts different from prohibited authentication tokens.
+- Record cache reads and writes only when the provider supplies those values.
+- Compare retries and applicable cache prices with controlled usage and rate records.
+- Keep currency, rate source/date, model/Region, pricing dimensions, and estimated or billed status.
+- Identify incomplete cost coverage.
+- Show inference cost and measured system cost as different measures.
+- Replace a charge estimate with its bill.
+- Count one effective charge.
+- Keep the earlier estimate history.
+- Repeat a usage export.
+- Make sure that the repeated export does not add one more charge.
+- Keep USD and INR amounts in different totals.
+- Do not show their sum as one currency amount.
+- Reject sums that count a system total and its included component charges two times.
+- For durations [10, 20, 30, 40], make sure that nearest-rank p50 = 20 and p95 = 40.
+- Show the sample count and descriptive small-sample limitation.
+- For an empty sample, make sure that percentiles are undefined.
+- With two known failures across four dispatched requests, make sure that the error rate is 2/4.
+- Count each failed attempt once, even when more than one failure label is applicable.
+- Use different denominators for model and tool operations.
+- Show one unknown outcome in its own category.
+- Do not count that outcome as a known failure or success.
+- With three completed jobs among five admitted jobs, make sure that the completion share is 3/5.
+- Keep failed and pending jobs in that denominator.
+- Use evaluation costs of 4, 3, and 2 currency units for correct, incorrect, and failed cases.
+- Make sure that total measured cost is 9 and cost per correct assessment is 9/1.
+- With no correct cases, make sure that the cost ratio is undefined.
+
+These fixture amounts are not a spending limit or measured product cost.
+
+**UT-18: privacy and audit integrity.**
+
+- Put fictional private markers in source text, queries, review edits, review reasons, and authentication fields.
+- Make sure that operational logs, metric payloads, safe errors, and unauthorized progress events contain none of those markers.
+- Keep required case evidence in authorized storage in India.
+- Reject attempts to include hidden model reasoning in traces.
+- Interrupt processing before and after a model dispatch.
+- Clearly identify unknown outcomes.
+- Keep the used allowance.
+- Make sure that each attempt that starts finishes or has an unknown or interrupted state.
+- Simulate a failure during the save operation for audit-critical stage references or finalization data.
+- After that failure, do not show a completed assessment with the necessary audit records.
+- Make sure that review events cannot change original findings or source snapshots.
 
 ## 4. Contract and integration checks
 
 | Test ID | Requirement | Required result |
 |---|---|---|
-| CT-01 | REQ-F01, REQ-X06 | Local adapters satisfy shared contracts. Controlled model and regulatory API responses have explicit labels. |
-| CT-02 | REQ-X02 | Read/write operations reject another owner's case IDs, source IDs, jobs, findings, and exports, including forged owner fields. |
-| CT-03 | REQ-X04 | Duplicate requests/messages and concurrent claims produce one active execution and one finalization. Retry does not reset deadline/counters. |
-| CT-04 | REQ-X03, REQ-X04 | A replacement uploaded during processing cannot alter the frozen snapshot. Process restart preserves stage outputs and version references. |
-| CT-05 | REQ-F01, REQ-X05, REQ-X06 | API schemas, safe error responses, and exports match the contract. Partial exports stay partial. No external calls occur in default checks. Retrieval exports include verification metadata. |
+| CT-01 | REQ-F01, REQ-X06 | Local adapters agree with the shared contracts. Controlled model responses and regulatory API responses have clear labels. |
+| CT-02 | REQ-X02 | Read/write operations reject a different owner's case IDs, source IDs, jobs, findings, and exports. This rejection includes requests with forged owner fields. |
+| CT-03 | REQ-X04 | Duplicate requests/messages and simultaneous claims give one active execution and one finalization. A retry does not renew the deadline or counters. |
+| CT-04 | REQ-X03, REQ-X04 | A replacement uploaded during processing cannot change the fixed snapshot. Process restart keeps stage outputs and version references. |
+| CT-05 | REQ-F01, REQ-X05, REQ-X06 | API schemas, safe error responses, and exports agree with the contract. Partial exports stay partial. No external calls occur in default checks. Retrieval exports include verification metadata. |
+| CT-06 | REQ-X02, REQ-X05, REQ-X07, REQ-X08 | The application validates ownership for aggregates, reports, and exports. The same filters and cutoffs give the same counts, outcomes, coverage, and null values. |
+| CT-07 | REQ-X03, REQ-X04, REQ-X08 | Stable event identities prevent duplicate trace and metric records after retries or restart. Audit-save failures prevent success. Exporter failures cause export retries only. |
+| CT-08 | REQ-X01, REQ-X02, REQ-X08, REQ-X09 | The baseline uses fixed in.openai.gpt-5.6-luna and configuration versions. Every dispatch decreases the allowance. No automatic router, global fallback, or autonomous second reviewer operates. |
 
-The regulatory adapter contract must cover these cases:
+CT-06 includes cross-owner aggregate filters, direct report URLs, and export requests.
+Counts must not show a different owner's items.
+Review history must reproduce results for an earlier cutoff in the API, browser, Markdown export, and JSON export.
+Display rounding can give values that differ from stored ratios.
+Counts and denominators must agree.
 
-- Current source responses and valid conditional responses.
-- Cached provider content without an authority verification time.
-- Missing amendments, withdrawals, or incomplete pagination.
-- Changed selected versions before assessment.
-- Future-effective amendments and historical assessment dates.
-- Timeouts, denied credentials, rate limits, and exhausted retrieval allowances.
-- Private query content, arbitrary hosts, private addresses, and unapproved redirects.
-- A provider update during an active assessment.
+CT-07 includes duplicate queue messages, worker interruption, exporter timeout, and metric delivery replay.
+Retried exports must not start a new assessment or use a model call.
+If external metric delivery fails, the necessary audit records must stay available.
+The two failure types must have safe error categories and saved state for recovery.
+
+CT-08 includes checks of the requested model and configuration IDs before dispatch.
+When the actual response model ID is available, record that ID.
+Keep unavailable provider fields unknown.
+Do counter checks with rejected, throttled, timed-out, and unknown dispatch outcomes.
+AWS invocation totals must not replace this counter.
+
+The regulatory adapter contract must include these cases:
+
+- Current source responses and correct conditional responses
+- Cached provider content without an authority verification time
+- Missing amendments, withdrawals, or incomplete pagination
+- Changed selected versions before assessment
+- Future-effective amendments and historical assessment dates
+- Timeouts, denied credentials, rate limits, and exhausted retrieval allowances
+- Private query content, arbitrary hosts, private addresses, and redirects without approval
+- A provider update during an active assessment
 - Restart without repeated source selection or reset retrieval counters.
 
 Reject current-source claims without verification.
 Keep active snapshots unchanged.
 Never replace private upload limits with unlimited API responses.
 
-A controlled AWS response tests the adapter. It does not prove that AWS accepts the role, request, or region. T8 verifies those conditions.
+A controlled AWS response is input for an adapter test.
+That response does not prove that AWS accepts the role, request, or region.
+T8 includes checks of those conditions.
 
 ## 5. Browser checks
 
 | Test ID | Scenario |
 |---|---|
-| BT-01 | Create/load a case. Refresh regulations. Upload bank files. Inspect extraction. Select obligations. Run an assessment. |
-| BT-02 | Open a finding and exact citation. Save each review disposition. Export Markdown and JSON with the original snapshot. |
-| BT-03 | Compare explicit regulatory versions, inspect affected controls, and retain the earlier assessment and review history. |
-| BT-04 | Exercise empty, uploading, running, denied, partial, failed, invalid-citation, freshness-unverified, changed-selection, and retry states. Preserve entered review notes on failure. |
-| BT-05 | Check keyboard focus and navigation, below-768-px layout, text status labels, Synthetic demo badges, and independent Simulated model labels. |
+| BT-01 | Make or load a case. Refresh regulations. Upload bank files. Examine extraction. Select obligations. Do an assessment. |
+| BT-02 | Open a finding and its exact citation. Save each review decision. Export Markdown and JSON with the original snapshot. |
+| BT-03 | Compare specified regulatory versions. Examine affected controls. Keep the earlier assessment and review history. |
+| BT-04 | Do checks of empty, uploading, running, denied, partial, failed, invalid-citation, freshness-unverified, changed-selection, and retry states. On failure, keep entered review notes. |
+| BT-05 | Do checks of keyboard focus, navigation, and layout widths less than 768 px. Do checks of text status labels, Synthetic demo badges, and independent Simulated model labels. |
+| BT-06 | Save Approved, Edited, and Rejected outcomes. Examine changed content, reasons, and revision history. Do checks of counts, coverage, pending items, cohort filters, and empty states. |
+
+BT-06 must show that an unsaved revision does not change a previous final outcome.
+An empty cohort shows Not measured, not perfect acceptance.
+A cohort with no final reviews shows pending items and zero review coverage.
+
+Show failed jobs, partial jobs, unchecked obligations, and result coverage beside reviewer outcomes.
+Show approval without edits and adoption including edits as different measures.
+Show reviewer acceptance and assessment correctness as different measures.
+After a failed save, keep notes and changed content.
+Keep technical operational logs outside the reviewer interface.
 
 ## 6. Live cloud checks — outside the default local suite
 
 | Check ID | What must be observed in AWS |
 |---|---|
-| CLOUD-01 | Pinned model access, valid SDK/API request, actual inference-profile destinations limited to approved India regions, and a successful synthetic-input invocation |
+| CLOUD-01 | Access to the fixed model, a correct SDK/API request, and successful synthetic-input invocation. Actual inference-profile destinations must be only in approved India regions. |
 | CLOUD-02 | Private S3 storage, authorized downloads, real case ownership enforcement, and no private content in frontend assets or operational logs |
 | CLOUD-03 | Cognito sign-in and API token validation. Cloud startup/configuration rejects development identity |
-| CLOUD-04 | Real SQS/worker/record-store behaviour, including duplicate delivery, persisted allowance, and observable partial/failure outcomes |
-| CLOUD-05 | Deployed browser flow, SAM/resource review, spending controls, configuration/retention record, and guided deployment/rollback instructions. Verify real regulatory retrieval, authority synchronization, request privacy, and failure handling. |
+| CLOUD-04 | Actual SQS/worker/record-store behavior, duplicate delivery, saved allowance, and recorded partial/failure outcomes |
+| CLOUD-05 | Deployed browser procedure, SAM/resource review, spending controls, configuration/retention record, and deployment/rollback instructions. Do checks of actual regulatory retrieval, authority synchronization, request privacy, and failure handling. |
+| CLOUD-06 | Compare actual synthetic-run traces with available provider metrics and usage. Do checks of redaction, India storage, audit recovery, and metric-export recovery. |
 
-Use separate invocation flags or commands for these checks. The default local command must never run them implicitly.
+CLOUD-06 records model, Region, configuration, time window, and observed measurement coverage.
+Compare application dispatches with AWS metrics.
+Use the counting rules for each measure.
+Include throttles, rejected requests, retries, unknown outcomes, and reporting delay in that comparison.
+Do not change totals to make different metric definitions agree.
+
+After controlled interruptions, examine safe telemetry and authorized audit records.
+Make sure that external metric delivery retries do not repeat model assessment.
+Do checks of cache measurements and prices only when the selected configuration supplies those values.
+Unavailable fields stay unknown.
+Show clearly that an incomplete cost total does not include all costs.
+
+Use different invocation flags or commands for these checks.
+The default local command must never do those checks automatically.
 
 ## 7. Acceptance and reporting
 
 Record the run time, source revision or file hashes, environment, command, test IDs, passed/failed/skipped counts, and known limitations.
 
-All required P0 cases must pass. Include skipped and unimplemented cases in the total case count. Do not count them as passes. Identify failures from the application, test harness, or unavailable cloud integration.
+All necessary P0 cases must pass.
+Include skipped cases and cases with no implementation in the total case count.
+Do not count those cases as passes.
+Identify failures from the application, test harness, or unavailable cloud integration.
 
-Save dated records of failing and passing tests. Exclude private prompt content. Keep logs outside the product UI. Run affected checks after changes. Add other checks when the change or an unresolved concern requires them.
+Save dated records of failed tests and passed tests.
+Do not include private prompt content.
+Keep logs outside the product UI.
+After changes, do the affected checks.
+When a change or an unresolved concern makes other checks necessary, add those checks.
 
-Before delivery, verify the project from a clean source package or checkout. Use the documented dependencies. The recipient must not need ignored local files or an existing developer cache.
+Before delivery, do the project checks from a clean source package or checkout.
+Use the documented dependencies.
+Ignored local files or an existing developer cache must not be necessary for the recipient.
 
 [Next: AI evaluation plan](eval-model-quality.md)
