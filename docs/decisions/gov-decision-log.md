@@ -349,7 +349,7 @@ A local test result does not establish deployment or browser acceptance.
 This decision supersedes D26's horizontal sequence and eight-folder assignment plan.
 It also supersedes earlier frontend and AWS scheduling that deferred those components until backend tickets were complete.
 It does not replace D26's foundation integration evidence or D24's measurement definitions.
-The active [worktree guide](../delivery/guide-next-worktrees.md) records four observed worktrees and the selected development folder.
+The active [worktree guide](../delivery/guide-next-worktrees.md) records the observed worktrees and the selected development folder.
 The [parallel guide](../delivery/guide-parallel-development.md) controls ownership and deployment coordination.
 
 The eight product features, India processing boundary, fixed model, 24-call allowance, and 600-second worker deadline stay unchanged.

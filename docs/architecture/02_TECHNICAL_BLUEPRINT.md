@@ -85,10 +85,12 @@ These defaults do not establish live provider behavior or file-upload enforcemen
 | Regulatory pagination | At most 10 pages. |
 | Provider retries | At most two retries after the first attempt. |
 | Provider timeout | 10 seconds for each attempt. Only simulated behavior has tests. |
-| Response size | At most 1,000,000 bytes per page and 10,000,000 bytes per job. |
-| Regulatory extracted text | At most 400,000 UTF-8 bytes per source. T3 must enforce the remaining case allowance. |
+| Response size | At most 1,000,000 bytes per page and 10,000,000 bytes per retrieval operation. |
+| Regulatory extracted text | At most 400,000 UTF-8 bytes across the sources in one retrieval operation. |
 
 The live adapter must enforce network timeouts, response limits, destination checks, and redirect rules.
+T3 must enforce the remaining case allowance across retrieval operations.
+The controlled adapter saves the request count per job, but not a shared response-byte total across different retrieval operations.
 The source URL validator permits HTTPS RBI authority URLs only.
 Any additional authority needs an integration contract revision.
 

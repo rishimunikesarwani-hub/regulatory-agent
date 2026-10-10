@@ -12,20 +12,40 @@ Frontend and backend contributors can work concurrently after agreement on its s
 ## Observed workspace state
 
 Parent folder: `C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon`.
-Four worktrees were registered during the 2026-10-10 reconciliation.
-The original Session A and Session B worktrees had no uncommitted changes.
-The integration folder contained pre-existing changes that must stay unchanged.
+The initial 2026-10-10 inspection found four worktrees.
+A later inspection found 12 worktrees after another session prepared the eight planned folders.
+The [inventory](../../runs/2026-10-10-autonomous-build/final-worktree-inventory.json) records each branch, commit, and status before this documentation edit.
 
-| Folder relative to the parent | Observed branch | Current role |
+Session A, Session B, and all eight new worktrees had no uncommitted changes.
+The active worktree had integration-owned changes in `LOG.md`, the technical blueprint, and the decision log.
+`MVP` had one untracked file: `runs/2026-10-10-integration/worktree-map.json`.
+No source, test, or operational code changed between the integration commits `8e01b7a` and `e68ab5d`.
+
+| Folder relative to the parent | Existing branch | Slice assignment when selected |
 |---|---|---|
-| `MVP` | `work/integration-handoff` | Existing integration and documentation changes. |
-| `.worktrees/regulatory-agent-session-a` | `work/session-a` | Integrated fixture source and historical evidence. |
-| `.worktrees/regulatory-agent-session-b` | `work/session-b` | Integrated contracts, adapters, and historical evidence. |
-| `.worktrees/regulatory-agent-autonomous-build` | `work/autonomous-build` | Active D24 reconciliation and VS1 work. |
+| `MVP` | `work/integration-handoff` | Existing integration and documentation history. |
+| `.worktrees/regulatory-agent-session-a` | `work/session-a` | Historical fixture source and evidence. |
+| `.worktrees/regulatory-agent-session-b` | `work/session-b` | Historical contracts, adapters, and evidence. |
+| `.worktrees/regulatory-agent-autonomous-build` | `work/autonomous-build` | Active VS1 case flow and D24 implementation. |
+| `.worktrees/regulatory-agent-foundation` | `work/foundation-measurements` | VS0 contract reconciliation when another slice needs it. |
+| `.worktrees/regulatory-agent-t3-documents` | `work/t3-documents` | VS2 complete evidence-upload and source-inspection flow. |
+| `.worktrees/regulatory-agent-t4-assessment` | `work/t4-assessment` | VS3 complete one-obligation, citation, and review flow. |
+| `.worktrees/regulatory-agent-t5-agent` | `work/t5-agent` | VS4 complete regulatory-change and reassessment flow. |
+| `.worktrees/regulatory-agent-t6-persistence` | `work/t6-persistence` | Reserved for a selected complete VS3-VS5 flow. |
+| `.worktrees/regulatory-agent-t7-review-ui` | `work/t7-review-ui` | Reserved for a selected complete VS2-VS5 flow. |
+| `.worktrees/regulatory-agent-t8-aws` | `work/t8-aws` | Reserved for a selected complete VS1-VS5 flow with AWS acceptance. |
+| `.worktrees/regulatory-agent-t9-quality` | `work/t9-quality` | VS5 complete feature flow and release evidence. |
 
-The earlier eight task folders were a plan, not verified existing worktrees.
-No additional worktree is necessary for frontend and backend cooperation within the active slice.
-The [parallel guide](guide-parallel-development.md#file-ownership) controls file ownership.
+Keep the existing horizontal branch names unchanged.
+Their names do not reinstate the earlier horizontal implementation sequence.
+Select only one worktree and one complete slice at a time.
+The reserved folders do not start additional concurrent slices.
+Update the selected branch from integrated work before dependent implementation.
+Keep the other worktrees unchanged.
+
+Frontend and backend contributors can cooperate inside the selected slice after agreement on its shared API contract.
+The [parallel guide](guide-parallel-development.md#file-ownership) controls shared-file ownership.
+Every selected application flow still includes frontend, backend, AWS development, tests, and release evidence under D27.
 
 ## Reconciled foundation
 
