@@ -1,0 +1,21 @@
+test_measurement_runs (unittest.loader._FailedTest.test_measurement_runs) ... ERROR
+
+======================================================================
+ERROR: test_measurement_runs (unittest.loader._FailedTest.test_measurement_runs)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_measurement_runs
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_runs.py", line 4, in <module>
+    from regulatory_agent.contracts import RunMeasure, RunCohort
+ImportError: cannot import name 'RunMeasure' from 'regulatory_agent.contracts' (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\contracts.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

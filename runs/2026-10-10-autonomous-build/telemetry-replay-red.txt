@@ -1,0 +1,51 @@
+test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated (test_measurement_telemetry.CostTests.test_ut17_bill_replaces_estimate_at_cutoff_and_exports_are_deduplicated) ... ok
+test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs (test_measurement_telemetry.CostTests.test_ut17_cost_per_correct_includes_incorrect_and_failed_case_costs) ... ok
+test_ut17_currency_scope_and_inference_are_separate (test_measurement_telemetry.CostTests.test_ut17_currency_scope_and_inference_are_separate) ... ok
+test_ut17_invalid_money_identity_and_currency_changes_rejected (test_measurement_telemetry.CostTests.test_ut17_invalid_money_identity_and_currency_changes_rejected) ... ok
+test_ut17_retry_and_cache_charge_dimensions_are_retained (test_measurement_telemetry.CostTests.test_ut17_retry_and_cache_charge_dimensions_are_retained) ... ok
+test_ut17_total_and_components_cannot_double_count (test_measurement_telemetry.CostTests.test_ut17_total_and_components_cannot_double_count) ... ok
+test_ut17_unknown_costs_and_missing_components_are_partial (test_measurement_telemetry.CostTests.test_ut17_unknown_costs_and_missing_components_are_partial) ... ok
+test_ut16_final_state_does_not_conflict_with_safe_error_categories (test_measurement_telemetry.RuntimeTests.test_ut16_final_state_does_not_conflict_with_safe_error_categories) ... FAIL
+test_ut16_first_final_review_controls_delay (test_measurement_telemetry.RuntimeTests.test_ut16_first_final_review_controls_delay) ... ok
+test_ut16_identity_versions_and_all_stage_names (test_measurement_telemetry.RuntimeTests.test_ut16_identity_versions_and_all_stage_names) ... ok
+test_ut16_interrupted_and_unknown_are_final_observations (test_measurement_telemetry.RuntimeTests.test_ut16_interrupted_and_unknown_are_final_observations) ... ok
+test_ut16_monotonic_duration_survives_backward_wall_clock (test_measurement_telemetry.RuntimeTests.test_ut16_monotonic_duration_survives_backward_wall_clock) ... ok
+test_ut16_nonstreaming_never_records_first_token (test_measurement_telemetry.RuntimeTests.test_ut16_nonstreaming_never_records_first_token) ... ok
+test_ut16_saved_stages_require_original_processing_reference (test_measurement_telemetry.RuntimeTests.test_ut16_saved_stages_require_original_processing_reference) ... ok
+test_ut16_timing_values_and_utc (test_measurement_telemetry.RuntimeTests.test_ut16_timing_values_and_utc) ... ok
+test_ut17_attempt_error_denominator_unknown_and_duplicate_export (test_measurement_telemetry.RuntimeTests.test_ut17_attempt_error_denominator_unknown_and_duplicate_export) ... ok
+test_ut17_attempts_of_different_models_have_their_own_denominators (test_measurement_telemetry.RuntimeTests.test_ut17_attempts_of_different_models_have_their_own_denominators) ... ok
+test_ut17_completion_includes_pending_and_failed_jobs (test_measurement_telemetry.RuntimeTests.test_ut17_completion_includes_pending_and_failed_jobs) ... ok
+test_ut17_percentiles_and_empty_sample (test_measurement_telemetry.RuntimeTests.test_ut17_percentiles_and_empty_sample) ... ok
+test_ut17_usage_unknown_is_not_zero_and_values_are_numeric (test_measurement_telemetry.RuntimeTests.test_ut17_usage_unknown_is_not_zero_and_values_are_numeric) ... ok
+test_ut18_private_fields_are_not_telemetry_or_safe_errors (test_measurement_telemetry.RuntimeTests.test_ut18_private_fields_are_not_telemetry_or_safe_errors) ... ok
+test_ut18_safe_trace_json_can_be_replayed (test_measurement_telemetry.RuntimeTests.test_ut18_safe_trace_json_can_be_replayed) ... ERROR
+
+======================================================================
+ERROR: test_ut18_safe_trace_json_can_be_replayed (test_measurement_telemetry.RuntimeTests.test_ut18_safe_trace_json_can_be_replayed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 156, in test_ut18_safe_trace_json_can_be_replayed
+    self.assertEqual(StageAttempt.model_validate_json(original.model_dump_json()), original)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-session-b\.venv\Lib\site-packages\pydantic\main.py", line 845, in model_validate_json
+    return cls.__pydantic_validator__.validate_json(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StageAttempt
+versions.schema
+  Field required [type=missing, input_value={'application': 'app-v1',...ion': 'model-config-v1'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.14/v/missing
+
+======================================================================
+FAIL: test_ut16_final_state_does_not_conflict_with_safe_error_categories (test_measurement_telemetry.RuntimeTests.test_ut16_final_state_does_not_conflict_with_safe_error_categories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_telemetry.py", line 159, in test_ut16_final_state_does_not_conflict_with_safe_error_categories
+    with self.assertRaises(ValidationError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValidationError not raised
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.048s
+
+FAILED (failures=1, errors=1)

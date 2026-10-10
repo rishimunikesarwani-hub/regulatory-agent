@@ -1,0 +1,14 @@
+{
+  "files": [
+    "docs/delivery/guide-parallel-development.md",
+    "docs/delivery/05_FEATURE_TICKETS.md",
+    "docs/delivery/guide-slice-01-development.md"
+  ],
+  "before_sha256": {
+    "docs/delivery/guide-parallel-development.md": "e58c80698906968f452a81bc8ba9023f956569b0f1871c4b19dbed91c3cfdeb2",
+    "docs/delivery/05_FEATURE_TICKETS.md": "4082693f6e8ec6ba42b255ea1a75b46469102811a067d01a56ec37b554bb799c",
+    "docs/delivery/guide-slice-01-development.md": "ccc8785801bfaaf89d6b3e7ab5797063235e9ba7f1cd52ce6dcc341a09d43d3f"
+  },
+  "source_backup": "runs\\private\\delivery-before-vs1-status",
+  "acceptance_rows_preserved": 115
+}

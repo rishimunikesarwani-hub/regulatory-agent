@@ -1,0 +1,41 @@
+test_vs1_aws01_authorized_create_persists_and_new_adapter_reads_same_record (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_authorized_create_persists_and_new_adapter_reads_same_record) ... ok
+test_vs1_aws01_base64_invalid_json_and_real_data_use_shared_validation (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_base64_invalid_json_and_real_data_use_shared_validation) ... ok
+test_vs1_aws01_cross_owner_read_returns_404 (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_cross_owner_read_returns_404) ... ok
+test_vs1_aws01_list_queries_owner_and_handles_all_pages (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_list_queries_owner_and_handles_all_pages) ... ok
+test_vs1_aws01_provider_failures_are_safe_503 (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_provider_failures_are_safe_503) ... ok
+test_vs1_aws01_public_health_has_no_claim_or_storage_dependency (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_public_health_has_no_claim_or_storage_dependency) ... ok
+test_vs1_aws01_rejects_local_mode_and_wrong_region (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_rejects_local_mode_and_wrong_region) ... ok
+test_vs1_aws01_rejects_missing_wrong_expired_or_id_token_claims_before_storage (test_slice01_aws.AWSCaseSliceTests.test_vs1_aws01_rejects_missing_wrong_expired_or_id_token_claims_before_storage) ... ok
+test_existing_store_callers_and_profile_shape_remain_unchanged (test_slice01_cases.CaseSliceTests.test_existing_store_callers_and_profile_shape_remain_unchanged) ... ok
+test_health_is_public_and_contains_no_identity_or_profile (test_slice01_cases.CaseSliceTests.test_health_is_public_and_contains_no_identity_or_profile) ... ok
+test_local_cors_allows_only_the_configured_frontend_origin (test_slice01_cases.CaseSliceTests.test_local_cors_allows_only_the_configured_frontend_origin) ... ok
+test_unknown_routes_use_safe_error_and_service_rejects_forged_repository_record (test_slice01_cases.CaseSliceTests.test_unknown_routes_use_safe_error_and_service_rejects_forged_repository_record) ... ok
+test_vs1_ct01_create_list_and_reopen_through_shared_schemas (test_slice01_cases.CaseSliceTests.test_vs1_ct01_create_list_and_reopen_through_shared_schemas) ... ok
+test_vs1_ct02_fresh_service_reopens_committed_case (test_slice01_cases.CaseSliceTests.test_vs1_ct02_fresh_service_reopens_committed_case) ... ok
+test_vs1_ct03_development_identity_requires_loopback_and_explicit_user (test_slice01_cases.CaseSliceTests.test_vs1_ct03_development_identity_requires_loopback_and_explicit_user) ... ok
+test_vs1_ct03_owner_scope_and_missing_case_have_same_404_shape (test_slice01_cases.CaseSliceTests.test_vs1_ct03_owner_scope_and_missing_case_have_same_404_shape) ... ok
+test_vs1_ct04_invalid_profiles_forged_fields_and_real_data_are_rejected (test_slice01_cases.CaseSliceTests.test_vs1_ct04_invalid_profiles_forged_fields_and_real_data_are_rejected) ... ok
+test_vs1_ct04_storage_failure_returns_safe_503_and_no_success (test_slice01_cases.CaseSliceTests.test_vs1_ct04_storage_failure_returns_safe_503_and_no_success) ... ok
+test_case_name_is_nonblank_and_bounded (test_slice01_contract.CaseContractTests.test_case_name_is_nonblank_and_bounded) ... ok
+test_saved_schemas_match_executable_types (test_slice01_contract.CaseContractTests.test_saved_schemas_match_executable_types) ... ok
+test_slice01_deployment (unittest.loader._FailedTest.test_slice01_deployment) ... ERROR
+
+======================================================================
+ERROR: test_slice01_deployment (unittest.loader._FailedTest.test_slice01_deployment)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_slice01_deployment
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_deployment.py", line 4, in <module>
+    import yaml
+ModuleNotFoundError: No module named 'yaml'
+
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.903s
+
+FAILED (errors=1)

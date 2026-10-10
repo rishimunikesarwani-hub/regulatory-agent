@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-10-10T13:16:12.249215+00:00",
+  "validator": "cfn-lint 1.57.2",
+  "command": "uv tool run --from cfn-lint cfn-lint -t ops/sam-dev.yaml",
+  "exit_code": 0,
+  "template": "ops\\sam-dev.yaml",
+  "template_sha256": "a1761632be69ec49aa2296575a8d715ec970408ffc7b744e3cb23e320cfb4efb",
+  "findings": [],
+  "log": "sam-validation-cfn-lint.txt",
+  "aws_calls": false,
+  "deployed": false,
+  "review_scope": [
+    "SAM schema and generated dependency graph",
+    "Mumbai-only rule",
+    "Cognito authorization-code client and JWT API authorizer",
+    "DynamoDB scoped role resources",
+    "Retained records, user pool, bucket and logs",
+    "Private S3 origin for public CloudFront assets",
+    "Serialized development-only workflow with integration before deployment and browser acceptance afterward"
+  ],
+  "limitations": [
+    "No AWS account exists for live validation.",
+    "No SAM build or CloudFormation deployment performed.",
+    "No Cognito, DynamoDB, browser or IAM behavior tested in AWS.",
+    "Budget variable records intended spending allowance, not an enforced spending cap.",
+    "Frontend deployed-browser script was being added by its owner during this audit."
+  ]
+}

@@ -61,7 +61,8 @@ class SchemaTests(unittest.TestCase):
     def test_b03_export_and_all_api_contracts_are_executable(self):
         required = {"create_case", "list_cases", "read_case", "authorize_upload", "finalize_upload",
                     "list_sources", "read_source", "refresh_regulations", "start_assessment",
-                    "compare_versions", "read_job", "read_findings", "save_review", "export_assessment"}
+                    "compare_versions", "read_job", "read_findings", "save_review", "export_assessment",
+                    "read_reviewer_outcomes", "read_stage_trace"}
         self.assertEqual(set(API_CONTRACTS), required)
         self.assertEqual(set(schema_bundle()["operations"]), required)
         for request, response in API_CONTRACTS.values():

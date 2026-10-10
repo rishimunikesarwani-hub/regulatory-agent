@@ -1,0 +1,12 @@
+npm notice run regulatory-agent-web@0.1.0 test:deployed
+npm notice run playwright test --config playwright.deployed.config.ts
+Error: DEPLOYED_URL, COGNITO_TEST_USERNAME, and COGNITO_TEST_PASSWORD are required. Supply credentials through the secure deployment environment.
+    at file:///C:/Users/Be%20Flith%20Rich/My%20Project%20Folder/ET-Hackathon/.worktrees/regulatory-agent-autonomous-build/src/web/playwright.deployed.config.ts:5:9
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at node:internal/modules/esm/loader:643:26
+    at requireOrImport (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\common\index.js:1096:12)
+    at loadUserConfig (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\common\index.js:1283:46)
+    at loadConfig (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\common\index.js:1290:22)
+    at Object.loadConfigFromFile (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\common\index.js:1508:10)
+    at runTests (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\cli\testActions.js:44:18)
+    at _Command.<anonymous> (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\web\node_modules\playwright\lib\program.js:55:7)

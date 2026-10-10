@@ -1,0 +1,7 @@
+# Exact installed versions are saved in requirements.lock.
+fastapi==0.143.0
+pydantic==2.14.0
+uvicorn
+httpx
+boto3
+PyYAML

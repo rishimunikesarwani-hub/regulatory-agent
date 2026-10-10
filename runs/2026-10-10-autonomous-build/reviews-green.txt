@@ -1,0 +1,15 @@
+test_cohort_timezone_and_unknown_fields (test_measurement_reviews.ReviewTests.test_cohort_timezone_and_unknown_fields) ... ok
+test_competing_writes_same_revision_only_one_wins (test_measurement_reviews.ReviewTests.test_competing_writes_same_revision_only_one_wins) ... ok
+test_duplicate_retries_concurrency_and_restart (test_measurement_reviews.ReviewTests.test_duplicate_retries_concurrency_and_restart) ... ok
+test_edited_requires_changed_content_and_reason (test_measurement_reviews.ReviewTests.test_edited_requires_changed_content_and_reason) ... ok
+test_immutable_item_and_one_item_per_run_obligation (test_measurement_reviews.ReviewTests.test_immutable_item_and_one_item_per_run_obligation) ... ok
+test_north_star_counts_and_empty_cohort (test_measurement_reviews.ReviewTests.test_north_star_counts_and_empty_cohort) ... ok
+test_reject_forged_identity_and_legacy_outcome (test_measurement_reviews.ReviewTests.test_reject_forged_identity_and_legacy_outcome) ... ok
+test_revisions_cutoffs_pending_request_and_original_after_edit (test_measurement_reviews.ReviewTests.test_revisions_cutoffs_pending_request_and_original_after_edit) ... ok
+test_save_failure_keeps_previous_outcome (test_measurement_reviews.ReviewTests.test_save_failure_keeps_previous_outcome) ... ok
+test_windows_filters_and_same_timestamp_order (test_measurement_reviews.ReviewTests.test_windows_filters_and_same_timestamp_order) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.768s
+
+OK

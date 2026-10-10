@@ -1,0 +1,50 @@
+{
+  "docs\\architecture\\arch-agent-operation-comparison.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 145,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "docs\\architecture\\arch-multi-agent-proposal.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 283,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-10-agent-comparison-verification.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 43,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-10-agent-comparison-log-extract.txt": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 24,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

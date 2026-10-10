@@ -1,0 +1,78 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha256": "f28e39ce7b61128717f41f0cf1428c41bc8535bc652eb2d13dddb67834ba74d1"
+  },
+  {
+    "path": "README.md",
+    "sha256": "f96eeddbead2a39183fd422adaa75ae8ba9ef3c8ea0ebbf969f67d292e3adde3"
+  },
+  {
+    "path": "LOG.md",
+    "sha256": "fb8f9535cfb108fcd807d59768dc698077348fcad5724ee370ede49cf59bbadc"
+  },
+  {
+    "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+    "sha256": "0a803d4883accc98498fc5faa19b6944bd90d8f06930b365ac596c751d71fc63"
+  },
+  {
+    "path": "docs/architecture/arch-agent-aws-review.md",
+    "sha256": "f8865dc749f15627f5e4c9eb3fe61da0c8c6a91ec3584410710db0228542da92"
+  },
+  {
+    "path": "docs/architecture/arch-agent-operation-comparison.md",
+    "sha256": "eafcb04e1a75a0c822b991a4c37a503e06b98598480cb31422a5d002d480b459"
+  },
+  {
+    "path": "docs/architecture/arch-multi-agent-proposal.md",
+    "sha256": "afae46f98f3d69560d8bcdd27c3e0afe2966247e4fbbebd7cb8dfb51bcc4b34e"
+  },
+  {
+    "path": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+    "sha256": "f57e537e4f768663341f9c7f86735178b028c6079c87ad3b9ead3eeb5c4272fd"
+  },
+  {
+    "path": "docs/decisions/gov-decision-log.md",
+    "sha256": "eba1d862f10c5e9f27bcbc21f028762832b2895d4c91b5f2187ea00c13310a11"
+  },
+  {
+    "path": "docs/delivery/05_FEATURE_TICKETS.md",
+    "sha256": "d538e2426ca34ee85e6abaf6606c71938b3bce1c19112c34a5067b0227351ed8"
+  },
+  {
+    "path": "docs/delivery/guide-parallel-development.md",
+    "sha256": "d80a42ca8bf6d03a1888e03e020188e3e882e93c43afc3b5fca72647488279a5"
+  },
+  {
+    "path": "docs/frontend/04_FRONTEND_SPEC.md",
+    "sha256": "034863842192b4b088e20217675829c3b088f796182aba07e373e4d8c5490379"
+  },
+  {
+    "path": "docs/guide-start-here.md",
+    "sha256": "fb2823eb78210d353a03f2d083c1d6f387891e98211fffc9c0f66efefe0bf639"
+  },
+  {
+    "path": "docs/guide-ste100-writing.md",
+    "sha256": "ddd3011b0196a7be88c45e15056bef8711aecf7640ab51b7d85f8dd1e1cdb0ca"
+  },
+  {
+    "path": "docs/product/01_PRD.md",
+    "sha256": "314610e94a297cd668e38a728b03a28b4902ac1dcea1c3d9b3d8e565642fe4c0"
+  },
+  {
+    "path": "docs/security/03_SECURITY_ACCESS.md",
+    "sha256": "c96919f7dae044e403f96362e8ec80da2102160acae6ca06482a3b0a2ef2fb30"
+  },
+  {
+    "path": "docs/testing/eval-model-quality.md",
+    "sha256": "a2d130bf576bc8a31791595369ed0ac43901d5b562e127936342a6d9811362d1"
+  },
+  {
+    "path": "docs/testing/spec-local-test-plan.md",
+    "sha256": "d38bd025c9e4368f91a231690337b7260ea390a193ac98bf057851203f6595a5"
+  },
+  {
+    "path": "docs/testing/spec-measurement-contract.md",
+    "sha256": "a23f0effca10eb2c2f9c1a80a3af376e9eb6038c69dbccd13fce7c10b2ac2bfb"
+  }
+]

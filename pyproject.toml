@@ -1,8 +1,12 @@
 [tool.et_hackathon]
 name = "the-regulatory-agent"
-status = "specification-only"
+status = "slice-01-local-development"
 documentation_index = "docs/guide-start-here.md"
 decision_log = "docs/decisions/gov-decision-log.md"
 submission_date = "2026-10-10"
 private_data_boundary = "aws-india-only"
-# Application packaging, dependencies, and runnable commands belong to T2.
+local_python = "3.12.13"
+dependency_lock = "ops/requirements.lock"
+local_setup = "powershell -NoProfile -ExecutionPolicy Bypass -File ops/setup.ps1"
+local_checks = ".venv/Scripts/python.exe -X utf8 ops/check.py"
+# AWS development deployment is blocked until account setup.

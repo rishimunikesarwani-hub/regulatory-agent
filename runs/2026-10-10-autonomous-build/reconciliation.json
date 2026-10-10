@@ -1,0 +1,274 @@
+[
+  {
+    "worktree": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP",
+    "head": "8e01b7ae99fd005185b23eeee62eaed4bb36e3e6",
+    "changed_files": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "bb6e0604520d157cf55d76542ad6d379e3e13daeac78cb5a1d21f4b78780ae04"
+      },
+      {
+        "path": "LOG.md",
+        "sha256": "d0ce48e36ba6e893d873f488f5187c29d715102bee5f9c6bbfe8e2bf7cbafc72"
+      },
+      {
+        "path": "README.md",
+        "sha256": "2a0ceaf1bb338d9c957d484dd11982af96936ee60c9966548e3cd164d9b4309b"
+      },
+      {
+        "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+        "sha256": "7d5adaec46d68156aa3a12f95917acd6efff00fc6d349ec4dcf740e51b412402"
+      },
+      {
+        "path": "docs/decisions/gov-decision-log.md",
+        "sha256": "ca573a5e4791c4c27d0cb2341b62ec800c72f205425c0bc384cd93e37cfbcf2b"
+      },
+      {
+        "path": "docs/delivery/05_FEATURE_TICKETS.md",
+        "sha256": "cd4854e899d4b033c2825af205123143a1548d6645ac8f79d0ac1a39a6d5d3f1"
+      },
+      {
+        "path": "docs/delivery/guide-parallel-development.md",
+        "sha256": "f80ff20ef41d6a75cf31af8e23b62539e69ebec01430e9ae31896c085411539f"
+      },
+      {
+        "path": "docs/frontend/04_FRONTEND_SPEC.md",
+        "sha256": "f1f2f9065264163c55a122cab42d9e2f4582d0f8ce85914c2c209c44fa573c9a"
+      },
+      {
+        "path": "docs/guide-start-here.md",
+        "sha256": "3a630ec7d47b801f87381e06fb899c33fd2fa9686b0b966ee3a8b4a9bf669c93"
+      },
+      {
+        "path": "docs/guide-ste100-writing.md",
+        "sha256": "42cab8c9fe905f9411c188f3384e1b208c9aaa416355f7ceba724aec51a54442"
+      },
+      {
+        "path": "docs/product/01_PRD.md",
+        "sha256": "f9092426cbb851138e9f7a466b22c2be5c9c715263a5bce0dcf0828190c968c5"
+      },
+      {
+        "path": "docs/security/03_SECURITY_ACCESS.md",
+        "sha256": "1fc22a25978f91390b39f0e3a9ddf5b0ebd05fc816ff57dbd6e1ba7d93765015"
+      },
+      {
+        "path": "docs/testing/eval-model-quality.md",
+        "sha256": "872b02dd1a52e41e5956f7f6e2e5d66b05d909c8240e46704cff21c15906044d"
+      },
+      {
+        "path": "docs/testing/spec-local-test-plan.md",
+        "sha256": "2c010ad3c7c55b8f26dc8abef3ebeedccadc5223707d7a18c03a747e5fbe981f"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha256": "b196a5915e1e5ae9d602c5ea774234975e2d522880063d70bae2a70ae1d0f2ac"
+      },
+      {
+        "path": "docs/architecture/arch-agent-aws-review.md",
+        "sha256": "c72ca09afd816d33648d1b62a670de925a78cc72090628873c7b659ff4e27fd9"
+      },
+      {
+        "path": "docs/architecture/arch-agent-operation-comparison.md",
+        "sha256": "e9e72d5fc1bb1a16bf595f27ea459aa2ae3fc4f74598723b6755b7c5d772df12"
+      },
+      {
+        "path": "docs/architecture/arch-multi-agent-proposal.md",
+        "sha256": "1cd82e57232a562522fb3b3f76c02456dbe7056f6e521768bd3153959d00bf4b"
+      },
+      {
+        "path": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+        "sha256": "661c225024e063c917eabe3fa3e62bfa9f59cad079116b25dbd019d62125b292"
+      },
+      {
+        "path": "docs/delivery/guide-next-worktrees.md",
+        "sha256": "ba12a2301ade8e64186e74e88c6e5d6128e6317abb7c07f06102cdae322828a4"
+      },
+      {
+        "path": "docs/testing/spec-measurement-contract.md",
+        "sha256": "44638156f1cd81a0025f4ef5563ed49ed1835db354268c4abb75a9fdf9340450"
+      },
+      {
+        "path": "runs/2026-10-10-agent-comparison-audit.json",
+        "sha256": "5b0fc10dff149d98a9b8b9b67b877dd7ed4117f5ea06b1baaed949828ce926b4"
+      },
+      {
+        "path": "runs/2026-10-10-agent-comparison-log-extract.txt",
+        "sha256": "d7e0c1acb77f5b550eaefbfbc6ac3fba3f2257f36ddc47cca81fa59292654182"
+      },
+      {
+        "path": "runs/2026-10-10-agent-comparison-ste-check-v2.json",
+        "sha256": "18b84d77f449759f0d023ebaacf27fe4bc7bcf8e0364bae19b44077a393c1689"
+      },
+      {
+        "path": "runs/2026-10-10-agent-comparison-ste-check.json",
+        "sha256": "4a178062b633b63d20186994d102363d847448b21debd8b382c582dce38438a7"
+      },
+      {
+        "path": "runs/2026-10-10-agent-comparison-verification.md",
+        "sha256": "07833f347a28389f43d6f0c30bba8c9becdcbd892783a7e65d4cff63eccbfc2f"
+      },
+      {
+        "path": "runs/2026-10-10-aws-agent-audit-input.json",
+        "sha256": "124c834732fd6afc06e9201b090a5fbe0bdef4c891cb6509e7f1821b5f960f69"
+      },
+      {
+        "path": "runs/2026-10-10-aws-agent-review-log-extract.txt",
+        "sha256": "24e4c081ae9b02b5d76fc33f0aa32877f50bba00ee2032d711035a7fb137bef9"
+      },
+      {
+        "path": "runs/2026-10-10-aws-agent-review-ste-check-v2.json",
+        "sha256": "edb6e48bb81a3cb953ca9c10c19bcb97f347abd028e38891cba9f924f21e9920"
+      },
+      {
+        "path": "runs/2026-10-10-aws-agent-review-ste-check.json",
+        "sha256": "a6316485f0b52acbc213128155a65e25019e6eb484e61408b56405511de2bb7b"
+      },
+      {
+        "path": "runs/2026-10-10-aws-agent-review-verification.md",
+        "sha256": "c1a5607baf8d7ef56d2779b2fc5144d11233792b4c0b94e367d05087c3dc8534"
+      },
+      {
+        "path": "runs/2026-10-10-aws-review-preservation.json",
+        "sha256": "740fb834cc187000946b7b1c2de5abebaf4691d1cc1206810f6b9d9aafdf7a8c"
+      },
+      {
+        "path": "runs/2026-10-10-before-agent-comparison-hashes.json",
+        "sha256": "e67a28f67f2393dfb697ce5ea0b44602ed2703f9ee680ac7ef4d0986c0604352"
+      },
+      {
+        "path": "runs/2026-10-10-before-aws-agent-review.zip",
+        "sha256": "0fab76f3d6fbe6ff5ebc46ed7b200083a44e7d0cf6f9c4640a07c412e38bdd7d"
+      },
+      {
+        "path": "runs/2026-10-10-before-measurement-spec.json",
+        "sha256": "b9a14dde157e939519e6f37be9700ed86f93f4f97c86d3002b5462036789e35e"
+      },
+      {
+        "path": "runs/2026-10-10-before-measurement-spec.zip",
+        "sha256": "150ce1d377a6917567e37186b3cfd6768920f70b6d89e84c15b8d237b1a35d7f"
+      },
+      {
+        "path": "runs/2026-10-10-before-ste-language-correction.json",
+        "sha256": "d61631057c757add0c2b2e452ee44a3fc6e3402f626e71191f045c49039042a2"
+      },
+      {
+        "path": "runs/2026-10-10-before-ste-language-correction.zip",
+        "sha256": "100db7399df32d973298e5a3035763b8a26713f338bf6de2f1ad23acd362d7a5"
+      },
+      {
+        "path": "runs/2026-10-10-integration/main-setup.txt",
+        "sha256": "3d1303b379bba7e12677df603ca5470b5f5f6e838496b1b648945eaa6595f035"
+      },
+      {
+        "path": "runs/2026-10-10-integration/preserved-main-edits.json",
+        "sha256": "492c11100e6811d9c7a413ea98cf4d272a678e27864b5d2138f1ee0d48c29bfc"
+      },
+      {
+        "path": "runs/2026-10-10-integration/ste-handoff.json",
+        "sha256": "2b77ebbf6a1192cdab469c9eb6671af10d36748f07922fbff47735defff38c9b"
+      },
+      {
+        "path": "runs/2026-10-10-integration/ste-verification.json",
+        "sha256": "891735bf35d1a86e19959f24e074039ff7ac17e6eee0a120bf310f762d23a3c5"
+      },
+      {
+        "path": "runs/2026-10-10-integration/verification.md",
+        "sha256": "86bec6fc6763107c298162d7746ec4cad08b3539df841bc81fcc6a10fd0f64e8"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-log-extract.txt",
+        "sha256": "e7e3e6e724825afe0d630ebd6e99a612d0fc7f2b259c670ae7c1ca156c76d3a9"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-check.json",
+        "sha256": "068c8294ee00bc46e0456512d8d0c08d1c8a37409f338871fc080b1d0ed7c981"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-ste-full.json",
+        "sha256": "682d674000b657b4a93331599bb91e60985bd6e30785ebb7c4ab8bc14a48ab46"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-ste-v2.json",
+        "sha256": "a1c9b4bb760d8c552d7adbc9a9fecca2d4af54d836fece7e945d6d2f9db5370a"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-ste-v3.json",
+        "sha256": "c99c3517ddc7aa8c17ad6f3ada6e8dd723db1ad8452524461ee7da1f53f3e549"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-ste-v4.json",
+        "sha256": "52bf577692c81d14f9ed35a974f48981f52c01fe4f931041c92f157935bcce78"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-ste-v5.json",
+        "sha256": "1fa4a82440ea5e0b6528077a3230d45150001a967ba61a1bf09a3cea8884a808"
+      },
+      {
+        "path": "runs/2026-10-10-measurement-spec-verification.md",
+        "sha256": "ebacc6fe32d2f30e0c8d99b2d11eb04adf587d1e0eea0216bb9a6dd2f8b83f24"
+      },
+      {
+        "path": "runs/2026-10-10-retrieval-routing-review.json",
+        "sha256": "5aed4d91392060cdf7e6ee7d5c77a902bdb95739f1fa42efe3a7da01dbe62365"
+      },
+      {
+        "path": "runs/2026-10-10-retrieval-routing-ste-check.json",
+        "sha256": "99636f1c004d14901729a006d17550885af20ea7ff3235376fc3890e52ddb7a2"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-full-v1.json",
+        "sha256": "2a3f6c4be3ad9ea3f0c52899e8027e45411b6ca083c1b0a555b2c435f3433da0"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-full-v2.json",
+        "sha256": "90d1ce30e433d8d3b487bab67a2e5c0e453aa53f19e54e8f68d7b93208b59dc9"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-protected-v1.json",
+        "sha256": "9b16dbd4633d11a3919660bf91012aa742e917689df7668cfcd211142812127d"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-protected-v2.json",
+        "sha256": "f4715040b700fc4cf014480edcbb790ccd27af0fe68bb4bd22a422fef51f2b7e"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-root-procedural-v1.json",
+        "sha256": "124454e3f8be017492129db78e06c91510b202f72bf7d442b2d0fb5e222a3a5d"
+      },
+      {
+        "path": "runs/2026-10-10-ste-correction-root-v1.json",
+        "sha256": "9b765e1e6f153c488f3a49822f25a55995f1c5eaec7d345f2c7e2fc17525ba63"
+      },
+      {
+        "path": "runs/2026-10-10-ste-language-correction-verification.md",
+        "sha256": "55e3dc7776c308c8fc9c9a5856c8860707303353b5297ef6686cfe3b9cfa366d"
+      },
+      {
+        "path": "runs/local-test-plan-ste-review-20261010-180917.json",
+        "sha256": "fea8a19f1674a1ced71aea9d0a06cf6e53818aa5fe5043057e067f9100849e17"
+      },
+      {
+        "path": "runs/local-test-plan-ste-source-20261010-180917.txt",
+        "sha256": "e60ff09203d3de545c4637ee7304e594f56cc8e07a3584c5a2f4557d3e425747"
+      },
+      {
+        "path": "runs/measurement-ste-review-20261010-180651.json",
+        "sha256": "cebf1c8e273c606e8339a6195ba3697896c7b0a70a0156bccf3a6f74462d25f8"
+      },
+      {
+        "path": "runs/measurement-ste-source-20261010-180651.txt",
+        "sha256": "c6c98e082b7cf61f745502fa451de03cf3017d72c318d8d2ba3dba52881155ae"
+      }
+    ]
+  },
+  {
+    "worktree": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-a",
+    "head": "52256481566025ffaf0b65325339c1f3490eb01c",
+    "changed_files": []
+  },
+  {
+    "worktree": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-b",
+    "head": "170bbe83a5fddcfdc0f491dd0348494cbebb5094",
+    "changed_files": []
+  }
+]

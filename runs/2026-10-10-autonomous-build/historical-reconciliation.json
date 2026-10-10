@@ -1,0 +1,506 @@
+{
+  "checked_at_utc": "2026-10-10T13:23:42.946058+00:00",
+  "source": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP",
+  "destination": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build",
+  "merged_base": "8e01b7ae99fd005185b23eeee62eaed4bb36e3e6",
+  "source_current_head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+  "initial_missing_paths": [
+    "runs/2026-10-10-agent-comparison-verification.md",
+    "runs/2026-10-10-aws-agent-review-audit/audit.md",
+    "runs/2026-10-10-aws-agent-review-verification.md",
+    "runs/2026-10-10-before-ste-language-correction.zip",
+    "runs/2026-10-10-integration/verification.md",
+    "runs/2026-10-10-measurement-spec-verification.md",
+    "runs/2026-10-10-ste-language-correction-verification.md"
+  ],
+  "copied": [
+    {
+      "path": "runs/2026-10-10-agent-comparison-verification.md",
+      "bytes": 2930,
+      "source_sha256": "07833f347a28389f43d6f0c30bba8c9becdcbd892783a7e65d4cff63eccbfc2f",
+      "destination_sha256": "07833f347a28389f43d6f0c30bba8c9becdcbd892783a7e65d4cff63eccbfc2f"
+    },
+    {
+      "path": "runs/2026-10-10-aws-agent-review-verification.md",
+      "bytes": 3361,
+      "source_sha256": "c1a5607baf8d7ef56d2779b2fc5144d11233792b4c0b94e367d05087c3dc8534",
+      "destination_sha256": "c1a5607baf8d7ef56d2779b2fc5144d11233792b4c0b94e367d05087c3dc8534"
+    },
+    {
+      "path": "runs/2026-10-10-measurement-spec-verification.md",
+      "bytes": 3568,
+      "source_sha256": "ebacc6fe32d2f30e0c8d99b2d11eb04adf587d1e0eea0216bb9a6dd2f8b83f24",
+      "destination_sha256": "ebacc6fe32d2f30e0c8d99b2d11eb04adf587d1e0eea0216bb9a6dd2f8b83f24"
+    },
+    {
+      "path": "runs/2026-10-10-before-ste-language-correction.zip",
+      "bytes": 95215,
+      "source_sha256": "100db7399df32d973298e5a3035763b8a26713f338bf6de2f1ad23acd362d7a5",
+      "destination_sha256": "100db7399df32d973298e5a3035763b8a26713f338bf6de2f1ad23acd362d7a5"
+    },
+    {
+      "path": "runs/2026-10-10-ste-language-correction-verification.md",
+      "bytes": 5138,
+      "source_sha256": "55e3dc7776c308c8fc9c9a5856c8860707303353b5297ef6686cfe3b9cfa366d",
+      "destination_sha256": "55e3dc7776c308c8fc9c9a5856c8860707303353b5297ef6686cfe3b9cfa366d"
+    },
+    {
+      "path": "runs/2026-10-10-integration/verification.md",
+      "bytes": 3273,
+      "source_sha256": "e457f3ccbfe641b0694e60790303c446cfc4fa6a0b5c4eb665959e456653e7b8",
+      "destination_sha256": "e457f3ccbfe641b0694e60790303c446cfc4fa6a0b5c4eb665959e456653e7b8"
+    },
+    {
+      "path": "runs/2026-10-10-aws-agent-review-audit/audit.md",
+      "bytes": 8704,
+      "source_sha256": "27f67a648a7bb13835abdae591d2c3de9e64bebbb3118cfb43f628db7e9cb761",
+      "destination_sha256": "27f67a648a7bb13835abdae591d2c3de9e64bebbb3118cfb43f628db7e9cb761"
+    },
+    {
+      "path": "runs/2026-10-10-before-agent-comparison-hashes.json",
+      "bytes": 959,
+      "source_sha256": "e67a28f67f2393dfb697ce5ea0b44602ed2703f9ee680ac7ef4d0986c0604352",
+      "destination_sha256": "e67a28f67f2393dfb697ce5ea0b44602ed2703f9ee680ac7ef4d0986c0604352"
+    },
+    {
+      "path": "runs/2026-10-10-agent-comparison-ste-check-v2.json",
+      "bytes": 2275,
+      "source_sha256": "18b84d77f449759f0d023ebaacf27fe4bc7bcf8e0364bae19b44077a393c1689",
+      "destination_sha256": "18b84d77f449759f0d023ebaacf27fe4bc7bcf8e0364bae19b44077a393c1689"
+    },
+    {
+      "path": "runs/2026-10-10-aws-agent-audit-input.json",
+      "bytes": 11514,
+      "source_sha256": "124c834732fd6afc06e9201b090a5fbe0bdef4c891cb6509e7f1821b5f960f69",
+      "destination_sha256": "124c834732fd6afc06e9201b090a5fbe0bdef4c891cb6509e7f1821b5f960f69"
+    },
+    {
+      "path": "runs/2026-10-10-aws-agent-review-audit/audit.json",
+      "bytes": 15951,
+      "source_sha256": "a957fd06941b5889364918fbeb76821f7af0452dc8a3da34347a7e9bf4dda29c",
+      "destination_sha256": "a957fd06941b5889364918fbeb76821f7af0452dc8a3da34347a7e9bf4dda29c"
+    },
+    {
+      "path": "runs/2026-10-10-before-aws-agent-review.zip",
+      "bytes": 18811,
+      "source_sha256": "0fab76f3d6fbe6ff5ebc46ed7b200083a44e7d0cf6f9c4640a07c412e38bdd7d",
+      "destination_sha256": "0fab76f3d6fbe6ff5ebc46ed7b200083a44e7d0cf6f9c4640a07c412e38bdd7d"
+    },
+    {
+      "path": "runs/2026-10-10-aws-review-preservation.json",
+      "bytes": 961,
+      "source_sha256": "740fb834cc187000946b7b1c2de5abebaf4691d1cc1206810f6b9d9aafdf7a8c",
+      "destination_sha256": "740fb834cc187000946b7b1c2de5abebaf4691d1cc1206810f6b9d9aafdf7a8c"
+    },
+    {
+      "path": "runs/2026-10-10-aws-agent-review-ste-check-v2.json",
+      "bytes": 3403,
+      "source_sha256": "edb6e48bb81a3cb953ca9c10c19bcb97f347abd028e38891cba9f924f21e9920",
+      "destination_sha256": "edb6e48bb81a3cb953ca9c10c19bcb97f347abd028e38891cba9f924f21e9920"
+    },
+    {
+      "path": "runs/2026-10-10-before-measurement-spec.zip",
+      "bytes": 67281,
+      "source_sha256": "150ce1d377a6917567e37186b3cfd6768920f70b6d89e84c15b8d237b1a35d7f",
+      "destination_sha256": "150ce1d377a6917567e37186b3cfd6768920f70b6d89e84c15b8d237b1a35d7f"
+    },
+    {
+      "path": "runs/2026-10-10-before-measurement-spec.json",
+      "bytes": 2458,
+      "source_sha256": "b9a14dde157e939519e6f37be9700ed86f93f4f97c86d3002b5462036789e35e",
+      "destination_sha256": "b9a14dde157e939519e6f37be9700ed86f93f4f97c86d3002b5462036789e35e"
+    },
+    {
+      "path": "runs/2026-10-10-measurement-spec-check.json",
+      "bytes": 2219,
+      "source_sha256": "068c8294ee00bc46e0456512d8d0c08d1c8a37409f338871fc080b1d0ed7c981",
+      "destination_sha256": "068c8294ee00bc46e0456512d8d0c08d1c8a37409f338871fc080b1d0ed7c981"
+    },
+    {
+      "path": "runs/2026-10-10-measurement-spec-ste-v5.json",
+      "bytes": 7233,
+      "source_sha256": "1fa4a82440ea5e0b6528077a3230d45150001a967ba61a1bf09a3cea8884a808",
+      "destination_sha256": "1fa4a82440ea5e0b6528077a3230d45150001a967ba61a1bf09a3cea8884a808"
+    },
+    {
+      "path": "runs/2026-10-10-before-ste-language-correction.json",
+      "bytes": 2650,
+      "source_sha256": "d61631057c757add0c2b2e452ee44a3fc6e3402f626e71191f045c49039042a2",
+      "destination_sha256": "d61631057c757add0c2b2e452ee44a3fc6e3402f626e71191f045c49039042a2"
+    },
+    {
+      "path": "runs/2026-10-10-ste-correction-full-v2.json",
+      "bytes": 21787,
+      "source_sha256": "90d1ce30e433d8d3b487bab67a2e5c0e453aa53f19e54e8f68d7b93208b59dc9",
+      "destination_sha256": "90d1ce30e433d8d3b487bab67a2e5c0e453aa53f19e54e8f68d7b93208b59dc9"
+    },
+    {
+      "path": "runs/2026-10-10-ste-correction-protected-v2.json",
+      "bytes": 37187,
+      "source_sha256": "f4715040b700fc4cf014480edcbb790ccd27af0fe68bb4bd22a422fef51f2b7e",
+      "destination_sha256": "f4715040b700fc4cf014480edcbb790ccd27af0fe68bb4bd22a422fef51f2b7e"
+    },
+    {
+      "path": "runs/2026-10-10-integration/preserved-main-edits.json",
+      "bytes": 2135,
+      "source_sha256": "492c11100e6811d9c7a413ea98cf4d272a678e27864b5d2138f1ee0d48c29bfc",
+      "destination_sha256": "492c11100e6811d9c7a413ea98cf4d272a678e27864b5d2138f1ee0d48c29bfc"
+    }
+  ],
+  "archives_reviewed": [
+    {
+      "path": "runs/2026-10-10-before-ste-language-correction.zip",
+      "members": [
+        {
+          "path": "AGENTS.md",
+          "bytes": 4717,
+          "sha256": "f28e39ce7b61128717f41f0cf1428c41bc8535bc652eb2d13dddb67834ba74d1"
+        },
+        {
+          "path": "README.md",
+          "bytes": 2104,
+          "sha256": "f96eeddbead2a39183fd422adaa75ae8ba9ef3c8ea0ebbf969f67d292e3adde3"
+        },
+        {
+          "path": "LOG.md",
+          "bytes": 11057,
+          "sha256": "fb8f9535cfb108fcd807d59768dc698077348fcad5724ee370ede49cf59bbadc"
+        },
+        {
+          "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+          "bytes": 26423,
+          "sha256": "0a803d4883accc98498fc5faa19b6944bd90d8f06930b365ac596c751d71fc63"
+        },
+        {
+          "path": "docs/architecture/arch-agent-aws-review.md",
+          "bytes": 12456,
+          "sha256": "f8865dc749f15627f5e4c9eb3fe61da0c8c6a91ec3584410710db0228542da92"
+        },
+        {
+          "path": "docs/architecture/arch-agent-operation-comparison.md",
+          "bytes": 3063,
+          "sha256": "eafcb04e1a75a0c822b991a4c37a503e06b98598480cb31422a5d002d480b459"
+        },
+        {
+          "path": "docs/architecture/arch-multi-agent-proposal.md",
+          "bytes": 15296,
+          "sha256": "afae46f98f3d69560d8bcdd27c3e0afe2966247e4fbbebd7cb8dfb51bcc4b34e"
+        },
+        {
+          "path": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+          "bytes": 9849,
+          "sha256": "f57e537e4f768663341f9c7f86735178b028c6079c87ad3b9ead3eeb5c4272fd"
+        },
+        {
+          "path": "docs/decisions/gov-decision-log.md",
+          "bytes": 19742,
+          "sha256": "eba1d862f10c5e9f27bcbc21f028762832b2895d4c91b5f2187ea00c13310a11"
+        },
+        {
+          "path": "docs/delivery/05_FEATURE_TICKETS.md",
+          "bytes": 21296,
+          "sha256": "d538e2426ca34ee85e6abaf6606c71938b3bce1c19112c34a5067b0227351ed8"
+        },
+        {
+          "path": "docs/delivery/guide-parallel-development.md",
+          "bytes": 4660,
+          "sha256": "d80a42ca8bf6d03a1888e03e020188e3e882e93c43afc3b5fca72647488279a5"
+        },
+        {
+          "path": "docs/frontend/04_FRONTEND_SPEC.md",
+          "bytes": 10066,
+          "sha256": "034863842192b4b088e20217675829c3b088f796182aba07e373e4d8c5490379"
+        },
+        {
+          "path": "docs/guide-start-here.md",
+          "bytes": 3296,
+          "sha256": "fb2823eb78210d353a03f2d083c1d6f387891e98211fffc9c0f66efefe0bf639"
+        },
+        {
+          "path": "docs/guide-ste100-writing.md",
+          "bytes": 5860,
+          "sha256": "ddd3011b0196a7be88c45e15056bef8711aecf7640ab51b7d85f8dd1e1cdb0ca"
+        },
+        {
+          "path": "docs/product/01_PRD.md",
+          "bytes": 14230,
+          "sha256": "314610e94a297cd668e38a728b03a28b4902ac1dcea1c3d9b3d8e565642fe4c0"
+        },
+        {
+          "path": "docs/security/03_SECURITY_ACCESS.md",
+          "bytes": 13979,
+          "sha256": "c96919f7dae044e403f96362e8ec80da2102160acae6ca06482a3b0a2ef2fb30"
+        },
+        {
+          "path": "docs/testing/eval-model-quality.md",
+          "bytes": 21925,
+          "sha256": "a2d130bf576bc8a31791595369ed0ac43901d5b562e127936342a6d9811362d1"
+        },
+        {
+          "path": "docs/testing/spec-local-test-plan.md",
+          "bytes": 22019,
+          "sha256": "d38bd025c9e4368f91a231690337b7260ea390a193ac98bf057851203f6595a5"
+        },
+        {
+          "path": "docs/testing/spec-measurement-contract.md",
+          "bytes": 18088,
+          "sha256": "a23f0effca10eb2c2f9c1a80a3af376e9eb6038c69dbccd13fce7c10b2ac2bfb"
+        }
+      ],
+      "flags": [],
+      "review": "Markdown documentation only. Names and contents checked before copying."
+    },
+    {
+      "path": "runs/2026-10-10-before-aws-agent-review.zip",
+      "members": [
+        {
+          "path": "docs/architecture/arch-agent-operation-comparison.md",
+          "bytes": 8380,
+          "sha256": "d7bf343c5fd09f112d692186f79d61d53ebc10625c2113ee41f5e8b040eef6be"
+        },
+        {
+          "path": "docs/architecture/arch-multi-agent-proposal.md",
+          "bytes": 15004,
+          "sha256": "0844f00eb87e53ca389e0c60693e062fc8d28e03ce63f0390e0e60be3f483fc2"
+        },
+        {
+          "path": "docs/decisions/gov-decision-log.md",
+          "bytes": 15136,
+          "sha256": "72404b058aee182f4fc41a1f96cad2c8bd9a222a8db145f0b9623d70516bbb0b"
+        },
+        {
+          "path": "LOG.md",
+          "bytes": 8512,
+          "sha256": "e965eb9755846081183f09c78f948c72ae1a0ff86eb18889be6792420a05827e"
+        }
+      ],
+      "flags": [],
+      "review": "Markdown documentation only. Names and contents checked before copying."
+    },
+    {
+      "path": "runs/2026-10-10-before-measurement-spec.zip",
+      "members": [
+        {
+          "path": "AGENTS.md",
+          "bytes": 4617,
+          "sha256": "1660b130d42ef2f33eb064f9347e0c4d1be2461ae49de375d086228d07a38e53"
+        },
+        {
+          "path": "LOG.md",
+          "bytes": 9834,
+          "sha256": "032e9a4b01db07e262f091355cb023192122f1bff6824b868f79706fd2a403ba"
+        },
+        {
+          "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+          "bytes": 19136,
+          "sha256": "04bd290a8d11267bcf202dd98f2211e708071ce2a2cac38b5404a406efd94ad5"
+        },
+        {
+          "path": "docs/architecture/arch-agent-aws-review.md",
+          "bytes": 12456,
+          "sha256": "f8865dc749f15627f5e4c9eb3fe61da0c8c6a91ec3584410710db0228542da92"
+        },
+        {
+          "path": "docs/architecture/arch-agent-operation-comparison.md",
+          "bytes": 3063,
+          "sha256": "eafcb04e1a75a0c822b991a4c37a503e06b98598480cb31422a5d002d480b459"
+        },
+        {
+          "path": "docs/architecture/arch-multi-agent-proposal.md",
+          "bytes": 15296,
+          "sha256": "afae46f98f3d69560d8bcdd27c3e0afe2966247e4fbbebd7cb8dfb51bcc4b34e"
+        },
+        {
+          "path": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+          "bytes": 9553,
+          "sha256": "dffa136a058612ce080d7cac588240ee5b2a6c1da4d47260a5797f78f52621cf"
+        },
+        {
+          "path": "docs/decisions/gov-decision-log.md",
+          "bytes": 16608,
+          "sha256": "58351bfca5631edcb58889cf57de9fa110954d46025080cb2a3172cda757f0b8"
+        },
+        {
+          "path": "docs/delivery/05_FEATURE_TICKETS.md",
+          "bytes": 11826,
+          "sha256": "23bd1b4c8cfa360035c40226defdc9ae96422d9db67b9880b51a4139a5155cc7"
+        },
+        {
+          "path": "docs/delivery/guide-parallel-development.md",
+          "bytes": 4660,
+          "sha256": "d80a42ca8bf6d03a1888e03e020188e3e882e93c43afc3b5fca72647488279a5"
+        },
+        {
+          "path": "docs/frontend/04_FRONTEND_SPEC.md",
+          "bytes": 6340,
+          "sha256": "528b08d8b115d4b23dc723e4061ba1caa3f10d8fe1771084bf87849462a26bb7"
+        },
+        {
+          "path": "docs/guide-start-here.md",
+          "bytes": 3122,
+          "sha256": "a3f02b699bca597ae32decf474557e745a1118c96474033312d4a0574bf14adb"
+        },
+        {
+          "path": "docs/guide-ste100-writing.md",
+          "bytes": 5860,
+          "sha256": "ddd3011b0196a7be88c45e15056bef8711aecf7640ab51b7d85f8dd1e1cdb0ca"
+        },
+        {
+          "path": "docs/product/01_PRD.md",
+          "bytes": 10402,
+          "sha256": "bd34fba43b4c91421d835898d5ac29401a655a0e776175ae254428123d4cd240"
+        },
+        {
+          "path": "docs/security/03_SECURITY_ACCESS.md",
+          "bytes": 8940,
+          "sha256": "d78d8a0c6128a49a92557454aaae43d26aec81f0df3411d4a835e45a0c217c4f"
+        },
+        {
+          "path": "docs/testing/eval-model-quality.md",
+          "bytes": 9568,
+          "sha256": "75dade13086e43f8c82c8385e36e269b880adc9c921403c05a02425252790d2d"
+        },
+        {
+          "path": "docs/testing/spec-local-test-plan.md",
+          "bytes": 8777,
+          "sha256": "e2c937ca8622e544ecf648aa22da46cda7bffdfc41ca27b4ba5bfdc55834de76"
+        }
+      ],
+      "flags": [],
+      "review": "Markdown documentation only. Names and contents checked before copying."
+    }
+  ],
+  "omitted": [],
+  "remaining_runs_links": [],
+  "sessions": [
+    {
+      "path": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-a",
+      "head": "52256481566025ffaf0b65325339c1f3490eb01c",
+      "baseline_head": "52256481566025ffaf0b65325339c1f3490eb01c",
+      "same_head": true,
+      "porcelain": "",
+      "clean": true
+    },
+    {
+      "path": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-b",
+      "head": "170bbe83a5fddcfdc0f491dd0348494cbebb5094",
+      "baseline_head": "170bbe83a5fddcfdc0f491dd0348494cbebb5094",
+      "same_head": true,
+      "porcelain": "",
+      "clean": true
+    }
+  ],
+  "fixture_comparisons": [
+    {
+      "path": "data/fixtures/development-inputs.json",
+      "base_sha256": "db45d91d870bab329a3c47728e9543106bc04eb10ec1bdf2d82cbfa4126b07c8",
+      "source_sha256": "db45d91d870bab329a3c47728e9543106bc04eb10ec1bdf2d82cbfa4126b07c8",
+      "worktree_sha256": "db45d91d870bab329a3c47728e9543106bc04eb10ec1bdf2d82cbfa4126b07c8",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "data/fixtures/development-labels.json",
+      "base_sha256": "d3bf9d644b3b7d82cc4f663adca68a3559c432c0e7eab92b1b0440488d2aa466",
+      "source_sha256": "d3bf9d644b3b7d82cc4f663adca68a3559c432c0e7eab92b1b0440488d2aa466",
+      "worktree_sha256": "d3bf9d644b3b7d82cc4f663adca68a3559c432c0e7eab92b1b0440488d2aa466",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "data/fixtures/freeze-manifest.json",
+      "base_sha256": "7a7e8067b532b2a91909e72257ed6992c6e0cb1e1bccf160f19d1a3521dc11cc",
+      "source_sha256": "7a7e8067b532b2a91909e72257ed6992c6e0cb1e1bccf160f19d1a3521dc11cc",
+      "worktree_sha256": "7a7e8067b532b2a91909e72257ed6992c6e0cb1e1bccf160f19d1a3521dc11cc",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "data/sources/rbi-it-governance-2023-excerpts.txt",
+      "base_sha256": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+      "source_sha256": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+      "worktree_sha256": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "data/sources/rbi-it-governance-2023.html",
+      "base_sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+      "source_sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+      "worktree_sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "data/sources/source-manifest.json",
+      "base_sha256": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+      "source_sha256": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+      "worktree_sha256": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "evals/fixtures/held-out-inputs.json",
+      "base_sha256": "8addac6de97d03857f6102069dbec51def954fe19d23575e1e63c2476fb5aac8",
+      "source_sha256": "8addac6de97d03857f6102069dbec51def954fe19d23575e1e63c2476fb5aac8",
+      "worktree_sha256": "8addac6de97d03857f6102069dbec51def954fe19d23575e1e63c2476fb5aac8",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    },
+    {
+      "path": "evals/fixtures/held-out-labels.json",
+      "base_sha256": "cbbb7ace6b9d9d5eab2ac1716c3017b9cc21b983a0217fb26fa6e09629bfd254",
+      "source_sha256": "cbbb7ace6b9d9d5eab2ac1716c3017b9cc21b983a0217fb26fa6e09629bfd254",
+      "worktree_sha256": "cbbb7ace6b9d9d5eab2ac1716c3017b9cc21b983a0217fb26fa6e09629bfd254",
+      "source_matches_base": true,
+      "worktree_matches_base": true
+    }
+  ],
+  "source_spec_changes_since_import_snapshot": [
+    {
+      "path": "LOG.md",
+      "snapshot_sha256": "c0ac6cf604efa06a8b0b8da45d8a97264f663bbfc2c79d839430e5b22478d38b",
+      "current_source_sha256": "d0ce48e36ba6e893d873f488f5187c29d715102bee5f9c6bbfe8e2bf7cbafc72"
+    },
+    {
+      "path": "README.md",
+      "snapshot_sha256": "cf3a6ffb3618bfd4cce3e6db84bf0ed45d2b654fc13b83c47234fd4147506cc7",
+      "current_source_sha256": "2a0ceaf1bb338d9c957d484dd11982af96936ee60c9966548e3cd164d9b4309b"
+    },
+    {
+      "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+      "snapshot_sha256": "b86550f6be366684d41f6c80b6b460291892cd3e038436a03e15b67ee060b3f6",
+      "current_source_sha256": "6b446e41a4187efbc11d0966395ac8f92d05058373d0db539a8869f84bbb1ea1"
+    },
+    {
+      "path": "docs/decisions/gov-decision-log.md",
+      "snapshot_sha256": "c0510eb07c0ce1d421e1ee470f09ca77bf473063b8c60061e5d55cde6b2c1a3b",
+      "current_source_sha256": "ca573a5e4791c4c27d0cb2341b62ec800c72f205425c0bc384cd93e37cfbcf2b"
+    },
+    {
+      "path": "docs/delivery/05_FEATURE_TICKETS.md",
+      "snapshot_sha256": "3087e755adbe24984a6783872e276451f6a921eb36101220fbf3b2452c14f7d1",
+      "current_source_sha256": "cd4854e899d4b033c2825af205123143a1548d6645ac8f79d0ac1a39a6d5d3f1"
+    },
+    {
+      "path": "docs/delivery/guide-parallel-development.md",
+      "snapshot_sha256": "54e7d44e061a8d006c94cdb2f455dec248e94895050d8b811192535f7d24950d",
+      "current_source_sha256": "f80ff20ef41d6a75cf31af8e23b62539e69ebec01430e9ae31896c085411539f"
+    },
+    {
+      "path": "docs/guide-start-here.md",
+      "snapshot_sha256": "04b4532d2bfa1f14a100a51ec771a6fa108fa8628d01b789b4533f9a093763f1",
+      "current_source_sha256": "3a630ec7d47b801f87381e06fb899c33fd2fa9686b0b966ee3a8b4a9bf669c93"
+    },
+    {
+      "path": "docs/guide-ste100-writing.md",
+      "snapshot_sha256": "c798e8659112f57d0f87fcfa915f5b298aed1f7066a379f3309723440dbe0672",
+      "current_source_sha256": "42cab8c9fe905f9411c188f3384e1b208c9aaa416355f7ceba724aec51a54442"
+    }
+  ],
+  "limits": [
+    "Copy traversal followed Markdown links within runs only. No runs/private files were read or copied.",
+    "Archive checks inspected member names and document content with common credential patterns. These checks are not a universal secret detector.",
+    "Source specification hash changes are reported. Their authorship is not inferred from hashes."
+  ]
+}
