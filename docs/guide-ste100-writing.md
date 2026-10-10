@@ -181,6 +181,21 @@ Use the metric names and formulas from the [measurement contract](testing/spec-m
 
 ## Review procedure
 
+### VS2 cloud terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Signed POST policy | Temporary S3 permission with specified upload conditions. |
+| Idempotency key | An identifier that gives repeated requests one logical effect. |
+| Conditional transaction | An atomic record change that requires specified stored conditions. |
+| S3 version identifier | The identifier of one stored object version. |
+| Virtual addressing | An S3 address with the bucket name in the hostname. |
+| Source page | A bounded set of extracted passages for source inspection. |
+
+These are technical terms for the accepted VS2 cloud implementation.
+
+### Apply the review procedure
+
 1. Compare the changed text with the saved source.
 2. Make sure all technical requirements and conditions stay unchanged.
 3. Make sure all exact identifiers and numeric limits stay unchanged.

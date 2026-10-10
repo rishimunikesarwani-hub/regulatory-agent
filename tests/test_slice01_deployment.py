@@ -72,7 +72,7 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertEqual(condition["token.actions.githubusercontent.com:sub"],
                          "repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development")
 
-    def test_lambda_role_has_no_model_or_document_access(self):
+    def test_lambda_role_has_only_case_document_and_log_access(self):
         function = self.template["Resources"]["CaseFunction"]["Properties"]
         self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
         self.assertNotIn("Policies", function)
@@ -80,10 +80,42 @@ class DeploymentContractTests(unittest.TestCase):
         policies = bootstrap["Resources"]["CaseRuntimeRole"]["Properties"]["Policies"]
         actions = {action for policy in policies for statement in policy["PolicyDocument"]["Statement"] for action in statement["Action"]}
         self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query",
-                                  "logs:CreateLogStream", "logs:PutLogEvents"})
+                                  "logs:CreateLogStream", "logs:PutLogEvents", 's3:GetBucketLocation', 's3:GetBucketVersioning',
+                                  's3:GetObject', 's3:GetObjectVersion', 's3:PutObject'})
         execution = bootstrap["Resources"]["CloudFormationRole"]["Properties"]["Policies"]
         iam_actions = {action for policy in execution for statement in policy["PolicyDocument"]["Statement"]
                        for action in statement["Action"] if action.startswith("iam:")}
         self.assertEqual(iam_actions, {"iam:PassRole", "iam:GetRole"})
         outputs = self.template["Outputs"]
         self.assertTrue({"FrontendUrl", "ApiUrl", "CommitSha", "UserPoolId", "UserPoolClientId"} <= outputs.keys())
+
+    def test_vs2_private_document_bucket_and_routes_preserve_cloud_contract(self):
+        resources = self.template['Resources']
+        bucket = resources['DocumentsBucket']
+        self.assertEqual(bucket['DeletionPolicy'], 'Retain')
+        properties = bucket['Properties']
+        self.assertEqual(properties['VersioningConfiguration']['Status'], 'Enabled')
+        self.assertTrue(all(properties['PublicAccessBlockConfiguration'].values()))
+        self.assertEqual(properties['OwnershipControls']['Rules'][0]['ObjectOwnership'], 'BucketOwnerEnforced')
+        self.assertEqual(properties['BucketEncryption']['ServerSideEncryptionConfiguration'][0]['ServerSideEncryptionByDefault']['SSEAlgorithm'], 'AES256')
+        self.assertNotIn('LifecycleConfiguration', properties)
+        cors = properties['CorsConfiguration']['CorsRules'][0]
+        self.assertEqual(cors['AllowedOrigins'], [{'Fn::Sub': 'https://${Frontend.DomainName}'}])
+        self.assertEqual(cors['AllowedMethods'], ['GET', 'POST'])
+        policy = resources['DocumentsBucketPolicy']['Properties']['PolicyDocument']['Statement']
+        self.assertTrue(any(s['Effect'] == 'Deny' and s.get('Condition', {}).get('Bool', {}).get('aws:SecureTransport') is False for s in policy))
+        function = resources['CaseFunction']['Properties']
+        self.assertEqual(function['Environment']['Variables']['DOCUMENTS_BUCKET'], {'Ref': 'DocumentsBucket'})
+        self.assertGreaterEqual(function['Timeout'], 29)
+        routes = {e['Properties']['Path'] for e in function['Events'].values()}
+        self.assertTrue({'/api/cases/{case_id}/uploads', '/api/cases/{case_id}/uploads/{upload_id}',
+          '/api/cases/{case_id}/uploads/{upload_id}/finalize', '/api/cases/{case_id}/uploads/{upload_id}/cancel',
+          '/api/cases/{case_id}/documents', '/api/cases/{case_id}/documents/{version_id}',
+          '/api/cases/{case_id}/documents/{version_id}/original'} <= routes)
+        bootstrap = yaml.safe_load((ROOT / 'ops/aws-development-bootstrap.yaml').read_text())
+        statements = bootstrap['Resources']['CaseRuntimeRole']['Properties']['Policies'][0]['PolicyDocument']['Statement']
+        for statement in statements:
+            if any(a.startswith('s3:') for a in statement['Action']):
+                self.assertIn('documents-', str(statement['Resource']))
+                self.assertNotIn('s3:DeleteObject', statement['Action'])
+                self.assertEqual(statement['Condition']['StringEquals']['aws:RequestedRegion'], 'ap-south-1')

@@ -1,0 +1,156 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.aws-documents.config.ts aws-documents.spec.ts
+[WebServer] (node:24420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [16688]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8191 (Press CTRL+C to quit)
+
+Running 4 tests using 1 worker
+
+(node:8800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\aws-documents.spec.ts:90:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload (5.8s)
+(node:26484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\aws-documents.spec.ts:106:1 › VS2-AWS-BT02 uncertain finalization confirms the existing upload after reload (5.7s)
+(node:39400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\aws-documents.spec.ts:117:1 › VS2-AWS-BT03 exact source pages support mobile navigation (5.7s)
+(node:32784) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 tests\aws-documents.spec.ts:126:1 › VS2-AWS-BT04 expired access clears private sources and upload state (5.7s)
+
+
+  1) tests\aws-documents.spec.ts:90:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Documents', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Documents', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Documents', exact: true })
+
+
+      80 |   });
+      81 |   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
+    > 82 |   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+         |                                                                               ^
+      83 |   return { saved, counts: () => ({ reserves, transfers }) };
+      84 | }
+      85 | async function upload(page: Page, text = 'Fictional original policy.') {
+        at fixture (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:82:79)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:91:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT01-9bcc8-riginal-download-and-reload\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT01-9bcc8-riginal-download-and-reload\error-context.md
+
+  2) tests\aws-documents.spec.ts:106:1 › VS2-AWS-BT02 uncertain finalization confirms the existing upload after reload
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Documents', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Documents', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Documents', exact: true })
+
+
+      80 |   });
+      81 |   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
+    > 82 |   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+         |                                                                               ^
+      83 |   return { saved, counts: () => ({ reserves, transfers }) };
+      84 | }
+      85 | async function upload(page: Page, text = 'Fictional original policy.') {
+        at fixture (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:82:79)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:107:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT02-9a3ee-xisting-upload-after-reload\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT02-9a3ee-xisting-upload-after-reload\error-context.md
+
+  3) tests\aws-documents.spec.ts:117:1 › VS2-AWS-BT03 exact source pages support mobile navigation ─
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Documents', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Documents', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Documents', exact: true })
+
+
+      80 |   });
+      81 |   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
+    > 82 |   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+         |                                                                               ^
+      83 |   return { saved, counts: () => ({ reserves, transfers }) };
+      84 | }
+      85 | async function upload(page: Page, text = 'Fictional original policy.') {
+        at fixture (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:82:79)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:119:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT03-e5bc0-s-support-mobile-navigation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT03-e5bc0-s-support-mobile-navigation\error-context.md
+
+  4) tests\aws-documents.spec.ts:126:1 › VS2-AWS-BT04 expired access clears private sources and upload state
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Documents', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Documents', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Documents', exact: true })
+
+
+      80 |   });
+      81 |   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
+    > 82 |   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+         |                                                                               ^
+      83 |   return { saved, counts: () => ({ reserves, transfers }) };
+      84 | }
+      85 | async function upload(page: Page, text = 'Fictional original policy.') {
+        at fixture (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:82:79)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\aws-documents.spec.ts:127:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT04-a3886-te-sources-and-upload-state\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\aws-documents-VS2-AWS-BT04-a3886-te-sources-and-upload-state\error-context.md
+
+  4 failed
+    tests\aws-documents.spec.ts:90:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload
+    tests\aws-documents.spec.ts:106:1 › VS2-AWS-BT02 uncertain finalization confirms the existing upload after reload
+    tests\aws-documents.spec.ts:117:1 › VS2-AWS-BT03 exact source pages support mobile navigation ──
+    tests\aws-documents.spec.ts:126:1 › VS2-AWS-BT04 expired access clears private sources and upload state

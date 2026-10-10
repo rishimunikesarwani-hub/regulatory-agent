@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
   // Stop before any write if a worktree accidentally points at another slice's database.
   const configuration = await page.request.get('/config.json');
-  expect((await configuration.json()).api_url).toBe('http://127.0.0.1:8121');
+  expect((await configuration.json()).api_url).toBe(process.env.LOCAL_TEST_API_URL || 'http://127.0.0.1:8121');
 });
 
 async function caseAndUpload(page: Page, content = 'Fictional policy.\nOwner is unknown.\n') {
@@ -33,7 +33,7 @@ test('VS2-BT01 upload, inspect source lines, refresh and reopen the same version
   await page.getByRole('button', { name: 'Continue with local identity' }).click();
   await expect(source).toContainText('Owner is unknown.');
   expect(new URL(page.url()).searchParams.get('source')).toBe(selected);
-  await page.screenshot({ path: '../../runs/2026-10-10-slice-02-documents/documents-desktop.png', fullPage: true });
+  await page.screenshot({ path: `${process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-slice-02-documents'}/documents-desktop.png`, fullPage: true });
 });
 
 test('VS2-BT02 replacement leaves the earlier version available', async ({ page }) => {
@@ -67,7 +67,7 @@ test('VS2-BT04 source inspection supports keyboard focus and mobile layout', asy
   await page.keyboard.press('Enter');
   await expect(page.getByRole('region', { name: 'Source evidence', exact: true })).toContainText('Owner is unknown.');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({ path: '../../runs/2026-10-10-slice-02-documents/documents-mobile.png', fullPage: true });
+  await page.screenshot({ path: `${process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-slice-02-documents'}/documents-mobile.png`, fullPage: true });
 });
 
 test('VS2-BT05 an uncertain upload requires checking saved versions before retry', async ({ page }) => {

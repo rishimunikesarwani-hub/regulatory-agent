@@ -1,0 +1,13 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment) ... ok
+test_development_traffic_limits_fit_the_verified_account_quota (test_slice01_deployment.DeploymentContractTests.test_development_traffic_limits_fit_the_verified_account_quota) ... ok
+test_execution_role_can_use_only_the_required_aws_transform (test_slice01_deployment.DeploymentContractTests.test_execution_role_can_use_only_the_required_aws_transform) ... ok
+test_lambda_role_has_only_case_document_and_log_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_only_case_document_and_log_access) ... ok
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+test_vs2_private_document_bucket_and_routes_preserve_cloud_contract (test_slice01_deployment.DeploymentContractTests.test_vs2_private_document_bucket_and_routes_preserve_cloud_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.524s
+
+OK

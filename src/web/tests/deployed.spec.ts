@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { readFile } from 'node:fs/promises';
 
 async function signIn(page: Page) {
   await page.getByRole('button', { name: 'Sign in securely' }).click();
@@ -13,7 +14,7 @@ async function signIn(page: Page) {
   await expect(workspace).toBeVisible({ timeout: 30_000 });
 }
 
-test('VS1-AWS01 actual Cognito sign-in and saved fictional case reopening', async ({ browser }) => {
+test('VS1-AWS01 and VS2-AWS01 actual sign-in, case reopening and versioned documents', async ({ browser }) => {
   // Close the manually owned context before a sanitized error can reach the reporter.
   const context = await browser.newContext({ baseURL: process.env.DEPLOYED_URL });
   const page = await context.newPage();
@@ -36,11 +37,35 @@ test('VS1-AWS01 actual Cognito sign-in and saved fictional case reopening', asyn
     expect(storageEmpty).toBe(true);
     expect(new URL(page.url()).searchParams.has('code')).toBe(false);
     const caseId = new URL(page.url()).searchParams.get('case');
+    const original = Buffer.from('Fictional cloud release policy.\nOriginal exact line.\n');
+    await page.getByLabel('Document file', { exact: true }).setInputFiles({ name: 'release-policy.txt', mimeType: 'text/plain', buffer: original });
+    await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+    await page.getByRole('button', { name: 'Upload fictional document', exact: true }).click();
+    const evidence = page.getByRole('region', { name: 'Source evidence', exact: true });
+    await expect(evidence).toContainText('Original exact line.', { timeout: 45_000 });
+    await expect(evidence).toContainText('Line 2');
+    const originalVersion = new URL(page.url()).searchParams.get('source');
+    await page.getByLabel('Replace source', { exact: true }).selectOption({ label: 'release-policy.txt' });
+    await page.getByLabel('Document file', { exact: true }).setInputFiles({ name: 'release-policy.txt', mimeType: 'text/plain',
+      buffer: Buffer.from('Fictional cloud release policy.\nRevised exact line.\n') });
+    await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+    await page.getByRole('button', { name: 'Upload fictional document', exact: true }).click();
+    await expect(evidence).toContainText('Revised exact line.', { timeout: 45_000 });
+    await expect(evidence).toContainText('Version 2');
+    await page.getByRole('button', { name: 'Inspect release-policy.txt version 1', exact: true }).click();
+    await expect(evidence).toContainText('Original exact line.');
+    const transfer = page.waitForEvent('download');
+    await page.getByRole('button', { name: 'Download original' }).click();
+    const download = await transfer;
+    expect(download.suggestedFilename()).toBe('release-policy.txt');
+    expect(await readFile((await download.path())!)).toEqual(original);
     await page.reload();
     await expect(page.getByRole('button', { name: 'Sign in securely' })).toBeVisible();
     await signIn(page);
     await expect(page.getByRole('heading', { name, level: 1 })).toBeVisible();
     expect(new URL(page.url()).searchParams.get('case')).toBe(caseId);
+    expect(new URL(page.url()).searchParams.get('source')).toBe(originalVersion);
+    await expect(evidence).toContainText('Original exact line.');
     expect(await page.evaluate(() => localStorage.length === 0 && sessionStorage.length === 0)).toBe(true);
     passed = true;
   } catch {
@@ -48,5 +73,5 @@ test('VS1-AWS01 actual Cognito sign-in and saved fictional case reopening', asyn
   } finally {
     await context.close().catch(() => {});
   }
-  if (!passed) throw new Error('VS1-AWS01 failed. Check the configured deployment and test operator. Authentication details were not recorded.');
+  if (!passed) throw new Error('VS1-AWS01 or VS2-AWS01 failed. Check deployment, permissions, and the test operator. Authentication details were not recorded.');
 });

@@ -8,7 +8,12 @@ type Source = {
   units: number;
   uploaded_at: string;
 };
-type Evidence = Source & { passages: { passage_id: string; location: string; text: string }[] };
+type Evidence = Source & { passages: { passage_id: string; location: string; text: string }[];
+  offset?: number; passage_count?: number; next_offset?: number | null };
+type UploadMetadata = { filename: string; kind: string; size_bytes: number; synthetic: true; source_id?: string };
+type UploadStatus = { upload_id: string; state: 'reserved' | 'uploaded' | 'finalized' | 'failed' | 'cancelled';
+  request?: UploadMetadata; document?: Source['document']; error?: string };
+type Grant = UploadStatus & { authorization?: { upload_id: string; destination: string; expires_at: string; eligible_for_assessment: false }; fields?: Record<string, string> };
 class DocumentError extends Error {
   constructor(readonly status: number, message: string) { super(message); }
 }
@@ -25,14 +30,16 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
+  const [pending, setPending] = useState<{ key: string; id?: string; request?: UploadMetadata } | null>(null);
+  const pendingNow = useRef(pending);
   const fileInput = useRef<HTMLInputElement>(null);
   const requestId = useRef(0);
   const active = useRef(true);
   const root = `${config.api_url}/api/cases/${encodeURIComponent(caseId)}/documents`;
 
-  async function request(path = '', options: RequestInit = {}): Promise<Response> {
-    const response = await fetch(root + path, { ...options, cache: 'no-store', credentials: 'omit',
-      signal: AbortSignal.timeout(20_000), headers: { ...authHeaders(config), ...options.headers } });
+  async function request(path = '', options: RequestInit = {}, uploads = false): Promise<Response> {
+    const response = await fetch((uploads ? root.replace(/\/documents$/, '/uploads') : root) + path, { ...options, cache: 'no-store', credentials: 'omit',
+      signal: AbortSignal.timeout(uploads && path.endsWith('/finalize') ? 30_000 : 20_000), headers: { ...authHeaders(config), ...options.headers } });
     if (response.status === 401) throw new Error('expired');
     if (!response.ok) {
       const detail = await response.json().catch(() => ({}));
@@ -47,13 +54,15 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
     if (active.current && !onExpired(reason)) setError(reason instanceof DocumentError ? reason.message : fallback);
   }
 
-  async function inspect(id: string): Promise<void> {
+  async function inspect(id: string, offset = 0): Promise<void> {
     const current = ++requestId.current;
     setError('');
     try {
-      const source = await (await request(`/${encodeURIComponent(id)}`)).json() as Evidence;
+      const source = await (await request(`/${encodeURIComponent(id)}${offset ? `?offset=${offset}` : ''}`)).json() as Evidence;
       if (source.document?.case_id !== caseId || source.document.document_version_id !== id || source.document.synthetic !== true ||
-          !Array.isArray(source.passages) || source.passages.some(p => typeof p.text !== 'string' || typeof p.location !== 'string')) throw new Error('The source response is invalid. Refresh documents.');
+          !Array.isArray(source.passages) || source.passages.some(p => typeof p.text !== 'string' || typeof p.location !== 'string') ||
+          (config.mode === 'aws' && (source.offset !== offset || !Number.isInteger(source.passage_count) || source.passage_count! < source.passages.length ||
+            (source.next_offset !== null && source.next_offset !== offset + 500)))) throw new Error('The source response is invalid. Refresh documents.');
       if (!active.current || current !== requestId.current) return;
       setEvidence(source);
       const url = new URL(location.href);
@@ -72,6 +81,11 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
       setSources(result.sources);
       setUncertain(false);
       const id = resume ? new URL(location.href).searchParams.get('source') : null;
+      if (resume && config.mode === 'aws') {
+        const url = new URL(location.href);
+        const uploadId = url.searchParams.get('upload'), key = url.searchParams.get('uploadKey');
+        if (uploadId || key) { pendingNow.current = { key: key || '', id: uploadId || undefined }; setPending(pendingNow.current); setUncertain(true); }
+      }
       if (id) await inspect(id);
     } catch (reason) { failed(reason, 'Could not load documents. Try again.'); }
     finally { if (active.current) setLoading(false); }
@@ -83,12 +97,100 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
     return () => { active.current = false; requestId.current++; };
   }, []);
 
+  function savePending(value: { key: string; id?: string; request?: UploadMetadata } | null): void {
+    pendingNow.current = value; setPending(value);
+    const url = new URL(location.href);
+    for (const name of ['upload', 'uploadKey']) url.searchParams.delete(name);
+    if (value?.id) url.searchParams.set('upload', value.id);
+    if (value?.key) url.searchParams.set('uploadKey', value.key);
+    history.replaceState(null, '', url.pathname + url.search);
+  }
+
+  async function confirmed(document: Source['document']): Promise<void> {
+    if (document.case_id !== caseId || document.synthetic !== true || !document.document_version_id) throw new Error('invalid_upload');
+    if (!active.current) return;
+    savePending(null); setFile(null); setFictional(false); setUncertain(false);
+    if (fileInput.current) fileInput.current.value = '';
+    await refresh(); await inspect(document.document_version_id);
+    setNotice('Document saved. Earlier versions remain available.');
+  }
+
+  async function cloudUpload(metadata: UploadMetadata, key: string): Promise<void> {
+    savePending({ key, id: pendingNow.current?.key === key ? pendingNow.current.id : undefined, request: metadata });
+    const grant = await (await request('', { method: 'POST', body: JSON.stringify(metadata),
+      headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key } }, true)).json() as Grant;
+    if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(grant.upload_id)) throw new Error('invalid_upload');
+    savePending({ key, id: grant.upload_id, request: metadata });
+    if (grant.state === 'finalized' && grant.document) { await confirmed(grant.document); return; }
+    if (grant.state === 'uploaded') {
+      const result = await (await request(`/${encodeURIComponent(grant.upload_id)}/finalize`, { method: 'POST' }, true)).json() as UploadStatus;
+      if (!result.document) throw new Error('invalid_upload');
+      await confirmed(result.document); return;
+    }
+    const authorization = grant.authorization;
+    if (grant.state !== 'reserved' || !authorization || authorization.upload_id !== grant.upload_id ||
+      authorization.eligible_for_assessment !== false || !grant.fields || !file) throw new Error('invalid_upload');
+    const destination = new URL(authorization.destination);
+    if (destination.protocol !== 'https:' || !/^[a-z0-9][a-z0-9.-]*\.s3\.ap-south-1\.amazonaws\.com$/.test(destination.hostname) ||
+      destination.username || destination.password || destination.search || destination.hash ||
+      !Number.isFinite(Date.parse(authorization.expires_at)) || Date.parse(authorization.expires_at) <= Date.now()) throw new Error('invalid_storage');
+    const form = new FormData();
+    for (const [name, value] of Object.entries(grant.fields)) {
+      if (typeof value !== 'string' || name === 'file') throw new Error('invalid_storage');
+      form.append(name, value);
+    }
+    form.append('file', file);
+    const transfer = await fetch(destination.href, { method: 'POST', body: form, credentials: 'omit', signal: AbortSignal.timeout(60_000) });
+    if (!transfer.ok) throw new Error('upload_transfer');
+    const result = await (await request(`/${encodeURIComponent(grant.upload_id)}/finalize`, { method: 'POST' }, true)).json() as UploadStatus;
+    if (!result.document) throw new Error('invalid_upload');
+    await confirmed(result.document);
+  }
+
+  async function checkUpload(cancel = false): Promise<void> {
+    if (!pending?.id || busy) return;
+    setBusy(true); setError('');
+    try {
+      const status = await (await request(`/${encodeURIComponent(pending.id)}${cancel ? '/cancel' : ''}`,
+        cancel ? { method: 'POST' } : {}, true)).json() as UploadStatus;
+      if (status.upload_id !== pending.id) throw new Error('invalid_upload');
+      if (status.state === 'finalized' && status.document) await confirmed(status.document);
+      else if (status.state === 'uploaded') {
+        const result = await (await request(`/${encodeURIComponent(pending.id)}/finalize`, { method: 'POST' }, true)).json() as UploadStatus;
+        if (!result.document) throw new Error('invalid_upload');
+        await confirmed(result.document);
+      } else if (status.state === 'reserved' && status.request) {
+        savePending({ ...pending, request: status.request });
+        setNotice(`The upload is unfinished. Select ${status.request.filename} and resume, or cancel the upload.`);
+      } else if (status.state === 'failed' || status.state === 'cancelled') {
+        savePending(null); setUncertain(false); setNotice('The upload was not saved. You can try again.');
+      } else throw new Error('invalid_upload');
+    } catch (reason) { failed(reason, 'Could not confirm the upload. Check its status before another upload.'); }
+    finally { if (active.current) setBusy(false); }
+  }
+
+  async function resumeUpload(): Promise<void> {
+    if (!pending || !file || !fictional || busy) return;
+    const metadata = pending.request || { filename: file.name, kind, size_bytes: file.size, synthetic: true,
+      ...(replacement ? { source_id: replacement } : {}) };
+    if (file.name !== metadata.filename || file.size !== metadata.size_bytes) { setError('Select the same file name and size to resume.'); return; }
+    setBusy(true); setError('');
+    try { await cloudUpload(metadata, pending.key); }
+    catch (reason) { setUncertain(true); failed(reason, 'The upload could not be confirmed. Check its status before another upload.'); }
+    finally { if (active.current) setBusy(false); }
+  }
+
   async function upload(event: FormEvent): Promise<void> {
     event.preventDefault();
     if (!file || !fictional || busy || uncertain) return;
     if (file.size > 10_000_000) { setError('The file exceeds the 10 MB limit. Use a smaller document.'); return; }
     setBusy(true); setError(''); setNotice('');
     try {
+      if (config.mode === 'aws') {
+        await cloudUpload({ filename: file.name, kind, size_bytes: file.size, synthetic: true,
+          ...(replacement ? { source_id: replacement } : {}) }, crypto.randomUUID());
+        return;
+      }
       const saved = await (await request('', { method: 'POST', body: file, headers: {
         'Content-Type': 'application/octet-stream', 'X-Filename': encodeURIComponent(file.name),
         'X-Document-Kind': kind, 'X-Synthetic': 'true', ...(replacement ? { 'X-Source-Id': replacement } : {}),
@@ -101,6 +203,7 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
       setNotice('Document saved. Earlier versions remain available.');
     } catch (reason) {
       // An interrupted POST might have saved. Require a list refresh before retrying.
+      if (config.mode === 'aws' && reason instanceof DocumentError && reason.status < 500 && !pendingNow.current?.id) savePending(null);
       if (!(reason instanceof DocumentError) || reason.status >= 500) setUncertain(true);
       failed(reason, 'The upload could not be confirmed. Refresh documents before you try again.');
     } finally { if (active.current) setBusy(false); }
@@ -111,13 +214,20 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
     setBusy(true); setError('');
     try {
       const response = await request(`/${encodeURIComponent(evidence.document.document_version_id)}/original`);
-      const blob = await response.blob();
+      const blob = config.mode === 'local' ? await response.blob() : null;
       if (!active.current) return;
-      const url = URL.createObjectURL(blob);
+      let url: string;
+      if (blob) url = URL.createObjectURL(blob);
+      else {
+        const result = await response.json() as { url: string };
+        const target = new URL(result.url);
+        if (target.protocol !== 'https:' || !/^[a-z0-9][a-z0-9.-]*\.s3\.ap-south-1\.amazonaws\.com$/.test(target.hostname) || target.username || target.password) throw new Error('invalid_storage');
+        url = target.href;
+      }
       const link = document.createElement('a');
       link.href = url; link.download = evidence.filename;
       link.click();
-      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      if (blob) setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (reason) { failed(reason, 'Could not download the original. Try again.'); }
     finally { if (active.current) setBusy(false); }
   }
@@ -128,6 +238,10 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
       <button className="secondary" disabled={busy || loading} onClick={() => void refresh()}>Refresh documents</button></div>
     {error && <p className="alert" role="alert">{error}{uncertain && ' Refresh documents before you upload again.'}</p>}
     {notice && <p className="success" role="status">{notice}</p>}
+    {pending && <div className="panel"><p>An upload needs confirmation before another upload.</p>
+      {pending.id && <><button className="secondary" disabled={busy} onClick={() => void checkUpload()}>Check upload status</button>{' '}
+        <button className="secondary" disabled={busy} onClick={() => void checkUpload(true)}>Cancel unfinished upload</button>{' '}</>}
+      <button className="secondary" disabled={busy || !file || !fictional} onClick={() => void resumeUpload()}>Resume upload</button></div>}
     <div className="document-layout"><div className="document-controls"><section className="panel" aria-labelledby="upload-heading">
       <h3 id="upload-heading">Upload a fictional document</h3><p className="field-hint">Text PDF, DOCX, TXT, or CSV. Maximum 10 MB per file and 10 saved versions per case.</p>
       <form onSubmit={event => void upload(event)}><fieldset disabled={busy || loading}>
@@ -138,7 +252,7 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
           <option value="">New source</option>{latest.map(s => <option key={s.document.source_id} value={s.document.source_id}>{s.filename}</option>)}</select>
         <p className="field-hint">A replacement adds a version. It keeps the earlier version.</p>
         <label className="checkbox-label"><input type="checkbox" checked={fictional} onChange={event => setFictional(event.target.checked)} /><span>I confirm this document contains fictional data only.</span></label>
-        <button className="full-width" type="submit" disabled={!file || !fictional || uncertain || sources.length >= 10}>{busy ? 'Saving document…' : 'Upload fictional document'}</button>
+        <button className="full-width" type="submit" disabled={!file || !fictional || uncertain || !!pending || sources.length >= 10}>{busy ? 'Saving document…' : 'Upload fictional document'}</button>
         {sources.length >= 10 && <p className="field-hint">This case has reached its 10-version limit.</p>}
       </fieldset></form></section>
       <section className="panel source-list" aria-labelledby="saved-documents-heading"><h3 id="saved-documents-heading">Saved versions <span className="count">{sources.length}</span></h3>
@@ -155,6 +269,11 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
           <p className="identifier source-version">Version ID: {evidence.document.document_version_id}</p>
           <details className="source-version"><summary>Content hash (SHA-256)</summary><p className="identifier">{evidence.document.sha256}</p></details>
           <div className="passages">{evidence.passages.map(p => <article className="passage" key={p.passage_id}><h4>{p.location}</h4><pre>{p.text}</pre></article>)}</div>
+          {config.mode === 'aws' && evidence.passage_count! > 500 && <nav aria-label="Source pages">
+            <p>Passages {evidence.offset! + 1}–{evidence.offset! + evidence.passages.length} of {evidence.passage_count}</p>
+            <button className="secondary" disabled={busy || !evidence.offset} onClick={() => void inspect(evidence.document.document_version_id, Math.max(0, evidence.offset! - 500))}>Previous source page</button>{' '}
+            <button className="secondary" disabled={busy || evidence.next_offset === null} onClick={() => void inspect(evidence.document.document_version_id, evidence.next_offset!)}>Next source page</button>
+          </nav>}
         </>}
       </section></div>
     <p className="assessment-notice">No assessment has run.</p>

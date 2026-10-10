@@ -50,7 +50,12 @@ export async function startSignIn(config: Config): Promise<void> {
     (selectedCase && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(selectedCase) ? `.${selectedCase}` : '');
   const verifier = base64url(crypto.getRandomValues(new Uint8Array(64)));
   const challenge = base64url(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier))));
-  sessionStorage.setItem(pkceKey, JSON.stringify({ state, verifier }));
+  const resume: Record<string, string> = {};
+  if (selectedCase) for (const name of ['source', 'upload', 'uploadKey']) {
+    const value = new URL(location.href).searchParams.get(name);
+    if (value && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(value)) resume[name] = value;
+  }
+  sessionStorage.setItem(pkceKey, JSON.stringify({ state, verifier, resume }));
   const url = new URL('/oauth2/authorize', config.cognito_domain);
   url.search = new URLSearchParams({ response_type: 'code', client_id: config.user_pool_client_id!,
     redirect_uri: config.redirect_uri!, scope: 'openid', state, code_challenge_method: 'S256', code_challenge: challenge }).toString();
@@ -72,7 +77,7 @@ export async function finishSignIn(config: Config): Promise<boolean> {
   for (const key of ['code', 'state', 'error', 'error_description']) url.searchParams.delete(key);
   history.replaceState(null, '', url.pathname + url.search);
   if (config.mode !== 'aws' || error || !code || !state || !pending) throw new Error('signin');
-  const saved = JSON.parse(pending) as { state?: string; verifier?: string };
+  const saved = JSON.parse(pending) as { state?: string; verifier?: string; resume?: Record<string, string> };
   if (state !== saved.state || !saved.verifier) throw new Error('signin');
   const selectedCase = state.includes('.') ? state.slice(state.indexOf('.') + 1) : null;
   if (selectedCase !== null && !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(selectedCase)) throw new Error('signin');
@@ -92,6 +97,10 @@ export async function finishSignIn(config: Config): Promise<boolean> {
   expiresAt = Date.now() + result.expires_in * 1000;
   if (selectedCase) {
     url.searchParams.set('case', selectedCase);
+    for (const name of ['source', 'upload', 'uploadKey']) {
+      const value = saved.resume?.[name];
+      if (typeof value === 'string' && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(value)) url.searchParams.set(name, value);
+    }
     history.replaceState(null, '', url.pathname + url.search);
   }
   return true;

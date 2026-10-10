@@ -1,0 +1,44 @@
+test_s3_01_owner_checks_precede_every_storage_operation (test_slice02_s3.S3DocumentTransportTests.test_s3_01_owner_checks_precede_every_storage_operation) ... ok
+test_s3_02_signed_policy_fixes_key_length_type_and_encryption (test_slice02_s3.S3DocumentTransportTests.test_s3_02_signed_policy_fixes_key_length_type_and_encryption) ... ERROR
+test_s3_03_invalid_metadata_never_reaches_storage (test_slice02_s3.S3DocumentTransportTests.test_s3_03_invalid_metadata_never_reaches_storage) ... ok
+test_s3_04_client_region_and_account_configuration_fail_closed (test_slice02_s3.S3DocumentTransportTests.test_s3_04_client_region_and_account_configuration_fail_closed) ... ok
+test_s3_04_wrong_bucket_region_or_versioning_is_rejected (test_slice02_s3.S3DocumentTransportTests.test_s3_04_wrong_bucket_region_or_versioning_is_rejected) ... ok
+test_s3_05_pin_and_reopen_use_the_exact_version_after_overwrite (test_slice02_s3.S3DocumentTransportTests.test_s3_05_pin_and_reopen_use_the_exact_version_after_overwrite) ... ok
+test_s3_06_missing_version_and_changed_size_cannot_finalize (test_slice02_s3.S3DocumentTransportTests.test_s3_06_missing_version_and_changed_size_cannot_finalize) ... ok
+test_s3_06_short_long_or_changed_content_is_rejected_and_closed (test_slice02_s3.S3DocumentTransportTests.test_s3_06_short_long_or_changed_content_is_rejected_and_closed) ... ok
+test_s3_07_stream_read_failure_still_closes_the_body (test_slice02_s3.S3DocumentTransportTests.test_s3_07_stream_read_failure_still_closes_the_body) ... ok
+test_s3_08_download_uses_saved_version_and_safe_filename (test_slice02_s3.S3DocumentTransportTests.test_s3_08_download_uses_saved_version_and_safe_filename) ... ERROR
+test_s3_09_forged_or_cross_case_reference_does_not_read_content (test_slice02_s3.S3DocumentTransportTests.test_s3_09_forged_or_cross_case_reference_does_not_read_content) ... ok
+
+======================================================================
+ERROR: test_s3_02_signed_policy_fixes_key_length_type_and_encryption (test_slice02_s3.S3DocumentTransportTests.test_s3_02_signed_policy_fixes_key_length_type_and_encryption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\tests\test_slice02_s3.py", line 75, in test_s3_02_signed_policy_fixes_key_length_type_and_encryption
+    grant = self.objects.grant('operator-a', self.case, UPLOAD, self.headers, len(DATA))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\regulatory_agent\aws_document_objects.py", line 58, in grant
+    authorization = UploadAuthorization(upload_id=upload, destination=self._target(grant['url']), expires_at=expiration)
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\regulatory_agent\aws_document_objects.py", line 40, in _target
+    raise unavailable()
+regulatory_agent.cases.CaseError: storage_unavailable
+
+======================================================================
+ERROR: test_s3_08_download_uses_saved_version_and_safe_filename (test_slice02_s3.S3DocumentTransportTests.test_s3_08_download_uses_saved_version_and_safe_filename)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\tests\test_slice02_s3.py", line 148, in test_s3_08_download_uses_saved_version_and_safe_filename
+    url = self.objects.download('operator-a', self.case, self.reference(), 'fictional policy.txt')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\regulatory_agent\aws_document_objects.py", line 108, in download
+    return self._target(self.client.generate_presigned_url('get_object', Params={
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\regulatory_agent\aws_document_objects.py", line 40, in _target
+    raise unavailable()
+regulatory_agent.cases.CaseError: storage_unavailable
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.837s
+
+FAILED (errors=2)

@@ -1,0 +1,30 @@
+.venv/Scripts/python.exe : test_slice02_aws (unittest.loader._FailedTest.test_slice02_aws) ... ERROR
+At line:2 char:30
++ ... src;tests'; .venv/Scripts/python.exe -m unittest discover -s tests -p ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_slice02_aw..._aws) ... ERROR:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+======================================================================
+ERROR: test_slice02_aws (unittest.loader._FailedTest.test_slice02_aws)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_slice02_aws
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py",
+line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py",
+line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\tests\test_slice02_aws.py", line 12, in <module>
+    from regulatory_agent.aws_documents import CloudDocuments
+ModuleNotFoundError: No module named 'regulatory_agent.aws_documents'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

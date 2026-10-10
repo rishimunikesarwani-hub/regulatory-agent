@@ -1,0 +1,196 @@
+
+
+
+## 2026-10-11 - Accepted VS2 AWS document preparation
+
+VS2 local integration merged through PR8 at `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
+VS3 remains in its separate review worktree and draft PR9.
+Its pending user review controls merge and VS4 development.
+
+Branch `work/t3-aws-documents` prepares the accepted document flow for AWS.
+The cloud specification preceded storage, cloud API, infrastructure, and browser implementation.
+The prepared flow includes direct private S3 upload, durable reservations, bounded extraction, conditional counters, source pages, and original downloads.
+Retries retain the same upload identifier and saved object versions.
+The local protocol and approved limits stay unchanged.
+
+The controlled backend suite passed 204 checks.
+The combined browser suite passed 26 checks.
+The frontend build and both template lint checks passed.
+AWS IAM Access Analyzer returned no findings for the prepared runtime identity policy.
+This validation did not apply permissions or prove live service access.
+
+The API test uses port `8191` and `runs/private/slice-02-aws/browser-tests.sqlite`.
+The browser uses port `5192` during its checks.
+Feedback ports remain reserved. New feedback services are not running.
+The accepted VS1 and VS2 feedback services and pending VS3 review services remain unchanged.
+
+CloudFront account verification and failed-stack recovery still block deployment.
+The new storage and permission templates have not been applied to AWS.
+No cloud resource was created or deleted during this preparation.
+The Support verification request has not been sent by this session.
+
+Read the [cloud preparation guide](docs/delivery/guide-slice-02-aws-documents.md) and [evidence](runs/2026-10-11-slice-02-aws-documents/review-cloud-preparation.md).
+Next: finish GitHub checks for the cloud document branch.
+Keep VS3 acceptance and AWS verification pending until their required evidence arrives.
+
+
+## D38 - Accepted VS2 cloud document integration
+
+Date: 2026-10-11.
+Status: Implementation clarification within accepted VS2 and authorized AWS development.
+
+VS2 local integration merged through PR8 after its GitHub checks passed.
+Its cloud preparation uses [the cloud source contract](../delivery/spec-slice-02-aws-documents.md).
+Send file bytes directly to private, versioned S3 storage in Mumbai.
+Lambda's synchronous payload limit cannot carry the approved 10 MB uploads.
+Keep the approved limits unchanged.
+Save upload records and case counters through conditional DynamoDB transactions.
+Pin original and extracted object versions before exposing saved source evidence.
+
+Use temporary signed transfer permission for one declared key and file length.
+Configure the S3 SDK with an explicit Mumbai endpoint and virtual addressing.
+Keep every extracted passage accessible through 500-passage source pages in AWS mode.
+Give unfinished uploads explicit status, resume, and cancellation actions.
+Cancellation changes metadata only.
+Retain existing originals and earlier document versions.
+
+The controlled checks cover VS2-S3-01 through VS2-S3-09 and VS2-AWS-01 through VS2-AWS-10.
+They also cover VS2-AWS-BT01 through VS2-AWS-BT04.
+These checks contribute to T3, T6, T7, T8, and T9.
+They do not establish live AWS acceptance or model quality.
+Read the [preparation guide](../delivery/guide-slice-02-aws-documents.md) for the evidence and remaining deployment conditions.
+
+D34 and D35 remain in force.
+The user chose to keep CloudFront while AWS account verification is pending.
+The new cloud permission template has not been applied.
+VS3 remains in its separate review branch until the pending user review.
+No earlier product decision or approval record is replaced.
+
+
+
+VS2 local integration merged through PR8 after its GitHub checks passed.
+The AWS document branch passed 204 backend checks and 26 browser checks.
+Its templates and cloud protocol are prepared. Deployment and AWS acceptance remain pending.
+VS3 has a separate review branch. Its user review remains pending.
+**Status:** In progress. Local bank-file upload and inspection passed VS2 checks. Controlled AWS document checks passed. Regulatory retrieval and live AWS acceptance remain pending.
+**Status:** In progress. Case and document adapters, storage templates, and cloud protocol checks are prepared. CloudFront verification and live acceptance remain pending.
+
+
+# VS2 AWS document preparation
+
+Date: 2026-10-11.
+Status: Controlled integration complete. Live deployment and AWS acceptance remain pending.
+
+## Prepared behavior
+
+The cloud API authorizes each case through the existing Cognito access-token checks.
+The browser sends file bytes directly to private S3 storage in Mumbai.
+The API receives upload metadata and gives temporary transfer permission.
+Each permission fixes the object key, file length, content type, and encryption setting.
+The approved 10 MB file limit stays unchanged.
+
+The upload record keeps the original S3 version identifier and content hash.
+Extraction uses the same bounded parser as local uploads.
+One conditional DynamoDB transaction saves source metadata and case counters together.
+Repeated finalization keeps one saved document version.
+Cancellation releases an unfinished reservation without deleting stored objects.
+
+The source interface shows at most 500 passages per page in AWS mode.
+Its page controls give access to every extracted passage.
+Exact locations, passage identifiers, source versions, and earlier originals stay unchanged.
+Original downloads use authorized links for the saved S3 version.
+Signed links stay out of tracked evidence and operational logs.
+
+## Isolation and checks
+
+Branch: `work/t3-aws-documents`.
+Worktree: `.worktrees/regulatory-agent-t3-aws-documents`.
+Web test port: `5192`. API test port: `8191`.
+Browser database: `runs/private/slice-02-aws/browser-tests.sqlite`.
+Ports `5192` and `8190` remain reserved for future feedback services.
+No feedback services are running from this worktree.
+The VS3 review services remain available at `http://127.0.0.1:5183/`.
+
+Run these checks from this worktree:
+
+```powershell
+.venv/Scripts/python.exe ops/check.py
+npm --prefix src/web run build
+npm --prefix src/web test -- --config playwright.aws-documents.config.ts
+uvx --python 3.12.13 cfn-lint ops/sam-dev.yaml ops/aws-development-bootstrap.yaml
+```
+
+The browser configuration starts and stops its isolated test servers.
+It rejects a different configured test API before local document writes.
+The cloud browser checks use controlled responses for Cognito, the API, and S3.
+These checks do not establish live sign-in or live cloud storage behavior.
+Read the [evidence receipt](../../runs/2026-10-11-slice-02-aws-documents/review-cloud-preparation.md).
+
+## Deployment prerequisites
+
+The development stack remains `ROLLBACK_COMPLETE` after the CloudFront account-verification failure.
+Follow the [verification guide](guide-aws-cloudfront-verification.md) for the manual AWS Support request.
+The user chose to keep CloudFront while AWS verification is pending.
+This session has not sent that request.
+Failed-stack recovery needs a separate review before any deletion.
+
+The prepared access template adds document storage permissions to the fixed runtime role.
+Its permissions cover the specified Mumbai bucket and owner prefixes.
+It grants no object deletion or model invocation.
+The deployment role can upload public frontend assets and deployment packages.
+It has no application document-object grant.
+These permission changes have not been applied to AWS.
+
+The application template defines a retained, encrypted, private, versioned document bucket.
+It permits browser transfers only from the configured CloudFront origin.
+Its bucket policy denies HTTP traffic and uploads without the required encryption setting.
+The function has 512 MB memory and a 29-second timeout for bounded extraction.
+Storage observability activation and live permission checks remain pending.
+
+Keep the USD 25 monthly budget alerts.
+The alerts do not stop spending.
+Stored versions and repeated storage requests can incur charges.
+Private bank uploads remain disabled until the approved India checks pass.
+
+## Current acceptance boundary
+
+VS2 local acceptance and its integration merge are complete.
+VS3 remains in its separate review branch.
+Do not merge VS3 or start VS4 before the pending user review.
+The AWS document branch has not been merged or deployed.
+Live AWS upload, source inspection, replacement, and download acceptance remain pending.
+
+## References
+
+- [Cloud source specification](spec-slice-02-aws-documents.md) defines routes and acceptance cases.
+- [DynamoDB transaction permissions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/transaction-apis-iam.html) use the permissions for each underlying item operation.
+- [S3 security guidance](https://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html) covers private access, encryption, versioning, and role permissions.
+
+
+## VS2 AWS implementation clarification
+
+Date: 2026-10-11. Source: D38 and the accepted VS2 document scope.
+The AWS document interface uploads directly to private S3 storage through temporary API permission.
+It keeps unfinished upload identifiers across the Cognito callback.
+It gives explicit status, resume, and cancellation actions after an uncertain upload.
+Cancellation changes metadata only.
+Source inspection shows at most 500 passages per page in AWS mode.
+Previous and next controls give access to every extracted passage.
+The local upload protocol and approved source limits stay unchanged.
+Read the [cloud source contract](../delivery/spec-slice-02-aws-documents.md).
+
+
+### VS2 cloud terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Signed POST policy | Temporary S3 permission with specified upload conditions. |
+| Idempotency key | An identifier that gives repeated requests one logical effect. |
+| Conditional transaction | An atomic record change that requires specified stored conditions. |
+| S3 version identifier | The identifier of one stored object version. |
+| Virtual addressing | An S3 address with the bucket name in the hostname. |
+| Source page | A bounded set of extracted passages for source inspection. |
+
+These are technical terms for the accepted VS2 cloud implementation.
+
+### Apply the review procedure

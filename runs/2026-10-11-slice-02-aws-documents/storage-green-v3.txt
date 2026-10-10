@@ -1,0 +1,16 @@
+test_s3_01_owner_checks_precede_every_storage_operation (test_slice02_s3.S3DocumentTransportTests.test_s3_01_owner_checks_precede_every_storage_operation) ... ok
+test_s3_02_signed_policy_fixes_key_length_type_and_encryption (test_slice02_s3.S3DocumentTransportTests.test_s3_02_signed_policy_fixes_key_length_type_and_encryption) ... ok
+test_s3_03_invalid_metadata_never_reaches_storage (test_slice02_s3.S3DocumentTransportTests.test_s3_03_invalid_metadata_never_reaches_storage) ... ok
+test_s3_04_client_region_and_account_configuration_fail_closed (test_slice02_s3.S3DocumentTransportTests.test_s3_04_client_region_and_account_configuration_fail_closed) ... ok
+test_s3_04_wrong_bucket_region_or_versioning_is_rejected (test_slice02_s3.S3DocumentTransportTests.test_s3_04_wrong_bucket_region_or_versioning_is_rejected) ... ok
+test_s3_05_pin_and_reopen_use_the_exact_version_after_overwrite (test_slice02_s3.S3DocumentTransportTests.test_s3_05_pin_and_reopen_use_the_exact_version_after_overwrite) ... ok
+test_s3_06_missing_version_and_changed_size_cannot_finalize (test_slice02_s3.S3DocumentTransportTests.test_s3_06_missing_version_and_changed_size_cannot_finalize) ... ok
+test_s3_06_short_long_or_changed_content_is_rejected_and_closed (test_slice02_s3.S3DocumentTransportTests.test_s3_06_short_long_or_changed_content_is_rejected_and_closed) ... ok
+test_s3_07_stream_read_failure_still_closes_the_body (test_slice02_s3.S3DocumentTransportTests.test_s3_07_stream_read_failure_still_closes_the_body) ... ok
+test_s3_08_download_uses_saved_version_and_safe_filename (test_slice02_s3.S3DocumentTransportTests.test_s3_08_download_uses_saved_version_and_safe_filename) ... ok
+test_s3_09_forged_or_cross_case_reference_does_not_read_content (test_slice02_s3.S3DocumentTransportTests.test_s3_09_forged_or_cross_case_reference_does_not_read_content) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.716s
+
+OK

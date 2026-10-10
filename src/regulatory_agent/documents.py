@@ -44,6 +44,21 @@ def upload_request(headers, size):
         raise rejected() from None
 
 
+def extract_document(kind, data):
+    try:
+        process = subprocess.run([sys.executable, "-X", "utf8", str(Path(__file__).with_name("document_extractor.py")), kind],
+                                 input=data, capture_output=True, timeout=10)
+    except subprocess.TimeoutExpired:
+        raise rejected("extraction_timeout") from None
+    try:
+        extracted = json.loads(process.stdout)
+        if process.returncode or "error" in extracted:
+            raise rejected(extracted.get("error", "invalid_document"))
+    except (ValueError, UnicodeError):
+        raise rejected() from None
+    return extracted
+
+
 class Documents:
     def __init__(self, cases):
         self.cases = cases
@@ -74,17 +89,7 @@ class Documents:
     def upload(self, owner, case, headers, data):
         self.cases.read(owner, case)
         request, kind = upload_request(headers, len(data))
-        try:
-            process = subprocess.run([sys.executable, "-X", "utf8", str(Path(__file__).with_name("document_extractor.py")), kind],
-                                     input=data, capture_output=True, timeout=10)
-        except subprocess.TimeoutExpired:
-            raise rejected("extraction_timeout") from None
-        try:
-            extracted = json.loads(process.stdout)
-            if process.returncode or "error" in extracted:
-                raise rejected(extracted.get("error", "invalid_document"))
-        except (ValueError, UnicodeError):
-            raise rejected() from None
+        extracted = extract_document(kind, data)
         identity = uuid.uuid4().hex
         source = headers.get("x-source-id") or uuid.uuid4().hex
         with self.store.transaction() as db:
