@@ -446,6 +446,24 @@ The [frontend specification](../frontend/04_FRONTEND_SPEC.md#sign-in-screen) con
 Affected acceptance cases: VS1-BT01 and VS1-BT03.
 The application scope and AWS deployment request stay unchanged.
 
+## D32 - CloudFormation transform permission
+
+Date: 2026-10-10.
+Status: Implementation correction from the first live development release.
+
+The release stopped before application resource creation.
+The CloudFormation execution role could not use the AWS SAM transform.
+The SAM transform converts the application template into CloudFormation resources.
+
+Permit `cloudformation:CreateChangeSet` on `arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31` for that execution role.
+Do not add wildcard CloudFormation resource permissions.
+The existing IAM restrictions stay unchanged.
+Keep the failed release as evidence.
+Retry the reviewed application release after the role update.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+The application scope, data boundary, and budget stay unchanged.
+
 ## How to add a decision
 
 Add a new entry with:

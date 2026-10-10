@@ -1,0 +1,20 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment) ... ok
+test_development_traffic_limits_fit_the_verified_account_quota (test_slice01_deployment.DeploymentContractTests.test_development_traffic_limits_fit_the_verified_account_quota) ... ok
+test_execution_role_can_use_only_the_required_aws_transform (test_slice01_deployment.DeploymentContractTests.test_execution_role_can_use_only_the_required_aws_transform) ... FAIL
+test_lambda_role_has_no_model_or_document_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_no_model_or_document_access) ... ok
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+
+======================================================================
+FAIL: test_execution_role_can_use_only_the_required_aws_transform (test_slice01_deployment.DeploymentContractTests.test_execution_role_can_use_only_the_required_aws_transform)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_deployment.py", line 63, in test_execution_role_can_use_only_the_required_aws_transform
+    self.assertEqual(len(transform), 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.270s
+
+FAILED (failures=1)

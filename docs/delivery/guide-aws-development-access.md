@@ -13,8 +13,10 @@ The user completed temporary AWS authentication with profile `et-hackathon-admin
 Stack `regulatory-agent-dev-access` reached `CREATE_COMPLETE`.
 
 The user approved AWS development deployment and a USD 25 monthly budget.
-The budget alert is not configured.
-Its recipient still needs selection.
+The monthly budget alert is configured.
+Actual cost alerts use 80% and 100% thresholds.
+The forecast alert uses a 100% threshold.
+The account owner's verified email receives these alerts.
 The amount is an alert threshold, not a spending cap.
 
 ## Prepared access setup
@@ -38,6 +40,8 @@ The development environment permits deployments from `main` only.
 
 It can pass only the specified CloudFormation role.
 CloudFormation can pass only the case function role to Lambda.
+CloudFormation can use the AWS SAM transform to convert the application template.
+That permission covers only `arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31`.
 The application role has no model, document, or IAM permissions.
 
 Some service permissions have a wider scope because resource identifiers are generated during creation.
@@ -89,7 +93,10 @@ The templates pass `cfn-lint 1.57.2` without findings.
 The Python checks reject missing, incorrect, and cross-account runtime roles.
 The case role test excludes model, document, and IAM actions.
 These checks do not prove live permission coverage.
-CloudFormation account validation and deployed browser acceptance are pending.
+
+The first application release stopped because the execution role lacked the SAM transform permission.
+Decision D32 records the narrow correction.
+Application resource creation and deployed browser acceptance remain pending.
 
 Ten selected AWS Guard rules ran with `cfn-guard 3.2.1`.
 All applicable rules passed after the secure-transport value used Boolean `false`.

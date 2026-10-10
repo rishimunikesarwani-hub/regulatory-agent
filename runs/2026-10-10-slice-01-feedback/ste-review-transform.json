@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-10",
+  "reference": "ASD-STE100 Issue 9",
+  "files": [
+    "docs/delivery/guide-aws-development-access.md",
+    "docs/decisions/gov-decision-log.md",
+    "LOG.md"
+  ],
+  "scope": "New transform correction and budget status text only.",
+  "protected": [
+    "AWS ARNs",
+    "release run ID",
+    "USD 25",
+    "80% and 100%",
+    "permission action",
+    "historical approval records"
+  ],
+  "manual_review": "Short active sentences preserve the failed release, exact permission scope, verified budget configuration, and pending live acceptance.",
+  "technical_terms": [
+    "CloudFormation",
+    "SAM transform",
+    "ARN",
+    "execution role"
+  ],
+  "dictionary_limit": "Complete approved dictionary meaning review is unavailable. No claim of full compliance."
+}

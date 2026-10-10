@@ -120,6 +120,9 @@ Resources:
             Version: '2012-10-17'
             Statement:
               - Effect: Allow
+                Action: [cloudformation:CreateChangeSet]
+                Resource: 'arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31'
+              - Effect: Allow
                 Action: [iam:PassRole]
                 Resource: {Fn::GetAtt: [CaseRuntimeRole, Arn]}
                 Condition: {StringEquals: {'iam:PassedToService': lambda.amazonaws.com}}

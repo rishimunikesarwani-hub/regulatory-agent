@@ -405,3 +405,23 @@ The user feedback API and interface remain available.
 
 Next: configure the budget alert, finish the reviewed integration, and run the AWS release pipeline.
 Live AWS application acceptance is pending.
+
+### First development release and transform correction
+
+The USD 25 monthly budget is configured and healthy.
+Actual cost alerts use 80% and 100% thresholds.
+The forecast alert uses a 100% threshold.
+The account owner's verified email receives the alerts.
+The budget is not a spending cap.
+
+Pull request 5 merged after all integration checks passed.
+Release run `38070282103` stopped before application resource creation.
+The CloudFormation execution role lacked `cloudformation:CreateChangeSet` for the AWS SAM transform.
+Decision D32 records the correction for that exact transform ARN.
+The new permission check failed before the correction.
+All 166 backend checks pass after the correction.
+Both templates pass cfn-lint 1.57.2.
+The selected AWS Guard rules pass for the corrected access template.
+
+Next: verify the access update, merge the correction, and retry the serialized application release.
+Live application acceptance remains pending.
