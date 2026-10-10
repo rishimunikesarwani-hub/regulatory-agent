@@ -92,6 +92,13 @@ CloudFormation can pass this role to Lambda but cannot change its permissions.
 The role permits case records and application logs only.
 See [D28](../decisions/gov-decision-log.md#d28---development-access-and-feedback-checkpoint).
 
+The verified Mumbai Lambda concurrency quota is 10.
+Do not request reserved concurrency for this deployment.
+Set the API request rate target to 2 requests per second.
+Set the API burst target to 4 requests.
+These targets do not guarantee a spending cap.
+See [D30](../decisions/gov-decision-log.md#d30---development-concurrency-quota).
+
 ## Acceptance tests
 
 Write each failing test before its implementation.

@@ -120,7 +120,7 @@ Resources:
             Resource:
               - {Fn::GetAtt: [FrontendBucket, Arn]}
               - {Fn::Sub: '${FrontendBucket.Arn}/*'}
-            Condition: {Bool: {'aws:SecureTransport': 'false'}}
+            Condition: {Bool: {'aws:SecureTransport': false}}
   UserPool:
     Type: AWS::Cognito::UserPool
     DeletionPolicy: Retain
@@ -159,6 +159,9 @@ Resources:
     Type: AWS::Serverless::HttpApi
     Properties:
       StageName: '$default'
+      DefaultRouteSettings:
+        ThrottlingRateLimit: 2
+        ThrottlingBurstLimit: 4
       CorsConfiguration:
         AllowOrigins: [{Fn::Sub: 'https://${Frontend.DomainName}'}]
         AllowMethods: [GET, POST, OPTIONS]
@@ -187,7 +190,6 @@ Resources:
       Architectures: [x86_64]
       MemorySize: 256
       Timeout: 10
-      ReservedConcurrentExecutions: 2
       Environment:
         Variables:
           APP_ENV: aws

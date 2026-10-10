@@ -20,19 +20,13 @@ p { color: #475569; }
 .topbar-actions { display: flex; align-items: center; gap: 16px; }
 .mode { font-size: 14px; color: #475569; padding: 4px 10px; border: 1px solid #cbd5e1; border-radius: 6px; white-space: nowrap; }
 .workspace, .welcome { max-width: 1248px; margin: auto; padding: 40px 24px 64px; min-height: calc(100vh - 148px); }
-.welcome { padding-top: 80px; }
-.sign-in-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; padding: 32px 0 64px; }
-.introduction h1 { margin: 16px 0 24px; font-size: 40px; line-height: 1.16; letter-spacing: -1.3px; }
+.welcome { display: grid; align-content: center; justify-items: center; gap: 24px; padding: 32px 24px; }
+.sign-in-layout { width: 100%; max-width: 440px; }
 .eyebrow, .small-label { color: #475569; font-weight: 600; font-size: 12px; letter-spacing: 1.4px; }
-.lead { font-size: 18px; max-width: 480px; line-height: 1.7; }
-.boundary-note { margin-top: 32px; display: flex; align-items: baseline; gap: 8px; color: #475569; font-size: 14px; }
-.dot { background: #1d4ed8; width: 8px; height: 8px; border-radius: 100%; flex-shrink: 0; }
 .panel { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 24px; }
-.sign-in-panel { padding: 32px; box-shadow: 0 6px 18px #0f172a05; }
-.sign-in-panel h2 { margin: 12px 0; }
+.sign-in-panel { padding: 40px; text-align: center; box-shadow: 0 6px 18px #0f172a05; }
+.sign-in-panel h1 { margin: 0; font-size: 24px; }
 .sign-in-panel button { margin-top: 24px; }
-.local-note { padding: 12px 16px; margin-top: 24px; border-left: 3px solid #1d4ed8; background: #eff6ff; color: #334155; font-size: 14px; }
-.fine-print { font-size: 14px; margin-top: 24px; }
 .full-width { width: 100%; }
 .secondary { color: #1d4ed8; background: #fff; border-color: #cbd5e1; }
 .secondary:hover:not(:disabled) { background: #eff6ff; }
@@ -78,9 +72,7 @@ footer { border-top: 1px solid #e2e8f0; padding: 20px 24px; color: #475569; font
   .topbar-actions { flex-direction: column; gap: 4px; align-items: flex-end; }
   .mode { font-size: 11px; padding: 4px 6px; }
   .workspace, .welcome { padding: 32px 16px 48px; }
-  .sign-in-layout, .case-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0; }
-  .introduction h1 { font-size: 32px; }
-  .lead { font-size: 16px; }
+  .case-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; padding: 0; }
   .sign-in-panel, .panel { padding: 24px; }
   .page-heading { flex-wrap: wrap; gap: 16px; }
   .case-layout .create-panel { grid-row: 1; }

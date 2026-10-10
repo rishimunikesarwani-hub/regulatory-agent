@@ -1,14 +1,16 @@
 # AWS development access
 
 Date: 2026-10-10.
-Status: Prepared for review. Not installed.
+Status: Development access installed. Application deployment is pending.
 
 ## Verified account state
 
 The `rishicodex` profile authenticates as `rishicodex-aws` in account `482439369658`.
 CloudFormation stack inspection and Lambda account inspection return access-denied responses.
 The browser console can inspect the account and its IAM policies.
-The Mumbai console shows no active application stacks.
+The initial Mumbai console inspection showed no active application stacks.
+The user completed temporary AWS authentication with profile `et-hackathon-admin`.
+Stack `regulatory-agent-dev-access` reached `CREATE_COMPLETE`.
 
 The user approved AWS development deployment and a USD 25 monthly budget.
 The budget alert is not configured.
@@ -18,7 +20,7 @@ The amount is an alert threshold, not a spending cap.
 ## Prepared access setup
 
 The [account template](../../ops/aws-development-bootstrap.yaml) creates these resources.
-The proposed stack name is `regulatory-agent-dev-access`.
+The installed stack name is `regulatory-agent-dev-access`.
 The target region is `ap-south-1`.
 
 | Resource | Permission boundary |
@@ -42,7 +44,8 @@ Some service permissions have a wider scope because resource identifiers are gen
 API Gateway and Cognito management permissions cover the account in Mumbai.
 CloudFront management permissions cover the account globally.
 The reviewed application template uses those permissions for this development stack.
-These permissions need confirmation before installation.
+The user requested this development deployment and completed its AWS authentication.
+The reviewed setup was installed through the authenticated local AWS session.
 
 No administrator policy is included.
 The setup does not change the existing user's policies or create access keys.
@@ -87,7 +90,17 @@ The Python checks reject missing, incorrect, and cross-account runtime roles.
 The case role test excludes model, document, and IAM actions.
 These checks do not prove live permission coverage.
 CloudFormation account validation and deployed browser acceptance are pending.
-The separate `cfn-guard` compliance check has not run.
+
+Ten selected AWS Guard rules ran with `cfn-guard 3.2.1`.
+All applicable rules passed after the secure-transport value used Boolean `false`.
+The S3 transport restriction stays unchanged.
+These selected rules do not establish general security compliance.
+The rule source commit is `7f7340c26ae5d5e8874651dbffeb12e0e9f505b6`.
+
+CloudFormation reported no pre-deployment validation errors for the installed setup.
+CloudTrail event history contains the CloudFormation plan operation.
+No durable CloudTrail trail is configured.
+Audit retention is therefore limited to the default event history.
 
 ## References
 

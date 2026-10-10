@@ -74,7 +74,7 @@ Resources:
             Resource:
               - {Fn::GetAtt: [ArtifactBucket, Arn]}
               - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
-            Condition: {Bool: {'aws:SecureTransport': 'false'}}
+            Condition: {Bool: {'aws:SecureTransport': false}}
   CaseRuntimeRole:
     Type: AWS::IAM::Role
     Metadata:

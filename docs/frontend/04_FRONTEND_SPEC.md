@@ -3,7 +3,8 @@
 > Status: Approved in the planning conversation. First saved on 2026-10-08.
 > Required documents: [PRD](../product/01_PRD.md) and [Security & Access](../security/03_SECURITY_ACCESS.md).
 
-> Reference screenshots: **NONE — design risk**. The user gave approval to the default design.
+> Initial reference screenshots: **NONE**. The user gave approval to the default design.
+> Reference update: 2026-10-10. The user supplied banking-interface screenshots and approved the sign-in changes in D31.
 > Decision: [D11](../decisions/gov-decision-log.md).
 > Language revision: 2026-10-09.
 
@@ -14,6 +15,24 @@ The reviewer must be able to examine each finding.
 The interface must let the reviewer reject or correct it.
 
 ## 1. Screens and functions
+
+### Sign-in screen
+
+Show `The Regulator` in the header and browser title.
+Keep the existing R mark.
+Remove the introduction panel from the sign-in screen.
+Put one sign-in card in the center of the available page area.
+Show `Sign in to continue` as its heading.
+Show the sign-in action below the heading.
+
+Do not show the workspace label or explanatory paragraphs inside that card.
+Keep authentication errors visible when a sign-in operation fails.
+Keep fictional-data labels and confirmation controls in the case workspace.
+Use the approved blue and white colors.
+
+The reference directory is `MVP/docs/frontend/Design Ideas` in the parent ET-Hackathon project.
+The nine screenshots supply visual references.
+They do not add banking, payments, pricing, or newsletter functions to the application scope.
 
 ### Cases
 

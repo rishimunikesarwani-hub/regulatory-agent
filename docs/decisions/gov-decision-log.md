@@ -409,6 +409,43 @@ Affected acceptance cases: VS1-AWS01 and VS1-REL01.
 Update the [access setup](../delivery/guide-aws-development-access.md) before installation.
 Use the [GitHub reference](https://docs.github.com/en/actions/reference/security/oidc#immutable-subject-claims) for the subject format.
 
+## D30 - Development concurrency quota
+
+Date: 2026-10-10.
+Status: Implementation clarification within the authorized development deployment.
+
+The authenticated AWS account has a Mumbai Lambda concurrency quota of 10.
+Concurrency is the number of requests that run at the same time.
+AWS requires 100 unreserved executions before a function can reserve additional capacity.
+The first application deployment must omit reserved concurrency.
+The existing account quota stays unchanged.
+
+Use an API request rate target of 2 requests per second.
+Use an API burst target of 4 requests.
+These targets reduce development traffic.
+They are not a spending cap or a guaranteed concurrency limit.
+Keep the monthly budget alert threshold at USD 25.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+The application scope and authentication conditions stay unchanged.
+See the [AWS concurrency rule](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html).
+
+## D31 - User-approved sign-in design
+
+Date: 2026-10-10.
+Status: Approved by the user's screenshot instructions.
+
+Use `The Regulator` as the visible application name.
+Remove the sign-in introduction panel.
+Center the sign-in card.
+Keep only `Sign in to continue` and the sign-in action inside that card.
+Keep authentication errors and fictional-data controls available.
+
+The nine reference screenshots are in `MVP/docs/frontend/Design Ideas`.
+The [frontend specification](../frontend/04_FRONTEND_SPEC.md#sign-in-screen) controls this change.
+Affected acceptance cases: VS1-BT01 and VS1-BT03.
+The application scope and AWS deployment request stay unchanged.
+
 ## How to add a decision
 
 Add a new entry with:

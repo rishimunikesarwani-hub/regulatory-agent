@@ -16,6 +16,25 @@ async function signIn(page: Page) {
   await expect(page.getByRole('heading', { name: 'Your cases' })).toBeVisible();
 }
 
+test('VS1-BT03 requested sign-in stays centered on desktop and mobile', async ({ page }) => {
+  for (const viewport of [{ width: 1440, height: 900 }, { width: 375, height: 812 }]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/');
+    await expect(page).toHaveTitle('The Regulator');
+    await expect(page.locator('.brand')).toHaveText('RThe Regulator');
+    const panel = page.locator('.sign-in-panel');
+    await expect(panel.getByRole('heading', { name: 'Sign in to continue', level: 1 })).toBeVisible();
+    await expect(panel.getByRole('button', { name: 'Continue with local identity' })).toBeVisible();
+    await expect(panel.locator('p, .small-label')).toHaveCount(0);
+    await expect(page.getByText('A clear starting point', { exact: false })).toHaveCount(0);
+    const bounds = await panel.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(Math.abs(bounds!.x + bounds!.width / 2 - viewport.width / 2)).toBeLessThan(2);
+    expect(Math.abs(bounds!.y + bounds!.height / 2 - viewport.height / 2)).toBeLessThan(40);
+    await page.screenshot({ path: `../../runs/2026-10-10-slice-01-feedback/sign-in-${viewport.width > 767 ? 'desktop' : 'mobile'}.png` });
+  }
+});
+
 async function fillCase(page: Page, name: string) {
   await page.getByLabel('Fictional bank name').fill(name);
   await page.getByLabel('I confirm this case contains fictional data only.').check();

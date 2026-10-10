@@ -370,3 +370,38 @@ The application interface and its 13 passing browser checks stay unchanged.
 Next: complete AWS authentication, verify account access, and install the reviewed development setup.
 Then configure the spending alert and run the serialized release pipeline.
 AWS deployment and live browser acceptance remain pending.
+
+### Development access installation and sign-in design
+
+Temporary AWS authentication completed for account `482439369658`.
+The reviewed access stack reached `CREATE_COMPLETE` in Mumbai.
+It created three development roles, a GitHub identity provider, and the private artifact bucket with its policy.
+The existing IAM user's policies stay unchanged.
+
+The verified Lambda concurrency quota is 10.
+Decision D30 removes the incompatible capacity reservation.
+The API now uses a request rate target of 2 requests per second and a burst target of 4 requests.
+These traffic targets are not a spending cap.
+The USD 25 alert still needs the user's recipient selection.
+
+The official AWS Guard 3.2.1 archive matched its published SHA-256 digest.
+The selected security rules passed after the transport condition used Boolean `false`.
+Both templates passed cfn-lint 1.57.2.
+CloudFormation returned no pre-deployment validation errors for the access setup.
+CloudTrail event history records its plan operation, but no durable trail is configured.
+
+The user supplied nine design references and three specific sign-in changes.
+Decision D31 records those approved changes.
+The interface now shows `The Regulator` and a centered sign-in card.
+The introduction and explanatory card paragraphs were removed.
+The sign-in action and authentication error handling stay available.
+
+The new design check failed before implementation.
+All 14 browser checks pass after the changes.
+All 165 backend checks and the frontend build pass.
+Desktop and mobile screenshots are in the slice feedback evidence directory.
+The separate browser-test API was stopped after verification.
+The user feedback API and interface remain available.
+
+Next: configure the budget alert, finish the reviewed integration, and run the AWS release pipeline.
+Live AWS application acceptance is pending.
