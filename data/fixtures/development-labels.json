@@ -1,0 +1,298 @@
+{
+  "format_version": 1,
+  "split": "development",
+  "label": "Synthetic demo",
+  "cases": [
+    {
+      "case_id": "DEV-01",
+      "split": "development",
+      "expected_status": "supported",
+      "rationale": "The session inventory, activity logs, supervisor sign-offs, and completed review establish all three scoped elements.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "present"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "present"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "present"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "DEV-01-policy",
+          "DEV-01-sessions",
+          "DEV-01-review"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "DEV-01-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "DEV-01-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "DEV-01-sessions",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record sessions",
+          "quote": "Synthetic demo. Core-Ledger session inventory lists sessions S01-S24 for privileged accounts ADMIN-A and ADMIN-B, from 2024-04-01 through 2024-04-07. All 24 sessions have complete activity logs and supervisor sign-offs."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "document_id": "DEV-01-review",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record review",
+          "quote": "Synthetic demo. Review R01 dated 2024-04-08 covers all activity logs for S01-S24. Reviewer RK checked each session against its approved request. No exceptions remain."
+        }
+      ],
+      "minimum_change": "New contradictory evidence, an expanded scope, or a changed rule requires reassessment.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "DEV-02",
+      "split": "development",
+      "expected_status": "needs_review",
+      "rationale": "A policy states the intended control. No operational records establish supervision, logging, or review.",
+      "required_elements": [
+        {
+          "element": "Close supervision",
+          "outcome": "unknown"
+        },
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "unknown"
+        },
+        {
+          "element": "Periodic review of scoped logs",
+          "outcome": "unknown"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "DEV-02-policy"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "DEV-02-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "document_id": "DEV-02-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        }
+      ],
+      "minimum_change": "Provide the scoped session inventory, complete logs, supervisor records, and completed review.",
+      "critical_tags": [
+        "missing-proof"
+      ],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    },
+    {
+      "case_id": "DEV-03",
+      "split": "development",
+      "expected_status": "gap",
+      "rationale": "The incident record establishes that activity logging was disabled for all scoped sessions. This is a demonstrated failure.",
+      "required_elements": [
+        {
+          "element": "All scoped system activities logged",
+          "outcome": "absent"
+        }
+      ],
+      "expected_mapping": {
+        "control_id": "ACCESS-01",
+        "requirement_document": "RBI-IT-2023",
+        "requirement_passage": "19b",
+        "relevant_document_ids": [
+          "DEV-03-policy",
+          "DEV-03-incident"
+        ]
+      },
+      "allowed_references": [
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2a",
+          "locator": "Clause 2(a)",
+          "quote": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2ai",
+          "locator": "Clause 2(a)(i)",
+          "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "2b",
+          "locator": "Clause 2(b)",
+          "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "RBI-IT-2023",
+          "version_id": "2023-11-07",
+          "passage_id": "19b",
+          "locator": "Clause 19(b)",
+          "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "DEV-03-profile",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record profile",
+          "quote": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "DEV-03-policy",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record policy",
+          "quote": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+        },
+        {
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "document_id": "DEV-03-incident",
+          "version_id": "v1",
+          "passage_id": "p1",
+          "locator": "Record incident",
+          "quote": "Synthetic demo. Approved incident INC-3 confirms activity logging was disabled on Core-Ledger for S01-S24 throughout 2024-04-01 to 2024-04-07. No recovery copy exists."
+        }
+      ],
+      "minimum_change": "Enable logging and demonstrate complete operation in a new assessment period. Historical missing logs remain a gap.",
+      "critical_tags": [],
+      "synthetic_regulatory_simulation": false,
+      "author_role": "Benchmark author (Codex)",
+      "qualified_domain_review": false
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "format_version": 1,
+  "split": "development",
+  "label": "Synthetic demo",
+  "cases": [
+    {
+      "case_id": "DEV-01",
+      "split": "development",
+      "owner_id": "fictional-owner-a",
+      "label": "Synthetic demo",
+      "synthetic": true,
+      "scenario": "Complete privileged-session evidence",
+      "assessment_period": {
+        "start": "2024-04-01",
+        "end": "2024-04-07"
+      },
+      "assessment_as_of": "2024-04-08",
+      "profile": {
+        "bank_name": "Example Bank (fictional)",
+        "entity_type": "Commercial bank incorporated in India under the Banking Regulation Act.",
+        "jurisdiction": "India",
+        "synthetic": true,
+        "label": "Synthetic demo"
+      },
+      "obligation_scope": "Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.",
+      "selected_versions": {
+        "RBI-IT-2023": "2023-11-07",
+        "DEV-01-profile": "v1",
+        "DEV-01-policy": "v1",
+        "DEV-01-sessions": "v1",
+        "DEV-01-review": "v1"
+      },
+      "documents": [
+        {
+          "document_id": "DEV-01-profile",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "kind": "profile",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record profile",
+              "text": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-01-policy",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "kind": "policy",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record policy",
+              "text": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-01-sessions",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "kind": "evidence",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record sessions",
+              "text": "Synthetic demo. Core-Ledger session inventory lists sessions S01-S24 for privileged accounts ADMIN-A and ADMIN-B, from 2024-04-01 through 2024-04-07. All 24 sessions have complete activity logs and supervisor sign-offs."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-01-review",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-01",
+          "kind": "evidence",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record review",
+              "text": "Synthetic demo. Review R01 dated 2024-04-08 covers all activity logs for S01-S24. Reviewer RK checked each session against its approved request. No exceptions remain."
+            }
+          ]
+        }
+      ],
+      "untrusted_proposed_references": []
+    },
+    {
+      "case_id": "DEV-02",
+      "split": "development",
+      "owner_id": "fictional-owner-a",
+      "label": "Synthetic demo",
+      "synthetic": true,
+      "scenario": "Policy promise without operational proof",
+      "assessment_period": {
+        "start": "2024-04-01",
+        "end": "2024-04-07"
+      },
+      "assessment_as_of": "2024-04-08",
+      "profile": {
+        "bank_name": "Example Bank (fictional)",
+        "entity_type": "Commercial bank incorporated in India under the Banking Regulation Act.",
+        "jurisdiction": "India",
+        "synthetic": true,
+        "label": "Synthetic demo"
+      },
+      "obligation_scope": "Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.",
+      "selected_versions": {
+        "RBI-IT-2023": "2023-11-07",
+        "DEV-02-profile": "v1",
+        "DEV-02-policy": "v1"
+      },
+      "documents": [
+        {
+          "document_id": "DEV-02-profile",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "kind": "profile",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record profile",
+              "text": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-02-policy",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-02",
+          "kind": "policy",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record policy",
+              "text": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+            }
+          ]
+        }
+      ],
+      "untrusted_proposed_references": []
+    },
+    {
+      "case_id": "DEV-03",
+      "split": "development",
+      "owner_id": "fictional-owner-a",
+      "label": "Synthetic demo",
+      "synthetic": true,
+      "scenario": "Logging disabled for all scoped sessions",
+      "assessment_period": {
+        "start": "2024-04-01",
+        "end": "2024-04-07"
+      },
+      "assessment_as_of": "2024-04-08",
+      "profile": {
+        "bank_name": "Example Bank (fictional)",
+        "entity_type": "Commercial bank incorporated in India under the Banking Regulation Act.",
+        "jurisdiction": "India",
+        "synthetic": true,
+        "label": "Synthetic demo"
+      },
+      "obligation_scope": "Privileged access on Core-Ledger from 2024-04-01 through 2024-04-07.",
+      "selected_versions": {
+        "RBI-IT-2023": "2023-11-07",
+        "DEV-03-profile": "v1",
+        "DEV-03-policy": "v1",
+        "DEV-03-incident": "v1"
+      },
+      "documents": [
+        {
+          "document_id": "DEV-03-profile",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "kind": "profile",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record profile",
+              "text": "Synthetic demo. Commercial bank incorporated in India under the Banking Regulation Act."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-03-policy",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "kind": "policy",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record policy",
+              "text": "Synthetic demo. Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review. Weekly timing is bank policy, not an RBI-specified interval."
+            }
+          ]
+        },
+        {
+          "document_id": "DEV-03-incident",
+          "version_id": "v1",
+          "owner_id": "fictional-owner-a",
+          "case_id": "DEV-03",
+          "kind": "evidence",
+          "synthetic": true,
+          "label": "Synthetic demo",
+          "passages": [
+            {
+              "passage_id": "p1",
+              "locator": "Record incident",
+              "text": "Synthetic demo. Approved incident INC-3 confirms activity logging was disabled on Core-Ledger for S01-S24 throughout 2024-04-01 to 2024-04-07. No recovery copy exists."
+            }
+          ]
+        }
+      ],
+      "untrusted_proposed_references": []
+    }
+  ]
+}
