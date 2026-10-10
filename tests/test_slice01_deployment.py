@@ -55,6 +55,15 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertEqual(settings["ThrottlingRateLimit"], 2)
         self.assertEqual(settings["ThrottlingBurstLimit"], 4)
 
+    def test_execution_role_can_use_only_the_required_aws_transform(self):
+        bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
+        policies = bootstrap["Resources"]["CloudFormationRole"]["Properties"]["Policies"]
+        transform = [statement for policy in policies for statement in policy["PolicyDocument"]["Statement"]
+                     if "cloudformation:CreateChangeSet" in statement["Action"]]
+        self.assertEqual(len(transform), 1)
+        self.assertEqual(transform[0]["Resource"],
+                         "arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31")
+
     def test_deployment_trust_requires_the_verified_repository_and_environment(self):
         bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
         trust = bootstrap["Resources"]["GitHubDeploymentRole"]["Properties"]["AssumeRolePolicyDocument"]

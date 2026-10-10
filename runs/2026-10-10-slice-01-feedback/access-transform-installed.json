@@ -1,0 +1,25 @@
+﻿{
+    "Status": "UPDATE_COMPLETE",
+    "Outputs": [
+        {
+            "OutputKey": "ExecutionRoleArn",
+            "OutputValue": "arn:aws:iam::482439369658:role/regulatory-agent-dev-cloudformation",
+            "Description": "CloudFormation application role."
+        },
+        {
+            "OutputKey": "ArtifactBucketName",
+            "OutputValue": "regulatory-agent-dev-artifacts-482439369658",
+            "Description": "Private deployment package bucket."
+        },
+        {
+            "OutputKey": "DeploymentRoleArn",
+            "OutputValue": "arn:aws:iam::482439369658:role/regulatory-agent-dev-github",
+            "Description": "GitHub deployment role."
+        },
+        {
+            "OutputKey": "RuntimeRoleArn",
+            "OutputValue": "arn:aws:iam::482439369658:role/regulatory-agent-dev-case-runtime",
+            "Description": "Case function role."
+        }
+    ]
+}

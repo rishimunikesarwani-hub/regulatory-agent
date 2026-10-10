@@ -1,0 +1,91 @@
+﻿{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "SKIP",
+  "not_compliant": [],
+  "not_applicable": [
+    "CLOUDFRONT_VIEWER_POLICY_HTTPS"
+  ],
+  "compliant": []
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "SKIP",
+  "not_compliant": [],
+  "not_applicable": [
+    "DYNAMODB_PITR_ENABLED"
+  ],
+  "compliant": []
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "SKIP",
+  "not_compliant": [],
+  "not_applicable": [
+    "DYNAMODB_TABLE_MUST_BE_ENCRYPTED"
+  ],
+  "compliant": []
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "IAM_ROLE_ADMINISTRATOR_ACCESS_POLICY_RULE"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "IAM_ROLE_NO_FULL_ACCESS_ON_TRUST_POLICY"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "IAM_ROLE_NO_WILDCARD_ACTIONS_ON_PERMISSIONS"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "IAM_ROLE_NO_WILDCARD_RESOURCE_ON_PASSROLE"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "S3_BUCKET_LEVEL_PUBLIC_ACCESS_PROHIBITED"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED"
+  ]
+}{
+  "name": "\\\\?\\C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\ops\\aws-development-bootstrap.yaml",
+  "metadata": {},
+  "status": "PASS",
+  "not_compliant": [],
+  "not_applicable": [],
+  "compliant": [
+    "S3_BUCKET_SSL_REQUESTS_ONLY"
+  ]
+}
