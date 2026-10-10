@@ -104,3 +104,16 @@ Verified 12 components, 13 flows, SVG import, and a temporary browser label edit
 The diagram retains the external retrieval API and excludes a crawler.
 See the [verification record](runs/2026-10-10-architecture-diagrams-verification.md).
 This change does not alter the approved application design.
+
+## 2026-10-10 - Private repository and separate worktrees
+
+The user selected a new private GitHub repository named `regulatory-agent`.
+Created [the repository](https://github.com/rishimunikesarwani-hub/regulatory-agent) and pushed the reviewed specification checkpoint.
+Prepared `work/session-a` and `work/session-b` in separate folders.
+Both worktrees start from the same initial commit.
+
+The [development guide](docs/delivery/guide-parallel-development.md) defines ownership, dependency gates, test evidence, and merge steps.
+The [verification record](runs/2026-10-10-git-worktree-verification.md) records the repository and worktree checks.
+Six existing ArchView link targets remain missing.
+No approved specification or application code changed.
+Feature development and executable tests remain pending.

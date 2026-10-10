@@ -1,0 +1,42 @@
+{
+  "repository": "https://github.com/rishimunikesarwani-hub/regulatory-agent",
+  "visibility": "PRIVATE",
+  "initial_checkpoint": "75e71fa591574b9a684e91769ba590dde0acfa06",
+  "tracked_files": 62,
+  "remote_main_matches": true,
+  "worktrees": [
+    {
+      "path": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-a",
+      "branch": "work/session-a",
+      "head": "75e71fa591574b9a684e91769ba590dde0acfa06",
+      "clean": true
+    },
+    {
+      "path": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-b",
+      "branch": "work/session-b",
+      "head": "75e71fa591574b9a684e91769ba590dde0acfa06",
+      "clean": true
+    }
+  ],
+  "ignored_paths_checked": [
+    ".env",
+    "data/private/bank.txt",
+    "data/uploads/bank.pdf",
+    "data/runtime/local.sqlite",
+    "runs/private/case.json",
+    "runs/.playwright-cli/state.json",
+    ".venv/example"
+  ],
+  "source_hashes_match": true,
+  "credential_pattern_scan_findings": 0,
+  "application_tests": "not available; specification-only project",
+  "preexisting_missing_archview_targets": [
+    "arch-system.html",
+    "arch-assessment.html",
+    "arch-system.json",
+    "arch-assessment.json",
+    "arch-system.png",
+    "arch-assessment.png"
+  ],
+  "language": "STE-oriented; mechanical guide checks passed; full dictionary review unavailable"
+}
