@@ -1,0 +1,23 @@
+﻿.\.venv\Scripts\python.exe : .E..
+At line:2 char:197
++ ... e-red.txt'; .\.venv\Scripts\python.exe -m unittest discover -s tests  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (.E..:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+======================================================================
+ERROR: test_lambda_role_has_no_model_or_document_access 
+(test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_no_model_or_document_access)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_deployment.py", line 53, in 
+test_lambda_role_has_no_model_or_document_access
+    self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
+                     ~~~~~~~~^^^^^^^^
+KeyError: 'Role'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.164s
+
+FAILED (errors=1)

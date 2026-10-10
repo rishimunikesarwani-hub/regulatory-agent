@@ -99,6 +99,7 @@ Do not use an unrestricted repository wildcard.
 | Variable `AWS_DEV_ACCOUNT_ID` | Expected development account number. |
 | Variable `AWS_DEV_DEPLOY_ROLE_ARN` | Role that the workflow can assume through OIDC. |
 | Variable `AWS_DEV_EXECUTION_ROLE_ARN` | Role that CloudFormation uses for the reviewed resources. |
+| Variable `AWS_DEV_RUNTIME_ROLE_ARN` | Fixed case function role from the account setup. |
 | Variable `AWS_DEV_ARTIFACT_BUCKET` | Private Mumbai bucket for application deployment files. |
 | Variable `AWS_DEV_MONTHLY_BUDGET_USD` | Approved positive monthly budget amount. |
 | Secret `COGNITO_TEST_USERNAME` | Username of the fictional-case test operator. |
@@ -116,7 +117,7 @@ Restrict the GitHub `development` environment to `main`.
 The deployment role needs access to the development stack, its artifact bucket, and its permitted execution role.
 It also needs the specified public-asset upload and CloudFront invalidation actions.
 The execution role needs permissions for the resources in the reviewed SAM template.
-The final account-specific IAM policies are still pending.
+The [account-specific setup](guide-aws-development-access.md) is prepared for permission review.
 Do not substitute administrator permissions to avoid that review.
 
 ## Deployment and acceptance

@@ -293,3 +293,58 @@ Each worktree and `MVP` passed 163 Python tests and the frontend build with cach
 The [current preparation record](runs/2026-10-10-integration/worktree-refresh.md) gives source and environment evidence.
 The additional folders stay reserved until the user selects a complete flow.
 No application code, running server, or cloud resource was added during this preparation.
+
+## 2026-10-10 - Slice 01 feedback checkpoint
+
+The user requested one complete slice at a time for testing and feedback.
+Updated the active slice worktree from `main` at `7489fc8` through a fast-forward merge.
+The local case flow passed 163 Python checks and 11 browser checks.
+The frontend build passed.
+The browser checks include saved-case reload, failed saves, keyboard use, and a narrow viewport.
+The [current evidence](runs/2026-10-10-slice-01-feedback/) keeps these results and screenshots.
+
+Opened the local interface at `http://127.0.0.1:5173/` for user review.
+Its API uses a separate feedback database in ignored `runs/private/` storage.
+The browser-test database remains separate.
+Local identity does not prove Cognito authentication.
+
+The `rishicodex` AWS profile authenticated in account `482439369658`.
+CloudFormation and Lambda inspection returned access-denied responses.
+The browser console confirmed four existing policies and no active Mumbai application stacks.
+The user selected a USD 25 monthly budget.
+The alert is not configured.
+
+Prepared the [account access template](ops/aws-development-bootstrap.yaml) under D28.
+Wrote failing deployment checks before changing the runtime role configuration.
+The revised Python checks pass.
+Both infrastructure templates pass `cfn-lint 1.57.2` without findings.
+The setup does not give CloudFormation permission to change IAM policies.
+Live permission coverage and the separate compliance check remain unverified.
+
+Requested confirmation for the new permissions under the browser security policy.
+The console file chooser did not open through the browser tool.
+No template upload or AWS stack creation completed.
+Next: collect local feedback, install the approved access setup, and complete AWS deployment and browser acceptance.
+Keep VS2 pending until the first slice review is complete.
+
+### Sign-in return correction
+
+The review found that cloud sign-in lost the selected case after a page reload.
+A controlled browser test reproduced this failure before the correction.
+The temporary state now keeps the selected case ID with its existing random value.
+The callback validates that state and ID before restoring the case location.
+It does not accept an external return URL.
+Access tokens stay in memory, and temporary sign-in values are removed.
+
+The new return-flow test passes for initial sign-in and sign-in after reload.
+The state-mismatch and external-return-URL checks pass.
+The frontend build passes.
+The deployed browser check now requires reopening the same case after sign-in again.
+That live check remains pending.
+No AWS resources or permissions changed during this correction.
+
+All 13 browser checks passed after the correction.
+They used a separate API on port `8111` and the test database.
+The temporary test API was stopped after verification.
+The feedback API and interface remain available on ports `8110` and `5173`.
+The [updated verification record](runs/2026-10-10-slice-01-feedback/verification-v2.json) identifies the checked files and results.

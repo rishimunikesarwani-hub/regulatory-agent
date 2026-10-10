@@ -1,0 +1,220 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Development deployment access with a fixed case function role and GitHub identity restrictions.
+Metadata:
+  AWSToolsMetrics:
+    AWSAgentToolkit: aws-cloudformation@3
+  com.aws.cloudformation.Context:
+    ref:
+      - at: docs/delivery/guide-aws-development-access.md
+        has: Account setup, permissions, and verification limits.
+    must:
+      - Application deployment cannot change IAM policies.
+      - Private application resources stay in Mumbai.
+Parameters:
+  GitHubProviderArn:
+    Type: String
+    Default: ''
+    AllowedPattern: '^$|^arn:aws:iam::[0-9]{12}:oidc-provider/token.actions.githubusercontent.com$'
+    Description: Existing GitHub provider ARN. Leave empty only when no provider exists.
+Conditions:
+  CreateGitHubProvider:
+    Fn::Equals: [{Ref: GitHubProviderArn}, '']
+Rules:
+  MumbaiOnly:
+    Assertions:
+      - Assert:
+          Fn::Equals: [{Ref: 'AWS::Region'}, ap-south-1]
+        AssertDescription: Deploy development resources in Mumbai.
+Resources:
+  GitHubProvider:
+    Type: AWS::IAM::OIDCProvider
+    Condition: CreateGitHubProvider
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: GitHub uses temporary credentials for the development pipeline.
+        must: Keep the repository and environment restrictions in the role trust policy.
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: [sts.amazonaws.com]
+  ArtifactBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Store versioned deployment packages without public access.
+        must: Keep encryption and public access restrictions enabled.
+    Properties:
+      BucketName: {Fn::Sub: 'regulatory-agent-dev-artifacts-${AWS::AccountId}'}
+      VersioningConfiguration: {Status: Enabled}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+  ArtifactBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Reject unencrypted transport for deployment packages.
+        must: Keep the TLS restriction.
+    Properties:
+      Bucket: {Ref: ArtifactBucket}
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - {Fn::GetAtt: [ArtifactBucket, Arn]}
+              - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
+            Condition: {Bool: {'aws:SecureTransport': 'false'}}
+  CaseRuntimeRole:
+    Type: AWS::IAM::Role
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Application deployment uses a fixed role without IAM modification permissions.
+        must: Permit only development case records and application logs.
+    Properties:
+      RoleName: regulatory-agent-dev-case-runtime
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: lambda.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: cases-and-logs
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [dynamodb:PutItem, dynamodb:GetItem, dynamodb:Query]
+                Resource: {Fn::Sub: 'arn:aws:dynamodb:ap-south-1:${AWS::AccountId}:table/regulatory-agent-dev-s01-*'}
+              - Effect: Allow
+                Action: [logs:CreateLogStream, logs:PutLogEvents]
+                Resource: {Fn::Sub: 'arn:aws:logs:ap-south-1:${AWS::AccountId}:log-group:/aws/lambda/regulatory-agent-dev-s01-*:log-stream:*'}
+  CloudFormationRole:
+    Type: AWS::IAM::Role
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: CloudFormation manages application resources without permission to change IAM roles.
+        must: Pass only the fixed case function role to Lambda.
+    Properties:
+      RoleName: regulatory-agent-dev-cloudformation
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: cloudformation.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: application-resources
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [iam:PassRole]
+                Resource: {Fn::GetAtt: [CaseRuntimeRole, Arn]}
+                Condition: {StringEquals: {'iam:PassedToService': lambda.amazonaws.com}}
+              - Effect: Allow
+                Action: [iam:GetRole]
+                Resource: {Fn::GetAtt: [CaseRuntimeRole, Arn]}
+              - Effect: Allow
+                Action: [s3:GetObject, s3:GetObjectVersion, s3:GetBucketLocation]
+                Resource:
+                  - {Fn::GetAtt: [ArtifactBucket, Arn]}
+                  - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
+              - Effect: Allow
+                Action: [s3:CreateBucket, s3:DeleteBucket, s3:GetBucketLocation, s3:GetBucketPolicy, s3:PutBucketPolicy, s3:DeleteBucketPolicy, s3:GetBucketPublicAccessBlock, s3:PutBucketPublicAccessBlock, s3:GetBucketOwnershipControls, s3:PutBucketOwnershipControls, s3:GetEncryptionConfiguration, s3:PutEncryptionConfiguration, s3:GetBucketTagging, s3:PutBucketTagging, s3:ListBucket]
+                Resource: 'arn:aws:s3:::regulatory-agent-dev-s01-*'
+              - Effect: Allow
+                Action: [dynamodb:CreateTable, dynamodb:DescribeTable, dynamodb:UpdateTable, dynamodb:DeleteTable, dynamodb:DescribeContinuousBackups, dynamodb:UpdateContinuousBackups, dynamodb:ListTagsOfResource, dynamodb:TagResource, dynamodb:UntagResource, dynamodb:DescribeTimeToLive]
+                Resource: {Fn::Sub: 'arn:aws:dynamodb:ap-south-1:${AWS::AccountId}:table/regulatory-agent-dev-s01-*'}
+              - Effect: Allow
+                Action: [lambda:CreateFunction, lambda:GetFunction, lambda:GetFunctionConfiguration, lambda:UpdateFunctionCode, lambda:UpdateFunctionConfiguration, lambda:DeleteFunction, lambda:AddPermission, lambda:RemovePermission, lambda:GetPolicy, lambda:GetFunctionConcurrency, lambda:PutFunctionConcurrency, lambda:DeleteFunctionConcurrency, lambda:ListTags, lambda:TagResource, lambda:UntagResource]
+                Resource: {Fn::Sub: 'arn:aws:lambda:ap-south-1:${AWS::AccountId}:function:regulatory-agent-dev-s01-*'}
+              - Effect: Allow
+                Action: [logs:CreateLogGroup, logs:DeleteLogGroup, logs:PutRetentionPolicy, logs:DeleteRetentionPolicy, logs:ListTagsForResource, logs:TagResource, logs:UntagResource]
+                Resource: {Fn::Sub: 'arn:aws:logs:ap-south-1:${AWS::AccountId}:log-group:/aws/lambda/regulatory-agent-dev-s01-*'}
+              - Effect: Allow
+                Action: [logs:DescribeLogGroups]
+                Resource: '*'
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1}}
+              - Effect: Allow
+                Action: [apigateway:GET, apigateway:POST, apigateway:PUT, apigateway:PATCH, apigateway:DELETE]
+                Resource: ['arn:aws:apigateway:ap-south-1::/apis', 'arn:aws:apigateway:ap-south-1::/apis/*', 'arn:aws:apigateway:ap-south-1::/tags/*']
+              - Effect: Allow
+                Action: [cognito-idp:CreateUserPool, cognito-idp:DescribeUserPool, cognito-idp:UpdateUserPool, cognito-idp:DeleteUserPool, cognito-idp:CreateUserPoolClient, cognito-idp:DescribeUserPoolClient, cognito-idp:UpdateUserPoolClient, cognito-idp:DeleteUserPoolClient, cognito-idp:CreateUserPoolDomain, cognito-idp:DescribeUserPoolDomain, cognito-idp:UpdateUserPoolDomain, cognito-idp:DeleteUserPoolDomain, cognito-idp:ListTagsForResource, cognito-idp:TagResource, cognito-idp:UntagResource]
+                Resource: '*'
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1}}
+              - Effect: Allow
+                Action: [cloudfront:CreateDistribution, cloudfront:GetDistribution, cloudfront:GetDistributionConfig, cloudfront:UpdateDistribution, cloudfront:DeleteDistribution, cloudfront:TagResource, cloudfront:UntagResource, cloudfront:ListTagsForResource, cloudfront:CreateOriginAccessControl, cloudfront:GetOriginAccessControl, cloudfront:UpdateOriginAccessControl, cloudfront:DeleteOriginAccessControl, cloudfront:CreateResponseHeadersPolicy, cloudfront:GetResponseHeadersPolicy, cloudfront:UpdateResponseHeadersPolicy, cloudfront:DeleteResponseHeadersPolicy]
+                Resource: '*'
+  GitHubDeploymentRole:
+    Type: AWS::IAM::Role
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: One repository environment deploys the reviewed application stack.
+        must: Keep the exact subject and audience conditions.
+    Properties:
+      RoleName: regulatory-agent-dev-github
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated:
+                Fn::If: [CreateGitHubProvider, {Ref: GitHubProvider}, {Ref: GitHubProviderArn}]
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+                token.actions.githubusercontent.com:sub: repo:rishimunikesarwani-hub/regulatory-agent:environment:development
+      Policies:
+        - PolicyName: development-release
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [cloudformation:CreateChangeSet, cloudformation:DescribeChangeSet, cloudformation:ExecuteChangeSet, cloudformation:DeleteChangeSet, cloudformation:DescribeStacks, cloudformation:DescribeStackEvents, cloudformation:GetTemplate, cloudformation:GetTemplateSummary, cloudformation:ListStackResources]
+                Resource:
+                  - {Fn::Sub: 'arn:aws:cloudformation:ap-south-1:${AWS::AccountId}:stack/regulatory-agent-dev-s01/*'}
+                  - 'arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31'
+              - Effect: Allow
+                Action: [cloudformation:ValidateTemplate]
+                Resource: '*'
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1}}
+              - Effect: Allow
+                Action: [iam:PassRole]
+                Resource: {Fn::GetAtt: [CloudFormationRole, Arn]}
+                Condition: {StringEquals: {'iam:PassedToService': cloudformation.amazonaws.com}}
+              - Effect: Allow
+                Action: [s3:GetBucketLocation, s3:ListBucket, s3:GetObject, s3:PutObject, s3:AbortMultipartUpload]
+                Resource:
+                  - {Fn::GetAtt: [ArtifactBucket, Arn]}
+                  - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
+                  - 'arn:aws:s3:::regulatory-agent-dev-s01-*'
+                  - 'arn:aws:s3:::regulatory-agent-dev-s01-*/*'
+              - Effect: Allow
+                Action: [cloudfront:CreateInvalidation, cloudfront:GetInvalidation]
+                Resource: {Fn::Sub: 'arn:aws:cloudfront::${AWS::AccountId}:distribution/*'}
+Outputs:
+  DeploymentRoleArn:
+    Description: GitHub deployment role.
+    Value: {Fn::GetAtt: [GitHubDeploymentRole, Arn]}
+  ExecutionRoleArn:
+    Description: CloudFormation application role.
+    Value: {Fn::GetAtt: [CloudFormationRole, Arn]}
+  RuntimeRoleArn:
+    Description: Case function role.
+    Value: {Fn::GetAtt: [CaseRuntimeRole, Arn]}
+  ArtifactBucketName:
+    Description: Private deployment package bucket.
+    Value: {Ref: ArtifactBucket}

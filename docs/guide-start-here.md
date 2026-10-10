@@ -33,7 +33,8 @@ Read the [current verification records](../runs/2026-10-10-autonomous-build/) fo
 D24 measurement functions have unit tests.
 Complete runtime measurement integration and live evaluations are pending.
 AWS templates are prepared, but AWS deployment is unverified.
-The user must make an AWS account.
+The AWS account is confirmed, but its CLI profile lacks application deployment permissions.
+The [access setup](delivery/guide-aws-development-access.md) is prepared for review.
 Read the [remaining worktree guide](delivery/guide-next-worktrees.md) before the next development session.
 
 F3: At least eight features from the hackathon list are mandatory.

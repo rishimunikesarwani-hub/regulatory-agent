@@ -55,6 +55,13 @@ Use Cognito authorization-code sign-in with PKCE and the `S256` method.
 Keep access tokens in browser memory.
 Keep only the temporary state and verifier in session storage during sign-in.
 Remove them after the code exchange.
+
+Keep the selected case ID in the temporary state value during sign-in.
+Keep the random part of that value at 32 bytes.
+Validate the returned state before restoring the case ID.
+Permit only valid case IDs, not external URLs or arbitrary paths.
+Keep the existing owner check when the application reopens the case.
+
 Disable public sign-up.
 
 The AWS API uses a JWT authorizer with the configured user pool and client ID.
@@ -78,6 +85,12 @@ Do integration checks before deployment.
 Do browser checks after deployment.
 Use short-lived AWS credentials through GitHub OIDC.
 Do not store AWS access keys in GitHub.
+
+The account setup defines the case function role before application deployment.
+The deployment configuration must select `regulatory-agent-dev-case-runtime` in the expected account.
+CloudFormation can pass this role to Lambda but cannot change its permissions.
+The role permits case records and application logs only.
+See [D28](../decisions/gov-decision-log.md#d28---development-access-and-feedback-checkpoint).
 
 ## Acceptance tests
 
@@ -108,13 +121,13 @@ Each helper must edit only its assigned files in the selected worktree.
 
 ## Setup still needed
 
-The AWS development account and access method are not confirmed.
-No AWS CLI or SAM CLI was found on the command path during inspection.
-The repository has no configured Actions workflow, variable, or secret from the inspected lists.
-These observations do not prove that the AWS account has no resources.
+The AWS account and `rishicodex` CLI profile were confirmed on 2026-10-10.
+The profile lacks CloudFormation and Lambda inspection permissions.
+The repository contains the development workflow but has no configured deployment variables or operator secrets.
+The [access guide](guide-aws-development-access.md) records the proposed account setup.
 
 Before deployment, confirm the development account, GitHub deployment role, and CloudFormation execution role.
-Confirm a spending limit and the Cognito test operator.
+Configure the approved USD 25 monthly alert and the Cognito test operator.
 Use AWS or GitHub secure input for credentials.
 Do not put them in chat.
 

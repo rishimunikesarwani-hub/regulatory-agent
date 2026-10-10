@@ -363,6 +363,31 @@ Affected requirements: REQ-F01 through REQ-F08 and REQ-X01 through REQ-X09.
 Affected delivery records: T1 through T9, the two development guides, and the project log.
 The [VS1 API contract](../delivery/spec-slice-01-cases.md) controls the first application flow.
 
+## D28 - Development access and feedback checkpoint
+
+Date: 2026-10-10.
+Status: Development execution and a USD 25 monthly budget have user approval.
+Status: The new AWS permission installation needs confirmation in the browser.
+
+The user requested one complete slice at a time for testing and feedback.
+Keep VS1 active until its acceptance checks and user review are complete.
+Do not start VS2 during this checkpoint.
+
+The `rishicodex` profile authenticated in account `482439369658`.
+CloudFormation and Lambda access checks failed with access-denied responses.
+The existing policies do not supply the required application deployment access.
+
+The proposed account setup creates different deployment, CloudFormation, and case function roles.
+The case function role permits case records and application logs only.
+CloudFormation can pass this role but cannot change its permissions.
+The GitHub role trusts only this repository's `development` environment.
+The proposed setup does not grant account administrator access.
+The USD 25 budget requires an alert destination before configuration.
+It is an alert threshold, not a spending cap.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+The application scope and existing quality gates stay unchanged.
+
 ## How to add a decision
 
 Add a new entry with:

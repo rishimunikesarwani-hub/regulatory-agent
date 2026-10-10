@@ -20,6 +20,7 @@ def configuration():
         "AWS_REGION": "ap-south-1", "AWS_DEV_ACCOUNT_ID": "123456789012",
         "AWS_DEV_STACK": "regulatory-agent-dev-s01",
         "AWS_DEV_EXECUTION_ROLE_ARN": "arn:aws:iam::123456789012:role/development/cloudformation",
+        "AWS_DEV_RUNTIME_ROLE_ARN": "arn:aws:iam::123456789012:role/regulatory-agent-dev-case-runtime",
         "AWS_DEV_ARTIFACT_BUCKET": "fictional-dev-artifacts",
         "AWS_DEV_MONTHLY_BUDGET_USD": "25.50", "GITHUB_SHA": COMMIT,
         "GITHUB_OUTPUT": "workflow-output.txt",
@@ -37,6 +38,8 @@ class DeploymentConfigurationTests(unittest.TestCase):
             "AWS_DEV_ACCOUNT_ID": ("123", "12345678901a", "1234567890123"),
             "AWS_DEV_EXECUTION_ROLE_ARN": ("arn:aws:iam::999999999999:role/deploy",
                                            "arn:aws:iam::123456789012:user/operator", "not-an-arn"),
+            "AWS_DEV_RUNTIME_ROLE_ARN": ("arn:aws:iam::999999999999:role/regulatory-agent-dev-case-runtime",
+                                         "arn:aws:iam::123456789012:role/Administrator", ""),
             "AWS_DEV_STACK": ("regulatory-agent-production", "other-dev-stack", ""),
             "GITHUB_SHA": ("main", "a" * 39, "g" * 40, "a" * 41),
             "AWS_DEV_ARTIFACT_BUCKET": ("UPPERCASE", "ab", "bucket/with-path"),
@@ -53,7 +56,7 @@ class DeploymentConfigurationTests(unittest.TestCase):
 
     def test_missing_inputs_are_rejected_before_any_command(self):
         for key in ("AWS_DEV_ACCOUNT_ID", "AWS_DEV_EXECUTION_ROLE_ARN", "AWS_DEV_ARTIFACT_BUCKET",
-                    "AWS_DEV_MONTHLY_BUDGET_USD", "GITHUB_SHA", "GITHUB_OUTPUT"):
+                    "AWS_DEV_MONTHLY_BUDGET_USD", "AWS_DEV_RUNTIME_ROLE_ARN", "GITHUB_SHA", "GITHUB_OUTPUT"):
             env = configuration()
             env.pop(key)
             with self.subTest(key=key), patch.dict(os.environ, env, clear=True), \

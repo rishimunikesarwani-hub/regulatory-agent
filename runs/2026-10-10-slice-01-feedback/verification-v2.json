@@ -1,0 +1,78 @@
+{
+  "recorded_at": "2026-10-10T16:30:13.079474+00:00",
+  "slice": "VS1",
+  "status": "local_verified_aws_pending_access_approval",
+  "source_parent_commit": "7489fc881122b8cbabda75399ee017a3e2777d16",
+  "uncommitted_changes": true,
+  "local_url": "http://127.0.0.1:5173/",
+  "local_api": "http://127.0.0.1:8110",
+  "checks": {
+    "python": 163,
+    "browser": 13,
+    "frontend_build": "passed",
+    "cfn_lint_version": "1.57.2",
+    "cfn_lint_findings": 0,
+    "cfn_guard": "not_run"
+  },
+  "test_evidence": [
+    "python-green.txt",
+    "browser-green.txt",
+    "runtime-role-red.txt",
+    "deployment-role-red.txt",
+    "cloudformation-validation.txt",
+    "cloudformation-validation-green.txt",
+    "oauth-resume-red.txt",
+    "oauth-resume-green.txt",
+    "oauth-boundaries-green.txt",
+    "auth-regression-green.txt",
+    "browser-green-v2.txt",
+    "build-green-v2.txt"
+  ],
+  "aws": {
+    "profile": "rishicodex",
+    "account": "482439369658",
+    "identity_verified": true,
+    "deployment_verified": false,
+    "denied_operations": [
+      "cloudformation:ListStacks",
+      "cloudformation:DescribeStacks",
+      "lambda:GetAccountSettings",
+      "iam:ListOpenIDConnectProviders"
+    ],
+    "approved_monthly_budget_usd": 25,
+    "budget_alert_configured": false,
+    "new_permissions_installed": false,
+    "template_uploaded": false
+  },
+  "runtime": {
+    "api_pid": 34948,
+    "api_exec_session": 13232,
+    "web_exec_session": 79233,
+    "feedback_database": "runs/private/slice-01-rishi-feedback.sqlite",
+    "test_database": "runs/private/slice-01-browser-tests.sqlite",
+    "temporary_browser_test_api": "127.0.0.1:8111 stopped after checks"
+  },
+  "sha256": {
+    "ops/aws-development-bootstrap.yaml": "7e1e49907f84fc213279e545ceedc5f5498281795ce929735f90eb4ccd6f88b7",
+    "ops/sam-dev.yaml": "a109a018b6f02189f11e8e57b0ee1c60bca422d16b996405fa5344ec6fd78ea3",
+    "ops/deploy_dev.py": "0ef69b3d82716dc70ae85d2f6822aa43da485da34af1b272aa4e948f04e7a92e",
+    ".github/workflows/dev-release.yml": "a0aae23c60e57d963019f00b3ebd62a7b8850a37a050621d8cf219cb80017465",
+    "src/web/auth.ts": "be2de43b942eaf849b4249d7cc80b66aa35d5dc5bd40c7b7a0aee7f4ff8b0c3a",
+    "src/web/tests/cases.spec.ts": "a4a7de8e898fe8a685a0ab1b9c59c22b8e02d2cdf002ffb2d1c9f7d7be428588",
+    "src/web/tests/deployed.spec.ts": "4695ef2289b3b80e35d8049c421237bd1b06736baaa57b64b5e9e21f3f377f92"
+  },
+  "next": [
+    "Collect user feedback on VS1.",
+    "Confirm and install reviewed AWS access setup.",
+    "Configure budget alert and GitHub development environment.",
+    "Deploy through the serialized workflow.",
+    "Verify Cognito, persistence, denied access, and browser behavior before VS2."
+  ],
+  "changes": [
+    "Preserve selected case through validated OAuth state.",
+    "Reject external return URLs before token exchange.",
+    "Require deployed case reopening after reauthentication.",
+    "Run browser tests against a separate local API when requested."
+  ],
+  "live_cognito_verification": "pending"
+}

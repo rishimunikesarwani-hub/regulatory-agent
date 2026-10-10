@@ -49,8 +49,17 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertEqual(deploy["permissions"]["id-token"], "write")
 
     def test_lambda_role_has_no_model_or_document_access(self):
-        policies = self.template["Resources"]["CaseFunction"]["Properties"]["Policies"]
-        actions = [action for policy in policies for statement in policy["Statement"] for action in statement["Action"]]
-        self.assertEqual(set(actions), {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query"})
+        function = self.template["Resources"]["CaseFunction"]["Properties"]
+        self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
+        self.assertNotIn("Policies", function)
+        bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
+        policies = bootstrap["Resources"]["CaseRuntimeRole"]["Properties"]["Policies"]
+        actions = {action for policy in policies for statement in policy["PolicyDocument"]["Statement"] for action in statement["Action"]}
+        self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query",
+                                  "logs:CreateLogStream", "logs:PutLogEvents"})
+        execution = bootstrap["Resources"]["CloudFormationRole"]["Properties"]["Policies"]
+        iam_actions = {action for policy in execution for statement in policy["PolicyDocument"]["Statement"]
+                       for action in statement["Action"] if action.startswith("iam:")}
+        self.assertEqual(iam_actions, {"iam:PassRole", "iam:GetRole"})
         outputs = self.template["Outputs"]
         self.assertTrue({"FrontendUrl", "ApiUrl", "CommitSha", "UserPoolId", "UserPoolClientId"} <= outputs.keys())

@@ -1,10 +1,20 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Regulatory Agent development slice 01. Fictional cases only.
+Metadata:
+  AWSToolsMetrics:
+    AWSAgentToolkit: aws-cloudformation@3
+  com.aws.cloudformation.Context:
+    ref:
+      - at: docs/delivery/spec-slice-01-cases.md
+        has: Case flow, authentication, and deployment conditions.
 Parameters:
   CommitSha:
     Type: String
     AllowedPattern: '[a-f0-9]{40}'
+  CaseRuntimeRoleArn:
+    Type: String
+    AllowedPattern: 'arn:aws:iam::[0-9]{12}:role/regulatory-agent-dev-case-runtime'
 Rules:
   MumbaiOnly:
     Assertions:
@@ -165,7 +175,12 @@ Resources:
               audience: [{Ref: UserPoolClient}]
   CaseFunction:
     Type: AWS::Serverless::Function
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Use a fixed role so application deployment cannot expand its own permissions.
+        must: Permit only development case records and application logs.
     Properties:
+      Role: {Ref: CaseRuntimeRoleArn}
       CodeUri: ../runs/private/sam-package/
       Handler: regulatory_agent.aws_cases.handler
       Runtime: python3.12
@@ -180,11 +195,6 @@ Resources:
           USER_POOL_ID: {Ref: UserPool}
           USER_POOL_CLIENT_ID: {Ref: UserPoolClient}
           COMMIT_SHA: {Ref: CommitSha}
-      Policies:
-        - Statement:
-            - Effect: Allow
-              Action: [dynamodb:PutItem, dynamodb:GetItem, dynamodb:Query]
-              Resource: {Fn::GetAtt: [CasesTable, Arn]}
       Events:
         CreateCase:
           Type: HttpApi
