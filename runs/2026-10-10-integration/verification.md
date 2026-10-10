@@ -30,7 +30,13 @@ Its assessment state is `failed` because the demonstration produces no complianc
 Live model calls are zero.
 
 The original Session A and Session B records include their clean-copy checks.
-The new worktree preparation record identifies each environment and its current check result.
+The [preparation record](worktree-readiness.json) identifies each environment and its current check result.
+All eight new worktrees have independent Python 3.12.13 environments.
+Each environment passed 60 offline tests from the existing dependency cache.
+
+The [worktree map](worktree-map.json) records their paths, branches, and preparation commit.
+The preparation commit is `e68ab5d`.
+Only documentation and preparation evidence changed after that commit.
 Worktree existence does not satisfy a ticket dependency.
 The [task guide](../../docs/delivery/guide-next-worktrees.md) controls the start conditions.
 
@@ -42,6 +48,7 @@ Reference: the project's local copy of ASD-STE100 Issue 9, dated 2025-01-15.
 The project glossary and selected dictionary entries control the new wording.
 
 The handoff passed descriptive and procedural mechanical checks with zero findings.
+The [handoff check](ste-handoff-v2.json) and [record check](ste-verification-v3.json) cover the delivered descriptive text.
 The manual review kept the ticket sequence, limits, authorization conditions, paths, and identifiers unchanged.
 Git worktree terms have definitions in the guide and project glossary.
 This selected review does not establish full dictionary compliance or ASD approval.
@@ -51,6 +58,7 @@ This selected review does not establish full dictionary compliance or ASD approv
 The D24 review events, reports, runtime traces, and evaluation contracts need additional fixtures, schemas, and tests.
 The controlled retrieval response-byte total applies to one operation, not all different operations in a job.
 T3 must enforce the shared remaining case allowance.
+
 T1 provider selection and current regulatory coverage are unresolved.
 T3 through T9 implementation is pending.
 No reviewer interface, complete compliance assessment, AWS deployment, or live quality result exists.

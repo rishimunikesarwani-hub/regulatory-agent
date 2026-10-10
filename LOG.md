@@ -220,6 +220,11 @@ Historical evidence records keep their original results.
 The [worktree guide](docs/delivery/guide-next-worktrees.md) gives eight assignments and their dependency conditions.
 The [integration record](runs/2026-10-10-integration/verification.md) gives the evidence and preparation results.
 
+Prepared eight worktrees with independent Python 3.12.13 environments.
+Each worktree passed 60 offline tests from cached dependencies.
+The [preparation record](runs/2026-10-10-integration/worktree-readiness.json) identifies the branches, paths, dependency conditions, and results.
+No new application feature or server started during preparation.
+
 T1 and T2 D24 additions are pending.
 T3 through T9 implementation is pending.
 Next: start the foundation measurement task only when the user requests implementation.
