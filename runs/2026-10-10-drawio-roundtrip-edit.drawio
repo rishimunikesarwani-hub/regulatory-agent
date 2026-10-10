@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" agent="architecture-diagrams-skill">
+  <diagram id="page1" name="The Regulatory Agent - AWS components - planned">
+    <mxGraphModel grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="0" page="0" pageScale="1" pageWidth="1920" pageHeight="1160" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <UserObject label="" tooltip="Diagram annotation" id="titleblock">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#FFFFFF;strokeColor=#1F2937;fontColor=#1F2937;" vertex="1">
+            <mxGeometry height="76" width="1840" x="40" y="10" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="The Regulatory Agent - AWS components - planned" tooltip="The Regulatory Agent - AWS components - planned" id="t-1ebe1d7b">
+          <mxCell parent="titleblock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=16;fontStyle=1;fillColor=none;strokeColor=none;fontSize=24;" vertex="1">
+            <mxGeometry height="28" width="1816" x="12" y="6" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Classification: Public   Version: 1.0   Date: 2026-10-10   Author: Codex for Rishi Munikesarwani" tooltip="Classification: Public   Version: 1.0   Date: 2026-10-10   Author: Codex for Rishi Munikesarwani" id="t-ab00e135">
+          <mxCell parent="titleblock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;fontSize=12;" vertex="1">
+            <mxGeometry height="18" width="1816" x="12" y="37" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Approved design. Not implemented. Reviewer: Rishi Munikesarwani (review pending)" tooltip="Approved design. Not implemented. Reviewer: Rishi Munikesarwani (review pending)" id="t-448ea039">
+          <mxCell parent="titleblock" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=9;fontStyle=0;fillColor=none;strokeColor=none;fontSize=11;" vertex="1">
+            <mxGeometry height="16" width="1816" x="12" y="58" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Operator device | case owner" tooltip="Operator device | case owner" id="operator">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#FFF4E5;strokeColor=#D97706;fontColor=#D97706;fontColor=#142537;spacingTop=8;fontSize=16;arcSize=5;" vertex="1">
+            <mxGeometry height="355" width="300" x="40" y="405" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Case operator browser&#10;React / TypeScript [QA edit]" tooltip="The authenticated case owner uploads documents, selects inputs, and reviews findings. No independent reviewer role is included." component_id="browser" status="planned" id="browser">
+          <mxCell parent="operator" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3D;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.client;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="120" y="105" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="AWS public frontend assets" tooltip="AWS public frontend assets" id="public">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#E5F1FB;strokeColor=#1F6FEB;fontColor=#1F6FEB;fontColor=#142537;spacingTop=8;fontSize=16;arcSize=5;" vertex="1">
+            <mxGeometry height="235" width="300" x="40" y="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Public asset delivery&#10;Amazon CloudFront" tooltip="CloudFront serves only public frontend files. Private documents, reports, and API responses do not use this cache." component_id="cloudfront" status="planned" id="cloudfront">
+          <mxCell parent="public" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="55" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Frontend origin&#10;Amazon S3" tooltip="Public frontend asset content. Origin access configuration remains an implementation task; this does not require public bucket ACLs." component_id="assets" status="planned" id="assets">
+          <mxCell parent="public" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="205" y="75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="AWS Mumbai | ap-south-1 | application and private data" tooltip="AWS Mumbai | ap-south-1 | application and private data" id="mumbai">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#E8F4EA;strokeColor=#2E7D32;fontColor=#2E7D32;fontColor=#142537;spacingTop=8;fontSize=16;arcSize=5;" vertex="1">
+            <mxGeometry height="700" width="1090" x="390" y="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Operator sign-in&#10;Amazon Cognito" tooltip="Authorization code sign-in with PKCE. Disable public sign-up for the demo." component_id="cognito" status="planned" id="cognito">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cognito;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="100" y="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Authenticated API&#10;Amazon API Gateway" tooltip="The API checks identity. Application services enforce case ownership." component_id="gateway" status="planned" id="gateway">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.api_gateway;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="100" y="310" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Case API&#10;FastAPI / AWS Lambda" tooltip="Authorize case and document access, validate requests, enqueue jobs, and return progress and findings." component_id="api" status="planned" id="api">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="360" y="310" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Background jobs&#10;Amazon SQS" tooltip="Separate API requests from background assessments. Duplicate delivery must not duplicate execution or reset counters." component_id="queue" status="planned" id="queue">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="630" y="310" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Assessment worker&#10;Python / AWS Lambda" tooltip="Reverify current regulations, retrieve scoped evidence, run one bounded agent, validate citations, and persist results." component_id="worker" status="planned" id="worker">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#ED7100;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="890" y="310" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Private evidence&#10;Amazon S3" tooltip="Mumbai private bank files, extracted passages, reports, and immutable regulatory response copies. Encryption is required. Old copies do not prove current coverage." component_id="evidence" status="planned" id="evidence">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="350" y="535" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Case and job records&#10;Amazon DynamoDB" tooltip="Mumbai case ownership, immutable snapshot references, job counters, findings, and separate human review decisions. Encryption is required." component_id="records" status="planned" id="records">
+          <mxCell parent="mumbai" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.dynamodb;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="720" y="535" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="External public-source service" tooltip="External public-source service" id="provider-zone">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#FFF9E5;strokeColor=#B45309;fontColor=#B45309;fontColor=#142537;spacingTop=8;fontSize=16;arcSize=5;" vertex="1">
+            <mxGeometry height="280" width="320" x="1560" y="100" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Regulatory retrieval API&#10;Provider undecided" tooltip="Configured HTTPS endpoints only. Public regulatory queries only. Provider credentials remain server-side. No direct RBI API contract is verified." component_id="provider" status="planned" id="provider">
+          <mxCell parent="provider-zone" style="shape=mxgraph.networks.server;html=1;aspect=fixed;verticalLabelPosition=bottom;verticalAlign=top;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="136" y="105" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Bedrock India boundary | verify routing" tooltip="Bedrock India boundary | verify routing" id="model-zone">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#F3E8FF;strokeColor=#7C3AED;fontColor=#7C3AED;fontColor=#142537;spacingTop=8;fontSize=16;arcSize=5;" vertex="1">
+            <mxGeometry height="370" width="320" x="1560" y="430" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Selected model profile&#10;Amazon Bedrock" tooltip="Profile in.openai.gpt-5.6-luna. Verify access, terms, quality, and allowed Mumbai/Hyderabad destinations before private uploads." component_id="bedrock" status="planned" id="bedrock">
+          <mxCell parent="model-zone" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock;fontColor=#142537;fontSize=14;labelWidth=190;whiteSpace=wrap;spacingTop=10;" vertex="1">
+            <mxGeometry height="48" width="48" x="136" y="85" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-49a2f419" edge="1" parent="1" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="cloudfront">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="105" y="525" />
+              <mxPoint x="105" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="1  Load public assets&#10;HTTPS / TLS / 443" tooltip="1  Load public assets&#10;HTTPS / TLS / 443" id="el-f5efe825">
+          <mxCell connectable="0" parent="e-49a2f419" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint x="25" y="-55" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-5813ad23" edge="1" parent="1" source="cloudfront" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="assets">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="Read asset origin&#10;HTTPS / TLS / 443" tooltip="Read asset origin&#10;HTTPS / TLS / 443" id="el-c4e5b8df">
+          <mxCell connectable="0" parent="e-5813ad23" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-b661e20c" edge="1" parent="1" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.15;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="cognito">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="355" y="525" />
+              <mxPoint x="355" y="224" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="2  Sign in&#10;HTTPS / 443 | PKCE" tooltip="2  Sign in&#10;HTTPS / 443 | PKCE" id="el-597ac750">
+          <mxCell connectable="0" parent="e-b661e20c" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint x="5" y="-65" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-0257a00c" edge="1" parent="1" source="browser" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.6;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="gateway">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="365" y="550" />
+              <mxPoint x="365" y="434" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="3  Case requests&#10;HTTPS / 443 | token" tooltip="3  Case requests&#10;HTTPS / 443 | token" id="el-ebeb09ae">
+          <mxCell connectable="0" parent="e-0257a00c" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-8703f962" edge="1" parent="1" source="gateway" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="4  Invoke handler&#10;AWS managed integration" tooltip="4  Invoke handler&#10;AWS managed integration" id="el-18700714">
+          <mxCell connectable="0" parent="e-8703f962" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-dc0ece13" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;dashed=1;dashPattern=6 4;" target="queue">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="5  Enqueue work&#10;AWS API | IAM role" tooltip="5  Enqueue work&#10;AWS API | IAM role" id="el-d6493af6">
+          <mxCell connectable="0" parent="e-dc0ece13" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-c0018fbd" edge="1" parent="1" source="queue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;dashed=1;dashPattern=6 4;" target="worker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="6  Dispatch job&#10;AWS event source mapping" tooltip="6  Dispatch job&#10;AWS event source mapping" id="el-a2553d6b">
+          <mxCell connectable="0" parent="e-c0018fbd" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-180d70d2" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="evidence">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="750" y="595" />
+              <mxPoint x="700" y="595" />
+              <mxPoint x="700" y="659" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Authorize file access&#10;AWS API | IAM role" tooltip="Authorize file access&#10;AWS API | IAM role" id="el-c94c12e1">
+          <mxCell connectable="0" parent="e-180d70d2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-ee3bd64e" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.8;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="records">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="448" />
+              <mxPoint x="860" y="745" />
+              <mxPoint x="1134" y="745" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Read case and job state&#10;AWS API | IAM role" tooltip="Read case and job state&#10;AWS API | IAM role" id="el-11b25457">
+          <mxCell connectable="0" parent="e-ee3bd64e" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint x="95" y="55" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-48c21c1d" edge="1" parent="1" source="worker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="evidence">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1292" y="580" />
+              <mxPoint x="764" y="580" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Read and save evidence&#10;AWS API | IAM role" tooltip="Read and save evidence&#10;AWS API | IAM role" id="el-df8cb5c8">
+          <mxCell connectable="0" parent="e-48c21c1d" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-72bae9d4" edge="1" parent="1" source="worker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="records">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1304" y="659" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Save counters and findings&#10;AWS API | IAM role" tooltip="Save counters and findings&#10;AWS API | IAM role" id="el-71872bc3">
+          <mxCell connectable="0" parent="e-72bae9d4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-11df7e7e" edge="1" parent="1" source="worker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="provider">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="422" />
+              <mxPoint x="1520" y="229" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Public queries only&#10;HTTPS / 443 | auth TBD" tooltip="Public queries only&#10;HTTPS / 443 | auth TBD" id="el-4cb65eaf">
+          <mxCell connectable="0" parent="e-11df7e7e" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <mxCell id="e-77bd57fa" edge="1" parent="1" source="worker" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;jettySize=auto;orthogonalLoop=1;endArrow=classic;startArrow=none;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#1F2937;strokeWidth=2;" target="bedrock">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1520" y="446" />
+              <mxPoint x="1520" y="539" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <UserObject label="Model requests&#10;HTTPS / 443 | IAM role" tooltip="Model requests&#10;HTTPS / 443 | IAM role" id="el-7c09f24b">
+          <mxCell connectable="0" parent="e-77bd57fa" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fillColor=#FFFFFF;strokeColor=#1F2937;fontSize=10;spacingTop=-2;spacingBottom=-2;fontColor=#142537;fontSize=12;spacing=4;" vertex="1">
+            <mxGeometry relative="1" x="-0.1" as="geometry">
+              <mxPoint x="-100" as="offset" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Legend" tooltip="Legend" id="legend">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;dashed=0;verticalAlign=top;fontSize=14;fontStyle=1;container=1;collapsible=0;fillColor=#FFFFFF;strokeColor=#1F2937;fontColor=#1F2937;" vertex="1">
+            <mxGeometry height="194" width="380" x="770" y="830" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lpa-ffed3b6d">
+          <mxCell parent="legend" style="ellipse;fillColor=#1F2937;strokeColor=none;" vertex="1">
+            <mxGeometry height="2" width="2" x="8" y="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lpb-7bef9fc4">
+          <mxCell parent="legend" style="ellipse;fillColor=#1F2937;strokeColor=none;" vertex="1">
+            <mxGeometry height="2" width="2" x="48" y="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="le-9a3fa7e3" edge="1" parent="legend" source="lpa-ffed3b6d" style="endArrow=classic;html=1;strokeColor=#1F2937;strokeWidth=2;" target="lpb-7bef9fc4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="Request or service dependency" tooltip="Request or service dependency" id="t-dc6f037e">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="28" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lpa-1349761f">
+          <mxCell parent="legend" style="ellipse;fillColor=#1F2937;strokeColor=none;" vertex="1">
+            <mxGeometry height="2" width="2" x="8" y="62" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lpb-7bbe9306">
+          <mxCell parent="legend" style="ellipse;fillColor=#1F2937;strokeColor=none;" vertex="1">
+            <mxGeometry height="2" width="2" x="48" y="62" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="le-cb5c4ab9" edge="1" parent="legend" source="lpa-1349761f" style="endArrow=classic;html=1;strokeColor=#1F2937;strokeWidth=2;dashed=1;dashPattern=6 4;" target="lpb-7bbe9306">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="Queued background work" tooltip="Queued background work" id="t-5485efbe">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lz-eafebb15">
+          <mxCell parent="legend" style="rounded=1;fillColor=#FFF4E5;strokeColor=#1F2937;html=1;" vertex="1">
+            <mxGeometry height="16" width="44" x="8" y="76" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Operator device" tooltip="Operator device" id="t-b4255dc2">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="72" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lz-aa7bf107">
+          <mxCell parent="legend" style="rounded=1;fillColor=#E5F1FB;strokeColor=#1F2937;html=1;" vertex="1">
+            <mxGeometry height="16" width="44" x="8" y="98" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Public assets only" tooltip="Public assets only" id="t-b2c994eb">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="94" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lz-f556043e">
+          <mxCell parent="legend" style="rounded=1;fillColor=#E8F4EA;strokeColor=#1F2937;html=1;" vertex="1">
+            <mxGeometry height="16" width="44" x="8" y="120" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Mumbai application and private data" tooltip="Mumbai application and private data" id="t-ad17591f">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="116" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lz-42811461">
+          <mxCell parent="legend" style="rounded=1;fillColor=#FFF9E5;strokeColor=#1F2937;html=1;" vertex="1">
+            <mxGeometry height="16" width="44" x="8" y="142" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="External regulatory provider" tooltip="External regulatory provider" id="t-e3bd3357">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="138" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tooltip="Diagram annotation" id="lz-85175d4e">
+          <mxCell parent="legend" style="rounded=1;fillColor=#F3E8FF;strokeColor=#1F2937;html=1;" vertex="1">
+            <mxGeometry height="16" width="44" x="8" y="164" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Selected model routing boundary" tooltip="Selected model routing boundary" id="t-4506aabf">
+          <mxCell parent="legend" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;fontSize=10;fontStyle=0;fillColor=none;strokeColor=none;" vertex="1">
+            <mxGeometry height="22" width="310" x="60" y="160" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Source: docs/architecture/02_TECHNICAL_BLUEPRINT.md | Security: docs/security/03_SECURITY_ACCESS.md | D20 and D21" tooltip="Source: docs/architecture/02_TECHNICAL_BLUEPRINT.md | Security: docs/security/03_SECURITY_ACCESS.md | D20 and D21" id="source-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=12;" vertex="1">
+            <mxGeometry height="25" width="1840" x="40" y="1115" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="ASSESSMENT CONTROLS&#10;Refresh sources before selection. Verify selected versions at worker start.&#10;Failed verification or changed versions stops the assessment.&#10;Use one bounded agent. Keep 24 model calls and a 600-second deadline.&#10;Store exact evidence versions. Save human review decisions separately.&#10;No crawler. No independent reviewer role." tooltip="ASSESSMENT CONTROLS&#10;Refresh sources before selection. Verify selected versions at worker start.&#10;Failed verification or changed versions stops the assessment.&#10;Use one bounded agent. Keep 24 model calls and a 600-second deadline.&#10;Store exact evidence versions. Save human review decisions separately.&#10;No crawler. No independent reviewer role." id="design-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=14;" vertex="1">
+            <mxGeometry height="220" width="670" x="40" y="840" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="DESIGN LIMITS&#10;All names identify planned roles. No deployed resource names exist.&#10;TLS: Transport Layer Security. PKCE protects the sign-in code exchange.&#10;IAM: AWS Identity and Access Management. API: application interface.&#10;HTTPS/443 is intended transport. Live connections remain unverified.&#10;Zones show responsibility and trust. They do not specify VPCs or subnets.&#10;AWS SAM defines deployment. Local adapters use the same application logic." tooltip="DESIGN LIMITS&#10;All names identify planned roles. No deployed resource names exist.&#10;TLS: Transport Layer Security. PKCE protects the sign-in code exchange.&#10;IAM: AWS Identity and Access Management. API: application interface.&#10;HTTPS/443 is intended transport. Live connections remain unverified.&#10;Zones show responsibility and trust. They do not specify VPCs or subnets.&#10;AWS SAM defines deployment. Local adapters use the same application logic." id="boundary-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=14;" vertex="1">
+            <mxGeometry height="235" width="650" x="1230" y="840" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Profile: in.openai.gpt-5.6-luna&#10;Allow Mumbai and Hyderabad only.&#10;Verify destinations, access, and quality&#10;before private uploads." tooltip="Profile: in.openai.gpt-5.6-luna&#10;Allow Mumbai and Hyderabad only.&#10;Verify destinations, access, and quality&#10;before private uploads." id="model-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=12;" vertex="1">
+            <mxGeometry height="105" width="260" x="1590" y="645" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Public regulatory queries only.&#10;Allow configured HTTPS endpoints.&#10;Verify authority, versions, and freshness.&#10;Provider credentials stay server-side." tooltip="Public regulatory queries only.&#10;Allow configured HTTPS endpoints.&#10;Verify authority, versions, and freshness.&#10;Provider credentials stay server-side." id="provider-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=12;" vertex="1">
+            <mxGeometry height="70" width="260" x="1590" y="300" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Private bank files and records | encryption required | owner-scoped access&#10;Regulatory S3 copies are evidence. They do not establish current coverage." tooltip="Private bank files and records | encryption required | owner-scoped access&#10;Regulatory S3 copies are evidence. They do not establish current coverage." id="data-note">
+          <mxCell parent="1" style="text;html=0;whiteSpace=wrap;align=left;verticalAlign=top;fontColor=#142537;fontSize=12;" vertex="1">
+            <mxGeometry height="30" width="1000" x="430" y="765" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

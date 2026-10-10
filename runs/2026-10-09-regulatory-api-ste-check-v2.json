@@ -1,0 +1,134 @@
+{
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\architecture\\02_TECHNICAL_BLUEPRINT.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 355,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\product\\01_PRD.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 215,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\security\\03_SECURITY_ACCESS.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 202,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\frontend\\04_FRONTEND_SPEC.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 159,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\delivery\\05_FEATURE_TICKETS.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 181,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\testing\\spec-local-test-plan.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 175,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\testing\\eval-model-quality.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 174,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\AGENTS.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 82,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\docs\\decisions\\gov-decision-log.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 252,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\LOG.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 60,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\MVP\\runs\\2026-10-09-regulatory-api-verification.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "procedural",
+    "sentences_examined": 76,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

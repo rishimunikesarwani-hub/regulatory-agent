@@ -1,0 +1,125 @@
+
+
+Approved design. Implementation is pending.
+ The browser serves one operator. CloudFront serves public assets only. Authenticated requests use the API directly.
+
+Private storage and application work use Mumbai. The Bedrock profile is in.openai.gpt-5.6-luna. Its access, quality, and Mumbai or Hyderabad destinations require verification before private uploads.
+
+The external API supplies current public regulations. Its provider is undecided. Only public source queries leave the application for this API. S3 retains exact assessment evidence. Stored copies do not establish current regulations.
+
+The worker verifies selected versions before assessment. Failed verification or changed versions stops the assessment. Source scope, ownership, and saved job allowances restrict each tool action.
+
+Local operation uses the same application logic with filesystem, SQLite, local jobs, and controlled model and retrieval responses. AWS SAM defines the intended deployment.
+
+
+RO-1 Case operator
+
+SC-1 React workspace
+
+SY-1 S3 and CloudFront
+
+MW-1 Cognito
+
+SC-2 API Gateway and FastAPI Lambda
+
+MW-2 SQS job queue
+
+SC-3 Assessment worker
+
+DB-1 Private S3 evidence
+
+DB-2 DynamoDB records
+
+SY-2 Selected Bedrock profile
+
+SY-3 Retrieval API | provider TBD
+
+SY-4 Regulatory authority
+
+Review
+
+Public assets
+
+Sign in
+
+Authorized requests
+
+Enqueue
+
+Dispatch
+
+Evidence
+
+State and findings
+
+Case and job access
+
+Authorized file access
+
+Model calls
+
+Public queries
+
+Authority content
+
+
+
+Approved design. This view shows service responsibilities.
+ Refresh public regulations before selection. Save the selected versions, obligations, and bank profile in an immutable snapshot.
+
+At worker start, verify selected regulatory versions. Stop if verification fails or versions changed. Request selection review when necessary. Successful verification is valid as of its recorded time.
+
+Filter passages by owner, case, kind, and version before keyword or BM25 ranking. Use one bounded agent. Validate each requested action before execution.
+
+Keep the 24-call allowance and ten-minute deadline through retries. Count failed and uncertain model requests. Keep useful cited partial results when the allowance ends.
+
+Check citation locations and supporting context before saving findings. Save human review decisions separately. Later source versions do not change earlier reports.
+
+The same case operator selects inputs and reviews findings. Independent reviewer roles remain outside this release.
+
+
+SC-1 Validate bank uploads
+
+SC-2 Refresh public regulations
+
+RO-1 Select versions and obligations
+
+DB-1 Immutable assessment snapshot
+
+SC-3 Verify selected versions
+
+SC-4 Stop and record failed job
+
+SC-5 Retrieve permitted passages
+
+SC-6 Bounded agent and action checks
+
+SC-7 Check findings and citations
+
+DB-2 Findings with source evidence
+
+RO-2 Case operator reviews
+
+DB-3 Separate review decisions
+
+Eligible files
+
+Verified catalogue
+
+Freeze inputs
+
+Start worker
+
+Failed or changed
+
+Verified
+
+Selected passages
+
+Proposed findings
+
+Validated results
+
+Inspect citations
+
+Save disposition

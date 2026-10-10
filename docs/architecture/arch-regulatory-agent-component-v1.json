@@ -1,0 +1,513 @@
+{
+  "title": "The Regulatory Agent - AWS components - planned",
+  "classification": "Public",
+  "version": "1.0",
+  "date": "2026-10-10",
+  "author": "Codex for Rishi Munikesarwani",
+  "reviewer": "Rishi Munikesarwani (review pending)",
+  "diagram_type": "Component",
+  "page": "16x9",
+  "source": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+  "zones": [
+    {
+      "id": "operator",
+      "label": "Operator device | case owner",
+      "color": "external",
+      "x": 40,
+      "y": 405,
+      "w": 300,
+      "h": 355
+    },
+    {
+      "id": "public",
+      "label": "AWS public frontend assets",
+      "color": "dmz",
+      "x": 40,
+      "y": 100,
+      "w": 300,
+      "h": 235
+    },
+    {
+      "id": "mumbai",
+      "label": "AWS Mumbai | ap-south-1 | application and private data",
+      "color": "internal",
+      "x": 390,
+      "y": 100,
+      "w": 1090,
+      "h": 700
+    },
+    {
+      "id": "provider-zone",
+      "label": "External public-source service",
+      "color": "partner",
+      "x": 1560,
+      "y": 100,
+      "w": 320,
+      "h": 280
+    },
+    {
+      "id": "model-zone",
+      "label": "Bedrock India boundary | verify routing",
+      "color": "management",
+      "x": 1560,
+      "y": 430,
+      "w": 320,
+      "h": 370
+    }
+  ],
+  "nodes": [
+    {
+      "id": "browser",
+      "zone": "operator",
+      "icon": "aws/general/Client",
+      "label": "Case operator browser\nReact / TypeScript",
+      "x": 120,
+      "y": 105,
+      "w": 48,
+      "h": 48,
+      "description": "The authenticated case owner uploads documents, selects inputs, and reviews findings. No independent reviewer role is included."
+    },
+    {
+      "id": "cloudfront",
+      "zone": "public",
+      "icon": "aws/network/CloudFront",
+      "label": "Public asset delivery\nAmazon CloudFront",
+      "x": 55,
+      "y": 75,
+      "w": 48,
+      "h": 48,
+      "description": "CloudFront serves only public frontend files. Private documents, reports, and API responses do not use this cache."
+    },
+    {
+      "id": "assets",
+      "zone": "public",
+      "icon": "aws/storage/S3",
+      "label": "Frontend origin\nAmazon S3",
+      "x": 205,
+      "y": 75,
+      "w": 48,
+      "h": 48,
+      "description": "Public frontend asset content. Origin access configuration remains an implementation task; this does not require public bucket ACLs."
+    },
+    {
+      "id": "cognito",
+      "zone": "mumbai",
+      "icon": "aws/security/Cognito",
+      "label": "Operator sign-in\nAmazon Cognito",
+      "x": 100,
+      "y": 100,
+      "w": 48,
+      "h": 48,
+      "description": "Authorization code sign-in with PKCE. Disable public sign-up for the demo."
+    },
+    {
+      "id": "gateway",
+      "zone": "mumbai",
+      "icon": "aws/network/APIGateway",
+      "label": "Authenticated API\nAmazon API Gateway",
+      "x": 100,
+      "y": 310,
+      "w": 48,
+      "h": 48,
+      "description": "The API checks identity. Application services enforce case ownership."
+    },
+    {
+      "id": "api",
+      "zone": "mumbai",
+      "icon": "aws/compute/Lambda",
+      "label": "Case API\nFastAPI / AWS Lambda",
+      "x": 360,
+      "y": 310,
+      "w": 48,
+      "h": 48,
+      "description": "Authorize case and document access, validate requests, enqueue jobs, and return progress and findings."
+    },
+    {
+      "id": "queue",
+      "zone": "mumbai",
+      "icon": "aws/integration/SQS",
+      "label": "Background jobs\nAmazon SQS",
+      "x": 630,
+      "y": 310,
+      "w": 48,
+      "h": 48,
+      "description": "Separate API requests from background assessments. Duplicate delivery must not duplicate execution or reset counters."
+    },
+    {
+      "id": "worker",
+      "zone": "mumbai",
+      "icon": "aws/compute/Lambda",
+      "label": "Assessment worker\nPython / AWS Lambda",
+      "x": 890,
+      "y": 310,
+      "w": 48,
+      "h": 48,
+      "description": "Reverify current regulations, retrieve scoped evidence, run one bounded agent, validate citations, and persist results."
+    },
+    {
+      "id": "evidence",
+      "zone": "mumbai",
+      "icon": "aws/storage/S3",
+      "label": "Private evidence\nAmazon S3",
+      "x": 350,
+      "y": 535,
+      "w": 48,
+      "h": 48,
+      "description": "Mumbai private bank files, extracted passages, reports, and immutable regulatory response copies. Encryption is required. Old copies do not prove current coverage."
+    },
+    {
+      "id": "records",
+      "zone": "mumbai",
+      "icon": "aws/db/DynamoDB",
+      "label": "Case and job records\nAmazon DynamoDB",
+      "x": 720,
+      "y": 535,
+      "w": 48,
+      "h": 48,
+      "description": "Mumbai case ownership, immutable snapshot references, job counters, findings, and separate human review decisions. Encryption is required."
+    },
+    {
+      "id": "provider",
+      "zone": "provider-zone",
+      "icon": "neutral/Service",
+      "label": "Regulatory retrieval API\nProvider undecided",
+      "x": 136,
+      "y": 105,
+      "w": 48,
+      "h": 48,
+      "description": "Configured HTTPS endpoints only. Public regulatory queries only. Provider credentials remain server-side. No direct RBI API contract is verified."
+    },
+    {
+      "id": "bedrock",
+      "zone": "model-zone",
+      "icon": "aws/ml/Bedrock",
+      "label": "Selected model profile\nAmazon Bedrock",
+      "x": 136,
+      "y": 85,
+      "w": 48,
+      "h": 48,
+      "description": "Profile in.openai.gpt-5.6-luna. Verify access, terms, quality, and allowed Mumbai/Hyderabad destinations before private uploads."
+    }
+  ],
+  "edges": [
+    {
+      "from": "browser",
+      "to": "cloudfront",
+      "label": "1  Load public assets\nHTTPS / TLS / 443",
+      "exit": [
+        0,
+        0.3
+      ],
+      "entry": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          105,
+          525
+        ],
+        [
+          105,
+          280
+        ]
+      ],
+      "label_offset": [
+        25,
+        -55
+      ]
+    },
+    {
+      "from": "cloudfront",
+      "to": "assets",
+      "label": "Read asset origin\nHTTPS / TLS / 443",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "from": "browser",
+      "to": "cognito",
+      "label": "2  Sign in\nHTTPS / 443 | PKCE",
+      "exit": [
+        1,
+        0.15
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          355,
+          525
+        ],
+        [
+          355,
+          224
+        ]
+      ],
+      "label_offset": [
+        5,
+        -65
+      ]
+    },
+    {
+      "from": "browser",
+      "to": "gateway",
+      "label": "3  Case requests\nHTTPS / 443 | token",
+      "exit": [
+        1,
+        0.6
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          365,
+          550
+        ],
+        [
+          365,
+          434
+        ]
+      ]
+    },
+    {
+      "from": "gateway",
+      "to": "api",
+      "label": "4  Invoke handler\nAWS managed integration",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "from": "api",
+      "to": "queue",
+      "label": "5  Enqueue work\nAWS API | IAM role",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "dashed": true
+    },
+    {
+      "from": "queue",
+      "to": "worker",
+      "label": "6  Dispatch job\nAWS event source mapping",
+      "exit": [
+        1,
+        0.5
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "dashed": true
+    },
+    {
+      "from": "api",
+      "to": "evidence",
+      "label": "Authorize file access\nAWS API | IAM role",
+      "exit": [
+        0.25,
+        1
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          750,
+          595
+        ],
+        [
+          700,
+          595
+        ],
+        [
+          700,
+          659
+        ]
+      ]
+    },
+    {
+      "from": "api",
+      "to": "records",
+      "label": "Read case and job state\nAWS API | IAM role",
+      "exit": [
+        1,
+        0.8
+      ],
+      "entry": [
+        0.5,
+        1
+      ],
+      "waypoints": [
+        [
+          860,
+          448
+        ],
+        [
+          860,
+          745
+        ],
+        [
+          1134,
+          745
+        ]
+      ],
+      "label_offset": [
+        95,
+        55
+      ]
+    },
+    {
+      "from": "worker",
+      "to": "evidence",
+      "label": "Read and save evidence\nAWS API | IAM role",
+      "exit": [
+        0.25,
+        1
+      ],
+      "entry": [
+        0.5,
+        0
+      ],
+      "waypoints": [
+        [
+          1292,
+          580
+        ],
+        [
+          764,
+          580
+        ]
+      ]
+    },
+    {
+      "from": "worker",
+      "to": "records",
+      "label": "Save counters and findings\nAWS API | IAM role",
+      "exit": [
+        0.5,
+        1
+      ],
+      "entry": [
+        1,
+        0.5
+      ],
+      "waypoints": [
+        [
+          1304,
+          659
+        ]
+      ]
+    },
+    {
+      "from": "worker",
+      "to": "provider",
+      "label": "Public queries only\nHTTPS / 443 | auth TBD",
+      "exit": [
+        1,
+        0.25
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          1520,
+          422
+        ],
+        [
+          1520,
+          229
+        ]
+      ]
+    },
+    {
+      "from": "worker",
+      "to": "bedrock",
+      "label": "Model requests\nHTTPS / 443 | IAM role",
+      "exit": [
+        1,
+        0.75
+      ],
+      "entry": [
+        0,
+        0.5
+      ],
+      "waypoints": [
+        [
+          1520,
+          446
+        ],
+        [
+          1520,
+          539
+        ]
+      ],
+      "label_offset": [
+        -100,
+        0
+      ]
+    }
+  ],
+  "legend_width": 380,
+  "legend": [
+    {
+      "kind": "line",
+      "style": "solid",
+      "meaning": "Request or service dependency"
+    },
+    {
+      "kind": "line",
+      "style": "dashed",
+      "meaning": "Queued background work"
+    },
+    {
+      "kind": "zone",
+      "color": "#FFF4E5",
+      "meaning": "Operator device"
+    },
+    {
+      "kind": "zone",
+      "color": "#E5F1FB",
+      "meaning": "Public assets only"
+    },
+    {
+      "kind": "zone",
+      "color": "#E8F4EA",
+      "meaning": "Mumbai application and private data"
+    },
+    {
+      "kind": "zone",
+      "color": "#FFF9E5",
+      "meaning": "External regulatory provider"
+    },
+    {
+      "kind": "zone",
+      "color": "#F3E8FF",
+      "meaning": "Selected model routing boundary"
+    }
+  ]
+}

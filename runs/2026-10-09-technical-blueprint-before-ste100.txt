@@ -1,0 +1,150 @@
+# Technical Blueprint — one application, local and cloud connections
+
+> Status: Approved in the planning conversation; persisted 2026-10-08.
+> Depends on: [PRD](../product/01_PRD.md).
+> Decision references: [D07–D10 and D16](../decisions/gov-decision-log.md).
+> Evidence boundary: Design approved; no services deployed and no model invocation verified.
+
+## 1. The architecture decision
+
+We should be able to understand and test the assessment logic before configuring an AWS account. That means the domain rules depend on small interfaces for storage, records, jobs, identity, and model calls. AWS adapters implement those interfaces at deployment.
+
+**Technical:** This is an application boundary with interchangeable adapters, not two separately implemented products.
+
+**ELI10:** The engine stays the same. We connect it to local files while developing and to AWS services when deploying.
+
+| Layer | Approved choice | Why it fits this release |
+|---|---|---|
+| Frontend | React and TypeScript, built with Vite | A browser workspace for evidence inspection and review |
+| Backend | Python and FastAPI | Typed request/response boundaries around the assessment workflow |
+| Cloud API | API Gateway and Lambda | Short authenticated requests; assessments run separately |
+| Private document storage | S3 in Mumbai | Original files, extracted passages, and large reports |
+| Cloud records | DynamoDB in Mumbai | Case metadata, job states, counters, and references |
+| Background work | SQS and Lambda worker | Asynchronous assessments with persisted progress |
+| Identity | Cognito | Authenticated operators; demo sign-up disabled |
+| AI | Bedrock profile in.openai.gpt-5.6-luna | Pinned India profile, subject to destination/access/quality checks |
+| Public frontend hosting | S3 and CloudFront | Public static assets only; no private report/document caching |
+| Infrastructure | AWS SAM configuration in ops/ | A reviewable deployment description |
+| Local adapters | Filesystem, SQLite, local worker, controlled AI responses | Default development and tests without AWS credentials |
+
+Framework/package versions and packaging configuration are not installed or validated yet. T2 pins compatible versions and records them; the current root manifest is documentation metadata only.
+
+## 2. Request and assessment flow
+
+1. The signed-in user creates a case and records a bank profile.
+2. The API authorizes an upload and finalizes it only after validation and extraction.
+3. The user selects document versions and obligations.
+4. Starting an assessment freezes an input snapshot and returns a job ID.
+5. The job runner invokes the same worker service locally or through SQS.
+6. The worker extracts or retrieves source-backed obligations and controls, then runs the bounded agent.
+7. The agent chooses permitted actions; application code validates and executes them.
+8. The worker validates results and citations before recording findings.
+9. The UI polls job progress and displays findings, source passages, and reviewer actions.
+10. A later version comparison creates new results linked to the old snapshot; it does not rewrite history.
+
+The API must not hold a browser request open while the assessment finishes. API Gateway HTTP integrations have a documented 30-second integration limit; the application uses jobs rather than relying on that time window. [AWS HTTP API quotas](https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-quotas.html).
+
+## 3. Agent and retrieval contract
+
+Use one bounded agent with application-controlled tools. Do not require a multi-agent framework or native server-side tool execution for this release.
+
+The model produces a structured action request. The application validates the action name, case/snapshot scope, arguments, budget, and response schema before running a tool.
+
+Allowed capabilities are:
+- Retrieve obligations from the selected regulatory version.
+- Find candidate controls within selected case documents.
+- Inspect specific evidence passages.
+- Request another bounded retrieval pass when evidence is inadequate.
+- Propose structured findings and remediation/evidence requests.
+
+Use keyword/BM25 retrieval over the bounded case corpus. Filter by owner, case, document kind, and selected version before ranking. A relevant passage that was not retrieved cannot be treated as inspected evidence. Measure retrieval errors separately from assessment errors.
+
+A tool request inside an uploaded document has no authority. The agent cannot run shell commands, send messages, access unrelated cases, browse arbitrary URLs, or modify bank systems.
+
+All dispatched model requests count toward the **24-call** job budget, including schema failures, retries, and uncertain outcomes. Use a persisted **ten-minute** job deadline from worker start; delivery retries do not reset it. Queue waiting time is recorded separately. Budget exhaustion preserves attributable partial results and unchecked obligations.
+
+## 4. Model and region configuration
+
+| Configuration | Intended value | Secret? |
+|---|---|---|
+| APP_ENV | local or aws | No |
+| AWS_REGION | ap-south-1, Mumbai | No |
+| BEDROCK_MODEL_ID | in.openai.gpt-5.6-luna | No |
+| ALLOWED_INFERENCE_REGIONS | ap-south-1 and ap-south-2 | No |
+| MAX_MODEL_CALLS_PER_JOB | 24 | No |
+| JOB_BUDGET_SECONDS | 600 | No |
+| Document bucket, record table, queue, user pool | Outputs of the actual SAM deployment | Identifiers, not credentials |
+
+Use IAM execution roles in AWS. Do not embed credentials in configuration, browser code, or the repository.
+
+AWS documents the pinned model's Bedrock runtime support, structured outputs, and India inference profile. The model is a **selected implementation dependency, not a proven quality result**. Validate the installed SDK/API shape, response handling, profile destinations, and an actual invocation before accepting private uploads. A regional endpoint alone is not sufficient evidence of in-country processing.
+
+Sources:
+- [AWS model card](https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-56-luna.html)
+- [Inference profile destinations](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
+- [Bedrock data retention](https://docs.aws.amazon.com/bedrock/latest/userguide/data-retention.html)
+
+Do not claim universal zero retention. Check the applicable model terms and service settings during integration. If the selected model cannot satisfy the approved boundaries or quality gate, record the blocker and propose a reviewed model change; never silently substitute another endpoint.
+
+## 5. Records and evidence
+
+The following logical records express the approved data contract. Field labels are implementation guidance; they do not assert that a database already exists.
+
+| Record | Identity and contents | Invariant |
+|---|---|---|
+| Case | case_id, owner_id, bank profile, created_at | All child access is checked against the owner |
+| DocumentVersion | document_version_id, case_id, source identity, kind, version label, SHA-256, storage reference | Content and extraction for that version are immutable |
+| Passage | passage_id, document_version_id, location, extracted text | Resolves to one original version and usable source location |
+| AssessmentSnapshot | snapshot_id, case_id, bank-profile copy, selected versions and obligations, prompt/model versions | Frozen before execution; no implicit use of later uploads |
+| Job | job_id, snapshot_id, state, stage, call count, deadline, execution claim, timestamps | One active execution/finalization; counters survive retries |
+| Obligation/Control | stable ID, structured requirement or control, applicability, source passage references | Unknown fields remain unknown |
+| Finding | finding_id, snapshot_id, obligation/control references, status, evidence condition, citations, proposed remedy | Only validated evidence can support a finding |
+| ReviewDecision | finding_id, reviewer_id, disposition, note, timestamp | Does not overwrite the original AI finding |
+
+Keep large extracted content and reports in private blob storage. The record store holds metadata and references, rather than unbounded report bodies.
+
+Source locations:
+- PDF: original page number plus a stable passage ID.
+- DOCX: paragraph/table-cell location retained from extraction.
+- TXT: line range.
+- CSV: row and relevant column identifiers.
+
+Every citation includes the selected document version, passage ID, location, and quoted excerpt. Verify that the quote is present in the stored extraction and that its context actually supports the associated claim.
+
+Replacing a document creates a new version. Existing snapshots continue to use the old version. New runs explicitly select their versions; the retriever must not silently mix current and superseded files.
+
+## 6. API capabilities
+
+The first API needs these authenticated capabilities:
+
+| Capability | Required input/output behaviour |
+|---|---|
+| Create/list/read case | Owner-scoped bank profile and case metadata |
+| Authorize/finalize upload | Case-bound upload; validation/extraction result before analysis eligibility |
+| List/read document sources | Version metadata and authorized passage inspection |
+| Start assessment | Selected versions/obligations and an idempotency key; returns job ID promptly |
+| Start regulatory comparison | Explicit older/newer regulatory versions and affected assessment context |
+| Read job | Stage, terminal state, progress, budget/stopping information |
+| Read findings | Snapshot-scoped evidence, limitations, and proposed remedies |
+| Save review decision | Reviewer disposition and note, separate from the finding |
+| Export assessment | Markdown or JSON with input versions, citations, findings, review decisions, and run status |
+
+T2 freezes executable request/response schemas and their contract tests before handlers are written. These endpoint capabilities are approved; exact URL spellings are not an additional product requirement.
+
+## 7. Retry and failure semantics
+
+Use queued, running, completed, partial, and failed job states. A completed job accounted for every selected obligation; an individual finding may still require review. Partial means useful validated work exists but some required work remains unchecked. Failed means the assessment could not produce a usable result.
+
+Reserve model-call budget atomically before dispatch. If a process dies after dispatch, the reserved call still counts. Use conditional execution claims so duplicate queue deliveries do not launch competing assessments or finalize twice.
+
+Persist stage outputs and the identity of already-completed work. Retry only within the remaining job allowance. Invalid outputs and unauthorized actions are rejected; they do not become evidence. Infrastructure timeout and queue retry settings must support, rather than reset, the persisted application deadline.
+
+AWS documents possible duplicate delivery for standard SQS queues. [Delivery semantics](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/standard-queues-at-least-once-delivery.html).
+
+## 8. Project organization and verification
+
+The root has docs/, src/, tests/, evals/, ops/, data/, and runs/. Keep domain logic separate from HTTP handlers and provider adapters inside src/. Avoid a speculative layers/ hierarchy.
+
+The [local test plan](../testing/spec-local-test-plan.md) covers domain and adapter contracts. The [AI evaluation plan](../testing/eval-model-quality.md) covers actual retrieval and model behaviour. T8 verifies the real AWS integration and provides the step-by-step configuration lesson.
+
+[Next: Security and access](../security/03_SECURITY_ACCESS.md)

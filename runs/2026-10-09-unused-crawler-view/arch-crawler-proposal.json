@@ -1,0 +1,162 @@
+{
+  "viewInfo": [
+    {
+      "Title": "The Regulatory Agent | Proposed RBI crawler",
+      "Description": "<p><b>Proposal only. This crawler is not selected or built.</b> The approved design still uses an external retrieval API. This view describes a possible replacement for its source collection function.</p><p>RBI publishes an RSS service for notifications. A feed lists updates and links. Establish the starting source set and check the relevant indexes as well. The feed alone cannot establish complete history or amendment coverage.</p><p>Test source access from the intended AWS runtime. Verify site rules before collection. Restrict domains, redirects, request counts, file sizes, and retries. Do not bypass access challenges.</p><p>Extract HTML and text PDFs. Scanned pages remain unsupported until OCR receives a separate scope decision. Compare content and dates. Link amendments, replacements, and withdrawals to the affected source.</p><p>Keep publication and effective dates separate. Save URLs, content hashes, exact evidence, and verification times. Incomplete discovery, failed retrieval, or uncertain coverage blocks a current assessment.</p><p>The proposed first version runs on request within the existing worker limits. Independent scheduled monitoring remains deferred. Private bank files never go to the regulator website.</p>",
+      "Area": "Lean-mode",
+      "Status": "",
+      "Implication": ""
+    }
+  ],
+  "groups": [
+    {
+      "id": "g1",
+      "label": "Official public RBI sources",
+      "style": "solid",
+      "gcolor": "white"
+    },
+    {
+      "id": "g2",
+      "label": "Proposed Mumbai worker functions",
+      "style": "dotted",
+      "gcolor": "honeydew"
+    },
+    {
+      "id": "g3",
+      "label": "Existing application boundary",
+      "style": "dotted",
+      "gcolor": "beige"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "n1",
+      "group": "g1",
+      "image": "SY",
+      "label": "SY-1 RBI notification RSS",
+      "properties": ""
+    },
+    {
+      "id": "n2",
+      "group": "g1",
+      "image": "SY",
+      "label": "SY-2 Directions and notification indexes",
+      "properties": ""
+    },
+    {
+      "id": "n3",
+      "group": "g2",
+      "image": "SC",
+      "label": "SC-1 Discover scoped document links",
+      "properties": ""
+    },
+    {
+      "id": "n4",
+      "group": "g2",
+      "image": "SC",
+      "label": "SC-2 Fetch permitted HTML and PDFs",
+      "properties": ""
+    },
+    {
+      "id": "n5",
+      "group": "g2",
+      "image": "SC",
+      "label": "SC-3 Extract source text",
+      "properties": ""
+    },
+    {
+      "id": "n6",
+      "group": "g2",
+      "image": "SC",
+      "label": "SC-4 Compare versions and amendments",
+      "properties": ""
+    },
+    {
+      "id": "n7",
+      "group": "g3",
+      "image": "DB",
+      "label": "DB-1 Immutable S3 evidence",
+      "properties": ""
+    },
+    {
+      "id": "n8",
+      "group": "g3",
+      "image": "DB",
+      "label": "DB-2 Version and check records",
+      "properties": ""
+    },
+    {
+      "id": "n9",
+      "group": "g3",
+      "image": "SC",
+      "label": "SC-5 Assessment freshness check",
+      "properties": ""
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n3",
+      "type": "arrow",
+      "label": "New links",
+      "link": ""
+    },
+    {
+      "id": "e2",
+      "source": "n2",
+      "target": "n3",
+      "type": "arrow",
+      "label": "Scoped sources",
+      "link": ""
+    },
+    {
+      "id": "e3",
+      "source": "n3",
+      "target": "n4",
+      "type": "arrow",
+      "label": "Approved URLs",
+      "link": ""
+    },
+    {
+      "id": "e4",
+      "source": "n4",
+      "target": "n5",
+      "type": "arrow",
+      "label": "Source documents",
+      "link": ""
+    },
+    {
+      "id": "e5",
+      "source": "n5",
+      "target": "n6",
+      "type": "arrow",
+      "label": "Text and dates",
+      "link": ""
+    },
+    {
+      "id": "e6",
+      "source": "n6",
+      "target": "n7",
+      "type": "arrow",
+      "label": "Exact source copy",
+      "link": ""
+    },
+    {
+      "id": "e7",
+      "source": "n6",
+      "target": "n8",
+      "type": "arrow",
+      "label": "Version and coverage",
+      "link": ""
+    },
+    {
+      "id": "e8",
+      "source": "n8",
+      "target": "n9",
+      "type": "arrow",
+      "label": "Verified or blocked",
+      "link": ""
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "path": "AGENTS.md",
+    "archiveEntry": "AGENTS.md",
+    "sha256": "750ce74845739171eb656396153b5cb1fe1236498be6cba1ef00740e3db13b64"
+  },
+  {
+    "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+    "archiveEntry": "02_TECHNICAL_BLUEPRINT.md",
+    "sha256": "35bd4c21facb8c1be3dd2cc66a4ec6cb8bce87f3b2e47ff052e60161a476dabc"
+  },
+  {
+    "path": "docs/decisions/gov-decision-log.md",
+    "archiveEntry": "gov-decision-log.md",
+    "sha256": "d13f0f12b58493b1855f942a8e6b39724b837c52ff3dabcc1d5d9a02f1c648de"
+  },
+  {
+    "path": "docs/delivery/05_FEATURE_TICKETS.md",
+    "archiveEntry": "05_FEATURE_TICKETS.md",
+    "sha256": "6aed031b8a535997d01eb5edc427dc2ad8bba713ccf4e7ae906059e96f6cbbe7"
+  },
+  {
+    "path": "docs/frontend/04_FRONTEND_SPEC.md",
+    "archiveEntry": "04_FRONTEND_SPEC.md",
+    "sha256": "82183bb47bccac9395da5c73e5e40cf9ef884951fd87ed0fcf76680bfa036e10"
+  },
+  {
+    "path": "docs/guide-start-here.md",
+    "archiveEntry": "guide-start-here.md",
+    "sha256": "344a9f40532d55382c2f57619c9dc072ded2284c703bef4f091249aec11a57f9"
+  },
+  {
+    "path": "docs/product/01_PRD.md",
+    "archiveEntry": "01_PRD.md",
+    "sha256": "d804f3569b9dfd91a69b91eeda4af72ea955baafb9b6bf92cfad24f01d23e5b5"
+  },
+  {
+    "path": "docs/security/03_SECURITY_ACCESS.md",
+    "archiveEntry": "03_SECURITY_ACCESS.md",
+    "sha256": "480826389a8850facb4a184bc7730b6f0525b2611ce81b8aeaf2935821e561d2"
+  },
+  {
+    "path": "docs/testing/eval-model-quality.md",
+    "archiveEntry": "eval-model-quality.md",
+    "sha256": "8779e8ced423efde8d5392faa5c318e838d042a9332b39f317d4bcfd9f3575a9"
+  },
+  {
+    "path": "docs/testing/spec-local-test-plan.md",
+    "archiveEntry": "spec-local-test-plan.md",
+    "sha256": "590bc9713dfe4bf2f3560b96ad0c3a5d331a21612af65c7abb340b333f487515"
+  },
+  {
+    "path": "LOG.md",
+    "archiveEntry": "LOG.md",
+    "sha256": "e5d3ed0e35d2d178dacac892b1179dd894cc3dd452e8774bda40d5909b173a0e"
+  },
+  {
+    "path": "README.md",
+    "archiveEntry": "README.md",
+    "sha256": "e22e5fb1e950ce0290feeec69f45c82be4d6d7de733d9673b60a37c6e3cd9fe4"
+  },
+  {
+    "path": "runs/2026-10-08-spec-verification.md",
+    "archiveEntry": "2026-10-08-spec-verification.md",
+    "sha256": "cff37d9c9c45830f0a9246227421f4bdf8830472d18cee3c720b39f44038415d"
+  },
+  {
+    "path": "runs/2026-10-09-ste100-verification.md",
+    "archiveEntry": "2026-10-09-ste100-verification.md",
+    "sha256": "54e2e864a0967a3665e823520ae43d1cbfc9b920684fe8f45fe692ef21aa15fd"
+  }
+]

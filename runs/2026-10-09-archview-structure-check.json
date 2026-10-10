@@ -1,0 +1,30 @@
+{
+  "markdownFiles": 19,
+  "localLinks": 155,
+  "errors": [],
+  "tablesUnchanged": true,
+  "rootFiles": 4,
+  "rootDirectories": 7,
+  "graphs": [
+    {
+      "name": "arch-system",
+      "nodes": 12,
+      "edges": 13,
+      "png": {
+        "width": 1540,
+        "height": 748
+      },
+      "htmlSha256": "0727b42cdd45fde227ed4dffab4103c004f988140b63f3562fe07c109bb38a3e"
+    },
+    {
+      "name": "arch-assessment",
+      "nodes": 12,
+      "edges": 11,
+      "png": {
+        "width": 1500,
+        "height": 807
+      },
+      "htmlSha256": "54b31d32cd2649ec64833c4efe2b1362db9b109cafeac61d3abb6f9ca5007904"
+    }
+  ]
+}

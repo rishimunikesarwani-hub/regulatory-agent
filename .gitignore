@@ -1,0 +1,32 @@
+# Local credentials and private inputs
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+data/private/
+data/uploads/
+data/runtime/
+runs/private/
+*.sqlite
+*.sqlite3
+*.db
+
+# Local environments and generated caches
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Local browser diagnostics
+.playwright-cli/
+

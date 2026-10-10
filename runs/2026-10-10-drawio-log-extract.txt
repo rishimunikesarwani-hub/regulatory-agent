@@ -1,0 +1,11 @@
+
+
+The user requested the architecture-diagrams skill and selected Public classification.
+Saved an [editable diagram](docs/architecture/arch-regulatory-agent-component-v1.drawio) and a [rendered SVG](docs/architecture/arch-regulatory-agent-component-v1.svg).
+The SVG also contains editable diagram data.
+The original blueprint and all six ArchView files retain their exact file hashes.
+
+Verified 12 components, 13 flows, SVG import, and a temporary browser label edit.
+The diagram retains the external retrieval API and excludes a crawler.
+See the [verification record](runs/2026-10-10-architecture-diagrams-verification.md).
+This change does not alter the approved application design.

@@ -1,0 +1,8 @@
+[tool.et_hackathon]
+name = "the-regulatory-agent"
+status = "specification-only"
+documentation_index = "docs/guide-start-here.md"
+decision_log = "docs/decisions/gov-decision-log.md"
+submission_date = "2026-10-10"
+private_data_boundary = "aws-india-only"
+# Application packaging, dependencies, and runnable commands belong to T2.

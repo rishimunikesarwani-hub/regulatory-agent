@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "components": 12,
+  "flows": 13,
+  "matching_labelled_elements": 57,
+  "matching_edges_including_legend": 15,
+  "original_files_unchanged": 7,
+  "svg_has_embedded_model": true,
+  "desktop_roundtrip_edit": "PASS via XML edit and desktop CLI render",
+  "web_import": "PASS; SVG imported as shapes into diagrams.net",
+  "classification": "Public",
+  "hashes": {
+    "arch-regulatory-agent-component-v1.json": "51c7ca84cc14d7195de36b2d85b23dec41b9b80e860503460fddf70074103f76",
+    "arch-regulatory-agent-component-v1.drawio": "05b5469b0761a0223e26725035ff09bdd17dab90bb2f4265a38c74bb12313f83",
+    "arch-regulatory-agent-component-v1.svg": "ea7b0c25e9db9f333a48c5081d5d3a3ffc3a2ed1343419b92b59fae05fa4c03f"
+  },
+  "web_label_edit": "PASS; temporary edit made in web UI, then undone"
+}
