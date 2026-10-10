@@ -1,0 +1,6 @@
+uvx : Installed 9 packages in 2.97s
+At line:2 char:1
++ uvx --python 3.12.13 cfn-lint ops/sam-dev.yaml ops/aws-development-bo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Installed 9 packages in 2.97s:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError

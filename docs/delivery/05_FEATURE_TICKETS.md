@@ -19,7 +19,10 @@ D35 controls the isolated workspaces and combined release sequence.
 Keep local acceptance and AWS acceptance records separate.
 VS2 local implementation passed 178 combined Python checks and 20 combined browser checks.
 The user approved VS2 local acceptance and authorized VS3 local development.
-VS2 integration merge and AWS acceptance stay pending.
+VS2 local integration merged through PR8 after its GitHub checks passed.
+The AWS document branch passed 204 backend checks and 26 browser checks.
+Its templates and cloud protocol are prepared. Deployment and AWS acceptance remain pending.
+VS3 has a separate review branch. Its user review remains pending.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
 Extend the accepted local case flow through evidence inspection, one assessment, citation inspection, and a saved review.
 
@@ -152,7 +155,7 @@ Write each behavior test before its application code. Use the recorded failing a
 
 ## T3 — Documents and traceability
 
-**Status:** In progress. Local bank-file upload and inspection passed VS2 checks. Regulatory retrieval and AWS source storage stay pending.
+**Status:** In progress. Local bank-file upload and inspection passed VS2 checks. Controlled AWS document checks passed. Regulatory retrieval and live AWS acceptance remain pending.
 
 **Dependencies:** VS2 and later slices use the corresponding T2 contracts. Complete the necessary document behavior before assessment.
 
@@ -288,7 +291,7 @@ Acceptance:
 
 ## T8 — AWS integration and Rishi's guided deployment
 
-**Status:** Not started.
+**Status:** In progress. Case and document adapters, storage templates, and cloud protocol checks are prepared. CloudFront verification and live acceptance remain pending.
 
 **Dependencies:** VS1 starts development infrastructure. Each later slice adds the AWS services needed for its complete flow.
 

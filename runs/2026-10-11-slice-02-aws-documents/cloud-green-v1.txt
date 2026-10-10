@@ -1,0 +1,16 @@
+test_aws01_case_authorization_precedes_document_storage (test_slice02_aws.CloudDocumentTests.test_aws01_case_authorization_precedes_document_storage) ... ok
+test_aws01_http_routes_share_jwt_checks_and_safe_failures (test_slice02_aws.CloudDocumentTests.test_aws01_http_routes_share_jwt_checks_and_safe_failures) ... ok
+test_aws02_idempotent_reservation_and_changed_metadata_conflict (test_slice02_aws.CloudDocumentTests.test_aws02_idempotent_reservation_and_changed_metadata_conflict) ... ok
+test_aws03_finalization_retry_and_service_restart_preserve_one_version (test_slice02_aws.CloudDocumentTests.test_aws03_finalization_retry_and_service_restart_preserve_one_version) ... ok
+test_aws04_replacement_keeps_earlier_source_and_rejects_foreign_id (test_slice02_aws.CloudDocumentTests.test_aws04_replacement_keeps_earlier_source_and_rejects_foreign_id) ... ok
+test_aws05_reservations_conflicts_and_case_extraction_limit (test_slice02_aws.CloudDocumentTests.test_aws05_reservations_conflicts_and_case_extraction_limit) ... ok
+test_aws06_unfinished_invalid_and_cancelled_never_eligible (test_slice02_aws.CloudDocumentTests.test_aws06_unfinished_invalid_and_cancelled_never_eligible) ... ok
+test_aws07_lost_transaction_acknowledgement_retries_without_duplication (test_slice02_aws.CloudDocumentTests.test_aws07_lost_transaction_acknowledgement_retries_without_duplication) ... ok
+test_aws08_paged_source_preserves_every_line_below_payload_limit (test_slice02_aws.CloudDocumentTests.test_aws08_paged_source_preserves_every_line_below_payload_limit) ... ok
+test_aws09_artifact_corruption_and_version_specific_download (test_slice02_aws.CloudDocumentTests.test_aws09_artifact_corruption_and_version_specific_download) ... ok
+test_aws10_case_list_excludes_document_and_upload_metadata (test_slice02_aws.CloudDocumentTests.test_aws10_case_list_excludes_document_and_upload_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 6.237s
+
+OK

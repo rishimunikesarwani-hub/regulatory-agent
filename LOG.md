@@ -485,3 +485,35 @@ No cloud resources were deleted manually.
 Next: complete the checked VS2 integration merge.
 Start the authorized VS3 local slice after that merge.
 Keep the CloudFront verification handoff open.
+
+## 2026-10-11 - Accepted VS2 AWS document preparation
+
+VS2 local integration merged through PR8 at `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
+VS3 remains in its separate review worktree and draft PR9.
+Its pending user review controls merge and VS4 development.
+
+Branch `work/t3-aws-documents` prepares the accepted document flow for AWS.
+The cloud specification preceded storage, cloud API, infrastructure, and browser implementation.
+The prepared flow includes direct private S3 upload, durable reservations, bounded extraction, conditional counters, source pages, and original downloads.
+Retries retain the same upload identifier and saved object versions.
+The local protocol and approved limits stay unchanged.
+
+The controlled backend suite passed 204 checks.
+The combined browser suite passed 26 checks.
+The frontend build and both template lint checks passed.
+AWS IAM Access Analyzer returned no findings for the prepared runtime identity policy.
+This validation did not apply permissions or prove live service access.
+
+The API test uses port `8191` and `runs/private/slice-02-aws/browser-tests.sqlite`.
+The browser uses port `5192` during its checks.
+Feedback ports remain reserved. New feedback services are not running.
+The accepted VS1 and VS2 feedback services and pending VS3 review services remain unchanged.
+
+CloudFront account verification and failed-stack recovery still block deployment.
+The new storage and permission templates have not been applied to AWS.
+No cloud resource was created or deleted during this preparation.
+The Support verification request has not been sent by this session.
+
+Read the [cloud preparation guide](docs/delivery/guide-slice-02-aws-documents.md) and [evidence](runs/2026-10-11-slice-02-aws-documents/review-cloud-preparation.md).
+Next: finish GitHub checks for the cloud document branch.
+Keep VS3 acceptance and AWS verification pending until their required evidence arrives.
