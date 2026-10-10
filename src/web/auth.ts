@@ -45,7 +45,9 @@ function base64url(bytes: Uint8Array): string {
 
 export async function startSignIn(config: Config): Promise<void> {
   if (config.mode !== 'aws') throw new Error('configuration');
-  const state = base64url(crypto.getRandomValues(new Uint8Array(32)));
+  const selectedCase = new URL(location.href).searchParams.get('case');
+  const state = base64url(crypto.getRandomValues(new Uint8Array(32))) +
+    (selectedCase && /^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(selectedCase) ? `.${selectedCase}` : '');
   const verifier = base64url(crypto.getRandomValues(new Uint8Array(64)));
   const challenge = base64url(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(verifier))));
   sessionStorage.setItem(pkceKey, JSON.stringify({ state, verifier }));
@@ -72,6 +74,8 @@ export async function finishSignIn(config: Config): Promise<boolean> {
   if (config.mode !== 'aws' || error || !code || !state || !pending) throw new Error('signin');
   const saved = JSON.parse(pending) as { state?: string; verifier?: string };
   if (state !== saved.state || !saved.verifier) throw new Error('signin');
+  const selectedCase = state.includes('.') ? state.slice(state.indexOf('.') + 1) : null;
+  if (selectedCase !== null && !/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(selectedCase)) throw new Error('signin');
   const response = await fetch(new URL('/oauth2/token', config.cognito_domain), {
     method: 'POST', credentials: 'omit', cache: 'no-store',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -86,6 +90,10 @@ export async function finishSignIn(config: Config): Promise<boolean> {
       typeof result.expires_in !== 'number' || result.expires_in <= 0 || !Number.isFinite(result.expires_in)) throw new Error('signin');
   accessToken = result.access_token;
   expiresAt = Date.now() + result.expires_in * 1000;
+  if (selectedCase) {
+    url.searchParams.set('case', selectedCase);
+    history.replaceState(null, '', url.pathname + url.search);
+  }
   return true;
 }
 

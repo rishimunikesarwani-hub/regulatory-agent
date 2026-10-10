@@ -48,9 +48,33 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertLess(deployment, browser)
         self.assertEqual(deploy["permissions"]["id-token"], "write")
 
+    def test_development_traffic_limits_fit_the_verified_account_quota(self):
+        resources = self.template["Resources"]
+        self.assertNotIn("ReservedConcurrentExecutions", resources["CaseFunction"]["Properties"])
+        settings = resources["HttpApi"]["Properties"]["DefaultRouteSettings"]
+        self.assertEqual(settings["ThrottlingRateLimit"], 2)
+        self.assertEqual(settings["ThrottlingBurstLimit"], 4)
+
+    def test_deployment_trust_requires_the_verified_repository_and_environment(self):
+        bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
+        trust = bootstrap["Resources"]["GitHubDeploymentRole"]["Properties"]["AssumeRolePolicyDocument"]
+        condition = trust["Statement"][0]["Condition"]["StringEquals"]
+        self.assertEqual(condition["token.actions.githubusercontent.com:aud"], "sts.amazonaws.com")
+        self.assertEqual(condition["token.actions.githubusercontent.com:sub"],
+                         "repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development")
+
     def test_lambda_role_has_no_model_or_document_access(self):
-        policies = self.template["Resources"]["CaseFunction"]["Properties"]["Policies"]
-        actions = [action for policy in policies for statement in policy["Statement"] for action in statement["Action"]]
-        self.assertEqual(set(actions), {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query"})
+        function = self.template["Resources"]["CaseFunction"]["Properties"]
+        self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
+        self.assertNotIn("Policies", function)
+        bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
+        policies = bootstrap["Resources"]["CaseRuntimeRole"]["Properties"]["Policies"]
+        actions = {action for policy in policies for statement in policy["PolicyDocument"]["Statement"] for action in statement["Action"]}
+        self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query",
+                                  "logs:CreateLogStream", "logs:PutLogEvents"})
+        execution = bootstrap["Resources"]["CloudFormationRole"]["Properties"]["Policies"]
+        iam_actions = {action for policy in execution for statement in policy["PolicyDocument"]["Statement"]
+                       for action in statement["Action"] if action.startswith("iam:")}
+        self.assertEqual(iam_actions, {"iam:PassRole", "iam:GetRole"})
         outputs = self.template["Outputs"]
         self.assertTrue({"FrontendUrl", "ApiUrl", "CommitSha", "UserPoolId", "UserPoolClientId"} <= outputs.keys())

@@ -1,0 +1,17 @@
+{
+  "reference": "ASD-STE100 Issue 9, local official reference copy",
+  "scope": [
+    "docs/delivery/guide-aws-development-access.md",
+    "docs/delivery/spec-slice-01-cases.md",
+    "D28 and changed status paragraphs"
+  ],
+  "mechanical_checks": "Two complete documents passed the installed checker with zero findings.",
+  "manual_checks": [
+    "Instruction length and single actions.",
+    "Active voice and technical terms.",
+    "Preserved account IDs, role names, region, URLs, budget, and approval conditions.",
+    "Separated local checks from cloud verification and permission approval."
+  ],
+  "dictionary_review": "Incomplete. Full approved-meaning and part-of-speech verification was not completed.",
+  "claim": "STE-oriented documentation. No claim of full compliance or ASD approval."
+}

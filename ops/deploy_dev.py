@@ -17,7 +17,7 @@ def command(*args, capture=False):
 
 def configuration(env):
     required = ("AWS_DEV_ACCOUNT_ID", "AWS_DEV_EXECUTION_ROLE_ARN", "AWS_DEV_ARTIFACT_BUCKET",
-                "AWS_DEV_MONTHLY_BUDGET_USD", "GITHUB_SHA", "GITHUB_OUTPUT")
+                "AWS_DEV_MONTHLY_BUDGET_USD", "AWS_DEV_RUNTIME_ROLE_ARN", "GITHUB_SHA", "GITHUB_OUTPUT")
     if any(not env.get(key) for key in required):
         raise ValueError("Development account, roles, artifact bucket, budget, and commit must be configured")
     account, stack = env["AWS_DEV_ACCOUNT_ID"], env.get("AWS_DEV_STACK", "regulatory-agent-dev-s01")
@@ -27,6 +27,8 @@ def configuration(env):
         raise ValueError("Only the specified development stack and exact commit are permitted")
     if not re.fullmatch(rf"arn:aws:iam::{account}:role/[A-Za-z0-9+=,.@_/-]+", env["AWS_DEV_EXECUTION_ROLE_ARN"]):
         raise ValueError("The execution role must belong to the development account")
+    if env["AWS_DEV_RUNTIME_ROLE_ARN"] != f"arn:aws:iam::{account}:role/regulatory-agent-dev-case-runtime":
+        raise ValueError("The fixed development case runtime role is necessary")
     if not re.fullmatch(r"[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]", env["AWS_DEV_ARTIFACT_BUCKET"]):
         raise ValueError("Invalid artifact bucket")
     try:
@@ -61,6 +63,7 @@ def main():
             "--s3-bucket", os.environ["AWS_DEV_ARTIFACT_BUCKET"], "--s3-prefix", commit,
             "--role-arn", os.environ["AWS_DEV_EXECUTION_ROLE_ARN"], "--region", "ap-south-1",
             "--capabilities", "CAPABILITY_IAM", "--parameter-overrides", f"CommitSha={commit}",
+            f"CaseRuntimeRoleArn={os.environ['AWS_DEV_RUNTIME_ROLE_ARN']}",
             "--no-confirm-changeset", "--no-fail-on-empty-changeset")
     result = json.loads(command("aws", "cloudformation", "describe-stacks", "--stack-name", stack,
                                 "--region", "ap-south-1", "--output", "json", capture=True))

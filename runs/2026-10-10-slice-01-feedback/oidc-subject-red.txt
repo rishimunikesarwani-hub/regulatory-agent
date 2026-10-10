@@ -1,0 +1,22 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment) ... FAIL
+test_lambda_role_has_no_model_or_document_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_no_model_or_document_access) ... ok
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+
+======================================================================
+FAIL: test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_deployment.py", line 56, in test_deployment_trust_requires_the_verified_repository_and_environment
+    self.assertEqual(condition["token.actions.githubusercontent.com:sub"],
+AssertionError: 'repo[18 chars]i-hub/regulatory-agent:environment:development' != 'repo[18 chars]i-hub@292392448/regulatory-agent@1412648942:en[17 chars]ment'
+- repo:rishimunikesarwani-hub/regulatory-agent:environment:development
++ repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development
+?                            ++++++++++                 +++++++++++
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.261s
+
+FAILED (failures=1)

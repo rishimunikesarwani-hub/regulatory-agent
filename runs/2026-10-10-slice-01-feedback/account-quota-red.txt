@@ -1,0 +1,19 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment) ... ok
+test_development_traffic_limits_fit_the_verified_account_quota (test_slice01_deployment.DeploymentContractTests.test_development_traffic_limits_fit_the_verified_account_quota) ... FAIL
+test_lambda_role_has_no_model_or_document_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_no_model_or_document_access) ... ok
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+
+======================================================================
+FAIL: test_development_traffic_limits_fit_the_verified_account_quota (test_slice01_deployment.DeploymentContractTests.test_development_traffic_limits_fit_the_verified_account_quota)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_deployment.py", line 53, in test_development_traffic_limits_fit_the_verified_account_quota
+    self.assertNotIn("ReservedConcurrentExecutions", resources["CaseFunction"]["Properties"])
+AssertionError: 'ReservedConcurrentExecutions' unexpectedly found in {'Role': {'Ref': 'CaseRuntimeRoleArn'}, 'CodeUri': '../runs/private/sam-package/', 'Handler': 'regulatory_agent.aws_cases.handler', 'Runtime': 'python3.12', 'Architectures': ['x86_64'], 'MemorySize': 256, 'Timeout': 10, 'ReservedConcurrentExecutions': 2, 'Environment': {'Variables': {'APP_ENV': 'aws', 'CASES_TABLE': {'Ref': 'CasesTable'}, 'USER_POOL_ID': {'Ref': 'UserPool'}, 'USER_POOL_CLIENT_ID': {'Ref': 'UserPoolClient'}, 'COMMIT_SHA': {'Ref': 'CommitSha'}}}, 'Events': {'CreateCase': {'Type': 'HttpApi', 'Properties': {'ApiId': {'Ref': 'HttpApi'}, 'Path': '/api/cases', 'Method': 'POST', 'PayloadFormatVersion': '2.0'}}, 'ListCases': {'Type': 'HttpApi', 'Properties': {'ApiId': {'Ref': 'HttpApi'}, 'Path': '/api/cases', 'Method': 'GET', 'PayloadFormatVersion': '2.0'}}, 'ReadCase': {'Type': 'HttpApi', 'Properties': {'ApiId': {'Ref': 'HttpApi'}, 'Path': '/api/cases/{case_id}', 'Method': 'GET', 'PayloadFormatVersion': '2.0'}}, 'Health': {'Type': 'HttpApi', 'Properties': {'ApiId': {'Ref': 'HttpApi'}, 'Path': '/api/health', 'Method': 'GET', 'PayloadFormatVersion': '2.0', 'Auth': {'Authorizer': 'NONE'}}}}}
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.280s
+
+FAILED (failures=1)

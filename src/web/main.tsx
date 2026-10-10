@@ -166,19 +166,16 @@ function App() {
 
   return <>
     <a className="skip-link" href="#main">Skip to content</a>
-    <header className="topbar"><div className="brand"><span className="brand-mark" aria-hidden="true">R</span><span>The Regulatory Agent</span></div>
+    <header className="topbar"><div className="brand"><span className="brand-mark" aria-hidden="true">R</span><span>The Regulator</span></div>
       <div className="topbar-actions">{config && <span className="mode">{config.mode === 'local' ? 'Local development' : 'AWS development'}</span>}
         {signedIn && <button className="text-button" onClick={signOut}>Sign out</button>}</div>
     </header>
     <main id="main" className={signedIn ? 'workspace' : 'welcome'}>
       {error && <div className="alert" role="alert">{error}</div>}
       {initializing ? <p role="status">Loading application…</p> : configurationFailed ? <section className="panel"><h1>Application unavailable</h1><p>The sign-in configuration must be corrected before you continue.</p><button onClick={() => location.reload()}>Reload application</button></section> : !signedIn ?
-        <section className="sign-in-layout"><div className="introduction"><p className="eyebrow">REGULATORY REVIEW WORKSPACE</p><h1>A clear starting point<br />for every case.</h1><p className="lead">Keep each bank profile in its own case. Save a fictional case, then return to the same record when you need it.</p>
-          <div className="boundary-note"><span className="dot" aria-hidden="true" /><span>Fictional data only for this development release.</span></div></div>
-          <div className="panel sign-in-panel"><span className="small-label">YOUR WORKSPACE</span><h2>Sign in to continue</h2><p>Your cases belong to your authenticated account.</p>
-            {config?.mode === 'local' && <p className="local-note">This uses the local development identity. Cognito sign-in is not active in this mode.</p>}
+        <section className="sign-in-layout"><div className="panel sign-in-panel"><h1>Sign in to continue</h1>
             <button className="full-width" disabled={loading} onClick={() => void signIn()}>{loading ? 'Starting sign-in…' : config?.mode === 'local' ? 'Continue with local identity' : 'Sign in securely'}</button>
-            <p className="fine-print">Case creation and reopening are available. Regulatory assessments are not available in this release.</p></div></section>
+          </div></section>
       : <>
         {view === 'cases' ? <>
           <div className="page-heading"><div><p className="eyebrow">CASE WORKSPACE</p><h1 tabIndex={-1} ref={heading}>Your cases</h1><p>Start a fictional case or reopen a saved profile.</p></div><button className="secondary" disabled={loading || saving} onClick={() => void loadCases()}>Refresh cases</button></div>

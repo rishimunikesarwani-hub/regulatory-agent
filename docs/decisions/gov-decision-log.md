@@ -363,6 +363,89 @@ Affected requirements: REQ-F01 through REQ-F08 and REQ-X01 through REQ-X09.
 Affected delivery records: T1 through T9, the two development guides, and the project log.
 The [VS1 API contract](../delivery/spec-slice-01-cases.md) controls the first application flow.
 
+## D28 - Development access and feedback checkpoint
+
+Date: 2026-10-10.
+Status: Development execution and a USD 25 monthly budget have user approval.
+Status: The new AWS permission installation needs confirmation in the browser.
+
+The user requested one complete slice at a time for testing and feedback.
+Keep VS1 active until its acceptance checks and user review are complete.
+Do not start VS2 during this checkpoint.
+
+The `rishicodex` profile authenticated in account `482439369658`.
+CloudFormation and Lambda access checks failed with access-denied responses.
+The existing policies do not supply the required application deployment access.
+
+The proposed account setup creates different deployment, CloudFormation, and case function roles.
+The case function role permits case records and application logs only.
+CloudFormation can pass this role but cannot change its permissions.
+The GitHub role trusts only this repository's `development` environment.
+The proposed setup does not grant account administrator access.
+The USD 25 budget requires an alert destination before configuration.
+It is an alert threshold, not a spending cap.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+The application scope and existing quality gates stay unchanged.
+
+## D29 - Verified GitHub deployment identity
+
+Date: 2026-10-10.
+Status: Implementation clarification within D28.
+
+The repository uses GitHub's immutable subject format for OpenID Connect.
+OpenID Connect supplies a temporary deployment identity without stored AWS access keys.
+The verified owner ID is `292392448`.
+The verified repository ID is `1412648942`.
+The AWS trust condition must include both IDs and the `development` environment.
+The permitted repository, environment, and AWS actions stay unchanged.
+
+The GitHub development environment was created successfully.
+Its deployment branch policy permits only `main`.
+General branch protection is unavailable under the current account plan.
+The successful environment policy is a different control.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+Update the [access setup](../delivery/guide-aws-development-access.md) before installation.
+Use the [GitHub reference](https://docs.github.com/en/actions/reference/security/oidc#immutable-subject-claims) for the subject format.
+
+## D30 - Development concurrency quota
+
+Date: 2026-10-10.
+Status: Implementation clarification within the authorized development deployment.
+
+The authenticated AWS account has a Mumbai Lambda concurrency quota of 10.
+Concurrency is the number of requests that run at the same time.
+AWS requires 100 unreserved executions before a function can reserve additional capacity.
+The first application deployment must omit reserved concurrency.
+The existing account quota stays unchanged.
+
+Use an API request rate target of 2 requests per second.
+Use an API burst target of 4 requests.
+These targets reduce development traffic.
+They are not a spending cap or a guaranteed concurrency limit.
+Keep the monthly budget alert threshold at USD 25.
+
+Affected acceptance cases: VS1-AWS01 and VS1-REL01.
+The application scope and authentication conditions stay unchanged.
+See the [AWS concurrency rule](https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html).
+
+## D31 - User-approved sign-in design
+
+Date: 2026-10-10.
+Status: Approved by the user's screenshot instructions.
+
+Use `The Regulator` as the visible application name.
+Remove the sign-in introduction panel.
+Center the sign-in card.
+Keep only `Sign in to continue` and the sign-in action inside that card.
+Keep authentication errors and fictional-data controls available.
+
+The nine reference screenshots are in `MVP/docs/frontend/Design Ideas`.
+The [frontend specification](../frontend/04_FRONTEND_SPEC.md#sign-in-screen) controls this change.
+Affected acceptance cases: VS1-BT01 and VS1-BT03.
+The application scope and AWS deployment request stay unchanged.
+
 ## How to add a decision
 
 Add a new entry with:
