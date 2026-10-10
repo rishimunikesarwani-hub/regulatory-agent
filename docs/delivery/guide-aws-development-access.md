@@ -1,7 +1,7 @@
 # AWS development access
 
 Date: 2026-10-10.
-Status: Development access installed. Application deployment is pending.
+Status: Development access installed. Application deployment needs AWS CloudFront account verification.
 
 ## Verified account state
 
@@ -97,6 +97,10 @@ These checks do not prove live permission coverage.
 The first application release stopped because the execution role lacked the SAM transform permission.
 Decision D32 records the narrow correction.
 Application resource creation and deployed browser acceptance remain pending.
+
+The second release reached `ROLLBACK_COMPLETE` after CloudFront rejected account access.
+The user chose to keep CloudFront and request AWS account verification.
+The [verification guide](guide-aws-cloudfront-verification.md) records the prepared request and recovery boundary.
 
 Ten selected AWS Guard rules ran with `cfn-guard 3.2.1`.
 All applicable rules passed after the secure-transport value used Boolean `false`.

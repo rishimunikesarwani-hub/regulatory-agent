@@ -1,0 +1,8 @@
+﻿[
+    {
+        "LogicalId": "Frontend",
+        "Type": "AWS::CloudFront::Distribution",
+        "Status": "CREATE_FAILED",
+        "Reason": "Resource handler returned message: \"Access denied for operation 'AWS::CloudFront::Distribution: Your account must be verified before you can add new CloudFront resources. To verify your account, please contact AWS Support (https://console.aws.amazon.com/support/home#/) and include this error message. (Service: CloudFront, Status Code: 403, Request ID: 4466b537-0143-4557-adb2-af3a2c92949d) (SDK Attempt Count: 1)'.\" (RequestToken: 7a004315-e78c-832e-71e1-bb6e8d38ab77, HandlerErrorCode: AccessDenied)"
+    }
+]

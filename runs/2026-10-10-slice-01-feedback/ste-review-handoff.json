@@ -1,0 +1,22 @@
+{
+  "reference": "ASD-STE100 Issue 9",
+  "scope": "New AWS handoff, workspace guide, D34, D35, and related status text.",
+  "protected": [
+    "AWS error quotation",
+    "AWS account and request IDs",
+    "ports and database paths",
+    "release SHA and run IDs",
+    "user hosting selection",
+    "monthly USD 25 alert"
+  ],
+  "manual_review": "The text preserves the failed release and skipped live acceptance. Current UI checks are local evidence only. The workspace plan preserves feedback, security, and deployment boundaries.",
+  "technical_terms": [
+    "vertical slice",
+    "worktree",
+    "Ponytail",
+    "rollback",
+    "CloudFront",
+    "AWS Support"
+  ],
+  "dictionary_limit": "Complete dictionary and approved-meaning review remains unavailable. No full compliance claim."
+}

@@ -425,3 +425,26 @@ The selected AWS Guard rules pass for the corrected access template.
 
 Next: verify the access update, merge the correction, and retry the serialized application release.
 Live application acceptance remains pending.
+
+### CloudFront verification handoff
+
+The transform correction passed GitHub checks and merged through pull request 6.
+Application release `38071339699` used commit `acfb4bc1d87bf646281db2f6633799f1d3e3e6f3`.
+Its integration checks passed.
+CloudFront rejected distribution creation because account `482439369658` needs AWS verification.
+The application stack reached `ROLLBACK_COMPLETE`.
+No application URL was produced, and live browser acceptance was skipped.
+
+The configured retention rules preserved the case table, frontend bucket, and user pool.
+Live checks found zero records, zero objects, and zero users.
+The test operator process stopped without creating a user.
+No retained resource was deleted manually.
+
+Decision D34 records the user's choice to keep CloudFront.
+The AWS Support request is prepared in the open Chrome tab and has not been sent.
+The verification guide records the manual submission steps and recovery boundary.
+The local feedback interface remains available with the requested sign-in design.
+All 166 backend checks and 14 local browser checks passed before the release.
+
+Next: obtain AWS account verification and review the failed stack recovery.
+Live AWS acceptance remains pending.

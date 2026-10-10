@@ -9,13 +9,15 @@
 > Development state: Session A and Session B foundations are integrated. The combined offline checks passed 60 tests.
 > D24 foundation: The recorded offline checks passed 123 tests. T1 and T2 still have incomplete acceptance conditions.
 
-> VS1 local checks: 163 Python tests and 11 browser tests passed.
-> VS1 deployment: AWS behavior is unverified. The user must first set up an AWS account.
-> VS1 state: Local implementation and checks are complete. Deployed sign-in and browser acceptance are pending.
+> VS1 local checks: 166 Python tests and 14 browser tests passed.
+> VS1 deployment: AWS behavior is unverified. CloudFront requires AWS account verification under D34.
+> VS1 state: The user approved local acceptance. Deployed sign-in and browser acceptance remain pending.
 > Delivery order: [D27](../decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow) replaces the horizontal ticket sequence with VS0 through VS5.
 
-First, complete sign-in, case creation, storage, and reopening in AWS development.
-Then extend the flow through evidence inspection, one assessment, citation inspection, and a saved review.
+The user approved continued local development through VS2 while AWS verification is pending.
+D35 controls the isolated workspaces and combined release sequence.
+Keep local acceptance and AWS acceptance records separate.
+Extend the accepted local case flow through evidence inspection, one assessment, citation inspection, and a saved review.
 
 The measurement contract controls reviewer outcomes, retrieval scores, assessment quality, traces, and cost calculations.
 Keep one agent and the approved model `in.openai.gpt-5.6-luna` for the baseline.
@@ -44,7 +46,7 @@ AWS development deployment and browser acceptance belong to that same flow.
 |---|---|---|---|
 | VS0 | One agreed API contract and reconciled source state. | T1 and T2 contracts, with existing D24 work. | Compare Session A, Session B, integration history, and current approved specifications. |
 | VS1 | Sign in, make a case, save it, and reopen it after reload. | T2 case contract, T6 identity and records, T7 case screens, T8 development infrastructure, T9 evidence. | Complete VS0. Configure authorized AWS development access. |
-| VS2 | Open a case, upload evidence, and inspect its unchanged source version. | T1 selected fixtures, T2 source contract, T3 documents, T6 access, T7 source screens, T8 storage, T9 evidence. | Complete VS1. Record the source API contract. |
+| VS2 | Open a case, upload evidence, and inspect its unchanged source version. | T1 selected fixtures, T2 source contract, T3 documents, T6 access, T7 source screens, T8 storage, T9 evidence. | Obtain VS1 local acceptance under D35. Record the source API contract. Keep AWS acceptance pending until verification. |
 | VS3 | Assess one obligation, inspect its citations, and save a review. | T1 selected labels, T2 measurement contracts, T3 sources, T4 assessment, T5 bounded execution, T6-T9 applicable work. | Complete VS2. Record the assessment and review API contracts. |
 | VS4 | Compare specified regulatory versions and inspect a new assessment with its own review history. | T1 change fixtures, T3 versions, T5 changes, T6-T9 applicable work. | Complete VS3. Record the version-comparison API contract. |
 | VS5 | Use the full approved scope and inspect release evidence for all eight features. | All remaining T1-T9 acceptance conditions. | Complete VS4. Complete provider, model, source, and held-out-data prerequisites for live evaluation. |
