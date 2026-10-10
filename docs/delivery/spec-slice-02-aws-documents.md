@@ -144,6 +144,21 @@ Restrict case-list queries to records with the `CASE#` sort-key prefix.
 Controlled cloud tests use isolated records and simulated service responses.
 They do not prove a live AWS deployment or live Cognito sign-in.
 
+## Integration focus regression
+
+CI run `38084172144` found a keyboard-focus change while the case list completed its request.
+The interface could move focus from a form control to the case heading.
+This integration correction stays within the accepted case workflow.
+Use branch `work/t3-aws-documents-focus` in the existing AWS preparation worktree.
+Keep its test ports and test database unchanged.
+
+VS1-BT04: Delay the case-list response while the user enters a name and moves to its confirmation checkbox.
+Complete the response after the checkbox receives focus.
+The checkbox must keep focus.
+The user must then complete the save through keyboard controls.
+Move focus to a loaded heading only when no application control has focus.
+Keep the existing user-review checkpoints and AWS deployment conditions unchanged.
+
 ## Deployment and cost limits
 
 CloudFront account verification and failed-stack recovery remain necessary before deployment.
