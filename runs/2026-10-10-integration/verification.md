@@ -3,6 +3,10 @@
 Date: 2026-10-10.
 Scope: Combine existing work and prepare the remaining task folders.
 
+This record describes the initial foundation preparation before PR #3.
+The [current preparation record](worktree-refresh.md) includes the later code and D27 delivery plan.
+The earlier 60-test results and limits below are historical.
+
 ## Integrated changes
 
 [PR #1](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/1) merged Session A commit `52256481566025ffaf0b65325339c1f3490eb01c`.

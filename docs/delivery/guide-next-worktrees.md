@@ -3,6 +3,10 @@
 Date: 2026-10-10.
 Decision: [D27](../decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow).
 
+Use `MVP` on branch `main` for integration.
+The [latest preparation record](../../runs/2026-10-10-integration/worktree-refresh.md) gives the current environment checks.
+The observed inventory below records an earlier workspace snapshot.
+
 The user selected delivery by complete user flows.
 The earlier eight-folder schedule is replaced by the slice order below.
 The folder count does not establish feature progress.

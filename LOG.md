@@ -285,3 +285,11 @@ The vertical slice plan controls their next assignments.
 The latest blueprint clarifies retrieval-operation limits and the missing shared response-byte total.
 Kept that clarification during reconciliation.
 The clarification does not establish live provider enforcement.
+
+### Prepared worktrees after PR #3
+
+Updated the eight prepared worktrees with the current integrated code and D27 instructions.
+Each worktree and `MVP` passed 163 Python tests and the frontend build with cached dependencies.
+The [current preparation record](runs/2026-10-10-integration/worktree-refresh.md) gives source and environment evidence.
+The additional folders stay reserved until the user selects a complete flow.
+No application code, running server, or cloud resource was added during this preparation.
