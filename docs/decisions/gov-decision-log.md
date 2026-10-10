@@ -502,6 +502,21 @@ The approved feature scope and security boundaries stay unchanged.
 The user subsequently approved VS1 local acceptance and authorized VS2 local development.
 Keep VS1 AWS acceptance pending until account verification and deployed checks pass.
 
+## D36 - VS2 local source contract
+
+Date: 2026-10-10.
+Status: Implementation details within the user's approved VS2 local development.
+
+Use the [VS2 contract](../delivery/spec-slice-02-documents.md) for upload and exact source-version inspection.
+Combine local authorization, extraction, and finalization in one request.
+Use SQLite transactions to keep original bytes and source versions unchanged.
+Count saved replacement versions against the existing case allowance.
+Keep the original page, paragraph, line, or row locations.
+Use one bounded extraction process and the pinned `pypdf 6.20.0` parser.
+Use the Python standard library for DOCX, TXT, and CSV.
+Do not add assessment or regulatory retrieval behavior to this slice.
+Keep private AWS upload and storage acceptance pending until the required cloud checks pass.
+
 ## How to add a decision
 
 Add a new entry with:

@@ -1,0 +1,109 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+
+At line:1 char:1
+
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
+
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+
+    + FullyQualifiedErrorId : NativeCommandError
+
+
+
+npm notice run playwright test --config playwright.documents.config.ts --grep VS2-BT05
+
+[WebServer] (node:20124) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+[WebServer] INFO:     Started server process [38288]
+
+[WebServer] INFO:     Waiting for application startup.
+
+[WebServer] INFO:     Application startup complete.
+
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8121 (Press CTRL+C to quit)
+
+
+
+Running 1 test using 1 worker
+
+
+
+(node:24708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+  x  1 tests\documents.spec.ts:73:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry (6.1s)
+
+
+
+
+
+  1) tests\documents.spec.ts:73:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry
+
+
+
+    Error: expect(locator).toBeDisabled() failed
+
+
+
+    Locator:  getByRole('button', { name: 'Upload fictional document', exact: true })
+
+    Expected: disabled
+
+    Received: enabled
+
+    Timeout:  5000ms
+
+
+
+    Call log:
+
+      - Expect "toBeDisabled" getByRole('button', { name: 'Upload fictional document', exact: true }) with timeout 5000ms
+
+      - waiting for getByRole('button', { name: 'Upload fictional document', exact: true })
+
+        11 × locator resolved to <button type="submit" class="full-width">Upload fictional document</button>
+
+           - unexpected value "enabled"
+
+
+
+
+
+      83 |   const upload = page.getByRole('button', { name: 'Upload fictional document', exact: true });
+
+      84 |   await upload.click();
+
+    > 85 |   await expect(upload).toBeDisabled();
+
+         |                        ^
+
+      86 |   await expect(page.getByRole('alert')).toContainText('Refresh documents');
+
+      87 |   await page.getByRole('button', { name: 'Refresh documents', exact: true }).click();
+
+      88 |   await expect(page.getByRole('button', { name: 'Inspect saved-but-uncertain.txt version 1', exact: true })).toBeVisible();
+
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\documents.spec.ts:85:24
+
+
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT05-an-unce-9291d-saved-versions-before-retry\test-failed-1.png
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT05-an-unce-9291d-saved-versions-before-retry\error-context.md
+
+
+
+  1 failed
+
+    tests\documents.spec.ts:73:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry

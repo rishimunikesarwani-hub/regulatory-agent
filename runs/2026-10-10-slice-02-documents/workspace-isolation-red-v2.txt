@@ -1,0 +1,38 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version (526ms)
+
+
+  1) tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "http://127.0.0.1:8121"
+    Received: "http://127.0.0.1:8110"
+
+       5 |   // Stop before any write if a worktree accidentally points at another slice's database.
+       6 |   const configuration = await page.request.get('/config.json');
+    >  7 |   expect((await configuration.json()).api_url).toBe('http://127.0.0.1:8121');
+         |                                                ^
+       8 | });
+       9 |
+      10 | async function caseAndUpload(page: Page, content = 'Fictional policy.\nOwner is unknown.\n') {
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\documents.spec.ts:7:48
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT01-upload--ebaf8-and-reopen-the-same-version\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT01-upload--ebaf8-and-reopen-the-same-version\error-context.md
+
+  1 failed
+    tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version
+[WebServer] (node:33364) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [13732]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8121 (Press CTRL+C to quit)
+(node:12180) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

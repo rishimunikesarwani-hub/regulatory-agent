@@ -33,9 +33,18 @@ Read the [current verification records](../runs/2026-10-10-autonomous-build/) fo
 D24 measurement functions have unit tests.
 Complete runtime measurement integration and live evaluations are pending.
 AWS templates are prepared, but AWS deployment is unverified.
-The AWS account is confirmed, but its CLI profile lacks application deployment permissions.
-The [access setup](delivery/guide-aws-development-access.md) is prepared for review.
-Read the [remaining worktree guide](delivery/guide-next-worktrees.md) before the next development session.
+The AWS development access setup is installed.
+CloudFront distribution creation needs AWS account verification under D34.
+The [verification guide](delivery/guide-aws-cloudfront-verification.md) gives the user's remaining Support steps.
+The USD 25 monthly alert is configured and healthy.
+The alert is not a spending cap.
+
+The user approved VS1 locally and authorized VS2 local development.
+The VS2 document flow passed 178 combined Python checks and 20 combined browser checks.
+VS2 user acceptance and its integration merge stay pending.
+AWS application acceptance stays pending.
+Read the [VS2 development guide](delivery/guide-slice-02-development.md) for local review.
+The [workspace guide](delivery/guide-slice-workspaces.md) controls the current branches, ports, and databases.
 
 F3: At least eight features from the hackathon list are mandatory.
 D2: Reliability evidence for mostly structured and textual input is mandatory.

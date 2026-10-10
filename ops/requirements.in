@@ -5,3 +5,4 @@ uvicorn
 httpx
 boto3
 PyYAML
+pypdf==6.20.0

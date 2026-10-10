@@ -1,0 +1,25 @@
+test_ct01_supported_files_keep_original_bytes_and_exact_locations (test_slice02_documents.DocumentSliceTests.test_ct01_supported_files_keep_original_bytes_and_exact_locations) ... ok
+test_ct02_documents_reopen_with_a_new_application_instance (test_slice02_documents.DocumentSliceTests.test_ct02_documents_reopen_with_a_new_application_instance) ... ok
+test_ct03_other_owners_and_cases_cannot_read_or_replace_sources (test_slice02_documents.DocumentSliceTests.test_ct03_other_owners_and_cases_cannot_read_or_replace_sources) ... ok
+test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources (test_slice02_documents.DocumentSliceTests.test_ct04_invalid_or_nonfictional_uploads_do_not_create_sources) ... ok
+test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors (test_slice02_documents.DocumentSliceTests.test_ct05_encrypted_scanned_empty_and_malformed_documents_are_safe_errors) ... ok
+test_ct05_timeout_is_a_safe_rejection_without_a_saved_version (test_slice02_documents.DocumentSliceTests.test_ct05_timeout_is_a_safe_rejection_without_a_saved_version) ... FAIL
+test_ct06_document_count_and_replacement_versions_share_the_allowance (test_slice02_documents.DocumentSliceTests.test_ct06_document_count_and_replacement_versions_share_the_allowance) ... ok
+test_ct06_file_and_aggregate_limits_reject_without_partial_persistence (test_slice02_documents.DocumentSliceTests.test_ct06_file_and_aggregate_limits_reject_without_partial_persistence) ... ok
+test_ct07_replacement_preserves_the_old_version_and_rejected_replacements (test_slice02_documents.DocumentSliceTests.test_ct07_replacement_preserves_the_old_version_and_rejected_replacements) ... ok
+test_ct08_concurrent_uploads_cannot_exceed_the_case_count (test_slice02_documents.DocumentSliceTests.test_ct08_concurrent_uploads_cannot_exceed_the_case_count) ... ok
+test_ct09_altered_original_content_is_rejected (test_slice02_documents.DocumentSliceTests.test_ct09_altered_original_content_is_rejected) ... ok
+test_workspace_port_and_upload_headers_have_explicit_loopback_cors (test_slice02_documents.DocumentSliceTests.test_workspace_port_and_upload_headers_have_explicit_loopback_cors) ... ok
+
+======================================================================
+FAIL: test_ct05_timeout_is_a_safe_rejection_without_a_saved_version (test_slice02_documents.DocumentSliceTests.test_ct05_timeout_is_a_safe_rejection_without_a_saved_version)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\tests\test_slice02_documents.py", line 187, in test_ct05_timeout_is_a_safe_rejection_without_a_saved_version
+    self.assertEqual(response.status_code, 422)
+AssertionError: 503 != 422
+
+----------------------------------------------------------------------
+Ran 12 tests in 8.157s
+
+FAILED (failures=1)

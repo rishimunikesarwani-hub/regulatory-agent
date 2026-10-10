@@ -1,0 +1,46 @@
+
+Running 1 test using 1 worker
+
+  x  1 tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version (5.7s)
+
+
+  1) tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Documents', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Documents', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Documents', exact: true })
+
+
+      13 |   await page.getByLabel('I confirm this case contains fictional data only.', { exact: true }).check();
+      14 |   await page.getByRole('button', { name: 'Save fictional case' }).click();
+    > 15 |   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+         |                                                                               ^
+      16 |   await page.getByLabel('Document file', { exact: true }).setInputFiles({ name: 'policy.txt', mimeType: 'text/plain', buffer: Buffer.from(content) });
+      17 |   await page.getByLabel('Document role', { exact: true }).selectOption('policy');
+      18 |   await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+        at caseAndUpload (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\documents.spec.ts:15:79)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-documents\src\web\tests\documents.spec.ts:24:3
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT01-upload--ebaf8-and-reopen-the-same-version\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-02-documents\frontend-browser-artifacts\documents-VS2-BT01-upload--ebaf8-and-reopen-the-same-version\error-context.md
+
+  1 failed
+    tests\documents.spec.ts:23:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version
+[WebServer] (node:27008) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [25120]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8121 (Press CTRL+C to quit)
+(node:16172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

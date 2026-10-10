@@ -135,6 +135,10 @@ Use them only with these meanings.
 | Fixture | Software tests | Fixed test data with a specified purpose and result. |
 | Frontend | Software | The browser interface that the user operates. |
 | Hash | Software | A calculated value used to identify file content and find a content change. |
+| Extraction | Software | Conversion of original file content to text with source locations. |
+| Extraction unit | Software | A page equivalent under the approved document limits. PDF units also count actual pages. |
+| Transaction | Database | An operation that applies related database changes together or keeps all changes out. |
+| Upload | Software | Transfer of file bytes from the browser to authorized application storage. |
 | Held-out case | Evaluation | An evaluation case not used to develop or adjust the model instructions. |
 | IAM | AWS | AWS Identity and Access Management. The service for identities and access permissions. |
 | Idempotency key | Software | An identifier for repeated requests that must have one logical effect. |

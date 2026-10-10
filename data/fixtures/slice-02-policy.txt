@@ -1,0 +1,3 @@
+Synthetic demo. Fictional bank policy.
+Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review.
+Weekly timing is bank policy, not an RBI-specified interval.
