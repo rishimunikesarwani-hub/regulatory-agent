@@ -520,6 +520,21 @@ Keep private AWS upload and storage acceptance pending until the required cloud 
 The user subsequently approved VS2 local acceptance and authorized VS3 local development.
 Complete the VS2 GitHub integration checks before merge.
 
+## D37 - VS3 controlled assessment integration
+
+Date: 2026-10-10.
+Status: Implementation details within the user's approved VS3 local development.
+
+Use the [VS3 contract](../delivery/spec-slice-03-assessment.md) for one controlled historical example and saved human review.
+Use the existing historical RBI source and approved fictional policy fixture.
+Keep the fixed finding visibly controlled and its applicability unverified.
+Do not present this example as an assessment of arbitrary bank documents.
+
+Reuse the existing job store, controlled adapter, source contracts, trace schema, and review service.
+Keep current assessments blocked until the source provider and freshness checks pass.
+Keep the approved baseline model unchanged without claiming a live invocation.
+Record model quality, AWS service connections, and deployed acceptance as unverified.
+
 ## How to add a decision
 
 Add a new entry with:

@@ -485,3 +485,44 @@ No cloud resources were deleted manually.
 Next: complete the checked VS2 integration merge.
 Start the authorized VS3 local slice after that merge.
 Keep the CloudFront verification handoff open.
+
+### VS3 controlled assessment and saved review
+
+Date: 2026-10-11.
+
+VS2 merged through pull request 8 after GitHub checks passed.
+The integration commit is `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
+The integration worktree was updated without changes to the user's Design Ideas.
+The user authorized VS3 local development while AWS verification is pending.
+D37 and the VS3 contract were recorded before implementation.
+
+The assessment HTTP tests failed for missing routes.
+The browser test failed for the missing assessment screen.
+A different negative test found an unsupported operational claim with valid policy quotations.
+The validation correction now rejects that claim before finding presentation.
+The first browser integration run found a different telemetry time-field name.
+The corrected interface uses the existing seconds field.
+
+VS3 now saves one controlled historical assessment and its fixed source snapshot.
+It keeps RBI conditions, exceptions, applicability uncertainty, and exact citations accessible.
+Saved Approved, Edited, Rejected, and evidence-request events keep the initial finding unchanged.
+Review summaries use D24 cutoff and final-outcome rules.
+
+Stale or uncertain saves keep the user's draft.
+A failed refresh cannot enable another uncertain save.
+Expired access clears private findings and review drafts.
+
+The case-switch test failed before the new-case assessment status correction.
+All 189 backend checks and 26 combined browser checks passed.
+The frontend build passed.
+Desktop and mobile assessment screens were inspected.
+The [development guide](docs/delivery/guide-slice-03-development.md) records the isolated feedback services and review steps.
+The [local evidence](runs/2026-10-10-slice-03-assessment/review-local.md) records the test scope and limits.
+
+No live model call was made.
+Current regulatory verification and AWS assessment adapters stay unconfigured.
+CloudFront account verification remains necessary before deployment.
+No Support message was sent by this session.
+No cloud resource was deleted manually.
+
+Next: obtain VS3 local feedback before merge and VS4 development.

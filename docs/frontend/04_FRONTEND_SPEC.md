@@ -242,7 +242,20 @@ An uncertain upload needs a document-list refresh before another upload.
 The combined local browser suite passed 20 checks, including six document checks.
 The user approved VS2 local acceptance.
 AWS document storage stays pending.
-Regulatory retrieval, assessment execution, and comparison tabs stay pending.
+Live regulatory retrieval, live model execution, and comparison tabs stay pending.
 Read the [VS2 contract](../delivery/spec-slice-02-documents.md) and [current browser result](../../runs/2026-10-10-slice-02-documents/browser-green-v2.txt).
+
+The VS3 local case view adds one controlled historical assessment and saved human review.
+Its finding keeps conditions, exceptions, unverified applicability, and exact policy and regulatory citations.
+The source dialog uses the assessment's unchanged source versions.
+
+The original finding stays unchanged across human review revisions.
+The summary shows counts, denominators, review rates, cutoff, and controlled-data limits.
+An uncertain save needs a successful assessment refresh before another attempt.
+Expired access clears private findings and review drafts.
+
+The combined local suite passed 26 browser checks.
+VS3 user acceptance and AWS acceptance stay pending.
+Read the [VS3 contract](../delivery/spec-slice-03-assessment.md) and [browser result](../../runs/2026-10-10-slice-03-assessment/browser-green-v4.txt).
 
 [Next: Feature tickets](../delivery/05_FEATURE_TICKETS.md)

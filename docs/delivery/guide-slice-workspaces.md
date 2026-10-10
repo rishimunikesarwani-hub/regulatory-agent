@@ -23,8 +23,9 @@ Keep database files under ignored `runs/private/` directories.
 | VS4 | `regulatory-agent-t5-agent` | `work/t5-agent` | `5184` | `8140` | `runs/private/slice-04/` |
 | VS5 | `regulatory-agent-t9-quality` | `work/t9-quality` | `5185` | `8150` | `runs/private/slice-05/` |
 
-VS2 is selected for local development after the user's VS1 acceptance.
-The VS3 through VS5 assignments are reserved until their slice is selected.
+VS2 merged into `main` after the user's local acceptance and GitHub checks.
+VS3 is selected for local development after the user's VS2 acceptance.
+The VS4 and VS5 assignments are reserved until their slice is selected.
 Use `browser-tests.sqlite` for browser tests and `feedback.sqlite` for manual feedback in each later database directory.
 Stop only the processes owned by the selected slice.
 Keep unrelated worktrees and feedback services unchanged.

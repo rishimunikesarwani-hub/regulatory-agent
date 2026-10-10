@@ -1,0 +1,27 @@
+test_ct01_controlled_job_binds_snapshot_and_exact_citations (test_slice03_assessment.AssessmentSliceTests.test_ct01_controlled_job_binds_snapshot_and_exact_citations) ... ok
+test_ct02_owner_and_case_checks_cover_every_assessment_operation (test_slice03_assessment.AssessmentSliceTests.test_ct02_owner_and_case_checks_cover_every_assessment_operation) ... ok
+test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot (test_slice03_assessment.AssessmentSliceTests.test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot) ... ok
+test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked (test_slice03_assessment.AssessmentSliceTests.test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked) ... ok
+test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits (test_slice03_assessment.AssessmentSliceTests.test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits) ... ok
+test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes (test_slice03_assessment.AssessmentSliceTests.test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes) ... ok
+test_ct07_restart_keeps_findings_source_versions_and_reviews (test_slice03_assessment.AssessmentSliceTests.test_ct07_restart_keeps_findings_source_versions_and_reviews) ... ok
+test_ct08_trace_is_safe_and_live_measurements_are_not_invented (test_slice03_assessment.AssessmentSliceTests.test_ct08_trace_is_safe_and_live_measurements_are_not_invented) ... ok
+test_ct09_invalid_controlled_citation_cannot_present_a_finding (test_slice03_assessment.AssessmentSliceTests.test_ct09_invalid_controlled_citation_cannot_present_a_finding) ... ok
+test_ct09_policy_citations_cannot_become_proof_of_completed_operation (test_slice03_assessment.AssessmentSliceTests.test_ct09_policy_citations_cannot_become_proof_of_completed_operation) ... FAIL
+test_ct10_admitted_job_resumes_after_worker_interruption (test_slice03_assessment.AssessmentSliceTests.test_ct10_admitted_job_resumes_after_worker_interruption) ... ok
+
+======================================================================
+FAIL: test_ct09_policy_citations_cannot_become_proof_of_completed_operation (test_slice03_assessment.AssessmentSliceTests.test_ct09_policy_citations_cannot_become_proof_of_completed_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 222, in test_ct09_policy_citations_cannot_become_proof_of_completed_operation
+    self.assertEqual(result['job']['state'], 'failed')
+AssertionError: 'completed' != 'failed'
+- completed
++ failed
+
+
+----------------------------------------------------------------------
+Ran 11 tests in 5.454s
+
+FAILED (failures=1)

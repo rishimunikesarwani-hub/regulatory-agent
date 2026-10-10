@@ -13,7 +13,7 @@ class DocumentError extends Error {
   constructor(readonly status: number, message: string) { super(message); }
 }
 
-export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; caseId: string; onExpired: (reason: unknown) => boolean }) {
+export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { config: Config; caseId: string; onExpired: (reason: unknown) => boolean; onUploaded?: () => void }) {
   const [sources, setSources] = useState<Source[]>([]);
   const [evidence, setEvidence] = useState<Evidence | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -98,6 +98,7 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
       if (fileInput.current) fileInput.current.value = '';
       await refresh();
       await inspect(saved.document.document_version_id);
+      onUploaded?.();
       setNotice('Document saved. Earlier versions remain available.');
     } catch (reason) {
       // An interrupted POST might have saved. Require a list refresh before retrying.
@@ -157,6 +158,5 @@ export function DocumentsPanel({ config, caseId, onExpired }: { config: Config; 
           <div className="passages">{evidence.passages.map(p => <article className="passage" key={p.passage_id}><h4>{p.location}</h4><pre>{p.text}</pre></article>)}</div>
         </>}
       </section></div>
-    <p className="assessment-notice">No assessment has run.</p>
   </section>;
 }

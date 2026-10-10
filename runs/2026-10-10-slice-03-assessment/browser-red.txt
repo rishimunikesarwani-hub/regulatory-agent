@@ -1,0 +1,54 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.assessment.config.ts --grep VS3-BT01
+[WebServer] (node:35012) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [13604]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8131 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:9208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\assessment.spec.ts:22:1 › VS3-BT01 assessment, exact citation, saved approval and refresh (5.8s)
+
+
+  1) tests\assessment.spec.ts:22:1 › VS3-BT01 assessment, exact citation, saved approval and refresh
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'Assessment', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'Assessment', exact: true }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'Assessment', exact: true })
+
+
+      12 |   await page.getByLabel('I confirm this document contains fictional data only.', {exact: true}).check();
+      13 |   await page.getByRole('button', {name: 'Upload fictional document', exact: true}).click();
+    > 14 |   await expect(page.getByRole('heading', {name: 'Assessment', exact: true})).toBeVisible();
+         |                                                                              ^
+      15 |   await page.getByRole('button', {name: 'Run controlled assessment', exact: true}).click();
+      16 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+      17 |   await expect(result).toContainText('Needs review');
+        at assessment (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\src\web\tests\assessment.spec.ts:14:78)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\src\web\tests\assessment.spec.ts:23:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-03-assessment\frontend-browser-artifacts\assessment-VS3-BT01-assess-29f3e--saved-approval-and-refresh\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-03-assessment\frontend-browser-artifacts\assessment-VS3-BT01-assess-29f3e--saved-approval-and-refresh\error-context.md
+
+  1 failed
+    tests\assessment.spec.ts:22:1 › VS3-BT01 assessment, exact citation, saved approval and refresh

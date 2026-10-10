@@ -1,0 +1,122 @@
+test_ct01_controlled_job_binds_snapshot_and_exact_citations (test_slice03_assessment.AssessmentSliceTests.test_ct01_controlled_job_binds_snapshot_and_exact_citations) ... FAIL
+test_ct02_owner_and_case_checks_cover_every_assessment_operation (test_slice03_assessment.AssessmentSliceTests.test_ct02_owner_and_case_checks_cover_every_assessment_operation) ... FAIL
+test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot (test_slice03_assessment.AssessmentSliceTests.test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot) ... FAIL
+test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked (test_slice03_assessment.AssessmentSliceTests.test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked) ... FAIL
+test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits (test_slice03_assessment.AssessmentSliceTests.test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits) ... FAIL
+test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes (test_slice03_assessment.AssessmentSliceTests.test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes) ... FAIL
+test_ct07_restart_keeps_findings_source_versions_and_reviews (test_slice03_assessment.AssessmentSliceTests.test_ct07_restart_keeps_findings_source_versions_and_reviews) ... FAIL
+test_ct08_trace_is_safe_and_live_measurements_are_not_invented (test_slice03_assessment.AssessmentSliceTests.test_ct08_trace_is_safe_and_live_measurements_are_not_invented) ... FAIL
+test_ct09_invalid_controlled_citation_cannot_present_a_finding (test_slice03_assessment.AssessmentSliceTests.test_ct09_invalid_controlled_citation_cannot_present_a_finding) ... FAIL
+test_ct10_admitted_job_resumes_after_worker_interruption (test_slice03_assessment.AssessmentSliceTests.test_ct10_admitted_job_resumes_after_worker_interruption) ... FAIL
+
+======================================================================
+FAIL: test_ct01_controlled_job_binds_snapshot_and_exact_citations (test_slice03_assessment.AssessmentSliceTests.test_ct01_controlled_job_binds_snapshot_and_exact_citations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 66, in test_ct01_controlled_job_binds_snapshot_and_exact_citations
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"8fc21f8b2e754a14923034836970a2c4"}
+
+======================================================================
+FAIL: test_ct02_owner_and_case_checks_cover_every_assessment_operation (test_slice03_assessment.AssessmentSliceTests.test_ct02_owner_and_case_checks_cover_every_assessment_operation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 86, in test_ct02_owner_and_case_checks_cover_every_assessment_operation
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"71f12fa86b4e40eb857b3402d6839eb2"}
+
+======================================================================
+FAIL: test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot (test_slice03_assessment.AssessmentSliceTests.test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 100, in test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"f82691456347490792759cfe08492ce6"}
+
+======================================================================
+FAIL: test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked (test_slice03_assessment.AssessmentSliceTests.test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 119, in test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked
+    self.assertEqual(response.status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits (test_slice03_assessment.AssessmentSliceTests.test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 123, in test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"75a0f02c6fca49a69d84090f1761d5a9"}
+
+======================================================================
+FAIL: test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes (test_slice03_assessment.AssessmentSliceTests.test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 144, in test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"08937fb75bcb4f4db37dedbda9184b8b"}
+
+======================================================================
+FAIL: test_ct07_restart_keeps_findings_source_versions_and_reviews (test_slice03_assessment.AssessmentSliceTests.test_ct07_restart_keeps_findings_source_versions_and_reviews)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 164, in test_ct07_restart_keeps_findings_source_versions_and_reviews
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"9e5121fc0dc14040b80d8e4d734dfeac"}
+
+======================================================================
+FAIL: test_ct08_trace_is_safe_and_live_measurements_are_not_invented (test_slice03_assessment.AssessmentSliceTests.test_ct08_trace_is_safe_and_live_measurements_are_not_invented)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 175, in test_ct08_trace_is_safe_and_live_measurements_are_not_invented
+    result = self.result(self.start())
+                         ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"ff132540cda64eaaac18f40885d91a79"}
+
+======================================================================
+FAIL: test_ct09_invalid_controlled_citation_cannot_present_a_finding (test_slice03_assessment.AssessmentSliceTests.test_ct09_invalid_controlled_citation_cannot_present_a_finding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 187, in test_ct09_invalid_controlled_citation_cannot_present_a_finding
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"d395add3230c420f908ace6d10956931"}
+
+======================================================================
+FAIL: test_ct10_admitted_job_resumes_after_worker_interruption (test_slice03_assessment.AssessmentSliceTests.test_ct10_admitted_job_resumes_after_worker_interruption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 206, in test_ct10_admitted_job_resumes_after_worker_interruption
+    started = self.start()
+              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 51, in start
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 404 != 202 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"e0d808fa2cac45f198e00b73f951940f"}
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.070s
+
+FAILED (failures=10)
