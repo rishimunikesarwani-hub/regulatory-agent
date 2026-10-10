@@ -1,0 +1,17 @@
+{
+  "source_worktree": "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-session-a",
+  "scope": "T1 handoff copy; no source edits",
+  "sha256": {
+    "data/sources/rbi-it-governance-2023.html": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+    "data/sources/rbi-it-governance-2023-excerpts.txt": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+    "data/sources/source-manifest.json": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+    "data/fixtures/development-inputs.json": "ba882f7d1277db9cd11ed319d08b864efe41d120b4f78b3b2f44a109b42e8df7",
+    "data/fixtures/development-labels.json": "e7c3cd8b79960b7119603abdeda52e2e603dfcce7160c5c3fd65c3669a0fd04c",
+    "evals/fixtures/held-out-inputs.json": "4c0dad1440e8d43c1e7c131d51582fb8e6d2c7ac354130aae8828aaf2191278e",
+    "evals/fixtures/held-out-labels.json": "da7bceab7779ff97a94d0ad0caa0ac4a76f3983617f5f57d109fe766a8966a27",
+    "data/fixtures/freeze-manifest.json": "1a6eb4f80475751af4861021876c332593604256166a88def824a3e44b181bdb",
+    "ops/session_a_fixtures.py": "7ad34932de70ce860fedaa8f29c416e9af81b040472434b473b3dec0d9b328e1",
+    "tests/test_session_a_fixtures.py": "9dd5ecaf2f9b6df4976ce906c3164b689707e96758a02ed1293302da6a636520",
+    "docs/delivery/spec-session-a-foundation.md": "82f261f0ca4ca768db83f965a70011b081fc60c403d800ccbd12b043adbdbd84"
+  }
+}
