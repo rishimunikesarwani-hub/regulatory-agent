@@ -1,0 +1,42 @@
+test_b07_records_enforce_owner_case_and_immutable_versions (test_session_b_contracts.AdapterTests.test_b07_records_enforce_owner_case_and_immutable_versions) ... ok
+test_b08_blob_adapter_rejects_traversal_and_replacement (test_session_b_contracts.AdapterTests.test_b08_blob_adapter_rejects_traversal_and_replacement) ... ok
+test_b09_duplicate_requests_and_claims_have_one_winner (test_session_b_contracts.AdapterTests.test_b09_duplicate_requests_and_claims_have_one_winner) ... ok
+test_b10_restart_keeps_deadline_budget_stages_and_fences_old_claim (test_session_b_contracts.AdapterTests.test_b10_restart_keeps_deadline_budget_stages_and_fences_old_claim) ... ok
+test_b11_failed_model_dispatches_are_counted_and_call25_is_blocked (test_session_b_contracts.AdapterTests.test_b11_failed_model_dispatches_are_counted_and_call25_is_blocked) ... ok
+test_b12_deadline_and_completion_are_truthful (test_session_b_contracts.AdapterTests.test_b12_deadline_and_completion_are_truthful) ... ok
+test_b13_runner_persists_controlled_output_and_does_not_repeat (test_session_b_contracts.AdapterTests.test_b13_runner_persists_controlled_output_and_does_not_repeat) ... ok
+test_b14_review_record_does_not_replace_finding (test_session_b_contracts.AdapterTests.test_b14_review_record_does_not_replace_finding) ... ok
+test_b15_complete_verified_response_stays_labelled_simulated (test_session_b_contracts.RetrievalTests.test_b15_complete_verified_response_stays_labelled_simulated) ... ok
+test_b16_unknown_freshness_incomplete_amendments_and_pagination_fail (test_session_b_contracts.RetrievalTests.test_b16_unknown_freshness_incomplete_amendments_and_pagination_fail) ... ok
+test_b17_retries_consume_saved_retrieval_allowance (test_session_b_contracts.RetrievalTests.test_b17_retries_consume_saved_retrieval_allowance) ... ok
+test_b18_private_queries_unknown_hosts_redirects_and_oversize_fail (test_session_b_contracts.RetrievalTests.test_b18_private_queries_unknown_hosts_redirects_and_oversize_fail) ... ok
+test_b19_changed_withdrawn_future_and_hash_mismatch_fail (test_session_b_contracts.RetrievalTests.test_b19_changed_withdrawn_future_and_hash_mismatch_fail) ... ok
+test_b20_conditional_response_requires_verified_matching_cache (test_session_b_contracts.RetrievalTests.test_b20_conditional_response_requires_verified_matching_cache) ... ok
+test_b24_future_verification_time_and_cached_old_check_fail (test_session_b_contracts.RetrievalTests.test_b24_future_verification_time_and_cached_old_check_fail) ... FAIL
+test_b25_restart_reuses_pages_without_dispatch_or_selection_reset (test_session_b_contracts.RetrievalTests.test_b25_restart_reuses_pages_without_dispatch_or_selection_reset) ... ok
+test_b26_unknown_query_denied_and_retries_are_bounded (test_session_b_contracts.RetrievalTests.test_b26_unknown_query_denied_and_retries_are_bounded) ... ok
+test_b27_provider_update_does_not_mutate_prior_snapshot (test_session_b_contracts.RetrievalTests.test_b27_provider_update_does_not_mutate_prior_snapshot) ... ok
+test_b28_limits_cannot_be_relaxed (test_session_b_contracts.RetrievalTests.test_b28_limits_cannot_be_relaxed) ... ok
+test_b01_request_rejects_forged_owner_and_unknown_fields (test_session_b_contracts.SchemaTests.test_b01_request_rejects_forged_owner_and_unknown_fields) ... ok
+test_b02_scope_limits_and_duplicate_ids (test_session_b_contracts.SchemaTests.test_b02_scope_limits_and_duplicate_ids) ... ok
+test_b03_export_and_all_api_contracts_are_executable (test_session_b_contracts.SchemaTests.test_b03_export_and_all_api_contracts_are_executable) ... ok
+test_b04_finding_refuses_supported_missing_evidence (test_session_b_contracts.SchemaTests.test_b04_finding_refuses_supported_missing_evidence) ... ok
+test_b05_nonpaginated_and_aggregate_limits (test_session_b_contracts.SchemaTests.test_b05_nonpaginated_and_aggregate_limits) ... ok
+test_b06_development_identity_requires_local_loopback (test_session_b_contracts.SchemaTests.test_b06_development_identity_requires_local_loopback) ... ok
+test_b21_network_blocked_in_actual_subprocess_loopback_allowed (test_session_b_contracts.WorkerBoundaryTests.test_b21_network_blocked_in_actual_subprocess_loopback_allowed) ... ok
+test_b22_default_worker_has_no_aws_credentials (test_session_b_contracts.WorkerBoundaryTests.test_b22_default_worker_has_no_aws_credentials) ... ok
+test_b23_t1_development_fixture_is_present_and_labelled (test_session_b_contracts.WorkerBoundaryTests.test_b23_t1_development_fixture_is_present_and_labelled) ... ok
+
+======================================================================
+FAIL: test_b24_future_verification_time_and_cached_old_check_fail (test_session_b_contracts.RetrievalTests.test_b24_future_verification_time_and_cached_old_check_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-session-b\tests\test_session_b_contracts.py", line 266, in test_b24_future_verification_time_and_cached_old_check_fail
+    with self.assertRaises(ContractError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 28 tests in 2.205s
+
+FAILED (failures=1)

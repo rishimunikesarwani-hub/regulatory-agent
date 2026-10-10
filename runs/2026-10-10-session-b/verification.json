@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-10-10T04:44:58.034720+00:00",
+  "python": "3.12.13",
+  "base_commit": "20743635e68c57257432de655f6f02a669b956a8",
+  "branch": "work/session-b",
+  "tests": {
+    "passed": 59,
+    "failed": 0,
+    "skipped": 0,
+    "fixture": 29,
+    "t2": 30
+  },
+  "clean_copy": "passed",
+  "live_model_evaluations": "not run",
+  "cloud_checks": "not run",
+  "pending_tickets": [
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7",
+    "T8",
+    "T9"
+  ],
+  "integration": "not merged",
+  "sha256": {
+    "src/regulatory_agent/contracts.py": "f4fa94339ed5dc28165540675a963d2937c14b813f16e7734309eec53c7bb8c6",
+    "src/regulatory_agent/local.py": "aa42f224ca6a812048d2856ebe7516462acb2d728041535693d6582c999c329d",
+    "src/regulatory_agent/offline.py": "eb6a79817ef645e9881fc84f5b5c434cd2af38f9bb0fb8bd6cd6ac1cba259c0b",
+    "src/regulatory_agent/ports.py": "f4797c1bcd8a968005b56876d86634cba4e4cbca37b3a90e7ed1667bf929adf1",
+    "src/regulatory_agent/retrieval.py": "be6c9d6318fc2d0a14949422628269e09e7ae8dce9a5b93eda1f3a31a701517e",
+    "src/regulatory_agent/__init__.py": "b45f9d5c65c71fee24aba4cdfaa9e5866da64f1fe7a2ce2e2dc55bbb1c3e611c",
+    "ops/check.py": "2c72fe6fa106b3bc6f6e8c134c3fe97a6b8c172fb8dfa2abd3cda7765e2055ac",
+    "ops/clean_check.py": "d768f2cd08ca515bedf9e04a33c33622a5ef53696d370a1a75436775e0249e0c",
+    "ops/demo.py": "07a2d44d90f1d7b918225724477ab33addf28757a44aa814f0b5aaa48058f4b0",
+    "ops/render_architecture.py": "7438e913c88598767212bde3a565829cb5980852e858cd35be4b2857d1a9a05a",
+    "ops/render_drawio_architecture.py": "767d3f6336e1f28b7db74a07391df141f90fe0b042e09f4e56e0dfd65c0a7181",
+    "ops/requirements.lock": "29edbef4b272515369705ebf0d65f25dbc6ade25f1bc8d0e6950b88d1fa56271",
+    "ops/session_a_fixtures.py": "7ad34932de70ce860fedaa8f29c416e9af81b040472434b473b3dec0d9b328e1",
+    "ops/setup.ps1": "d13c6a5ddad0c0dfaa1978aa3a343d67749374bc0a9d5bfa62d486e0f4803ed6",
+    "ops/offline/sitecustomize.py": "3009f3cd163531d8b541daeb297b45bd4d47a37359cd0be37e5940a866f5b163",
+    "tests/test_session_a_fixtures.py": "9dd5ecaf2f9b6df4976ce906c3164b689707e96758a02ed1293302da6a636520",
+    "tests/test_session_b_contracts.py": "8937087884af9b8e934bbbc015e86ac4a8b580c1a7a3369b4134f8bf6806e414",
+    "docs/delivery/05_FEATURE_TICKETS.md": "23bd1b4c8cfa360035c40226defdc9ae96422d9db67b9880b51a4139a5155cc7",
+    "docs/delivery/guide-parallel-development.md": "d80a42ca8bf6d03a1888e03e020188e3e882e93c43afc3b5fca72647488279a5",
+    "docs/delivery/guide-session-b-testing.md": "04c39455a52ba211821fd429f5760e643ae19257d0400526b6c454a280db62d6",
+    "docs/delivery/spec-session-a-foundation.md": "82f261f0ca4ca768db83f965a70011b081fc60c403d800ccbd12b043adbdbd84",
+    "docs/delivery/spec-session-b-contracts.md": "5674ae86737ece39475e285384b9db03db2dacbc53f877e63bd94cab2d5904c6"
+  },
+  "packages": {
+    "annotated-doc": "0.0.5",
+    "annotated-types": "0.8.0",
+    "anyio": "4.15.1",
+    "fastapi": "0.143.0",
+    "idna": "3.20",
+    "opentelemetry-api": "1.45.1",
+    "pydantic": "2.14.0",
+    "pydantic_core": "2.50.0",
+    "starlette": "1.7.0",
+    "typing_extensions": "4.16.0",
+    "typing-inspection": "0.4.4"
+  }
+}

@@ -1,0 +1,2206 @@
+{
+  "version": 1,
+  "operations": {
+    "create_case": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "bank_profile": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Bank Profile",
+            "type": "object"
+          },
+          "synthetic": {
+            "default": true,
+            "title": "Synthetic",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bank_profile"
+        ],
+        "title": "CaseCreate",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "bank_profile": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Bank Profile",
+            "type": "object"
+          },
+          "synthetic": {
+            "default": true,
+            "title": "Synthetic",
+            "type": "boolean"
+          },
+          "case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "owner_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Owner Id",
+            "type": "string"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "bank_profile",
+          "case_id",
+          "owner_id",
+          "created_at"
+        ],
+        "title": "CaseRecord",
+        "type": "object"
+      }
+    },
+    "list_cases": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "$defs": {
+          "CaseRecord": {
+            "additionalProperties": false,
+            "properties": {
+              "bank_profile": {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "title": "Bank Profile",
+                "type": "object"
+              },
+              "synthetic": {
+                "default": true,
+                "title": "Synthetic",
+                "type": "boolean"
+              },
+              "case_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Case Id",
+                "type": "string"
+              },
+              "owner_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Owner Id",
+                "type": "string"
+              },
+              "created_at": {
+                "title": "Created At",
+                "type": "string"
+              }
+            },
+            "required": [
+              "bank_profile",
+              "case_id",
+              "owner_id",
+              "created_at"
+            ],
+            "title": "CaseRecord",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "cases": {
+            "items": {
+              "$ref": "#/$defs/CaseRecord"
+            },
+            "title": "Cases",
+            "type": "array"
+          }
+        },
+        "required": [
+          "cases"
+        ],
+        "title": "CaseList",
+        "type": "object"
+      }
+    },
+    "read_case": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "bank_profile": {
+            "additionalProperties": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "title": "Bank Profile",
+            "type": "object"
+          },
+          "synthetic": {
+            "default": true,
+            "title": "Synthetic",
+            "type": "boolean"
+          },
+          "case_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "owner_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Owner Id",
+            "type": "string"
+          },
+          "created_at": {
+            "title": "Created At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "bank_profile",
+          "case_id",
+          "owner_id",
+          "created_at"
+        ],
+        "title": "CaseRecord",
+        "type": "object"
+      }
+    },
+    "authorize_upload": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "filename": {
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Filename",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "profile",
+              "policy",
+              "control",
+              "evidence"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "size_bytes": {
+            "exclusiveMinimum": 0,
+            "maximum": 10000000,
+            "title": "Size Bytes",
+            "type": "integer"
+          },
+          "synthetic": {
+            "title": "Synthetic",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "filename",
+          "kind",
+          "size_bytes",
+          "synthetic"
+        ],
+        "title": "UploadRequest",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "upload_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Upload Id",
+            "type": "string"
+          },
+          "destination": {
+            "title": "Destination",
+            "type": "string"
+          },
+          "expires_at": {
+            "title": "Expires At",
+            "type": "string"
+          },
+          "eligible_for_assessment": {
+            "const": false,
+            "default": false,
+            "title": "Eligible For Assessment",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "upload_id",
+          "destination",
+          "expires_at"
+        ],
+        "title": "UploadAuthorization",
+        "type": "object"
+      }
+    },
+    "finalize_upload": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "upload_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Upload Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "upload_id"
+        ],
+        "title": "FinalizeUpload",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "document_version_id": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Document Version Id"
+          },
+          "eligible_for_assessment": {
+            "title": "Eligible For Assessment",
+            "type": "boolean"
+          },
+          "units": {
+            "maximum": 100,
+            "minimum": 0,
+            "title": "Units",
+            "type": "integer"
+          },
+          "errors": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Errors",
+            "type": "array"
+          }
+        },
+        "required": [
+          "document_version_id",
+          "eligible_for_assessment",
+          "units",
+          "errors"
+        ],
+        "title": "ExtractionResult",
+        "type": "object"
+      }
+    },
+    "list_sources": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "$defs": {
+          "DocumentVersion": {
+            "additionalProperties": false,
+            "properties": {
+              "document_version_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Document Version Id",
+                "type": "string"
+              },
+              "case_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Case Id",
+                "type": "string"
+              },
+              "source_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Source Id",
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "regulation",
+                  "profile",
+                  "policy",
+                  "control",
+                  "evidence"
+                ],
+                "title": "Kind",
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Version",
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[a-f0-9]{64}$",
+                "title": "Sha256",
+                "type": "string"
+              },
+              "storage_reference": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Storage Reference",
+                "type": "string"
+              },
+              "synthetic": {
+                "title": "Synthetic",
+                "type": "boolean"
+              },
+              "source_url": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Source Url"
+              },
+              "publication_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Publication Date"
+              },
+              "effective_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Effective Date"
+              }
+            },
+            "required": [
+              "document_version_id",
+              "case_id",
+              "source_id",
+              "kind",
+              "version",
+              "sha256",
+              "storage_reference",
+              "synthetic"
+            ],
+            "title": "DocumentVersion",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "sources": {
+            "items": {
+              "$ref": "#/$defs/DocumentVersion"
+            },
+            "title": "Sources",
+            "type": "array"
+          }
+        },
+        "required": [
+          "sources"
+        ],
+        "title": "SourceList",
+        "type": "object"
+      }
+    },
+    "read_source": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "$defs": {
+          "DocumentVersion": {
+            "additionalProperties": false,
+            "properties": {
+              "document_version_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Document Version Id",
+                "type": "string"
+              },
+              "case_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Case Id",
+                "type": "string"
+              },
+              "source_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Source Id",
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "regulation",
+                  "profile",
+                  "policy",
+                  "control",
+                  "evidence"
+                ],
+                "title": "Kind",
+                "type": "string"
+              },
+              "version": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Version",
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[a-f0-9]{64}$",
+                "title": "Sha256",
+                "type": "string"
+              },
+              "storage_reference": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Storage Reference",
+                "type": "string"
+              },
+              "synthetic": {
+                "title": "Synthetic",
+                "type": "boolean"
+              },
+              "source_url": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Source Url"
+              },
+              "publication_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Publication Date"
+              },
+              "effective_date": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Effective Date"
+              }
+            },
+            "required": [
+              "document_version_id",
+              "case_id",
+              "source_id",
+              "kind",
+              "version",
+              "sha256",
+              "storage_reference",
+              "synthetic"
+            ],
+            "title": "DocumentVersion",
+            "type": "object"
+          },
+          "Passage": {
+            "additionalProperties": false,
+            "properties": {
+              "passage_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Passage Id",
+                "type": "string"
+              },
+              "document_version_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Document Version Id",
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Location",
+                "type": "string"
+              },
+              "text": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "passage_id",
+              "document_version_id",
+              "location",
+              "text"
+            ],
+            "title": "Passage",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "$ref": "#/$defs/DocumentVersion"
+          },
+          "passages": {
+            "items": {
+              "$ref": "#/$defs/Passage"
+            },
+            "title": "Passages",
+            "type": "array"
+          }
+        },
+        "required": [
+          "document",
+          "passages"
+        ],
+        "title": "SourceRead",
+        "type": "object"
+      }
+    },
+    "refresh_regulations": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "source_ids": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "maxItems": 10,
+            "minItems": 1,
+            "title": "Source Ids",
+            "type": "array"
+          },
+          "assessment_date": {
+            "title": "Assessment Date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_ids",
+          "assessment_date"
+        ],
+        "title": "RegulatoryRequest",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Job Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "partial",
+              "failed"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "state"
+        ],
+        "title": "JobAccepted",
+        "type": "object"
+      }
+    },
+    "start_assessment": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "selected_versions": {
+            "maxProperties": 10,
+            "minProperties": 1,
+            "patternProperties": {
+              "^[A-Za-z0-9][A-Za-z0-9_.:-]*$": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "type": "string"
+              }
+            },
+            "propertyNames": {
+              "maxLength": 128,
+              "minLength": 1
+            },
+            "title": "Selected Versions",
+            "type": "object"
+          },
+          "selected_obligations": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "maxItems": 20,
+            "minItems": 1,
+            "title": "Selected Obligations",
+            "type": "array"
+          },
+          "assessment_date": {
+            "title": "Assessment Date",
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "historical",
+              "current"
+            ],
+            "title": "Mode",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Idempotency Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selected_versions",
+          "selected_obligations",
+          "assessment_date",
+          "mode",
+          "idempotency_key"
+        ],
+        "title": "StartAssessment",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Job Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "partial",
+              "failed"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "state"
+        ],
+        "title": "JobAccepted",
+        "type": "object"
+      }
+    },
+    "compare_versions": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "older_version_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Older Version Id",
+            "type": "string"
+          },
+          "newer_version_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Newer Version Id",
+            "type": "string"
+          },
+          "snapshot_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Snapshot Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Idempotency Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "older_version_id",
+          "newer_version_id",
+          "snapshot_id",
+          "idempotency_key"
+        ],
+        "title": "ComparisonRequest",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Job Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "partial",
+              "failed"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "state"
+        ],
+        "title": "JobAccepted",
+        "type": "object"
+      }
+    },
+    "read_job": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "job_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Job Id",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "partial",
+              "failed"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "snapshot_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Snapshot Id",
+            "type": "string"
+          },
+          "stage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stage"
+          },
+          "model_calls": {
+            "maximum": 24,
+            "minimum": 0,
+            "title": "Model Calls",
+            "type": "integer"
+          },
+          "retrieval_calls": {
+            "maximum": 20,
+            "minimum": 0,
+            "title": "Retrieval Calls",
+            "type": "integer"
+          },
+          "deadline": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deadline"
+          },
+          "unchecked_obligations": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "title": "Unchecked Obligations",
+            "type": "array"
+          },
+          "stop_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stop Reason"
+          },
+          "freshness": {
+            "enum": [
+              "unverified",
+              "verified",
+              "changed",
+              "historical"
+            ],
+            "title": "Freshness",
+            "type": "string"
+          },
+          "authority_verified_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Authority Verified At"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id",
+          "state",
+          "snapshot_id",
+          "stage",
+          "model_calls",
+          "retrieval_calls",
+          "deadline",
+          "unchecked_obligations",
+          "stop_reason",
+          "freshness",
+          "authority_verified_at",
+          "label"
+        ],
+        "title": "JobView",
+        "type": "object"
+      }
+    },
+    "read_findings": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Empty",
+        "type": "object"
+      },
+      "response": {
+        "$defs": {
+          "Citation": {
+            "additionalProperties": false,
+            "properties": {
+              "document_version_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Document Version Id",
+                "type": "string"
+              },
+              "passage_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Passage Id",
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Location",
+                "type": "string"
+              },
+              "quote": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Quote",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_version_id",
+              "passage_id",
+              "location",
+              "quote"
+            ],
+            "title": "Citation",
+            "type": "object"
+          },
+          "Finding": {
+            "additionalProperties": false,
+            "properties": {
+              "finding_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Finding Id",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "obligation_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Obligation Id",
+                "type": "string"
+              },
+              "control_ids": {
+                "items": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                  "type": "string"
+                },
+                "title": "Control Ids",
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "supported",
+                  "partial",
+                  "gap",
+                  "needs_review",
+                  "not_applicable"
+                ],
+                "title": "Status",
+                "type": "string"
+              },
+              "evidence_condition": {
+                "enum": [
+                  "sufficient",
+                  "partial",
+                  "missing",
+                  "conflicting"
+                ],
+                "title": "Evidence Condition",
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "$ref": "#/$defs/Citation"
+                },
+                "title": "Citations",
+                "type": "array"
+              },
+              "rationale": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Rationale",
+                "type": "string"
+              },
+              "remedy": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Remedy"
+              },
+              "gap_kind": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "control",
+                      "evidence"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Gap Kind"
+              },
+              "applicability_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Applicability Reason"
+              }
+            },
+            "required": [
+              "finding_id",
+              "snapshot_id",
+              "obligation_id",
+              "control_ids",
+              "status",
+              "evidence_condition",
+              "citations",
+              "rationale",
+              "remedy",
+              "gap_kind"
+            ],
+            "title": "Finding",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "findings": {
+            "items": {
+              "$ref": "#/$defs/Finding"
+            },
+            "title": "Findings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "findings"
+        ],
+        "title": "Findings",
+        "type": "object"
+      }
+    },
+    "save_review": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition": {
+            "enum": [
+              "agree",
+              "disagree",
+              "request_more_evidence"
+            ],
+            "title": "Disposition",
+            "type": "string"
+          },
+          "note": {
+            "maxLength": 4000,
+            "title": "Note",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "default": "review",
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Idempotency Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "disposition",
+          "note"
+        ],
+        "title": "ReviewRequest",
+        "type": "object"
+      },
+      "response": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition": {
+            "enum": [
+              "agree",
+              "disagree",
+              "request_more_evidence"
+            ],
+            "title": "Disposition",
+            "type": "string"
+          },
+          "note": {
+            "maxLength": 4000,
+            "title": "Note",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "default": "review",
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "finding_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Finding Id",
+            "type": "string"
+          },
+          "reviewer_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Reviewer Id",
+            "type": "string"
+          },
+          "timestamp": {
+            "title": "Timestamp",
+            "type": "string"
+          }
+        },
+        "required": [
+          "disposition",
+          "note",
+          "finding_id",
+          "reviewer_id",
+          "timestamp"
+        ],
+        "title": "ReviewDecision",
+        "type": "object"
+      }
+    },
+    "export_assessment": {
+      "request": {
+        "additionalProperties": false,
+        "properties": {
+          "format": {
+            "enum": [
+              "json",
+              "markdown"
+            ],
+            "title": "Format",
+            "type": "string"
+          }
+        },
+        "required": [
+          "format"
+        ],
+        "title": "ExportRequest",
+        "type": "object"
+      },
+      "response": {
+        "$defs": {
+          "Citation": {
+            "additionalProperties": false,
+            "properties": {
+              "document_version_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Document Version Id",
+                "type": "string"
+              },
+              "passage_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Passage Id",
+                "type": "string"
+              },
+              "location": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Location",
+                "type": "string"
+              },
+              "quote": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Quote",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_version_id",
+              "passage_id",
+              "location",
+              "quote"
+            ],
+            "title": "Citation",
+            "type": "object"
+          },
+          "Finding": {
+            "additionalProperties": false,
+            "properties": {
+              "finding_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Finding Id",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "obligation_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Obligation Id",
+                "type": "string"
+              },
+              "control_ids": {
+                "items": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                  "type": "string"
+                },
+                "title": "Control Ids",
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "supported",
+                  "partial",
+                  "gap",
+                  "needs_review",
+                  "not_applicable"
+                ],
+                "title": "Status",
+                "type": "string"
+              },
+              "evidence_condition": {
+                "enum": [
+                  "sufficient",
+                  "partial",
+                  "missing",
+                  "conflicting"
+                ],
+                "title": "Evidence Condition",
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "$ref": "#/$defs/Citation"
+                },
+                "title": "Citations",
+                "type": "array"
+              },
+              "rationale": {
+                "maxLength": 400000,
+                "minLength": 1,
+                "title": "Rationale",
+                "type": "string"
+              },
+              "remedy": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Remedy"
+              },
+              "gap_kind": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "control",
+                      "evidence"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Gap Kind"
+              },
+              "applicability_reason": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Applicability Reason"
+              }
+            },
+            "required": [
+              "finding_id",
+              "snapshot_id",
+              "obligation_id",
+              "control_ids",
+              "status",
+              "evidence_condition",
+              "citations",
+              "rationale",
+              "remedy",
+              "gap_kind"
+            ],
+            "title": "Finding",
+            "type": "object"
+          },
+          "ReviewDecision": {
+            "additionalProperties": false,
+            "properties": {
+              "disposition": {
+                "enum": [
+                  "agree",
+                  "disagree",
+                  "request_more_evidence"
+                ],
+                "title": "Disposition",
+                "type": "string"
+              },
+              "note": {
+                "maxLength": 4000,
+                "title": "Note",
+                "type": "string"
+              },
+              "idempotency_key": {
+                "default": "review",
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Idempotency Key",
+                "type": "string"
+              },
+              "finding_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Finding Id",
+                "type": "string"
+              },
+              "reviewer_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Reviewer Id",
+                "type": "string"
+              },
+              "timestamp": {
+                "title": "Timestamp",
+                "type": "string"
+              }
+            },
+            "required": [
+              "disposition",
+              "note",
+              "finding_id",
+              "reviewer_id",
+              "timestamp"
+            ],
+            "title": "ReviewDecision",
+            "type": "object"
+          },
+          "Snapshot": {
+            "additionalProperties": false,
+            "properties": {
+              "selected_versions": {
+                "maxProperties": 10,
+                "minProperties": 1,
+                "patternProperties": {
+                  "^[A-Za-z0-9][A-Za-z0-9_.:-]*$": {
+                    "maxLength": 128,
+                    "minLength": 1,
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                    "type": "string"
+                  }
+                },
+                "propertyNames": {
+                  "maxLength": 128,
+                  "minLength": 1
+                },
+                "title": "Selected Versions",
+                "type": "object"
+              },
+              "selected_obligations": {
+                "items": {
+                  "maxLength": 128,
+                  "minLength": 1,
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                  "type": "string"
+                },
+                "maxItems": 20,
+                "minItems": 1,
+                "title": "Selected Obligations",
+                "type": "array"
+              },
+              "assessment_date": {
+                "title": "Assessment Date",
+                "type": "string"
+              },
+              "mode": {
+                "enum": [
+                  "historical",
+                  "current"
+                ],
+                "title": "Mode",
+                "type": "string"
+              },
+              "snapshot_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Snapshot Id",
+                "type": "string"
+              },
+              "case_id": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Case Id",
+                "type": "string"
+              },
+              "bank_profile": {
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "title": "Bank Profile",
+                "type": "object"
+              },
+              "prompt_version": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Prompt Version",
+                "type": "string"
+              },
+              "model_version": {
+                "maxLength": 128,
+                "minLength": 1,
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+                "title": "Model Version",
+                "type": "string"
+              },
+              "synthetic": {
+                "title": "Synthetic",
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "selected_versions",
+              "selected_obligations",
+              "assessment_date",
+              "mode",
+              "snapshot_id",
+              "case_id",
+              "bank_profile",
+              "prompt_version",
+              "model_version",
+              "synthetic"
+            ],
+            "title": "Snapshot",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "snapshot": {
+            "$ref": "#/$defs/Snapshot"
+          },
+          "state": {
+            "enum": [
+              "completed",
+              "partial",
+              "failed"
+            ],
+            "title": "State",
+            "type": "string"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/$defs/Finding"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "reviews": {
+            "items": {
+              "$ref": "#/$defs/ReviewDecision"
+            },
+            "title": "Reviews",
+            "type": "array"
+          },
+          "source_urls": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Source Urls",
+            "type": "array"
+          },
+          "authority_verified_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Authority Verified At"
+          },
+          "freshness": {
+            "enum": [
+              "unverified",
+              "verified",
+              "changed",
+              "historical"
+            ],
+            "title": "Freshness",
+            "type": "string"
+          },
+          "unchecked_obligations": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "title": "Unchecked Obligations",
+            "type": "array"
+          },
+          "limitations": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Limitations",
+            "type": "array"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          }
+        },
+        "required": [
+          "snapshot",
+          "state",
+          "findings",
+          "reviews",
+          "source_urls",
+          "authority_verified_at",
+          "freshness",
+          "unchecked_obligations",
+          "limitations",
+          "label"
+        ],
+        "title": "ExportResponse",
+        "type": "object"
+      }
+    }
+  },
+  "error": {
+    "additionalProperties": false,
+    "properties": {
+      "code": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+        "title": "Code",
+        "type": "string"
+      },
+      "message": {
+        "maxLength": 200,
+        "title": "Message",
+        "type": "string"
+      },
+      "next_action": {
+        "maxLength": 200,
+        "title": "Next Action",
+        "type": "string"
+      },
+      "correlation_id": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+        "title": "Correlation Id",
+        "type": "string"
+      }
+    },
+    "required": [
+      "code",
+      "message",
+      "next_action",
+      "correlation_id"
+    ],
+    "title": "SafeError",
+    "type": "object"
+  },
+  "model_action": {
+    "$defs": {
+      "Citation": {
+        "additionalProperties": false,
+        "properties": {
+          "document_version_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Document Version Id",
+            "type": "string"
+          },
+          "passage_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Passage Id",
+            "type": "string"
+          },
+          "location": {
+            "maxLength": 400000,
+            "minLength": 1,
+            "title": "Location",
+            "type": "string"
+          },
+          "quote": {
+            "maxLength": 400000,
+            "minLength": 1,
+            "title": "Quote",
+            "type": "string"
+          }
+        },
+        "required": [
+          "document_version_id",
+          "passage_id",
+          "location",
+          "quote"
+        ],
+        "title": "Citation",
+        "type": "object"
+      },
+      "Finding": {
+        "additionalProperties": false,
+        "properties": {
+          "finding_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Finding Id",
+            "type": "string"
+          },
+          "snapshot_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Snapshot Id",
+            "type": "string"
+          },
+          "obligation_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Obligation Id",
+            "type": "string"
+          },
+          "control_ids": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "title": "Control Ids",
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "supported",
+              "partial",
+              "gap",
+              "needs_review",
+              "not_applicable"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "evidence_condition": {
+            "enum": [
+              "sufficient",
+              "partial",
+              "missing",
+              "conflicting"
+            ],
+            "title": "Evidence Condition",
+            "type": "string"
+          },
+          "citations": {
+            "items": {
+              "$ref": "#/$defs/Citation"
+            },
+            "title": "Citations",
+            "type": "array"
+          },
+          "rationale": {
+            "maxLength": 400000,
+            "minLength": 1,
+            "title": "Rationale",
+            "type": "string"
+          },
+          "remedy": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remedy"
+          },
+          "gap_kind": {
+            "anyOf": [
+              {
+                "enum": [
+                  "control",
+                  "evidence"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Gap Kind"
+          },
+          "applicability_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Applicability Reason"
+          }
+        },
+        "required": [
+          "finding_id",
+          "snapshot_id",
+          "obligation_id",
+          "control_ids",
+          "status",
+          "evidence_condition",
+          "citations",
+          "rationale",
+          "remedy",
+          "gap_kind"
+        ],
+        "title": "Finding",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "action": {
+        "enum": [
+          "retrieve_obligations",
+          "find_controls",
+          "inspect_evidence",
+          "refine_retrieval",
+          "propose_findings"
+        ],
+        "title": "Action",
+        "type": "string"
+      },
+      "snapshot_id": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+        "title": "Snapshot Id",
+        "type": "string"
+      },
+      "document_version_ids": {
+        "items": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "type": "string"
+        },
+        "title": "Document Version Ids",
+        "type": "array"
+      },
+      "passage_ids": {
+        "items": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+          "type": "string"
+        },
+        "title": "Passage Ids",
+        "type": "array"
+      },
+      "findings": {
+        "items": {
+          "$ref": "#/$defs/Finding"
+        },
+        "title": "Findings",
+        "type": "array"
+      }
+    },
+    "required": [
+      "action",
+      "snapshot_id",
+      "document_version_ids"
+    ],
+    "title": "ModelAction",
+    "type": "object"
+  },
+  "regulatory_page": {
+    "$defs": {
+      "RegulatorySource": {
+        "additionalProperties": false,
+        "properties": {
+          "source_id": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Source Id",
+            "type": "string"
+          },
+          "version": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+            "title": "Version",
+            "type": "string"
+          },
+          "authority": {
+            "const": "Reserve Bank of India",
+            "title": "Authority",
+            "type": "string"
+          },
+          "source_url": {
+            "title": "Source Url",
+            "type": "string"
+          },
+          "publication_date": {
+            "title": "Publication Date",
+            "type": "string"
+          },
+          "effective_date": {
+            "title": "Effective Date",
+            "type": "string"
+          },
+          "text": {
+            "maxLength": 400000,
+            "minLength": 1,
+            "title": "Text",
+            "type": "string"
+          },
+          "content_hash": {
+            "pattern": "^[a-f0-9]{64}$",
+            "title": "Content Hash",
+            "type": "string"
+          },
+          "retrieved_at": {
+            "title": "Retrieved At",
+            "type": "string"
+          },
+          "authority_verified_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Authority Verified At"
+          },
+          "freshness": {
+            "enum": [
+              "verified",
+              "unverified"
+            ],
+            "title": "Freshness",
+            "type": "string"
+          },
+          "synchronization_verified": {
+            "title": "Synchronization Verified",
+            "type": "boolean"
+          },
+          "amendments_complete": {
+            "title": "Amendments Complete",
+            "type": "boolean"
+          },
+          "amendments": {
+            "items": {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]*$",
+              "type": "string"
+            },
+            "title": "Amendments",
+            "type": "array"
+          },
+          "withdrawn": {
+            "title": "Withdrawn",
+            "type": "boolean"
+          },
+          "etag": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Etag"
+          }
+        },
+        "required": [
+          "source_id",
+          "version",
+          "authority",
+          "source_url",
+          "publication_date",
+          "effective_date",
+          "text",
+          "content_hash",
+          "retrieved_at",
+          "authority_verified_at",
+          "freshness",
+          "synchronization_verified",
+          "amendments_complete",
+          "amendments",
+          "withdrawn"
+        ],
+        "title": "RegulatorySource",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "sources": {
+        "items": {
+          "$ref": "#/$defs/RegulatorySource"
+        },
+        "title": "Sources",
+        "type": "array"
+      },
+      "complete": {
+        "title": "Complete",
+        "type": "boolean"
+      },
+      "next_cursor": {
+        "anyOf": [
+          {
+            "maxLength": 256,
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Next Cursor"
+      },
+      "not_modified": {
+        "patternProperties": {
+          "^[A-Za-z0-9][A-Za-z0-9_.:-]*$": {
+            "type": "string"
+          }
+        },
+        "propertyNames": {
+          "maxLength": 128,
+          "minLength": 1
+        },
+        "title": "Not Modified",
+        "type": "object"
+      },
+      "authority_verified_at": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": null,
+        "title": "Authority Verified At"
+      },
+      "synchronization_verified": {
+        "default": false,
+        "title": "Synchronization Verified",
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "sources",
+      "complete"
+    ],
+    "title": "RegulatoryPage",
+    "type": "object"
+  }
+}
