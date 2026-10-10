@@ -47,6 +47,12 @@ The combined interface keeps source inspection, original downloads, and saved hu
 Desktop and mobile screenshots show the fictional assessment and review controls.
 The source snapshots, controlled labels, and current-assessment block stay unchanged.
 
+The [GitHub checks](https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38085941862) also completed without failure.
+They used candidate commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
+The Linux runner completed the same 215 backend tests and 33 browser tests.
+Its deployment job was skipped.
+The [CI record](github-checks.json) keeps the tested commit, counts, and job results.
+
 ## AWS metadata
 
 Read the [metadata record](aws-metadata.json) for the read-only AWS results.

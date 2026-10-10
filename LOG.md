@@ -607,6 +607,12 @@ No model invocation or AWS resource change occurred.
 
 Next: obtain the pending VS3 user decision.
 Keep AWS deployment pending until account verification and failed-stack recovery are complete.
+
+GitHub checks completed without failure for candidate commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
+Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
+Its deployment job was skipped.
+The candidate branch is saved remotely.
+The `main` integration branch and original VS3 review branch are unchanged.
 Keep live assessment integration and the complete project marked incomplete.
 
 ## 2026-10-11 - Integration keyboard-focus correction

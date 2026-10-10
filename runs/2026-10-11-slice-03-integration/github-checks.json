@@ -1,0 +1,23 @@
+{
+  "run_id": "38085941862",
+  "url": "https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38085941862",
+  "event": "workflow_dispatch",
+  "status": "completed",
+  "conclusion": "success",
+  "tested_commit": "dc23501e94a5540ff286e2eaa6a0d71ceecae2aa",
+  "backend_tests": 215,
+  "browser_tests": 33,
+  "jobs": [
+    {
+      "name": "checks",
+      "conclusion": "success"
+    },
+    {
+      "name": "deploy-development",
+      "conclusion": "skipped"
+    }
+  ],
+  "deployment_requested": false,
+  "main_updated": false,
+  "vs3_user_approval_received": false
+}
