@@ -206,7 +206,11 @@ Use this sequence:
 
 Also do tests of invalid uploads, access denial, interrupted jobs, invalid citations, keyboard navigation, and a narrow viewport.
 BT-06 must also test all three final review outcomes, pending actions, edit validation, outcome revisions, zero denominators, and summary/export parity.
-These are planned acceptance checks.
-The project has no tested browser implementation.
+These complete assessment checks are pending.
+
+The first case slice passed 11 local browser tests, including a narrow viewport and keyboard operation.
+The tests cover local sign-in, case creation, saved case inspection, error states, and reopening after a page reload.
+AWS sign-in remains unverified until account setup and deployment.
+See the [first-slice contract](../delivery/spec-slice-01-cases.md) and [browser results](../../runs/2026-10-10-autonomous-build/frontend-green.txt).
 
 [Next: Feature tickets](../delivery/05_FEATURE_TICKETS.md)

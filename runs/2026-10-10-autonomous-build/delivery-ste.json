@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-10",
+  "skill": "asd-ste100",
+  "reference_issue": "ASD-STE100 Issue 9, 2025-01-15",
+  "reference": "Official complete standard and dictionary available as ignored MVP/runs/private/asd-ste100-issue9.pdf and extracted pages",
+  "files": [
+    "docs/delivery/05_FEATURE_TICKETS.md",
+    "docs/delivery/guide-parallel-development.md",
+    "docs/delivery/guide-next-worktrees.md",
+    "docs/decisions/gov-decision-log.md"
+  ],
+  "source_backup": "runs/private/delivery-before-d27/ (ignored)",
+  "before_sha256": {
+    "docs/delivery/05_FEATURE_TICKETS.md": "cd4854e899d4b033c2825af205123143a1548d6645ac8f79d0ac1a39a6d5d3f1",
+    "docs/delivery/guide-parallel-development.md": "f80ff20ef41d6a75cf31af8e23b62539e69ebec01430e9ae31896c085411539f",
+    "docs/delivery/guide-next-worktrees.md": "ba12a2301ade8e64186e74e88c6e5d6128e6317abb7c07f06102cdae322828a4",
+    "docs/decisions/gov-decision-log.md": "ca573a5e4791c4c27d0cb2341b62ec800c72f205425c0bc384cd93e37cfbcf2b"
+  },
+  "after_sha256": {
+    "docs/delivery/05_FEATURE_TICKETS.md": "4082693f6e8ec6ba42b255ea1a75b46469102811a067d01a56ec37b554bb799c",
+    "docs/delivery/guide-parallel-development.md": "e58c80698906968f452a81bc8ba9023f956569b0f1871c4b19dbed91c3cfdeb2",
+    "docs/delivery/guide-next-worktrees.md": "5b8e568f4dd2d8eb63df4223f7076df2d3d9505fefcff2883437f8a73be2777f",
+    "docs/decisions/gov-decision-log.md": "871ad3dfbade1b6545dce3c5ee714f86427c16d8567a4a157fc1bf8f4a980136"
+  },
+  "protected_content": {
+    "acceptance_rows_byte_identical": 115,
+    "original_requirement_and_test_ids_preserved": true,
+    "D01_through_D26_history_unchanged_except_supersession_notice": true,
+    "new_missing_local_links": {
+      "docs/delivery/05_FEATURE_TICKETS.md": [],
+      "docs/delivery/guide-parallel-development.md": [],
+      "docs/delivery/guide-next-worktrees.md": [],
+      "docs/decisions/gov-decision-log.md": []
+    }
+  },
+  "authorized_changes": [
+    "D27 replaces horizontal scheduling with VS0-VS5",
+    "Shared API before concurrent frontend/backend work",
+    "One active worktree and one serialized AWS development pipeline",
+    "Integration tests before deployment and browser acceptance afterward",
+    "Every application release includes URL commit SHA tests and limits",
+    "AWS account absent; local work and reviewed push continue; development deployment blocked",
+    "Production and external submission remain separately authorized"
+  ],
+  "language_review": {
+    "modes": "Mixed descriptive tables and procedural steps. Instructions reviewed against 20 words; descriptions against 25 words.",
+    "mechanical_report": "delivery-ste-mechanical-v2.json",
+    "mechanical_findings": 0,
+    "manual_meaning_review": "PASS: retained actors, permissions, limits, acceptance conditions, historical outcomes, and unknown deployment state. Changed only authorized sequence/ownership.",
+    "dictionary_entries": [
+      {
+        "word": "keep",
+        "page": 293,
+        "decision": "Approved verb, continue to have or hold."
+      },
+      {
+        "word": "save",
+        "page": 368,
+        "decision": "Ordinary retention uses keep. Save is used here for the named software persistence action."
+      },
+      {
+        "word": "deploy",
+        "page": 213,
+        "decision": "Software deployment is a domain operation. Do not infer a dictionary-approved software meaning from the physical definition."
+      }
+    ],
+    "technical_terms": {
+      "vertical slice": "Complete user flow across frontend backend storage and AWS development.",
+      "API contract": "Shared software request response identity error and limit definitions.",
+      "development pipeline": "Automated check and installation sequence for AWS development.",
+      "release record": "Software delivery URL commit SHA checks and limits.",
+      "backend": "Server request validation and persistent records."
+    },
+    "limits": [
+      "Selected dictionary meanings and technical terms reviewed, not every dictionary entry.",
+      "Mechanical results do not establish full ASD-STE100 compliance or ASD endorsement.",
+      "Original ticket acceptance prose and historical decision text remain unchanged."
+    ]
+  },
+  "workspace_evidence": {
+    "registered_worktrees": 4,
+    "session_a_clean": true,
+    "session_b_clean": true,
+    "MVP_preexisting_changes_preserved": true,
+    "active": "regulatory-agent-autonomous-build"
+  },
+  "application_tests": "Existing combined-green.txt records 123 offline tests. Documentation editing did not rerun the application suite."
+}

@@ -1,0 +1,221 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Regulatory Agent development slice 01. Fictional cases only.
+Parameters:
+  CommitSha:
+    Type: String
+    AllowedPattern: '[a-f0-9]{40}'
+Rules:
+  MumbaiOnly:
+    Assertions:
+      - Assert:
+          Fn::Equals: [{Ref: 'AWS::Region'}, ap-south-1]
+        AssertDescription: Private records and logs must stay in Mumbai.
+Resources:
+  CasesTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - {AttributeName: PK, AttributeType: S}
+        - {AttributeName: SK, AttributeType: S}
+      KeySchema:
+        - {AttributeName: PK, KeyType: HASH}
+        - {AttributeName: SK, KeyType: RANGE}
+      SSESpecification: {SSEEnabled: true}
+      PointInTimeRecoverySpecification: {PointInTimeRecoveryEnabled: true}
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules: [{ObjectOwnership: BucketOwnerEnforced}]
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+  FrontendAccess:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: {Fn::Sub: '${AWS::StackName}-public-assets'}
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+  FrontendHeaders:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties:
+      ResponseHeadersPolicyConfig:
+        Name: {Fn::Sub: '${AWS::StackName}-headers'}
+        SecurityHeadersConfig:
+          ContentTypeOptions: {Override: true}
+          FrameOptions: {FrameOption: DENY, Override: true}
+          ReferrerPolicy: {ReferrerPolicy: no-referrer, Override: true}
+          StrictTransportSecurity: {AccessControlMaxAgeSec: 31536000, Override: true}
+  Frontend:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        HttpVersion: http2
+        IPV6Enabled: true
+        PriceClass: PriceClass_All
+        Origins:
+          - Id: public-assets
+            DomainName: {Fn::GetAtt: [FrontendBucket, RegionalDomainName]}
+            OriginAccessControlId: {Ref: FrontendAccess}
+            S3OriginConfig: {OriginAccessIdentity: ''}
+        DefaultCacheBehavior:
+          TargetOriginId: public-assets
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods: [GET, HEAD, OPTIONS]
+          CachedMethods: [GET, HEAD]
+          Compress: true
+          MinTTL: 0
+          DefaultTTL: 3600
+          MaxTTL: 86400
+          ForwardedValues:
+            QueryString: false
+            Cookies: {Forward: none}
+          ResponseHeadersPolicyId: {Ref: FrontendHeaders}
+        CustomErrorResponses:
+          - {ErrorCode: 403, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 0}
+          - {ErrorCode: 404, ResponseCode: 200, ResponsePagePath: /index.html, ErrorCachingMinTTL: 0}
+        ViewerCertificate: {CloudFrontDefaultCertificate: true}
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: {Ref: FrontendBucket}
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: cloudfront.amazonaws.com}
+            Action: s3:GetObject
+            Resource: {Fn::Sub: '${FrontendBucket.Arn}/*'}
+            Condition:
+              StringEquals:
+                AWS:SourceArn: {Fn::Sub: 'arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${Frontend}'}
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - {Fn::GetAtt: [FrontendBucket, Arn]}
+              - {Fn::Sub: '${FrontendBucket.Arn}/*'}
+            Condition: {Bool: {'aws:SecureTransport': 'false'}}
+  UserPool:
+    Type: AWS::Cognito::UserPool
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      UserPoolName: {Fn::Sub: '${AWS::StackName}-operators'}
+      AdminCreateUserConfig: {AllowAdminCreateUserOnly: true}
+      UsernameConfiguration: {CaseSensitive: false}
+      Policies:
+        PasswordPolicy: {MinimumLength: 14, RequireLowercase: true, RequireUppercase: true, RequireNumbers: true, RequireSymbols: true}
+      UserPoolTier: LITE
+  UserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: {Ref: UserPool}
+      GenerateSecret: false
+      AllowedOAuthFlowsUserPoolClient: true
+      AllowedOAuthFlows: [code]
+      AllowedOAuthScopes: [openid]
+      SupportedIdentityProviders: [COGNITO]
+      CallbackURLs: [{Fn::Sub: 'https://${Frontend.DomainName}/'}]
+      LogoutURLs: [{Fn::Sub: 'https://${Frontend.DomainName}/'}]
+      PreventUserExistenceErrors: ENABLED
+      EnableTokenRevocation: true
+      AccessTokenValidity: 15
+      IdTokenValidity: 15
+      RefreshTokenValidity: 1
+      TokenValidityUnits: {AccessToken: minutes, IdToken: minutes, RefreshToken: days}
+  UserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      UserPoolId: {Ref: UserPool}
+      Domain: {Fn::Sub: '${AWS::StackName}-${AWS::AccountId}'}
+      ManagedLoginVersion: 1
+  HttpApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      StageName: '$default'
+      CorsConfiguration:
+        AllowOrigins: [{Fn::Sub: 'https://${Frontend.DomainName}'}]
+        AllowMethods: [GET, POST, OPTIONS]
+        AllowHeaders: [Authorization, Content-Type]
+        MaxAge: 300
+      Auth:
+        DefaultAuthorizer: Cognito
+        Authorizers:
+          Cognito:
+            IdentitySource: '$request.header.Authorization'
+            AuthorizationScopes: [openid]
+            JwtConfiguration:
+              issuer: {Fn::Sub: 'https://cognito-idp.${AWS::Region}.amazonaws.com/${UserPool}'}
+              audience: [{Ref: UserPoolClient}]
+  CaseFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../runs/private/sam-package/
+      Handler: regulatory_agent.aws_cases.handler
+      Runtime: python3.12
+      Architectures: [x86_64]
+      MemorySize: 256
+      Timeout: 10
+      ReservedConcurrentExecutions: 2
+      Environment:
+        Variables:
+          APP_ENV: aws
+          CASES_TABLE: {Ref: CasesTable}
+          USER_POOL_ID: {Ref: UserPool}
+          USER_POOL_CLIENT_ID: {Ref: UserPoolClient}
+          COMMIT_SHA: {Ref: CommitSha}
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: [dynamodb:PutItem, dynamodb:GetItem, dynamodb:Query]
+              Resource: {Fn::GetAtt: [CasesTable, Arn]}
+      Events:
+        CreateCase:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: /api/cases, Method: POST, PayloadFormatVersion: '2.0'}
+        ListCases:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: /api/cases, Method: GET, PayloadFormatVersion: '2.0'}
+        ReadCase:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        Health:
+          Type: HttpApi
+          Properties:
+            ApiId: {Ref: HttpApi}
+            Path: /api/health
+            Method: GET
+            PayloadFormatVersion: '2.0'
+            Auth: {Authorizer: NONE}
+  CaseLogGroup:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      LogGroupName: {Fn::Sub: '/aws/lambda/${CaseFunction}'}
+Outputs:
+  FrontendUrl: {Value: {Fn::Sub: 'https://${Frontend.DomainName}'}}
+  FrontendBucket: {Value: {Ref: FrontendBucket}}
+  DistributionId: {Value: {Ref: Frontend}}
+  ApiUrl: {Value: {Fn::Sub: 'https://${HttpApi}.execute-api.${AWS::Region}.amazonaws.com'}}
+  UserPoolId: {Value: {Ref: UserPool}}
+  UserPoolClientId: {Value: {Ref: UserPoolClient}}
+  CognitoDomain: {Value: {Fn::Sub: 'https://${UserPoolDomain}.auth.${AWS::Region}.amazoncognito.com'}}
+  CasesTable: {Value: {Ref: CasesTable}}
+  CommitSha: {Value: {Ref: CommitSha}}

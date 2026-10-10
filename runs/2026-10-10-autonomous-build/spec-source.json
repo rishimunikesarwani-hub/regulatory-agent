@@ -1,0 +1,78 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha256": "bb6e0604520d157cf55d76542ad6d379e3e13daeac78cb5a1d21f4b78780ae04"
+  },
+  {
+    "path": "LOG.md",
+    "sha256": "c0ac6cf604efa06a8b0b8da45d8a97264f663bbfc2c79d839430e5b22478d38b"
+  },
+  {
+    "path": "README.md",
+    "sha256": "cf3a6ffb3618bfd4cce3e6db84bf0ed45d2b654fc13b83c47234fd4147506cc7"
+  },
+  {
+    "path": "docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+    "sha256": "b86550f6be366684d41f6c80b6b460291892cd3e038436a03e15b67ee060b3f6"
+  },
+  {
+    "path": "docs/decisions/gov-decision-log.md",
+    "sha256": "c0510eb07c0ce1d421e1ee470f09ca77bf473063b8c60061e5d55cde6b2c1a3b"
+  },
+  {
+    "path": "docs/delivery/05_FEATURE_TICKETS.md",
+    "sha256": "3087e755adbe24984a6783872e276451f6a921eb36101220fbf3b2452c14f7d1"
+  },
+  {
+    "path": "docs/delivery/guide-parallel-development.md",
+    "sha256": "54e7d44e061a8d006c94cdb2f455dec248e94895050d8b811192535f7d24950d"
+  },
+  {
+    "path": "docs/frontend/04_FRONTEND_SPEC.md",
+    "sha256": "f1f2f9065264163c55a122cab42d9e2f4582d0f8ce85914c2c209c44fa573c9a"
+  },
+  {
+    "path": "docs/guide-start-here.md",
+    "sha256": "04b4532d2bfa1f14a100a51ec771a6fa108fa8628d01b789b4533f9a093763f1"
+  },
+  {
+    "path": "docs/guide-ste100-writing.md",
+    "sha256": "c798e8659112f57d0f87fcfa915f5b298aed1f7066a379f3309723440dbe0672"
+  },
+  {
+    "path": "docs/product/01_PRD.md",
+    "sha256": "f9092426cbb851138e9f7a466b22c2be5c9c715263a5bce0dcf0828190c968c5"
+  },
+  {
+    "path": "docs/security/03_SECURITY_ACCESS.md",
+    "sha256": "1fc22a25978f91390b39f0e3a9ddf5b0ebd05fc816ff57dbd6e1ba7d93765015"
+  },
+  {
+    "path": "docs/testing/eval-model-quality.md",
+    "sha256": "872b02dd1a52e41e5956f7f6e2e5d66b05d909c8240e46704cff21c15906044d"
+  },
+  {
+    "path": "docs/testing/spec-local-test-plan.md",
+    "sha256": "2c010ad3c7c55b8f26dc8abef3ebeedccadc5223707d7a18c03a747e5fbe981f"
+  },
+  {
+    "path": "docs/architecture/arch-agent-aws-review.md",
+    "sha256": "c72ca09afd816d33648d1b62a670de925a78cc72090628873c7b659ff4e27fd9"
+  },
+  {
+    "path": "docs/architecture/arch-agent-operation-comparison.md",
+    "sha256": "e9e72d5fc1bb1a16bf595f27ea459aa2ae3fc4f74598723b6755b7c5d772df12"
+  },
+  {
+    "path": "docs/architecture/arch-multi-agent-proposal.md",
+    "sha256": "1cd82e57232a562522fb3b3f76c02456dbe7056f6e521768bd3153959d00bf4b"
+  },
+  {
+    "path": "docs/architecture/arch-retrieval-quality-and-model-routing.md",
+    "sha256": "661c225024e063c917eabe3fa3e62bfa9f59cad079116b25dbd019d62125b292"
+  },
+  {
+    "path": "docs/testing/spec-measurement-contract.md",
+    "sha256": "44638156f1cd81a0025f4ef5563ed49ed1835db354268c4abb75a9fdf9340450"
+  }
+]

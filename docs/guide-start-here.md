@@ -26,9 +26,14 @@ A reviewer can examine each finding and its sources.
 - **Achieved:** All necessary acceptance conditions passed.
 
 The product and architecture have approval.
-The integrated local foundation passed 60 offline tests.
-The [combined report](../runs/2026-10-10-integration/combined-tests.txt) records these results.
-D24 measurement contracts, application features, live evaluations, and AWS integration are pending.
+The integrated foundation passed its initial 60 offline tests.
+The first slice now includes the browser interface and persistent case storage.
+Read the [current verification records](../runs/2026-10-10-autonomous-build/) for local results.
+
+D24 measurement functions have unit tests.
+Complete runtime measurement integration and live evaluations are pending.
+AWS templates are prepared, but AWS deployment is unverified.
+The user must make an AWS account.
 Read the [remaining worktree guide](delivery/guide-next-worktrees.md) before the next development session.
 
 F3: At least eight features from the hackathon list are mandatory.
@@ -41,8 +46,8 @@ The organizer did not supply those numerical limits.
 **Technical:** Application services use interfaces for storage, records, jobs, identity, and model calls.
 Local adapters and AWS adapters obey the same interface contracts.
 
-AWS configuration is a later development step.
-The configuration guide must explain each service, action, and verification result.
+Each slice includes its AWS configuration and verification steps.
+The [first-slice guide](delivery/guide-slice-01-development.md) gives the local commands and missing AWS setup.
 An AWS account is not necessary for default local tests.
 
 ## Document updates

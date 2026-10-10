@@ -1,0 +1,39 @@
+test_slice01_aws (unittest.loader._FailedTest.test_slice01_aws) ... ERROR
+test_slice01_cases (unittest.loader._FailedTest.test_slice01_cases) ... ERROR
+test_case_name_is_nonblank_and_bounded (test_slice01_contract.CaseContractTests.test_case_name_is_nonblank_and_bounded) ... ok
+test_saved_schemas_match_executable_types (test_slice01_contract.CaseContractTests.test_saved_schemas_match_executable_types) ... ok
+
+======================================================================
+ERROR: test_slice01_aws (unittest.loader._FailedTest.test_slice01_aws)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_slice01_aws
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_aws.py", line 8, in <module>
+    from regulatory_agent.aws_cases import DynamoDBCases, create_handler
+ModuleNotFoundError: No module named 'regulatory_agent.aws_cases'
+
+
+======================================================================
+ERROR: test_slice01_cases (unittest.loader._FailedTest.test_slice01_cases)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_slice01_cases
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_cases.py", line 8, in <module>
+    from regulatory_agent.api import create_app
+ModuleNotFoundError: No module named 'regulatory_agent.api'
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.014s
+
+FAILED (errors=2)

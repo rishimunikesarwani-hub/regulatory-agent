@@ -1,0 +1,118 @@
+{
+  "issue": "ASD-STE100 Issue 9",
+  "scope": "Current delivery status and first-slice contract. Earlier approved specification text is preserved.",
+  "manual_review": {
+    "rules": "Direct instructions and descriptive sentences reviewed. Paragraphs divided by topic.",
+    "dictionary": "CREATE replaced with make in new prose. CHECK used as a noun. Existing project dictionary decisions retained.",
+    "technical_terms": "API, worktree, frontend, backend, SQLite, Cognito, DynamoDB, SAM, commit, PKCE, and pipeline retain their software meanings. See the project language guide.",
+    "protected_content": "API fields, commands, feature IDs, 115 existing acceptance rows, approval history, numerical limits, and source identifiers preserved. New test counts are explicit results.",
+    "limitations": "Selected vocabulary and technical meaning reviewed. Mechanical results do not establish full ASD-STE100 compliance or ASD approval."
+  },
+  "files": {
+    "README.md": {
+      "sha256": "e67c6f51bb5ce43d36dee6caeecb0834f18272455c156ae94b81e2d9326371e7",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 65,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "LOG.md": {
+      "sha256": "37c4e784edf357257b3e8199f2e5d680bb35fedb6992726a0d4ba94424e05a68",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 189,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "docs/guide-start-here.md": {
+      "sha256": "50ed7006083f1bde0ac58cb6ebf4824c269d67c2138b23069cfb62190eae906d",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 64,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "docs/frontend/04_FRONTEND_SPEC.md": {
+      "sha256": "3a3ed6dabe07a967ed0e596d4880cf6f53c598ac126d09e068d1eb09cb3fb709",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 218,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "docs/architecture/02_TECHNICAL_BLUEPRINT.md": {
+      "sha256": "61de3dcc7909b575c4fdbac9721d2cab0f0b42990b251ca7fc65821df954c7c2",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 513,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "docs/delivery/spec-slice-01-cases.md": {
+      "sha256": "588afee0c771167c9f66ea1da3733733993c396757630780952d8150568fc88f",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 115,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "docs/delivery/05_FEATURE_TICKETS.md": {
+      "sha256": "94679cb538921c9a9436fba4344a2b90d9f58a02269e519307afa0a970ac2de0",
+      "check": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 421,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    }
+  }
+}

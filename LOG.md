@@ -228,3 +228,60 @@ No new application feature or server started during preparation.
 T1 and T2 D24 additions are pending.
 T3 through T9 implementation is pending.
 Next: start the foundation measurement task only when the user requests implementation.
+
+## 2026-10-10 - Complete delivery slices and first case flow
+
+The user authorized development, tests, and GitHub updates, one worktree at a time.
+[D27](docs/decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow) replaces the earlier allocation by technical component.
+Each slice now includes its frontend, backend, AWS configuration, and tests.
+All eight MVP features and all 115 existing acceptance rows remain in the tickets.
+
+Used `work/autonomous-build` in an isolated worktree.
+Reconciled Session A fixtures, Session B contracts, and the latest specification changes.
+Kept the source worktrees and their uncommitted files.
+The [reconciliation record](runs/2026-10-10-autonomous-build/reconciliation.json) identifies the inspected branches and source hashes.
+
+Saved the [case API contract](docs/delivery/spec-slice-01-cases.md) before frontend and backend implementation.
+Both components use the same request, response, and error contracts.
+The local user can sign in, make a fictional case, save it, and reopen it.
+SQLite saves local cases across process restarts.
+The AWS adapter uses Cognito identity and owner-scoped DynamoDB records.
+AWS operation remains unverified.
+
+Saved failing tests before the related implementation changes.
+The [Python report](runs/2026-10-10-autonomous-build/final-python-green.txt) records 163 passing tests, including the release guards.
+The [browser report](runs/2026-10-10-autonomous-build/frontend-green.txt) records 11 passing tests.
+The browser checks include the actual local API, keyboard operation, a narrow viewport, and failed saves.
+Desktop and mobile screenshots received visual checks.
+The [clean setup report](runs/2026-10-10-autonomous-build/clean-source-green.txt) records successful setup with a new environment and an empty package cache.
+
+D24 functions now calculate reviewer outcomes, retrieval measures, assessment measures, stage timing, and recorded costs.
+Their tests cover saved review revisions, report cutoffs, denominators, missing data, and repeated event records.
+Complete runtime connections, live model evaluations, and measured model quality remain pending.
+Unit test results do not prove assessment quality.
+
+Prepared one serialized [development pipeline](.github/workflows/dev-release.yml).
+It requires integration checks before deployment and browser checks after deployment.
+Each release record includes its URL, commit, results, and limits.
+The [SAM review](runs/2026-10-10-autonomous-build/sam-validation.json) passed local infrastructure checks.
+No AWS deployment occurred.
+Production deployment still needs explicit authorization.
+
+The user said an AWS account is not set up.
+The [development guide](docs/delivery/guide-slice-01-development.md) lists the missing account, roles, budget, and secure workflow configuration.
+No secrets are requested in chat.
+The first slice is ready for account setup and deployment verification.
+Its AWS acceptance remains open.
+Next: finish that verification, then extend the flow to evidence inspection and one-obligation review under VS2 and VS3.
+
+### Final worktree reconciliation
+
+A later inspection found eight additional worktrees at the local specification commit `e68ab5d`.
+The project has 12 registered worktrees, including the original integration folder and the active slice folder.
+The [current inventory](runs/2026-10-10-autonomous-build/final-worktree-inventory.json) records their branches and file states.
+Kept their existing branch names and local files.
+The vertical slice plan controls their next assignments.
+
+The latest blueprint clarifies retrieval-operation limits and the missing shared response-byte total.
+Kept that clarification during reconciliation.
+The clarification does not establish live provider enforcement.

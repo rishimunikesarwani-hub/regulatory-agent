@@ -1,0 +1,52 @@
+test_empty_partial_pending_and_window_filters (test_measurement_runs.RunMeasurementTests.test_empty_partial_pending_and_window_filters) ... ERROR
+test_failed_runs_and_duplicates_in_denominator (test_measurement_runs.RunMeasurementTests.test_failed_runs_and_duplicates_in_denominator) ... ERROR
+test_future_outputs_and_unknown_state_at_cutoff (test_measurement_runs.RunMeasurementTests.test_future_outputs_and_unknown_state_at_cutoff) ... ERROR
+test_scope_and_contradictory_duplicate_rejection (test_measurement_runs.RunMeasurementTests.test_scope_and_contradictory_duplicate_rejection) ... ERROR
+
+======================================================================
+ERROR: test_empty_partial_pending_and_window_filters (test_measurement_runs.RunMeasurementTests.test_empty_partial_pending_and_window_filters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_runs.py", line 38, in test_empty_partial_pending_and_window_filters
+    report = result_coverage([partial, queued, later], cohort())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\reviews.py", line 30, in result_coverage
+    raise NotImplementedError("Result coverage is not implemented")
+NotImplementedError: Result coverage is not implemented
+
+======================================================================
+ERROR: test_failed_runs_and_duplicates_in_denominator (test_measurement_runs.RunMeasurementTests.test_failed_runs_and_duplicates_in_denominator)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_runs.py", line 27, in test_failed_runs_and_duplicates_in_denominator
+    report = result_coverage([complete, failed, complete], cohort())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\reviews.py", line 30, in result_coverage
+    raise NotImplementedError("Result coverage is not implemented")
+NotImplementedError: Result coverage is not implemented
+
+======================================================================
+ERROR: test_future_outputs_and_unknown_state_at_cutoff (test_measurement_runs.RunMeasurementTests.test_future_outputs_and_unknown_state_at_cutoff)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_runs.py", line 44, in test_future_outputs_and_unknown_state_at_cutoff
+    report = result_coverage([run()], cohort(cutoff="2026-10-10T10:20:00Z"))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\reviews.py", line 30, in result_coverage
+    raise NotImplementedError("Result coverage is not implemented")
+NotImplementedError: Result coverage is not implemented
+
+======================================================================
+ERROR: test_scope_and_contradictory_duplicate_rejection (test_measurement_runs.RunMeasurementTests.test_scope_and_contradictory_duplicate_rejection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_runs.py", line 55, in test_scope_and_contradictory_duplicate_rejection
+    result_coverage([run(), run(state="failed", presented_obligations={})], cohort())
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\reviews.py", line 30, in result_coverage
+    raise NotImplementedError("Result coverage is not implemented")
+NotImplementedError: Result coverage is not implemented
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (errors=4)

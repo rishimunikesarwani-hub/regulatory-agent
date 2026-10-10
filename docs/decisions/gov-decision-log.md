@@ -286,6 +286,9 @@ See the [language review record](../../runs/2026-10-10-ste-language-correction-v
 
 ## D26 - Foundation integration and remaining worktrees
 
+The horizontal sequence and eight-folder assignments below are superseded by [D27](#d27---delivery-by-complete-user-flow).
+The integration evidence, accepted foundations, requirements, and safety limits stay applicable.
+
 Date: 2026-10-10.
 Status: Approved worktree preparation and implementation clarification.
 
@@ -316,6 +319,49 @@ Production deployment and external submission still need explicit authorization.
 Affected requirements: REQ-X06 through REQ-X09 and the shared contracts for REQ-F01 through REQ-F08.
 Affected tickets: T1 through T9.
 The [integration record](../../runs/2026-10-10-integration/verification.md) gives evidence and remaining limits.
+
+## D27 - Delivery by complete user flow
+
+Date: 2026-10-10.
+Status: Approved delivery change from the user's current instructions.
+
+The user requested vertical slices after reconciliation of Session A, Session B, and the latest approved specifications.
+A vertical slice is one complete user flow across the browser, API, storage, and AWS development environment.
+
+Record the shared API contract before frontend and backend implementation.
+Then permit concurrent frontend and backend work against that contract.
+Give each file one owner.
+Each application session must complete its selected flow, including development deployment and browser acceptance.
+VS0 supplies the contract preparation before the application slices.
+
+The first application slice is sign-in, case creation, storage, and reopening.
+Subsequent slices add evidence inspection, one-obligation assessment, citation inspection, saved reviews, regulatory changes, and the full approved scope.
+The [ticket inventory](../delivery/05_FEATURE_TICKETS.md#delivery-slices) assigns VS0 through VS5.
+T1 through T9 stay as capability acceptance records.
+All existing acceptance conditions, requirement IDs, and test IDs stay mandatory.
+
+Use one serialized AWS development pipeline.
+Do integration tests before deployment.
+Do browser acceptance after deployment.
+Give each development release its URL, commit SHA, tests, and known limits.
+A local test result does not establish deployment or browser acceptance.
+
+This decision supersedes D26's horizontal sequence and eight-folder assignment plan.
+It also supersedes earlier frontend and AWS scheduling that deferred those components until backend tickets were complete.
+It does not replace D26's foundation integration evidence or D24's measurement definitions.
+The active [worktree guide](../delivery/guide-next-worktrees.md) records the observed worktrees and the selected development folder.
+The [parallel guide](../delivery/guide-parallel-development.md) controls ownership and deployment coordination.
+
+The eight product features, India processing boundary, fixed model, 24-call allowance, and 600-second worker deadline stay unchanged.
+The 20-case minimum, 90% agreement, citation checks, and zero critical false-supported gate stay unchanged.
+The first case slice needs no regulatory provider or model invocation.
+Live regulatory and model operations still need their specified prerequisites.
+Provider selection stays with the user.
+Production deployment and external submission still need additional explicit authorization.
+
+Affected requirements: REQ-F01 through REQ-F08 and REQ-X01 through REQ-X09.
+Affected delivery records: T1 through T9, the two development guides, and the project log.
+The [VS1 API contract](../delivery/spec-slice-01-cases.md) controls the first application flow.
 
 ## How to add a decision
 

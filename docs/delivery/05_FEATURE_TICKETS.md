@@ -5,16 +5,76 @@
 
 > Decisions: [D12–D14](../decisions/gov-decision-log.md) and [D24](../decisions/gov-decision-log.md#d24---reviewer-outcomes-and-measured-agent-baseline).
 > Measurement requirements: [Measurement contract](../testing/spec-measurement-contract.md). Approval is under D24. Application measurements are not available.
-> Development state: Session A and Session B foundations are integrated. The combined offline checks passed 60 tests.
-> Remaining work: T1 and T2 D24 additions, followed by T3 through T9. See the [worktree handoffs](guide-next-worktrees.md).
 
-First, do an assessment of one obligation through the full process. Record its source, mapped control, evidence, finding, and review decision. Then extend the process.
+> Development state: Session A and Session B foundations are integrated. The combined offline checks passed 60 tests.
+> D24 foundation: The recorded offline checks passed 123 tests. T1 and T2 still have incomplete acceptance conditions.
+
+> VS1 local checks: 163 Python tests and 11 browser tests passed.
+> VS1 deployment: AWS behavior is unverified. The user must first set up an AWS account.
+> VS1 state: Local implementation and checks are complete. Deployed sign-in and browser acceptance are pending.
+> Delivery order: [D27](../decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow) replaces the horizontal ticket sequence with VS0 through VS5.
+
+First, complete sign-in, case creation, storage, and reopening in AWS development.
+Then extend the flow through evidence inspection, one assessment, citation inspection, and a saved review.
 
 The measurement contract controls reviewer outcomes, retrieval scores, assessment quality, traces, and cost calculations.
 Keep one agent and the approved model `in.openai.gpt-5.6-luna` for the baseline.
 Use code for fixed rules, access, workflow routing, retries, budgets, validation, and progress.
 Keep the 24-call allowance and 600-second worker deadline.
-These tickets are not evidence of completed tests or measured improvement.
+The linked test records give evidence for their stated checks.
+This ticket inventory does not establish live model quality or measured improvement.
+
+See the [VS1 development guide](guide-slice-01-development.md) for setup and remaining AWS steps.
+The [Python result](../../runs/2026-10-10-autonomous-build/final-python-green.txt) and [browser result](../../runs/2026-10-10-autonomous-build/frontend-green.txt) record local checks.
+
+## Delivery slices
+
+A vertical slice is one complete user flow across the browser, API, storage, and AWS development environment.
+T1 through T9 stay as the capability acceptance inventory.
+Their acceptance conditions, requirement IDs, test IDs, and quality limits stay unchanged.
+A slice uses the necessary parts of several tickets.
+Completion of a slice does not establish completion of those entire tickets.
+
+VS0 prepares the shared contract before VS1.
+After VS0, each session must complete the selected user flow.
+Frontend and backend work can proceed concurrently after the shared API contract is recorded.
+AWS development deployment and browser acceptance belong to that same flow.
+
+| Slice | User result | Ticket allocation | Start condition |
+|---|---|---|---|
+| VS0 | One agreed API contract and reconciled source state. | T1 and T2 contracts, with existing D24 work. | Compare Session A, Session B, integration history, and current approved specifications. |
+| VS1 | Sign in, make a case, save it, and reopen it after reload. | T2 case contract, T6 identity and records, T7 case screens, T8 development infrastructure, T9 evidence. | Complete VS0. Configure authorized AWS development access. |
+| VS2 | Open a case, upload evidence, and inspect its unchanged source version. | T1 selected fixtures, T2 source contract, T3 documents, T6 access, T7 source screens, T8 storage, T9 evidence. | Complete VS1. Record the source API contract. |
+| VS3 | Assess one obligation, inspect its citations, and save a review. | T1 selected labels, T2 measurement contracts, T3 sources, T4 assessment, T5 bounded execution, T6-T9 applicable work. | Complete VS2. Record the assessment and review API contracts. |
+| VS4 | Compare specified regulatory versions and inspect a new assessment with its own review history. | T1 change fixtures, T3 versions, T5 changes, T6-T9 applicable work. | Complete VS3. Record the version-comparison API contract. |
+| VS5 | Use the full approved scope and inspect release evidence for all eight features. | All remaining T1-T9 acceptance conditions. | Complete VS4. Complete provider, model, source, and held-out-data prerequisites for live evaluation. |
+
+### Slice acceptance
+
+| Slice | Frontend and backend | AWS development and tests | Release evidence |
+|---|---|---|---|
+| VS0 | Agree on requests, responses, identity, errors, limits, and controlled responses. | Keep default checks offline. Compare the shared schemas with current specifications. | Record the contract version, source commits, test results, and remaining differences. No deployed application claim. |
+| VS1 | Connect sign-in and case screens to authorized persistent case operations. | Do API and ownership tests before deployment. Do browser sign-in, save, reload, and reopen checks after deployment. | Give the development URL, commit SHA, test results, and known limits. |
+| VS2 | Connect upload and source inspection to extraction, immutable versions, and case access. | Do extraction and ownership tests before deployment. Inspect exact source locations in the deployed browser. | Include upload failures, version preservation, and the source-inspection result. |
+| VS3 | Connect one-obligation assessment, citations, and review actions to durable jobs and D24 records. | Do integration tests before deployment. Do the complete deployed assessment and review flow afterward. | Identify controlled or live processing. Include findings, citations, review history, traces, failures, and provider limits. |
+| VS4 | Connect comparison screens to source changes, affected controls, and new snapshots. | Do change and snapshot tests before deployment. Inspect both versions and both review histories afterward. | Identify simulated amendments. Keep earlier findings and reviews unchanged. |
+| VS5 | Complete scope controls, failures, exports, and all eight feature flows. | Do integration tests before deployment. Do deployed browser acceptance and authorized live evaluations afterward. | Give all feature evidence, held-out results, retrieval scores, runtime measures, costs, and remaining limitations. |
+
+Use one serialized AWS development pipeline for every application slice.
+Only one deployment can operate at a time.
+A failed integration test blocks deployment.
+A failed browser acceptance check blocks the slice release.
+Production deployment and external submission need additional explicit authorization.
+
+VS1 needs no regulatory retrieval provider or model invocation.
+VS3 can use labeled controlled responses for development acceptance.
+Controlled acceptance does not establish current regulatory coverage or live model quality.
+Live assessments need the approved provider and model checks before use.
+VS5 keeps the 20-case minimum, 90% agreement, citation checks, and zero critical false-supported gate.
+
+The [parallel guide](guide-parallel-development.md) controls ownership and integration.
+The [active worktree guide](guide-next-worktrees.md) controls workspace state and the next flow.
+The [VS1 API contract](spec-slice-01-cases.md) controls the first application slice.
 
 ## Priority and status
 
@@ -32,7 +92,7 @@ A test plan or a later passing result alone does not meet this sequence requirem
 
 **Status:** In progress. Historical sources and synthetic fixtures are integrated. Provider verification and D24 fixture additions are pending.
 
-**Dependencies:** None.
+**Dependencies:** None. Prepare the necessary source and fixture subset before each dependent slice.
 
 **Requirements:** All requirement IDs. Especially REQ-F01–REQ-F08, REQ-X03, and REQ-X07–REQ-X09.
 
@@ -60,9 +120,9 @@ Acceptance:
 
 ## T2 — Local test environment and executable contracts
 
-**Status:** In progress. Local contracts and adapters are integrated. The D24 measurement contracts and their checks are pending.
+**Status:** In progress. Local adapters and D24 contract work exist. Remaining acceptance conditions are incomplete.
 
-**Dependencies:** T1's specifications and minimum labeled fixture.
+**Dependencies:** T1's specifications and minimum labeled fixture. Record each slice contract before its frontend and backend work.
 
 **Requirements:** REQ-X06–REQ-X09 and the contract surfaces for all features.
 
@@ -88,7 +148,7 @@ Write each behavior test before its application code. Use the recorded failing a
 
 **Status:** Not started.
 
-**Dependencies:** T2.
+**Dependencies:** VS2 and later slices use the corresponding T2 contracts. Complete the necessary document behavior before assessment.
 
 **Requirements:** REQ-F01, REQ-X02, REQ-X03, REQ-X08, REQ-X09.
 
@@ -114,7 +174,7 @@ Acceptance:
 
 **Status:** Not started.
 
-**Dependencies:** T3.
+**Dependencies:** VS3 uses the selected T3 document and source behavior, with its T2 contracts.
 
 **Requirements:** REQ-F03–REQ-F08, REQ-X08, REQ-X09.
 
@@ -140,7 +200,7 @@ An exact quote match is not sufficient evidence of contextual support.
 
 **Status:** Not started.
 
-**Dependencies:** T4.
+**Dependencies:** VS3 uses the first T4 assessment. VS4 adds changes. VS5 extends the approved scope.
 
 **Requirements:** REQ-F02–REQ-F08, REQ-X01, REQ-X03, REQ-X08, REQ-X09.
 
@@ -166,7 +226,7 @@ Acceptance:
 
 **Status:** Not started.
 
-**Dependencies:** T4. Shared contracts from T2.
+**Dependencies:** VS1 starts with T2 case contracts. Each later slice adds its API, job, or review behavior.
 
 **Requirements:** REQ-X02–REQ-X05, REQ-X07, REQ-X08.
 
@@ -197,7 +257,7 @@ Acceptance:
 
 **Status:** Not started.
 
-**Dependencies:** T5 and T6.
+**Dependencies:** Each slice starts frontend and backend work after agreement on its shared T2 API contract.
 
 **Requirements:** REQ-X05–REQ-X08. AC-F01–AC-F08.
 
@@ -224,7 +284,7 @@ Acceptance:
 
 **Status:** Not started.
 
-**Dependencies:** T6 and T7. Begin connectivity checks when the first local assessment sequence is stable.
+**Dependencies:** VS1 starts development infrastructure. Each later slice adds the AWS services needed for its complete flow.
 
 **Requirements:** REQ-X02, REQ-X04, REQ-X06, REQ-X08.
 
@@ -253,7 +313,7 @@ Available credits are not evidence of model access. They do not permit unlimited
 
 **Status:** Not started.
 
-**Dependencies:** T8 and completed T1 held-out set.
+**Dependencies:** Each slice supplies development release evidence. VS5 needs applicable T8 cloud checks and the completed T1 held-out set.
 
 **Requirements:** All feature acceptance cases and release gates.
 
@@ -287,7 +347,10 @@ Do not tune from held-out answers and still describe those cases as untouched.
 Before you adopt a candidate, make sure that it meets existing quality gates and has a measured benefit.
 An experiment does not automatically replace the approved baseline or enter this P0 delivery sequence.
 
-## Build order and dates
+## Historical planning dates
+
+D27 replaces the earlier horizontal sequence below.
+These dated targets remain as planning history, not current delivery instructions.
 
 **8 October target:** Prepare the sources, fixtures, and local environment. Write code for the first full assessment. T5 and T6 extend that assessment. T7 adds the review interface.
 

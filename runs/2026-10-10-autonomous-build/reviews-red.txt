@@ -1,0 +1,21 @@
+test_measurement_reviews (unittest.loader._FailedTest.test_measurement_reviews) ... ERROR
+
+======================================================================
+ERROR: test_measurement_reviews (unittest.loader._FailedTest.test_measurement_reviews)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_measurement_reviews
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_measurement_reviews.py", line 9, in <module>
+    from regulatory_agent.contracts import ContractError, ReviewContent, ReviewItem, ReviewRequest, ReviewCohort
+ImportError: cannot import name 'ReviewContent' from 'regulatory_agent.contracts' (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\src\regulatory_agent\contracts.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

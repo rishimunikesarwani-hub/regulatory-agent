@@ -1,0 +1,9 @@
+test_empty_partial_pending_and_window_filters (test_measurement_runs.RunMeasurementTests.test_empty_partial_pending_and_window_filters) ... ok
+test_failed_runs_and_duplicates_in_denominator (test_measurement_runs.RunMeasurementTests.test_failed_runs_and_duplicates_in_denominator) ... ok
+test_future_outputs_and_unknown_state_at_cutoff (test_measurement_runs.RunMeasurementTests.test_future_outputs_and_unknown_state_at_cutoff) ... ok
+test_scope_and_contradictory_duplicate_rejection (test_measurement_runs.RunMeasurementTests.test_scope_and_contradictory_duplicate_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+OK

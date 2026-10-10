@@ -1,0 +1,31 @@
+test_case_name_is_nonblank_and_bounded (test_slice01_contract.CaseContractTests.test_case_name_is_nonblank_and_bounded) ... FAIL
+test_saved_schemas_match_executable_types (test_slice01_contract.CaseContractTests.test_saved_schemas_match_executable_types) ... ERROR
+
+======================================================================
+ERROR: test_saved_schemas_match_executable_types (test_slice01_contract.CaseContractTests.test_saved_schemas_match_executable_types)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_contract.py", line 17, in test_saved_schemas_match_executable_types
+    saved = json.loads((Path(__file__).resolve().parents[1] / "data/contracts/slice-01-api.json").read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build\\data\\contracts\\slice-01-api.json'
+
+======================================================================
+FAIL: test_case_name_is_nonblank_and_bounded (test_slice01_contract.CaseContractTests.test_case_name_is_nonblank_and_bounded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-autonomous-build\tests\test_slice01_contract.py", line 12, in test_case_name_is_nonblank_and_bounded
+    with self.assertRaises(ValidationError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValidationError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.024s
+
+FAILED (failures=1, errors=1)

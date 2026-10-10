@@ -7,13 +7,17 @@ The application connects regulatory requirements to bank controls, evidence, fin
 Read the [project handbook](docs/guide-start-here.md). It gives links to the five specifications, the decision history, and the test plans.
 
 The private repository is on [GitHub](https://github.com/rishimunikesarwani-hub/regulatory-agent/tree/main).
-The local integration folder is `ET-Hackathon\MVP` on branch `main`.
 Session A and Session B foundations are integrated.
-The combined offline checks passed 60 tests.
-The application interface and compliance assessment are not implemented.
+The first slice has a browser interface, a case API, and persistent local storage.
+The local user can sign in, make a fictional case, save it, and reopen it.
+The [verification records](runs/2026-10-10-autonomous-build/) contain the test results.
 
-Read the [remaining worktree guide](docs/delivery/guide-next-worktrees.md) for task assignments and dependencies.
-Use the [local testing guide](docs/delivery/guide-session-b-testing.md) for setup and the terminal demonstration.
+AWS templates and the development release pipeline are prepared.
+AWS sign-in and deployment are unverified because the user must make an AWS account.
+The eight assessment features and their quality requirements remain in scope.
+
+Use the [first-slice guide](docs/delivery/guide-slice-01-development.md) for local setup and AWS preparation.
+Read the [worktree guide](docs/delivery/guide-next-worktrees.md) for ownership and delivery order.
 
 | Item | Decision |
 |---|---|
@@ -42,7 +46,7 @@ Each function must have a requirement, an acceptance criterion, and a verificati
 | Folder | Contents |
 |---|---|
 | docs/ | Specifications, decisions, and verification plans |
-| src/ | Local contracts and adapters. Application features are pending. |
+| src/ | Shared contracts, application services, AWS adapters, and the browser interface |
 | tests/ | Tests for correct software behavior |
 | evals/ | AI quality cases and evaluation tools |
 | ops/ | Infrastructure configuration and local verification commands |

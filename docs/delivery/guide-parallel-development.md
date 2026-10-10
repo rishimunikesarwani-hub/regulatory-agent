@@ -1,120 +1,103 @@
-# Parallel development
+# Delivery ownership and parallel work
 
-Date: 2026-10-10
+Date: 2026-10-10.
+Decision: [D27](../decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow).
 
-The user selected a new private GitHub repository named `regulatory-agent`.
-Use different worktrees for development sessions.
-Keep the approved application scope and ticket dependencies.
+The delivery unit is one complete user flow, called a vertical slice.
+The [slice inventory](05_FEATURE_TICKETS.md#delivery-slices) gives VS0 through VS5.
+The approved eight features, T1-T9 acceptance conditions, and quality limits stay unchanged.
 
 ## Terms
 
 | Term | Meaning |
-| --- | --- |
-| Repository | The project files and their recorded history. |
-| Commit | A recorded version of selected files. |
-| Branch | A different sequence of commits. |
-| Worktree | A different project folder connected to the same Git repository. |
-| Merge | An operation that combines branch changes. |
-| Integration tests | Tests of how connected components operate together. |
+|---|---|
+| Frontend | The browser interface that the user operates. |
+| Backend | The server code that validates requests and stores records. |
+| API contract | The shared request, response, identity, error, and limit definitions for an operation. |
+| Development pipeline | The automated sequence that checks and installs a commit in the AWS development environment. |
+| Release record | The development URL, commit SHA, checks, and known limits for a delivered flow. |
 
-## Locations
+See the [language guide](../guide-ste100-writing.md) for Git and application terms.
 
-Repository: `https://github.com/rishimunikesarwani-hub/regulatory-agent`
+## Shared contract before concurrent work
 
-The folders below are relative to the parent `ET-Hackathon` folder.
+1. Select one slice and one active worktree.
+2. Compare its source state with Session A, Session B, and the current approved specifications.
+3. Record its API contract and controlled responses.
+4. Give each file one owner.
+5. Start frontend and backend work against that same contract.
+6. Record failing behavior tests before the corresponding code.
+7. Combine the browser and server changes for the complete flow.
+8. Do integration tests before AWS development deployment.
+9. Do browser acceptance checks after deployment.
+10. Record the release evidence and remaining limits.
 
-| Role | Folder | Branch |
-| --- | --- | --- |
-| Integration | `MVP` | `main` |
-| Session A | `.worktrees/regulatory-agent-session-a` | `work/session-a` |
-| Session B | `.worktrees/regulatory-agent-session-b` | `work/session-b` |
-
-The original Session A and Session B branches started from the same checkpoint.
-Their foundations are now integrated through PR #1 and PR #2.
-The [remaining worktree guide](guide-next-worktrees.md) gives the next assignments under D26.
-The setup does not start development sessions or application processes.
-
-## Initial work allocation
-
-The PRD gives eight product features.
-The delivery plan gives nine tickets, T1 through T9.
-The feature count does not remove ticket dependencies.
-
-| Session | Initial work | Dependency |
-| --- | --- | --- |
-| A | T1 source and fictional fixture preparation | Obey approved source rules. Keep provider selection undecided until the user selects it. |
-| B | T2 local tests and shared contracts | Wait for T1 specifications and the minimum labeled fixture before you write dependent code. |
-
-Session B can examine the specifications while Session A prepares the minimum fixture.
-Inspection does not satisfy the T2 implementation gate.
-
-T3 starts after T2. T4 starts after T3.
-After T4, T5 and T6 are the first development tickets that can proceed independently.
-The new T5 and T6 worktrees replace the original folder assignments under D26.
-Keep the recorded dependencies for T7, T8, and T9.
-
-The [feature tickets](05_FEATURE_TICKETS.md) control task acceptance and sequence.
-The [local test plan](../testing/spec-local-test-plan.md) controls software checks.
+Frontend and backend contributors can work concurrently after step 3.
+They must not change shared fields independently.
+A backend-only or frontend-only handoff does not complete an application slice.
+VS0 is the contract preparation step, not a deployed application slice.
 
 ## File ownership
 
-The integration session owns shared specifications, interfaces, dependency locks, and the project log.
-Session B writes the initial shared contracts under T2.
-Merge those contracts before you write dependent feature code.
-Record any later contract change in the integration session first.
-Under D26, the foundation worktree can prepare the approved D24 fixture and contract additions.
-The integration session must review and merge these additions before T3 implementation.
+The integration owner assigns these roles for each slice.
+One person or session can perform more than one role.
+Assignments do not authorize simultaneous edits to the same file.
 
-Each development session owns its assigned code and tests.
-Keep its test results in a different dated folder under `runs/`.
-Do not edit the other session's worktree.
-Do not commit private bank data or credentials.
-Keep evaluation cases in a different data set from software tests.
+| Owner | Files or area | Responsibility |
+|---|---|---|
+| Integration | `AGENTS.md`, `README.md`, `LOG.md`, `pyproject.toml`, `docs/`, and shared dependency locks | Approved scope, slice status, API contract, and combined evidence. |
+| Integration | `src/regulatory_agent/contracts.py`, `src/regulatory_agent/contract_types.py`, `src/regulatory_agent/ports.py`, and `data/contracts/slice-01-api.json` | Shared schemas and adapter interfaces before dependent work. |
+| Backend owner | `src/regulatory_agent/cases.py`, `src/regulatory_agent/api.py`, and `src/regulatory_agent/aws_cases.py` | VS1 authorized case operations and persistent records. |
+| Backend owner | `tests/test_slice01_cases.py`, `tests/test_slice01_aws.py`, and `tests/test_slice01_contract.py` | VS1 behavior, adapters, and contract checks. |
+| Frontend owner | `src/web/`, including its package lock and browser tests | React, TypeScript, and Vite application for the selected flow. |
+| Integration | `ops/sam-dev.yaml`, `.github/workflows/dev-release.yml`, `ops/record_release.py`, `ops/wait_for_api.py`, and `ops/deploy_dev.py` | Development configuration, pipeline, and deployment evidence. |
+| Integration | `ops/requirements.in`, `ops/requirements.lock`, and `docs/delivery/spec-slice-01-cases.md` | Python dependencies and the shared VS1 API specification. |
+| Fixture owner | Assigned files under `data/fixtures/`, `data/sources/`, and `evals/fixtures/` | Sources, labels, controlled inputs, and held-out-data separation. |
+| Integration | A dated slice folder under `runs/` | Combined test evidence and the release record. |
 
-## Development procedure
+Record exact new paths in the slice contract before concurrent edits.
+The [VS1 contract](spec-slice-01-cases.md) gives the first application boundary.
+Keep source inputs and held-out answers unchanged unless an assigned fixture task explicitly needs a new version.
 
-1. Start the session in its assigned worktree.
-2. Read `AGENTS.md` and the assigned ticket.
-3. Make sure that the ticket dependencies are completed.
-4. Identify the applicable requirement and acceptance IDs.
-5. Write the failing behavior test.
-6. Record the failing result.
-7. Write the code for the necessary behavior.
-8. Do the relevant tests.
-9. Record the passing result and any remaining failures.
-10. Examine the changed files before a commit.
+## One AWS development pipeline
 
-Default tests must operate without credentials or external services.
-Use different local ports and runtime folders for each session.
-Do not share a writable local database between worktrees.
+All application slices use the same AWS development deployment pipeline.
+The pipeline permits only one deployment at a time.
+It must not cancel an active deployment when another commit arrives.
 
-## Integration procedure
+Before deployment, do offline checks, contract checks, integration tests, and infrastructure validation.
+Review the actual resources, permissions, costs, and recovery procedure.
+A failing check blocks deployment.
 
-1. Make sure that both sessions have saved their current work.
-2. Examine the branch changes against the assigned ticket.
-3. Make sure that the necessary test evidence is available.
-4. Merge one branch into `main`.
-5. Resolve any conflicts against the approved specification.
-6. Do the combined software checks and integration tests.
-7. Record the result in `LOG.md`.
-8. Push the commit with completed verification to GitHub.
-9. Update each session branch from `main` before its next ticket.
+After deployment, do browser acceptance against the deployed URL.
+Use the same commit as the deployment record.
+Include the success flow, denied access, and relevant failure states.
+If a browser check fails, keep the slice incomplete.
 
-Do not give a ticket completed status because it has an isolated branch.
-Passing local tests are not sufficient evidence of live model quality or AWS deployment.
-Additional user authorization is mandatory for production deployment.
+Give every slice release its URL, commit SHA, test results, and known limits.
+Keep failed attempts in the evidence record.
+Do not claim deployment when AWS access or a deployment result is unavailable.
+Production deployment and external submission need additional explicit authorization.
 
-## Current limits
+## Workspace and integration rules
 
-The integrated foundation passed 60 offline tests through `ops/check.py`.
-The [testing guide](guide-session-b-testing.md) gives setup and demonstration commands.
-T1 and T2 are incomplete against the newer D24 requirements.
-T3 through T9 implementation is pending.
+The [worktree guide](guide-next-worktrees.md) records observed folders and the active assignment.
+Use one selected worktree for the active slice.
+Keep Session A and Session B unchanged during the new flow.
+Keep pre-existing changes in `MVP` unchanged during reconciliation.
 
-The retrieval provider is undecided.
-Six existing ArchView file links in the technical blueprint have missing targets.
-The additional Draw.io and SVG architecture files are present.
-The Git setup keeps this current documentation state.
+The integration owner controls shared changes and inclusion in `main`.
+Examine the source differences and test results before integration.
+Push only reviewed commits with recorded checks.
+Update the selected branch from integrated work before the next slice.
+Do not reset, remove, or hide another session's changes.
 
-Use the [language guide](../guide-ste100-writing.md) for Markdown edits.
-Save a language review record for the edited text.
+Default local tests need no credentials or external services.
+Local browser and API tests can use loopback traffic.
+Keep runtime files in ignored worktree-local folders.
+Do not share a writable database between worktrees.
+Do not commit private documents, credentials, or runtime files.
+
+Use the [local test plan](../testing/spec-local-test-plan.md) and [measurement contract](../testing/spec-measurement-contract.md).
+Use the [language guide](../guide-ste100-writing.md) for documentation changes.
+Keep the language review receipt outside the user document.

@@ -15,8 +15,11 @@
 Open the [AWS system view](arch-system.html) to examine components and service boundaries.
 Open the [assessment view](arch-assessment.html) to examine source checks, evidence processing, and human review.
 Both views use ArchView and show the approved design.
-Local contracts and adapters are implemented.
-The complete assessment and reviewer interface are pending.
+
+Local contracts, adapters, and the first case interface are implemented.
+The complete assessment and review interface are pending.
+Each delivery slice includes frontend, backend, AWS configuration, and tests under D27.
+Read the [first-slice contract](../delivery/spec-slice-01-cases.md) for the current implementation boundary.
 
 Use Zoom to examine a view.
 Use Image to export a PNG.

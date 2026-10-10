@@ -1,0 +1,127 @@
+{
+  "recorded_at": "2026-10-10T13:28:00.623616+00:00",
+  "worktree_count": 12,
+  "worktrees": [
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/MVP",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/integration-handoff",
+      "status_lines": [
+        "?? runs/2026-10-10-integration/worktree-map.json"
+      ],
+      "clean": false
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-autonomous-build",
+      "head": "bccbaa068e7cd3068d5ea775769ef60a526133e4",
+      "branch": "work/autonomous-build",
+      "status_lines": [
+        " M LOG.md",
+        " M docs/architecture/02_TECHNICAL_BLUEPRINT.md",
+        " M docs/decisions/gov-decision-log.md"
+      ],
+      "clean": false
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-foundation",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/foundation-measurements",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-session-a",
+      "head": "52256481566025ffaf0b65325339c1f3490eb01c",
+      "branch": "work/session-a",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-session-b",
+      "head": "170bbe83a5fddcfdc0f491dd0348494cbebb5094",
+      "branch": "work/session-b",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t3-documents",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t3-documents",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t4-assessment",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t4-assessment",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t5-agent",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t5-agent",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t6-persistence",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t6-persistence",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t7-review-ui",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t7-review-ui",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t8-aws",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t8-aws",
+      "status_lines": [],
+      "clean": true
+    },
+    {
+      "path": "C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/.worktrees/regulatory-agent-t9-quality",
+      "head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+      "branch": "work/t9-quality",
+      "status_lines": [],
+      "clean": true
+    }
+  ],
+  "status_scope": "Observed before this guide and inventory edit. Other sessions can subsequently change their worktrees.",
+  "integration_baseline": "8e01b7ae99fd005185b23eeee62eaed4bb36e3e6",
+  "prepared_worktree_head": "e68ab5ded446bd8948a54cff0791d1a35e0163df",
+  "source_tests_ops_changes_in_integration_commit": [],
+  "other_worktrees_modified": false,
+  "branches_renamed_or_switched": false,
+  "guide_before_sha256": "5b8e568f4dd2d8eb63df4223f7076df2d3d9505fefcff2883437f8a73be2777f",
+  "guide_after_sha256": "94c562ef375d235446129576178c03c254892a0e1e4b8d150e1bb1b8164b0c0d",
+  "original_guide": "# Active worktree and next user flow\n\nDate: 2026-10-10.\nDecision: [D27](../decisions/gov-decision-log.md#d27---delivery-by-complete-user-flow).\n\nThe user selected delivery by complete user flows.\nThe earlier eight-folder schedule is replaced by the slice order below.\nThe folder count does not establish feature progress.\nOne active worktree contains the selected slice.\nFrontend and backend contributors can work concurrently after agreement on its shared API contract.\n\n## Observed workspace state\n\nParent folder: `C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon`.\nFour worktrees were registered during the 2026-10-10 reconciliation.\nThe original Session A and Session B worktrees had no uncommitted changes.\nThe integration folder contained pre-existing changes that must stay unchanged.\n\n| Folder relative to the parent | Observed branch | Current role |\n|---|---|---|\n| `MVP` | `work/integration-handoff` | Existing integration and documentation changes. |\n| `.worktrees/regulatory-agent-session-a` | `work/session-a` | Integrated fixture source and historical evidence. |\n| `.worktrees/regulatory-agent-session-b` | `work/session-b` | Integrated contracts, adapters, and historical evidence. |\n| `.worktrees/regulatory-agent-autonomous-build` | `work/autonomous-build` | Active D24 reconciliation and VS1 work. |\n\nThe earlier eight task folders were a plan, not verified existing worktrees.\nNo additional worktree is necessary for frontend and backend cooperation within the active slice.\nThe [parallel guide](guide-parallel-development.md#file-ownership) controls file ownership.\n\n## Reconciled foundation\n\nSession A supplied historical RBI content, synthetic bank fixtures, and 20 held-out cases.\nSession B supplied local contracts, adapters, and a credential-free test command.\nTheir integrated baseline passed 60 offline checks.\nThe current D24 additions passed 123 offline checks.\nThe [recorded output](../../runs/2026-10-10-autonomous-build/combined-green.txt) gives the latter result.\n\nThese results do not establish completion of all T1 or T2 acceptance conditions.\nThey do not establish a deployed flow, live provider coverage, or model quality.\nThe [reconciliation record](../../runs/2026-10-10-autonomous-build/reconciliation.json) records the source comparison.\n\n## Current flow and subsequent slices\n\n| Slice | Complete user flow | Required next evidence |\n|---|---|---|\n| VS0 | Reconcile the foundations and agree on the shared VS1 API contract. | Source differences, contract version, and offline results. |\n| VS1 | Sign in, make a case, save it, reload, and reopen the saved case. | Deployed browser acceptance and persistence evidence. |\n| VS2 | Reopen the case, upload evidence, and inspect its source version and location. | Deployed source inspection, upload-limit checks, and denied-access checks. |\n| VS3 | Inspect evidence, assess one obligation, inspect citations, and save a review. | Deployed full flow with original findings, saved review history, and processing labels. |\n| VS4 | Compare regulatory versions and inspect changed obligations and a new assessment. | Version, change, snapshot, and independent review-history evidence. |\n| VS5 | Use all eight features and inspect the complete release results. | Full acceptance inventory, live held-out evaluation, exports, and recorded limits. |\n\nStart with the [VS1 contract](spec-slice-01-cases.md).\nThe [feature tickets](05_FEATURE_TICKETS.md#delivery-slices) define slice acceptance and retained T1-T9 criteria.\nA session must finish its selected flow across browser, server, and AWS development.\nDo not give a slice completed status from isolated frontend or backend work.\nIf access prevents deployment, record the blocked step and keep the slice incomplete.\n\n## AWS development access\n\nThe first flow needs no regulatory retrieval provider or model invocation.\nAWS development still needs a usable account profile, deployment role, and target region.\nThe initial inspection found no AWS or SAM command-line tools and no configured GitHub deployment variables or workflow.\n\nThe user confirmed that an AWS account is not available yet and will set it up.\nDevelopment deployment is blocked by account setup, identity roles, budget configuration, and a test operator.\nLocal implementation, tests, and a reviewed GitHub push can continue.\nThese are setup conditions, not application test failures.\n\nComplete the reviewed AWS development setup before the first deployment.\nKeep credentials outside chat and version control.\nUse the single serialized development pipeline for all later slices.\nDo integration tests before deployment.\nDo browser acceptance after deployment.\nKeep production deployment and external submission outside development authorization.\n\n## Start and finish a session\n\nOpen PowerShell in the active worktree.\n\n```powershell\ncd 'C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-autonomous-build'\ngit status --short\n```\n\nRead `AGENTS.md`, the current slice contract, and D27 before changes.\nKeep existing changes unless their owner assigned them to this session.\nUse the documented project environment for default checks.\nThe [Session B guide](guide-session-b-testing.md) records the existing setup procedure.\n\nGive the user progress against the eight MVP features at each handoff.\nIdentify foundation work separately from a completed feature.\nGive a development release its URL, commit SHA, tests, and known limits.\nRecord failures and blocked checks explicitly.\n",
+  "ste_review": {
+    "skill": "asd-ste100",
+    "issue": "Issue 9, 2025-01-15",
+    "mechanical_exit_code": 0,
+    "mechanical": {
+      "docs\\delivery\\guide-next-worktrees.md": {
+        "status": "REVIEW_REQUIRED",
+        "mode": "descriptive",
+        "sentences_examined": 119,
+        "findings": [],
+        "limits": [
+          "The checker covers selected structural rules only.",
+          "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+          "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+          "A protected-content match does not prove that the meaning stayed the same."
+        ]
+      }
+    },
+    "manual_review": "Kept existing branch names, actual statuses, current D27 delivery sequence, one selected worktree, shared file ownership, and approval boundaries. New descriptive prose is concise.",
+    "dictionary_basis": "Existing project Issue 9 dictionary decisions and Git/software technical terms.",
+    "limits": "Selected wording and meaning reviewed. No full dictionary-compliance or ASD-approval claim."
+  }
+}
