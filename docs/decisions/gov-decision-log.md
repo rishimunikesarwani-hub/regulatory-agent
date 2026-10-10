@@ -535,6 +535,56 @@ Keep current assessments blocked until the source provider and freshness checks 
 Keep the approved baseline model unchanged without claiming a live invocation.
 Record model quality, AWS service connections, and deployed acceptance as unverified.
 
+## D38 - Accepted VS2 cloud document integration
+
+Date: 2026-10-11.
+Status: Implementation clarification within accepted VS2 and authorized AWS development.
+
+VS2 local integration merged through PR8 after its GitHub checks passed.
+Its cloud preparation uses [the cloud source contract](../delivery/spec-slice-02-aws-documents.md).
+Send file bytes directly to private, versioned S3 storage in Mumbai.
+Lambda's synchronous payload limit cannot carry the approved 10 MB uploads.
+Keep the approved limits unchanged.
+Save upload records and case counters through conditional DynamoDB transactions.
+Pin original and extracted object versions before exposing saved source evidence.
+
+Use temporary signed transfer permission for one declared key and file length.
+Configure the S3 SDK with an explicit Mumbai endpoint and virtual addressing.
+Keep every extracted passage accessible through 500-passage source pages in AWS mode.
+Give unfinished uploads explicit status, resume, and cancellation actions.
+Cancellation changes metadata only.
+Retain existing originals and earlier document versions.
+
+The controlled checks cover VS2-S3-01 through VS2-S3-09 and VS2-AWS-01 through VS2-AWS-10.
+They also cover VS2-AWS-BT01 through VS2-AWS-BT04.
+These checks contribute to T3, T6, T7, T8, and T9.
+They do not establish live AWS acceptance or model quality.
+Read the [preparation guide](../delivery/guide-slice-02-aws-documents.md) for the evidence and remaining deployment conditions.
+
+D34 and D35 remain in force.
+The user chose to keep CloudFront while AWS account verification is pending.
+The new cloud permission template has not been applied.
+VS3 remains in its separate review branch until the pending user review.
+No earlier product decision or approval record is replaced.
+
+## D39 - VS3 integration preparation
+
+Date: 2026-10-11.
+Status: Implementation clarification within authorized VS3 local development.
+
+Use a different candidate worktree for checks of VS3 and current accepted `main` changes.
+The [integration contract](../delivery/spec-slice-03-integration.md) gives its ports, database, and check IDs.
+Keep the existing VS3 review build and its feedback records unchanged.
+Keep the user-review condition before merge into `main` and VS4 development.
+
+The candidate keeps cloud document actions and local controlled assessment actions in their permitted modes.
+It includes the accepted delayed-load focus correction.
+Use one browser configuration for all four suites.
+Keep earlier evidence and acceptance history unchanged.
+
+Model profile metadata does not establish runtime permissions, invocation logging, or live model quality.
+No product scope, AWS release condition, or earlier approval record changes.
+
 ## How to add a decision
 
 Add a new entry with:

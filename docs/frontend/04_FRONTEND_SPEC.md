@@ -259,3 +259,14 @@ VS3 user acceptance and AWS acceptance stay pending.
 Read the [VS3 contract](../delivery/spec-slice-03-assessment.md) and [browser result](../../runs/2026-10-10-slice-03-assessment/browser-green-v4.txt).
 
 [Next: Feature tickets](../delivery/05_FEATURE_TICKETS.md)
+## VS2 AWS implementation clarification
+
+Date: 2026-10-11. Source: D38 and the accepted VS2 document scope.
+The AWS document interface uploads directly to private S3 storage through temporary API permission.
+It keeps unfinished upload identifiers across the Cognito callback.
+It gives explicit status, resume, and cancellation actions after an uncertain upload.
+Cancellation changes metadata only.
+Source inspection shows at most 500 passages per page in AWS mode.
+Previous and next controls give access to every extracted passage.
+The local upload protocol and approved source limits stay unchanged.
+Read the [cloud source contract](../delivery/spec-slice-02-aws-documents.md).

@@ -3,7 +3,7 @@
 Date: 2026-10-11.
 Status: Preparation within authorized VS3 development. User acceptance is pending.
 
-An integration candidate combines branch changes for checks before acceptance.
+An integration candidate is a Git branch for checks of combined application changes before acceptance.
 It is not the accepted `main` version.
 Use this contract with [the VS3 contract](spec-slice-03-assessment.md).
 Keep the approved feature scope and assessment limits unchanged.
@@ -30,14 +30,16 @@ Keep current assessments blocked when freshness verification is unavailable.
 
 | ID | Necessary behavior |
 |---|---|
-| VS3-INT01 | Pass the existing delayed-load focus check, VS1-BT04, with the VS3 interface present. |
-| VS3-INT02 | Pass all backend checks from VS1, VS2, VS2 AWS, and VS3 in the combined candidate. |
-| VS3-INT03 | Pass all four browser suites through one isolated test configuration. |
-| VS3-INT04 | Build the combined TypeScript interface without errors. |
+| VS3-INT01 | VS1-BT04 must show unchanged keyboard focus after the delayed case list loads. |
+| VS3-INT02 | All backend checks from VS1, VS2, VS2 AWS, and VS3 must return code `0`. |
+| VS3-INT03 | All four browser suites must return code `0` through one isolated test configuration. |
+| VS3-INT04 | The combined TypeScript build must return code `0`. |
 | VS3-INT05 | Keep each earlier evidence record and acceptance state unchanged. |
 
-First, demonstrate the delayed-load failure on the existing VS3 branch source.
-Then combine the accepted `main` changes and correct merge conflicts.
+First, do the delayed-load check on the existing VS3 branch source.
+Save its expected failure.
+Then merge the accepted `main` changes into the candidate.
+Correct merge conflicts.
 Use the earlier failing tests for unchanged feature behavior.
 Save different failing and passing records for this integration check.
 

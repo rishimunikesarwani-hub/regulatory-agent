@@ -1,9 +1,10 @@
 import { expect, test, type Page } from '@playwright/test';
 import { readFileSync } from 'node:fs';
+const evidenceDir = process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-10-slice-03-assessment';
 
 async function assessment(page: Page) {
   await page.goto('/');
-  expect((await (await page.request.get('/config.json')).json()).api_url).toBe('http://127.0.0.1:8131');
+  expect((await (await page.request.get('/config.json')).json()).api_url).toBe(process.env.LOCAL_TEST_API_URL || 'http://127.0.0.1:8131');
   await page.getByRole('button', { name: 'Continue with local identity' }).click();
   await page.getByLabel('Fictional bank name').fill(`Fictional assessment bank ${Date.now()}`);
   await page.getByLabel('I confirm this case contains fictional data only.', {exact: true}).check();
@@ -36,8 +37,8 @@ test('VS3-BT01 assessment, exact citation, saved approval and refresh', async ({
   await page.getByRole('button', {name: 'Continue with local identity'}).click();
   await expect(result).toContainText('Approved · Revision 1');
   expect(new URL(page.url()).searchParams.get('assessment')).toBe(job);
-  await page.screenshot({path: '../../runs/2026-10-10-slice-03-assessment/assessment-desktop.png', fullPage: true});
-  await result.screenshot({path: '../../runs/2026-10-10-slice-03-assessment/assessment-review.png'});
+  await page.screenshot({path: `${evidenceDir}/assessment-desktop.png`, fullPage: true});
+  await result.screenshot({path: `${evidenceDir}/assessment-review.png`});
 });
 
 test('VS3-BT02 edited and rejected reviews keep the original finding and evidence requests', async ({page}) => {
@@ -84,7 +85,7 @@ test('VS3-BT03 mobile review keeps the draft after stale revision and checks unc
   await page.getByRole('button', {name: 'Refresh assessment', exact: true}).click();
   await expect(result).toContainText('Edited · Revision 1');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-  await page.screenshot({path: '../../runs/2026-10-10-slice-03-assessment/assessment-mobile.png', fullPage: true});
+  await page.screenshot({path: `${evidenceDir}/assessment-mobile.png`, fullPage: true});
 });
 
 test('VS3-BT04 failed refresh cannot authorize another uncertain review save', async ({page}) => {

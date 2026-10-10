@@ -1,0 +1,73 @@
+
+
+
+## 2026-10-11 - VS2 AWS preparation integrated
+
+PR10 merged after its GitHub checks passed for `88e215479902aad48324af0b3a8535bb07ade27c`.
+The integration commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+Run `38083838645` passed 204 backend checks, 26 browser checks, and the frontend build.
+Deployment was skipped.
+The integration worktree advanced through a fast-forward update.
+The user's untracked frontend reference images remain unchanged.
+
+The cloud extension is integrated under the accepted VS2 scope and existing merge authorization.
+VS3 remains in its review worktree and PR9.
+Its pending user review still controls merge and VS4 development.
+A read-only preview identified the shared files that need reconciliation after VS3 acceptance.
+No change was made to the VS3 review branch or feedback services.
+
+The development stack remains `ROLLBACK_COMPLETE`.
+The new storage and permissions have not been deployed.
+CloudFront verification and failed-stack recovery remain necessary.
+Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
+Next: obtain VS3 user acceptance and AWS verification.
+Keep live assessment integration and the complete project marked incomplete.
+
+
+The AWS document branch merged through PR10 after its GitHub checks passed.
+The integrated commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+It has not been deployed.
+
+
+| VS2 AWS | `regulatory-agent-t3-aws-documents` | `work/t3-aws-documents` | `5192` | `8190` | `runs/private/slice-02-aws/` |
+VS2 local work and its controlled AWS extension are integrated.
+VS3 is selected for local development and remains at its user-review checkpoint.
+The VS4 and VS5 assignments remain reserved.
+The VS2 AWS browser checks use API port `8191` and their own browser-test database.
+Its feedback ports are reserved. Feedback services are not running from that worktree.
+
+
+VS2 local work merged through PR8 after its checks passed.
+The controlled AWS document extension merged through PR10 after its checks passed.
+Its combined checks passed 204 Python tests and 26 browser tests.
+Read the [cloud preparation guide](delivery/guide-slice-02-aws-documents.md) for the remaining deployment conditions.
+VS3 is ready in its separate review worktree at `http://127.0.0.1:5183/`.
+The user review and subsequent integration remain pending.
+
+
+# VS2 cloud preparation integration
+
+Date: 2026-10-11.
+Status: Integrated. Live AWS acceptance remains pending.
+
+PR10 merged after GitHub checks passed for `88e215479902aad48324af0b3a8535bb07ade27c`.
+The integration commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+The check run passed 204 backend checks, 26 browser checks, and the frontend build.
+Deployment was skipped.
+Read [PR10](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/10) and [its check run](https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38083838645).
+
+The integration worktree advanced with a fast-forward update.
+The user's untracked `docs/frontend/Design Ideas/` files remain unchanged.
+The VS3 review branch and feedback services remain unchanged.
+VS3 user acceptance and its integration remain pending.
+The future integration needs reconciliation in the shared interface, test configuration, and delivery records.
+The read-only merge preview did not change either branch.
+
+The AWS development stack remains `ROLLBACK_COMPLETE`.
+CloudFront verification and failed-stack recovery remain necessary before deployment.
+The document bucket and new runtime permissions have not been installed.
+The USD 25 monthly budget alert remains a notification, not a spending cap.
+No live cloud document acceptance or live model-quality result is claimed.
+
+The documentation received mechanical and meaning-preservation review.
+The dictionary and approved-meaning review remains incomplete.

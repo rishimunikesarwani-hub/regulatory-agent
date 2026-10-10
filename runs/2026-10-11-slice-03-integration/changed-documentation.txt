@@ -1,0 +1,109 @@
+## 2026-10-11 - Isolated VS3 integration candidate
+
+The candidate branch is `work/t4-integration-candidate` in a different worktree.
+Its specification and behavior tests preceded the merge from accepted `main`.
+The delayed-load focus check failed against the earlier VS3 source.
+The candidate now includes the accepted focus correction and cloud document flow.
+The controlled assessment and saved review behavior stay unchanged.
+
+The first combined browser attempt stopped after a redirect fixture used the earlier port.
+The fixture now uses the selected configuration and keeps the origin check.
+The combined backend suite completed 215 tests without failure.
+The combined browser suite completed 33 tests without failure.
+The interface build and final TypeScript checks returned code `0`.
+Desktop and mobile screenshots show the combined fictional flow.
+
+Read the [integration review record](runs/2026-10-11-slice-03-integration/review-integration.md) for evidence and limits.
+Read D39 and the [integration contract](docs/delivery/spec-slice-03-integration.md) for the preparation boundary.
+The original VS3 review worktree, database, services, and draft PR9 stayed unchanged.
+No VS3 merge into `main` or VS4 start occurred.
+
+Read-only AWS metadata lists the selected active model profile in Mumbai and Hyderabad only.
+This result does not establish runtime model access or quality.
+The application stack still has status `ROLLBACK_COMPLETE`.
+No model invocation or AWS resource change occurred.
+
+Next: obtain the pending VS3 user decision.
+Keep AWS deployment pending until account verification and failed-stack recovery are complete.
+Keep live assessment integration and the complete project marked incomplete.
+
+## 2026-10-11 - Integration keyboard-focus correction
+
+CI run `38084172144` failed the existing keyboard check after the documentation update.
+The unchanged application source exposed a timing-dependent focus change.
+A delayed case-list response could move focus away from an active form control.
+A new VS1-BT04 check reproduced the failure before code changed.
+
+Branch `work/t3-aws-documents-focus` corrects automatic heading focus.
+It keeps active form controls focused when the case-list response completes.
+All 27 browser checks and the frontend build passed locally.
+The backend source remains unchanged from the integrated 204-check result.
+Earlier screenshots were restored. The new screenshots have a separate evidence directory.
+Read the [focus evidence](runs/2026-10-11-slice-02-aws-documents/focus-review.md).
+
+VS3 user acceptance and AWS verification remain pending.
+Next: finish GitHub checks and merge the verified focus correction.
+
+## 2026-10-11 - Focus correction integrated after GitHub checks
+
+PR11 merged after run `38084594559` passed for `120c4748862f064856586f00bdb921d31ad69fac`.
+The integration commit is `af59cc6cc8507b5b59d8866ae0899718172e3d47`.
+GitHub verified 204 backend checks, 27 browser checks, and the frontend build.
+Deployment was skipped.
+The correction preserves form focus when a delayed case-list request completes.
+The earlier failed CI result and deterministic red test remain recorded.
+
+The integration worktree advanced through a fast-forward update.
+The user's reference images remain untracked and unchanged.
+VS3 stays in PR9 and its separate review worktree.
+Its feedback API and interface remain active on ports `8130` and `5183`.
+No VS4 work has started.
+
+AWS account verification and failed-stack recovery still block deployment.
+The prepared document storage and runtime permissions have not been applied.
+Live model integration and complete project acceptance remain pending.
+Next: obtain VS3 user acceptance and AWS verification.
+
+
+## D39 - VS3 integration preparation
+
+Date: 2026-10-11.
+Status: Implementation clarification within authorized VS3 local development.
+
+Use a different candidate worktree for checks of VS3 and current accepted `main` changes.
+The [integration contract](../delivery/spec-slice-03-integration.md) gives its ports, database, and check IDs.
+Keep the existing VS3 review build and its feedback records unchanged.
+Keep the user-review condition before merge into `main` and VS4 development.
+
+The candidate keeps cloud document actions and local controlled assessment actions in their permitted modes.
+It includes the accepted delayed-load focus correction.
+Use one browser configuration for all four suites.
+Keep earlier evidence and acceptance history unchanged.
+
+Model profile metadata does not establish runtime permissions, invocation logging, or live model quality.
+No product scope, AWS release condition, or earlier approval record changes.
+
+
+
+The VS3 candidate contains current `main` changes and VS3 for different integration checks.
+Its browser tests use API port `8193` and their own database.
+Its feedback ports are reserved. Feedback services are not running from that worktree.
+The candidate does not change the review build or establish user acceptance.
+Read [the integration contract](spec-slice-03-integration.md) for its acceptance conditions.
+Use `browser-tests.sqlite` for browser tests and `feedback.sqlite` for manual feedback in each later database directory.
+
+The [integration candidate](delivery/spec-slice-03-integration.md) contains VS3 and current `main` changes for different checks.
+This candidate does not change the running review build or establish user acceptance.
+
+| Integration candidate | Git | A branch for checks of combined application changes before acceptance. |
+
+
+VS2 local integration merged through PR8 after its GitHub checks passed.
+The integrated AWS document flow passed 204 backend checks and 27 browser checks after the focus correction.
+Its templates and cloud protocol are prepared. Deployment and AWS acceptance remain pending.
+
+VS3 local checks passed in its isolated review worktree.
+The backend suite passed 189 checks. The combined browser suite passed 26 checks.
+VS3 user acceptance, integration into `main`, and AWS acceptance stay pending.
+The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
+The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.

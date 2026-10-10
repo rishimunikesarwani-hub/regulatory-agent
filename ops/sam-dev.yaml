@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: Regulatory Agent development slice 01. Fictional cases only.
+Description: Regulatory Agent development cases and documents. Fictional data only.
 Metadata:
   AWSToolsMetrics:
     AWSAgentToolkit: aws-cloudformation@3
@@ -36,6 +36,48 @@ Resources:
         - {AttributeName: SK, KeyType: RANGE}
       SSESpecification: {SSEEnabled: true}
       PointInTimeRecoverySpecification: {PointInTimeRecoveryEnabled: true}
+  DocumentsBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketName: {Fn::Sub: 'regulatory-agent-dev-s01-documents-${AWS::AccountId}-ap-south-1'}
+      VersioningConfiguration: {Status: Enabled}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules: [{ObjectOwnership: BucketOwnerEnforced}]
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+      CorsConfiguration:
+        CorsRules:
+          - AllowedOrigins: [{Fn::Sub: 'https://${Frontend.DomainName}'}]
+            AllowedMethods: [GET, POST]
+            AllowedHeaders: [Content-Type]
+            MaxAge: 300
+  DocumentsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: {Ref: DocumentsBucket}
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - {Fn::GetAtt: [DocumentsBucket, Arn]}
+              - {Fn::Sub: '${DocumentsBucket.Arn}/*'}
+            Condition: {Bool: {'aws:SecureTransport': false}}
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:PutObject
+            Resource: {Fn::Sub: '${DocumentsBucket.Arn}/*'}
+            Condition: {StringNotEquals: {'s3:x-amz-server-side-encryption': AES256}}
   FrontendBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
@@ -165,7 +207,7 @@ Resources:
       CorsConfiguration:
         AllowOrigins: [{Fn::Sub: 'https://${Frontend.DomainName}'}]
         AllowMethods: [GET, POST, OPTIONS]
-        AllowHeaders: [Authorization, Content-Type]
+        AllowHeaders: [Authorization, Content-Type, Idempotency-Key]
         MaxAge: 300
       Auth:
         DefaultAuthorizer: Cognito
@@ -181,19 +223,21 @@ Resources:
     Metadata:
       com.aws.cloudformation.Context:
         why: Use a fixed role so application deployment cannot expand its own permissions.
-        must: Permit only development case records and application logs.
+        must: Permit only development case records, document objects, and application logs.
     Properties:
       Role: {Ref: CaseRuntimeRoleArn}
       CodeUri: ../runs/private/sam-package/
       Handler: regulatory_agent.aws_cases.handler
       Runtime: python3.12
       Architectures: [x86_64]
-      MemorySize: 256
-      Timeout: 10
+      MemorySize: 512
+      Timeout: 29
       Environment:
         Variables:
           APP_ENV: aws
           CASES_TABLE: {Ref: CasesTable}
+          DOCUMENTS_BUCKET: {Ref: DocumentsBucket}
+          AWS_ACCOUNT_ID: {Ref: 'AWS::AccountId'}
           USER_POOL_ID: {Ref: UserPool}
           USER_POOL_CLIENT_ID: {Ref: UserPoolClient}
           COMMIT_SHA: {Ref: CommitSha}
@@ -207,6 +251,27 @@ Resources:
         ReadCase:
           Type: HttpApi
           Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        ReserveUpload:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/uploads', Method: POST, PayloadFormatVersion: '2.0'}
+        UploadStatus:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/uploads/{upload_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        FinalizeUpload:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/uploads/{upload_id}/finalize', Method: POST, PayloadFormatVersion: '2.0'}
+        CancelUpload:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/uploads/{upload_id}/cancel', Method: POST, PayloadFormatVersion: '2.0'}
+        ListDocuments:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/documents', Method: GET, PayloadFormatVersion: '2.0'}
+        ReadDocument:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/documents/{version_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        DownloadDocument:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/documents/{version_id}/original', Method: GET, PayloadFormatVersion: '2.0'}
         Health:
           Type: HttpApi
           Properties:
@@ -230,4 +295,5 @@ Outputs:
   UserPoolClientId: {Value: {Ref: UserPoolClient}}
   CognitoDomain: {Value: {Fn::Sub: 'https://${UserPoolDomain}.auth.${AWS::Region}.amazoncognito.com'}}
   CasesTable: {Value: {Ref: CasesTable}}
+  DocumentsBucket: {Value: {Ref: DocumentsBucket}}
   CommitSha: {Value: {Ref: CommitSha}}

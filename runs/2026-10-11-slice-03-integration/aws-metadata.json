@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-10T20:57:24.394794+00:00",
+  "operation": "read_only_metadata",
+  "request_region": "ap-south-1",
+  "inference_profile_id": "in.openai.gpt-5.6-luna",
+  "status": "ACTIVE",
+  "destination_regions": [
+    "ap-south-1",
+    "ap-south-2"
+  ],
+  "destination_model_ids": [
+    "openai.gpt-5.6-luna"
+  ],
+  "invocation_logging_verified": false,
+  "model_invocation_performed": false,
+  "runtime_permissions_verified": false,
+  "application_deployment_performed": false,
+  "application_stack": {
+    "StackName": "regulatory-agent-dev-s01",
+    "Status": "ROLLBACK_COMPLETE"
+  }
+}

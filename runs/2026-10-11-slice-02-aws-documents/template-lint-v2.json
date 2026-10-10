@@ -1,0 +1,7 @@
+{
+  "command": "cfn-lint ops/sam-dev.yaml ops/aws-development-bootstrap.yaml",
+  "version": "cfn-lint 1.57.2",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": ""
+}

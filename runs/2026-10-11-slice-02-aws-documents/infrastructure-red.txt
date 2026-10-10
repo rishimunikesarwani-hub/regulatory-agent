@@ -1,0 +1,35 @@
+test_cognito_code_flow_and_case_routes_are_authorized (test_slice01_deployment.DeploymentContractTests.test_cognito_code_flow_and_case_routes_are_authorized) ... ok
+test_deployment_trust_requires_the_verified_repository_and_environment (test_slice01_deployment.DeploymentContractTests.test_deployment_trust_requires_the_verified_repository_and_environment) ... ok
+test_development_traffic_limits_fit_the_verified_account_quota (test_slice01_deployment.DeploymentContractTests.test_development_traffic_limits_fit_the_verified_account_quota) ... ok
+test_execution_role_can_use_only_the_required_aws_transform (test_slice01_deployment.DeploymentContractTests.test_execution_role_can_use_only_the_required_aws_transform) ... ok
+test_lambda_role_has_only_case_document_and_log_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_only_case_document_and_log_access) ... FAIL
+test_only_one_serialized_dev_pipeline_and_checks_before_deploy (test_slice01_deployment.DeploymentContractTests.test_only_one_serialized_dev_pipeline_and_checks_before_deploy) ... ok
+test_private_storage_and_region_are_enforced (test_slice01_deployment.DeploymentContractTests.test_private_storage_and_region_are_enforced) ... ok
+test_vs2_private_document_bucket_and_routes_preserve_cloud_contract (test_slice01_deployment.DeploymentContractTests.test_vs2_private_document_bucket_and_routes_preserve_cloud_contract) ... ERROR
+
+======================================================================
+ERROR: test_vs2_private_document_bucket_and_routes_preserve_cloud_contract (test_slice01_deployment.DeploymentContractTests.test_vs2_private_document_bucket_and_routes_preserve_cloud_contract)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\tests\test_slice01_deployment.py", line 94, in test_vs2_private_document_bucket_and_routes_preserve_cloud_contract
+    bucket = resources['DocumentsBucket']
+             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'DocumentsBucket'
+
+======================================================================
+FAIL: test_lambda_role_has_only_case_document_and_log_access (test_slice01_deployment.DeploymentContractTests.test_lambda_role_has_only_case_document_and_log_access)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\tests\test_slice01_deployment.py", line 82, in test_lambda_role_has_only_case_document_and_log_access
+    self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query",
+AssertionError: Items in the second set but not the first:
+'s3:GetObjectVersion'
+'s3:GetBucketVersioning'
+'s3:GetObject'
+'s3:PutObject'
+'s3:GetBucketLocation'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.584s
+
+FAILED (failures=1, errors=1)

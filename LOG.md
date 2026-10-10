@@ -526,3 +526,122 @@ No Support message was sent by this session.
 No cloud resource was deleted manually.
 
 Next: obtain VS3 local feedback before merge and VS4 development.
+
+## 2026-10-11 - Accepted VS2 AWS document preparation
+
+VS2 local integration merged through PR8 at `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
+VS3 remains in its separate review worktree and draft PR9.
+Its pending user review controls merge and VS4 development.
+
+Branch `work/t3-aws-documents` prepares the accepted document flow for AWS.
+The cloud specification preceded storage, cloud API, infrastructure, and browser implementation.
+The prepared flow includes direct private S3 upload, durable reservations, bounded extraction, conditional counters, source pages, and original downloads.
+Retries retain the same upload identifier and saved object versions.
+The local protocol and approved limits stay unchanged.
+
+The controlled backend suite passed 204 checks.
+The combined browser suite passed 26 checks.
+The frontend build and both template lint checks passed.
+AWS IAM Access Analyzer returned no findings for the prepared runtime identity policy.
+This validation did not apply permissions or prove live service access.
+
+The API test uses port `8191` and `runs/private/slice-02-aws/browser-tests.sqlite`.
+The browser uses port `5192` during its checks.
+Feedback ports remain reserved. New feedback services are not running.
+The accepted VS1 and VS2 feedback services and pending VS3 review services remain unchanged.
+
+CloudFront account verification and failed-stack recovery still block deployment.
+The new storage and permission templates have not been applied to AWS.
+No cloud resource was created or deleted during this preparation.
+The Support verification request has not been sent by this session.
+
+Read the [cloud preparation guide](docs/delivery/guide-slice-02-aws-documents.md) and [evidence](runs/2026-10-11-slice-02-aws-documents/review-cloud-preparation.md).
+Next: finish GitHub checks for the cloud document branch.
+Keep VS3 acceptance and AWS verification pending until their required evidence arrives.
+
+## 2026-10-11 - VS2 AWS preparation integrated
+
+PR10 merged after its GitHub checks passed for `88e215479902aad48324af0b3a8535bb07ade27c`.
+The integration commit is `a53eb94d92aecddda640ffece5c128877ecf75ff`.
+Run `38083838645` passed 204 backend checks, 26 browser checks, and the frontend build.
+Deployment was skipped.
+The integration worktree advanced through a fast-forward update.
+The user's untracked frontend reference images remain unchanged.
+
+The cloud extension is integrated under the accepted VS2 scope and existing merge authorization.
+VS3 remains in its review worktree and PR9.
+Its pending user review still controls merge and VS4 development.
+A read-only preview identified the shared files that need reconciliation after VS3 acceptance.
+No change was made to the VS3 review branch or feedback services.
+
+The development stack remains `ROLLBACK_COMPLETE`.
+The new storage and permissions have not been deployed.
+CloudFront verification and failed-stack recovery remain necessary.
+Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
+Next: obtain VS3 user acceptance and AWS verification.
+
+## 2026-10-11 - Isolated VS3 integration candidate
+
+The candidate branch is `work/t4-integration-candidate` in a different worktree.
+Its specification and behavior tests preceded the merge from accepted `main`.
+The delayed-load focus check failed against the earlier VS3 source.
+The candidate now includes the accepted focus correction and cloud document flow.
+The controlled assessment and saved review behavior stay unchanged.
+
+The first combined browser attempt stopped after a redirect fixture used the earlier port.
+The fixture now uses the selected configuration and keeps the origin check.
+The combined backend suite completed 215 tests without failure.
+The combined browser suite completed 33 tests without failure.
+The interface build and final TypeScript checks returned code `0`.
+Desktop and mobile screenshots show the combined fictional flow.
+
+Read the [integration review record](runs/2026-10-11-slice-03-integration/review-integration.md) for evidence and limits.
+Read D39 and the [integration contract](docs/delivery/spec-slice-03-integration.md) for the preparation boundary.
+The original VS3 review worktree, database, services, and draft PR9 stayed unchanged.
+No VS3 merge into `main` or VS4 start occurred.
+
+Read-only AWS metadata lists the selected active model profile in Mumbai and Hyderabad only.
+This result does not establish runtime model access or quality.
+The application stack still has status `ROLLBACK_COMPLETE`.
+No model invocation or AWS resource change occurred.
+
+Next: obtain the pending VS3 user decision.
+Keep AWS deployment pending until account verification and failed-stack recovery are complete.
+Keep live assessment integration and the complete project marked incomplete.
+
+## 2026-10-11 - Integration keyboard-focus correction
+
+CI run `38084172144` failed the existing keyboard check after the documentation update.
+The unchanged application source exposed a timing-dependent focus change.
+A delayed case-list response could move focus away from an active form control.
+A new VS1-BT04 check reproduced the failure before code changed.
+
+Branch `work/t3-aws-documents-focus` corrects automatic heading focus.
+It keeps active form controls focused when the case-list response completes.
+All 27 browser checks and the frontend build passed locally.
+The backend source remains unchanged from the integrated 204-check result.
+Earlier screenshots were restored. The new screenshots have a separate evidence directory.
+Read the [focus evidence](runs/2026-10-11-slice-02-aws-documents/focus-review.md).
+
+VS3 user acceptance and AWS verification remain pending.
+Next: finish GitHub checks and merge the verified focus correction.
+
+## 2026-10-11 - Focus correction integrated after GitHub checks
+
+PR11 merged after run `38084594559` passed for `120c4748862f064856586f00bdb921d31ad69fac`.
+The integration commit is `af59cc6cc8507b5b59d8866ae0899718172e3d47`.
+GitHub verified 204 backend checks, 27 browser checks, and the frontend build.
+Deployment was skipped.
+The correction preserves form focus when a delayed case-list request completes.
+The earlier failed CI result and deterministic red test remain recorded.
+
+The integration worktree advanced through a fast-forward update.
+The user's reference images remain untracked and unchanged.
+VS3 stays in PR9 and its separate review worktree.
+Its feedback API and interface remain active on ports `8130` and `5183`.
+No VS4 work has started.
+
+AWS account verification and failed-stack recovery still block deployment.
+The prepared document storage and runtime permissions have not been applied.
+Live model integration and complete project acceptance remain pending.
+Next: obtain VS3 user acceptance and AWS verification.

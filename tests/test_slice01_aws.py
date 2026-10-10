@@ -4,6 +4,8 @@ import copy
 import json
 import time
 import unittest
+from botocore.paginate import Paginator
+from botocore.session import Session
 
 from regulatory_agent.aws_cases import DynamoDBCases, create_handler
 from regulatory_agent.cases import CaseService
@@ -14,6 +16,11 @@ class FakeDynamoDB:
     def __init__(self):
         self.items = {}
         self.calls = []
+
+    def get_paginator(self, operation):
+        assert operation == 'query'
+        return Paginator(self.query, {'input_token': 'ExclusiveStartKey', 'output_token': 'LastEvaluatedKey',
+                         'result_key': 'Items', 'limit_key': 'Limit'}, Session().get_service_model('dynamodb').operation_model('Query'))
 
     def put_item(self, **kwargs):
         self.calls.append(("put", kwargs))
@@ -30,7 +37,8 @@ class FakeDynamoDB:
     def query(self, **kwargs):
         self.calls.append(("query", kwargs))
         owner = kwargs["ExpressionAttributeValues"][":owner"]["S"]
-        items = [item for (pk, _), item in sorted(self.items.items()) if pk == owner]
+        prefix = kwargs['ExpressionAttributeValues'].get(':case', {}).get('S', '')
+        items = [item for (pk, sk), item in sorted(self.items.items()) if pk == owner and sk.startswith(prefix)]
         start = kwargs.get("ExclusiveStartKey")
         if start:
             items = [item for item in items if item["SK"]["S"] > start["SK"]["S"]]
@@ -82,7 +90,7 @@ class AWSCaseSliceTests(unittest.TestCase):
         queries = [args for name, args in self.client.calls if name == "query"]
         self.assertEqual(len(queries), 3)
         for arguments in queries:
-            self.assertEqual(arguments["KeyConditionExpression"], "#pk = :owner")
+            self.assertEqual(arguments["KeyConditionExpression"], "#pk = :owner AND begins_with(#sk, :case)")
             self.assertEqual(arguments["ExpressionAttributeValues"][":owner"], {"S": "OWNER#operator-a"})
 
     def test_vs1_aws01_cross_owner_read_returns_404(self):

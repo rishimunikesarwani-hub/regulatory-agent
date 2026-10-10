@@ -39,7 +39,7 @@ async function api(config: Config, path: string, body?: object): Promise<unknown
 
 function setCaseURL(id?: string): void {
   const url = new URL(location.href);
-  if (url.searchParams.get('case') !== id) { url.searchParams.delete('source'); url.searchParams.delete('assessment'); }
+  if (url.searchParams.get('case') !== id) for (const key of ['source', 'assessment', 'upload', 'uploadKey']) url.searchParams.delete(key);
   if (id) url.searchParams.set('case', id);
   else url.searchParams.delete('case');
   history.replaceState(null, '', url.pathname + url.search);
@@ -127,7 +127,9 @@ function App() {
     })();
   }, []);
 
-  useEffect(() => { if (signedIn && !loading) heading.current?.focus(); }, [signedIn, loading, selected]);
+  useEffect(() => {
+    if (signedIn && !initializing && !loading && document.activeElement === document.body) heading.current?.focus();
+  }, [signedIn, initializing, loading, selected]);
 
   async function signIn(): Promise<void> {
     if (!config) return;
@@ -200,9 +202,8 @@ function App() {
             {notice && <p className="success" role="status">{notice}</p>}
             <div className="page-heading"><div><span className="badge">Synthetic demo</span><h1 tabIndex={-1} ref={heading}>{selected.bank_profile.name}</h1><p>Your fictional bank profile is saved.</p></div><span className="status-label">{assessmentState}</span></div>
             <section className="panel detail-panel"><h2>Case details</h2><dl><div><dt>Bank profile</dt><dd>{selected.bank_profile.name}</dd></div><div><dt>Data type</dt><dd>Fictional data</dd></div><div><dt>Created</dt><dd>{new Date(selected.created_at).toLocaleString()}</dd></div><div><dt>Case ID</dt><dd className="identifier">{selected.case_id}</dd></div></dl></section>
-            {config?.mode === 'local' ? <div key={selected.case_id}><DocumentsPanel config={config} caseId={selected.case_id} onExpired={handleExpired} onUploaded={() => setDocumentRevision(n => n + 1)} />
-              <AssessmentPanel config={config} caseId={selected.case_id} documentRevision={documentRevision} onExpired={handleExpired} onState={setAssessmentState} /></div> :
-              <section className="next-step"><h2>Your case is ready to reopen</h2><p>Document uploads and regulatory assessments will be available in a later release. No assessment has run.</p></section>}
+            {config && <div key={selected.case_id}><DocumentsPanel config={config} caseId={selected.case_id} onExpired={handleExpired} onUploaded={() => setDocumentRevision(n => n + 1)} />
+              {config.mode === 'local' && <AssessmentPanel config={config} caseId={selected.case_id} documentRevision={documentRevision} onExpired={handleExpired} onState={setAssessmentState} />}</div>}
           </>}
         </>}
       </>}

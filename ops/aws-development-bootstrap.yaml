@@ -80,7 +80,7 @@ Resources:
     Metadata:
       com.aws.cloudformation.Context:
         why: Application deployment uses a fixed role without IAM modification permissions.
-        must: Permit only development case records and application logs.
+        must: Permit only development case records, document objects, and application logs.
     Properties:
       RoleName: regulatory-agent-dev-case-runtime
       AssumeRolePolicyDocument:
@@ -100,6 +100,18 @@ Resources:
               - Effect: Allow
                 Action: [logs:CreateLogStream, logs:PutLogEvents]
                 Resource: {Fn::Sub: 'arn:aws:logs:ap-south-1:${AWS::AccountId}:log-group:/aws/lambda/regulatory-agent-dev-s01-*:log-stream:*'}
+              - Effect: Allow
+                Action: [s3:GetBucketLocation, s3:GetBucketVersioning]
+                Resource: {Fn::Sub: 'arn:aws:s3:::regulatory-agent-dev-s01-documents-${AWS::AccountId}-ap-south-1'}
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1}}
+              - Effect: Allow
+                Action: [s3:GetObject, s3:GetObjectVersion]
+                Resource: {Fn::Sub: 'arn:aws:s3:::regulatory-agent-dev-s01-documents-${AWS::AccountId}-ap-south-1/owners/*'}
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1}}
+              - Effect: Allow
+                Action: [s3:PutObject]
+                Resource: {Fn::Sub: 'arn:aws:s3:::regulatory-agent-dev-s01-documents-${AWS::AccountId}-ap-south-1/owners/*'}
+                Condition: {StringEquals: {'aws:RequestedRegion': ap-south-1, 's3:x-amz-server-side-encryption': AES256}}
   CloudFormationRole:
     Type: AWS::IAM::Role
     Metadata:
@@ -135,7 +147,7 @@ Resources:
                   - {Fn::GetAtt: [ArtifactBucket, Arn]}
                   - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
               - Effect: Allow
-                Action: [s3:CreateBucket, s3:DeleteBucket, s3:GetBucketLocation, s3:GetBucketPolicy, s3:PutBucketPolicy, s3:DeleteBucketPolicy, s3:GetBucketPublicAccessBlock, s3:PutBucketPublicAccessBlock, s3:GetBucketOwnershipControls, s3:PutBucketOwnershipControls, s3:GetEncryptionConfiguration, s3:PutEncryptionConfiguration, s3:GetBucketTagging, s3:PutBucketTagging, s3:ListBucket]
+                Action: [s3:CreateBucket, s3:DeleteBucket, s3:GetBucketLocation, s3:GetBucketPolicy, s3:PutBucketPolicy, s3:DeleteBucketPolicy, s3:GetBucketPublicAccessBlock, s3:PutBucketPublicAccessBlock, s3:GetBucketOwnershipControls, s3:PutBucketOwnershipControls, s3:GetEncryptionConfiguration, s3:PutEncryptionConfiguration, s3:GetBucketTagging, s3:PutBucketTagging, s3:ListBucket, s3:GetBucketVersioning, s3:PutBucketVersioning, s3:GetBucketCORS, s3:PutBucketCORS]
                 Resource: 'arn:aws:s3:::regulatory-agent-dev-s01-*'
               - Effect: Allow
                 Action: [dynamodb:CreateTable, dynamodb:DescribeTable, dynamodb:UpdateTable, dynamodb:DeleteTable, dynamodb:DescribeContinuousBackups, dynamodb:UpdateContinuousBackups, dynamodb:ListTagsOfResource, dynamodb:TagResource, dynamodb:UntagResource, dynamodb:DescribeTimeToLive]
@@ -203,8 +215,8 @@ Resources:
                 Resource:
                   - {Fn::GetAtt: [ArtifactBucket, Arn]}
                   - {Fn::Sub: '${ArtifactBucket.Arn}/*'}
-                  - 'arn:aws:s3:::regulatory-agent-dev-s01-*'
-                  - 'arn:aws:s3:::regulatory-agent-dev-s01-*/*'
+                  - 'arn:aws:s3:::regulatory-agent-dev-s01-frontendbucket-*'
+                  - 'arn:aws:s3:::regulatory-agent-dev-s01-frontendbucket-*/*'
               - Effect: Allow
                 Action: [cloudfront:CreateInvalidation, cloudfront:GetInvalidation]
                 Resource: {Fn::Sub: 'arn:aws:cloudfront::${AWS::AccountId}:distribution/*'}

@@ -1,0 +1,46 @@
+
+Running 33 tests using 1 worker
+
+  ok  1 tests\assessment.spec.ts:23:1 › VS3-BT01 assessment, exact citation, saved approval and refresh (3.3s)
+  ok  2 tests\assessment.spec.ts:44:1 › VS3-BT02 edited and rejected reviews keep the original finding and evidence requests (2.8s)
+  ok  3 tests\assessment.spec.ts:65:1 › VS3-BT03 mobile review keeps the draft after stale revision and checks uncertain saves (2.8s)
+  ok  4 tests\assessment.spec.ts:91:1 › VS3-BT04 failed refresh cannot authorize another uncertain review save (2.3s)
+  ok  5 tests\assessment.spec.ts:106:1 › VS3-BT05 expired assessment access clears private findings and review drafts (2.2s)
+  ok  6 tests\assessment.spec.ts:116:1 › VS3-BT06 a new case cannot inherit the previous assessment state (2.1s)
+  ok  7 tests\aws-documents.spec.ts:95:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload (1.9s)
+  ok  8 tests\aws-documents.spec.ts:111:1 › VS2-AWS-BT02 uncertain finalization confirms the existing upload after reload (1.5s)
+  ok  9 tests\aws-documents.spec.ts:122:1 › VS2-AWS-BT03 exact source pages support mobile navigation (1.0s)
+  ok 10 tests\aws-documents.spec.ts:131:1 › VS2-AWS-BT04 expired access clears private sources and upload state (908ms)
+  ok 11 tests\aws-documents.spec.ts:140:1 › VS2-AWS-BT02 failed S3 transfer resumes the same reserved upload (1.1s)
+  ok 12 tests\aws-documents.spec.ts:153:1 › VS2-AWS-BT02 unfinished reservation can be cancelled without showing a saved source (1.0s)
+  ok 13 tests\cases.spec.ts:20:1 › VS1-BT03 requested sign-in stays centered on desktop and mobile (839ms)
+  ok 14 tests\cases.spec.ts:44:1 › VS1-BT01 sign in, create, leave, reopen and reload a real saved case (1.4s)
+  ok 15 tests\cases.spec.ts:64:1 › VS1-BT02 empty and loading states have a clear action (561ms)
+  ok 16 tests\cases.spec.ts:79:1 › VS1-BT02 failed save keeps the draft and never shows success (835ms)
+  ok 17 tests\cases.spec.ts:96:1 › VS1-BT02 save is disabled in flight and uncertain transport needs a list check (763ms)
+  ok 18 tests\cases.spec.ts:116:1 › VS1-BT02 expired session clears case data and returns to sign in (686ms)
+  ok 19 tests\cases.spec.ts:125:1 › VS1-BT02 unavailable or denied case provides return navigation (1.2s)
+  ok 20 tests\cases.spec.ts:139:1 › VS1-BT03 narrow viewport and keyboard complete the saved case flow (1.2s)
+  ok 21 tests\cases.spec.ts:159:1 › VS1 authentication configuration fails closed without Cognito settings (602ms)
+  ok 22 tests\cases.spec.ts:166:1 › VS1-BT04 delayed case list preserves keyboard focus during form entry (1.1s)
+  ok 23 tests\cases.spec.ts:192:1 › VS1 AWS mode never fabricates a local signed-in session (726ms)
+  ok 24 tests\cases.spec.ts:203:1 › VS1 callback state mismatch is rejected and temporary values are removed (602ms)
+  ok 25 tests\cases.spec.ts:214:1 › VS1 malformed configuration also clears an OAuth callback (497ms)
+  ok 26 tests\cases.spec.ts:223:1 › VS1-BT01 cloud sign-in returns to the selected case after a reload (1.3s)
+  ok 27 tests\cases.spec.ts:256:1 › VS1 case resume rejects a return URL before exchanging a sign-in code (2.5s)
+  ok 28 tests\documents.spec.ts:25:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version (1.7s)
+  ok 29 tests\documents.spec.ts:40:1 › VS2-BT02 replacement leaves the earlier version available (1.7s)
+  ok 30 tests\documents.spec.ts:52:1 › VS2-BT03 malformed input is rejected and source text cannot execute HTML (2.7s)
+  ok 31 tests\documents.spec.ts:63:1 › VS2-BT04 source inspection supports keyboard focus and mobile layout (1.2s)
+  ok 32 tests\documents.spec.ts:74:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry (1.9s)
+  ok 33 tests\documents.spec.ts:92:1 › VS2-BT06 original download preserves the uploaded bytes (1.4s)
+
+  33 passed (54.1s)
+[WebServer] (node:16540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [27488]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8193 (Press CTRL+C to quit)
+(node:18996) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

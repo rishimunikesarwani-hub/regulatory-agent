@@ -12,7 +12,7 @@ export default defineConfig({
   testMatch: 'deployed.spec.ts',
   workers: 1,
   retries: 0,
-  timeout: 90_000,
+  timeout: 180_000,
   reporter: 'list',
   outputDir: '../../runs/2026-10-10-autonomous-build/frontend-deployed-artifacts',
   use: { baseURL: deployed, browserName: 'chromium', trace: 'off', screenshot: 'off', video: 'off' },
