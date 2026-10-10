@@ -152,7 +152,8 @@ This integration correction stays within the accepted case workflow.
 Use branch `work/t3-aws-documents-focus` in the existing AWS preparation worktree.
 Keep its test ports and test database unchanged.
 
-VS1-BT04: Delay the case-list response while the user enters a name and moves to its confirmation checkbox.
+VS1-BT04 delays the case-list response during form entry.
+The user enters a name and moves to its confirmation checkbox.
 Complete the response after the checkbox receives focus.
 The checkbox must keep focus.
 The user must then complete the save through keyboard controls.

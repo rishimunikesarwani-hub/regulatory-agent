@@ -163,6 +163,32 @@ test('VS1 authentication configuration fails closed without Cognito settings', a
   await expect(page.getByRole('button', { name: 'Continue with local identity' })).toHaveCount(0);
 });
 
+test('VS1-BT04 delayed case list preserves keyboard focus during form entry', async ({ page }) => {
+  let release!: () => void;
+  const delayed = new Promise<void>(resolve => { release = resolve; });
+  await page.route(api, async route => {
+    if (route.request().method() !== 'GET') return route.fallback();
+    await delayed;
+    return route.fulfill({ json: { cases: [] } });
+  });
+  await signIn(page);
+  await expect(page.getByText('Loading your cases…', { exact: true })).toBeVisible();
+  const name = `Fictional delayed keyboard bank ${Date.now()}`;
+  await page.getByLabel('Fictional bank name').focus();
+  await page.keyboard.type(name);
+  await page.keyboard.press('Tab');
+  const checkbox = page.getByLabel('I confirm this case contains fictional data only.', { exact: true });
+  await expect(checkbox).toBeFocused();
+  release();
+  await expect(page.getByText('Loading your cases…', { exact: true })).toHaveCount(0);
+  await expect(checkbox).toBeFocused();
+  await page.keyboard.press('Space');
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('button', { name: 'Save fictional case', exact: true })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
+});
+
 test('VS1 AWS mode never fabricates a local signed-in session', async ({ page }) => {
   await page.route('**/config.json', route => route.fulfill({ json: { mode: 'aws', api_url: 'https://api.example.test',
     cognito_domain: 'https://demo.auth.ap-south-1.amazoncognito.com', user_pool_client_id: 'test-client', redirect_uri: `${testWeb}/` } }));
