@@ -539,3 +539,20 @@ CloudFront verification and failed-stack recovery remain necessary.
 Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
 Next: obtain VS3 user acceptance and AWS verification.
 Keep live assessment integration and the complete project marked incomplete.
+
+## 2026-10-11 - Integration keyboard-focus correction
+
+CI run `38084172144` failed the existing keyboard check after the documentation update.
+The unchanged application source exposed a timing-dependent focus change.
+A delayed case-list response could move focus away from an active form control.
+A new VS1-BT04 check reproduced the failure before code changed.
+
+Branch `work/t3-aws-documents-focus` corrects automatic heading focus.
+It keeps active form controls focused when the case-list response completes.
+All 27 browser checks and the frontend build passed locally.
+The backend source remains unchanged from the integrated 204-check result.
+Earlier screenshots were restored. The new screenshots have a separate evidence directory.
+Read the [focus evidence](runs/2026-10-11-slice-02-aws-documents/focus-review.md).
+
+VS3 user acceptance and AWS verification remain pending.
+Next: finish GitHub checks and merge the verified focus correction.

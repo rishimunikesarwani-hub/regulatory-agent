@@ -123,7 +123,9 @@ function App() {
     })();
   }, []);
 
-  useEffect(() => { if (signedIn && !loading) heading.current?.focus(); }, [signedIn, loading, selected]);
+  useEffect(() => {
+    if (signedIn && !initializing && !loading && document.activeElement === document.body) heading.current?.focus();
+  }, [signedIn, initializing, loading, selected]);
 
   async function signIn(): Promise<void> {
     if (!config) return;

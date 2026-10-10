@@ -1,0 +1,55 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.aws-documents.config.ts cases.spec.ts -g VS1-BT04
+[WebServer] (node:12420) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [17972]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8191 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:1532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\cases.spec.ts:166:1 › VS1-BT04 delayed case list preserves keyboard focus during form entry (5.9s)
+
+
+  1) tests\cases.spec.ts:166:1 › VS1-BT04 delayed case list preserves keyboard focus during form entry
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator:  getByLabel('I confirm this case contains fictional data only.', { exact: true })
+    Expected: focused
+    Received: inactive
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeFocused" getByLabel('I confirm this case contains fictional data only.', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('I confirm this case contains fictional data only.', { exact: true })
+        14 × locator resolved to <input type="checkbox"/>
+           - unexpected value "inactive"
+
+
+      182 |   release();
+      183 |   await expect(page.getByText('Loading your cases…', { exact: true })).toHaveCount(0);
+    > 184 |   await expect(checkbox).toBeFocused();
+          |                          ^
+      185 |   await page.keyboard.press('Space');
+      186 |   await page.keyboard.press('Tab');
+      187 |   await expect(page.getByRole('button', { name: 'Save fictional case', exact: true })).toBeFocused();
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t3-aws-documents\src\web\tests\cases.spec.ts:184:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\cases-VS1-BT04-delayed-cas-59a2f-ard-focus-during-form-entry\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-02-aws-documents\browser-artifacts\cases-VS1-BT04-delayed-cas-59a2f-ard-focus-during-form-entry\error-context.md
+
+  1 failed
+    tests\cases.spec.ts:166:1 › VS1-BT04 delayed case list preserves keyboard focus during form entry
