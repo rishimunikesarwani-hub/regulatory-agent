@@ -33,6 +33,9 @@ Use server-created upload identifiers within an owner and case prefix.
 Require HTTPS and server-side encryption with SSE-S3.
 SSE-S3 is S3-managed encryption of stored objects.
 Require the configured AWS account, Mumbai bucket location, and enabled S3 versioning.
+Configure the SDK with explicit endpoint `https://s3.ap-south-1.amazonaws.com` and signature version `s3v4`.
+Set the SDK's S3 addressing style to `virtual`.
+Reject a generated transfer link outside the bucket's exact Mumbai hostname.
 
 After upload, get its actual S3 version identifier.
 Read that exact version within the declared byte limit.
@@ -87,8 +90,59 @@ Test complete upload, inspection, replacement, and download behavior before depl
 | VS2-S3-08 | Bind downloads to the authorized case and saved version. Keep filenames out of object keys. |
 | VS2-S3-09 | Deny a forged stored key before a content read or signed download. |
 
-The full cloud API and browser acceptance cases will extend this contract before their code.
 Passing storage checks alone does not complete the AWS document flow.
+
+## Cloud API contract
+
+Use the existing Cognito access-token checks for every document route.
+Use `POST /api/cases/{case}/uploads` for upload metadata and temporary permission.
+Require `Idempotency-Key` for reservation requests.
+Reuse that key after an uncertain response.
+Reject the same key with different metadata.
+Use `GET /api/cases/{case}/uploads/{upload}` for upload status.
+Use `POST /api/cases/{case}/uploads/{upload}/finalize` after the S3 upload succeeds.
+Use `POST /api/cases/{case}/uploads/{upload}/cancel` to release an unfinished reservation.
+Cancellation changes metadata only. It does not delete stored objects.
+
+Keep unfinished reservations separate from saved source metadata.
+Count unfinished reservations toward the ten-version limit.
+Keep each upload record separate from the case counters.
+Use one conditional DynamoDB transaction for both records.
+A revision condition prevents concurrent requests from overwriting another accepted change.
+Keep finalization retries bound to the same upload identifier and original version.
+Keep failed uploads out of the saved-version list.
+
+Use `GET /api/cases/{case}/documents` to list saved versions.
+Use `GET /api/cases/{case}/documents/{version}?offset={offset}` for source inspection.
+Return at most 500 passages per inspection response.
+Return the passage count, current offset, and next offset.
+Keep passage identifiers and exact source locations stable across pages.
+Do not remove passages or reduce the approved extraction limits.
+Use `GET /api/cases/{case}/documents/{version}/original` for an authorized download link.
+Keep upload permissions and internal storage references out of source lists.
+Restrict case-list queries to records with the `CASE#` sort-key prefix.
+
+## Cloud acceptance cases
+
+| ID | Behavior |
+|---|---|
+| VS2-AWS-01 | Reject missing, expired, or cross-owner authorization before document storage access. |
+| VS2-AWS-02 | Reserve once for repeated metadata. Reject changed metadata with the same key. |
+| VS2-AWS-03 | Finalize once across retries and new service instances. Preserve original bytes, locations, and counters. |
+| VS2-AWS-04 | Save replacement versions without changing earlier versions. Reject foreign replacement identifiers. |
+| VS2-AWS-05 | Enforce concurrent reservation and aggregate extraction limits through conditional transactions. |
+| VS2-AWS-06 | Exclude failed and unfinished uploads. Release cancelled reservations without object deletion. |
+| VS2-AWS-07 | Handle an uncertain transaction acknowledgement without duplicate versions or counter changes. |
+| VS2-AWS-08 | Page a large source without losing text or exceeding Lambda response limits. |
+| VS2-AWS-09 | Bind artifacts and downloads to saved S3 versions. Reject changed hashes and storage failures safely. |
+| VS2-AWS-10 | Keep case lists functional when upload and document records share the table. |
+| VS2-AWS-BT01 | Upload directly to S3, finalize, inspect, reload, replace, and download in AWS mode. |
+| VS2-AWS-BT02 | Resume an uncertain upload with its existing identifier. Preserve file selection until confirmation. |
+| VS2-AWS-BT03 | Inspect all source pages through explicit navigation. |
+| VS2-AWS-BT04 | Clear private source state when the authenticated session expires. |
+
+Controlled cloud tests use isolated records and simulated service responses.
+They do not prove a live AWS deployment or live Cognito sign-in.
 
 ## Deployment and cost limits
 
