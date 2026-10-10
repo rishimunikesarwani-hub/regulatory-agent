@@ -40,6 +40,21 @@ The API checks cover source binding, ownership, idempotency, unchanged snapshots
 They also reject unsupported scope, invalid citations, and policy-only proof of operational activity.
 The browser checks cover citations, saved review outcomes, reload, mobile operation, uncertain saves, failed refresh, and expired access.
 
+## Manual feedback check
+
+The feedback services were started from code commit `107590d174f49365399f3ffbaa14ed1e439ea0c3`.
+Chrome opened the isolated feedback interface and created a fictional review case.
+The supplied fictional policy was uploaded through the file chooser.
+The controlled assessment produced its labeled Needs review finding.
+The source dialog showed the exact historical clause and unverified freshness label.
+The Escape key closed the dialog and returned focus to its citation button.
+
+An evidence request was saved as revision 1.
+The finding stayed pending and approval rates stayed Not measured.
+After reload and local sign-in, the same case, assessment, and saved revision appeared.
+The feedback tab stays open for user review.
+These operations do not constitute the user's VS3 acceptance.
+
 ## Limits
 
 This is one controlled example with one original finding.
