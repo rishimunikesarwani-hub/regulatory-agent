@@ -1,0 +1,44 @@
+﻿[
+    {
+        "LogicalId": "CasesTable",
+        "PhysicalId": "regulatory-agent-dev-s01-CasesTable-1AFV3L560GIYR",
+        "Type": "AWS::DynamoDB::Table",
+        "Status": "DELETE_SKIPPED"
+    },
+    {
+        "LogicalId": "Frontend",
+        "PhysicalId": null,
+        "Type": "AWS::CloudFront::Distribution",
+        "Status": "DELETE_COMPLETE"
+    },
+    {
+        "LogicalId": "FrontendAccess",
+        "PhysicalId": "EZKWM9LQMODSD",
+        "Type": "AWS::CloudFront::OriginAccessControl",
+        "Status": "DELETE_COMPLETE"
+    },
+    {
+        "LogicalId": "FrontendBucket",
+        "PhysicalId": "regulatory-agent-dev-s01-frontendbucket-xhargj7lrvua",
+        "Type": "AWS::S3::Bucket",
+        "Status": "DELETE_SKIPPED"
+    },
+    {
+        "LogicalId": "FrontendHeaders",
+        "PhysicalId": "b54bf577-c98c-49c7-afca-4580f33ae9e4",
+        "Type": "AWS::CloudFront::ResponseHeadersPolicy",
+        "Status": "DELETE_COMPLETE"
+    },
+    {
+        "LogicalId": "UserPool",
+        "PhysicalId": "ap-south-1_hsn49P5Fj",
+        "Type": "AWS::Cognito::UserPool",
+        "Status": "DELETE_SKIPPED"
+    },
+    {
+        "LogicalId": "UserPoolDomain",
+        "PhysicalId": "regulatory-agent-dev-s01-482439369658",
+        "Type": "AWS::Cognito::UserPoolDomain",
+        "Status": "DELETE_COMPLETE"
+    }
+]

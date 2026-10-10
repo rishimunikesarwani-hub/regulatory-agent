@@ -464,6 +464,44 @@ Retry the reviewed application release after the role update.
 Affected acceptance cases: VS1-AWS01 and VS1-REL01.
 The application scope, data boundary, and budget stay unchanged.
 
+## D34 - Keep CloudFront after the account verification failure
+
+Date: 2026-10-10.
+Status: Approved by the user after the second development release failed.
+
+AWS rejected CloudFront distribution creation because the account needs verification.
+The user chose to keep CloudFront and submit an AWS Support verification request.
+Do not replace the approved hosting design with an API Gateway frontend.
+The request is prepared but has not been sent.
+The [verification guide](../delivery/guide-aws-cloudfront-verification.md) controls the handoff and recovery steps.
+
+Keep the failed release and retained resource records as evidence.
+Obtain approval before any manual deletion during recovery.
+Keep the USD 25 alerts and the current fictional-data boundary.
+Live AWS acceptance and the next vertical slice remain pending.
+
+## D35 - Isolated slices and combined release checks
+
+Date: 2026-10-10.
+Status: Approved by the user's new five-step development goal.
+
+Give each selected vertical slice its own branch, worktree, port, and test database.
+Follow specification, failing tests, implementation, and passing tests in that order.
+Use Ponytail for the minimum implementation.
+Merge accepted slices regularly into the `main` integration branch.
+Test the combined application locally before its AWS release.
+Verify AWS authentication, permissions, and service connections after deployment.
+
+The [workspace guide](../delivery/guide-slice-workspaces.md) controls current isolation assignments and the development sequence.
+Keep the earlier user feedback checkpoint before the next slice.
+Record local acceptance and AWS acceptance separately.
+The user can approve local progress while CloudFront verification is pending under D34.
+This sequence replaces any requirement to wait for AWS before approved local development can continue.
+The approved feature scope and security boundaries stay unchanged.
+
+The user subsequently approved VS1 local acceptance and authorized VS2 local development.
+Keep VS1 AWS acceptance pending until account verification and deployed checks pass.
+
 ## How to add a decision
 
 Add a new entry with:

@@ -1,0 +1,14 @@
+{
+  "commit": "acfb4bc1d87bf646281db2f6633799f1d3e3e6f3",
+  "url": null,
+  "environment": "development",
+  "limitations": [
+    "AWS deployment did not finish.",
+    "No production deployment."
+  ],
+  "recorded_at": "2026-10-10T17:27:16.676120+00:00",
+  "integration_checks": "passed",
+  "deployment_result": "failure",
+  "browser_checks": "skipped",
+  "status": "unverified"
+}
