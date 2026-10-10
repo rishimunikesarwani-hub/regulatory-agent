@@ -613,6 +613,25 @@ Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
 Its deployment job was skipped.
 The candidate branch is saved remotely.
 The `main` integration branch and original VS3 review branch are unchanged.
+
+## 2026-10-11 - Pending user actions confirmed
+
+The combined candidate's GitHub check is complete and successful.
+Draft PR9 still has no user acceptance in this conversation.
+The original review branch and accepted `main` source are unchanged.
+
+The Support API returned `SubscriptionRequiredException`.
+The AWS console shows an unsent draft and `No open cases`.
+The current case-history view shows `No cases to display.`
+The application stack still has status `ROLLBACK_COMPLETE`.
+AWS processing of the verification request is not established.
+
+Read the [handoff check](runs/2026-10-11-slice-03-integration/verification-handoff.md) for evidence and user actions.
+No application progress occurred during this gate check.
+The goal stays active after the first consecutive check without application progress.
+No Support message, VS3 merge, VS4 start, or deployment occurred.
+
+Next: the user submits the Support request and gives the pending VS3 review decision.
 Keep live assessment integration and the complete project marked incomplete.
 
 ## 2026-10-11 - Integration keyboard-focus correction
