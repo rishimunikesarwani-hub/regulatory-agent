@@ -119,7 +119,7 @@ class AssessmentPipeline:
         metadata = result or error
         calls = job['model_calls']
         update = dict(state=state, **timer.finish(),
-            dispatched=calls > 24-event.unused_allowance if event.operation=='model' else True,
+            dispatched=getattr(metadata,'dispatched',calls > 24-event.unused_allowance) if event.operation=='model' else True,
             usage=getattr(metadata, 'usage', TokenUsage()), provider_request_id=getattr(metadata, 'provider_request_id', None),
             actual_response_model_id=getattr(metadata, 'actual_response_model_id', None),
             unused_allowance=24-calls if event.operation=='model' else None,

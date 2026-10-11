@@ -36,6 +36,9 @@ Return no model reasoning blocks or raw provider response in the application res
 
 Disable SDK inference retries with `total_max_attempts=1`.
 Reserve the saved model-call allowance before each inference dispatch.
+Check the execution claim and current time again after reservation storage completes.
+Keep an unused reservation consumed when this check prevents dispatch.
+Record that known absence of dispatch separately from the consumed allowance.
 Count failed, malformed, rejected, timed-out, and uncertain dispatched calls.
 Keep available numeric usage and request identifiers on failed responses.
 Keep the allowance unchanged when authentication, profile verification, or local request validation prevents inference.
@@ -60,6 +63,8 @@ Return safe error identifiers.
 | VS5-MT01 | The native Converse request uses the pinned profile, explicit token limit, strict output schema, and one reserved call. |
 | VS5-MT02 | A successful response keeps extracted objects, nullable fields, numeric usage, request ID, and Live status. |
 | VS5-MT03 | Missing usage remains unknown. Reasoning content is not returned. |
+| VS5-MT11 | A slow reservation cannot dispatch after the saved deadline. The consumed allowance remains saved. |
+| VS5-MT12 | Failed storage verification before dispatch produces a safe failure with no provider call. |
 | VS5-MT04 | Malformed output and outside-snapshot source, obligation, or citation IDs consume the dispatched call and fail safely. |
 | VS5-MT05 | Provider rejection, timeout, truncation, and unknown outcomes do not trigger hidden retries. |
 | VS5-MT06 | Wrong owner, inactive profile, non-India destinations, and unverified private input prevent inference. |

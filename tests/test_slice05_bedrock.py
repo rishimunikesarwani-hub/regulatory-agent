@@ -66,6 +66,25 @@ class BedrockDispatchTests(unittest.TestCase):
     def calls(self):
         return self.store.read_job('owner-1','case-1',self.job['job_id'])['model_calls']
 
+    def test_mt11_slow_reservation_prevents_provider_dispatch_after_deadline(self):
+        self.profile(); reserve=self.store.reserve
+        def delayed(*args,**kwargs):
+            result=reserve(*args,**kwargs); self.now=1601; return result
+        with patch.object(self.store,'reserve',side_effect=delayed), patch.object(self.runtime,'converse',return_value=self.response()) as provider:
+            with self.assertRaises(ContractError): self.dispatch()
+            self.assertEqual(provider.call_count,0)
+        self.assertEqual(self.calls(),1)
+
+    def test_mt12_pre_dispatch_storage_failure_is_safe_and_known_undispatched(self):
+        self.profile(); initial=self.store.read_job('owner-1','case-1',self.job['job_id'])
+        with patch.object(self.store,'read_job',side_effect=[initial,OSError('PRIVATE STORAGE DETAIL')]), \
+                patch.object(self.runtime,'converse',return_value=self.response()) as provider:
+            with self.assertRaises(ContractError) as failure: self.dispatch()
+            self.assertFalse(failure.exception.dispatched)
+            self.assertNotIn('PRIVATE STORAGE DETAIL',str(failure.exception))
+            self.assertEqual(provider.call_count,0)
+        self.assertEqual(self.calls(),1)
+
     def test_mt01_native_request_pins_profile_schema_and_reserves_one_call(self):
         self.profile()
         expected={'modelId':PROFILE,'messages':[{'role':'user','content':[{'text':self.request['prompt']}]}],

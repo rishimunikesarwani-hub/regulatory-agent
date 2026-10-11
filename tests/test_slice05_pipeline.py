@@ -55,6 +55,21 @@ class PipelineTests(unittest.TestCase):
         self.run=self.reviews.admit(self.owner,self.case,uuid.uuid4().hex,self.snapshot.snapshot_id,'controlled_simulation')
         self.job_id=self.run['job_id']
 
+    def test_pt18_reserved_but_undispatched_call_is_not_reported_as_live_inference(self):
+        self.run=self.reviews.admit(self.owner,self.case,uuid.uuid4().hex,self.snapshot.snapshot_id,'synthetic_live')
+        self.job_id=self.run['job_id']
+        class BeforeDispatchFailure:
+            def dispatch(inner,store,owner,case,identity,token,request):
+                store.reserve(owner,case,identity,token,'model')
+                raise ModelFailure('deadline_or_lease_exhausted',dispatched=False)
+        result=self.Pipeline(self.service,BeforeDispatchFailure()).run(self.owner,self.case,self.job_id)
+        self.assertEqual(result['state'],'failed')
+        report=self.service.read(self.owner,self.case,self.job_id)
+        self.assertEqual(report['job']['model_calls'],1)
+        self.assertEqual(report['live_model_calls'],0)
+        attempt=next(t for t in report['trace']['attempts'] if t['operation']=='model')
+        self.assertFalse(attempt['dispatched']); self.assertIsNone(attempt['usage']['input_tokens'])
+
     @staticmethod
     def cite(passage):
         return {key:passage[key] for key in ('document_version_id','passage_id','location')}|{'quote':passage['text']}

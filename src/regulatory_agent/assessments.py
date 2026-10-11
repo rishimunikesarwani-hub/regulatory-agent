@@ -389,7 +389,7 @@ class Assessments:
             obligations = job['stages'].get('obligations', {}).get('obligations', [])
             controls = job['stages'].get('controls', {}).get('controls', [])
         return {'data_mode': run['data_mode'], 'freshness': 'unverified',
-            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else job['model_calls'], 'cost_usd': None,
+            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else sum(t['operation']=='model' and t['dispatched'] for t in trace), 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,
             'obligation': obligations[0] if obligations else None, 'control': controls[0] if controls else None,
             'obligations': obligations, 'controls': controls, 'findings': [item.model_dump() for item in eligible],

@@ -30,8 +30,10 @@ An expired lease permits recovery with a new claim.
 Recovery preserves the original start time, deadline, counters, and saved stages.
 Keep the existing 600-second deadline, 24 model calls, and 20 retrieval calls.
 Reserve each call before dispatch.
+Check the current time again after storage reads and before model dispatch.
 Include failed and uncertain dispatches in the saved counters.
 Do not retry an uncertain database acknowledgement as a new reservation.
+Disable SDK write retries for the job metadata client.
 Renew the lease without renewing the deadline or allowances.
 Reject writes from an old execution claim.
 
@@ -57,6 +59,7 @@ Reject completed finalization after the deadline.
 | VS5-CJ08 | Lost claims cannot attach stage artifacts. Storage failures cannot produce saved-stage success. |
 | VS5-CJ09 | Finalization preserves accounted results and rejects invalid or exhausted completion. |
 | VS5-CJ10 | Terminal retries and incomplete reads cannot create a second execution or reveal unverified artifacts. |
+| VS5-CJ11 | Slow storage reads cannot renew or reserve after the original deadline. Failure finalization remains available. |
 
 Write failing checks before implementation.
 Use controlled SDK responses without credentials or external traffic.
