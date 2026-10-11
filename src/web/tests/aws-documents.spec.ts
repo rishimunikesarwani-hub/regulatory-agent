@@ -85,7 +85,7 @@ async function fixture(page: Page, lost = false, paged = false, failedTransfer =
   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Run controlled assessment', exact: true })).toHaveCount(0);
-  return { saved, counts: () => ({ reserves, transfers }) };
+  return { saved, counts: () => ({ reserves, transfers }), keys: () => Array.from(keys.keys()) };
 }
 async function upload(page: Page, text = 'Fictional original policy.') {
   await page.getByLabel('Document file', { exact: true }).setInputFiles({ name: 'policy.txt', mimeType: 'text/plain', buffer: Buffer.from(text) });
@@ -158,4 +158,27 @@ test('VS2-AWS-BT02 unfinished reservation can be cancelled without showing a sav
   await expect(page.getByRole('status')).toContainText('not saved');
   await expect(page.getByRole('button', { name: 'Upload fictional document', exact: true })).toBeEnabled();
   expect(state.saved).toHaveLength(0);
+});
+
+test('DD09 cloud batches reserve each file separately and keep exact transfer bytes', async ({page})=>{
+  const state=await fixture(page);
+  const transferred:string[]=[];
+  await page.route(`${s3}/**`,async route=>{
+    transferred.push(route.request().postData()!);
+    return route.fallback();
+  });
+  await page.getByLabel('Document file',{exact:true}).setInputFiles([
+    {name:'first.txt',mimeType:'text/plain',buffer:Buffer.from('Fictional first policy.')},
+    {name:'second.txt',mimeType:'text/plain',buffer:Buffer.from('Fictional second policy.')},
+  ]);
+  await page.getByLabel('I confirm this document contains fictional data only.',{exact:true}).check();
+  await page.getByRole('button',{name:'Upload fictional document',exact:true}).click();
+  await expect(page.getByRole('region',{name:'Documents',exact:true}).getByText('2 documents saved. Earlier versions remain available.',{exact:true})).toBeVisible();
+  expect(state.saved).toHaveLength(2);
+  expect(state.counts()).toEqual({reserves:2,transfers:2});
+  expect(new Set(state.keys()).size).toBe(2);
+  expect(transferred[0]).toContain('filename="first.txt"');
+  expect(transferred[0]).toContain('Fictional first policy.');
+  expect(transferred[1]).toContain('filename="second.txt"');
+  expect(transferred[1]).toContain('Fictional second policy.');
 });

@@ -1189,3 +1189,37 @@ GitHub checks passed for source commit `167e37e36737b3a4c8c13768e1ae979c5fb571e3
 The [policy record](runs/2026-10-11-openai-evaluation/live-policy-v6-verification.json) contains verification results and limits.
 The local preview remains open in Chrome.
 AWS authentication remains deferred at the user's request.
+
+## 2026-10-11 - Accepted PR14 and fictional demo details
+
+The user approved PR14, and GitHub merged the reviewed head into `main`.
+Both local integration checkouts now contain merge commit `940e9297cc1ee34f7ed34d964046e527f11d72f6`.
+The subsequent v6 development run completed 20 cases, 60 real OpenAI calls, and 40 service exports.
+Status agreement was nine of 20 cases. The independent quality gate remains pending.
+
+D64 authorizes fictional model content in explicitly enabled local Langfuse traces and multiple-file upload selection.
+DD01 through DD12 keep existing source limits, upload recovery, execution accounting, and metadata-only operational audit records.
+The complete backend suite passed 445 tests.
+The complete browser run passed 65 checks and found one ambiguous test locator.
+After the locator correction, all four DD browser checks passed.
+
+These results cover all 66 browser checks. TypeScript and the frontend build passed.
+
+The live content-capture check remains pending at this source commit.
+AWS deployment, provider coverage, and independent model quality remain pending.
+
+## 2026-10-11 - Live batch and Langfuse content verification
+
+Chrome saved two fictional policy files as separate sources in one batch.
+The selected assessment completed with both bank documents and one historical regulatory version.
+The supervised worker made three actual OpenAI calls.
+Remote Langfuse readback contains each generation's system message, selected source context, prompt version, schema, and assistant response.
+The existing generation hierarchy remains unchanged.
+The visible response is Needs review, and no human review decision was saved.
+
+JSON and Markdown service exports passed separate checks.
+The committed application source passed GitHub checks, including all 445 backend tests and 66 browser tests.
+AWS deployment was skipped.
+PR15 contains the authorized correction and remains a draft for local review.
+Earlier saved jobs and the accepted PR14 integration source remain unchanged.
+Independent model quality, regulatory coverage, and AWS acceptance remain pending.

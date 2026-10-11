@@ -1,0 +1,10 @@
+{
+  "pr": "https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/14",
+  "state": "MERGED",
+  "approved_head": "e396df3f62cb9b5bed0de53067687190b86f9afb",
+  "merge_commit": "940e9297cc1ee34f7ed34d964046e527f11d72f6",
+  "merged_at": "2026-10-11T16:16:24Z",
+  "checks": "SUCCESS",
+  "deployment": "SKIPPED",
+  "user_approved": true
+}

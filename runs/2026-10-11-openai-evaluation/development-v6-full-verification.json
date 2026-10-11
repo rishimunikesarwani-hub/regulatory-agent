@@ -1,0 +1,385 @@
+{
+  "verified_at": "2026-10-11T16:11:36.236249+00:00",
+  "source_commit": "e396df3f62cb9b5bed0de53067687190b86f9afb",
+  "prompt_version": "assessment-vs5-openai-period-v6",
+  "split": "development",
+  "independent_holdout": false,
+  "case_count": 20,
+  "completed_case_count": 20,
+  "model_calls": 60,
+  "outcomes": {
+    "supported": 0,
+    "partial": 6,
+    "gap": 0,
+    "needs_review": 13,
+    "not_applicable": 1,
+    "error": 0,
+    "malformed": 0,
+    "missing": 0,
+    "abstained": 0
+  },
+  "primary_agreement": {
+    "numerator": 9,
+    "denominator": 20,
+    "value": 0.45,
+    "status": "measured"
+  },
+  "citation_resolution": {
+    "numerator": 105,
+    "denominator": 105,
+    "value": 1.0,
+    "status": "measured"
+  },
+  "citation_support": {
+    "numerator": null,
+    "denominator": 105,
+    "value": null,
+    "status": "not_measured"
+  },
+  "critical_false_supported_case_ids": [],
+  "quality_gates_pass": false,
+  "json_exports_verified": 20,
+  "markdown_exports_verified": 20,
+  "export_scope": "Application service exports only; no browser download-event claim.",
+  "wall_clock_seconds": {
+    "scope": "Fixture preparation through supervised worker return for each case.",
+    "sample_count": 20,
+    "method": "nearest-rank",
+    "p50": 12.594,
+    "p95": 16.687
+  },
+  "provider_source_coverage": "not_measured",
+  "regulatory_retrieval_quality": "not_measured",
+  "bank_evidence_retrieval_quality": "not_measured",
+  "queue_wait": "not_measured",
+  "inference_cost": "not_measured",
+  "system_cost": "not_measured",
+  "exports": [
+    {
+      "case_id": "EVAL-01",
+      "job_id": "7091d5aa08d84507b45facb687666882",
+      "snapshot_id": "c54d2e1a0aa044dab2ffec6ddfbbe024",
+      "formats": {
+        "json": {
+          "bytes": 41545,
+          "sha256": "7f05e72b4ca00d6bd0e59c75a17bf5573d8a9b5219ce795b68d67e29751c6be0"
+        },
+        "markdown": {
+          "bytes": 42255,
+          "sha256": "521a0cb4ca644af6588f954a469bf0472dc1d9e28f3f82f192f6c9de6bc7713e"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-02",
+      "job_id": "58d8530bb5e34dd2b05b4b150569d400",
+      "snapshot_id": "2ab8da8f403541a0bd51189b3af83dd6",
+      "formats": {
+        "json": {
+          "bytes": 43394,
+          "sha256": "90c0f1db4389b210b13e2cdc25714ff52fbb90edb567163776c3e55ce0ee2826"
+        },
+        "markdown": {
+          "bytes": 44136,
+          "sha256": "7e4be8addd256fceebcdc126141ca78cacbace110ed9714ad8c7e773966734ad"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-03",
+      "job_id": "0d0a18f23fef456aa23dabfd605c80de",
+      "snapshot_id": "716497b64d0c46c6a6836d710e56df90",
+      "formats": {
+        "json": {
+          "bytes": 49498,
+          "sha256": "38ab50b157050a5599a2243aec5af3c5e72b3d713621300c204042ba413f25ee"
+        },
+        "markdown": {
+          "bytes": 50304,
+          "sha256": "26b8963e93b7a9cbc1feb9de5f2b9700c1e8636ffb137a23167971c5150e67bf"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-04",
+      "job_id": "ab232f1977e447caa5c5c6818f041bbd",
+      "snapshot_id": "198f7d5feb1a4e9292e500b98b82fff2",
+      "formats": {
+        "json": {
+          "bytes": 43383,
+          "sha256": "807974c102f2549893e063db9b9d9d39d0e96866b2f7b07242d62143c3789307"
+        },
+        "markdown": {
+          "bytes": 44100,
+          "sha256": "44450c2683dfc4e1f5abff507c3b5ed78c498e78ccdb629b7c79b5290a06a716"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-05",
+      "job_id": "6e8b54211bde406881376e372dd5f16d",
+      "snapshot_id": "14ee26793b1b4b3c9eb758f6ec74f49a",
+      "formats": {
+        "json": {
+          "bytes": 40879,
+          "sha256": "8e99a215fcc236f169ea564d1c01c7d3c4373dae920645dcaed22b4a68833703"
+        },
+        "markdown": {
+          "bytes": 41590,
+          "sha256": "7fdcc08183bdb8f9437f76a36e5be100c1786420d853dba19260bca3902cf762"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-06",
+      "job_id": "f7c8d0ae5c5f4290a46cf9dcd4853f2f",
+      "snapshot_id": "a23b6e66803a43509e6d14f248c873ce",
+      "formats": {
+        "json": {
+          "bytes": 42437,
+          "sha256": "1711b8cb717ce880608534f375ea4983cdaf70fed6ddaf11b7cacf9b90849cb7"
+        },
+        "markdown": {
+          "bytes": 43167,
+          "sha256": "571141af3afa01969b7d5001f04e505468ab9079be3de182e70dedcbb66442cb"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-07",
+      "job_id": "cf6357b66fed421583a190ff902efcdf",
+      "snapshot_id": "833a12f7af044c34bdd0c7b8d0b087d3",
+      "formats": {
+        "json": {
+          "bytes": 44083,
+          "sha256": "60c5d91826c4db80dd329556940120522268c32ecf18b356b7834b6cddd6f60f"
+        },
+        "markdown": {
+          "bytes": 44875,
+          "sha256": "cba628df1039173f06d073fe510666a0d16e42e3a66a8160fad873ebdfb43bca"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-08",
+      "job_id": "96fe55232e344164b6af4f8811ffada5",
+      "snapshot_id": "5b087e2d864d4319919b03f7554cf08f",
+      "formats": {
+        "json": {
+          "bytes": 43356,
+          "sha256": "7c72bd24f081d4f5355ca3b4fc2b06ff405c71cf652dea6e24bf13328ee1a8d6"
+        },
+        "markdown": {
+          "bytes": 44097,
+          "sha256": "f56abb3117171b377e3a4037ccd2503c7f20e6be73aeb91c856b32f87b446fe0"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-09",
+      "job_id": "7fac3c0c4b3a4ecd94c8672d190cf043",
+      "snapshot_id": "605e79b672df4a1091aba2f22601a0b2",
+      "formats": {
+        "json": {
+          "bytes": 38668,
+          "sha256": "ad99b3ce02668d9f93f53c44589c824e918063f31ab8b83409c48b0276af6f69"
+        },
+        "markdown": {
+          "bytes": 39402,
+          "sha256": "2fca84b8a4da3788a47a0d1c2b4bcf81512f55d66d8e56855dfa888201efa180"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-10",
+      "job_id": "5533fc57edaf455aa7ff72a34cd43df4",
+      "snapshot_id": "4b176b3792ab47d1856c51c321eb1dd3",
+      "formats": {
+        "json": {
+          "bytes": 43564,
+          "sha256": "d56ee6d4228fd65227a6747b6f83a7508547b3019bb9c658e34a4c120c53b582"
+        },
+        "markdown": {
+          "bytes": 44305,
+          "sha256": "4fc59ad919a3364e6211b27a5ac293bc978b281bd22bdc4eebc5b3870dbe7f9c"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-11",
+      "job_id": "fce235c185574a5daa5a9a74bd589fcd",
+      "snapshot_id": "c2b7a07111bf4d54bc68fd93443edbfb",
+      "formats": {
+        "json": {
+          "bytes": 40360,
+          "sha256": "2ba1e178d3c5d84044ab792fbf338fc285f49b671758d13e6090a08a309c9fe1"
+        },
+        "markdown": {
+          "bytes": 41124,
+          "sha256": "6a4e10d3302049225de409a4e416145b4f477bb94dc78f03ee1c297fccfa15d8"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-12",
+      "job_id": "93000f0d70ec4727950bb2f7f8a943e9",
+      "snapshot_id": "f677adb8384e4cc8b8ebcbcc1170702d",
+      "formats": {
+        "json": {
+          "bytes": 39768,
+          "sha256": "26b8848b7cb8c643baefbff0e8c302047c6c7a96b4b271459da2d659b838c099"
+        },
+        "markdown": {
+          "bytes": 40515,
+          "sha256": "d8ac85abad2f2e5120da6f5f2a85bce5b609315849ddd9989086f503b5f005ea"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-13",
+      "job_id": "9b9c8497800648d991e1a28c8dee8260",
+      "snapshot_id": "23ff8a74262b4814b60d0ca05430f710",
+      "formats": {
+        "json": {
+          "bytes": 37158,
+          "sha256": "ae7fb80a08a98237742764d7930d8271bad06c2dc4d3318349488119a5238ad4"
+        },
+        "markdown": {
+          "bytes": 37927,
+          "sha256": "aeb53b4bef83cc862399a42f141f5b98e339be842a8b7b36ad7e8f22ec100cf8"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-14",
+      "job_id": "cb732ad323cf496da62a13a6559c28d2",
+      "snapshot_id": "f89ccfa7fcaf4a00a1cfc0ab53f14ba2",
+      "formats": {
+        "json": {
+          "bytes": 35242,
+          "sha256": "64654fe1408abfb15b082b53f86282213f26ff9d05d43ac9da0be91f54882435"
+        },
+        "markdown": {
+          "bytes": 36013,
+          "sha256": "9669bd8ab24f0cdf14bc5c512ff991ec80c8cdc8c1dd584e3defb696c25ea4c2"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-15",
+      "job_id": "fcd8a160024b49f08dab05f3e8c6b1a9",
+      "snapshot_id": "b65fd4610bbf42e48f9a0ce457a277a9",
+      "formats": {
+        "json": {
+          "bytes": 37243,
+          "sha256": "82ee55896f5a1552427eb5a8414b29fe92007a6c1f719d267ece5834c710f07c"
+        },
+        "markdown": {
+          "bytes": 38065,
+          "sha256": "6b5b627aec07eca226d88ef644e269c633027b88c326d7a0d183c0cb5ce88041"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-16",
+      "job_id": "0659c0b43a76414393b6c506bd27c172",
+      "snapshot_id": "e49d4d17f37049e086160d6640c829dc",
+      "formats": {
+        "json": {
+          "bytes": 36984,
+          "sha256": "2396abb10a03ea86c9bf3ba3740e33538c65cb2b589f6786cf3f644f2a8e142e"
+        },
+        "markdown": {
+          "bytes": 37806,
+          "sha256": "3a2a9f2bcb2694dbcebdc1c3fcc178f8507205278fa9ab0b6d6cf1f37d1859be"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-17",
+      "job_id": "3a9e28e6187944729dbfb8726524789d",
+      "snapshot_id": "068034a99ac34ebe98a2b04bdb9154f1",
+      "formats": {
+        "json": {
+          "bytes": 39972,
+          "sha256": "8d22abb01b153b92143a997407e084d8b52b6ad972edb37fdb8b11d89937c1f5"
+        },
+        "markdown": {
+          "bytes": 40686,
+          "sha256": "754ebd2f7fcd480074a3391bf8d614b15707a0c53c2504205e14d8291c199453"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-18",
+      "job_id": "2634a856e1764f949eff4d5f4099f7ab",
+      "snapshot_id": "c768783fd22a45f3a1c59619ff8e8d7b",
+      "formats": {
+        "json": {
+          "bytes": 37912,
+          "sha256": "6f135a04dd7c2f1dbe0ee03c1653400b346211f0f3509990b486dbc2b456dfbc"
+        },
+        "markdown": {
+          "bytes": 38629,
+          "sha256": "83a4b3ecec3fd4c2cee3ca0d1293aa38e6b86bc88791177bde8694f53121474a"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-19",
+      "job_id": "6de710c0441f4978b37bcc6e474da97e",
+      "snapshot_id": "d4f69bb90bb14064a8d26d258cf59948",
+      "formats": {
+        "json": {
+          "bytes": 34567,
+          "sha256": "490ced9fb6e63054c6e127f07aa0ca114a5e251705a3e3ccc62d3e5a186e9176"
+        },
+        "markdown": {
+          "bytes": 35352,
+          "sha256": "0e8d4c90c5fc23755e9174a932656255aa30debc7f242cb71fff414fc7ed518f"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    },
+    {
+      "case_id": "EVAL-20",
+      "job_id": "ff177801b3094d9e9c17552dd74e0795",
+      "snapshot_id": "f8e1ee13dfdb4e7d8da8626039041bd6",
+      "formats": {
+        "json": {
+          "bytes": 39217,
+          "sha256": "f8f5887aef5d81cf927828836a376e0e71e34f17ba78671186a99249aeee85aa"
+        },
+        "markdown": {
+          "bytes": 39930,
+          "sha256": "7c5871dfab50c1921f8a85c0245f1479c125b85cc8ba91c6f18cfa8733bbac43"
+        }
+      },
+      "exports_changed_calls_traces_or_reviews": false
+    }
+  ],
+  "limits": [
+    "Claim support needs human context review.",
+    "No qualified domain review.",
+    "Current source coverage and AWS acceptance remain unverified.",
+    "Original Bedrock quality gate remains pending."
+  ]
+}

@@ -431,6 +431,12 @@ It preserves previous prompt behavior and all subsequent application validation.
 `runs/2026-10-11-openai-evaluation/` contains failed and completed development results.
 These results do not satisfy the independent model-quality gate.
 
+## Fictional demo details
+
+Ticket DD-T01 implements DD01 through DD12 in the [demo details contract](spec-demo-details.md).
+It adds explicitly enabled fictional model content and sequential batch uploads through existing adapters.
+Offline checks and a separate live readback must establish the stated behavior.
+
 ## Historical planning dates
 
 D27 replaces the earlier horizontal sequence below.

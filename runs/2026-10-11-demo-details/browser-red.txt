@@ -1,0 +1,3 @@
+Before implementation, all three new local batch checks failed.
+Playwright reported: Non-multiple file input can only accept single file.
+The separate tracing-red.txt record contains both missing-capture failures.

@@ -1,0 +1,25 @@
+{
+  "headRefOid": "055439e723d8411d0b025bfd1e130401f2d13eca",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-11T16:43:47Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38156424876/job/114520240560",
+      "name": "checks",
+      "startedAt": "2026-10-11T16:40:20Z",
+      "status": "COMPLETED",
+      "workflowName": "Check and release development"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-11T16:43:47Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38156424876/job/114520950970",
+      "name": "deploy-development",
+      "startedAt": "2026-10-11T16:43:48Z",
+      "status": "COMPLETED",
+      "workflowName": "Check and release development"
+    }
+  ]
+}

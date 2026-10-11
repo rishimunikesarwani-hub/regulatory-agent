@@ -1,0 +1,25 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts documents.spec.ts aws-documents.spec.ts --grep DD
+[WebServer] (node:38708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [40880]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 4 tests using 1 worker
+
+(node:35816) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\aws-documents.spec.ts:163:1 › DD09 cloud batches reserve each file separately and keep exact transfer bytes (1.6s)
+  ok 2 tests\documents.spec.ts:102:1 › DD07 DD12 multiple files are saved as independent selectable sources (4.8s)
+  ok 3 tests\documents.spec.ts:117:1 › DD08 a replacement accepts one file and batch capacity applies before any write (2.4s)
+  ok 4 tests\documents.spec.ts:132:1 › DD10 DD11 a partial batch stops on an uncertain write and keeps confirmed sources (4.2s)
+
+  4 passed (20.7s)

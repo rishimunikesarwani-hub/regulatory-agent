@@ -1,0 +1,13 @@
+test_dd01_dd02_dd05_disabled_capture_and_failure_isolation (test_langfuse_tracing.LangfuseTracingTests.test_dd01_dd02_dd05_disabled_capture_and_failure_isolation) ... ok
+test_dd01_dd05_actual_model_messages_and_responses_without_credentials (test_langfuse_tracing.LangfuseTracingTests.test_dd01_dd05_actual_model_messages_and_responses_without_credentials) ... ok
+test_lf01_lf03_lf04_parent_types_and_stable_names (test_langfuse_tracing.LangfuseTracingTests.test_lf01_lf03_lf04_parent_types_and_stable_names) ... ok
+test_lf02_pipeline_nests_extraction_and_generation (test_langfuse_tracing.LangfuseTracingTests.test_lf02_pipeline_nests_extraction_and_generation) ... ok
+test_lf05_failed_update_still_ends_observation (test_langfuse_tracing.LangfuseTracingTests.test_lf05_failed_update_still_ends_observation) ... ok
+test_lf05_lf06_root_update_failure_is_isolated (test_langfuse_tracing.LangfuseTracingTests.test_lf05_lf06_root_update_failure_is_isolated) ... ok
+test_lf05_unfinished_stage_ends_as_interrupted (test_langfuse_tracing.LangfuseTracingTests.test_lf05_unfinished_stage_ends_as_interrupted) ... ok
+test_lf06_disabled_configuration_never_constructs_client (test_langfuse_tracing.LangfuseTracingTests.test_lf06_disabled_configuration_never_constructs_client) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 9.960s
+
+OK

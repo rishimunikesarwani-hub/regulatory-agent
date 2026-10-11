@@ -1,0 +1,4 @@
+FICTIONAL DEMO DOCUMENT. This is not a real bank policy or operating record.
+Fictional Cedar Bank limits access to payment-system data to authorized staff.
+The policy specifies quarterly access reviews.
+The policy does not contain access-review records or backup execution records.

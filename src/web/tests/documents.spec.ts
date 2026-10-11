@@ -98,3 +98,57 @@ test('VS2-BT06 original download preserves the uploaded bytes', async ({ page })
   expect(download.suggestedFilename()).toBe('policy.txt');
   expect(await readFile((await download.path())!, 'utf8')).toBe(content);
 });
+
+test('DD07 DD12 multiple files are saved as independent selectable sources', async ({ page }) => {
+  await caseAndUpload(page);
+  await page.getByLabel('Document file', { exact: true }).setInputFiles([
+    { name: 'policy-two.txt', mimeType: 'text/plain', buffer: Buffer.from('Fictional weekly policy.') },
+    { name: 'policy-three.txt', mimeType: 'text/plain', buffer: Buffer.from('Fictional monthly policy.') },
+  ]);
+  await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+  await page.getByRole('button', { name: 'Upload fictional document', exact: true }).click();
+  await expect(page.getByRole('region',{name:'Documents',exact:true}).getByText('2 documents saved. Earlier versions remain available.',{exact:true})).toBeVisible();
+  for (const name of ['policy-two.txt','policy-three.txt']) {
+    await expect(page.getByRole('button', {name:`Inspect ${name} version 1`,exact:true})).toBeVisible();
+    await expect(page.getByLabel(`${name} · Version 1`,{exact:true})).toBeVisible();
+  }
+});
+
+test('DD08 a replacement accepts one file and batch capacity applies before any write', async ({ page }) => {
+  await caseAndUpload(page);
+  const files=Array.from({length:10},(_,i)=>({name:`batch-${i}.txt`,mimeType:'text/plain',buffer:Buffer.from('Fictional policy.')}));
+  await page.getByLabel('Document file', { exact: true }).setInputFiles(files.slice(0,2));
+  await page.getByLabel('Replace source', { exact: true }).selectOption({ label: 'policy.txt' });
+  await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+  await page.getByRole('button', { name: 'Upload fictional document', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('one file');
+  await page.getByLabel('Replace source', { exact: true }).selectOption('');
+  await page.getByLabel('Document file', { exact: true }).setInputFiles(files);
+  await page.getByRole('button', { name: 'Upload fictional document', exact: true }).click();
+  await expect(page.getByRole('alert')).toContainText('9 remaining');
+  await expect(page.getByRole('button', { name: 'Inspect batch-0.txt version 1', exact: true })).toHaveCount(0);
+});
+
+test('DD10 DD11 a partial batch stops on an uncertain write and keeps confirmed sources', async ({ page }) => {
+  await caseAndUpload(page);
+  const posts:string[]=[];
+  await page.route('**/documents',async route=>{
+    if(route.request().method()!=='POST')return route.continue();
+    const filename=decodeURIComponent(route.request().headers()['x-filename']); posts.push(filename);
+    if(filename==='uncertain.txt'){
+      await route.fetch(); return route.fulfill({status:503,json:{code:'unavailable'}});
+    }
+    return route.continue();
+  });
+  await page.getByLabel('Document file', { exact: true }).setInputFiles(['confirmed.txt','uncertain.txt','later.txt'].map(name=>({name,mimeType:'text/plain',buffer:Buffer.from('Fictional policy.')})));
+  await page.getByLabel('I confirm this document contains fictional data only.', { exact: true }).check();
+  const upload=page.getByRole('button', { name: 'Upload fictional document', exact: true });
+  await upload.click();
+  await expect(upload).toBeDisabled();
+  await expect(page.getByRole('alert')).toContainText('1 of 3');
+  expect(posts).toEqual(['confirmed.txt','uncertain.txt']);
+  await page.getByRole('button', { name: 'Refresh documents', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Inspect confirmed.txt version 1', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Inspect uncertain.txt version 1', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Inspect later.txt version 1', exact: true })).toHaveCount(0);
+});

@@ -13,8 +13,8 @@ The AWS release and original model evaluation gates stay pending.
 - LD03: Use public regulatory text and fictional bank data only. Reject private or current assessments.
 - LD04: Count each provider request before dispatch. Keep the 24-call allowance, execution claim, deadline, and citation checks.
 - LD05: Use strict structured output. Keep provider failures safe and unknown token counts unknown.
-- LD06: Send only safe stage identifiers, model identifiers, durations, outcomes, and numeric token counts to Langfuse.
-- LD07: Do not send prompts, responses, source text, review text, owner identifiers, credentials, or hidden reasoning to Langfuse.
+- LD06: Send safe execution metadata to Langfuse. DD01 through DD06 permit fictional content in explicitly enabled local runs.
+- LD07: Exclude content by default. Only the [D64 exception](spec-demo-details.md) permits fictional model messages and responses.
 - LD08: Keep local audit records mandatory. A failed optional Langfuse export must not repeat or fail an assessment.
 - LD09: Keep all credentials in ignored local configuration. Show provider readiness without credential values.
 
