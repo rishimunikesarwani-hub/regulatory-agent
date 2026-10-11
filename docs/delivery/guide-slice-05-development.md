@@ -71,7 +71,10 @@ It uses the existing private S3 adapter for exact snapshot and stage references.
 Its controlled checks cover competing claims, uncertain acknowledgements, recovered leases, call allowances, and artifact integrity.
 Storage completion triggers another clock check before inference.
 An unused reservation remains consumed, but its known absence of dispatch is recorded separately.
-Queue delivery, the cloud assessment API, cloud review records, and deployed acceptance remain unfinished.
+The [cloud record component](spec-slice-05-cloud-records.md) now connects the shared pipeline to native finding, attempt, and review persistence.
+Its controlled checks include complete and partial assessments, concurrent reviews, original content, historical cutoffs, and exports.
+An incomplete dispatch audit shows Unknown instead of zero live calls.
+Queue delivery, cloud admission, the cloud assessment API, and deployed acceptance remain unfinished.
 
 The feedback process must use the current application commit.
 Renew the expired AWS authentication before live model checks.

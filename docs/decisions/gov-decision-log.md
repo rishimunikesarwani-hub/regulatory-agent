@@ -808,6 +808,25 @@ Cloud assessment routes remain disabled until the complete integration passes.
 Provider selection, live quality gates, and AWS account verification remain pending.
 VS5 remains a draft under D35.
 
+## D51 - Native assessment and review persistence
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X04, REQ-X05, REQ-X07, and REQ-X08.
+
+The [cloud record contract](../delivery/spec-slice-05-cloud-records.md) connects the shared pipeline to native DynamoDB and versioned S3 records.
+Conditional transactions protect worker claims, one finding per obligation, review revisions, and immutable attempt identities.
+The shared review functions keep original-content validation and historical cutoff calculations.
+Incomplete dispatch audit data produces Unknown instead of zero live calls.
+Native review traces identify their actual processing configuration.
+
+The controlled checks include complete and partial assessments, review retries, concurrent saves, source inspection, and exports.
+These checks do not establish deployed permissions, live inference, or quality.
+Cloud admission, the API, SQS delivery, and worker integration remain unfinished.
+Cloud assessment routes remain disabled.
+Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

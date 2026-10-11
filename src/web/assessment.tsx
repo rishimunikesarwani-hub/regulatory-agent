@@ -13,7 +13,7 @@ type Finding = { finding_id: string; obligation_id: string; control_ids: string[
 type Review = { event_id: string; finding_id: string; event_kind: string; disposition: string | null; revision: number; reason: string | null; accepted_content: Content | null; committed_at: string; idempotency_key: string };
 type Result = {
   job: { job_id: string; state: string; model_calls: number; stop_reason: string | null; unchecked_obligations: string[] }; snapshot: { snapshot_id: string; case_id: string; assessment_date: string; selected_versions: Record<string, string>; selected_obligations: string[]; model_version: string; prompt_version: string };
-  data_mode: string; freshness: string; live_model_calls: number; findings: Finding[]; reviews: Review[];
+  data_mode: string; freshness: string; live_model_calls: number | null; findings: Finding[]; reviews: Review[];
   obligation: Obligation | null; control: Control | null; obligations: Obligation[]; controls: Control[];
   summary: { cutoff: string; eligible: number; reviewed: number; approved: number; edited: number; rejected: number; pending: number; approval_rate: number | null; edit_rate: number | null; rejection_rate: number | null; adoption_rate: number | null; review_coverage: number | null };
   trace: { attempts: { event_id: string; stage: string; state: string; duration_seconds: number | null; usage?: {input_tokens: number | null; output_tokens: number | null} }[] };
@@ -322,7 +322,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
           <button className="secondary" disabled={busy || exporting} onClick={() => void download('markdown')}>Download Markdown</button></div>
         {exporting && <p role="status">Preparing export…</p>}
       </section>
-      <details className="panel run-record"><summary>Saved run record</summary><p className="field-hint">Assessment date: {result.snapshot.assessment_date} · {controlled ? `Controlled dispatches: ${result.job.model_calls} · ` : ''}Live model calls: {result.live_model_calls} · Cost: Unknown</p><p className="identifier">Job: {result.job.job_id}</p>
+      <details className="panel run-record"><summary>Saved run record</summary><p className="field-hint">Assessment date: {result.snapshot.assessment_date} · {controlled ? `Controlled dispatches: ${result.job.model_calls} · ` : ''}Live model calls: {result.live_model_calls ?? 'Unknown'} · Cost: Unknown</p><p className="identifier">Job: {result.job.job_id}</p>
         <p className="identifier">Model: {result.snapshot.model_version} · Prompt: {result.snapshot.prompt_version}</p>
         <ul>{result.trace.attempts.map(t => <li key={t.event_id}>{t.stage.replaceAll('_', ' ')}: {t.state} · {t.duration_seconds === null ? 'Duration unknown' : `${t.duration_seconds.toFixed(4)} s`} · Input tokens: {t.usage?.input_tokens ?? 'Unknown'} · Output tokens: {t.usage?.output_tokens ?? 'Unknown'}</li>)}</ul>
         <p className="identifier">Saved versions: {Object.entries(result.snapshot.selected_versions).map(([id, version]) => `${id}:${version}`).join(', ')}</p></details>

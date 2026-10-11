@@ -68,7 +68,7 @@ async function setup(page: Page, state = 'completed') {
     snapshot:{snapshot_id:'selection-browser-snapshot', case_id:caseId, assessment_date:'2024-04-08',
       selected_obligations:clauses.map((c:any) => c.obligation_id),model_version:'in.openai.gpt-5.6-luna',prompt_version:'assessment-vs5-selected-v1',
       selected_versions:{[regulatory.document.source_id]:regulatory.document.version, [bank.document.source_id]:bank.document.version}},
-    data_mode:'synthetic_live', freshness:'unverified', live_model_calls:state === 'queued' ? 0 : 7, cost_usd:null,
+    data_mode:'synthetic_live', freshness:'unverified', live_model_calls:(state === 'queued' ? 0 : 7) as number | null, cost_usd:null,
     obligations:requirements, obligation:requirements[0], controls:[{control_id:'selected-control', statement:'Selected bank control.',
       owner:null, frequency:null, citations:[bankCitation]}], control:null,
     findings:state === 'queued' ? [] : state === 'partial' ? findings.slice(0,1) : findings,
@@ -192,6 +192,16 @@ test('VS5-SB06 partial live result retains findings and exact unchecked scope', 
   await expect(result).toContainText('Output tokens: 9');
   await expect(result).not.toContainText('Live model calls: 0');
   await page.screenshot({path:`${evidence}/selection-partial.png`,fullPage:true});
+});
+
+test('VS5-CRB01 incomplete dispatch audit shows Unknown without inventing zero calls', async ({page}) => {
+  const s = await setup(page,'partial'); await s.choose();
+  s.result.live_model_calls = null;
+  await s.selection.getByRole('button',{name:'Run selected assessment with live model',exact:true}).click();
+  const result = page.getByRole('region',{name:'Assessment result',exact:true});
+  await result.getByText('Saved run record',{exact:true}).click();
+  await expect(result).toContainText('Live model calls: Unknown');
+  await expect(result).not.toContainText('Live model calls: 0');
 });
 
 test('VS5-SB07 a replacement selection keeps one version per source', async ({page}) => {

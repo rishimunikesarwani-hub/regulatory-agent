@@ -281,12 +281,11 @@ class Assessments:
             stage_id=stage, attempt_id=uuid.uuid4().hex, stage=stage, operation=operation, state=state,
             dispatched=state not in {'skipped', 'not_applicable'}, **timer.finish(),
             versions=VersionMetadata(application='vs5-v1', schema='t2-v1', extraction='vs2-v1', chunking='source-locations-v1',
-                retrieval='fixed-example-v1', prompt=run['prompt_version'], model_configuration='controlled-response-v1'),
+                retrieval='fixed-example-v1', prompt=run['prompt_version'],
+                model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else 'india-converse-v1'),
             model_id=MODEL if operation == 'model' else None, artifact_ids=tuple(artifacts), original_processing_event_id=original,
             candidate_passage_ids=tuple(candidates), selected_passage_ids=tuple(selected), errors=(error,) if error else ())
-        with self.store.transaction() as db:
-            self.store.authorize(owner, case, db)
-            self.reviews._insert(db, case, 'stage_attempt', event.event_id, event.model_dump(mode='json'))
+        self.reviews.attempt(owner,case,event)
 
     def run(self, owner, case, job_id):
         run, snapshot = self._run(owner, case, job_id)
@@ -359,6 +358,15 @@ class Assessments:
             'persistence': stage('persistence', 'storage', present),
         })
 
+    def _read_records(self, owner, case, run):
+        with self.store.transaction() as db:
+            self.store.authorize(owner,case,db)
+            job=self.store._job(db,owner,case,run['job_id'])
+            items=[ReviewItem.model_validate(item) for item in self.reviews._records(db,case,'finding') if item['run_id']==run['run_id']]
+            events=[event.model_dump() for item in items for event in self.reviews._history(db,case,item.finding_id)]
+            trace=[event for event in self.reviews._records(db,case,'stage_attempt') if event['run_id']==run['run_id']]
+        return job,items,events,trace
+
     def read(self, owner, case, job_id, cutoff=None):
         run, snapshot = self._run(owner, case, job_id)
         try:
@@ -367,13 +375,8 @@ class Assessments:
                 raise ValueError()
         except ValueError:
             raise invalid('invalid_cutoff') from None
-        with self.store.transaction() as db:
-            self.store.authorize(owner, case, db)
-            limit = limit or datetime.now(timezone.utc)
-            job = self.store._job(db, owner, case, job_id)
-            items = [ReviewItem.model_validate(item) for item in self.reviews._records(db, case, 'finding') if item['run_id'] == run['run_id']]
-            events = [event.model_dump() for item in items for event in self.reviews._history(db, case, item.finding_id)]
-            trace = [event for event in self.reviews._records(db, case, 'stage_attempt') if event['run_id'] == run['run_id']]
+        limit=limit or datetime.now(timezone.utc)
+        job,items,events,trace=self._read_records(owner,case,run)
         eligible = [item for item in items if instant(item.available_at) <= limit]
         events = [event for event in events if instant(event['committed_at']) <= limit]
         trace = [event for event in trace if instant(event['finished_at'] or event['started_at']) <= limit]
@@ -389,7 +392,8 @@ class Assessments:
             obligations = job['stages'].get('obligations', {}).get('obligations', [])
             controls = job['stages'].get('controls', {}).get('controls', [])
         return {'data_mode': run['data_mode'], 'freshness': 'unverified',
-            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else sum(t['operation']=='model' and t['dispatched'] for t in trace), 'cost_usd': None,
+            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else None if any(t['operation']=='model' and t['state']=='unknown' for t in trace)
+                else sum(t['operation']=='model' and t['dispatched'] for t in trace), 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,
             'obligation': obligations[0] if obligations else None, 'control': controls[0] if controls else None,
             'obligations': obligations, 'controls': controls, 'findings': [item.model_dump() for item in eligible],

@@ -210,6 +210,15 @@ A stated period does not establish complete records or actual control operation.
 
 These are technical terms for the accepted VS2 cloud implementation.
 
+### VS5 cloud record terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Record revision | An integer that increases after an accepted change to stored metadata. |
+| Strongly consistent read | A DynamoDB read that includes all successful writes before that read. |
+
+A sequence of strongly consistent reads does not give one atomic view of all records.
+
 ### Apply the review procedure
 
 1. Compare the changed text with the saved source.

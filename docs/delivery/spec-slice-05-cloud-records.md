@@ -27,6 +27,7 @@ Do not use SQLite files or a SQL parser for cloud records.
 Save an attempt before dispatch.
 Permit one transition from unknown to a terminal attempt state.
 Keep terminal attempts unchanged.
+If dispatch audit data is incomplete, show the live call count as Unknown.
 Use the current execution claim for worker attempt changes.
 Keep recovery, allowances, and deadlines under the cloud job contract.
 
@@ -54,6 +55,12 @@ Keep historical cutoffs, source inspection, and exports available.
 | VS5-CR09 | Review cutoffs and aggregate calculations keep earlier outcomes and pending items. |
 | VS5-CR10 | The shared pipeline completes selected obligations using native cloud records without SQLite. |
 | VS5-CR11 | Partial execution keeps findings, original sources, and unchecked obligations in exports. |
+| VS5-CR12 | Record bodies match their saved identities. Attempt completion cannot change the original attempt identity. |
+| VS5-CR13 | Missing dispatch audit data produces an unknown count instead of zero live calls. |
+| VS5-CR14 | Local attempt completion also rejects changed audit identities. |
+| VS5-CR15 | Edited revisions, evidence requests, and later approval keep the original review rules. |
+| VS5-CR16 | The assessment service saves native human reviews and exports the correct processing configuration. |
+| VS5-CRB01 | The browser shows Unknown when the saved dispatch count is unknown. |
 
 Write failing behavior checks before implementation.
 Use controlled SDK responses without credentials, live inference, or external traffic.

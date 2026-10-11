@@ -928,3 +928,12 @@ Failing tests reproduced stale clock checks and false dispatch accounting after 
 The correction preserves the consumed allowance and records known absence of dispatch separately.
 D50 records this clarification within the approved VS5 and AWS scope.
 Queue, cloud API, review, worker, source, live quality, and AWS acceptance remain unfinished.
+
+## 2026-10-11 - Native assessment and review records
+
+The cloud record component connects the shared pipeline to native DynamoDB metadata and private versioned S3 bodies.
+Conditional transactions protect worker claims, immutable findings, review revisions, and attempt identities.
+The local suite passed 327 backend checks and 51 browser checks before the final processing-metadata correction.
+The final focused suite passed 16 cloud record checks after that correction.
+Missing dispatch audit data shows Unknown instead of zero live calls.
+D51 records the implementation boundary and remaining queue, API, source, live quality, and deployed acceptance work.

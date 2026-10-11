@@ -107,10 +107,7 @@ class AssessmentPipeline:
             model_id=run['model_id'] if operation=='model' else None,
             unused_allowance=24-job['model_calls'] if operation=='model' else None,
             candidate_passage_ids=tuple(candidates), selected_passage_ids=tuple(selected), selected_text_bytes=selected_bytes)
-        with self.store.transaction() as db:
-            current = self.store._job(db, owner, case, run['job_id'])
-            self.store._claimed(current, token, time.time())
-            self.reviews._insert(db, case, 'stage_attempt', event.event_id, event.model_dump(mode='json'))
+        self.reviews.attempt(owner,case,event,execution_token=token)
         return event, timer
 
     def _finish_attempt(self, owner, case, run, token, attempt, *, state='succeeded', result=None, error=None):
@@ -128,25 +125,17 @@ class AssessmentPipeline:
             update.update(candidate_passage_ids=tuple(result['candidate_passage_ids']),
                 selected_passage_ids=tuple(result['selected_passage_ids']), selected_text_bytes=result['selected_bytes'])
         terminal = StageAttempt.model_validate(event.model_dump() | update)
-        with self.store.transaction() as db:
-            current = self.store._job(db, owner, case, run['job_id'])
-            self.store._claimed(current, token, time.time(), permit_expired=True)
-            changed = db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='stage_attempt' AND id=? AND json_extract(body,'$.state')='unknown'",
-                (terminal.model_dump_json(), case, event.event_id)).rowcount
-            if changed != 1:
-                raise ContractError('attempt_already_terminal')
+        self.reviews.attempt(owner,case,terminal,execution_token=token,finish=True)
 
     def _interrupt_attempts(self, owner, case, run, token):
-        with self.store.transaction() as db:
-            job = self.store._job(db, owner, case, run['job_id']); self.store._claimed(job, token, time.time())
-            for body in self.reviews._records(db, case, 'stage_attempt'):
-                if body['job_id'] == run['job_id'] and body['state'] == 'unknown':
-                    event = StageAttempt.model_validate_json(encoded(body))
-                    event = StageAttempt.model_validate(event.model_dump() | {'state':'interrupted','errors':('interrupted',),
-                        'finished_at':datetime.now(timezone.utc),
-                        'dispatched':job['model_calls'] > 24-event.unused_allowance if event.operation=='model' else False})
-                    db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='stage_attempt' AND id=?",
-                        (event.model_dump_json(), case, event.event_id))
+        job=self.store.read_job(owner,case,run['job_id']); self.store._claimed(job,token,time.time())
+        for body in self.reviews.records(owner,case,'stage_attempt'):
+            if body['job_id']==run['job_id'] and body['state']=='unknown':
+                event=StageAttempt.model_validate_json(encoded(body))
+                event=StageAttempt.model_validate(event.model_dump() | {'state':'interrupted','errors':('interrupted',),
+                    'finished_at':datetime.now(timezone.utc),
+                    'dispatched':job['model_calls']>24-event.unused_allowance if event.operation=='model' else False})
+                self.reviews.attempt(owner,case,event,execution_token=token,finish=True)
 
     @contextmanager
     def _processing(self, owner, case, run, token, key, stage, operation, **context):
