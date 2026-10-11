@@ -1,0 +1,4 @@
+FICTIONAL DEMO DOCUMENT. This is not a real bank policy or operating record.
+Fictional Cedar Bank stores payment-system data in India.
+The bank policy specifies weekly backups of payment-system data.
+The policy does not identify the backup owner or contain backup execution records.
