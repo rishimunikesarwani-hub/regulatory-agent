@@ -696,6 +696,7 @@ Keep AWS deployment pending until account verification and failed-stack recovery
 GitHub checks completed without failure for candidate commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
 Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
 Its deployment job was skipped.
+All 263 combined backend checks passed after the maximum-scope checks were added.
 The candidate branch is saved remotely.
 The `main` integration branch and original VS3 review branch are unchanged.
 
@@ -824,3 +825,10 @@ A failing source-boundary check found that the first pipeline guard also rejecte
 The correction keeps the private-bank restriction and permits public regulations with an allowed RBI authority URL.
 The URL check does not establish authenticity or freshness.
 All 261 backend checks passed after this correction.
+
+Seventeen pipeline checks now pass, including maximum selected scope.
+All 20 obligations completed within 22 calls.
+Repeated refinements exhausted the shared allowance at 24 calls.
+That partial run retained 11 findings and nine unchecked obligations.
+The GitHub checkpoint at `7f2a75c` passed 261 backend checks, 42 browser checks, and the frontend build.
+Its deployment job was skipped.

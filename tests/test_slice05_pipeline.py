@@ -297,6 +297,38 @@ class PipelineTests(unittest.TestCase):
             result,_,model=self.execute()
             self.assertEqual(result['state'],'failed');self.assertEqual(model.dispatches,0)
 
+    def bulk_responses(self, *, refine=False):
+        regulation=copy.deepcopy(self.regulation)
+        regulation['passages']=[{'document_version_id':'rules:v1','passage_id':f'bulk-rule-{i}',
+            'location':f'Clause {i}','text':f'Record privileged session category {i}.'} for i in range(1,21)]
+        regulation['obligation_scopes']={f'O-{i}':[f'bulk-rule-{i}'] for i in range(1,21)}
+        with self.store.transaction() as db:
+            db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='document' AND id='rules:v1'",(json.dumps(regulation),self.case))
+        self.snapshot=Snapshot.model_validate(self.snapshot.model_dump()|{'snapshot_id':'bulk-snapshot','selected_obligations':list(regulation['obligation_scopes'])})
+        self.store.save_snapshot(self.owner,self.snapshot);self.new_run()
+        obligations=[{'obligation_id':identity,'requirement':p['text'],'conditions':[],'exceptions':[],
+            'applicability':None,'citations':[self.cite(p)]} for identity,p in zip(self.snapshot.selected_obligations,regulation['passages'])]
+        responses=[self.action('retrieve_obligations',obligations=obligations),self.controls()]
+        for identity,passage in zip(self.snapshot.selected_obligations,regulation['passages']):
+            if refine:responses.append(self.action('refine_retrieval',retrieval_query='privileged sessions'))
+            finding=self.finding('O-2');cites=[self.cite(passage),self.cite(self.policy['passages'][0])]
+            finding.update(obligation_id=identity,citations=cites)
+            finding['claims'][0].update(obligation_element=passage['text'],citations=cites)
+            responses.append(self.action('propose_findings',findings=[finding]))
+        return responses
+
+    def test_pt16_maximum_scope_completes_within_shared_model_allowance(self):
+        result,_,model=self.execute(self.bulk_responses())
+        self.assertEqual(result['state'],'completed');self.assertEqual(model.dispatches,22)
+        self.assertEqual(len(self.findings()),20)
+        self.assertEqual({f['obligation_id'] for f in self.findings()},set(self.snapshot.selected_obligations))
+
+    def test_pt17_refinement_cannot_reset_the_allowance_for_each_obligation(self):
+        result,_,model=self.execute(self.bulk_responses(refine=True))
+        self.assertEqual(result['state'],'partial');self.assertEqual(model.dispatches,24)
+        self.assertEqual(len(self.findings()),11)
+        self.assertEqual(result['unchecked_obligations'],self.snapshot.selected_obligations[11:])
+
     def test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete(self):
         model=ControlledModel([self.extraction()]);pipeline=self.Pipeline(self.service,model)
         with patch.object(pipeline,'_finish_attempt',side_effect=OSError('private failure text')):

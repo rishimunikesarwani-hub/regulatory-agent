@@ -9,6 +9,7 @@ It verifies original bank documents before inference.
 It requires saved regulatory scope maps.
 It preserves unknown owners, frequencies, periods, usage, and costs.
 It records selected passages without operational log text.
+
 Known processing failures end their audit records.
 Interrupted processing keeps an explicit unknown or interrupted record.
 
@@ -28,6 +29,13 @@ Interrupted processing keeps an explicit unknown or interrupted record.
 | `sdk-login-dependency-green.txt` | Client construction passed after adding the required dependency. |
 | `pipeline-public-boundary-red.txt` | The original guard also rejected real public regulations. |
 | `backend-pipeline-public-final.txt` | All 261 checks passed after separating public regulations from private bank input. |
+| `pipeline-maximum-scope.txt` | All 17 pipeline checks passed, including maximum scope and shared allowance exhaustion. |
+| `backend-pipeline-maximum-final.txt` | All 263 combined backend checks passed. |
+
+All 20 selected obligations completed within 22 model calls.
+With one refinement for each obligation, the shared limit stopped processing after 24 calls.
+The partial run retained 11 findings and nine unchecked obligations.
+The paragraph review divided long sections without changing their requirements.
 
 Public regulatory records can use an allowed RBI URL without a fictional-data flag.
 Private bank input remains blocked.
@@ -45,6 +53,7 @@ General API admission and source-selection integration remain necessary.
 Source provider selection and current verification remain pending under D20.
 The synchronous pipeline checks deadlines before and after processing.
 The independent process supervisor remains necessary for a hard wall-clock limit.
+
 Private processing remains disabled pending its separate checks.
 Native provider stubs do not establish live authentication or model quality.
 Human held-out evaluation must check contextual support, conflicts, applicability, and every approved quality gate.
@@ -57,6 +66,7 @@ Reference: ASD-STE100 Issue 9 and the project glossary.
 Protected content includes identifiers, paths, quantities, permissions, prohibitions, and evidence states.
 The manual review checked ownership, selected scope, unknown values, deadlines, and controlled-versus-live labels.
 No quality gate or release condition changed.
+
 The complete dictionary meaning review remains incomplete.
 Mechanical results appear in separate checker reports.
 This receipt does not claim full ASD-STE100 compliance.
