@@ -221,6 +221,16 @@ These are technical terms for the accepted VS2 cloud implementation.
 
 A sequence of strongly consistent reads does not give one atomic view of all records.
 
+### VS5 comparison terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Model protocol | The software rules that define a model request and response. |
+| Execution claim | A saved permission that allows one worker to change a job during its lease. |
+| Selection review | The user's confirmation of the changed regulatory version and unchanged assessment inputs before reassessment. |
+
+Selection review does not approve an AI finding or establish actual control operation.
+
 ### Apply the review procedure
 
 1. Compare the changed text with the saved source.

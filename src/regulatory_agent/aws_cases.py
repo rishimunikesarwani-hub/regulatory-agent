@@ -92,7 +92,7 @@ def create_handler(service, *, environment="aws", region="ap-south-1", user_pool
                 raise authentication_error()
             active = service() if callable(service) else service
             parts = path.split('/') if isinstance(path, str) else []
-            if len(parts)>=5 and parts[:3]==['','api','cases'] and parts[4] in {'assessment-selection','assessments'}:
+            if len(parts)>=5 and parts[:3]==['','api','cases'] and parts[4] in {'assessment-selection','assessments','regulatory-comparisons'}:
                 active.read(owner,parts[3])
                 if assessments is None: raise unavailable()
                 from .aws_assessment_api import response

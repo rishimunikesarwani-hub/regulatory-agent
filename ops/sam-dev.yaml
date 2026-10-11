@@ -254,6 +254,24 @@ Resources:
         AssessmentSelection:
           Type: HttpApi
           Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessment-selection', Method: GET, PayloadFormatVersion: '2.0'}
+        ComparisonSelection:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons/selection', Method: GET, PayloadFormatVersion: '2.0'}
+        ListComparisons:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons', Method: GET, PayloadFormatVersion: '2.0'}
+        StartComparison:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons', Method: POST, PayloadFormatVersion: '2.0'}
+        ReadComparison:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons/{comparison_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        ResumeComparison:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/resume', Method: POST, PayloadFormatVersion: '2.0'}
+        ReassessComparison:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/reassess', Method: POST, PayloadFormatVersion: '2.0'}
         SelectedAssessment:
           Type: HttpApi
           Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/selected', Method: POST, PayloadFormatVersion: '2.0'}

@@ -922,6 +922,28 @@ Native routes, browser acceptance, provider approval, live quality, and deployed
 This implementation does not establish full REQ-F02 acceptance.
 VS5 remains a draft under D35.
 
+## D56 - Comparison API and reviewer interface
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42, D54, and D55.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [comparison flow contract](../delivery/spec-slice-05-comparison-flow.md) connects owned saved versions, bounded jobs, cited changes, and independent reassessment admission.
+The native API uses Cognito authorization, the existing queue and worker, and the disabled assessment flag.
+The local API uses the same comparison rules with supervised background execution.
+The accepted VS4 simulation keeps separate records and controls.
+
+The reviewer explicitly selects the newer saved version.
+Applicable changes require selection review before a new assessment.
+The new snapshot keeps bank versions, the assessment date, and the complete obligation scope.
+Earlier AI findings and human decisions stay unchanged.
+
+Current source coverage, provider selection, live semantic quality, template validation, and deployed acceptance remain unverified.
+Controlled HTTP and browser checks cannot establish real amendment interpretation.
+The current source set has no second verified regulatory version.
+The interface shows this limit instead of creating an amendment from test text.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

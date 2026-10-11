@@ -122,7 +122,7 @@ class Assessments:
         self.cases.read(owner, case)
         with self.store.transaction() as db:
             self.store.authorize(owner, case, db)
-            return {'comparisons': self.reviews._records(db, case, 'comparison')}
+            return {'comparisons': [r for r in self.reviews._records(db, case, 'comparison') if r.get('data_mode')=='controlled_simulation']}
 
     def comparison(self, owner, case, identity):
         return self._record(owner, case, 'comparison', identity)

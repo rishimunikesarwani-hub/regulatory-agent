@@ -1,0 +1,61 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice run playwright test --config playwright.release.config.ts comparison.spec.ts
+[WebServer] (node:33104) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [26676]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 4 tests using 1 worker
+
+(node:39260) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\comparison.spec.ts:84:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews (6.9s)
+(node:9744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 tests\comparison.spec.ts:104:1 › VS5-CF11 uncertain comparison keeps its request key through refresh and retry (2.3s)
+  ok 3 tests\comparison.spec.ts:112:1 › VS5-CF12 empty saved versions and unresolved changes cannot start reassessment (3.9s)
+  ok 4 tests\comparison.spec.ts:121:1 › VS5-CF11 mobile selection and cited results fit the viewport and support keyboard actions (2.2s)
+
+
+  1) tests\comparison.spec.ts:84:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews 
+
+    Error: expect(locator).not.toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Assessment result', exact: true })
+    Expected substring: not "Approved"
+    Received string: "Fictional inputs · Live model processingNeeds reviewThis assessment uses selected historical excerpts and fictional bank documents. It does not establish compliance or current regulatory coverage.Job state: completed · Findings: 1 · Selected obligations: 1Unchecked obligations: NoneRequirement and applicabilityControlled test: Require independent approval.Selected fictional bankConditionsSelected conditionExceptionsSelected exceptionMapped controlsNo mapped control.Inspect Test clauseOriginal findingControlled interpretation needs review.Proposed recommendationInspect fictional records.Evidence condition: missing · Gap type: evidenceInspect Test clauseHuman reviewApprovedEditedRejectedRequest more evidenceReview reasonSave reviewSaved review outcomesApproved: 0 · Edited: 0 · Rejected: 0 · Pending: 1Eligible: 1 · Reviewed: 0Approval without edits: Not measuredEdit rate: 0% · Rejection rate: 0%Adoption with or without edits: Not measuredReview coverage: 0%These figures measure human review decisions for this assessment only. They do not measure correctness. Latest final decisions count at the shown cutoff.Cutoff: 2026-10-11T10:00:00Z · Definition: d24-v1Selected finding review historyExport assessmentDownload the saved versions, source passages, findings, and human reviews at the displayed cutoff.Fictional inputs with live model processing. Current regulatory status is unverified. The report keeps its job state and unchecked scope. Cost remains unknown.Download JSONDownload MarkdownSaved run recordAssessment date: 2024-05-01 · Live model calls: 1 · Cost: UnknownJob: new-comparison-assessmentModel: pinned-model · Prompt: assessment-vs5-selected-period-v1Saved versions: RBI-TEST:newer, bank:1"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "not toContainText" getByRole('region', { name: 'Assessment result', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Assessment result', exact: true })
+        14 × locator resolved to <section class="assessment-result" aria-label="Assessment result">…</section>
+           - unexpected value "Fictional inputs · Live model processingNeeds reviewThis assessment uses selected historical excerpts and fictional bank documents. It does not establish compliance or current regulatory coverage.Job state: completed · Findings: 1 · Selected obligations: 1Unchecked obligations: NoneRequirement and applicabilityControlled test: Require independent approval.Selected fictional bankConditionsSelected conditionExceptionsSelected exceptionMapped controlsNo mapped control.Inspect Test clauseOriginal findingControlled interpretation needs review.Proposed recommendationInspect fictional records.Evidence condition: missing · Gap type: evidenceInspect Test clauseHuman reviewApprovedEditedRejectedRequest more evidenceReview reasonSave reviewSaved review outcomesApproved: 0 · Edited: 0 · Rejected: 0 · Pending: 1Eligible: 1 · Reviewed: 0Approval without edits: Not measuredEdit rate: 0% · Rejection rate: 0%Adoption with or without edits: Not measuredReview coverage: 0%These figures measure human review decisions for this assessment only. They do not measure correctness. Latest final decisions count at the shown cutoff.Cutoff: 2026-10-11T10:00:00Z · Definition: d24-v1Selected finding review historyExport assessmentDownload the saved versions, source passages, findings, and human reviews at the displayed cutoff.Fictional inputs with live model processing. Current regulatory status is unverified. The report keeps its job state and unchecked scope. Cost remains unknown.Download JSONDownload MarkdownSaved run recordAssessment date: 2024-05-01 · Live model calls: 1 · Cost: UnknownJob: new-comparison-assessmentModel: pinned-model · Prompt: assessment-vs5-selected-period-v1Saved versions: RBI-TEST:newer, bank:1"
+
+
+      94 |   const result=page.getByRole('region',{name:'Assessment result',exact:true});
+      95 |   await expect.poll(()=>new URL(page.url()).searchParams.get('assessment')).toBe('new-comparison-assessment');
+    > 96 |   await expect(result).toContainText('Pending: 1');await expect(result).not.toContainText('Approved');
+         |                                                                             ^
+      97 |   await s.panel.getByRole('button',{name:'Open previous assessment',exact:true}).click();await expect(result).toContainText('Approved');
+      98 |   await page.reload();await page.getByRole('button',{name:'Compare regulatory versions',exact:true}).click();
+      99 |   await page.getByLabel('Saved regulatory comparisons',{exact:true}).selectOption('saved-native-comparison');
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:96:77
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF10-saved--da1ec-oad-and-independent-reviews\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF10-saved--da1ec-oad-and-independent-reviews\error-context.md
+
+  1 failed
+    tests\comparison.spec.ts:84:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews 
+  3 passed (21.4s)

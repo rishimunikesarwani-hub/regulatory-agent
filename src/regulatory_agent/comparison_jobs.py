@@ -4,7 +4,7 @@ import uuid
 
 from .assessment_pipeline import AssessmentPipeline
 from .contracts import COMPARISON_PROMPT, ComparisonRequest, ContractError, Control, PERIOD_PROMPT, SELECTED_PROMPTS, Snapshot
-from .local import encoded, validated_action
+from .local import encoded, identifier, validated_action
 from .regulatory_changes import prepare_pair, validate_changes
 
 
@@ -19,6 +19,7 @@ class Comparisons:
         return uuid.uuid5(uuid.NAMESPACE_URL,encoded(['vs5-comparison',owner,case,key])).hex
 
     def _baseline(self, owner, case, snapshot_id):
+        identifier(snapshot_id)
         snapshot=self.store.get(owner,case,'snapshot',snapshot_id)
         run=next((r for r in self.reviews.records(owner,case,'run') if r['snapshot_id']==snapshot_id),None)
         if run is None:raise ContractError('comparison_baseline_missing')
@@ -30,6 +31,58 @@ class Comparisons:
                 snapshot['prompt_version'] not in SELECTED_PROMPTS or snapshot['model_version']!='in.openai.gpt-5.6-luna':
             raise ContractError('comparison_processing_unverified')
         return run,snapshot,job
+
+    @staticmethod
+    def _metadata(source):
+        doc=source['document']
+        return {'document':{k:doc.get(k) for k in ('document_version_id','case_id','source_id','kind','version','sha256',
+            'synthetic','source_url','publication_date','effective_date')},
+            'filename':source.get('filename',doc['source_id']),'authority':source.get('authority'),
+            'freshness':'unverified'}
+
+    def selection(self, owner, case, snapshot_id):
+        from .contracts import public_url, iso_date
+        run,snapshot,_=self._baseline(owner,case,snapshot_id)
+        saved=self.reviews.records(owner,case,'document'); eligible=[]
+        for source in saved:
+            doc=source['document']
+            if doc.get('case_id')!=case or doc.get('kind')!='regulation' or doc.get('synthetic') is not False or \
+                    source.get('authority')!='Reserve Bank of India':continue
+            try:
+                public_url(doc['source_url']);iso_date(doc['publication_date']);iso_date(doc['effective_date'])
+            except (ValueError,TypeError,KeyError):continue
+            eligible.append(source)
+        older=[s for s in eligible if s['document']['document_version_id'] in snapshot['selected_document_ids'].values()
+            and set(s.get('obligation_scopes',{})).intersection(snapshot['selected_obligations'])]
+        if not older:raise ContractError('comparison_regulatory_scope_invalid')
+        newer=[s for s in eligible if any(s['document']['source_id']==o['document']['source_id'] and
+            s['document']['version']!=o['document']['version'] and s['document']['document_version_id']!=o['document']['document_version_id'] and
+            s['document']['publication_date']>=o['document']['publication_date'] for o in older)]
+        return {'case_id':case,'snapshot_id':snapshot_id,'baseline_job_id':run['job_id'],'freshness':'unverified',
+            'assessment_date':snapshot['assessment_date'],'selected_versions':snapshot['selected_versions'],
+            'selected_obligations':snapshot['selected_obligations'],'older_versions':[self._metadata(s) for s in older],
+            'newer_versions':[self._metadata(s) for s in newer]}
+
+    def list(self, owner, case):
+        self.service.cases.read(owner,case); summaries=[]
+        for saved in self.reviews.records(owner,case,'comparison'):
+            if saved.get('data_mode')!='synthetic_live':continue
+            record,run,_=self._record(owner,case,saved['comparison_id'])
+            job=self.store.read_job(owner,case,run['job_id'])
+            summaries.append({'comparison_id':record['comparison_id'],'case_id':case,'job_id':run['job_id'],
+                'baseline_job_id':record['baseline_job_id'],'snapshot_id':record['pair']['snapshot_id'],
+                'older_version_id':record['request']['older_version_id'],'newer_version_id':record['request']['newer_version_id'],
+                'state':job['state']})
+        return {'comparisons':summaries}
+
+    def run_local(self, owner, case, identity):
+        from .assessment_worker import bedrock_child, supervise
+        import os
+        run,snapshot=self.service._run(owner,case,identity)
+        if run['data_mode']!='synthetic_live' or snapshot['prompt_version']!=COMPARISON_PROMPT:
+            raise ContractError('comparison_processing_unverified')
+        return supervise(self.store,owner,case,identity,bedrock_child,
+            args=(str(self.store.path),os.environ.get('BEDROCK_PROFILE')))
 
     @staticmethod
     def _scoped(source, selected, *, older=False):
@@ -197,9 +250,14 @@ class Comparisons:
                     'newer_version_id':record['request']['newer_version_id'],'changes':changes},
                 [f for f in record['baseline_findings'] if f['obligation_id'] in done])
             if job['state']!='completed':result['assessment_required']=False
-        return {'comparison_id':identity,'job_id':run['job_id'],'baseline_job_id':record['baseline_job_id'],
+        reassessment_id=self._identity(owner,case,'reassessment:'+identity)
+        next_run=next((r for r in self.reviews.records(owner,case,'run') if r['run_id']==reassessment_id),None)
+        return {'comparison_id':identity,'case_id':case,'snapshot_id':record['pair']['snapshot_id'],
+            'job_id':run['job_id'],'baseline_job_id':record['baseline_job_id'],'new_job_id':next_run['job_id'] if next_run else None,
             'state':job['state'],'data_mode':run['data_mode'],'freshness':'unverified','result':result,
-            'older_source':record['pair']['older_source'],'newer_source':record['pair']['newer_source'],
+            'older_source':self._metadata(record['pair']['older_source'])|{'passages':record['pair']['older_source']['passages']},
+            'newer_source':self._metadata(record['pair']['newer_source'])|{'passages':record['pair']['newer_source']['passages']},
+            'assessment_context':{k:record['baseline_snapshot'][k] for k in ('assessment_date','selected_versions','selected_obligations')},
             'model_calls':job['model_calls'],'stop_reason':job['stop_reason'],
             'unchecked_obligations':[o for o in snapshot['selected_obligations'] if o not in done],
             'trace':[a for a in self.reviews.records(owner,case,'stage_attempt') if a['run_id']==run['run_id']]}

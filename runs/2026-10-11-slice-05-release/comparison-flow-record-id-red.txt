@@ -1,0 +1,53 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice run playwright test --config playwright.release.config.ts comparison.spec.ts --grep exact saved
+[WebServer] (node:26704) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [26424]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:26016) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\comparison.spec.ts:132:1 › VS5-CF04 refresh requires the exact saved comparison ID (6.5s)
+
+
+  1) tests\comparison.spec.ts:132:1 › VS5-CF04 refresh requires the exact saved comparison ID ──────
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Saved regulatory comparison', exact: true }).getByRole('alert')
+    Expected substring: "could not be confirmed"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Saved regulatory comparison', exact: true }).getByRole('alert') with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Saved regulatory comparison', exact: true }).getByRole('alert')
+
+
+      135 |     json:{...s.value(),comparison_id:'different-comparison'}}));
+      136 |   await s.panel.getByRole('button',{name:'Refresh comparison',exact:true}).click();
+    > 137 |   await expect(s.panel.getByRole('alert')).toContainText('could not be confirmed');
+          |                                            ^
+      138 |   await expect(s.panel).toContainText('Comparison queued');
+      139 |   expect(new URL(page.url()).searchParams.get('comparison')).toBe('saved-native-comparison');
+      140 | });
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:137:44
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF04-refres-ded3e-e-exact-saved-comparison-ID\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF04-refres-ded3e-e-exact-saved-comparison-ID\error-context.md
+
+  1 failed
+    tests\comparison.spec.ts:132:1 › VS5-CF04 refresh requires the exact saved comparison ID ───────

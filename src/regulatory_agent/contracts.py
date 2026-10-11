@@ -484,6 +484,15 @@ class ComparisonRequest(Contract):
         return self
 
 
+class StartReassessment(Contract):
+    selection_reviewed: bool
+
+    @model_validator(mode='after')
+    def reviewed(self):
+        if not self.selection_reviewed:raise ValueError('selection_review_required')
+        return self
+
+
 class ExportRequest(Contract):
     format: Literal["json", "markdown"]
 

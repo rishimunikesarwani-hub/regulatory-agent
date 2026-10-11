@@ -238,7 +238,8 @@ Add model-selected tool actions with validation, controlled retrieval refinement
 
 The [change validation contract](spec-slice-05-change-validation.md) defines source-pair checks and interpretation validation.
 The [comparison job contract](spec-slice-05-comparison-jobs.md) defines saved admission, model processing, and independent reassessment records.
-Complete model and native comparison integration remain pending.
+The [comparison flow contract](spec-slice-05-comparison-flow.md) connects native routes and the reviewer interface.
+Provider verification, live semantic evaluation, and deployed acceptance remain pending.
 
 Acceptance:
 - [ ] The agent selects permitted tools through structured actions with validation.

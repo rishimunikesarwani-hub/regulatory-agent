@@ -126,6 +126,46 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
             assessments = Assessments(cases(), sources(identity, case_id))
         return assessments
 
+    def comparison_response(identity, case_id, method, route, body=None, snapshot_id=None, background=None):
+        from types import SimpleNamespace
+        from .comparison_api import response
+        from .comparison_jobs import Comparisons
+        from .contracts import COMPARISON_PROMPT
+        service=assessment_service(identity,case_id)
+        def send(owner,case,job):
+            _,snapshot=service._run(owner,case,job)
+            runner=Comparisons(service).run_local if snapshot['prompt_version']==COMPARISON_PROMPT else service.run_selected
+            background.add_task(runner,owner,case,job)
+        _,result=response(service,SimpleNamespace(send=send) if background is not None else None,
+            identity,case_id,method,['regulatory-comparisons',*route],body,snapshot_id)
+        return result
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons/selection')
+    def comparison_selection(case_id: str, snapshot_id: str | None = None, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',['selection'],snapshot_id=snapshot_id)
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons')
+    def saved_regulatory_comparisons(case_id: str, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',[])
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons',status_code=202)
+    def start_regulatory_comparison(case_id: str, body: ComparisonRequest, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[],body,background=background)
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}')
+    def regulatory_comparison(case_id: str, comparison_id: str, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',[comparison_id])
+
+    from .contracts import Empty, StartReassessment
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/resume',status_code=202)
+    def resume_comparison(case_id: str, comparison_id: str, body: Empty, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[comparison_id,'resume'],body,background=background)
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/reassess',status_code=202)
+    def reassess_comparison(case_id: str, comparison_id: str, body: StartReassessment, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[comparison_id,'reassess'],body,background=background)
+
     @app.get('/api/cases/{case_id}/comparisons')
     def list_comparisons(case_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).comparisons(identity, case_id)

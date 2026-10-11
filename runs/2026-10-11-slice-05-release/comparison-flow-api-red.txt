@@ -1,0 +1,22 @@
+test_slice05_comparison_api (unittest.loader._FailedTest.test_slice05_comparison_api) ... ERROR
+
+======================================================================
+ERROR: test_slice05_comparison_api (unittest.loader._FailedTest.test_slice05_comparison_api)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_slice05_comparison_api
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 98
+    self.assertEqual(self.call('POST',body=self.f.request.model_dump(),isBase64Encoded=True,body='!bad-base64')['statusCode'],422)
+                                                                                            ^^^^^^^^^^^^^^^^^^
+SyntaxError: keyword argument repeated: body
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (errors=1)

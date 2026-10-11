@@ -110,4 +110,9 @@ Local checks do not satisfy those live quality conditions.
 Do not merge VS5 before its D35 user review condition passes.
 
 The [saved comparison processing contract](spec-slice-05-comparison-jobs.md) adds bounded jobs and independent reassessment admission.
-Native routes, browser acceptance, provider approval, and live evaluation remain pending.
+Native routes and browser controls now connect through D56.
+Provider approval and live evaluation remain pending.
+
+The [comparison API and interface](spec-slice-05-comparison-flow.md) now connect saved version selection, bounded processing, and independent reassessment admission.
+No second verified regulatory version is available in the current source set.
+Provider selection and live semantic checks remain required.

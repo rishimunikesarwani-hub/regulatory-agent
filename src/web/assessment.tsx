@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { authHeaders, type Config } from './auth';
+import { RegulatoryComparisons } from './comparisons';
 import fixture from '../../data/fixtures/slice-02-policy.txt?raw';
 
 type Citation = { document_version_id: string; passage_id: string; location: string; quote: string };
@@ -301,6 +302,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         <div className="citation-actions"><button className="secondary" disabled={busy} onClick={() => void open(comparison.baseline_job_id)}>Open previous assessment</button>{comparison.new_job_id && <button disabled={busy} onClick={() => void open(comparison.new_job_id!)}>Open new assessment</button>}</div>
       </div>}
     </section>}
+    {result?.data_mode==='synthetic_live'&&<RegulatoryComparisons config={config} caseId={caseId} baseline={result} onOpen={open} onExpired={onExpired}/>}
     {result && <section className="assessment-result" aria-label="Assessment result">
       <div className="assessment-result-heading"><span className="badge">{controlled ? 'Controlled simulation' : 'Fictional inputs · Live model processing'}</span><h3>{finding ? titles[finding.status] || finding.status : `Assessment ${result.job.state}`}</h3>
         <p>{controlled ? 'This is a fixed example.' : 'This assessment uses selected historical excerpts and fictional bank documents.'} It does not establish compliance or current regulatory coverage.</p>

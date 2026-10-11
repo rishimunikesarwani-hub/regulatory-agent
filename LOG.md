@@ -987,6 +987,7 @@ Complete comparison admission, bounded model processing, native routes, and brow
 Provider verification, live quality, template validation, AWS authentication, and deployed acceptance remain pending.
 VS5 remains a draft under D35.
 
+
 ## 2026-10-11 - Saved comparison processing
 
 D55 defines saved comparison admission, bounded model processing, and independent reassessment admission.
@@ -1002,4 +1003,23 @@ The focused suite passed all 13 checks in 5.195 seconds without external traffic
 The [review receipt](runs/2026-10-11-slice-05-release/comparison-jobs-review.md) gives the evidence and language limits.
 
 Native routes, browser acceptance, provider verification, live quality, template validation, and deployed acceptance remain pending.
+VS5 remains a draft under D35.
+
+## 2026-10-11 - Comparison API and interface
+
+D56 connects saved version selection, comparison processing, cited changes, and independent reassessment admission.
+Native routes use the existing Cognito authorizer, queue, worker, and disabled assessment flag.
+Local routes use the same comparison rules and supervised background execution.
+The interface requires selection review before reassessment.
+Earlier findings and human reviews stay unchanged.
+
+Eleven focused API checks passed in 5.791 seconds.
+The complete local backend suite passed 403 checks in 186.977 seconds.
+The complete browser suite passed 59 checks in 2.2 minutes.
+The TypeScript check and production build passed.
+Desktop and mobile views passed visual review.
+The [review receipt](runs/2026-10-11-slice-05-release/comparison-flow-review.md) records failing checks and review limits.
+
+No second verified regulatory version exists in the current source set.
+Provider approval, live semantic evaluation, template validation, AWS authentication, CloudFront verification, and deployed acceptance remain pending.
 VS5 remains a draft under D35.

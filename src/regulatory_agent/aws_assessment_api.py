@@ -9,7 +9,7 @@ from pydantic import ValidationError
 
 from .aws_execution import CloudSelection
 from .cases import CaseError, invalid_request, not_found, unavailable
-from .contracts import ContractError, ExportRequest, ReviewRequest, StartAssessment
+from .contracts import ComparisonRequest, ContractError, Empty, ExportRequest, ReviewRequest, StartAssessment, StartReassessment
 from .reviews import instant
 
 
@@ -37,6 +37,13 @@ def response(service, queue, owner, case, method, route, event, *, source_root=N
             except (ValueError,TypeError): raise invalid_request() from None
         if method=='GET' and route==['assessment-selection']:
             return 200,CloudSelection(service,root=source_root).catalog(owner,case)
+        if route[0]=='regulatory-comparisons':
+            from .comparison_api import response as comparison_response
+            request=None
+            if method=='POST':
+                contract=ComparisonRequest if len(route)==1 else StartReassessment if route[2:]==['reassess'] else Empty
+                request=_body(event,contract)
+            return comparison_response(service,queue,owner,case,method,route,request,query.get('snapshot_id'))
         if route[0]!='assessments': raise not_found()
         if method=='GET' and route==['assessments']: return 200,service.list(owner,case)
         if method=='POST' and route==['assessments','selected']:

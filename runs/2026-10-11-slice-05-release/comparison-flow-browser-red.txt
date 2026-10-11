@@ -1,0 +1,136 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice run playwright test --config playwright.release.config.ts comparison.spec.ts
+[WebServer] (node:39776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [10544]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 4 tests using 1 worker
+
+(node:32736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\comparison.spec.ts:83:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews (30.1s)
+(node:24712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\comparison.spec.ts:103:1 › VS5-CF11 uncertain comparison keeps its request key through refresh and retry (30.1s)
+(node:38324) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\comparison.spec.ts:111:1 › VS5-CF12 empty saved versions and unresolved changes cannot start reassessment (30.1s)
+(node:29360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 tests\comparison.spec.ts:120:1 › VS5-CF11 mobile selection and cited results fit the viewport and support keyboard actions (30.1s)
+
+
+  1) tests\comparison.spec.ts:83:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Compare regulatory versions', exact: true })
+
+
+      72 |   await page.getByLabel('Saved assessments',{exact:true}).selectOption('comparison-baseline-job');
+      73 |   await expect(page.getByRole('region',{name:'Assessment result',exact:true})).toContainText('Approved');
+    > 74 |   await page.getByRole('button',{name:'Compare regulatory versions',exact:true}).click();
+         |                                                                                  ^
+      75 |   const panel=page.getByRole('region',{name:'Saved regulatory comparison',exact:true});
+      76 |   await expect(panel.getByLabel('Older saved version',{exact:true})).toBeVisible();
+      77 |   return {panel,keys,reviewBodies,complete:()=>{complete=true;},choose:async()=>{
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:74:82)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:84:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF10-saved--da1ec-oad-and-independent-reviews\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF10-saved--da1ec-oad-and-independent-reviews\error-context.md
+
+  2) tests\comparison.spec.ts:103:1 › VS5-CF11 uncertain comparison keeps its request key through refresh and retry 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Compare regulatory versions', exact: true })
+
+
+      72 |   await page.getByLabel('Saved assessments',{exact:true}).selectOption('comparison-baseline-job');
+      73 |   await expect(page.getByRole('region',{name:'Assessment result',exact:true})).toContainText('Approved');
+    > 74 |   await page.getByRole('button',{name:'Compare regulatory versions',exact:true}).click();
+         |                                                                                  ^
+      75 |   const panel=page.getByRole('region',{name:'Saved regulatory comparison',exact:true});
+      76 |   await expect(panel.getByLabel('Older saved version',{exact:true})).toBeVisible();
+      77 |   return {panel,keys,reviewBodies,complete:()=>{complete=true;},choose:async()=>{
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:74:82)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:104:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF11-uncert-0791d-y-through-refresh-and-retry\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF11-uncert-0791d-y-through-refresh-and-retry\error-context.md
+
+  3) tests\comparison.spec.ts:111:1 › VS5-CF12 empty saved versions and unresolved changes cannot start reassessment 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Compare regulatory versions', exact: true })
+
+
+      72 |   await page.getByLabel('Saved assessments',{exact:true}).selectOption('comparison-baseline-job');
+      73 |   await expect(page.getByRole('region',{name:'Assessment result',exact:true})).toContainText('Approved');
+    > 74 |   await page.getByRole('button',{name:'Compare regulatory versions',exact:true}).click();
+         |                                                                                  ^
+      75 |   const panel=page.getByRole('region',{name:'Saved regulatory comparison',exact:true});
+      76 |   await expect(panel.getByLabel('Older saved version',{exact:true})).toBeVisible();
+      77 |   return {panel,keys,reviewBodies,complete:()=>{complete=true;},choose:async()=>{
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:74:82)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:112:9
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF12-empty--ddec4-s-cannot-start-reassessment\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF12-empty--ddec4-s-cannot-start-reassessment\error-context.md
+
+  4) tests\comparison.spec.ts:120:1 › VS5-CF11 mobile selection and cited results fit the viewport and support keyboard actions 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Compare regulatory versions', exact: true })
+
+
+      72 |   await page.getByLabel('Saved assessments',{exact:true}).selectOption('comparison-baseline-job');
+      73 |   await expect(page.getByRole('region',{name:'Assessment result',exact:true})).toContainText('Approved');
+    > 74 |   await page.getByRole('button',{name:'Compare regulatory versions',exact:true}).click();
+         |                                                                                  ^
+      75 |   const panel=page.getByRole('region',{name:'Saved regulatory comparison',exact:true});
+      76 |   await expect(panel.getByLabel('Older saved version',{exact:true})).toBeVisible();
+      77 |   return {panel,keys,reviewBodies,complete:()=>{complete=true;},choose:async()=>{
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:74:82)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\comparison.spec.ts:121:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF11-mobile-6f67b-nd-support-keyboard-actions\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\comparison-VS5-CF11-mobile-6f67b-nd-support-keyboard-actions\error-context.md
+
+  4 failed
+    tests\comparison.spec.ts:83:1 › VS5-CF10 saved comparison shows progress, citations, reload, and independent reviews 
+    tests\comparison.spec.ts:103:1 › VS5-CF11 uncertain comparison keeps its request key through refresh and retry 
+    tests\comparison.spec.ts:111:1 › VS5-CF12 empty saved versions and unresolved changes cannot start reassessment 
+    tests\comparison.spec.ts:120:1 › VS5-CF11 mobile selection and cited results fit the viewport and support keyboard actions 
