@@ -63,7 +63,8 @@ Stated dates do not establish complete records or actual control operation.
 Unknown or conflicting dates remain unknown.
 Earlier selected protocols keep their original prompt and source behavior.
 
-External source integration and the AWS worker adapter remain unfinished.
+External source integration remains unfinished.
+The native execution component now connects the AWS worker adapter.
 
 The [cloud job component](spec-slice-05-cloud-jobs.md) now stores conditional job metadata and counters through native DynamoDB calls.
 It uses the existing private S3 adapter for exact snapshot and stage references.
@@ -84,19 +85,22 @@ Queue resources, a conditional worker, and fixed runtime permissions are prepare
 Cloud assessment deployment remains disabled by default.
 
 Template schema and security validation remain pending tool approval.
-Native version comparisons, source verification, live evaluations, and deployed acceptance remain required.
+Native comparison routes and browser controls now connect through D56.
+Source verification, live evaluations, and deployed acceptance remain required.
 Hosted Lambda acceptance remains unverified.
 
 The [change validation component](spec-slice-05-change-validation.md) prepares specified regulatory source pairs and validates model interpretations.
 Its checks keep source hashes, dates, citations, selected obligations, and earlier control mappings.
 Future requirements cannot request assessment processing for an earlier date.
 Missing metadata stays unknown.
-Complete comparison admission, model processing, native routes, and browser acceptance remain unfinished.
+The saved comparison and interface contracts now connect admission, model processing, native routes, and browser controls.
+Real amendment interpretation remains unverified.
 
 The feedback process must use the current application commit.
-Renew the expired AWS authentication before live model checks.
 The locked SDK includes its `crt` extra for the existing `aws login` profile.
-Client construction passes. Live profile verification still returns `LoginRefreshRequired`.
+AWS authentication now passes for account `482439369658`.
+The fixed India model profile is active, but model access requires an account agreement.
+Read the [AWS release actions](guide-aws-release-actions.md) and its current account check.
 
 VS5 remains in progress.
 Exports are one part of the complete release scope.

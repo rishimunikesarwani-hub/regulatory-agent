@@ -1023,3 +1023,24 @@ The [review receipt](runs/2026-10-11-slice-05-release/comparison-flow-review.md)
 No second verified regulatory version exists in the current source set.
 Provider approval, live semantic evaluation, template validation, AWS authentication, CloudFront verification, and deployed acceptance remain pending.
 VS5 remains a draft under D35.
+
+## 2026-10-11 - Current AWS release checks
+
+The comparison application commit passed GitHub checks with 403 backend tests and 59 browser tests.
+The production build passed.
+The local feedback application keeps its saved case, findings, and review records.
+
+Current AWS authentication passes in account `482439369658` through `et-hackathon-admin`.
+The monthly budget limit is `USD 25`.
+The stack remains `ROLLBACK_COMPLETE`.
+The fixed India model profile is active, but model availability reports `NOT_AUTHORIZED` and no active agreement.
+No model invocation or AWS resource change occurred during these checks.
+
+The [release action guide](docs/delivery/guide-aws-release-actions.md) gives model activation and CloudFront account-verification steps.
+The [read-only receipt](runs/2026-10-11-slice-05-release/aws-release-preflight.json) records current account results.
+The [review receipt](runs/2026-10-11-slice-05-release/aws-release-actions-review.md) gives evidence and language limits.
+The Support API requires paid Support, and browser attachment timed out twice.
+No Support case ID or verification completion was confirmed.
+
+Model agreement permission, source-provider selection, validator tool approval, live quality, CloudFront verification, and deployed acceptance remain pending.
+VS5 remains a draft under D35.

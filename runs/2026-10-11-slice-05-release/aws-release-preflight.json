@@ -1,0 +1,133 @@
+{
+  "recorded_at": "2026-10-11T12:05:38.903319+00:00",
+  "source_commit": "ae2ead73d4dc4008c77fd85fad0d3485cd423a89",
+  "account": "482439369658",
+  "scope": "Read-only AWS account checks. No model invocation or resource change.",
+  "checks": {
+    "identity": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": {
+        "account": "482439369658",
+        "identity_type": "root"
+      }
+    },
+    "stack": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": [
+        {
+          "Name": "regulatory-agent-dev-s01",
+          "State": "ROLLBACK_COMPLETE",
+          "Changed": "2026-10-10T17:24:36.729000+00:00"
+        }
+      ]
+    },
+    "cloudfront": {
+      "status": "passed",
+      "region": "us-east-1",
+      "result": null
+    },
+    "model_profile": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": {
+        "Id": "in.openai.gpt-5.6-luna",
+        "Status": "ACTIVE",
+        "Models": [
+          "arn:aws:bedrock:ap-south-2::foundation-model/openai.gpt-5.6-luna",
+          "arn:aws:bedrock:ap-south-1::foundation-model/openai.gpt-5.6-luna"
+        ]
+      }
+    },
+    "model_access": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": {
+        "modelId": "openai.gpt-5.6-luna",
+        "agreementAvailability": {
+          "status": "NOT_AVAILABLE"
+        },
+        "authorizationStatus": "NOT_AUTHORIZED",
+        "entitlementAvailability": "AVAILABLE",
+        "regionAvailability": "AVAILABLE"
+      }
+    },
+    "model_invocation_logging": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": null
+    },
+    "hyderabad_region": {
+      "status": "passed",
+      "region": "us-east-1",
+      "result": {
+        "RegionName": "ap-south-2",
+        "RegionOptStatus": "DISABLED"
+      }
+    },
+    "cloudtrail": {
+      "status": "passed",
+      "region": "ap-south-1",
+      "result": []
+    },
+    "budget": {
+      "status": "passed",
+      "region": "us-east-1",
+      "result": {
+        "Name": "regulatory-agent-development-monthly",
+        "Limit": {
+          "Amount": "25.0",
+          "Unit": "USD"
+        },
+        "Period": "MONTHLY",
+        "Type": "COST",
+        "Spend": {
+          "ActualSpend": {
+            "Amount": "0.0",
+            "Unit": "USD"
+          }
+        }
+      }
+    },
+    "budget_notifications": {
+      "status": "passed",
+      "region": "us-east-1",
+      "result": [
+        {
+          "NotificationType": "ACTUAL",
+          "ComparisonOperator": "GREATER_THAN",
+          "Threshold": 100.0,
+          "NotificationState": "OK"
+        },
+        {
+          "NotificationType": "ACTUAL",
+          "ComparisonOperator": "GREATER_THAN",
+          "Threshold": 80.0,
+          "NotificationState": "OK"
+        },
+        {
+          "NotificationType": "FORECASTED",
+          "ComparisonOperator": "GREATER_THAN",
+          "Threshold": 100.0,
+          "NotificationState": "OK"
+        }
+      ]
+    },
+    "support_api": {
+      "status": "failed",
+      "error": "SubscriptionRequiredException",
+      "region": "us-east-1"
+    }
+  },
+  "source_provider": null,
+  "current_coverage_verified": false,
+  "historical_versions": 1,
+  "cloudfront_account_verification": "Unconfirmed. The previous deployment failed with an account-verification error.",
+  "local_template_validation": "Pending tool approval.",
+  "security_template_validation": "Pending tool approval.",
+  "model_invocations": 0,
+  "resource_mutations": 0,
+  "live_quality": "Not run.",
+  "deployed_acceptance": "Not run."
+}
