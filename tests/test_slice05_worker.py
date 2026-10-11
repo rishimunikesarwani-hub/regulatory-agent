@@ -31,8 +31,12 @@ def pipeline_child(path, responses, blocked, owner, case, job, token):
 def hanging_child(path, marker, owner, case, job, token):
     store = Store(path)
     store.reserve(owner, case, job, token, 'model')
+    delayed_write_child(path, marker, owner, case, job, token)
+
+
+def delayed_write_child(path, marker, owner, case, job, token):
     time.sleep(30)
-    store.save_stage(owner, case, job, token, 'late', {})
+    Store(path).save_stage(owner, case, job, token, 'late', {})
     Path(marker).write_text('late private output', encoding='utf-8')
 
 
@@ -188,8 +192,13 @@ class WorkerTests(unittest.TestCase):
     def test_w14_renewal_crossing_deadline_keeps_timeout_and_original_budget(self):
         deadline=self.remaining(6)
         marker=self.store.path.parent/'renewal-race-late.txt'
+        token=self.store.claim(*self.scope)
+        self.store.reserve(*self.scope,token,'model')
+        with self.store.transaction() as db:
+            job=self.store._job(db,*self.scope);job['lease_until']=0
+            self.store._save_job(db,job)
         with patch.object(self.store,'renew',side_effect=ContractError('deadline_or_lease_exhausted')):
-            result=self.supervise(self.store,*self.scope,hanging_child,args=(str(self.store.path),str(marker)))
+            result=self.supervise(self.store,*self.scope,delayed_write_child,args=(str(self.store.path),str(marker)))
         self.assertEqual(result['stop_reason'],'worker_timeout')
         self.assertEqual(result['deadline'],deadline)
         self.assertEqual(result['model_calls'],1)

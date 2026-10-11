@@ -10,7 +10,7 @@ from pydantic import ValidationError
 
 from .assessments import PERIOD_PROMPT, SELECTED_PROMPT
 
-from .contracts import Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date, public_url
+from .contracts import Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, citation_matches, iso_date, public_url
 from .local import encoded, validated_action
 from .telemetry import AttemptTimer, StageAttempt, TokenUsage, VersionMetadata
 
@@ -149,11 +149,12 @@ class AssessmentPipeline:
         else:
             self._finish_attempt(owner, case, run, token, attempt, result=completed.get('result'))
 
-    def _check_citations(self, citations, passages):
+    @staticmethod
+    def _check_citations(citations, passages):
         lookup = {p['passage_id']: p for p in passages}
         for citation in citations:
             passage = lookup.get(citation.passage_id)
-            if passage is None or citation.document_version_id != passage['document_version_id'] or citation.location != passage['location'] or citation.quote not in passage['text']:
+            if not citation_matches(citation,passage):
                 raise ContractError('unexamined_or_invalid_citation')
 
     def _call(self, owner, case, run, snapshot, token, key, phase, data, context, sources):

@@ -195,5 +195,18 @@ class ChangeValidationTests(unittest.TestCase):
         reply=self.reply();reply['changes'][0].update(kind='unchanged',affected_control_ids=[])
         with self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
 
+    def test_vc16_export_cannot_validate_a_whitespace_quote_in_an_earlier_saved_finding(self):
+        import test_slice05_release as exports
+        from regulatory_agent.local import Store,encoded
+        flow=exports.ReleaseSliceTests('runTest');flow.setUp();self.addCleanup(flow.tearDown)
+        started=flow.flow.start();finding=flow.flow.result(started)['findings'][0]
+        finding=copy.deepcopy(finding);finding['citations'][0]['quote']=' '
+        with Store(flow.flow.path).transaction() as db:
+            db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='finding' AND id=?",
+                (encoded(finding),flow.flow.case,finding['finding_id']))
+        response=flow.export(started)
+        self.assertEqual(response.status_code,422)
+        self.assertEqual(response.json()['code'],'export_citation_invalid')
+
 
 if __name__=='__main__':unittest.main()

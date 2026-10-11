@@ -969,3 +969,20 @@ GitHub verification then reproduced a concurrent report-cutoff failure.
 CA16 samples the default cutoff after its records while preserving explicit historical cutoffs.
 The corrected local suites passed 363 backend checks, 54 browser checks, and 19 focused API checks.
 D53 records the component boundary and remaining validation, comparison, provider, quality, and deployed acceptance conditions.
+
+## 2026-10-11 - Regulatory change validation
+
+D54 defines specified regulatory source pairs and citation-supported model interpretation records.
+The component keeps original hashes, source locations, selected obligations, independent dates, and baseline control mappings.
+Future requirements do not request assessment processing for an earlier date.
+Missing metadata and undetermined interpretations stay unknown.
+
+Failing checks exposed whitespace-only quotes in assessment and saved export validation.
+One citation-resolution rule now controls assessment, comparison, and export references.
+W14 now uses a saved reservation instead of depending on child startup before the first renewal.
+The corrected focused suites passed 16 comparison checks and 14 worker checks.
+The final complete backend suite passed 379 checks in 161.922 seconds.
+
+Complete comparison admission, bounded model processing, native routes, and browser acceptance remain unfinished.
+Provider verification, live quality, template validation, AWS authentication, and deployed acceptance remain pending.
+VS5 remains a draft under D35.

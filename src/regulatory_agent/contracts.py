@@ -129,6 +129,13 @@ class Citation(Contract):
     quote: Text
 
 
+def citation_matches(citation, passage):
+    """One resolution rule for model validation and previously saved report citations."""
+    if isinstance(citation,Citation):citation=citation.model_dump()
+    return passage is not None and all(citation[key]==passage[key] for key in
+        ('document_version_id','passage_id','location')) and bool(citation['quote'].strip()) and citation['quote'] in passage['text']
+
+
 class Passage(Contract):
     passage_id: Identifier
     document_version_id: Identifier

@@ -9,7 +9,7 @@ import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment
+from .contracts import Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment, citation_matches
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -337,8 +337,7 @@ class Assessments:
             if {c.document_version_id for c in finding.citations} != {s['document']['document_version_id'] for s in sources}:
                 raise ContractError('required_citation_missing')
             for citation in finding.citations:
-                if not any(p['document_version_id'] == citation.document_version_id and p['passage_id'] == citation.passage_id
-                           and p['location'] == citation.location and citation.quote in p['text'] for p in passages):
+                if not any(citation_matches(citation,p) for p in passages):
                     raise ContractError('invalid_citation')
             return {'finding': finding.model_dump()}
 
@@ -422,8 +421,7 @@ class Assessments:
                 for key in ('citations', 'examined_exceptions', 'conflicting_evidence') for citation in claim[key]]
             for citation in citations:
                 if not any(source['document']['document_version_id'] == citation['document_version_id']
-                        and passage['passage_id'] == citation['passage_id'] and passage['location'] == citation['location']
-                        and citation['quote'] in passage['text'] for source in sources for passage in source['passages']):
+                        and citation_matches(citation,passage) for source in sources for passage in source['passages']):
                     raise CaseError(422, 'export_citation_invalid', 'A saved citation could not be verified.',
                                     'Review the saved sources before exporting this assessment.')
         presented = {finding['obligation_id'] for finding in result['findings']}

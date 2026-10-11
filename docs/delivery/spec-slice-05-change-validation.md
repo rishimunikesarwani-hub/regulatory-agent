@@ -71,7 +71,7 @@ Wording-only and appearance-only results must keep conditions, exceptions, and a
 
 Unchanged results must keep the requirement statement unchanged after whitespace normalization.
 Use the shared assessment citation validation for comparison references.
-Reject quotes that contain only whitespace in both processing paths.
+Reject quotes that contain only whitespace in assessment, comparison, and export validation.
 
 Identify unresolved interpretations and metadata changes as reasons for selection review.
 Do not apply a future effective version automatically.
@@ -96,6 +96,7 @@ Do not start assessment processing from this validation component.
 | VS5-VC13 | Unchanged, wording-only, appearance-only, and added classifications keep their specified before and after structures. |
 | VS5-VC14 | Shared assessment citation validation rejects quotes that contain only whitespace. |
 | VS5-VC15 | An unchanged classification cannot hide a different requirement statement. |
+| VS5-VC16 | Export validation rejects whitespace-only quotes in previously saved findings. |
 
 Write failing checks before application code.
 Use controlled source text and model responses without credentials or external traffic.
