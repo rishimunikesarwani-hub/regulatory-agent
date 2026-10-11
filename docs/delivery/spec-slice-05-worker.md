@@ -53,6 +53,10 @@ Do not report success from a process exit code alone.
 | VS5-W11 | The waiting supervisor renews the lease without extending the deadline. |
 | VS5-W12 | An unapproved data mode cannot construct native model clients. |
 | VS5-W13 | An empty or stale inherited claim cannot acquire another claim. |
+| VS5-W14 | Deadline or lease exhaustion during renewal remains a timeout. Saved deadlines, counters, and replacement-claim protections remain unchanged. |
+
+An exhausted deadline or lease during renewal is a timeout.
+A replacement claim remains a claim-loss result.
 
 Write failing checks before implementation.
 Use shortened remaining time on the existing saved 600-second budget for local timeout checks.
