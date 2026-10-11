@@ -601,6 +601,42 @@ Earlier evidence and approval history stay unchanged.
 AWS account verification and deployed acceptance stay pending.
 No feature scope, model, budget, or external-message permission changes.
 
+## D41 - VS4 simulated version comparison
+
+Date: 2026-10-11.
+Status: Implementation clarification within the user's approved VS4 local development under D40.
+
+The [VS4 contract](../delivery/spec-slice-04-changes.md) controls specified source pairs and new assessment snapshots.
+Use the existing simulated access-rule fixtures and fictional policy.
+Show complete passages and metadata for both source versions.
+Keep wording changes and cosmetic changes different from the added approval requirement.
+Use fixed classifications only for these labeled simulations.
+Do not treat them as live regulatory interpretation or RBI amendments.
+
+Reuse the existing saved jobs, source inspection, traces, and human-review service.
+Give each changed assessment different finding and review records.
+Keep the earlier policy selection, obligation scope, assessment, and reviews unchanged.
+Save the comparison before you show success.
+Repeated and simultaneous requests must not make additional assessments or model calls.
+AWS mode must not expose controlled assessment or comparison actions.
+
+No approved feature scope, model, budget, or AWS release condition changes.
+VS4 local review and deployed acceptance stay pending.
+
+## D42 — VS4 local acceptance and VS5 authorization
+
+Date: 2026-10-11.
+Status: Approved by the user's review response.
+
+The user approved VS4 local acceptance, its merge, and VS5 local development while AWS verification remains pending.
+The response satisfies the D35 local review condition for VS4.
+The [VS4 contract](../delivery/spec-slice-04-changes.md) and its saved checks control the completed local behavior.
+Merge the final VS4 commit after its GitHub checks pass.
+Start VS5 in its separate branch, worktree, ports, and test database.
+Keep the approved complete scope and live evaluation conditions.
+This approval does not establish live model quality, current regulatory coverage, or deployed AWS acceptance.
+No Support case ID or account verification completion has been confirmed.
+
 ## How to add a decision
 
 Add a new entry with:

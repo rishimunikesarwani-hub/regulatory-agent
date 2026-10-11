@@ -26,8 +26,10 @@ Keep database files under ignored `runs/private/` directories.
 | VS5 | `regulatory-agent-t9-quality` | `work/t9-quality` | `5185` | `8150` | `runs/private/slice-05/` |
 
 VS2 local work and its controlled AWS extension are integrated.
-VS3 is selected for local development and remains at its user-review checkpoint.
-The VS4 and VS5 assignments remain reserved.
+The user approved VS3 locally. Its checked integration merged through PR9.
+The user approved VS4 locally and authorized its merge.
+VS5 is selected for local development after that merge.
+VS4 browser checks use API port `8141` and their own browser-test database.
 The VS2 AWS browser checks use API port `8191` and their own browser-test database.
 Its feedback ports are reserved. Feedback services are not running from that worktree.
 The VS3 candidate contains current `main` changes and VS3 for different integration checks.

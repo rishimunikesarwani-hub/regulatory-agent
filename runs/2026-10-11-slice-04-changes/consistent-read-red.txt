@@ -1,0 +1,14 @@
+test_ct13_completed_response_cannot_omit_its_committed_finding (test_slice04_changes.ChangeSliceTests.test_ct13_completed_response_cannot_omit_its_committed_finding) ... FAIL
+
+======================================================================
+FAIL: test_ct13_completed_response_cannot_omit_its_committed_finding (test_slice04_changes.ChangeSliceTests.test_ct13_completed_response_cannot_omit_its_committed_finding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 215, in test_ct13_completed_response_cannot_omit_its_committed_finding
+    self.assertEqual(len(result['findings']), 1, 'Completed state must use the same committed read as its findings.')
+AssertionError: 0 != 1 : Completed state must use the same committed read as its findings.
+
+----------------------------------------------------------------------
+Ran 1 test in 0.472s
+
+FAILED (failures=1)

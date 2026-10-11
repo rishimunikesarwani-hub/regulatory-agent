@@ -1,0 +1,6 @@
+test_ct12_simultaneous_retries_keep_one_admission_and_one_model_call (test_slice04_changes.ChangeSliceTests.test_ct12_simultaneous_retries_keep_one_admission_and_one_model_call) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.664s
+
+OK

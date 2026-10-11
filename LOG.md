@@ -594,6 +594,77 @@ The manual Support request has no confirmed case ID.
 Live assessment and complete project acceptance stay pending.
 Next: merge checked PR9 and start the isolated VS4 contract and failing tests.
 
+## 2026-10-11 - VS3 integrated and VS4 local checks passed
+
+PR9 merged at `5f50e7f6fdf3218aee657390c00d2641da2df60a` after run `38105951972` passed its checks.
+The subsequent `main` run `38106158635` passed. Deployment was skipped.
+The integration worktree and reserved VS4 worktree advanced through fast-forward updates.
+The user's untracked design images stayed unchanged.
+
+VS4 uses branch `work/t5-agent`, web port `5184`, feedback API `8140`, and test API `8141`.
+The specification and failing behavior tests preceded new application code.
+The comparison uses three fixed simulated changes to the existing `SIM-ACCESS:v1` rule.
+An added approval requirement starts a new controlled assessment with its own pending review.
+Earlier assessments, source copies, and saved human reviews stay unchanged.
+Wording and cosmetic changes do not start another assessment in these fixed examples.
+
+All 227 backend checks and 38 browser checks passed locally.
+The TypeScript and frontend build returned code `0`.
+Desktop and mobile screenshots were inspected.
+The [verification record](runs/2026-10-11-slice-04-changes/review-changes.md) keeps the failing results and review limits.
+
+VS4 user review and AWS acceptance stay pending.
+The fixed comparisons do not establish live regulatory interpretation or model quality.
+CloudFront verification and failed-stack recovery still block deployment.
+No manual Support case ID has been confirmed.
+Next: complete VS4 GitHub checks and obtain local user feedback before merge or VS5 development.
+
+## 2026-10-11 - VS4 consistent-read regression corrected
+
+GitHub run `38106934698` failed one browser check after the initial local checks passed.
+Its page state showed a completed assessment without a finding.
+The API had read findings and job state in different transactions.
+A worker could save the finding and finalize the job between those reads.
+
+VS4-CT13 reproduced the missing-finding response before the code changed.
+The shared read now gets job state and dependent records in one database transaction.
+Its default cutoff starts inside the transaction.
+All 228 backend checks passed after the correction.
+The earlier results and the GitHub failure stay recorded.
+Next: finish the updated combined browser and GitHub checks before the VS4 review handoff.
+
+## 2026-10-11 - VS4 GitHub checks passed and feedback services started
+
+GitHub run `38107343124` passed for `c641c78ee289933f95a3c7dec1e6dc948679327a`.
+It verified 228 backend checks, 38 browser checks, and the frontend build.
+Deployment was skipped.
+Draft PR12 contains the controlled VS4 flow and the consistent-read correction.
+It stays outside `main` until local user acceptance.
+
+The feedback interface and API are active on ports `5184` and `8140`.
+The API health record identifies the checked application commit.
+A fictional review case contains the earlier and changed assessments.
+Both human reviews are pending. No reviewer outcome was added to this feedback example.
+The browser showed both saved passages, the affected control, and the new pending finding.
+The feedback database and handoff record stay under ignored `runs/private/slice-04/`.
+Earlier VS2 and VS3 feedback APIs stayed healthy.
+
+AWS verification, live model work, and complete project acceptance stay pending.
+Next: obtain local VS4 feedback before merge and VS5 development.
+
+## 2026-10-11 - VS4 trace labels corrected
+
+The final source review found that the shared trace builder still used the VS3 prompt constant.
+VS4 snapshots and review items already had the correct `controlled-vs4-v1` prompt version.
+The extended VS4-CT10 check failed for the incorrect trace label before code changed.
+The trace builder now reads the saved run's prompt version.
+It identifies the current application as `vs4-v1`.
+Earlier saved traces stay unchanged.
+
+The comparison and human-review behavior stay unchanged.
+Local VS4 acceptance and AWS acceptance are still pending.
+Next: finish the updated metadata checks and keep the review build available.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.
@@ -684,3 +755,12 @@ AWS account verification and failed-stack recovery still block deployment.
 The prepared document storage and runtime permissions have not been applied.
 Live model integration and complete project acceptance remain pending.
 Next: obtain VS3 user acceptance and AWS verification.
+
+## 2026-10-11 ? VS4 acceptance and VS5 authorization
+
+The user approved VS4 local acceptance, its merge, and VS5 local development.
+D42 records that approval.
+The final trace correction passed all 228 backend checks.
+GitHub must check the final commit before merge.
+AWS verification, live providers, model quality, and complete project acceptance remain pending.
+Next: merge the checked VS4 commit and start the separate VS5 worktree.
