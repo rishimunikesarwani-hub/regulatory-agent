@@ -1,0 +1,130 @@
+
+Running 4 tests using 1 worker
+
+  x  1 tests\changes.spec.ts:24:1 › VS4-BT01 added requirement creates an independent review and preserves the original (7.1s)
+  x  2 tests\changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review (7.1s)
+  x  3 tests\changes.spec.ts:62:1 › VS4-BT03 reload restores comparisons and separate review histories (7.1s)
+  x  4 tests\changes.spec.ts:79:1 › VS4-BT04 mobile keyboard controls and source passages fit the viewport (7.0s)
+
+
+  1) tests\changes.spec.ts:24:1 › VS4-BT01 added requirement creates an independent review and preserves the original
+
+    Test timeout of 7000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 7000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Regulatory source', { exact: true })
+
+
+      13 |   await page.getByLabel('I confirm this document contains fictional data only.', {exact: true}).check();
+      14 |   await page.getByRole('button', {name: 'Upload fictional document', exact: true}).click();
+    > 15 |   await page.getByLabel('Regulatory source', {exact: true}).selectOption('SIM-ACCESS');
+         |                                                             ^
+      16 |   await page.getByRole('button', {name: 'Run controlled assessment', exact: true}).click();
+      17 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+      18 |   await expect(result).toContainText('Privileged sessions must be logged and reviewed each week.');
+        at baseline (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:15:61)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:25:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT01-added-req-4982c--and-preserves-the-original\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT01-added-req-4982c--and-preserves-the-original\error-context.md
+
+  2) tests\changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review
+
+    Test timeout of 7000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 7000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Regulatory source', { exact: true })
+
+
+      13 |   await page.getByLabel('I confirm this document contains fictional data only.', {exact: true}).check();
+      14 |   await page.getByRole('button', {name: 'Upload fictional document', exact: true}).click();
+    > 15 |   await page.getByLabel('Regulatory source', {exact: true}).selectOption('SIM-ACCESS');
+         |                                                             ^
+      16 |   await page.getByRole('button', {name: 'Run controlled assessment', exact: true}).click();
+      17 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+      18 |   await expect(result).toContainText('Privileged sessions must be logged and reviewed each week.');
+        at baseline (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:15:61)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:50:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT02-wording-a-94cbc-reserve-the-original-review\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT02-wording-a-94cbc-reserve-the-original-review\error-context.md
+
+  3) tests\changes.spec.ts:62:1 › VS4-BT03 reload restores comparisons and separate review histories
+
+    Test timeout of 7000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 7000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Regulatory source', { exact: true })
+
+
+      13 |   await page.getByLabel('I confirm this document contains fictional data only.', {exact: true}).check();
+      14 |   await page.getByRole('button', {name: 'Upload fictional document', exact: true}).click();
+    > 15 |   await page.getByLabel('Regulatory source', {exact: true}).selectOption('SIM-ACCESS');
+         |                                                             ^
+      16 |   await page.getByRole('button', {name: 'Run controlled assessment', exact: true}).click();
+      17 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+      18 |   await expect(result).toContainText('Privileged sessions must be logged and reviewed each week.');
+        at baseline (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:15:61)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:63:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT03-reload-re-6e998-d-separate-review-histories\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT03-reload-re-6e998-d-separate-review-histories\error-context.md
+
+  4) tests\changes.spec.ts:79:1 › VS4-BT04 mobile keyboard controls and source passages fit the viewport
+
+    Test timeout of 7000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 7000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Regulatory source', { exact: true })
+
+
+      13 |   await page.getByLabel('I confirm this document contains fictional data only.', {exact: true}).check();
+      14 |   await page.getByRole('button', {name: 'Upload fictional document', exact: true}).click();
+    > 15 |   await page.getByLabel('Regulatory source', {exact: true}).selectOption('SIM-ACCESS');
+         |                                                             ^
+      16 |   await page.getByRole('button', {name: 'Run controlled assessment', exact: true}).click();
+      17 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+      18 |   await expect(result).toContainText('Privileged sessions must be logged and reviewed each week.');
+        at baseline (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:15:61)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\src\web\tests\changes.spec.ts:81:21
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT04-mobile-ke-1e7f1-e-passages-fit-the-viewport\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-04-changes\browser-artifacts\changes-VS4-BT04-mobile-ke-1e7f1-e-passages-fit-the-viewport\error-context.md
+
+  4 failed
+    tests\changes.spec.ts:24:1 › VS4-BT01 added requirement creates an independent review and preserves the original
+    tests\changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review
+    tests\changes.spec.ts:62:1 › VS4-BT03 reload restores comparisons and separate review histories
+    tests\changes.spec.ts:79:1 › VS4-BT04 mobile keyboard controls and source passages fit the viewport
+npm notice run regulatory-agent-web@0.1.0 test
+npm notice run playwright test --config playwright.changes.config.ts changes.spec.ts --timeout=7000
+[WebServer] (node:30280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [36100]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8141 (Press CTRL+C to quit)
+(node:39460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:152) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4564) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

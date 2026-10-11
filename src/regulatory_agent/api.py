@@ -11,7 +11,7 @@ from starlette.exceptions import HTTPException
 
 from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, authentication_error,
                     error_body, invalid_request, not_found, unavailable)
-from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment
+from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest
 from .documents import Documents, rejected
 from .assessments import Assessments
 
@@ -116,6 +116,8 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
 
     def assessment_owner(case_id: str, identity=Depends(owner)):
         cases().read(identity, case_id)
+        if environment != 'local':
+            raise not_found()
         return identity
 
     def assessment_service(identity, case_id):
@@ -123,6 +125,22 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
         if assessments is None:
             assessments = Assessments(cases(), sources(identity, case_id))
         return assessments
+
+    @app.get('/api/cases/{case_id}/comparisons')
+    def list_comparisons(case_id: str, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).comparisons(identity, case_id)
+
+    @app.get('/api/cases/{case_id}/comparisons/{comparison_id}')
+    def read_comparison(case_id: str, comparison_id: str, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).comparison(identity, case_id, comparison_id)
+
+    @app.post('/api/cases/{case_id}/comparisons', status_code=202)
+    def compare_versions(case_id: str, body: ComparisonRequest, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        service = assessment_service(identity, case_id)
+        result = service.compare(identity, case_id, body)
+        if result['new_job_id']:
+            background.add_task(service.run, identity, case_id, result['new_job_id'])
+        return result
 
     @app.post('/api/cases/{case_id}/assessments', status_code=202)
     def start_assessment(case_id: str, body: StartAssessment, background: BackgroundTasks, identity=Depends(assessment_owner)):

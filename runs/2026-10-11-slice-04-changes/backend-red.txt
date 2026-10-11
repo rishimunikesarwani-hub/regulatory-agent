@@ -1,0 +1,141 @@
+test_ct01_simulated_baseline_has_exact_source_and_saved_review (test_slice04_changes.ChangeSliceTests.test_ct01_simulated_baseline_has_exact_source_and_saved_review) ... FAIL
+test_ct02_added_requirement_has_new_snapshot_and_both_version_passages (test_slice04_changes.ChangeSliceTests.test_ct02_added_requirement_has_new_snapshot_and_both_version_passages) ... FAIL
+test_ct03_new_review_cannot_copy_or_change_earlier_review (test_slice04_changes.ChangeSliceTests.test_ct03_new_review_cannot_copy_or_change_earlier_review) ... FAIL
+test_ct04_wording_and_appearance_do_not_create_jobs (test_slice04_changes.ChangeSliceTests.test_ct04_wording_and_appearance_do_not_create_jobs) ... FAIL
+test_ct05_retries_and_restart_keep_identity_and_reject_key_conflicts (test_slice04_changes.ChangeSliceTests.test_ct05_retries_and_restart_keep_identity_and_reject_key_conflicts) ... FAIL
+test_ct06_owner_and_snapshot_scope_are_mandatory (test_slice04_changes.ChangeSliceTests.test_ct06_owner_and_snapshot_scope_are_mandatory) ... FAIL
+test_ct07_invalid_pairs_and_snapshots_are_rejected (test_slice04_changes.ChangeSliceTests.test_ct07_invalid_pairs_and_snapshots_are_rejected) ... FAIL
+test_ct08_current_and_aws_modes_cannot_run_simulations (test_slice04_changes.ChangeSliceTests.test_ct08_current_and_aws_modes_cannot_run_simulations) ... ok
+test_ct09_policy_replacement_cannot_change_either_snapshot (test_slice04_changes.ChangeSliceTests.test_ct09_policy_replacement_cannot_change_either_snapshot) ... FAIL
+test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent (test_slice04_changes.ChangeSliceTests.test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent) ... FAIL
+test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment (test_slice04_changes.ChangeSliceTests.test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment) ... FAIL
+
+======================================================================
+FAIL: test_ct01_simulated_baseline_has_exact_source_and_saved_review (test_slice04_changes.ChangeSliceTests.test_ct01_simulated_baseline_has_exact_source_and_saved_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 42, in test_ct01_simulated_baseline_has_exact_source_and_saved_review
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"010ee19800f64e559c21847f92c68923"}
+
+======================================================================
+FAIL: test_ct02_added_requirement_has_new_snapshot_and_both_version_passages (test_slice04_changes.ChangeSliceTests.test_ct02_added_requirement_has_new_snapshot_and_both_version_passages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 54, in test_ct02_added_requirement_has_new_snapshot_and_both_version_passages
+    started, baseline, comparison, result = self.changed()
+                                            ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 35, in changed
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"81a7ceb6b2034d7b9acbb07948db91bb"}
+
+======================================================================
+FAIL: test_ct03_new_review_cannot_copy_or_change_earlier_review (test_slice04_changes.ChangeSliceTests.test_ct03_new_review_cannot_copy_or_change_earlier_review)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 67, in test_ct03_new_review_cannot_copy_or_change_earlier_review
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"cf63fb2ccc724083bb644fcaacb2bf45"}
+
+======================================================================
+FAIL: test_ct04_wording_and_appearance_do_not_create_jobs (test_slice04_changes.ChangeSliceTests.test_ct04_wording_and_appearance_do_not_create_jobs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 84, in test_ct04_wording_and_appearance_do_not_create_jobs
+    _, baseline = self.baseline()
+                  ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"2c23e37f4a66453680199537b47091d2"}
+
+======================================================================
+FAIL: test_ct05_retries_and_restart_keep_identity_and_reject_key_conflicts (test_slice04_changes.ChangeSliceTests.test_ct05_retries_and_restart_keep_identity_and_reject_key_conflicts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 98, in test_ct05_retries_and_restart_keep_identity_and_reject_key_conflicts
+    _, baseline, saved, result = self.changed()
+                                 ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 35, in changed
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"5b45e71dbcda4c9091d8313ff1c5730c"}
+
+======================================================================
+FAIL: test_ct06_owner_and_snapshot_scope_are_mandatory (test_slice04_changes.ChangeSliceTests.test_ct06_owner_and_snapshot_scope_are_mandatory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 108, in test_ct06_owner_and_snapshot_scope_are_mandatory
+    _, baseline, comparison, result = self.changed()
+                                      ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 35, in changed
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"76fe0bdd199e4e669aa230418c6375a9"}
+
+======================================================================
+FAIL: test_ct07_invalid_pairs_and_snapshots_are_rejected (test_slice04_changes.ChangeSliceTests.test_ct07_invalid_pairs_and_snapshots_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 118, in test_ct07_invalid_pairs_and_snapshots_are_rejected
+    _, baseline = self.baseline()
+                  ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"aeece6671a0a43a5a6818e2265356579"}
+
+======================================================================
+FAIL: test_ct09_policy_replacement_cannot_change_either_snapshot (test_slice04_changes.ChangeSliceTests.test_ct09_policy_replacement_cannot_change_either_snapshot)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 137, in test_ct09_policy_replacement_cannot_change_either_snapshot
+    started, baseline, comparison, result = self.changed()
+                                            ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 35, in changed
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"dd37d0572a8041c39206693e8e557c8e"}
+
+======================================================================
+FAIL: test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent (test_slice04_changes.ChangeSliceTests.test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 145, in test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent
+    _, _, comparison, result = self.changed()
+                               ^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 35, in changed
+    started, baseline = self.baseline()
+                        ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"4379782ef7d94e33bf65561155ca008f"}
+
+======================================================================
+FAIL: test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment (test_slice04_changes.ChangeSliceTests.test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 159, in test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment
+    _, baseline = self.baseline()
+                  ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 25, in baseline
+    self.assertEqual(response.status_code, 202, response.text)
+AssertionError: 422 != 202 : {"code":"assessment_scope_invalid","message":"This controlled assessment request is unavailable.","next_action":"Use the fictional policy fixture and the historical clause 19(b) example.","correlation_id":"b776e582cbc542bbb94eb452ef2ce52a"}
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.179s
+
+FAILED (failures=10)

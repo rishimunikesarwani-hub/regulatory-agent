@@ -594,6 +594,31 @@ The manual Support request has no confirmed case ID.
 Live assessment and complete project acceptance stay pending.
 Next: merge checked PR9 and start the isolated VS4 contract and failing tests.
 
+## 2026-10-11 - VS3 integrated and VS4 local checks passed
+
+PR9 merged at `5f50e7f6fdf3218aee657390c00d2641da2df60a` after run `38105951972` passed its checks.
+The subsequent `main` run `38106158635` passed. Deployment was skipped.
+The integration worktree and reserved VS4 worktree advanced through fast-forward updates.
+The user's untracked design images stayed unchanged.
+
+VS4 uses branch `work/t5-agent`, web port `5184`, feedback API `8140`, and test API `8141`.
+The specification and failing behavior tests preceded new application code.
+The comparison uses three fixed simulated changes to the existing `SIM-ACCESS:v1` rule.
+An added approval requirement starts a new controlled assessment with its own pending review.
+Earlier assessments, source copies, and saved human reviews stay unchanged.
+Wording and cosmetic changes do not start another assessment in these fixed examples.
+
+All 227 backend checks and 38 browser checks passed locally.
+The TypeScript and frontend build returned code `0`.
+Desktop and mobile screenshots were inspected.
+The [verification record](runs/2026-10-11-slice-04-changes/review-changes.md) keeps the failing results and review limits.
+
+VS4 user review and AWS acceptance stay pending.
+The fixed comparisons do not establish live regulatory interpretation or model quality.
+CloudFront verification and failed-stack recovery still block deployment.
+No manual Support case ID has been confirmed.
+Next: complete VS4 GitHub checks and obtain local user feedback before merge or VS5 development.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.

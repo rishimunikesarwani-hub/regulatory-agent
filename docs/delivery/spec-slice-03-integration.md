@@ -14,6 +14,7 @@ Use branch `work/t4-integration-candidate` in `.worktrees/regulatory-agent-t4-in
 Reserve web port `5193`, feedback API port `8192`, and test API port `8193`.
 Keep test records in `runs/private/slice-03-integration/browser-tests.sqlite`.
 Keep the VS3 review worktree, feedback database, and running services unchanged.
+
 Do not merge this candidate into `main` before VS3 acceptance.
 Start authorized VS4 development from the accepted integration commit after merge.
 Keep AWS deployment pending until its release conditions pass.

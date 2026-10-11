@@ -1,0 +1,14 @@
+test_ct08_current_and_aws_modes_cannot_run_simulations (test_slice04_changes.ChangeSliceTests.test_ct08_current_and_aws_modes_cannot_run_simulations) ... FAIL
+
+======================================================================
+FAIL: test_ct08_current_and_aws_modes_cannot_run_simulations (test_slice04_changes.ChangeSliceTests.test_ct08_current_and_aws_modes_cannot_run_simulations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 141, in test_ct08_current_and_aws_modes_cannot_run_simulations
+    self.assertEqual(self.call('GET', self.url, app=app).status_code, 404)
+AssertionError: 200 != 404
+
+----------------------------------------------------------------------
+Ran 1 test in 0.443s
+
+FAILED (failures=1)

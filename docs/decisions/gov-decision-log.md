@@ -601,6 +601,28 @@ Earlier evidence and approval history stay unchanged.
 AWS account verification and deployed acceptance stay pending.
 No feature scope, model, budget, or external-message permission changes.
 
+## D41 - VS4 simulated version comparison
+
+Date: 2026-10-11.
+Status: Implementation clarification within the user's approved VS4 local development under D40.
+
+The [VS4 contract](../delivery/spec-slice-04-changes.md) controls specified source pairs and new assessment snapshots.
+Use the existing simulated access-rule fixtures and fictional policy.
+Show complete passages and metadata for both source versions.
+Keep wording changes and cosmetic changes different from the added approval requirement.
+Use fixed classifications only for these labeled simulations.
+Do not treat them as live regulatory interpretation or RBI amendments.
+
+Reuse the existing saved jobs, source inspection, traces, and human-review service.
+Give each changed assessment different finding and review records.
+Keep the earlier policy selection, obligation scope, assessment, and reviews unchanged.
+Save the comparison before you show success.
+Repeated and simultaneous requests must not make additional assessments or model calls.
+AWS mode must not expose controlled assessment or comparison actions.
+
+No approved feature scope, model, budget, or AWS release condition changes.
+VS4 local review and deployed acceptance stay pending.
+
 ## How to add a decision
 
 Add a new entry with:
