@@ -1,0 +1,13 @@
+test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost) ... ok
+test_ct02_markdown_parity_and_safe_untrusted_text (test_slice05_release.ReleaseSliceTests.test_ct02_markdown_parity_and_safe_untrusted_text) ... ok
+test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes (test_slice05_release.ReleaseSliceTests.test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes) ... ok
+test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope (test_slice05_release.ReleaseSliceTests.test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope) ... ok
+test_ct05_ownership_and_aws_mode_block_exports (test_slice05_release.ReleaseSliceTests.test_ct05_ownership_and_aws_mode_block_exports) ... ok
+test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects (test_slice05_release.ReleaseSliceTests.test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects) ... ok
+test_ct07_replacements_preserve_sources_and_invalid_citations_fail (test_slice05_release.ReleaseSliceTests.test_ct07_replacements_preserve_sources_and_invalid_citations_fail) ... ok
+test_ct08_read_uses_captured_events_and_excludes_later_reviews (test_slice05_release.ReleaseSliceTests.test_ct08_read_uses_captured_events_and_excludes_later_reviews) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.980s
+
+OK

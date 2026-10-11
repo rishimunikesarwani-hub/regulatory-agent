@@ -1,0 +1,112 @@
+test_cf01_authentication_ownership_and_disabled_flag_precede_factories (test_slice05_comparison_api.ComparisonAPITests.test_cf01_authentication_ownership_and_disabled_flag_precede_factories) ... FAIL
+test_cf02_selection_keeps_baseline_versions_and_safe_owned_metadata (test_slice05_comparison_api.ComparisonAPITests.test_cf02_selection_keeps_baseline_versions_and_safe_owned_metadata) ... FAIL
+test_cf03_uncertain_delivery_preserves_admission_and_safe_public_body (test_slice05_comparison_api.ComparisonAPITests.test_cf03_uncertain_delivery_preserves_admission_and_safe_public_body) ... FAIL
+test_cf04_lists_and_reads_keep_cited_results_and_separate_assessment_lists (test_slice05_comparison_api.ComparisonAPITests.test_cf04_lists_and_reads_keep_cited_results_and_separate_assessment_lists) ... FAIL
+test_cf05_reviewed_selection_queues_one_independent_assessment (test_slice05_comparison_api.ComparisonAPITests.test_cf05_reviewed_selection_queues_one_independent_assessment) ... FAIL
+test_cf06_resume_uses_saved_identifiers_and_rejects_unknown_records_and_extra_fields (test_slice05_comparison_api.ComparisonAPITests.test_cf06_resume_uses_saved_identifiers_and_rejects_unknown_records_and_extra_fields) ... FAIL
+test_cf07_unfinished_and_unresolved_comparisons_cannot_reassess (test_slice05_comparison_api.ComparisonAPITests.test_cf07_unfinished_and_unresolved_comparisons_cannot_reassess) ... FAIL
+test_cf08_local_routes_share_rules_and_register_background_execution (test_slice05_comparison_api.ComparisonAPITests.test_cf08_local_routes_share_rules_and_register_background_execution) ... C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+ERROR
+test_cf09_sam_routes_share_the_existing_authenticated_case_function (test_slice05_comparison_api.ComparisonAPITests.test_cf09_sam_routes_share_the_existing_authenticated_case_function) ... FAIL
+
+======================================================================
+ERROR: test_cf08_local_routes_share_rules_and_register_background_execution (test_slice05_comparison_api.ComparisonAPITests.test_cf08_local_routes_share_rules_and_register_background_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 113, in test_cf08_local_routes_share_rules_and_register_background_execution
+    patch('regulatory_agent.api.Assessments',return_value=self.service),patch.object(Comparisons,'run_local') as run:
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", line 1467, in __enter__
+    original, local = self.get_original()
+                      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", line 1437, in get_original
+    raise AttributeError(
+AttributeError: <class 'regulatory_agent.comparison_jobs.Comparisons'> does not have the attribute 'run_local'
+
+======================================================================
+FAIL: test_cf01_authentication_ownership_and_disabled_flag_precede_factories (test_slice05_comparison_api.ComparisonAPITests.test_cf01_authentication_ownership_and_disabled_flag_precede_factories)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 40, in test_cf01_authentication_ownership_and_disabled_flag_precede_factories
+    self.assertEqual(disabled(event('GET',self.root,owner=self.owner),None)['statusCode'],503)
+AssertionError: 404 != 503
+
+======================================================================
+FAIL: test_cf02_selection_keeps_baseline_versions_and_safe_owned_metadata (test_slice05_comparison_api.ComparisonAPITests.test_cf02_selection_keeps_baseline_versions_and_safe_owned_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 44, in test_cf02_selection_keeps_baseline_versions_and_safe_owned_metadata
+    self.assertEqual(response['statusCode'],200,response['body']);data=json.loads(response['body'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 200 : {"code": "case_not_found", "message": "The case is unavailable.", "next_action": "Return to your case list.", "correlation_id": "061b469d17e749c0ad96a0d6c95c63e5"}
+
+======================================================================
+FAIL: test_cf03_uncertain_delivery_preserves_admission_and_safe_public_body (test_slice05_comparison_api.ComparisonAPITests.test_cf03_uncertain_delivery_preserves_admission_and_safe_public_body)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 55, in test_cf03_uncertain_delivery_preserves_admission_and_safe_public_body
+    first=self.call('POST',body=self.f.request.model_dump());self.assertEqual(first['statusCode'],503)
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 503
+
+======================================================================
+FAIL: test_cf04_lists_and_reads_keep_cited_results_and_separate_assessment_lists (test_slice05_comparison_api.ComparisonAPITests.test_cf04_lists_and_reads_keep_cited_results_and_separate_assessment_lists)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 66, in test_cf04_lists_and_reads_keep_cited_results_and_separate_assessment_lists
+    saved=self.admit();record=self.f.store.get(self.owner,self.case,'comparison',saved['comparison_id'])
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 29, in admit
+    self.assertEqual(reply['statusCode'],202,reply['body']);return json.loads(reply['body'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 202 : {"code": "case_not_found", "message": "The case is unavailable.", "next_action": "Return to your case list.", "correlation_id": "5be97153a05b41fc91ae899f7f119b33"}
+
+======================================================================
+FAIL: test_cf05_reviewed_selection_queues_one_independent_assessment (test_slice05_comparison_api.ComparisonAPITests.test_cf05_reviewed_selection_queues_one_independent_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 77, in test_cf05_reviewed_selection_queues_one_independent_assessment
+    saved=self.admit();record=self.f.store.get(self.owner,self.case,'comparison',saved['comparison_id']);self.f.process(record)
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 29, in admit
+    self.assertEqual(reply['statusCode'],202,reply['body']);return json.loads(reply['body'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 202 : {"code": "case_not_found", "message": "The case is unavailable.", "next_action": "Return to your case list.", "correlation_id": "29415ebf54cf4d33aea7ea3643eff0fc"}
+
+======================================================================
+FAIL: test_cf06_resume_uses_saved_identifiers_and_rejects_unknown_records_and_extra_fields (test_slice05_comparison_api.ComparisonAPITests.test_cf06_resume_uses_saved_identifiers_and_rejects_unknown_records_and_extra_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 91, in test_cf06_resume_uses_saved_identifiers_and_rejects_unknown_records_and_extra_fields
+    saved=self.admit();response=self.call('POST','/'+saved['comparison_id']+'/resume',{})
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 29, in admit
+    self.assertEqual(reply['statusCode'],202,reply['body']);return json.loads(reply['body'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 202 : {"code": "case_not_found", "message": "The case is unavailable.", "next_action": "Return to your case list.", "correlation_id": "7d921551e5e84f7780e34304dc54098e"}
+
+======================================================================
+FAIL: test_cf07_unfinished_and_unresolved_comparisons_cannot_reassess (test_slice05_comparison_api.ComparisonAPITests.test_cf07_unfinished_and_unresolved_comparisons_cannot_reassess)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 101, in test_cf07_unfinished_and_unresolved_comparisons_cannot_reassess
+    saved=self.admit();path='/'+saved['comparison_id']+'/reassess'
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 29, in admit
+    self.assertEqual(reply['statusCode'],202,reply['body']);return json.loads(reply['body'])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 404 != 202 : {"code": "case_not_found", "message": "The case is unavailable.", "next_action": "Return to your case list.", "correlation_id": "8353ae634c0d48929c632b4654fc5cc3"}
+
+======================================================================
+FAIL: test_cf09_sam_routes_share_the_existing_authenticated_case_function (test_slice05_comparison_api.ComparisonAPITests.test_cf09_sam_routes_share_the_existing_authenticated_case_function)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_api.py", line 129, in test_cf09_sam_routes_share_the_existing_authenticated_case_function
+    self.assertIn((method,'/api/cases/{case_id}/regulatory-comparisons'+suffix),routes)
+AssertionError: ('GET', '/api/cases/{case_id}/regulatory-comparisons') not found in {('POST', '/api/cases/{case_id}/assessments/selected'), ('POST', '/api/cases'), ('GET', '/api/cases/{case_id}'), ('GET', '/api/cases/{case_id}/documents/{version_id}/original'), ('POST', '/api/cases/{case_id}/uploads'), ('POST', '/api/cases/{case_id}/uploads/{upload_id}/finalize'), ('POST', '/api/cases/{case_id}/assessments/{job_id}/export'), ('GET', '/api/cases/{case_id}/documents'), ('GET', '/api/cases'), ('POST', '/api/cases/{case_id}/assessments/{job_id}/resume'), ('GET', '/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}/original'), ('GET', '/api/cases/{case_id}/uploads/{upload_id}'), ('POST', '/api/cases/{case_id}/uploads/{upload_id}/cancel'), ('GET', '/api/cases/{case_id}/documents/{version_id}'), ('GET', '/api/health'), ('GET', '/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}'), ('GET', '/api/cases/{case_id}/assessments/{job_id}'), ('GET', '/api/cases/{case_id}/assessment-selection'), ('GET', '/api/cases/{case_id}/assessments'), ('POST', '/api/cases/{case_id}/assessments/{job_id}/findings/{finding_id}/reviews')}
+
+----------------------------------------------------------------------
+Ran 9 tests in 38.797s
+
+FAILED (failures=8, errors=1)

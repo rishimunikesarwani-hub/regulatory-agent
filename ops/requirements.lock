@@ -13,6 +13,12 @@ anyio==4.15.1
     #   -c ops/requirements.lock
     #   httpx
     #   starlette
+awscrt==0.36.0
+    # via
+    #   -c ops/requirements.lock
+    #   botocore
+backoff==2.2.1
+    # via langfuse
 boto3==1.43.111
     # via
     #   -c ops/requirements.lock
@@ -27,6 +33,9 @@ certifi==2026.7.22
     #   -c ops/requirements.lock
     #   httpcore
     #   httpx
+    #   requests
+charset-normalizer==3.5.2
+    # via requests
 click==8.5.0
     # via
     #   -c ops/requirements.lock
@@ -35,6 +44,8 @@ fastapi==0.143.0
     # via
     #   -c ops/requirements.lock
     #   -r ops/requirements.in
+googleapis-common-protos==1.75.5
+    # via opentelemetry-exporter-otlp-proto-http
 h11==0.16.0
     # via
     #   -c ops/requirements.lock
@@ -48,31 +59,68 @@ httpx==0.28.1
     # via
     #   -c ops/requirements.lock
     #   -r ops/requirements.in
+    #   langfuse
 idna==3.20
     # via
     #   -c ops/requirements.lock
     #   anyio
     #   httpx
+    #   requests
 jmespath==1.1.0
     # via
     #   -c ops/requirements.lock
     #   boto3
     #   botocore
+langfuse==4.17.0
+    # via -r ops/requirements.in
 opentelemetry-api==1.45.1
     # via
     #   -c ops/requirements.lock
     #   fastapi
+    #   langfuse
+    #   opentelemetry-exporter-http-transport
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
+opentelemetry-exporter-http-transport==0.66b1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-common==0.66b1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-proto-common==1.45.1
+    # via opentelemetry-exporter-otlp-proto-http
+opentelemetry-exporter-otlp-proto-http==1.45.1
+    # via langfuse
+opentelemetry-proto==1.45.1
+    # via
+    #   opentelemetry-exporter-otlp-proto-common
+    #   opentelemetry-exporter-otlp-proto-http
+opentelemetry-sdk==1.45.1
+    # via
+    #   langfuse
+    #   opentelemetry-exporter-otlp-common
+    #   opentelemetry-exporter-otlp-proto-http
+opentelemetry-semantic-conventions==0.66b1
+    # via opentelemetry-sdk
+packaging==26.3
+    # via langfuse
+protobuf==7.36.2
+    # via
+    #   googleapis-common-protos
+    #   opentelemetry-proto
 pydantic==2.14.0
     # via
     #   -c ops/requirements.lock
     #   -r ops/requirements.in
     #   fastapi
+    #   langfuse
 pydantic-core==2.50.0
     # via
     #   -c ops/requirements.lock
     #   pydantic
 pypdf==6.20.0
-    # via -r ops/requirements.in
+    # via
+    #   -c ops/requirements.lock
+    #   -r ops/requirements.in
 python-dateutil==2.9.0.post0
     # via
     #   -c ops/requirements.lock
@@ -81,6 +129,10 @@ pyyaml==6.0.3
     # via
     #   -c ops/requirements.lock
     #   -r ops/requirements.in
+requests==2.34.2
+    # via
+    #   opentelemetry-exporter-http-transport
+    #   opentelemetry-exporter-otlp-proto-http
 s3transfer==0.19.2
     # via
     #   -c ops/requirements.lock
@@ -98,7 +150,11 @@ typing-extensions==4.16.0
     #   -c ops/requirements.lock
     #   anyio
     #   fastapi
+    #   langfuse
     #   opentelemetry-api
+    #   opentelemetry-exporter-otlp-proto-http
+    #   opentelemetry-sdk
+    #   opentelemetry-semantic-conventions
     #   pydantic
     #   pydantic-core
     #   starlette
@@ -112,7 +168,10 @@ urllib3==2.8.0
     # via
     #   -c ops/requirements.lock
     #   botocore
+    #   requests
 uvicorn==0.54.0
     # via
     #   -c ops/requirements.lock
     #   -r ops/requirements.in
+wrapt==2.5.0
+    # via langfuse

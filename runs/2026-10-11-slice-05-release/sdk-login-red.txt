@@ -1,0 +1,6 @@
+Configured profile: et-hackathon-admin
+Client construction: MissingDependencyException
+Installed boto3 provides crt extra.
+Installed botocore requires awscrt==0.36.0 for login sessions.
+AWS CLI session: expired
+No live inference occurred.

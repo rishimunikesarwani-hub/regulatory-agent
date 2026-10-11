@@ -1,0 +1,133 @@
+test_cj01_identical_admission_preserves_job_snapshot_and_artifact (test_slice05_cloud_jobs.CloudJobTests.test_cj01_identical_admission_preserves_job_snapshot_and_artifact) ... ok
+test_cj02_wrong_owner_case_and_forged_saved_identity_are_denied (test_slice05_cloud_jobs.CloudJobTests.test_cj02_wrong_owner_case_and_forged_saved_identity_are_denied) ... ok
+test_cj03_mumbai_clients_and_native_conditional_shapes (test_slice05_cloud_jobs.CloudJobTests.test_cj03_mumbai_clients_and_native_conditional_shapes) ... ok
+test_cj04_claim_race_and_lease_recovery_keep_the_original_budget (test_slice05_cloud_jobs.CloudJobTests.test_cj04_claim_race_and_lease_recovery_keep_the_original_budget) ... ok
+test_cj05_concurrent_and_uncertain_reservations_never_reset_allowances (test_slice05_cloud_jobs.CloudJobTests.test_cj05_concurrent_and_uncertain_reservations_never_reset_allowances) ... ok
+test_cj06_renewal_preserves_deadline_and_rejects_expired_claims (test_slice05_cloud_jobs.CloudJobTests.test_cj06_renewal_preserves_deadline_and_rejects_expired_claims) ... ok
+test_cj07_large_stage_uses_versioned_artifact_and_cannot_be_changed (test_slice05_cloud_jobs.CloudJobTests.test_cj07_large_stage_uses_versioned_artifact_and_cannot_be_changed) ... ok
+test_cj08_lost_claim_and_storage_failure_cannot_attach_outputs (test_slice05_cloud_jobs.CloudJobTests.test_cj08_lost_claim_and_storage_failure_cannot_attach_outputs) ... ok
+test_cj09_finalization_requires_exact_scope_and_preserves_partial_results (test_slice05_cloud_jobs.CloudJobTests.test_cj09_finalization_requires_exact_scope_and_preserves_partial_results) ... ok
+test_cj10_terminal_retry_and_corrupt_artifact_never_become_new_execution (test_slice05_cloud_jobs.CloudJobTests.test_cj10_terminal_retry_and_corrupt_artifact_never_become_new_execution) ... ok
+test_cj11_elapsed_storage_reads_recheck_time_before_mutation (test_slice05_cloud_jobs.CloudJobTests.test_cj11_elapsed_storage_reads_recheck_time_before_mutation) ... ok
+test_cr01_immutable_large_records_keep_exact_artifact_references (test_slice05_cloud_records.CloudRecordTests.test_cr01_immutable_large_records_keep_exact_artifact_references) ... ERROR
+test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure (test_slice05_cloud_records.CloudRecordTests.test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure) ... ERROR
+test_cr03_query_pagination_is_complete_strong_and_scoped (test_slice05_cloud_records.CloudRecordTests.test_cr03_query_pagination_is_complete_strong_and_scoped) ... ERROR
+test_cr04_claim_changed_during_artifact_save_cannot_commit (test_slice05_cloud_records.CloudRecordTests.test_cr04_claim_changed_during_artifact_save_cannot_commit) ... ERROR
+test_cr05_concurrent_duplicate_obligation_cannot_present_twice (test_slice05_cloud_records.CloudRecordTests.test_cr05_concurrent_duplicate_obligation_cannot_present_twice) ... ERROR
+test_cr06_attempt_terminal_transition_is_fenced_and_immutable (test_slice05_cloud_records.CloudRecordTests.test_cr06_attempt_terminal_transition_is_fenced_and_immutable) ... ERROR
+test_cr07_reviews_keep_originals_and_return_delayed_duplicate (test_slice05_cloud_records.CloudRecordTests.test_cr07_reviews_keep_originals_and_return_delayed_duplicate) ... ERROR
+test_cr08_competing_reviews_and_lost_ack_keep_one_event (test_slice05_cloud_records.CloudRecordTests.test_cr08_competing_reviews_and_lost_ack_keep_one_event) ... ERROR
+test_cr09_report_cutoff_keeps_earlier_final_and_pending_item (test_slice05_cloud_records.CloudRecordTests.test_cr09_report_cutoff_keeps_earlier_final_and_pending_item) ... ERROR
+test_cr10_shared_pipeline_completes_with_native_records_without_sqlite (test_slice05_cloud_records.CloudRecordTests.test_cr10_shared_pipeline_completes_with_native_records_without_sqlite) ... ERROR
+test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope (test_slice05_cloud_records.CloudRecordTests.test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope) ... ERROR
+test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields) ... ok
+test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection (test_slice05_pipeline.PipelineTests.test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection) ... ok
+test_pt03_owner_scope_and_original_integrity_prevent_inference (test_slice05_pipeline.PipelineTests.test_pt03_owner_scope_and_original_integrity_prevent_inference) ... ok
+test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) ... ok
+test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions) ... ok
+test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope) ... ok
+test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference) ... ok
+test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text) ... ok
+test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete) ... ok
+test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope (test_slice05_pipeline.PipelineTests.test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope) ... ok
+test_pt11_all_statuses_and_repeated_assessments_keep_independent_items (test_slice05_pipeline.PipelineTests.test_pt11_all_statuses_and_repeated_assessments_keep_independent_items) ... ok
+test_pt12_presentation_checks_execution_claim_inside_its_transaction (test_slice05_pipeline.PipelineTests.test_pt12_presentation_checks_execution_claim_inside_its_transaction) ... ok
+test_pt13_live_metadata_exports_do_not_claim_simulated_processing (test_slice05_pipeline.PipelineTests.test_pt13_live_metadata_exports_do_not_claim_simulated_processing) ... ok
+test_pt14_export_validates_claim_exception_and_conflict_citations (test_slice05_pipeline.PipelineTests.test_pt14_export_validates_claim_exception_and_conflict_citations) ... ok
+test_pt15_public_regulatory_input_is_distinct_from_private_bank_input (test_slice05_pipeline.PipelineTests.test_pt15_public_regulatory_input_is_distinct_from_private_bank_input) ... ok
+test_pt16_maximum_scope_completes_within_shared_model_allowance (test_slice05_pipeline.PipelineTests.test_pt16_maximum_scope_completes_within_shared_model_allowance) ... ok
+test_pt17_refinement_cannot_reset_the_allowance_for_each_obligation (test_slice05_pipeline.PipelineTests.test_pt17_refinement_cannot_reset_the_allowance_for_each_obligation) ... ok
+test_pt18_reserved_but_undispatched_call_is_not_reported_as_live_inference (test_slice05_pipeline.PipelineTests.test_pt18_reserved_but_undispatched_call_is_not_reported_as_live_inference) ... ok
+
+======================================================================
+ERROR: test_cr01_immutable_large_records_keep_exact_artifact_references (test_slice05_cloud_records.CloudRecordTests.test_cr01_immutable_large_records_keep_exact_artifact_references)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure (test_slice05_cloud_records.CloudRecordTests.test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr03_query_pagination_is_complete_strong_and_scoped (test_slice05_cloud_records.CloudRecordTests.test_cr03_query_pagination_is_complete_strong_and_scoped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr04_claim_changed_during_artifact_save_cannot_commit (test_slice05_cloud_records.CloudRecordTests.test_cr04_claim_changed_during_artifact_save_cannot_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr05_concurrent_duplicate_obligation_cannot_present_twice (test_slice05_cloud_records.CloudRecordTests.test_cr05_concurrent_duplicate_obligation_cannot_present_twice)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr06_attempt_terminal_transition_is_fenced_and_immutable (test_slice05_cloud_records.CloudRecordTests.test_cr06_attempt_terminal_transition_is_fenced_and_immutable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr07_reviews_keep_originals_and_return_delayed_duplicate (test_slice05_cloud_records.CloudRecordTests.test_cr07_reviews_keep_originals_and_return_delayed_duplicate)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr08_competing_reviews_and_lost_ack_keep_one_event (test_slice05_cloud_records.CloudRecordTests.test_cr08_competing_reviews_and_lost_ack_keep_one_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr09_report_cutoff_keeps_earlier_final_and_pending_item (test_slice05_cloud_records.CloudRecordTests.test_cr09_report_cutoff_keeps_earlier_final_and_pending_item)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr10_shared_pipeline_completes_with_native_records_without_sqlite (test_slice05_cloud_records.CloudRecordTests.test_cr10_shared_pipeline_completes_with_native_records_without_sqlite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+======================================================================
+ERROR: test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope (test_slice05_cloud_records.CloudRecordTests.test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 60, in setUp
+    from regulatory_agent.aws_records import DynamoRecords
+ModuleNotFoundError: No module named 'regulatory_agent.aws_records'
+
+----------------------------------------------------------------------
+Ran 40 tests in 43.216s
+
+FAILED (errors=11)

@@ -1,0 +1,14 @@
+test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost) ... FAIL
+
+======================================================================
+FAIL: test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 55, in test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost
+    self.assertTrue(all(t['versions']['application'] == 'vs5-v1' for t in report['trace']['attempts']))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.423s
+
+FAILED (failures=1)

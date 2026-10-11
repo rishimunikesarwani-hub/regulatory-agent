@@ -1,0 +1,55 @@
+test_lf01_lf03_lf04_parent_types_and_stable_names (test_langfuse_tracing.LangfuseTracingTests.test_lf01_lf03_lf04_parent_types_and_stable_names) ... ERROR
+test_lf02_pipeline_nests_extraction_and_generation (test_langfuse_tracing.LangfuseTracingTests.test_lf02_pipeline_nests_extraction_and_generation) ... FAIL
+test_lf05_failed_update_still_ends_observation (test_langfuse_tracing.LangfuseTracingTests.test_lf05_failed_update_still_ends_observation) ... FAIL
+test_lf05_lf06_root_update_failure_is_isolated (test_langfuse_tracing.LangfuseTracingTests.test_lf05_lf06_root_update_failure_is_isolated) ... ERROR
+test_lf06_disabled_configuration_never_constructs_client (test_langfuse_tracing.LangfuseTracingTests.test_lf06_disabled_configuration_never_constructs_client) ... ERROR
+
+======================================================================
+ERROR: test_lf01_lf03_lf04_parent_types_and_stable_names (test_langfuse_tracing.LangfuseTracingTests.test_lf01_lf03_lf04_parent_types_and_stable_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_langfuse_tracing.py", line 35, in test_lf01_lf03_lf04_parent_types_and_stable_names
+    root=tracing.start_job({'job_id':'b'*32}, client=self.client)
+         ^^^^^^^^^^^^^^^^^
+AttributeError: module 'regulatory_agent.langfuse_trace' has no attribute 'start_job'
+
+======================================================================
+ERROR: test_lf05_lf06_root_update_failure_is_isolated (test_langfuse_tracing.LangfuseTracingTests.test_lf05_lf06_root_update_failure_is_isolated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_langfuse_tracing.py", line 91, in test_lf05_lf06_root_update_failure_is_isolated
+    self.assertFalse(tracing.finish_job(root, {'state':'failed'}))
+                     ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'regulatory_agent.langfuse_trace' has no attribute 'finish_job'
+
+======================================================================
+ERROR: test_lf06_disabled_configuration_never_constructs_client (test_langfuse_tracing.LangfuseTracingTests.test_lf06_disabled_configuration_never_constructs_client)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_langfuse_tracing.py", line 60, in test_lf06_disabled_configuration_never_constructs_client
+    self.assertIsNone(tracing.start_job({'job_id':'b'*32}))
+                      ^^^^^^^^^^^^^^^^^
+AttributeError: module 'regulatory_agent.langfuse_trace' has no attribute 'start_job'
+
+======================================================================
+FAIL: test_lf02_pipeline_nests_extraction_and_generation (test_langfuse_tracing.LangfuseTracingTests.test_lf02_pipeline_nests_extraction_and_generation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_langfuse_tracing.py", line 82, in test_lf02_pipeline_nests_extraction_and_generation
+    self.assertEqual(sum(s.name=='assess-regulatory-evidence' for s in spans),1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_lf05_failed_update_still_ends_observation (test_langfuse_tracing.LangfuseTracingTests.test_lf05_failed_update_still_ends_observation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_langfuse_tracing.py", line 56, in test_lf05_failed_update_still_ends_observation
+    observation.end.assert_called_once()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", line 928, in assert_called_once
+    raise AssertionError(msg)
+AssertionError: Expected 'end' to have been called once. Called 0 times.
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.680s
+
+FAILED (failures=2, errors=3)

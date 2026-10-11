@@ -1,0 +1,95 @@
+test_a01_catalog_lists_owned_sources_and_explicit_limits (test_slice05_admission.AdmissionTests.test_a01_catalog_lists_owned_sources_and_explicit_limits) ... ERROR
+test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted (test_slice05_admission.AdmissionTests.test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted) ... ERROR
+test_a03_explicit_artifacts_do_not_rewrite_legacy_records (test_slice05_admission.AdmissionTests.test_a03_explicit_artifacts_do_not_rewrite_legacy_records) ... ERROR
+test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run (test_slice05_admission.AdmissionTests.test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run) ... ERROR
+test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request (test_slice05_admission.AdmissionTests.test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request) ... ERROR
+test_a06_citation_reads_and_export_use_selected_artifacts (test_slice05_admission.AdmissionTests.test_a06_citation_reads_and_export_use_selected_artifacts) ... ERROR
+test_a07_archived_public_and_original_bank_corruption_prevent_inference (test_slice05_admission.AdmissionTests.test_a07_archived_public_and_original_bank_corruption_prevent_inference) ... ERROR
+test_a08_http_admission_dispatch_and_resume_keep_server_configuration (test_slice05_admission.AdmissionTests.test_a08_http_admission_dispatch_and_resume_keep_server_configuration) ... ERROR
+test_a09_original_download_preserves_bytes_and_denies_outside_versions (test_slice05_admission.AdmissionTests.test_a09_original_download_preserves_bytes_and_denies_outside_versions) ... ERROR
+test_a10_invalid_artifact_binding_and_oversized_context_fail_closed (test_slice05_admission.AdmissionTests.test_a10_invalid_artifact_binding_and_oversized_context_fail_closed) ... ERROR
+
+======================================================================
+ERROR: test_a01_catalog_lists_owned_sources_and_explicit_limits (test_slice05_admission.AdmissionTests.test_a01_catalog_lists_owned_sources_and_explicit_limits)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted (test_slice05_admission.AdmissionTests.test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a03_explicit_artifacts_do_not_rewrite_legacy_records (test_slice05_admission.AdmissionTests.test_a03_explicit_artifacts_do_not_rewrite_legacy_records)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run (test_slice05_admission.AdmissionTests.test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request (test_slice05_admission.AdmissionTests.test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a06_citation_reads_and_export_use_selected_artifacts (test_slice05_admission.AdmissionTests.test_a06_citation_reads_and_export_use_selected_artifacts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a07_archived_public_and_original_bank_corruption_prevent_inference (test_slice05_admission.AdmissionTests.test_a07_archived_public_and_original_bank_corruption_prevent_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a08_http_admission_dispatch_and_resume_keep_server_configuration (test_slice05_admission.AdmissionTests.test_a08_http_admission_dispatch_and_resume_keep_server_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a09_original_download_preserves_bytes_and_denies_outside_versions (test_slice05_admission.AdmissionTests.test_a09_original_download_preserves_bytes_and_denies_outside_versions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+======================================================================
+ERROR: test_a10_invalid_artifact_binding_and_oversized_context_fail_closed (test_slice05_admission.AdmissionTests.test_a10_invalid_artifact_binding_and_oversized_context_fail_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_admission.py", line 21, in setUp
+    from regulatory_agent.assessment_selection import AssessmentSelection
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_selection'
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.005s
+
+FAILED (errors=10)

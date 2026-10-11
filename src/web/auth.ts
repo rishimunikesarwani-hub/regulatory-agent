@@ -5,6 +5,7 @@ export type Config = {
   user_pool_client_id?: string;
   redirect_uri?: string;
   commit_sha?: string;
+  assessments_enabled?: boolean;
 };
 
 const pkceKey = 'regulatory-agent.pkce';
@@ -26,6 +27,7 @@ export async function loadConfig(): Promise<Config> {
     : response.ok ? await response.json() : null;
   if (!raw || typeof raw !== 'object') throw new Error('configuration');
   const config = raw as Config;
+  if (config.assessments_enabled !== undefined && typeof config.assessments_enabled !== 'boolean') throw new Error('configuration');
   const api = safeURL(config.api_url);
   if (config.mode === 'local') {
     if (!loopback(location.hostname) || !loopback(api.hostname) || !['http:', 'https:'].includes(api.protocol)) throw new Error('configuration');

@@ -11,9 +11,9 @@ from starlette.exceptions import HTTPException
 
 from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, authentication_error,
                     error_body, invalid_request, not_found, unavailable)
-from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest
+from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest, ExportRequest
 from .documents import Documents, rejected
-from .assessments import Assessments
+from .assessments import Assessments, SELECTED_PROMPTS
 
 
 def create_app(service=None, *, store=None, environment=None, development_user=None, commit_sha=None):
@@ -126,6 +126,46 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
             assessments = Assessments(cases(), sources(identity, case_id))
         return assessments
 
+    def comparison_response(identity, case_id, method, route, body=None, snapshot_id=None, background=None):
+        from types import SimpleNamespace
+        from .comparison_api import response
+        from .comparison_jobs import Comparisons
+        from .contracts import COMPARISON_PROMPT
+        service=assessment_service(identity,case_id)
+        def send(owner,case,job):
+            _,snapshot=service._run(owner,case,job)
+            runner=Comparisons(service).run_local if snapshot['prompt_version']==COMPARISON_PROMPT else service.run_selected
+            background.add_task(runner,owner,case,job)
+        _,result=response(service,SimpleNamespace(send=send) if background is not None else None,
+            identity,case_id,method,['regulatory-comparisons',*route],body,snapshot_id)
+        return result
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons/selection')
+    def comparison_selection(case_id: str, snapshot_id: str | None = None, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',['selection'],snapshot_id=snapshot_id)
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons')
+    def saved_regulatory_comparisons(case_id: str, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',[])
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons',status_code=202)
+    def start_regulatory_comparison(case_id: str, body: ComparisonRequest, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[],body,background=background)
+
+    @app.get('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}')
+    def regulatory_comparison(case_id: str, comparison_id: str, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'GET',[comparison_id])
+
+    from .contracts import Empty, StartReassessment
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/resume',status_code=202)
+    def resume_comparison(case_id: str, comparison_id: str, body: Empty, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[comparison_id,'resume'],body,background=background)
+
+    @app.post('/api/cases/{case_id}/regulatory-comparisons/{comparison_id}/reassess',status_code=202)
+    def reassess_comparison(case_id: str, comparison_id: str, body: StartReassessment, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        return comparison_response(identity,case_id,'POST',[comparison_id,'reassess'],body,background=background)
+
     @app.get('/api/cases/{case_id}/comparisons')
     def list_comparisons(case_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).comparisons(identity, case_id)
@@ -149,6 +189,19 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
         background.add_task(service.run, identity, case_id, result['job_id'])
         return result
 
+    @app.get('/api/cases/{case_id}/assessment-selection')
+    def assessment_selection(case_id: str, identity=Depends(assessment_owner)):
+        from .assessment_selection import AssessmentSelection
+        return AssessmentSelection(assessment_service(identity, case_id)).catalog(identity, case_id)
+
+    @app.post('/api/cases/{case_id}/assessments/selected', status_code=202)
+    def start_selected_assessment(case_id: str, body: StartAssessment, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        from .assessment_selection import AssessmentSelection
+        service = assessment_service(identity, case_id)
+        result = AssessmentSelection(service).admit(identity, case_id, body)
+        background.add_task(service.run_selected, identity, case_id, result['job_id'])
+        return result
+
     @app.get('/api/cases/{case_id}/assessments')
     def list_assessments(case_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).list(identity, case_id)
@@ -157,16 +210,31 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
     def read_assessment(case_id: str, job_id: str, cutoff: str | None = None, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).read(identity, case_id, job_id, cutoff)
 
+    @app.post('/api/cases/{case_id}/assessments/{job_id}/export')
+    def export_assessment(case_id: str, job_id: str, body: ExportRequest, cutoff: str | None = None,
+                          identity=Depends(assessment_owner)):
+        data = assessment_service(identity, case_id).export(identity, case_id, job_id, body.format, cutoff)
+        extension = 'json' if body.format == 'json' else 'md'
+        return Response(data, media_type='application/json' if body.format == 'json' else 'text/markdown; charset=utf-8',
+                        headers={'Content-Disposition': f'attachment; filename="assessment-{job_id}.{extension}"'})
+
     @app.post('/api/cases/{case_id}/assessments/{job_id}/resume', status_code=202)
     def resume_assessment(case_id: str, job_id: str, background: BackgroundTasks, identity=Depends(assessment_owner)):
         service = assessment_service(identity, case_id)
         result = service.read(identity, case_id, job_id)
-        background.add_task(service.run, identity, case_id, job_id)
+        background.add_task(service.run_selected if result['snapshot']['prompt_version'] in SELECTED_PROMPTS else service.run,
+                            identity, case_id, job_id)
         return result['job']
 
     @app.get('/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}')
     def assessment_source(case_id: str, job_id: str, version_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).source(identity, case_id, job_id, version_id)
+
+    @app.get('/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}/original')
+    def original_assessment_source(case_id: str, job_id: str, version_id: str, identity=Depends(assessment_owner)):
+        data, filename = assessment_service(identity, case_id).source_original(identity, case_id, job_id, version_id)
+        return Response(data, media_type='application/octet-stream',
+            headers={'Content-Disposition':"attachment; filename*=UTF-8''" + quote(filename)})
 
     @app.post('/api/cases/{case_id}/assessments/{job_id}/findings/{finding_id}/reviews', status_code=201)
     def save_review(case_id: str, job_id: str, finding_id: str, body: ReviewRequest, identity=Depends(assessment_owner)):

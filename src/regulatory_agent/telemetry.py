@@ -76,6 +76,7 @@ class StageAttempt(Contract):
     original_processing_event_id: Identifier | None = None
     candidate_passage_ids: tuple[Identifier, ...] = ()
     selected_passage_ids: tuple[Identifier, ...] = ()
+    selected_text_bytes: Count | None = None
 
     _times = field_validator("started_at", "finished_at")(_utc)
 

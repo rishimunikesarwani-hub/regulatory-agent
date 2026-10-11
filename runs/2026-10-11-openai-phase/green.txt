@@ -1,0 +1,8 @@
+test_op01_new_admission_pins_distinct_prompt_without_aws (test_openai_phase_contract.OpenAIPhaseTests.test_op01_new_admission_pins_distinct_prompt_without_aws) ... ok
+test_op02_old_snapshot_keeps_original_dispatched_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_old_snapshot_keeps_original_dispatched_instructions) ... ok
+test_op03_op05_new_request_teaches_phase_and_citation_constraints (test_openai_phase_contract.OpenAIPhaseTests.test_op03_op05_new_request_teaches_phase_and_citation_constraints) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.344s
+
+OK

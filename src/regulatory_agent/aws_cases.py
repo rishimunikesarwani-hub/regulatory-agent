@@ -64,7 +64,8 @@ def _response(status, body):
 
 
 def create_handler(service, *, environment="aws", region="ap-south-1", user_pool_id,
-                   user_pool_client_id, commit_sha="unknown", clock=time.time, documents=None):
+                   user_pool_client_id, commit_sha="unknown", clock=time.time, documents=None,
+                   assessments=None, queue=None, source_root=None):
     def handle(event, context):
         try:
             if not isinstance(event, dict) or event.get("version") != "2.0":
@@ -91,6 +92,15 @@ def create_handler(service, *, environment="aws", region="ap-south-1", user_pool
                 raise authentication_error()
             active = service() if callable(service) else service
             parts = path.split('/') if isinstance(path, str) else []
+            if len(parts)>=5 and parts[:3]==['','api','cases'] and parts[4] in {'assessment-selection','assessments','regulatory-comparisons'}:
+                active.read(owner,parts[3])
+                if assessments is None: raise unavailable()
+                from .aws_assessment_api import response
+                assessment=assessments() if callable(assessments) else assessments
+                status,body=response(assessment,queue,owner,parts[3],method,parts[4:],event,source_root=source_root)
+                result=_response(status,body)
+                if len(result['body'].encode())>4_000_000: raise unavailable()
+                return result
             if len(parts) >= 5 and parts[:3] == ['', 'api', 'cases'] and parts[4] in ('documents', 'uploads'):
                 if documents is None:
                     raise unavailable()
@@ -156,6 +166,8 @@ def create_handler(service, *, environment="aws", region="ap-south-1", user_pool
 
 _service = None
 _documents = None
+_assessments = None
+_queue = None
 
 
 def _configured_service():
@@ -186,7 +198,31 @@ def _configured_documents():
 
 
 def handler(event, context):
+    from pathlib import Path
+    enabled=os.environ.get('ASSESSMENTS_ENABLED')=='true'
     return create_handler(_configured_service, environment=os.environ.get("APP_ENV", ""),
                           region=os.environ.get("AWS_REGION", ""), user_pool_id=os.environ.get("USER_POOL_ID", ""),
                           user_pool_client_id=os.environ.get("USER_POOL_CLIENT_ID", ""),
-                          commit_sha=os.environ.get("COMMIT_SHA", "unknown"), documents=_configured_documents)(event, context)
+                          commit_sha=os.environ.get("COMMIT_SHA", "unknown"), documents=_configured_documents,
+                          assessments=_configured_assessments if enabled else None, queue=_configured_queue if enabled else None,
+                          source_root=Path(__file__).resolve().parents[1])(event, context)
+
+
+def _configured_assessments():
+    global _assessments
+    if _assessments is None:
+        from .aws_execution import configured_service
+        _assessments=configured_service()
+    return _assessments
+
+
+def _configured_queue():
+    global _queue
+    if _queue is None:
+        import boto3
+        from botocore.config import Config
+        from .aws_execution import AssessmentQueue
+        client=boto3.client('sqs',region_name='ap-south-1',endpoint_url='https://sqs.ap-south-1.amazonaws.com',
+            config=Config(connect_timeout=2,read_timeout=4,retries={'mode':'standard','total_max_attempts':1}))
+        _queue=AssessmentQueue(_configured_assessments(),client,os.environ.get('ASSESSMENT_QUEUE_URL',''),os.environ.get('AWS_ACCOUNT_ID',''))
+    return _queue

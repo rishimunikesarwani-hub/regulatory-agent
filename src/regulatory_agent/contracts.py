@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 
 from pydantic import Field, field_validator, model_validator
 from .contract_types import Contract, Identifier
-from .telemetry import StageAttempt
+from .telemetry import StageAttempt, TokenUsage
 
 
 class ContractError(ValueError):
@@ -19,6 +19,15 @@ class ContractError(ValueError):
 Text = Annotated[str, Field(min_length=1, max_length=400_000)]
 Status = Literal["supported", "partial", "gap", "needs_review", "not_applicable"]
 State = Literal["queued", "running", "completed", "partial", "failed"]
+SELECTED_PROMPT = 'assessment-vs5-selected-v1'
+PERIOD_PROMPT = 'assessment-vs5-selected-period-v1'
+OPENAI_ACTION_PROMPT = 'assessment-vs5-openai-period-v2'
+OPENAI_SCHEMA_PROMPT = 'assessment-vs5-openai-period-v3'
+OPENAI_PERIOD_PROMPT = 'assessment-vs5-openai-period-v4'
+OPENAI_SCHEMA_PROMPTS = frozenset((OPENAI_SCHEMA_PROMPT, OPENAI_PERIOD_PROMPT))
+OPENAI_PHASE_PROMPTS = frozenset((OPENAI_ACTION_PROMPT, *OPENAI_SCHEMA_PROMPTS))
+PERIOD_PROMPTS = frozenset((PERIOD_PROMPT, *OPENAI_PHASE_PROMPTS))
+SELECTED_PROMPTS = frozenset((SELECTED_PROMPT, *PERIOD_PROMPTS))
 
 
 def iso_date(value):
@@ -107,6 +116,16 @@ class Snapshot(Selection):
     prompt_version: Identifier
     model_version: Identifier
     synthetic: bool
+    selected_document_ids: dict[Identifier, Identifier] = Field(default_factory=dict, max_length=10)
+
+    @model_validator(mode='after')
+    def artifact_scope(self):
+        if self.prompt_version in SELECTED_PROMPTS and not self.selected_document_ids:
+            raise ValueError('artifact_scope_missing')
+        if self.selected_document_ids and (self.selected_document_ids.keys() != self.selected_versions.keys()
+                or len(set(self.selected_document_ids.values())) != len(self.selected_document_ids)):
+            raise ValueError('artifact_scope_invalid')
+        return self
 
 
 class Citation(Contract):
@@ -114,6 +133,13 @@ class Citation(Contract):
     passage_id: Identifier
     location: Text
     quote: Text
+
+
+def citation_matches(citation, passage):
+    """One resolution rule for model validation and previously saved report citations."""
+    if isinstance(citation,Citation):citation=citation.model_dump()
+    return passage is not None and all(citation[key]==passage[key] for key in
+        ('document_version_id','passage_id','location')) and bool(citation['quote'].strip()) and citation['quote'] in passage['text']
 
 
 class Passage(Contract):
@@ -189,6 +215,28 @@ class Control(Contract):
     citations: list[Citation] = Field(min_length=1)
 
 
+class EvidencePeriod(Contract):
+    start: str
+    end: str
+    _dates = field_validator('start', 'end')(iso_date)
+
+    @model_validator(mode='after')
+    def ordered(self):
+        if self.start > self.end:
+            raise ValueError('Invalid evidence period')
+        return self
+
+
+class AssessmentClaim(Contract):
+    obligation_element: Text
+    citations: list[Citation] = Field(min_length=1)
+    reason: Text
+    operational: bool
+    evidence_period: EvidencePeriod | None
+    examined_exceptions: list[Citation]
+    conflicting_evidence: list[Citation]
+
+
 class Finding(Contract):
     finding_id: Identifier
     snapshot_id: Identifier
@@ -201,6 +249,7 @@ class Finding(Contract):
     remedy: str | None
     gap_kind: Literal["control", "evidence"] | None
     applicability_reason: str | None = None
+    claims: list[AssessmentClaim] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def evidence(self):
@@ -425,6 +474,9 @@ class JobView(JobAccepted):
     label: str
 
 
+COMPARISON_PROMPT = 'comparison-vs5-v1'
+
+
 class ComparisonRequest(Contract):
     older_version_id: Identifier
     newer_version_id: Identifier
@@ -435,6 +487,15 @@ class ComparisonRequest(Contract):
     def distinct(self):
         if self.older_version_id == self.newer_version_id:
             raise ValueError("Select different versions")
+        return self
+
+
+class StartReassessment(Contract):
+    selection_reviewed: bool
+
+    @model_validator(mode='after')
+    def reviewed(self):
+        if not self.selection_reviewed:raise ValueError('selection_review_required')
         return self
 
 
@@ -474,11 +535,18 @@ class ModelAction(Contract):
     document_version_ids: list[Identifier]
     passage_ids: list[Identifier] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
+    obligations: list[Obligation] = Field(default_factory=list, max_length=20)
+    controls: list[Control] = Field(default_factory=list)
+    retrieval_query: str | None = Field(default=None, min_length=1, max_length=1000)
 
 
 class ModelReply(Contract):
-    label: Literal["Simulated"] = "Simulated"
+    label: Literal["Simulated", "Live"] = "Simulated"
     action: ModelAction
+    model_id: Identifier | None = None
+    actual_response_model_id: Identifier | None = None
+    provider_request_id: Identifier | None = None
+    usage: TokenUsage = Field(default_factory=TokenUsage)
 
 
 class RegulatoryRequest(Contract):

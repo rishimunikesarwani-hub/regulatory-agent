@@ -1,0 +1,82 @@
+test_cr01_immutable_large_records_keep_exact_artifact_references (test_slice05_cloud_records.CloudRecordTests.test_cr01_immutable_large_records_keep_exact_artifact_references) ... ok
+test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure (test_slice05_cloud_records.CloudRecordTests.test_cr02_scope_and_corrupt_artifacts_fail_before_content_disclosure) ... ok
+test_cr03_query_pagination_is_complete_strong_and_scoped (test_slice05_cloud_records.CloudRecordTests.test_cr03_query_pagination_is_complete_strong_and_scoped) ... ok
+test_cr04_claim_changed_during_artifact_save_cannot_commit (test_slice05_cloud_records.CloudRecordTests.test_cr04_claim_changed_during_artifact_save_cannot_commit) ... ERROR
+test_cr05_concurrent_duplicate_obligation_cannot_present_twice (test_slice05_cloud_records.CloudRecordTests.test_cr05_concurrent_duplicate_obligation_cannot_present_twice) ... ok
+test_cr06_attempt_terminal_transition_is_fenced_and_immutable (test_slice05_cloud_records.CloudRecordTests.test_cr06_attempt_terminal_transition_is_fenced_and_immutable) ... ERROR
+test_cr07_reviews_keep_originals_and_return_delayed_duplicate (test_slice05_cloud_records.CloudRecordTests.test_cr07_reviews_keep_originals_and_return_delayed_duplicate) ... ok
+test_cr08_competing_reviews_and_lost_ack_keep_one_event (test_slice05_cloud_records.CloudRecordTests.test_cr08_competing_reviews_and_lost_ack_keep_one_event) ... ok
+test_cr09_report_cutoff_keeps_earlier_final_and_pending_item (test_slice05_cloud_records.CloudRecordTests.test_cr09_report_cutoff_keeps_earlier_final_and_pending_item) ... ok
+test_cr10_shared_pipeline_completes_with_native_records_without_sqlite (test_slice05_cloud_records.CloudRecordTests.test_cr10_shared_pipeline_completes_with_native_records_without_sqlite) ... FAIL
+test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope (test_slice05_cloud_records.CloudRecordTests.test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope) ... ERROR
+
+======================================================================
+ERROR: test_cr04_claim_changed_during_artifact_save_cannot_commit (test_slice05_cloud_records.CloudRecordTests.test_cr04_claim_changed_during_artifact_save_cannot_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 136, in test_cr04_claim_changed_during_artifact_save_cannot_commit
+    event=self.event()
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 92, in event
+    return StageAttempt(event_id='attempt-event',attempt_id='attempt-1',run_id='run-1',job_id=self.job,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\pydantic\main.py", line 280, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StageAttempt
+  Value error, model_configuration_required [type=value_error, input_value={'event_id': 'attempt-eve...del_configuration=None)}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+======================================================================
+ERROR: test_cr06_attempt_terminal_transition_is_fenced_and_immutable (test_slice05_cloud_records.CloudRecordTests.test_cr06_attempt_terminal_transition_is_fenced_and_immutable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 150, in test_cr06_attempt_terminal_transition_is_fenced_and_immutable
+    event=self.event(); self.reviews.attempt(self.owner,self.case,event,execution_token=self.token)
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 92, in event
+    return StageAttempt(event_id='attempt-event',attempt_id='attempt-1',run_id='run-1',job_id=self.job,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\pydantic\main.py", line 280, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for StageAttempt
+  Value error, model_configuration_required [type=value_error, input_value={'event_id': 'attempt-eve...del_configuration=None)}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+======================================================================
+ERROR: test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope (test_slice05_cloud_records.CloudRecordTests.test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 236, in test_cr11_partial_pipeline_exports_verified_sources_and_unchecked_scope
+    result,model,run=self.pipeline(lambda f:[f.extraction(),f.controls(),f.proposed(),'malformed'])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 216, in pipeline
+    action=json.loads(raw); action['document_version_ids']=list(snapshot.selected_document_ids.values()); prepared[index]=json.dumps(action)
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\json\decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\json\decoder.py", line 356, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+======================================================================
+FAIL: test_cr10_shared_pipeline_completes_with_native_records_without_sqlite (test_slice05_cloud_records.CloudRecordTests.test_cr10_shared_pipeline_completes_with_native_records_without_sqlite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_cloud_records.py", line 228, in test_cr10_shared_pipeline_completes_with_native_records_without_sqlite
+    self.assertEqual(result['state'],'completed'); self.assertEqual(model.calls,4)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.012s
+
+FAILED (failures=1, errors=3)

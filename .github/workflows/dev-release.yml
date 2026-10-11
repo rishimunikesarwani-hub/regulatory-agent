@@ -37,7 +37,7 @@ jobs:
         run: npm --prefix src/web run build
       - name: Check the complete local slice
         run: |
-          npm --prefix src/web test -- --config playwright.changes.config.ts
+          npm --prefix src/web test -- --config playwright.release.config.ts
       - name: Keep check evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -55,6 +55,9 @@ jobs:
             runs/2026-10-11-slice-03-integration/*.png
             runs/2026-10-11-slice-04-changes/browser-artifacts/
             runs/2026-10-11-slice-04-changes/*.png
+            runs/2026-10-11-slice-05-release/browser-artifacts/
+            runs/2026-10-11-slice-05-release/*.png
+            runs/2026-10-11-slice-05-release/export-example.*
           if-no-files-found: warn
   deploy-development:
     needs: [checks]

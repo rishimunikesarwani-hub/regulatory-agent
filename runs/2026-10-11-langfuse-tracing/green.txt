@@ -1,0 +1,10 @@
+test_lf01_lf03_lf04_parent_types_and_stable_names (test_langfuse_tracing.LangfuseTracingTests.test_lf01_lf03_lf04_parent_types_and_stable_names) ... ok
+test_lf02_pipeline_nests_extraction_and_generation (test_langfuse_tracing.LangfuseTracingTests.test_lf02_pipeline_nests_extraction_and_generation) ... ok
+test_lf05_failed_update_still_ends_observation (test_langfuse_tracing.LangfuseTracingTests.test_lf05_failed_update_still_ends_observation) ... ok
+test_lf05_lf06_root_update_failure_is_isolated (test_langfuse_tracing.LangfuseTracingTests.test_lf05_lf06_root_update_failure_is_isolated) ... ok
+test_lf06_disabled_configuration_never_constructs_client (test_langfuse_tracing.LangfuseTracingTests.test_lf06_disabled_configuration_never_constructs_client) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 2.019s
+
+OK

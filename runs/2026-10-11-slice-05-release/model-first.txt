@@ -1,0 +1,34 @@
+test_mt01_native_request_pins_profile_schema_and_reserves_one_call (test_slice05_bedrock.BedrockDispatchTests.test_mt01_native_request_pins_profile_schema_and_reserves_one_call) ... ok
+test_mt02_objects_unknown_fields_usage_and_request_identity_survive (test_slice05_bedrock.BedrockDispatchTests.test_mt02_objects_unknown_fields_usage_and_request_identity_survive) ... ok
+test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded (test_slice05_bedrock.BedrockDispatchTests.test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded) ... ok
+test_mt04_malformed_and_outside_scope_outputs_count_and_fail (test_slice05_bedrock.BedrockDispatchTests.test_mt04_malformed_and_outside_scope_outputs_count_and_fail) ... ok
+test_mt05_rejections_timeouts_and_truncation_never_retry (test_slice05_bedrock.BedrockDispatchTests.test_mt05_rejections_timeouts_and_truncation_never_retry) ... ok
+test_mt06_owner_profile_destination_and_private_guards_prevent_inference (test_slice05_bedrock.BedrockDispatchTests.test_mt06_owner_profile_destination_and_private_guards_prevent_inference) ... ERROR
+test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable (test_slice05_bedrock.BedrockDispatchTests.test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable) ... ok
+test_mt08_request_limits_and_controlled_adapter_remain_compatible (test_slice05_bedrock.BedrockDispatchTests.test_mt08_request_limits_and_controlled_adapter_remain_compatible) ... ok
+
+======================================================================
+ERROR: test_mt06_owner_profile_destination_and_private_guards_prevent_inference (test_slice05_bedrock.BedrockDispatchTests.test_mt06_owner_profile_destination_and_private_guards_prevent_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 136, in test_mt06_owner_profile_destination_and_private_guards_prevent_inference
+    self.profile(regions=regions)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 48, in profile
+    self.management_stub.add_response('get_inference_profile',{'inferenceProfileName':'India test profile',
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\botocore\stub.py", line 248, in add_response
+    self._add_response(method, service_response, expected_params)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\botocore\stub.py", line 261, in _add_response
+    self._validate_operation_response(operation_name, service_response)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\botocore\stub.py", line 440, in _validate_operation_response
+    self._validate_response(output_shape, response)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\botocore\stub.py", line 444, in _validate_response
+    validate_parameters(response, shape)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\botocore\validate.py", line 47, in validate_parameters
+    raise ParamValidationError(report=report.generate_report())
+botocore.exceptions.ParamValidationError: Parameter validation failed:
+Invalid length for parameter models, value: 0, valid min length: 1
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.662s
+
+FAILED (errors=1)

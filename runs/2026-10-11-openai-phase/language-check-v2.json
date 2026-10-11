@@ -1,0 +1,49 @@
+{
+  "docs\\delivery\\spec-openai-phase-contract.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 29,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\private\\phase-prose-review.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 84,
+    "findings": [
+      {
+        "line": 54,
+        "check": "paragraph",
+        "message": "Review the paragraph: 10 sentences."
+      },
+      {
+        "line": 110,
+        "check": "paragraph",
+        "message": "Review the paragraph: 8 sentences."
+      }
+    ],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "runs\\2026-10-11-openai-phase\\language-review.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 13,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

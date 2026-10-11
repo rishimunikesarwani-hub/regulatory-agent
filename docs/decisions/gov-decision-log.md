@@ -637,6 +637,360 @@ Keep the approved complete scope and live evaluation conditions.
 This approval does not establish live model quality, current regulatory coverage, or deployed AWS acceptance.
 No Support case ID or account verification completion has been confirmed.
 
+## D43 — VS5 export and release work
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+VS4 merged through PR12 at `4ffdd0713961a64da7d20ad91232c761f1dc07cd` after run `38107994304` passed.
+The [VS5 contract](../delivery/spec-slice-05-release.md) keeps all remaining first-release conditions.
+Local export work reuses immutable snapshots, case ownership, source inspection, saved review events, and safe traces.
+Reports use one saved review cutoff and explicit single-assessment filters.
+Current job state and historical review outcomes have different time bases.
+Exports do not create jobs, dispatch model calls, or change reviews.
+Keep older trace application and prompt versions unchanged.
+
+The user authorized research of RBI-source API options.
+The [research record](../references/ref-regulatory-api-options.md) gives the options and one public transport probe.
+Provider selection and current-source verification remain pending under D20.
+No complete-source, live model, evaluation, or AWS acceptance claim changes.
+VS5 user acceptance remains pending under D35.
+
+## D44 - Bounded model dispatch
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+The [model adapter contract](../delivery/spec-slice-05-model.md) connects the saved dispatch allowance to native Bedrock Converse.
+The adapter keeps the selected India profile, case ownership, source selection, and synthetic-input restriction.
+The SDK does not repeat an inference request automatically.
+Available numeric usage and request IDs remain available after an unusable response.
+Source/version lookup keys and saved document IDs have different purposes.
+Citation checks resolve the selected records before comparing saved document IDs.
+
+Native SDK checks use fake credentials and controlled responses.
+These checks do not establish live access, source completeness, model quality, or private-processing approval.
+The complete assessment worker and its independent deadline remain unfinished.
+Provider selection under D20 and user acceptance under D35 remain pending.
+
+## D45 - Selected-scope historical processing
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+The [pipeline contract](../delivery/spec-slice-05-pipeline.md) extends processing beyond the fixed example.
+It processes each admitted selected obligation with the same bounded model interface.
+Saved scope maps connect selected obligation IDs to their original regulatory passages.
+Keyword ranking keeps selected versions, kinds, known periods, candidate IDs, selected IDs, and context limits.
+Structured claims keep source references, examined exceptions, conflicts, reasons, and known or unknown evidence periods.
+
+Presentation checks the execution claim inside its database transaction.
+Exports validate nested claim references and retain the declared processing mode.
+Available numeric usage survives failed responses.
+Interrupted validated output can resume without duplicate inference or findings.
+The SDK's `crt` extra supports the existing login profile.
+All 26 earlier locked package versions remain unchanged.
+
+The current interface still uses the earlier controlled example.
+General API admission, source selection, and the independent worker supervisor remain unfinished.
+The software checks do not establish live access, contextual model quality, or current regulatory completeness.
+Provider selection under D20, AWS verification, and VS5 acceptance under D35 remain pending.
+
+## D46 - Independent local worker supervision
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-X02, REQ-X08, and the existing job deadline contract.
+
+The [worker contract](../delivery/spec-slice-05-worker.md) adds a separate local supervisor without another dependency.
+The supervisor reserves the existing claim and renews its execution lease.
+The pipeline uses that inherited claim without acquiring another claim.
+The original deadline and counters remain unchanged.
+The supervisor stops a hung child before finalization.
+
+Saved findings, validated outputs, dispatched calls, unknown usage, and unchecked scope remain available.
+The supervisor saves interrupted audit records and finalization in one transaction.
+Windows startup argument validation prevents a failed serialization from launching an untracked child.
+Empty inherited claims receive the same rejection as stale claims.
+
+Controlled software checks do not establish live model quality or AWS timeout behavior.
+Catastrophic supervisor termination and operating-system failure remain outside the local evidence.
+General admission, source-selection integration, provider selection under D20, and live quality gates remain unfinished.
+AWS authentication needs renewal. VS5 remains a draft under D35.
+
+
+## D47 - Selected historical admission and artifact references
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-F03–REQ-F08 and REQ-X02–REQ-X06.
+
+The [admission contract](../delivery/spec-slice-05-admission.md) connects selected historical scope to the existing pipeline and separate worker.
+It accepts owned fictional uploads without the earlier fixed policy hash requirement.
+The catalog exposes saved real-source excerpts and keeps current verification unavailable.
+It does not approve or integrate an external provider under D20.
+
+Snapshots now contain exact document artifact references in addition to canonical source versions.
+The shared resolver serves processing, citation validation, inspection, and exports.
+Legacy reports keep their original records and lookup paths.
+Public original bytes remain in authorized storage with checksum validation.
+
+The selected protocol uses `assessment-vs5-selected-v1` and `vs5-selection-v1`.
+The server controls processing configuration and labels.
+Controlled checks do not establish live access, complete source coverage, or model quality.
+The selection interface, evidence-period integration, current verification, and AWS acceptance remain unfinished.
+VS5 remains a draft under D35.
+
+
+## D48 - Selected historical interface
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-F03–REQ-F08 and REQ-X03–REQ-X06.
+
+The [interface contract](../delivery/spec-slice-05-selection-ui.md) connects the D47 catalog and admission API to local selection controls.
+The reviewer selects bank versions, historical clauses, and a date.
+The existing controlled example remains accessible through a different action.
+The interface identifies fictional inputs with live model processing and keeps current assessments unavailable.
+
+Each selected finding uses its own review revision and source references.
+Queued and partial runs keep their recorded state, call count, and unchecked scope visible.
+Available token counts remain numeric. Unknown costs and evidence periods remain unknown.
+
+Default browser checks use controlled native-processing responses and make no external model call.
+They do not establish live access, complete regulatory coverage, or assessment quality.
+Provider selection under D20, grounded evidence periods, live quality gates, and AWS acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D49 - Stated evidence periods
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-F06, REQ-X03, REQ-X05, and REQ-X08.
+
+The [period contract](../delivery/spec-slice-05-evidence-periods.md) derives stated dates from original selected evidence passages.
+Explicit CSV period columns require both header and record citations.
+The source reader checks original document integrity before extraction, processing, inspection, or export.
+Retrieval filters known periods per passage within the existing context allowance.
+Known claim periods require a cited record interval and its grounding context.
+
+These dates do not establish complete records or actual control operation.
+Unknown and conflicting intervals remain unknown.
+New selected runs use a separate protocol and retain the original source records.
+Earlier protocols retain their original prompts and processing path.
+No model call or dependency was added for extraction.
+
+Controlled local checks do not establish live model access, quality, or current regulatory completeness.
+Provider selection, live evaluations, and AWS acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D50 - Native cloud job state and pre-dispatch checks
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X05, REQ-X07, and REQ-X08.
+
+The [cloud job contract](../delivery/spec-slice-05-cloud-jobs.md) adds conditional DynamoDB metadata, claims, and allowance counters.
+The existing Mumbai S3 adapter keeps exact immutable snapshots and stage artifacts.
+Large outputs remain outside DynamoDB items.
+Competing claims and lost acknowledgements cannot reset the saved deadline or counters.
+The job client permits one SDK write attempt.
+
+Storage completion triggers a fresh execution check before inference.
+An unused reservation remains consumed when that check prevents dispatch.
+The trace records the known absence of dispatch separately.
+The live-call report uses saved dispatch records instead of the reserved-call counter.
+The [model contract](../delivery/spec-slice-05-model.md) assigns the corresponding deadline and storage checks.
+
+Controlled checks do not establish live cloud behavior, model quality, or deployed permissions.
+The cloud job component does not replace the remaining queue, API, review, and worker integration.
+Cloud assessment routes remain disabled until the complete integration passes.
+Provider selection, live quality gates, and AWS account verification remain pending.
+VS5 remains a draft under D35.
+
+## D51 - Native assessment and review persistence
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X04, REQ-X05, REQ-X07, and REQ-X08.
+
+The [cloud record contract](../delivery/spec-slice-05-cloud-records.md) connects the shared pipeline to native DynamoDB and versioned S3 records.
+Conditional transactions protect worker claims, one finding per obligation, review revisions, and immutable attempt identities.
+The shared review functions keep original-content validation and historical cutoff calculations.
+Incomplete dispatch audit data produces Unknown instead of zero live calls.
+Native review traces identify their actual processing configuration.
+
+The controlled checks include complete and partial assessments, review retries, concurrent saves, source inspection, and exports.
+These checks do not establish deployed permissions, live inference, or quality.
+Cloud admission, the API, SQS delivery, and worker integration remain unfinished.
+Cloud assessment routes remain disabled.
+Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D52 - Native admission and SQS execution
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X05, REQ-X07, and REQ-X08.
+
+The [native execution contract](../delivery/spec-slice-05-cloud-execution.md) connects shared selection to native admission and identifier-only SQS messages.
+Internal bank reads include all passages and verify pinned originals.
+Repeated admission preserves original object versions and the saved run.
+The worker keeps native job claims, counters, deadlines, partial results, and interrupted attempts.
+An acknowledgement requires saved terminal state.
+The run snapshot must equal the job's immutable original snapshot.
+The shared process supervisor uses native cleanup without a multiprocessing queue or pool.
+
+Controlled native checks do not establish hosted Lambda acceptance, current-source coverage, or live quality.
+Cloud assessment routes remain disabled.
+API integration, source packaging, queue resources, event-source mapping, and worker IAM remain unfinished.
+D30 still prohibits reserved concurrency for the first deployment.
+Provider selection, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D53 - Native assessment API and deployment preparation
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X05, REQ-X07, and REQ-X08.
+
+The [cloud API contract](../delivery/spec-slice-05-cloud-api.md) connects authenticated native admission, reports, review records, source pages, and private downloads.
+Case ownership is checked before assessment client construction.
+
+Native bank source records keep pinned original and extraction references.
+Internal processing reads all verified passages.
+Public source inspection uses stable passage identifiers and pages.
+Reports use private, versioned S3 objects with checksum verification before download signing.
+
+The deployment package contains application code and verified public source files.
+The package excludes private fixtures and unrelated source files.
+Previous packages remain in a private archive.
+
+The SAM template prepares encrypted queues, a dead-letter queue, and a bounded Lambda worker.
+The bootstrap template defines fixed runtime roles and scoped resource permissions.
+Assessment deployment remains disabled by default.
+The frontend supports selected cloud assessments behind that release flag.
+D30 still prohibits reserved concurrency for the first deployment.
+
+W14 records deadline or lease exhaustion during renewal as timeout.
+The correction preserves saved deadlines, counters, and replacement-claim protection.
+
+Default report cutoffs follow their record read.
+Concurrent completion cannot hide returned findings.
+Explicit historical cutoffs remain unchanged.
+
+Controlled SDK and browser checks do not establish deployed AWS permissions or live model quality.
+CloudFormation schema and security validation remain pending tool approval.
+Native version comparisons, provider selection, source verification, live evaluations, and deployed acceptance remain required.
+AWS authentication and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D54 - Regulatory change validation
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and REQ-F02.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [change validation contract](../delivery/spec-slice-05-change-validation.md) defines specified source pairs and citation-supported model interpretation records.
+It keeps the baseline obligation scope and permits affected controls only from the earlier mapping.
+Publication dates and effective dates have different meanings.
+Future requirements cannot cause an assessment for an earlier date.
+Missing metadata stays unknown.
+
+Validation cannot establish correct semantic interpretation or current source coverage.
+Durable comparison admission, bounded model processing, native routes, and browser acceptance remain required.
+Applicable changed requirements must cause a new snapshot without changing previous findings or human reviews.
+Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
+## D55 - Saved comparison processing
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42, D54, and REQ-F02.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [comparison job contract](../delivery/spec-slice-05-comparison-jobs.md) defines saved admission, bounded processing, and independent reassessment records.
+Comparison jobs use a different model protocol selected by their saved snapshot.
+They keep the specified versions and original baseline control mappings.
+Each obligation has a separate model call and saved result.
+Interrupted executions keep their original deadline, consumed calls, and completed results.
+
+Applicable changes can admit a new assessment with pinned bank sources and a different review history.
+Unresolved, future, unchanged, and unfinished results cannot authorize reassessment.
+Comparison jobs stay outside ordinary assessment lists.
+Native routes, browser acceptance, provider approval, live quality, and deployed acceptance remain pending.
+This implementation does not establish full REQ-F02 acceptance.
+VS5 remains a draft under D35.
+
+## D56 - Comparison API and reviewer interface
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42, D54, and D55.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [comparison flow contract](../delivery/spec-slice-05-comparison-flow.md) connects owned saved versions, bounded jobs, cited changes, and independent reassessment admission.
+The native API uses Cognito authorization, the existing queue and worker, and the disabled assessment flag.
+The local API uses the same comparison rules with supervised background execution.
+The accepted VS4 simulation keeps separate records and controls.
+
+The reviewer explicitly selects the newer saved version.
+Applicable changes require selection review before a new assessment.
+The new snapshot keeps bank versions, the assessment date, and the complete obligation scope.
+Earlier AI findings and human decisions stay unchanged.
+
+Current source coverage, provider selection, live semantic quality, template validation, and deployed acceptance remain unverified.
+Controlled HTTP and browser checks cannot establish real amendment interpretation.
+The current source set has no second verified regulatory version.
+The interface shows this limit instead of creating an amendment from test text.
+VS5 remains a draft under D35.
+
+## D57 - Submission-day local model and trace services
+
+Date: 2026-10-11.
+Status: Approved by the user's explicit local demo request.
+Requirements: REQ-X03, REQ-X08, and LD01 through LD09.
+
+The user requested an OpenAI API fallback and Langfuse because AWS services are unavailable today.
+The [local demo contract](../delivery/spec-local-demo-openai.md) controls this exception.
+New local jobs can use a saved OpenAI model identifier with fictional bank inputs and public historical regulatory text.
+Langfuse receives safe measurements only.
+
+The exception does not replace the AWS private-data boundary or establish the original model quality gates.
+Earlier snapshots, findings, reviews, and approval history stay unchanged.
+AWS acceptance and current regulatory coverage remain pending.
+
+## D58 - Langfuse execution hierarchy
+
+Date: 2026-10-11.
+Status: Approved by the user's explicit skill installation and application tracing request.
+Requirements: LD06 through LD08 and LF01 through LF09.
+
+The user requested the official Langfuse skill and application tracing with current best practices.
+The [execution tracing contract](../delivery/spec-langfuse-tracing.md) controls this work.
+One execution parent contains stage observations with stable operation names.
+Each model request retains its separate generation observation.
+The integration excludes automatic content capture and uses an isolated provider.
+
+D57's metadata-only restriction takes precedence over general recommendations to capture prompts, responses, and reasoning.
+Tracing remains optional and cannot replace local audit storage.
+Remote verification does not establish held-out quality or AWS acceptance.
+
+## D59 - Local fictional-policy action instructions
+
+Date: 2026-10-11.
+Status: Implementation clarification under the user's local fictional-policy demonstration request.
+Requirements: LD01 through LD09 and OP01 through OP10.
+
+The user stated that AWS restrictions must not prevent local model calls or Langfuse Cloud observations.
+The [OpenAI action contract](../delivery/spec-openai-phase-contract.md) specifies the local correction.
+New OpenAI assessments use a different prompt version with explicit phase and citation instructions.
+The response schema limits actions, unused fields, selected identifiers, and exact source citations before dispatch.
+The instruction distinguishes documented policy controls from evidence of actual operation.
+
+The correction keeps earlier snapshots and their instructions unchanged.
+It preserves evidence validation, ownership checks, call allowances, and the metadata-only tracing boundary.
+AWS acceptance and held-out model quality remain separate requirements.
+
 ## How to add a decision
 
 Add a new entry with:

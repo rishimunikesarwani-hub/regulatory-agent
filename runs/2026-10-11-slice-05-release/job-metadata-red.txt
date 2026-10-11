@@ -1,0 +1,14 @@
+test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost) ... FAIL
+
+======================================================================
+FAIL: test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 59, in test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost
+    self.assertNotIn('lease_until', report['job'])
+AssertionError: 'lease_until' unexpectedly found in {'authority_verified_at': None, 'case_id': '3e9a634fef584e1284ca2dc6d522e9f0', 'created_at': 1791690258.596071, 'deadline': 1791690858.61433, 'finished_at': 1791690258.76047, 'freshness': 'unverified', 'job_id': 'd34278d75ae4431e994b53efa392578d', 'label': 'Simulated', 'lease_until': 1791690288.7489715, 'model_calls': 1, 'retrieval_calls': 0, 'snapshot_id': 'b9bc2a0412c25477b1c0fc975b16c489', 'stage': 'persistence', 'started_at': 1791690258.61433, 'state': 'completed', 'stop_reason': None, 'unchecked_obligations': []}
+
+----------------------------------------------------------------------
+Ran 1 test in 0.444s
+
+FAILED (failures=1)

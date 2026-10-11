@@ -5,8 +5,9 @@ import json
 import os
 from pathlib import Path
 import re
-import shutil
 import subprocess
+import hashlib
+import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -40,23 +41,58 @@ def configuration(env):
     return account, stack
 
 
+def package_application(root, destination):
+    """Package committed code and verified public sources. Preserve the previous package."""
+    from regulatory_agent.contracts import public_url
+    root=Path(root).resolve(); private=(root/'runs/private').resolve(); destination=Path(destination)
+    resolved=destination.resolve()
+    if resolved==private or not resolved.is_relative_to(private): raise ValueError('Package path outside private workspace')
+    manifest=json.loads((root/'data/sources/source-manifest.json').read_text(encoding='utf-8'))
+    sources=[]; source_root=(root/'data/sources').resolve()
+    for entry in manifest['versions']:
+        if type(entry.get('synthetic')) is not bool: raise ValueError('Invalid source mode')
+        if entry['synthetic']: continue
+        public_url(entry['source_url'])
+        path=(root/entry['raw_path']).resolve()
+        if not path.is_relative_to(source_root) or not path.is_file(): raise ValueError('Public source path outside permitted folder')
+        data=path.read_bytes()
+        if hashlib.sha256(data).hexdigest()!=entry['sha256']: raise ValueError('Public source hash mismatch')
+        sources.append((entry,data))
+    if not sources: raise ValueError('Missing permitted historical sources')
+    code_root=(root/'src/regulatory_agent').resolve()
+    code=list(code_root.rglob('*.py'))
+    if not code or any(not file.resolve().is_relative_to(code_root) for file in code): raise ValueError('Application code path invalid')
+    lock=(root/'ops/requirements.lock').read_bytes()
+    if destination.exists():
+        archive=private/'package-archive'/uuid.uuid4().hex
+        if not archive.resolve().is_relative_to(private) or not destination.resolve().is_relative_to(private):
+            raise ValueError('Package archive path outside private workspace')
+        archive.parent.mkdir(parents=True,exist_ok=True)
+        destination.rename(archive)
+    destination.mkdir(parents=True,exist_ok=False)
+    for file in code:
+        target=destination/'regulatory_agent'/file.relative_to(code_root)
+        target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(file.read_bytes())
+    (destination/'requirements.txt').write_bytes(lock)
+    for entry,data in sources:
+        target=destination/Path(entry['raw_path']); target.parent.mkdir(parents=True,exist_ok=True); target.write_bytes(data)
+    (destination/'data/sources/source-manifest.json').write_text(json.dumps({'versions':[e for e,_ in sources]},ensure_ascii=False),encoding='utf-8')
+
+
 def main():
     os.chdir(ROOT)
     account, stack = configuration(os.environ)
     commit = os.environ["GITHUB_SHA"]
     if command("git", "rev-parse", "HEAD", capture=True).strip() != commit:
         raise ValueError("Checkout does not match the tested commit")
-    dirty = command("git", "status", "--porcelain", "--untracked-files=all", "--", "src", "ops", ".github", "data/contracts", "pyproject.toml", capture=True)
+    dirty = command("git", "status", "--porcelain", "--untracked-files=all", "--", "src", "ops", ".github", "data/contracts", "data/sources", "pyproject.toml", capture=True)
     if dirty.strip():
         raise ValueError("Release source differs from its commit")
     identity = json.loads(command("aws", "sts", "get-caller-identity", "--output", "json", capture=True))
     if identity["Account"] != account:
         raise ValueError("AWS account mismatch")
     package = ROOT / "runs/private/sam-package"
-    package.mkdir(parents=True, exist_ok=True)
-    shutil.copytree(ROOT / "src/regulatory_agent", package / "regulatory_agent", dirs_exist_ok=True,
-                    ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-    shutil.copyfile(ROOT / "ops/requirements.lock", package / "requirements.txt")
+    package_application(ROOT,package)
     command("sam", "validate", "--lint", "--template-file", "ops/sam-dev.yaml", "--region", "ap-south-1")
     command("sam", "build", "--template-file", "ops/sam-dev.yaml", "--build-dir", "runs/private/sam-build")
     command("sam", "deploy", "--template-file", "runs/private/sam-build/template.yaml", "--stack-name", stack,

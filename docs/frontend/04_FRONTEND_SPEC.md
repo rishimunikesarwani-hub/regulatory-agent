@@ -270,3 +270,22 @@ Source inspection shows at most 500 passages per page in AWS mode.
 Previous and next controls give access to every extracted passage.
 The local upload protocol and approved source limits stay unchanged.
 Read the [cloud source contract](../delivery/spec-slice-02-aws-documents.md).
+
+## VS5 saved comparison implementation
+
+Date: 2026-10-11. Source: D56 and REQ-F02.
+The [comparison flow contract](../delivery/spec-slice-05-comparison-flow.md) connects saved version selection, processing progress, cited changes, and independent assessments.
+The reviewer explicitly selects the newer saved version.
+Selection review confirms the changed regulation and unchanged bank inputs before reassessment.
+The interface preserves earlier findings and human reviews.
+The local VS4 simulation keeps its accepted separate flow.
+Current regulatory coverage and correct live interpretation remain unverified.
+
+## D57 local demo services
+
+The [local demo contract](../delivery/spec-local-demo-openai.md) permits OpenAI for new historical demo assessments.
+The interface identifies the model provider and credential configuration status without key values.
+The interface blocks live admission when the OpenAI key is missing.
+Saved run records keep their actual model identity.
+The interface identifies Langfuse configuration as metadata only.
+Configuration status does not establish live access or trace delivery.

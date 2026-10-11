@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def environment():
     env = {k: v for k, v in os.environ.items()
-           if not k.upper().startswith(("AWS_", "OPENAI_", "ANTHROPIC_", "AZURE_", "BEDROCK_"))}
+           if not k.upper().startswith(("AWS_", "OPENAI_", "ANTHROPIC_", "AZURE_", "BEDROCK_", "LANGFUSE_", "MODEL_PROVIDER"))}
     env["PYTHONPATH"] = os.pathsep.join(str(ROOT / p) for p in ("ops/offline", "src", "."))
     env["PYTHONNOUSERSITE"] = "1"
     env["PYTHONDONTWRITEBYTECODE"] = "1"

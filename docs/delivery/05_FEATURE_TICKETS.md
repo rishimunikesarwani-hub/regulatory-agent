@@ -31,6 +31,9 @@ The [VS4 contract](spec-slice-04-changes.md) controls simulated versions and ind
 VS4 local checks passed 228 backend checks, 38 browser checks, and the frontend build after the consistent-read correction.
 The user approved VS4 locally and authorized its merge and VS5 local development on 2026-10-11.
 AWS acceptance is pending.
+VS4 merged through PR12 after GitHub run `38107994304` passed for its final commit.
+VS5 local development uses the [release contract](spec-slice-05-release.md).
+Exports are in progress. Full source, model, evaluation, and AWS acceptance remain incomplete.
 The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
 The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
@@ -196,6 +199,11 @@ Acceptance:
 The fixed historical example keeps conditions, citations, missing evidence, and saved human review connected.
 The full acceptance inventory below remains pending outside that example.
 
+VS5 adds controlled [selected-scope processing](spec-slice-05-pipeline.md) and [local worker supervision](spec-slice-05-worker.md).
+The [admission API](spec-slice-05-admission.md) and [selection interface](spec-slice-05-selection-ui.md) now connect owned fictional uploads to saved historical scope.
+The [period contract](spec-slice-05-evidence-periods.md) adds grounded stated dates with controlled local checks.
+Current-source verification, live behavior, and held-out quality gates remain pending.
+
 **Dependencies:** VS3 uses the selected T3 document and source behavior, with its T2 contracts.
 
 **Requirements:** REQ-F03–REQ-F08, REQ-X08, REQ-X09.
@@ -228,6 +236,11 @@ An exact quote match is not sufficient evidence of contextual support.
 
 Add model-selected tool actions with validation, controlled retrieval refinement, and explicit version comparisons. Expand only to the approved obligation scope.
 
+The [change validation contract](spec-slice-05-change-validation.md) defines source-pair checks and interpretation validation.
+The [comparison job contract](spec-slice-05-comparison-jobs.md) defines saved admission, model processing, and independent reassessment records.
+The [comparison flow contract](spec-slice-05-comparison-flow.md) connects native routes and the reviewer interface.
+Provider verification, live semantic evaluation, and deployed acceptance remain pending.
+
 Acceptance:
 - [ ] The agent selects permitted tools through structured actions with validation.
 - [ ] Use one bounded agent with code orchestration and the approved model. Keep the model unchanged. Add no automatic router or autonomous second reviewer.
@@ -246,7 +259,15 @@ Acceptance:
 
 ## T6 — API, jobs, ownership, and review records
 
-**Status:** Not started.
+**Status:** Local assessment and review implemented. Native cloud job and record checks pass. Full cloud integration remains pending.
+
+The local assessment and review routes are implemented in VS3 through VS5.
+The [cloud job component](spec-slice-05-cloud-jobs.md) now has controlled native SDK checks.
+The [cloud record component](spec-slice-05-cloud-records.md) connects the shared pipeline to native findings, attempts, reviews, and exports.
+The [native execution component](spec-slice-05-cloud-execution.md) adds historical admission, SQS transport, and native worker cleanup.
+The [cloud API component](spec-slice-05-cloud-api.md) prepares authenticated routes, private reports, source pages, verified public packaging, and conditional worker resources.
+The deployment flag defaults to disabled.
+Template validation, native version comparisons, provider verification, live evaluations, and deployed acceptance remain unfinished.
 
 **Dependencies:** VS1 starts with T2 case contracts. Each later slice adds its API, job, or review behavior.
 
@@ -277,7 +298,7 @@ Acceptance:
 
 ## T7 — Review interface
 
-**Status:** Not started.
+**Status:** Local flows are implemented. VS5 review, live quality, and cloud acceptance remain pending.
 
 **Dependencies:** Each slice starts frontend and backend work after agreement on its shared T2 API contract.
 
@@ -333,7 +354,7 @@ Available credits are not evidence of model access. They do not permit unlimited
 
 ## T9 — Quality and submission evidence
 
-**Status:** Not started.
+**Status:** In progress in VS5. Local exports and release evidence are under development. Live quality and submission acceptance remain pending.
 
 **Dependencies:** Each slice supplies development release evidence. VS5 needs applicable T8 cloud checks and the completed T1 held-out set.
 
@@ -368,6 +389,30 @@ Do verification checks of candidate model versions, India processing, and tool c
 Do not tune from held-out answers and still describe those cases as untouched.
 Before you adopt a candidate, make sure that it meets existing quality gates and has a measured benefit.
 An experiment does not automatically replace the approved baseline or enter this P0 delivery sequence.
+
+## D57 submission-day demo
+
+The user authorized the [local OpenAI and Langfuse contract](spec-local-demo-openai.md).
+LD01 through LD09 control provider selection, saved identity, fictional inputs, allowance accounting, output validation, trace privacy, and credential handling.
+The local demo reuses VS1 through VS5 services in the existing VS5 worktree.
+The [operation guide](guide-local-demo.md) gives local startup and demonstration steps.
+Live access and trace delivery need different evidence from controlled checks.
+AWS deployment and original release quality gates remain pending.
+
+## D58 execution tracing
+
+Ticket LF-T01 implements LF01 through LF09 in the [execution tracing contract](spec-langfuse-tracing.md).
+It includes nested operations, stable names, lifecycle checks, and metadata-only remote verification.
+`tests/test_langfuse_tracing.py` contains the local acceptance checks.
+`runs/2026-10-11-langfuse-tracing/` contains the verification records.
+
+## Local OpenAI phase correction
+
+Ticket OP-T01 implements OP01 through OP10 in the [OpenAI action contract](spec-openai-phase-contract.md).
+It includes versioned instructions, phase-specific response schemas, exact source citations, and local fictional-policy processing.
+`tests/test_openai_phase_contract.py` contains the offline acceptance checks.
+`runs/2026-10-11-openai-phase/` contains the software and live verification records.
+AWS activation does not control this local flow.
 
 ## Historical planning dates
 

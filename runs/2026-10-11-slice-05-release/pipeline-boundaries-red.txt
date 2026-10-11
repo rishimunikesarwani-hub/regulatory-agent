@@ -1,0 +1,62 @@
+test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields) ... ok
+test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection (test_slice05_pipeline.PipelineTests.test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection) ... ok
+test_pt03_owner_scope_and_original_integrity_prevent_inference (test_slice05_pipeline.PipelineTests.test_pt03_owner_scope_and_original_integrity_prevent_inference) ... ok
+test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) ... ok
+test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions) ... ok
+test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope) ... ok
+test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference) ... ok
+test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text) ... ok
+test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete) ... ok
+test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope (test_slice05_pipeline.PipelineTests.test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope) ... FAIL
+test_pt11_all_statuses_and_repeated_assessments_keep_independent_items (test_slice05_pipeline.PipelineTests.test_pt11_all_statuses_and_repeated_assessments_keep_independent_items) ... ok
+test_pt12_presentation_checks_execution_claim_inside_its_transaction (test_slice05_pipeline.PipelineTests.test_pt12_presentation_checks_execution_claim_inside_its_transaction) ... FAIL
+test_pt13_live_metadata_exports_do_not_claim_simulated_processing (test_slice05_pipeline.PipelineTests.test_pt13_live_metadata_exports_do_not_claim_simulated_processing) ... FAIL
+test_pt14_export_validates_claim_exception_and_conflict_citations (test_slice05_pipeline.PipelineTests.test_pt14_export_validates_claim_exception_and_conflict_citations) ... FAIL
+
+======================================================================
+FAIL: test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope (test_slice05_pipeline.PipelineTests.test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 227, in test_pt10_twenty_candidates_share_the_context_budget_with_regulatory_scope
+    self.assertEqual(result['state'],'completed')
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+======================================================================
+FAIL: test_pt12_presentation_checks_execution_claim_inside_its_transaction (test_slice05_pipeline.PipelineTests.test_pt12_presentation_checks_execution_claim_inside_its_transaction)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 252, in test_pt12_presentation_checks_execution_claim_inside_its_transaction
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'finding_id': '77eadce3dcaf5b01bd469665a[2089 chars]1']}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'finding_id': '77eadce3dcaf5b01bd469665a370fc81', 'snapshot_id': 'pipeline-snapshot', 'obligation_id': 'O-1', 'control_ids': ['C-1'], 'status': 'supported', 'evidence_condition': 'sufficient', 'citations': [{'document_version_id': 'rules:v1', 'passage_id': 'rule-1', 'location': 'Clause 1', 'quote': 'Record privileged sessions for privileged access.'}, {'document_version_id': '867cf6d4ac424473bb6e3ea4733d343f', 'passage_id': '867cf6d4ac424473bb6e3ea4733d343f-1', 'location': 'Line 1', 'quote': 'Synthetic demo. Fictional bank policy.'}, {'document_version_id': 'c38acbd66a144834a3a87a0be6f779b4', 'passage_id': 'c38acbd66a144834a3a87a0be6f779b4-2', 'location': 'Line 2', 'quote': '2024-04-01 to 2024-04-07: Privileged sessions were recorded and reviewed.'}], 'rationale': 'Fictional software check. Examine the cited records.', 'remedy': 'Maintain session records.', 'gap_kind': None, 'applicability_reason': None, 'claims': [{'obligation_element': 'Record privileged sessions for privileged access.', 'citations': [{'document_version_id': 'rules:v1', 'passage_id': 'rule-1', 'location': 'Clause 1', 'quote': 'Record privileged sessions for privileged access.'}, {'document_version_id': '867cf6d4ac424473bb6e3ea4733d343f', 'passage_id': '867cf6d4ac424473bb6e3ea4733d343f-1', 'location': 'Line 1', 'quote': 'Synthetic demo. Fictional bank policy.'}, {'document_version_id': 'c38acbd66a144834a3a87a0be6f779b4', 'passage_id': 'c38acbd66a144834a3a87a0be6f779b4-2', 'location': 'Line 2', 'quote': '2024-04-01 to 2024-04-07: Privileged sessions were recorded and reviewed.'}], 'reason': 'Fictional assessment reason.', 'operational': True, 'evidence_period': {'start': '2024-04-01', 'end': '2024-04-07'}, 'examined_exceptions': [], 'conflicting_evidence': []}], 'run_id': 'c1f12790bb2c4be982a66d1ea604eb1e', 'primary_recommendation': 'Maintain session records.', 'available_at': '2026-10-11T04:36:04.672892Z', 'model_id': 'in.openai.gpt-5.6-luna', 'prompt_version': 'assessment-vs5-v1', 'data_mode': 'controlled_simulation', 'source_version_ids': ['72bd83f76dd940a398b532c2685b5eba:1', 'dc146bb0777e4eca8d33367c512396ee:1', 'rules:v1']}
+
+Diff is 3070 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_pt13_live_metadata_exports_do_not_claim_simulated_processing (test_slice05_pipeline.PipelineTests.test_pt13_live_metadata_exports_do_not_claim_simulated_processing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 264, in test_pt13_live_metadata_exports_do_not_claim_simulated_processing
+    self.assertNotIn('Simulated processing',report['label'])
+AssertionError: 'Simulated processing' unexpectedly found in 'Assessment export · Simulated processing · Fictional bank data'
+
+======================================================================
+FAIL: test_pt14_export_validates_claim_exception_and_conflict_citations (test_slice05_pipeline.PipelineTests.test_pt14_export_validates_claim_exception_and_conflict_citations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 274, in test_pt14_export_validates_claim_exception_and_conflict_citations
+    with self.assertRaises(Exception):self.service.export(self.owner,self.case,self.job_id,'json')
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Exception not raised
+
+----------------------------------------------------------------------
+Ran 14 tests in 13.654s
+
+FAILED (failures=4)

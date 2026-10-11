@@ -1,0 +1,49 @@
+{
+  "backend_red": {
+    "tests": 12,
+    "errors": 12,
+    "cause": "OpenAI adapter absent",
+    "receipt": "openai-red.txt"
+  },
+  "pipeline_red": {
+    "tests": 13,
+    "failures": 1,
+    "cause": "Langfuse terminal export not connected",
+    "receipt": "pipeline-red.txt"
+  },
+  "browser_initial": {
+    "tests": 60,
+    "passed": 59,
+    "failed": 1,
+    "failure": "VS3-BT01 stale upload catalog response"
+  },
+  "browser_targeted_red": {
+    "tests": 2,
+    "failed": 2,
+    "failures": [
+      "LD-B02 late catalog replaced uploaded policy",
+      "LD-B03 missing key still enabled live start"
+    ]
+  },
+  "browser_targeted_green": {
+    "tests": 4,
+    "passed": 4,
+    "seconds": 15.3
+  },
+  "backend_green": {
+    "tests": 417,
+    "passed": 417,
+    "seconds": 227.979,
+    "receipt": "backend-green.txt"
+  },
+  "live_openai": "pending credentials",
+  "live_langfuse": "pending credentials",
+  "aws_acceptance": "pending activation",
+  "browser_green": {
+    "tests": 62,
+    "passed": 62,
+    "minutes": 2.9,
+    "receipt": "browser-green.txt"
+  },
+  "build": "TypeScript and Vite passed"
+}

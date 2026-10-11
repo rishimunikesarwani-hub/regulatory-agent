@@ -1,0 +1,81 @@
+test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost) ... FAIL
+test_ct02_markdown_parity_and_safe_untrusted_text (test_slice05_release.ReleaseSliceTests.test_ct02_markdown_parity_and_safe_untrusted_text) ... FAIL
+test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes (test_slice05_release.ReleaseSliceTests.test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes) ... FAIL
+test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope (test_slice05_release.ReleaseSliceTests.test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope) ... FAIL
+test_ct05_ownership_and_aws_mode_block_exports (test_slice05_release.ReleaseSliceTests.test_ct05_ownership_and_aws_mode_block_exports) ... ok
+test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects (test_slice05_release.ReleaseSliceTests.test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects) ... FAIL
+test_ct07_replacements_preserve_sources_and_invalid_citations_fail (test_slice05_release.ReleaseSliceTests.test_ct07_replacements_preserve_sources_and_invalid_citations_fail) ... FAIL
+test_ct08_read_uses_captured_events_and_excludes_later_reviews (test_slice05_release.ReleaseSliceTests.test_ct08_read_uses_captured_events_and_excludes_later_reviews) ... FAIL
+
+======================================================================
+FAIL: test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost (test_slice05_release.ReleaseSliceTests.test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 37, in test_ct01_json_retains_sources_snapshot_trace_and_unknown_cost
+    report = self.report(started, cutoff=result['summary']['cutoff'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 29, in report
+    self.assertEqual(response.status_code, 200, response.text)
+AssertionError: 404 != 200 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"ffb315ec1acc4d9a99c3b3962736fb7e"}
+
+======================================================================
+FAIL: test_ct02_markdown_parity_and_safe_untrusted_text (test_slice05_release.ReleaseSliceTests.test_ct02_markdown_parity_and_safe_untrusted_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 62, in test_ct02_markdown_parity_and_safe_untrusted_text
+    report = self.report(started, cutoff=event['committed_at'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 29, in report
+    self.assertEqual(response.status_code, 200, response.text)
+AssertionError: 404 != 200 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"ce7399bf56ad49eb9ea8c22a1e3ef08f"}
+
+======================================================================
+FAIL: test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes (test_slice05_release.ReleaseSliceTests.test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 81, in test_ct03_historical_cutoff_preserves_outcome_and_deterministic_bytes
+    self.assertEqual(before.status_code, 200, before.text)
+AssertionError: 404 != 200 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"a78945d5528f45d8b9c46cb55804d988"}
+
+======================================================================
+FAIL: test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope (test_slice05_release.ReleaseSliceTests.test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 92, in test_ct04_queued_partial_and_failed_exports_keep_unchecked_scope
+    report = self.report(queued)
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 29, in report
+    self.assertEqual(response.status_code, 200, response.text)
+AssertionError: 404 != 200 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"97939a73fac847e58d4c5674b467f70c"}
+
+======================================================================
+FAIL: test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects (test_slice05_release.ReleaseSliceTests.test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 133, in test_ct06_invalid_requests_and_repeated_exports_have_no_side_effects
+    self.assertEqual(self.export(started, cutoff=cutoff).status_code, 422)
+AssertionError: 404 != 422
+
+======================================================================
+FAIL: test_ct07_replacements_preserve_sources_and_invalid_citations_fail (test_slice05_release.ReleaseSliceTests.test_ct07_replacements_preserve_sources_and_invalid_citations_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 148, in test_ct07_replacements_preserve_sources_and_invalid_citations_fail
+    self.assertEqual(self.report(started)['snapshot'], result['snapshot'])
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 29, in report
+    self.assertEqual(response.status_code, 200, response.text)
+AssertionError: 404 != 200 : {"code":"case_not_found","message":"The case is unavailable.","next_action":"Return to your case list.","correlation_id":"c6b8302bb265401a9a8715fb98a28ae3"}
+
+======================================================================
+FAIL: test_ct08_read_uses_captured_events_and_excludes_later_reviews (test_slice05_release.ReleaseSliceTests.test_ct08_read_uses_captured_events_and_excludes_later_reviews)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_release.py", line 168, in test_ct08_read_uses_captured_events_and_excludes_later_reviews
+    self.assertEqual(response.status_code, 200, response.text)
+AssertionError: 503 != 200 : {"code":"storage_unavailable","message":"The case service is unavailable.","next_action":"Keep your inputs. Check the case list before another save.","correlation_id":"b0eaa1d44afb43f6aee1cc009cb9ce32"}
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.434s
+
+FAILED (failures=7)

@@ -51,6 +51,12 @@ Do not use a technical-term exception for an ordinary word with an unapproved me
 
 ## Exact text
 
+D57 defines model provider, Langfuse, and structured output in the [local demo contract](delivery/spec-local-demo-openai.md#terms).
+These software technical nouns keep the meanings given in that contract.
+
+The [execution tracing contract](delivery/spec-langfuse-tracing.md) defines OpenTelemetry, observation, parent observation, and trace ID.
+These software technical nouns describe execution measurements.
+
 Keep these items unchanged when exact text is necessary:
 
 - Requirement, decision, test, and ticket IDs.
@@ -148,6 +154,8 @@ Use them only with these meanings.
 | Integration candidate | Git | A branch for checks of combined application changes before acceptance. |
 | Simulated amendment | Software tests | A constructed regulatory change for a fixed test. It is not an actual authority event. |
 | Version comparison | Bank assurance | An examination of two specified source versions and their effects on selected obligations and controls. |
+| Model interpretation | AI and bank assurance | A model proposal about a requirement and its meaning. Citation resolution does not prove correct semantic support. |
+| Whitespace normalization | Software | A comparison operation that replaces whitespace sequences with one space and removes outer whitespace. |
 | Job | Software | A recorded unit of background work with progress and a final state. |
 | Live evaluation | Evaluation | An evaluation that calls the actual model or service instead of a controlled test response. |
 | Loopback | Networks | A network connection from a computer to that same computer. |
@@ -168,8 +176,12 @@ Use them only with these meanings.
 | Retrieval | AI | Selection of passages from permitted documents for the task. |
 | Review item | Product measurement | One original finding and its primary recommendation for one selected obligation in one assessment run. |
 | Run | Software | One recorded execution of an assessment or evaluation. Use this term as a noun. |
+| Supervisor | Software | A separate process that controls the assessment worker. |
+| Execution lease | Software | A time-limited permission that lets the current worker process a saved job. |
+| Monotonic clock | Software | A clock that measures elapsed time without changes to the system date or time. |
 | Schema | Software | The specified structure and constraints of data. |
 | Snapshot | Software | A fixed copy of selected assessment inputs and versions. |
+| Artifact reference | Software | The ID of an exact saved document used by an assessment snapshot. |
 | Source span | Retrieval | A labeled part of an original page, paragraph, or row. Its identity does not depend on chunk boundaries. |
 | Stage trace | Software | Records that connect the attempts and results in one stage. |
 | Telemetry | Software | Recorded runtime measurements and event data. |
@@ -184,6 +196,15 @@ Use the metric names and formulas from the [measurement contract](testing/spec-m
 
 ## Review procedure
 
+### VS5 period terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Stated period | A date interval declared by an original evidence record. |
+| Period grounding | Exact source citations that establish a stated interval. |
+
+A stated period does not establish complete records or actual control operation.
+
 ### VS2 cloud terms
 
 | Term | Permitted project meaning |
@@ -196,6 +217,25 @@ Use the metric names and formulas from the [measurement contract](testing/spec-m
 | Source page | A bounded set of extracted passages for source inspection. |
 
 These are technical terms for the accepted VS2 cloud implementation.
+
+### VS5 cloud record terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Record revision | An integer that increases after an accepted change to stored metadata. |
+| Strongly consistent read | A DynamoDB read that includes all successful writes before that read. |
+
+A sequence of strongly consistent reads does not give one atomic view of all records.
+
+### VS5 comparison terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Model protocol | The software rules that define a model request and response. |
+| Execution claim | A saved permission that allows one worker to change a job during its lease. |
+| Selection review | The user's confirmation of the changed regulatory version and unchanged assessment inputs before reassessment. |
+
+Selection review does not approve an AI finding or establish actual control operation.
 
 ### Apply the review procedure
 

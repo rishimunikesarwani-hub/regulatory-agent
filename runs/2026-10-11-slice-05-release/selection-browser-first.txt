@@ -1,0 +1,27 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts selection.spec.ts
+[WebServer] (node:39296) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [38348]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 6 tests using 1 worker
+
+(node:3772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\selection.spec.ts:57:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission (2.6s)
+  ok 2 tests\selection.spec.ts:78:1 › VS5-SB02 queued selected run shows scope and recorded counters without a finding (2.9s)
+  ok 3 tests\selection.spec.ts:90:1 › VS5-SB03 each selected finding uses its own citations and review revision (2.7s)
+  ok 4 tests\selection.spec.ts:121:1 › VS5-SB04 uncertain selected admission keeps scope and retry identity (2.7s)
+  ok 5 tests\selection.spec.ts:136:1 › VS5-SB05 mobile keyboard selection keeps historical verification limits visible (2.7s)
+  ok 6 tests\selection.spec.ts:147:1 › VS5-SB06 partial live result retains findings and exact unchecked scope (3.3s)
+
+  6 passed (22.6s)

@@ -696,6 +696,61 @@ Keep AWS deployment pending until account verification and failed-stack recovery
 GitHub checks completed without failure for candidate commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
 Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
 Its deployment job was skipped.
+All 263 combined backend checks passed after the maximum-scope checks were added.
+
+## 2026-10-11 - Independent local worker supervision
+
+The worker specification was committed before nine missing-implementation checks failed.
+The supervisor now runs admitted historical jobs in a separate process.
+It reserves the existing execution claim and renews its lease.
+It preserves the original deadline and model-call counters.
+It stops a hung child before saving interrupted audit records and failed or partial results.
+
+A Windows startup check reproduced a launched child after argument serialization failed.
+Argument validation now occurs before process startup.
+Another failing check reproduced acceptance of an empty inherited claim.
+The pipeline now rejects empty and stale inherited claims without acquiring another claim.
+
+Thirteen worker checks and all 276 combined backend checks pass.
+The earlier `83bcc7e` checkpoint passed 263 backend checks, 42 browser checks, and the frontend build on GitHub.
+Its deployment job was skipped.
+D46 records local supervision within the approved VS5 scope.
+Controlled software checks do not establish live model quality or deployed timeout behavior.
+
+General admission, source selection, current verification, and the AWS worker adapter remain unfinished.
+AWS authentication needs renewal. No live inference or deployment occurred.
+VS5 remains a draft.
+Next: verify the combined commit, then connect general historical admission and source selection to the interface.
+
+## 2026-10-11 - Selected historical assessment admission
+
+The admission specification was committed before ten missing-implementation checks failed.
+The catalog now exposes owned bank versions and saved real-source clause scope.
+It verifies original hashes and saved quotations.
+It identifies the excerpt coverage and unverified current status.
+
+New snapshots bind selected sources to exact document artifacts.
+Legacy snapshots and source records remain unchanged.
+The shared resolver connects processing, citation checks, source inspection, and exports.
+The API accepts multiple selected clauses and arbitrary valid fictional uploads.
+It uses the existing separate worker and server-controlled model configuration.
+
+A failing check exposed the old model-action namespace guard.
+New actions now use selected artifact IDs.
+Another failing check exposed missing archive validation during source inspection.
+The common source reader now validates archived originals for inspection and exports.
+The selected protocol uses distinct prompt and schema versions.
+
+Twelve admission checks pass.
+All 288 combined backend checks passed before the final missing-reference guard.
+That guard now prevents new snapshots from using legacy lookup behavior without explicit artifact references.
+All 288 combined backend checks also passed with the final reference guard.
+D47 records this clarification within the approved VS5 scope.
+
+The interface, evidence-period integration, external current-source verification, live quality, and AWS acceptance remain unfinished.
+AWS authentication remains expired. No external source request, live inference, or deployment occurred during this work.
+VS5 remains a draft.
+Next: verify the final combined commit and connect the selection controls to the interface.
 The candidate branch is saved remotely.
 The `main` integration branch and original VS3 review branch are unchanged.
 
@@ -764,3 +819,301 @@ The final trace correction passed all 228 backend checks.
 GitHub must check the final commit before merge.
 AWS verification, live providers, model quality, and complete project acceptance remain pending.
 Next: merge the checked VS4 commit and start the separate VS5 worktree.
+
+## 2026-10-11 ? VS4 merged and VS5 started
+
+PR12 merged the approved VS4 commit after GitHub passed 228 backend checks, 38 browser checks, and the build.
+The integration commit is `4ffdd0713961a64da7d20ad91232c761f1dc07cd`.
+VS5 uses its separate worktree, branch, ports, and databases.
+Its release contract was committed before the failing export tests.
+Local JSON and Markdown exports preserve source versions, review cutoffs, safe traces, and incomplete scope.
+A captured-event correction prevents separate review reads from changing report counts.
+A delayed-download check reproduced cancellation during a refresh of the same assessment.
+The correction keeps downloads connected to their selected job.
+New traces use `vs5-v1`. Older saved traces remain unchanged.
+The user authorized RBI-source API research. One public-only Jina transport probe succeeded.
+Provider selection, complete source verification, live model quality, and AWS acceptance remain pending.
+No Support case ID has been confirmed. No deployment occurred.
+Next: finish local export checks and continue the remaining VS5 release conditions.
+
+## 2026-10-11 - Bounded Bedrock adapter
+
+The model contract was committed before the first eight failing adapter checks.
+Native SDK checks cover the pinned India profile, strict output shape, and call reservations.
+They also cover nullable extraction fields and safe usage metadata.
+A failing check reproduced lost token usage on truncated responses.
+The adapter now keeps available usage while rejecting those responses.
+A full backend check exposed a citation identifier mismatch in the shared validator.
+A focused check reproduced that mismatch before its correction.
+The validator now compares citation IDs with the selected saved document IDs.
+The existing controlled assessment flow passes again.
+Ten adapter checks pass with fake credentials and controlled SDK responses.
+The full backend suite passed 245 checks before the final configuration check was added.
+The final combined backend suite passed all 246 checks.
+D44 records the implementation clarification.
+The adapter does not complete the assessment worker or establish live model quality.
+AWS authentication has expired. No live inference or deployment occurred.
+Next: check the final combined commit and continue full-scope processing.
+
+## 2026-10-11 - Selected-scope pipeline
+
+The pipeline specification was committed before nine missing-implementation checks failed.
+Four additional failing checks exposed context allocation, late presentation, export labels, and nested citation validation.
+A terminal-state check then exposed an incomplete audit record after a known extraction failure.
+The corrected pipeline preserves claim records, known periods, selected sources, stable finding IDs, and unchecked obligations.
+It processes all admitted selected obligations within the existing shared allowance.
+The controlled checks cover all five statuses and independent repeated assessments.
+An interrupted delivery reuses its validated output without duplicate inference.
+Fourteen pipeline checks pass. The combined backend suite passed 260 checks before the SDK dependency addition.
+All 260 checks also passed with the final locked SDK dependency.
+The SDK initially failed client construction with `MissingDependencyException`.
+The required `crt` extra added `awscrt==0.36.0` without changing the 26 earlier package versions.
+Client construction now passes. The live profile check returns `LoginRefreshRequired`.
+The CLI also reports an expired login session.
+The user has received the manual sign-in command for the existing profile.
+No live inference or deployment occurred.
+D45 records this clarification within the approved VS5 scope.
+Next: verify the final combined commit and complete API admission, source selection, and worker supervision.
+
+A failing source-boundary check found that the first pipeline guard also rejected real public regulations.
+The correction keeps the private-bank restriction and permits public regulations with an allowed RBI authority URL.
+The URL check does not establish authenticity or freshness.
+All 261 backend checks passed after this correction.
+
+Seventeen pipeline checks now pass, including maximum selected scope.
+All 20 obligations completed within 22 calls.
+Repeated refinements exhausted the shared allowance at 24 calls.
+That partial run retained 11 findings and nine unchecked obligations.
+The GitHub checkpoint at `7f2a75c` passed 261 backend checks, 42 browser checks, and the frontend build.
+Its deployment job was skipped.
+
+
+## 2026-10-11 - Selected historical interface
+
+The selection specification commit preceded a corrected missing-control browser failure.
+The first browser attempt exposed a test timing error before implementation.
+The corrected setup waits for the uploaded version before reading its catalog.
+
+The interface now selects owned bank versions, saved historical clauses, and a date.
+It keeps the earlier controlled example accessible through a different action.
+Each finding uses its own review revision and source references.
+Queued and partial results retain recorded calls, available usage, and unchecked scope.
+Unknown values remain unknown.
+
+All 48 browser checks passed with the implemented interface.
+Seven focused checks also passed after adding the replacement-version check.
+Type checks and the frontend build passed.
+The mobile selection controls passed visual inspection and the page-width check.
+
+The new browser model responses are controlled fixtures, not evidence of live inference.
+No external provider was integrated. No live inference or deployment occurred.
+D48 records this clarification within D42's approved VS5 scope.
+
+Next: verify the combined commit and continue grounded periods, source integration, live quality gates, and AWS acceptance.
+
+## 2026-10-11 - Grounded stated evidence periods
+
+The period contract adds explicit dated passages and CSV columns without another model call.
+Original document checks now protect processing, source inspection, and exports.
+Known claim dates require a cited record interval within the selected context.
+D49 records this clarification within the approved local VS5 scope.
+Earlier protocols retain their original prompts and source records.
+Current-source integration, live quality evaluations, and AWS acceptance remain pending.
+
+## 2026-10-11 - Native cloud job state
+
+The cloud job component stores conditional metadata, claims, and counters through native DynamoDB calls.
+The existing private S3 adapter keeps versioned snapshots and stage outputs.
+Failing tests reproduced stale clock checks and false dispatch accounting after reservation storage.
+The correction preserves the consumed allowance and records known absence of dispatch separately.
+D50 records this clarification within the approved VS5 and AWS scope.
+Queue, cloud API, review, worker, source, live quality, and AWS acceptance remain unfinished.
+
+## 2026-10-11 - Native assessment and review records
+
+The cloud record component connects the shared pipeline to native DynamoDB metadata and private versioned S3 bodies.
+Conditional transactions protect worker claims, immutable findings, review revisions, and attempt identities.
+The local suite passed 327 backend checks and 51 browser checks before the final processing-metadata correction.
+The final focused suite passed 16 cloud record checks after that correction.
+Missing dispatch audit data shows Unknown instead of zero live calls.
+D51 records the implementation boundary and remaining queue, API, source, live quality, and deployed acceptance work.
+
+## 2026-10-11 - Native admission and SQS execution
+
+Shared selection now admits native historical runs with versioned private S3 originals and DynamoDB records.
+Internal bank reads include all passages and verify the pinned original.
+Identifier-only SQS messages preserve one admission through uncertain acknowledgements and repeated delivery.
+Native worker cleanup preserves the original deadline, counters, partial results, and unknown audit evidence.
+Failing checks exposed premature acknowledgement and changed run snapshots.
+The corrected handler requires saved terminal state and the job's original snapshot.
+The 15 focused checks pass.
+The final local suite passed 343 backend checks, 51 browser checks, and the frontend build.
+D52 records the component boundary.
+Cloud API, source packaging, queue resources, event-source mapping, worker IAM, source verification, live quality, and deployment remain unfinished.
+
+## 2026-10-11 - Native assessment API and deployment preparation
+
+The cloud API connects native selection, job reports, human reviews, source pages, and private report downloads.
+Large bank documents use pinned source references instead of duplicate expanded records.
+
+The deployment package includes verified public sources and preserves previous packages in a private archive.
+Conditional queues, a Lambda worker, and fixed runtime permissions are prepared.
+Cloud assessment deployment remains disabled by default.
+The frontend supports selected cloud assessments, source pagination, and private artifact downloads behind that flag.
+
+The 18 focused backend checks and three controlled cloud browser checks pass.
+W14 reproduces deadline exhaustion during lease renewal.
+The correction preserves timeout classification, the original deadline, counters, and replacement-claim protection.
+The final complete suite passed 362 backend checks, 54 browser checks, and the frontend build.
+GitHub verification then reproduced a concurrent report-cutoff failure.
+CA16 samples the default cutoff after its records while preserving explicit historical cutoffs.
+The corrected local suites passed 363 backend checks, 54 browser checks, and 19 focused API checks.
+D53 records the component boundary and remaining validation, comparison, provider, quality, and deployed acceptance conditions.
+
+## 2026-10-11 - Regulatory change validation
+
+D54 defines specified regulatory source pairs and citation-supported model interpretation records.
+The component keeps original hashes, source locations, selected obligations, independent dates, and baseline control mappings.
+Future requirements do not request assessment processing for an earlier date.
+Missing metadata and undetermined interpretations stay unknown.
+
+Failing checks exposed whitespace-only quotes in assessment and saved export validation.
+One citation-resolution rule now controls assessment, comparison, and export references.
+W14 now uses a saved reservation instead of depending on child startup before the first renewal.
+The corrected focused suites passed 16 comparison checks and 14 worker checks.
+The final complete backend suite passed 379 checks in 161.922 seconds.
+
+Complete comparison admission, bounded model processing, native routes, and browser acceptance remain unfinished.
+Provider verification, live quality, template validation, AWS authentication, and deployed acceptance remain pending.
+VS5 remains a draft under D35.
+
+
+## 2026-10-11 - Saved comparison processing
+
+D55 defines saved comparison admission, bounded model processing, and independent reassessment admission.
+The service keeps original regulatory references, baseline AI mappings, cited controls, saved results, and consumed calls.
+The saved snapshot selects a different comparison model protocol.
+Ordinary assessments keep their model protocol and separate assessment lists.
+Applicable changes can create one new assessment with pinned bank sources and independent review records.
+
+The corrected stub failed all 11 initial behavior checks before implementation.
+The complete local backend suite passed 390 checks in 152.716 seconds.
+Two additional SDK and worker checks then joined the focused suite.
+The focused suite passed all 13 checks in 5.195 seconds without external traffic.
+The [review receipt](runs/2026-10-11-slice-05-release/comparison-jobs-review.md) gives the evidence and language limits.
+
+Native routes, browser acceptance, provider verification, live quality, template validation, and deployed acceptance remain pending.
+VS5 remains a draft under D35.
+
+## 2026-10-11 - Comparison API and interface
+
+D56 connects saved version selection, comparison processing, cited changes, and independent reassessment admission.
+Native routes use the existing Cognito authorizer, queue, worker, and disabled assessment flag.
+Local routes use the same comparison rules and supervised background execution.
+The interface requires selection review before reassessment.
+Earlier findings and human reviews stay unchanged.
+
+Eleven focused API checks passed in 5.791 seconds.
+The complete local backend suite passed 403 checks in 186.977 seconds.
+The complete browser suite passed 59 checks in 2.2 minutes.
+The TypeScript check and production build passed.
+Desktop and mobile views passed visual review.
+The [review receipt](runs/2026-10-11-slice-05-release/comparison-flow-review.md) records failing checks and review limits.
+
+No second verified regulatory version exists in the current source set.
+Provider approval, live semantic evaluation, template validation, AWS authentication, CloudFront verification, and deployed acceptance remain pending.
+VS5 remains a draft under D35.
+
+## 2026-10-11 - Current AWS release checks
+
+The comparison application commit passed GitHub checks with 403 backend tests and 59 browser tests.
+The production build passed.
+The local feedback application keeps its saved case, findings, and review records.
+
+Current AWS authentication passes in account `482439369658` through `et-hackathon-admin`.
+The monthly budget limit is `USD 25`.
+The stack remains `ROLLBACK_COMPLETE`.
+The fixed India model profile is active, but model availability reports `NOT_AUTHORIZED` and no active agreement.
+No model invocation or AWS resource change occurred during these checks.
+
+The [release action guide](docs/delivery/guide-aws-release-actions.md) gives model activation and CloudFront account-verification steps.
+The [read-only receipt](runs/2026-10-11-slice-05-release/aws-release-preflight.json) records current account results.
+The [review receipt](runs/2026-10-11-slice-05-release/aws-release-actions-review.md) gives evidence and language limits.
+The Support API requires paid Support, and browser attachment timed out twice.
+No Support case ID or verification completion was confirmed.
+
+Model agreement permission, source-provider selection, validator tool approval, live quality, CloudFront verification, and deployed acceptance remain pending.
+VS5 remains a draft under D35.
+
+## 2026-10-11 - Submission-day local OpenAI and Langfuse demo
+
+D57 records the user's authorization for OpenAI API processing and Langfuse during the AWS activation delay.
+New local historical snapshots identify `openai:gpt-4.1-mini-2025-04-14`.
+The existing supervised worker keeps ownership, execution claims, citations, saved reviews, the 24-call allowance, and the original deadline.
+Earlier snapshots keep their provider.
+Langfuse receives safe measurements without prompts, responses, documents, review text, owner identifiers, or credentials.
+Local audit storage remains mandatory.
+
+The complete backend suite passed 417 tests in 227.979 seconds.
+The final browser suite passed 62 tests in 2.9 minutes.
+The TypeScript checks and production build passed.
+A browser failure exposed a late catalog response that removed a newly uploaded policy from assessment selection.
+A failing reproduction now protects the corrected request-order rule.
+
+The [local demo guide](docs/delivery/guide-local-demo.md) gives configuration, startup, and demonstration steps.
+The [verification records](runs/2026-10-11-local-demo/) contain red and green results.
+OpenAI and Langfuse keys remain unavailable in the checked environment and private configuration.
+Live provider access, trace delivery, semantic quality, current source coverage, and AWS acceptance remain unverified.
+VS5 remains a draft under D35.
+
+## 2026-10-11 - Langfuse execution tracing
+
+The user requested installation of the official Langfuse skill and tracing with current best practices.
+The skill is installed in `C:/Users/Be Flith Rich/.codex/skills/langfuse`.
+D58 and the [tracing contract](docs/delivery/spec-langfuse-tracing.md) control this work.
+
+Live assessment and comparison executions now have an agent parent with nested stage observations.
+Stable names identify operations without per-run values.
+Model generations retain actual model identity and numeric token counts.
+The integration uses an isolated provider and ends unfinished observations.
+Optional tracing failures do not change mandatory local audit behavior.
+Prompts, responses, documents, reviewer text, owner identifiers, credentials, and hidden reasoning remain excluded.
+
+The complete backend suite passed 422 checks before the additional interruption test.
+The final tracing suite passed all six checks.
+`git diff --check` passed after line-ending correction.
+The [remote verification record](runs/2026-10-11-langfuse-tracing/live-verification.json) confirms eight observations and two OpenAI generations.
+The Langfuse CLI retrieved and checked the hierarchy, end times, model, token counts, and excluded content.
+
+The fictional temporary assessment failed during execution.
+Trace delivery verification does not establish successful assessment or model quality.
+The task did not change the existing Riverbank case, restart services, deploy, or publish.
+A successful live demonstration, held-out evaluation, current source verification, and AWS acceptance remain pending.
+
+## 2026-10-11 - Completed local fictional-policy demonstration
+
+D59 and the [OpenAI action contract](docs/delivery/spec-openai-phase-contract.md) control this correction.
+New OpenAI assessments use `assessment-vs5-openai-period-v4`.
+Phase instructions and response schemas constrain actions, selected identifiers, and exact source citations.
+Earlier snapshots retain their saved instruction and schema behavior.
+The correction preserves evidence validation, ownership, execution allowances, and mandatory local audit storage.
+
+The fictional policy completed an assessment against historical RBI Clause 19(b) without AWS credentials or service activation.
+All three OpenAI calls succeeded.
+The result requests operational records and retains the bank's weekly review schedule.
+The interface shows the finding and opens its original policy source.
+All citations resolve, and JSON and Markdown exports passed verification.
+
+Langfuse Cloud contains 13 observations, including three model generations.
+Remote retrieval confirmed model identity, token counts, and the exclusion of prompts, responses, and document text.
+The [live verification record](runs/2026-10-11-openai-phase/live-policy-verification.json) records source hashes and the tested working-tree state.
+
+The complete backend suite passed 430 checks in 167.808 seconds.
+The browser suite passed 62 checks in 2.4 minutes on an isolated test port.
+TypeScript checks and the production build passed.
+The [verification records](runs/2026-10-11-openai-phase/) preserve failing tests and subsequent passing results.
+
+This demonstration covers one fictional policy and one historical clause.
+Held-out quality, current regulatory coverage, and AWS acceptance remain pending.
+VS5 remains a draft under D35.
+The next task is user review of the local demonstration.

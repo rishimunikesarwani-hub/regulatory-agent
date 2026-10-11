@@ -1,0 +1,29 @@
+{
+  "status": "verified",
+  "sdk": "4.17.0",
+  "provider": "actual OpenAI; fictional temporary fixture",
+  "assessment_state": "failed",
+  "model_calls": 2,
+  "trace_id": "48900f3c7134ff7c71c98d4c89fa8540",
+  "trace_url": "https://cloud.langfuse.com/project/cmv3uoong0300ad0m5f2emtu2/traces/48900f3c7134ff7c71c98d4c89fa8540",
+  "remote_observations": 8,
+  "remote_generations": 2,
+  "names": [
+    "assess-regulatory-evidence",
+    "extract-controls",
+    "extract-evidence",
+    "extract-obligations",
+    "select-context",
+    "verify-sources"
+  ],
+  "audit": {
+    "root_agent": true,
+    "parent_hierarchy": true,
+    "all_observations_ended": true,
+    "actual_model": true,
+    "token_usage": true,
+    "input_output_excluded": true,
+    "privacy_checks": true
+  },
+  "quality_boundary": "The live fictional assessment failed during execution. Trace verification passed; model quality remains unverified."
+}

@@ -1,0 +1,16 @@
+{
+  "recorded_at": "2026-10-11",
+  "purpose": "public historical-source transport probe; not current-source verification",
+  "authority_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12562",
+  "private_content_sent": false,
+  "provider": "Jina Reader keyless API",
+  "http_status": 200,
+  "content_type": "application/json; charset=utf-8",
+  "response_bytes": 67392,
+  "returned_url": "https://www.rbi.org.in/Scripts/BS_ViewMasDirections.aspx?id=12562",
+  "text_chars": 66305,
+  "has_title": true,
+  "has_clause_19": true,
+  "has_backup_clause": true,
+  "duration_seconds": 6.86
+}

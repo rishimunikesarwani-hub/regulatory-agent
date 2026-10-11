@@ -1,5 +1,6 @@
 """Cloud document metadata transactions and version-bound private S3 evidence."""
 from datetime import datetime, timezone
+import hashlib
 import json
 from urllib.parse import quote
 import uuid
@@ -7,13 +8,30 @@ import uuid
 from botocore.exceptions import ClientError
 
 from .cases import CaseError, not_found, unavailable
-from .contracts import DocumentVersion, Passage
+from .contracts import ContractError, DocumentVersion, Passage
 from .documents import extract_document, rejected, upload_request
 from .local import identifier
 
 
 def conflict():
     return CaseError(409, 'upload_conflict', 'The upload state changed.', 'Check the upload status before another save.')
+
+
+def source_read(objects, owner, case, source, *, offset=None):
+    """Read the exact stored extraction, either completely or as an inspection page."""
+    identity=source['document']['document_version_id']
+    original=objects.read(owner,case,source['original'])
+    if source['document']['case_id']!=case or hashlib.sha256(original).hexdigest()!=source['document']['sha256']:
+        raise ContractError('source_integrity_failure')
+    passages=json.loads(objects.read_extraction(owner,case,source['extraction']))['passages']
+    if offset is not None and (type(offset) is not int or not 0<=offset<len(passages)): raise rejected()
+    start=0 if offset is None else offset
+    chosen=passages if offset is None else passages[start:start+500]
+    result={k:v for k,v in source.items() if k not in {'original','extraction'}}
+    result['passages']=[Passage(passage_id=f'{identity}-{i+1}',document_version_id=identity,**p).model_dump()
+                        for i,p in enumerate(chosen,start)]
+    if offset is not None: result.update(offset=start,passage_count=len(passages),next_offset=start+500 if start+500<len(passages) else None)
+    return result
 
 
 class CloudDocuments:
@@ -208,3 +226,7 @@ class CloudDocuments:
     def download(self, owner, case, identity):
         source = self._source(owner, case, identity)
         return {'url': self.objects.download(owner, case, source['original'], source['filename'])}
+
+    def read_full(self, owner, case, identity):
+        """Internal assessment read. Verify the pinned original before using extracted text."""
+        return source_read(self.objects,owner,case,self._source(owner,case,identity))

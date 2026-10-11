@@ -1,0 +1,77 @@
+test_mt01_native_request_pins_profile_schema_and_reserves_one_call (test_slice05_bedrock.BedrockDispatchTests.test_mt01_native_request_pins_profile_schema_and_reserves_one_call) ... ERROR
+test_mt02_objects_unknown_fields_usage_and_request_identity_survive (test_slice05_bedrock.BedrockDispatchTests.test_mt02_objects_unknown_fields_usage_and_request_identity_survive) ... ERROR
+test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded (test_slice05_bedrock.BedrockDispatchTests.test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded) ... ERROR
+test_mt04_malformed_and_outside_scope_outputs_count_and_fail (test_slice05_bedrock.BedrockDispatchTests.test_mt04_malformed_and_outside_scope_outputs_count_and_fail) ... ERROR
+test_mt05_rejections_timeouts_and_truncation_never_retry (test_slice05_bedrock.BedrockDispatchTests.test_mt05_rejections_timeouts_and_truncation_never_retry) ... ERROR
+test_mt06_owner_profile_destination_and_private_guards_prevent_inference (test_slice05_bedrock.BedrockDispatchTests.test_mt06_owner_profile_destination_and_private_guards_prevent_inference) ... ERROR
+test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable (test_slice05_bedrock.BedrockDispatchTests.test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable) ... ERROR
+test_mt08_request_limits_and_controlled_adapter_remain_compatible (test_slice05_bedrock.BedrockDispatchTests.test_mt08_request_limits_and_controlled_adapter_remain_compatible) ... ERROR
+
+======================================================================
+ERROR: test_mt01_native_request_pins_profile_schema_and_reserves_one_call (test_slice05_bedrock.BedrockDispatchTests.test_mt01_native_request_pins_profile_schema_and_reserves_one_call)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt02_objects_unknown_fields_usage_and_request_identity_survive (test_slice05_bedrock.BedrockDispatchTests.test_mt02_objects_unknown_fields_usage_and_request_identity_survive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded (test_slice05_bedrock.BedrockDispatchTests.test_mt03_missing_usage_remains_unknown_and_reasoning_is_discarded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt04_malformed_and_outside_scope_outputs_count_and_fail (test_slice05_bedrock.BedrockDispatchTests.test_mt04_malformed_and_outside_scope_outputs_count_and_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt05_rejections_timeouts_and_truncation_never_retry (test_slice05_bedrock.BedrockDispatchTests.test_mt05_rejections_timeouts_and_truncation_never_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt06_owner_profile_destination_and_private_guards_prevent_inference (test_slice05_bedrock.BedrockDispatchTests.test_mt06_owner_profile_destination_and_private_guards_prevent_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable (test_slice05_bedrock.BedrockDispatchTests.test_mt07_limits_prevent_dispatch_and_late_responses_are_unusable)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+======================================================================
+ERROR: test_mt08_request_limits_and_controlled_adapter_remain_compatible (test_slice05_bedrock.BedrockDispatchTests.test_mt08_request_limits_and_controlled_adapter_remain_compatible)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 24, in setUp
+    from regulatory_agent.bedrock_model import BedrockModel
+ModuleNotFoundError: No module named 'regulatory_agent.bedrock_model'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+FAILED (errors=8)

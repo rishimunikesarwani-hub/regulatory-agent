@@ -25,12 +25,17 @@ The [account template](../../ops/aws-development-bootstrap.yaml) creates these r
 The installed stack name is `regulatory-agent-dev-access`.
 The target region is `ap-south-1`.
 
+D53 prepares an additional worker role and narrower queue permissions.
+These template changes are not installed.
+Current schema and security validation remain pending.
+
 | Resource | Permission boundary |
 |---|---|
 | GitHub identity provider | Supplies temporary credentials. An existing provider can be selected by ARN. |
 | `regulatory-agent-dev-github` role | Trusts only `rishimunikesarwani-hub/regulatory-agent` and its `development` environment. |
 | `regulatory-agent-dev-cloudformation` role | Creates and updates application resources. Cannot create or change IAM roles or policies. |
-| `regulatory-agent-dev-case-runtime` role | Reads and writes development case records. Writes application logs in Mumbai. |
+| `regulatory-agent-dev-case-runtime` role | Reads and writes owned development records and document objects. Sends assessment queue messages. Writes application logs in Mumbai. |
+| `regulatory-agent-dev-assessment-worker` role, prepared | Processes saved jobs with scoped storage, queue, log, and model permissions. Uses the specified India inference profile. |
 | Artifact bucket | Stores encrypted deployment packages. Blocks public access and unencrypted transport. Keeps versions. |
 
 The GitHub role can deploy only `regulatory-agent-dev-s01`.
@@ -39,10 +44,11 @@ The required subject is `repo:rishimunikesarwani-hub@292392448/regulatory-agent@
 The development environment permits deployments from `main` only.
 
 It can pass only the specified CloudFormation role.
-CloudFormation can pass only the case function role to Lambda.
+The revised template permits CloudFormation to pass only the fixed case and assessment worker roles to Lambda.
 CloudFormation can use the AWS SAM transform to convert the application template.
 That permission covers only `arn:aws:cloudformation:ap-south-1:aws:transform/Serverless-2016-10-31`.
-The application role has no model, document, or IAM permissions.
+The case role has no model or IAM modification permissions.
+The prepared worker role permits only the specified inference profile and its Mumbai and Hyderabad model resources.
 
 Some service permissions have a wider scope because resource identifiers are generated during creation.
 API Gateway and Cognito management permissions cover the account in Mumbai.
@@ -89,9 +95,9 @@ Keep public sign-up disabled.
 
 ## Validation limits
 
-The templates pass `cfn-lint 1.57.2` without findings.
+Earlier case and document templates passed `cfn-lint 1.57.2` without findings.
 The Python checks reject missing, incorrect, and cross-account runtime roles.
-The case role test excludes model, document, and IAM actions.
+The case role test excludes model and IAM modification actions.
 These checks do not prove live permission coverage.
 
 The first application release stopped because the execution role lacked the SAM transform permission.
@@ -102,13 +108,13 @@ The second release reached `ROLLBACK_COMPLETE` after CloudFront rejected account
 The user chose to keep CloudFront and request AWS account verification.
 The [verification guide](guide-aws-cloudfront-verification.md) records the prepared request and recovery boundary.
 
-Ten selected AWS Guard rules ran with `cfn-guard 3.2.1`.
+Ten selected AWS Guard rules ran against earlier templates with `cfn-guard 3.2.1`.
 All applicable rules passed after the secure-transport value used Boolean `false`.
 The S3 transport restriction stays unchanged.
 These selected rules do not establish general security compliance.
 The rule source commit is `7f7340c26ae5d5e8874651dbffeb12e0e9f505b6`.
 
-CloudFormation reported no pre-deployment validation errors for the installed setup.
+CloudFormation reported no pre-deployment validation errors for the earlier installed setup.
 CloudTrail event history contains the CloudFormation plan operation.
 No durable CloudTrail trail is configured.
 Audit retention is therefore limited to the default event history.

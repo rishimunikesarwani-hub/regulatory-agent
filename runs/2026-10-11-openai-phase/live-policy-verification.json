@@ -1,0 +1,156 @@
+{
+  "checked_at": "2026-10-11T13:51:28.969215+00:00",
+  "case_id": "6d4a8cc91d764336927cef7ec90e727b",
+  "job_id": "25b4270ccff642cc8f32176a4bd27ee0",
+  "trace_id": "a4aabc22aa3e1bd8a8f0e164b79f9da6",
+  "demo_url": "http://127.0.0.1:5185/?case=6d4a8cc91d764336927cef7ec90e727b&assessment=25b4270ccff642cc8f32176a4bd27ee0",
+  "readiness": {
+    "openai_key_configured": true,
+    "langfuse_configured": true
+  },
+  "model_id": "openai:gpt-4.1-mini-2025-04-14",
+  "scope": "fictional bank and historical Clause 19(b)",
+  "state": "completed",
+  "stop_reason": null,
+  "live_model_calls": 3,
+  "model_attempts": [
+    {
+      "stage_id": "extract-obligations",
+      "state": "succeeded",
+      "dispatched": true,
+      "provider_request_id": "req_012339273dcb4d3c83745aa9fbe74ebf",
+      "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 3016,
+        "output_tokens": 615,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": null
+      },
+      "duration_seconds": 4.375,
+      "selected_passage_ids": [
+        "1137ee2c3fe95ce0a784176ffe904441:2a",
+        "1137ee2c3fe95ce0a784176ffe904441:2ai",
+        "1137ee2c3fe95ce0a784176ffe904441:2b",
+        "1137ee2c3fe95ce0a784176ffe904441:19b"
+      ],
+      "selected_text_bytes": 625,
+      "versions": {
+        "application": "vs5-v1",
+        "schema_version": "vs5-selection-period-v1",
+        "extraction": "vs2-period-v1",
+        "chunking": "source-locations-v1",
+        "retrieval": "keyword-period-vs5-v1",
+        "prompt": "assessment-vs5-openai-period-v4",
+        "model_configuration": "openai-demo-v1"
+      },
+      "errors": []
+    },
+    {
+      "stage_id": "assess-RBI-IT-2023:19b-0",
+      "state": "succeeded",
+      "dispatched": true,
+      "provider_request_id": "req_db0cd056d43e4f4d9d0a7d5942a986aa",
+      "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 4238,
+        "output_tokens": 1025,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": null
+      },
+      "duration_seconds": 6.85999999998603,
+      "selected_passage_ids": [
+        "1137ee2c3fe95ce0a784176ffe904441:2a",
+        "1137ee2c3fe95ce0a784176ffe904441:2ai",
+        "1137ee2c3fe95ce0a784176ffe904441:2b",
+        "1137ee2c3fe95ce0a784176ffe904441:19b",
+        "617f9690bb5f4683a8b543f9528169bb-2",
+        "617f9690bb5f4683a8b543f9528169bb-1",
+        "617f9690bb5f4683a8b543f9528169bb-3"
+      ],
+      "selected_text_bytes": 833,
+      "versions": {
+        "application": "vs5-v1",
+        "schema_version": "vs5-selection-period-v1",
+        "extraction": "vs2-period-v1",
+        "chunking": "source-locations-v1",
+        "retrieval": "keyword-period-vs5-v1",
+        "prompt": "assessment-vs5-openai-period-v4",
+        "model_configuration": "openai-demo-v1"
+      },
+      "errors": []
+    },
+    {
+      "stage_id": "extract-controls",
+      "state": "succeeded",
+      "dispatched": true,
+      "provider_request_id": "req_8accf7be830f494bb1dc6e5a79bc1dfa",
+      "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+      "usage": {
+        "input_tokens": 3092,
+        "output_tokens": 215,
+        "cache_read_tokens": 0,
+        "cache_write_tokens": null
+      },
+      "duration_seconds": 2.25,
+      "selected_passage_ids": [
+        "617f9690bb5f4683a8b543f9528169bb-2",
+        "617f9690bb5f4683a8b543f9528169bb-1",
+        "617f9690bb5f4683a8b543f9528169bb-3"
+      ],
+      "selected_text_bytes": 208,
+      "versions": {
+        "application": "vs5-v1",
+        "schema_version": "vs5-selection-period-v1",
+        "extraction": "vs2-period-v1",
+        "chunking": "source-locations-v1",
+        "retrieval": "keyword-period-vs5-v1",
+        "prompt": "assessment-vs5-openai-period-v4",
+        "model_configuration": "openai-demo-v1"
+      },
+      "errors": []
+    }
+  ],
+  "finding_count": 1,
+  "policy_checks": {
+    "job_completed": true,
+    "all_selected_obligations_presented": true,
+    "finding_present": true,
+    "policy_only_needs_review": true,
+    "missing_operational_evidence": true,
+    "weekly_bank_frequency_retained": true,
+    "unknown_owner_retained": true,
+    "unknown_evidence_period_retained": true,
+    "all_citations_resolve": true,
+    "json_export_verified": true,
+    "markdown_export_verified": true
+  },
+  "prompt_version": "assessment-vs5-openai-period-v4",
+  "finding_statuses": [
+    "needs_review"
+  ],
+  "control_count": 1,
+  "citation_count": 6,
+  "langfuse_metadata_only": true,
+  "langfuse_remote_delivery_verified": true,
+  "langfuse_url": "https://cloud.langfuse.com/project/cmv3uoong0300ad0m5f2emtu2/traces/a4aabc22aa3e1bd8a8f0e164b79f9da6",
+  "total_input_tokens": 10346,
+  "total_output_tokens": 1855,
+  "tested_worktree_diff": true,
+  "limits": [
+    "One fictional policy and one historical RBI clause only.",
+    "Not held-out model quality or current regulatory coverage.",
+    "AWS deployment and acceptance remain pending."
+  ],
+  "base_commit": "2d708187ca157195155ecefe7ce1fc1cf3d659a9",
+  "working_tree_sha256": {
+    "src/regulatory_agent/openai_model.py": "654d4bb76528dcfe14443ddba1c467ec0e1c09e892c67055356852bd0869d0c0",
+    "src/regulatory_agent/contracts.py": "6516ef94a1ac624a805dc9bbb1e5028a6f26ebf57b4cfc4b4c6aed927e678cec",
+    "src/regulatory_agent/assessment_pipeline.py": "01851d00abb6ed292e8348eb389f4f5e2b00214a73984460b2faeecf68f69555",
+    "src/regulatory_agent/langfuse_trace.py": "a559dd483603cc8d0f49e7167f7ac351739947ccd2f2a942e3dcf7665aee9d4e",
+    "src/regulatory_agent/assessment_selection.py": "684f6a0344944f26494361a626db95a2e4eab9340f10e64c41eb326d1a073395",
+    "src/regulatory_agent/assessments.py": "08384dd7b37017d523c151e298035d736dced7cff401d960a757c590233c2ca3",
+    "src/regulatory_agent/comparison_jobs.py": "2ed8261bf308d71c3781f48b46f4773c2aba598277d15bc56943596f9c63416b"
+  },
+  "langfuse_observation_count": 13,
+  "langfuse_generation_count": 3
+}

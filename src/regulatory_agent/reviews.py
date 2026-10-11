@@ -2,11 +2,13 @@
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 import json
+import time
 import uuid
 
 from .contracts import (ContractError, ReviewCohort, ReviewDecision, ReviewItem, ReviewOutcomeReport,
                         ReviewRequest, RunCohort, RunMeasure, ResultCoverageReport)
 from .local import encoded, identifier
+from .telemetry import StageAttempt
 
 
 def instant(value):
@@ -82,6 +84,9 @@ class Reviews:
                     raise ContractError("immutable_run")
             else:
                 self._insert(db, case, "run", run_id, body)
+            current = self.store._job(db, owner, case, job['job_id'])
+            current['label'] = 'Live' if data_mode in {'live', 'synthetic_live'} else 'Simulated'
+            self.store._save_job(db, current)
         return body
 
     @staticmethod
@@ -108,7 +113,7 @@ class Reviews:
             raise ContractError("record_too_large")
         db.execute("INSERT INTO records VALUES (?,?,?,?)", (case, kind, identity, text))
 
-    def present(self, owner, case, item):
+    def present(self, owner, case, item, *, execution_token=None):
         item = ReviewItem.model_validate(item.model_dump())
         snapshot = self.store.get(owner, case, "snapshot", item.snapshot_id)
         selected_versions = {f"{name}:{version}" for name, version in snapshot["selected_versions"].items()}
@@ -120,6 +125,8 @@ class Reviews:
             if row is None:
                 raise ContractError("run_not_found")
             run = json.loads(row[0])
+            if execution_token is not None:
+                self.store._claimed(self.store._job(db, owner, case, run['job_id']), execution_token, time.time())
             if any(getattr(item, field) != run[field] for field in ("snapshot_id", "model_id", "prompt_version", "data_mode")):
                 raise ContractError("item_run_mismatch")
             existing = self._records(db, case, "finding")
@@ -143,35 +150,32 @@ class Reviews:
             self.store.authorize(owner, case, db)
             item = self._item(db, case, finding_id)
             history = self._history(db, case, finding_id)
-            # A delayed duplicate must return its original event before revision validation.
-            for event in history:
-                if event.idempotency_key == request.idempotency_key:
-                    original = {key: getattr(event, key) for key in ReviewRequest.model_fields}
-                    if ReviewRequest(**original) != request:
-                        raise ContractError("idempotency_conflict")
-                    return event
-            revision = history[-1].revision if history else 0
-            if request.expected_revision != revision:
-                raise ContractError("revision_conflict")
-            if request.disposition in {"approved", "edited"}:
-                unchanged = request.accepted_content.normalized() == item.original_content().normalized()
-                if request.disposition == "approved" and not unchanged:
-                    raise ContractError("approval_requires_original")
-                if request.disposition == "edited" and unchanged:
-                    raise ContractError("edited_content_unchanged")
-            now = self.clock()
-            if now.utcoffset() is None:
-                raise ContractError("server_clock_timezone_missing")
-            now = now.astimezone(timezone.utc)
-            if now < instant(item.available_at):
-                raise ContractError("review_precedes_availability")
-            if history:
-                now = max(now, instant(history[-1].committed_at))
-            event = ReviewDecision(**request.model_dump(), event_id=uuid.uuid4().hex,
-                                   finding_id=finding_id, reviewer_id=owner, committed_at=now.isoformat(),
-                                   revision=revision + 1)
-            self._insert(db, case, "review", event.event_id, event.model_dump())
+            event=self.decision(owner,item,history,request)
+            if event not in history:
+                self._insert(db, case, "review", event.event_id, event.model_dump())
             return event
+
+    def decision(self, owner, item, history, request):
+        # A delayed duplicate must return its original event before revision validation.
+        request=ReviewRequest.model_validate(request.model_dump())
+        for event in history:
+            if event.idempotency_key==request.idempotency_key:
+                original={key:getattr(event,key) for key in ReviewRequest.model_fields}
+                if ReviewRequest(**original)!=request: raise ContractError('idempotency_conflict')
+                return event
+        revision=history[-1].revision if history else 0
+        if request.expected_revision!=revision: raise ContractError('revision_conflict')
+        if request.disposition in {'approved','edited'}:
+            unchanged=request.accepted_content.normalized()==item.original_content().normalized()
+            if request.disposition=='approved' and not unchanged: raise ContractError('approval_requires_original')
+            if request.disposition=='edited' and unchanged: raise ContractError('edited_content_unchanged')
+        now=self.clock()
+        if now.utcoffset() is None: raise ContractError('server_clock_timezone_missing')
+        now=now.astimezone(timezone.utc)
+        if now<instant(item.available_at): raise ContractError('review_precedes_availability')
+        if history: now=max(now,instant(history[-1].committed_at))
+        return ReviewDecision(**request.model_dump(),event_id=uuid.uuid4().hex,finding_id=item.finding_id,
+            reviewer_id=owner,committed_at=now.isoformat(),revision=revision+1)
 
     def history(self, owner, case, finding_id):
         with self.store.transaction() as db:
@@ -179,29 +183,66 @@ class Reviews:
             self._item(db, case, finding_id)
             return self._history(db, case, finding_id)
 
+    def records(self, owner, case, kind):
+        with self.store.transaction() as db:
+            self.store.authorize(owner,case,db)
+            return self._records(db,case,kind)
+
+    def attempt(self, owner, case, event, *, execution_token=None, finish=False):
+        event=StageAttempt.model_validate(event.model_dump())
+        with self.store.transaction() as db:
+            self.store.authorize(owner,case,db)
+            row=db.execute("SELECT body FROM records WHERE case_id=? AND kind='run' AND id=?",(case,event.run_id)).fetchone()
+            if row is None: raise ContractError('run_not_found')
+            run=json.loads(row[0])
+            if (event.job_id,event.snapshot_id)!=(run['job_id'],run['snapshot_id']): raise ContractError('attempt_scope_denied')
+            if execution_token is not None:
+                self.store._claimed(self.store._job(db,owner,case,event.job_id),execution_token,time.time(),permit_expired=finish)
+            if finish:
+                row=db.execute("SELECT body FROM records WHERE case_id=? AND kind='stage_attempt' AND id=?",(case,event.event_id)).fetchone()
+                if row is None: raise ContractError('attempt_already_terminal')
+                self.finish_attempt(StageAttempt.model_validate_json(row[0]),event)
+                changed=db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='stage_attempt' AND id=? AND json_extract(body,'$.state')='unknown'",
+                    (event.model_dump_json(),case,event.event_id)).rowcount
+                if changed!=1: raise ContractError('attempt_already_terminal')
+            else:
+                self._insert(db,case,'stage_attempt',event.event_id,event.model_dump(mode='json'))
+
+    @staticmethod
+    def finish_attempt(old, event):
+        if old.state!='unknown' or event.state=='unknown': raise ContractError('attempt_already_terminal')
+        if any(getattr(old,k)!=getattr(event,k) for k in ('event_id','attempt_id','run_id','job_id','snapshot_id',
+                'stage_id','stage','operation','started_at','versions')): raise ContractError('attempt_scope_denied')
+
     def report(self, owner, case, cohort):
         cohort = ReviewCohort.model_validate(cohort.model_dump())
         with self.store.transaction() as db:
             self.store.authorize(owner, case, db)
             items = [ReviewItem.model_validate(record) for record in self._records(db, case, "finding")]
-            items = [item for item in items if instant(cohort.start) <= instant(item.available_at) < instant(cohort.end)
-                     and instant(item.available_at) <= instant(cohort.cutoff)
-                     and (item.model_id, item.prompt_version, item.data_mode) ==
-                         (cohort.model_id, cohort.prompt_version, cohort.data_mode)
-                     and (cohort.finding_status is None or item.status == cohort.finding_status)
-                     and set(cohort.source_version_ids) <= set(item.source_version_ids)]
-            latest, delays, groups = [], [], defaultdict(lambda: ([], []))
-            for item in items:
-                finals = [event for event in self._history(db, case, item.finding_id)
-                          if event.event_kind == "final_review" and instant(event.committed_at) <= instant(cohort.cutoff)]
-                final = finals[-1] if finals else None
-                latest.append(final)
-                if finals:
-                    delays.append((instant(finals[0].committed_at) - instant(item.available_at)).total_seconds())
-                group_items, group_events = groups[(item.status, final.reviewer_id if final else None)]
-                group_items.append(item)
-                group_events.append(final)
-            return ReviewOutcomeReport(cohort=cohort, **counts(items, latest), review_delays_seconds=delays,
-                                       status_reviewer_groups=[dict(finding_status=status, reviewer_id=reviewer,
-                                                                    **counts(group_items, group_events))
-                                                               for (status, reviewer), (group_items, group_events) in groups.items()])
+            histories={item.finding_id:self._history(db,case,item.finding_id) for item in items}
+        return self.outcomes(items,histories,cohort)
+
+    @staticmethod
+    def outcomes(items, histories, cohort):
+        cohort=ReviewCohort.model_validate(cohort.model_dump())
+        items = [item for item in items if instant(cohort.start) <= instant(item.available_at) < instant(cohort.end)
+                 and instant(item.available_at) <= instant(cohort.cutoff)
+                 and (item.model_id, item.prompt_version, item.data_mode) ==
+                     (cohort.model_id, cohort.prompt_version, cohort.data_mode)
+                 and (cohort.finding_status is None or item.status == cohort.finding_status)
+                 and set(cohort.source_version_ids) <= set(item.source_version_ids)]
+        latest, delays, groups = [], [], defaultdict(lambda: ([], []))
+        for item in items:
+            finals = [event for event in histories[item.finding_id]
+                      if event.event_kind == "final_review" and instant(event.committed_at) <= instant(cohort.cutoff)]
+            final = finals[-1] if finals else None
+            latest.append(final)
+            if finals:
+                delays.append((instant(finals[0].committed_at) - instant(item.available_at)).total_seconds())
+            group_items, group_events = groups[(item.status, final.reviewer_id if final else None)]
+            group_items.append(item)
+            group_events.append(final)
+        return ReviewOutcomeReport(cohort=cohort, **counts(items, latest), review_delays_seconds=delays,
+                                   status_reviewer_groups=[dict(finding_status=status, reviewer_id=reviewer,
+                                                                **counts(group_items, group_events))
+                                                           for (status, reviewer), (group_items, group_events) in groups.items()])

@@ -1,0 +1,15 @@
+test_cj01_identical_admission_preserves_job_snapshot_and_artifact (test_slice05_cloud_jobs.CloudJobTests.test_cj01_identical_admission_preserves_job_snapshot_and_artifact) ... ok
+test_cj02_wrong_owner_case_and_forged_saved_identity_are_denied (test_slice05_cloud_jobs.CloudJobTests.test_cj02_wrong_owner_case_and_forged_saved_identity_are_denied) ... ok
+test_cj03_mumbai_clients_and_native_conditional_shapes (test_slice05_cloud_jobs.CloudJobTests.test_cj03_mumbai_clients_and_native_conditional_shapes) ... ok
+test_cj04_claim_race_and_lease_recovery_keep_the_original_budget (test_slice05_cloud_jobs.CloudJobTests.test_cj04_claim_race_and_lease_recovery_keep_the_original_budget) ... ok
+test_cj05_concurrent_and_uncertain_reservations_never_reset_allowances (test_slice05_cloud_jobs.CloudJobTests.test_cj05_concurrent_and_uncertain_reservations_never_reset_allowances) ... ok
+test_cj06_renewal_preserves_deadline_and_rejects_expired_claims (test_slice05_cloud_jobs.CloudJobTests.test_cj06_renewal_preserves_deadline_and_rejects_expired_claims) ... ok
+test_cj07_large_stage_uses_versioned_artifact_and_cannot_be_changed (test_slice05_cloud_jobs.CloudJobTests.test_cj07_large_stage_uses_versioned_artifact_and_cannot_be_changed) ... ok
+test_cj08_lost_claim_and_storage_failure_cannot_attach_outputs (test_slice05_cloud_jobs.CloudJobTests.test_cj08_lost_claim_and_storage_failure_cannot_attach_outputs) ... ok
+test_cj09_finalization_requires_exact_scope_and_preserves_partial_results (test_slice05_cloud_jobs.CloudJobTests.test_cj09_finalization_requires_exact_scope_and_preserves_partial_results) ... ok
+test_cj10_terminal_retry_and_corrupt_artifact_never_become_new_execution (test_slice05_cloud_jobs.CloudJobTests.test_cj10_terminal_retry_and_corrupt_artifact_never_become_new_execution) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.834s
+
+OK

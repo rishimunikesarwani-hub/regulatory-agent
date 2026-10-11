@@ -1,0 +1,181 @@
+test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline) ... ERROR
+test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection) ... ERROR
+test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards) ... ERROR
+test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts) ... ERROR
+test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete) ... ERROR
+test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again) ... ERROR
+test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history) ... ERROR
+test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment) ... ERROR
+test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action) ... ERROR
+test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission) ... ERROR
+test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail) ... ERROR
+
+======================================================================
+ERROR: test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 84, in test_cj01_native_admission_pins_pair_without_changing_baseline
+    saved=self.admit()
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 92, in test_cj02_idempotency_and_conflicting_selection
+    first=self.admit(); self.assertEqual(self.admit(),first)
+          ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 101, in test_cj03_scope_and_baseline_guards
+    with self.assertRaisesRegex(ContractError,'comparison_baseline_unfinished'):self.admit()
+                                                                                ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 105, in test_cj04_processing_saves_changes_and_measured_attempts
+    record=self.admit(); result,model=self.process(record)
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 115, in test_cj05_rejected_reply_consumes_allowance_and_does_not_complete
+    record=self.admit(); bad=self.reply(record); bad['comparison']['changes'][0]['affected_control_ids']=['invented']
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 123, in test_cj06_recovery_does_not_dispatch_saved_results_again
+    record=self.admit(); token=self.store.claim(self.owner,self.case,record['job_id'])
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 135, in test_cj07_new_assessment_keeps_bank_scope_and_independent_history
+    record=self.admit(); self.process(record)
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 147, in test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment
+    record=self.admit()
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 153, in test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action
+    record=self.admit(); action=self.reply(record)
+           ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 166, in test_cj10_uncertain_comparison_commit_recovers_same_admission
+    with self.assertRaises(OSError):self.admit()
+                                    ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+======================================================================
+ERROR: test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 175, in test_cj11_missing_control_support_and_original_integrity_fail
+    with self.assertRaisesRegex(ContractError,'comparison_control_support_missing'):self.admit()
+                                                                                    ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 62, in admit
+    def admit(self): return self.comparisons.admit(self.owner,self.case,self.request)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 4, in admit
+    def admit(self, owner, case, request): raise NotImplementedError
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^
+NotImplementedError
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.414s
+
+FAILED (errors=11)

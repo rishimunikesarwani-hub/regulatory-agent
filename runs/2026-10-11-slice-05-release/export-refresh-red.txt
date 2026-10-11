@@ -1,0 +1,47 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts release.spec.ts --grep VS5-BT04 --output
+../../runs/2026-10-11-slice-05-release/export-refresh-red-artifacts
+[WebServer] (node:1088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [29908]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:10208) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\release.spec.ts:80:1 › VS5-BT04 refreshing the same assessment cannot discard an in-flight export (7.0s)
+
+
+  1) tests\release.spec.ts:80:1 › VS5-BT04 refreshing the same assessment cannot discard an in-flight export
+
+    TimeoutError: page.waitForEvent: Timeout 5000ms exceeded while waiting for event "download"
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      93 |   await loaded;
+      94 |   await expect(page.getByRole('button',{name:'Refresh assessment',exact:true})).toBeEnabled();
+    > 95 |   const downloaded = page.waitForEvent('download',{timeout:5000});
+         |                           ^
+      96 |   release();
+      97 |   expect(JSON.parse(await text(await downloaded)).state).toBe('completed');
+      98 |   await expect(page.getByRole('button',{name:'Download JSON',exact:true})).toBeEnabled();
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\release.spec.ts:95:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\export-refresh-red-artifacts\release-VS5-BT04-refreshin-5f16b-discard-an-in-flight-export\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\export-refresh-red-artifacts\release-VS5-BT04-refreshin-5f16b-discard-an-in-flight-export\error-context.md
+
+  1 failed
+    tests\release.spec.ts:80:1 › VS5-BT04 refreshing the same assessment cannot discard an in-flight export

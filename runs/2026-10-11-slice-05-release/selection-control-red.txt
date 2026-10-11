@@ -1,0 +1,49 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts selection.spec.ts --grep VS5-SB01
+[WebServer] (node:22000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [33688]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:25924) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\selection.spec.ts:57:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission (30.1s)
+
+
+  1) tests\selection.spec.ts:57:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('region', { name: 'Selected historical assessment', exact: true }).getByLabel('custom-fiction.txt · Version 1', { exact: true })
+
+
+      48 |   const selection = page.getByRole('region',{name:'Selected historical assessment',exact:true});
+      49 |   const choose = async () => {
+    > 50 |     await selection.getByLabel('custom-fiction.txt · Version 1', {exact:true}).check();
+         |                                                                                ^
+      51 |     for (const clause of clauses) await selection.getByLabel(clause.label,{exact:true}).check();
+      52 |     await selection.getByLabel('Assessment date',{exact:true}).fill('2024-04-08');
+      53 |   };
+        at Object.choose (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:50:80)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:59:11
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB01-real-ca-76f41-ce-exact-selected-admission\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB01-real-ca-76f41-ce-exact-selected-admission\error-context.md
+
+  1 failed
+    tests\selection.spec.ts:57:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission

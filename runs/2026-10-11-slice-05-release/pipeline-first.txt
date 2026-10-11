@@ -1,0 +1,189 @@
+test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields) ... ERROR
+test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection (test_slice05_pipeline.PipelineTests.test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection) ... ok
+test_pt03_owner_scope_and_original_integrity_prevent_inference (test_slice05_pipeline.PipelineTests.test_pt03_owner_scope_and_original_integrity_prevent_inference) ... ok
+test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) ...
+  test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='policy_only') ... ERROR
+  test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='unknown_period') ... ERROR
+  test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='wrong_quote') ... ERROR
+  test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='unexamined') ... ERROR
+test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions) ... ERROR
+test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope) ... ERROR
+test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference) ... FAIL
+test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text) ... ERROR
+test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete) ... ERROR
+
+======================================================================
+ERROR: test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 105, in test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields
+    findings=self.findings()
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='policy_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 164, in test_pt04_invalid_support_quotes_and_unexamined_passages_never_present
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='unknown_period')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 164, in test_pt04_invalid_support_quotes_and_unexamined_passages_never_present
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='wrong_quote')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 164, in test_pt04_invalid_support_quotes_and_unexamined_passages_never_present
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) (problem='unexamined')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 164, in test_pt04_invalid_support_quotes_and_unexamined_passages_never_present
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 175, in test_pt05_refinement_and_inspection_are_bounded_actions
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 180, in test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope
+    self.assertEqual(len(self.findings()),1);self.assertEqual(model.dispatches,4)
+                         ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 208, in test_pt08_failed_dispatch_retains_usage_without_private_error_text
+    traces=self.service.read(self.owner,self.case,self.job_id)['trace']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+ERROR: test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 227, in test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete
+    self.assertEqual(result['state'],'failed');self.assertEqual(self.findings(),[])
+                                                                ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 100, in findings
+    return self.service.read(self.owner,self.case,self.job_id)['findings']
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 348, in read
+    obligation, control, _ = self._example(owner, case, job_id, snapshot)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\assessments.py", line 229, in _example
+    obligation = Obligation(obligation_id=OBLIGATION, requirement=references['Clause 19(b)']['text'],
+                                                                  ~~~~~~~~~~^^^^^^^^^^^^^^^^
+KeyError: 'Clause 19(b)'
+
+======================================================================
+FAIL: test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 196, in test_pt07_resume_reuses_validated_output_without_duplicate_inference
+    self.assertEqual(result['state'],'completed');self.assertEqual(model.dispatches,4)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+----------------------------------------------------------------------
+Ran 9 tests in 6.365s
+
+FAILED (failures=1, errors=9)
