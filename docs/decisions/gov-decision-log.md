@@ -903,6 +903,25 @@ Applicable changed requirements must cause a new snapshot without changing previ
 Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
 VS5 remains a draft under D35.
 
+## D55 - Saved comparison processing
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42, D54, and REQ-F02.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [comparison job contract](../delivery/spec-slice-05-comparison-jobs.md) defines saved admission, bounded processing, and independent reassessment records.
+Comparison jobs use a different model protocol selected by their saved snapshot.
+They keep the specified versions and original baseline control mappings.
+Each obligation has a separate model call and saved result.
+Interrupted executions keep their original deadline, consumed calls, and completed results.
+
+Applicable changes can admit a new assessment with pinned bank sources and a different review history.
+Unresolved, future, unchanged, and unfinished results cannot authorize reassessment.
+Comparison jobs stay outside ordinary assessment lists.
+Native routes, browser acceptance, provider approval, live quality, and deployed acceptance remain pending.
+This implementation does not establish full REQ-F02 acceptance.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

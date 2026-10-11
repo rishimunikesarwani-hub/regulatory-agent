@@ -9,7 +9,7 @@ import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment, citation_matches
+from .contracts import COMPARISON_PROMPT, Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment, citation_matches
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -116,7 +116,7 @@ class Assessments:
         self.cases.read(owner, case)
         with self.store.transaction() as db:
             self.store.authorize(owner, case, db)
-            return {'runs': self.reviews._records(db, case, 'run')}
+            return {'runs': [r for r in self.reviews._records(db, case, 'run') if r['prompt_version']!=COMPARISON_PROMPT]}
 
     def comparisons(self, owner, case):
         self.cases.read(owner, case)
@@ -371,6 +371,7 @@ class Assessments:
 
     def read(self, owner, case, job_id, cutoff=None):
         run, snapshot = self._run(owner, case, job_id)
+        if snapshot['prompt_version']==COMPARISON_PROMPT:raise invalid('comparison_result_required')
         try:
             limit = instant(cutoff) if cutoff else None
             if limit is not None and limit.utcoffset() is None:

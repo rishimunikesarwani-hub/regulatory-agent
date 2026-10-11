@@ -986,3 +986,20 @@ The final complete backend suite passed 379 checks in 161.922 seconds.
 Complete comparison admission, bounded model processing, native routes, and browser acceptance remain unfinished.
 Provider verification, live quality, template validation, AWS authentication, and deployed acceptance remain pending.
 VS5 remains a draft under D35.
+
+## 2026-10-11 - Saved comparison processing
+
+D55 defines saved comparison admission, bounded model processing, and independent reassessment admission.
+The service keeps original regulatory references, baseline AI mappings, cited controls, saved results, and consumed calls.
+The saved snapshot selects a different comparison model protocol.
+Ordinary assessments keep their model protocol and separate assessment lists.
+Applicable changes can create one new assessment with pinned bank sources and independent review records.
+
+The corrected stub failed all 11 initial behavior checks before implementation.
+The complete local backend suite passed 390 checks in 152.716 seconds.
+Two additional SDK and worker checks then joined the focused suite.
+The focused suite passed all 13 checks in 5.195 seconds without external traffic.
+The [review receipt](runs/2026-10-11-slice-05-release/comparison-jobs-review.md) gives the evidence and language limits.
+
+Native routes, browser acceptance, provider verification, live quality, template validation, and deployed acceptance remain pending.
+VS5 remains a draft under D35.

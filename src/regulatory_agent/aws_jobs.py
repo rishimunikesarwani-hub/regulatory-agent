@@ -6,7 +6,7 @@ import uuid
 
 from botocore.exceptions import ClientError
 
-from .contracts import ContractError, SELECTED_PROMPTS, Snapshot
+from .contracts import COMPARISON_PROMPT, ContractError, SELECTED_PROMPTS, Snapshot
 from .local import Store, encoded, identifier
 
 
@@ -78,7 +78,7 @@ class DynamoJobs:
     def admit(self, owner, snapshot, key, *, data_mode='synthetic_live', now=None):
         snapshot=Snapshot.model_validate(snapshot.model_dump()); identifier(key)
         profile=self.cases.read(owner,snapshot.case_id)
-        if not snapshot.synthetic or snapshot.mode!='historical' or snapshot.prompt_version not in SELECTED_PROMPTS or \
+        if not snapshot.synthetic or snapshot.mode!='historical' or snapshot.prompt_version not in SELECTED_PROMPTS|{COMPARISON_PROMPT} or \
                 snapshot.model_version!='in.openai.gpt-5.6-luna' or snapshot.bank_profile!=profile.bank_profile:
             raise ContractError('cloud_job_scope_denied')
         case=snapshot.case_id

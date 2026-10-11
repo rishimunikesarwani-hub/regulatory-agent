@@ -108,3 +108,6 @@ No Support case ID has been confirmed.
 The 20-case minimum, 90% agreement, citation checks, and zero critical false-supported gate remain mandatory.
 Local checks do not satisfy those live quality conditions.
 Do not merge VS5 before its D35 user review condition passes.
+
+The [saved comparison processing contract](spec-slice-05-comparison-jobs.md) adds bounded jobs and independent reassessment admission.
+Native routes, browser acceptance, provider approval, and live evaluation remain pending.

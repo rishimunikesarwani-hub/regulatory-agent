@@ -7,7 +7,7 @@ from pydantic import Field, TypeAdapter, model_validator
 from .assessment_selection import _Text
 from .assessment_pipeline import AssessmentPipeline
 from .contract_types import Contract, Identifier
-from .contracts import Citation, ContractError, Obligation, Snapshot, SourceRead, Text, iso_date, public_url
+from .contracts import Citation, ContractError, ModelReply, Obligation, Snapshot, SourceRead, Text, iso_date, public_url
 from .local import encoded
 
 
@@ -50,6 +50,17 @@ class ChangeInterpretation(Contract):
     older_version_id: Identifier
     newer_version_id: Identifier
     changes: list[ObligationChange] = Field(min_length=1,max_length=20)
+
+
+class ComparisonAction(Contract):
+    action: Literal['compare_obligations']
+    snapshot_id: Identifier
+    document_version_ids: list[Identifier] = Field(min_length=2,max_length=12)
+    comparison: ChangeInterpretation
+
+
+class ComparisonReply(ModelReply):
+    action: ComparisonAction
 
 
 def _source(source, raw):

@@ -10,7 +10,7 @@ from pydantic import ValidationError
 
 from .assessments import PERIOD_PROMPT, SELECTED_PROMPT
 
-from .contracts import Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, citation_matches, iso_date, public_url
+from .contracts import COMPARISON_PROMPT, Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, citation_matches, iso_date, public_url
 from .local import encoded, validated_action
 from .telemetry import AttemptTimer, StageAttempt, TokenUsage, VersionMetadata
 
@@ -100,9 +100,9 @@ class AssessmentPipeline:
             stage=stage, operation=operation, state='unknown', dispatched=False,
             started_at=timer.started_at, finished_at=None, duration_seconds=None,
             versions=VersionMetadata(application='vs5-v1',
-                schema='vs5-selection-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
+                schema='vs5-comparison-v1' if run['prompt_version']==COMPARISON_PROMPT else 'vs5-selection-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
                 extraction='vs2-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs2-v1',
-                chunking='source-locations-v1', retrieval='keyword-period-vs5-v1' if run['prompt_version']==PERIOD_PROMPT else 'keyword-vs5-v1', prompt=run['prompt_version'],
+                chunking='source-locations-v1', retrieval='specified-comparison-vs5-v1' if run['prompt_version']==COMPARISON_PROMPT else 'keyword-period-vs5-v1' if run['prompt_version']==PERIOD_PROMPT else 'keyword-vs5-v1', prompt=run['prompt_version'],
                 model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else 'india-converse-v1'),
             model_id=run['model_id'] if operation=='model' else None,
             unused_allowance=24-job['model_calls'] if operation=='model' else None,

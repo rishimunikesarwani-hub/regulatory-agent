@@ -468,6 +468,9 @@ class JobView(JobAccepted):
     label: str
 
 
+COMPARISON_PROMPT = 'comparison-vs5-v1'
+
+
 class ComparisonRequest(Contract):
     older_version_id: Identifier
     newer_version_id: Identifier

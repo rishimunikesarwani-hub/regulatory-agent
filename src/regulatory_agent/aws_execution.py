@@ -163,7 +163,10 @@ def bedrock_child(owner, case, job_id, token):
     service.store._claimed(service.store.read_job(owner,case,job_id),token,time.time())
     if run['data_mode']!='synthetic_live' or not snapshot['synthetic'] or snapshot['mode']!='historical':
         raise ContractError('private_model_processing_unverified')
-    AssessmentPipeline(service,BedrockModel.configured()).run(owner,case,job_id,execution_token=token)
+    from .contracts import COMPARISON_PROMPT
+    from .comparison_jobs import Comparisons
+    runner=Comparisons if snapshot['prompt_version']==COMPARISON_PROMPT else AssessmentPipeline
+    runner(service,BedrockModel.configured()).run(owner,case,job_id,execution_token=token)
 
 
 def handler(event,context):

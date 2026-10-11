@@ -1,0 +1,192 @@
+test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline) ... ERROR
+test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection) ... ERROR
+test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards) ... ERROR
+test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts) ... ERROR
+test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete) ... ERROR
+test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again) ... ERROR
+test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history) ... ERROR
+test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment) ... ERROR
+test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action) ... ERROR
+test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission) ... ERROR
+test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail) ... ERROR
+
+======================================================================
+ERROR: test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+======================================================================
+ERROR: test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 46, in setUp
+    self.store.finalize(self.owner,self.case,self.baseline['job_id'],token,'completed',[])
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 177, in finalize
+    self._change(owner,case,identity,change)
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 59, in _change
+    result=change(job)
+           ^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\aws_jobs.py", line 174, in change
+    if state=='completed' and (unchecked or not required<=accounted): raise ContractError('unchecked_obligations')
+                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+regulatory_agent.contracts.ContractError: unchecked_obligations
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.461s
+
+FAILED (errors=11)

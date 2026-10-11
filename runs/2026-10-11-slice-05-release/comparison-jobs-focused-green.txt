@@ -1,0 +1,18 @@
+test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline) ... ok
+test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection) ... ok
+test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards) ... ok
+test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts) ... ok
+test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete) ... ok
+test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again) ... ok
+test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history) ... ok
+test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment) ... ok
+test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action) ... ok
+test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission) ... ok
+test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail) ... ok
+test_cj12_native_bedrock_dispatch_uses_saved_comparison_schema (test_slice05_comparison_jobs.ComparisonJobTests.test_cj12_native_bedrock_dispatch_uses_saved_comparison_schema) ... ok
+test_cj13_native_worker_routes_comparison_from_saved_snapshot (test_slice05_comparison_jobs.ComparisonJobTests.test_cj13_native_worker_routes_comparison_from_saved_snapshot) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 5.195s
+
+OK

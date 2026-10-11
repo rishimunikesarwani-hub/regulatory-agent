@@ -1,0 +1,60 @@
+test_cj01_native_admission_pins_pair_without_changing_baseline (test_slice05_comparison_jobs.ComparisonJobTests.test_cj01_native_admission_pins_pair_without_changing_baseline) ... ok
+test_cj02_idempotency_and_conflicting_selection (test_slice05_comparison_jobs.ComparisonJobTests.test_cj02_idempotency_and_conflicting_selection) ... ok
+test_cj03_scope_and_baseline_guards (test_slice05_comparison_jobs.ComparisonJobTests.test_cj03_scope_and_baseline_guards) ... ok
+test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts) ... FAIL
+test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete) ... FAIL
+test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again) ... FAIL
+test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history) ... ERROR
+test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment (test_slice05_comparison_jobs.ComparisonJobTests.test_cj08_unfinished_or_unresolved_changes_do_not_admit_assessment) ... ok
+test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action (test_slice05_comparison_jobs.ComparisonJobTests.test_cj09_saved_snapshot_selects_protocol_and_rejects_other_action) ... ok
+test_cj10_uncertain_comparison_commit_recovers_same_admission (test_slice05_comparison_jobs.ComparisonJobTests.test_cj10_uncertain_comparison_commit_recovers_same_admission) ... ok
+test_cj11_missing_control_support_and_original_integrity_fail (test_slice05_comparison_jobs.ComparisonJobTests.test_cj11_missing_control_support_and_original_integrity_fail) ... ok
+
+======================================================================
+ERROR: test_cj07_new_assessment_keeps_bank_scope_and_independent_history (test_slice05_comparison_jobs.ComparisonJobTests.test_cj07_new_assessment_keeps_bank_scope_and_independent_history)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 136, in test_cj07_new_assessment_keeps_bank_scope_and_independent_history
+    run=self.comparisons.reassess(self.owner,self.case,record['comparison_id'])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\comparison_jobs.py", line 211, in reassess
+    raise ContractError('comparison_reassessment_unavailable')
+regulatory_agent.contracts.ContractError: comparison_reassessment_unavailable
+
+======================================================================
+FAIL: test_cj04_processing_saves_changes_and_measured_attempts (test_slice05_comparison_jobs.ComparisonJobTests.test_cj04_processing_saves_changes_and_measured_attempts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 106, in test_cj04_processing_saves_changes_and_measured_attempts
+    self.assertEqual(result['state'],'completed'); self.assertEqual(result['model_calls'],1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+======================================================================
+FAIL: test_cj05_rejected_reply_consumes_allowance_and_does_not_complete (test_slice05_comparison_jobs.ComparisonJobTests.test_cj05_rejected_reply_consumes_allowance_and_does_not_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 117, in test_cj05_rejected_reply_consumes_allowance_and_does_not_complete
+    self.assertEqual(result['state'],'failed'); self.assertEqual(result['model_calls'],1)
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_cj06_recovery_does_not_dispatch_saved_results_again (test_slice05_comparison_jobs.ComparisonJobTests.test_cj06_recovery_does_not_dispatch_saved_results_again)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_comparison_jobs.py", line 131, in test_cj06_recovery_does_not_dispatch_saved_results_again
+    self.assertEqual(resumed['state'],'completed'); self.assertEqual(resumed['model_calls'],1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'failed' != 'completed'
+- failed
++ completed
+
+
+----------------------------------------------------------------------
+Ran 11 tests in 3.743s
+
+FAILED (failures=3, errors=1)

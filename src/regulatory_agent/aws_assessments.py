@@ -6,7 +6,7 @@ import uuid
 
 from .assessments import Assessments
 from .cases import not_found
-from .contracts import ContractError, ReviewDecision, ReviewItem, ReviewRequest, Snapshot
+from .contracts import COMPARISON_PROMPT, ContractError, ReviewDecision, ReviewItem, ReviewRequest, Snapshot
 from .local import encoded, identifier
 from .reviews import Reviews, instant
 from .telemetry import StageAttempt
@@ -107,11 +107,11 @@ class CloudAssessments(Assessments):
         return self.documents.read_full(owner,case,version_id)
 
     def list(self, owner, case):
-        return {'runs':self.store.records(owner,case,'run')}
+        return {'runs':[r for r in self.store.records(owner,case,'run') if r['prompt_version']!=COMPARISON_PROMPT]}
 
     def _run(self, owner, case, job_id):
         job=self.store.read_job(owner,case,job_id)
-        for run in self.list(owner,case)['runs']:
+        for run in self.store.records(owner,case,'run'):
             if run['job_id']==job_id:
                 if run['snapshot_id']!=job['snapshot_id']: raise ContractError('run_snapshot_scope_invalid')
                 snapshot=self.store.get(owner,case,'snapshot',run['snapshot_id'])

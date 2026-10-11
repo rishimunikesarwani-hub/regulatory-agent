@@ -9,7 +9,7 @@ import time
 import uuid
 
 from pydantic import ValidationError
-from .contracts import ContractError, ModelAction, ModelReply, SELECTED_PROMPTS, Snapshot
+from .contracts import COMPARISON_PROMPT, ContractError, ModelAction, ModelReply, SELECTED_PROMPTS, Snapshot
 
 
 def encoded(value):
@@ -64,7 +64,7 @@ class Store:
 
     def put(self, owner, case, kind, identity, body):
         identifier(identity)
-        if kind not in {"document", "snapshot", "finding", "review", "export", "blob"}:
+        if kind not in {"document", "snapshot", "finding", "review", "export", "blob", "comparison"}:
             raise ContractError("invalid_record_kind")
         if body.get("owner_id", owner) != owner or body.get("case_id", case) != case:
             raise ContractError("forged_scope")
@@ -269,19 +269,41 @@ class ControlledModel:
             raw = next(self.responses)
             if not isinstance(raw, str) or len(raw.encode()) > 400_000:
                 raise ContractError("invalid_model_response")
-            return ModelReply(action=validated_action(raw, store, owner, case, identity))
+            job=store.read_job(owner,case,identity)
+            _, reply_type=model_contract(store.get(owner,case,'snapshot',job['snapshot_id']))
+            return reply_type(action=validated_action(raw, store, owner, case, identity))
         except (ValidationError, StopIteration):
             raise ContractError("invalid_model_response") from None
 
 
+def model_contract(snapshot):
+    if snapshot['prompt_version']==COMPARISON_PROMPT:
+        from .regulatory_changes import ComparisonAction, ComparisonReply
+        return ComparisonAction,ComparisonReply
+    return ModelAction,ModelReply
+
+
 def validated_action(raw, store, owner, case, identity):
     """Share the saved-snapshot boundary between controlled and live dispatch adapters."""
-    try:
-        action = ModelAction.model_validate_json(raw)
-    except ValidationError:
-        raise ContractError('invalid_model_response') from None
     job = store.read_job(owner, case, identity)
     snapshot = store.get(owner, case, 'snapshot', job['snapshot_id'])
+    action_type,_=model_contract(snapshot)
+    try:
+        action = action_type.model_validate_json(raw)
+    except ValidationError:
+        raise ContractError('invalid_model_response') from None
+    if snapshot['prompt_version']==COMPARISON_PROMPT:
+        from .regulatory_changes import validate_changes
+        record=store.get(owner,case,'comparison',snapshot['snapshot_id'])
+        if record['job_id']!=identity or action.snapshot_id!=snapshot['snapshot_id'] or \
+                len(action.document_version_ids)!=len(set(action.document_version_ids)) or \
+                set(action.document_version_ids)!=set(record['document_version_ids']):
+            raise ContractError('model_scope_denied')
+        selected=[c.obligation_id for c in action.comparison.changes]
+        if not set(selected)<=set(snapshot['selected_obligations']):raise ContractError('model_obligation_scope_denied')
+        pair=record['pair']|{'selected_obligations':selected}
+        validate_changes(pair,action.comparison.model_dump(),[f for f in record['baseline_findings'] if f['obligation_id'] in selected])
+        return action
     allowed = set(snapshot.get('selected_document_ids', {}).values()) or {
         f'{doc}:{version}' for doc, version in snapshot['selected_versions'].items()}
     if action.snapshot_id != snapshot['snapshot_id'] or not set(action.document_version_ids) <= allowed:

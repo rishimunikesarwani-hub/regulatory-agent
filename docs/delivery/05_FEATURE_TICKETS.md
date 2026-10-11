@@ -237,6 +237,7 @@ An exact quote match is not sufficient evidence of contextual support.
 Add model-selected tool actions with validation, controlled retrieval refinement, and explicit version comparisons. Expand only to the approved obligation scope.
 
 The [change validation contract](spec-slice-05-change-validation.md) defines source-pair checks and interpretation validation.
+The [comparison job contract](spec-slice-05-comparison-jobs.md) defines saved admission, model processing, and independent reassessment records.
 Complete model and native comparison integration remain pending.
 
 Acceptance:

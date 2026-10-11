@@ -22,7 +22,7 @@ class DynamoRecords(DynamoJobs):
     @staticmethod
     def record_key(owner, case, kind, identity):
         for value in (owner,case,kind,identity): identifier(value)
-        if kind not in {'document','snapshot','run','finding','review','stage_attempt','review_unit'}:
+        if kind not in {'document','snapshot','run','finding','review','stage_attempt','review_unit','comparison'}:
             raise ContractError('invalid_record_kind')
         return {'PK':{'S':f'OWNER#{owner}'},'SK':{'S':f'RECORD#{case}#{kind}#{identity}'}}
 
@@ -66,7 +66,7 @@ class DynamoRecords(DynamoJobs):
             if (document.get('case_id'),document.get('document_version_id'))!=(case,identity):
                 raise ContractError('record_body_scope_invalid')
         else:
-            field={'snapshot':'snapshot_id','run':'run_id','finding':'finding_id','review':'event_id','stage_attempt':'event_id'}.get(kind)
+            field={'snapshot':'snapshot_id','run':'run_id','finding':'finding_id','review':'event_id','stage_attempt':'event_id','comparison':'comparison_id'}.get(kind)
             if field and body.get(field)!=identity: raise ContractError('record_body_scope_invalid')
 
     def get(self, owner, case, kind, identity):
