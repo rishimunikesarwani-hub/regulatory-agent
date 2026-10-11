@@ -53,7 +53,8 @@ Local identity is a development login, not Cognito authentication.
 12. Open the Langfuse project trace list.
 
 The saved run record identifies the OpenAI model and numeric token counts.
-New OpenAI assessments save prompt version `assessment-vs5-openai-period-v4`.
+The approved demonstration saves prompt version `assessment-vs5-openai-period-v4`.
+The separate development candidate saves `assessment-vs5-openai-period-v6` for new OpenAI jobs.
 The response schema restricts each phase to its permitted actions and supplied citations.
 
 Langfuse groups stage measurements by the saved job.
@@ -67,6 +68,25 @@ Select **Simulated access rule** to demonstrate fictional version changes and in
 Do not describe these examples as real RBI amendments.
 
 ## Remaining checks
+
+The [evaluation execution contract](../testing/spec-local-openai-evaluation.md) controls the separate frozen-input OpenAI benchmark.
+Run its preparation check without credentials:
+
+```powershell
+.venv/Scripts/python.exe ops/run_openai_evaluation.py
+```
+
+Add `--run` only for an authorized live evaluation with the private demo configuration.
+The runner creates a new database under `runs/private/openai-evaluations/`.
+It keeps feedback records unchanged and reads expected answers after all model executions.
+Claim support needs human source-context review.
+
+Add `--case EVAL-17` to select one development case.
+Repeat `--case` to select additional cases.
+All 20 cases remain in the status-agreement denominator.
+
+Subsequent runs use the development designation because their earlier failures are known.
+They cannot establish the independent held-out quality gate.
 
 The [trace verification record](../../runs/2026-10-11-langfuse-tracing/live-verification.json) confirms remote delivery from a fictional OpenAI execution.
 That assessment failed during execution.

@@ -1,0 +1,47 @@
+test_op02_old_snapshot_keeps_original_dispatched_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_old_snapshot_keeps_original_dispatched_instructions) ... ok
+test_op02_v2_keeps_phase_instructions_and_original_schema (test_openai_phase_contract.OpenAIPhaseTests.test_op02_v2_keeps_phase_instructions_and_original_schema) ... ok
+test_op02_v3_keeps_its_schema_and_earlier_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_v3_keeps_its_schema_and_earlier_instructions) ... ok
+test_op03_op05_new_request_teaches_phase_and_citation_constraints (test_openai_phase_contract.OpenAIPhaseTests.test_op03_op05_new_request_teaches_phase_and_citation_constraints) ... ok
+test_op09_bad_phase_cannot_spend_or_dispatch_a_call (test_openai_phase_contract.OpenAIPhaseTests.test_op09_bad_phase_cannot_spend_or_dispatch_a_call) ... ok
+test_op09_provider_schema_blocks_wrong_phase_and_invented_citation (test_openai_phase_contract.OpenAIPhaseTests.test_op09_provider_schema_blocks_wrong_phase_and_invented_citation) ... ok
+test_op11_new_admission_pins_distinct_prompt_without_aws (test_openai_phase_contract.OpenAIPhaseTests.test_op11_new_admission_pins_distinct_prompt_without_aws) ... FAIL
+test_op12_v5_teaches_supported_operational_date_grounding_and_preserves_v4 (test_openai_phase_contract.OpenAIPhaseTests.test_op12_v5_teaches_supported_operational_date_grounding_and_preserves_v4) ... ok
+test_op13_v5_adds_exact_claim_reference_without_changing_content_or_old_reply (test_openai_phase_contract.OpenAIPhaseTests.test_op13_v5_adds_exact_claim_reference_without_changing_content_or_old_reply) ... ok
+test_op14_v5_invalid_or_unexamined_claim_reference_remains_rejected (test_openai_phase_contract.OpenAIPhaseTests.test_op14_v5_invalid_or_unexamined_claim_reference_remains_rejected) ... ok
+test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented) ... FAIL
+test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema) ... FAIL
+
+======================================================================
+FAIL: test_op11_new_admission_pins_distinct_prompt_without_aws (test_openai_phase_contract.OpenAIPhaseTests.test_op11_new_admission_pins_distinct_prompt_without_aws)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_openai_phase_contract.py", line 34, in test_op11_new_admission_pins_distinct_prompt_without_aws
+    self.assertEqual(snapshot['prompt_version'],'assessment-vs5-openai-period-v6')
+AssertionError: 'assessment-vs5-openai-period-v5' != 'assessment-vs5-openai-period-v6'
+- assessment-vs5-openai-period-v5
+?                               ^
++ assessment-vs5-openai-period-v6
+?                               ^
+
+
+======================================================================
+FAIL: test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_openai_phase_contract.py", line 106, in test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented
+    with self.assertRaisesRegex(ContractError,'operational_support_unverified'):fixture.dispatch()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_openai_phase_contract.py", line 91, in test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema
+    self.assertNotIn('supported',schemas[0]['$defs']['Finding']['properties']['status']['enum'])
+AssertionError: 'supported' unexpectedly found in ['supported', 'partial', 'gap', 'needs_review', 'not_applicable']
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.828s
+
+FAILED (failures=3)

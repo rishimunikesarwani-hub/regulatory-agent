@@ -1,0 +1,43 @@
+.venv/Scripts/python.exe : ......E.
+At line:2 char:1
++ .venv/Scripts/python.exe -m unittest discover -s tests -p test_local_ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (......E.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+======================================================================
+ERROR: test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content (test_local_openai_evaluation
+.LocalOpenAIEvaluationTests.test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 40, in
+test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content
+    diagnostic_child(str(path),None,'owner','case','job-2','token')
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 113, in diagnostic_child
+    return bedrock_child(database_path,profile,owner,case,job_id,token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 27, in target
+    AssessmentPipeline._finish_attempt(None,None,None,None,None,(event,None),error=error)
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 110, in finish
+    (Path(database_path).parent/(job_id+'-diagnostic.json')).write_bytes((json.dumps(failures,indent=2)+'\n').encode())
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py",
+line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py",
+line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py",
+line 1198, in _execute_mock_call
+    raise effect
+OSError: PRIVATE_PATH
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.032s
+
+FAILED (errors=1)

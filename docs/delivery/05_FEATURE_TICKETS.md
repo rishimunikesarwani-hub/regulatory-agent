@@ -414,6 +414,23 @@ It includes versioned instructions, phase-specific response schemas, exact sourc
 `runs/2026-10-11-openai-phase/` contains the software and live verification records.
 AWS activation does not control this local flow.
 
+## Local OpenAI evaluation execution
+
+Ticket OE-T01 implements OE01 through OE12 in the [evaluation execution contract](../testing/spec-local-openai-evaluation.md).
+It uses frozen fictional inputs, explicit clause selections, isolated storage, and the existing supervised worker.
+Status agreement and citation support remain different measures.
+This result group does not replace the required India Bedrock evaluation.
+`tests/test_local_openai_evaluation.py` contains the offline boundary checks.
+
+## Local OpenAI evidence-date safeguards
+
+Ticket OP-T02 implements OP11 through OP16 in the [OpenAI action contract](spec-openai-phase-contract.md).
+It adds versioned date requirements, checked reference completion, and an operational response restriction when dates are unknown.
+It preserves previous prompt behavior and all subsequent application validation.
+`tests/test_openai_phase_contract.py` contains the acceptance checks.
+`runs/2026-10-11-openai-evaluation/` contains failed and completed development results.
+These results do not satisfy the independent model-quality gate.
+
 ## Historical planning dates
 
 D27 replaces the earlier horizontal sequence below.

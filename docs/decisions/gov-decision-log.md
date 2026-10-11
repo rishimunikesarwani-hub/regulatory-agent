@@ -991,6 +991,59 @@ The correction keeps earlier snapshots and their instructions unchanged.
 It preserves evidence validation, ownership checks, call allowances, and the metadata-only tracing boundary.
 AWS acceptance and held-out model quality remain separate requirements.
 
+## D60 - Separate local OpenAI benchmark execution
+
+Date: 2026-10-11.
+Status: Implementation clarification under D57 and the active complete-application goal.
+Requirements: OE01 through OE12.
+
+The [evaluation execution contract](../testing/spec-local-openai-evaluation.md) controls the separate local result group.
+The runner uses frozen fictional inputs and selected historical or simulated regulatory passages.
+It preserves the existing worker, source checks, citation validation, and execution limits.
+It keeps expected answers outside model requests and scores all 20 primary cases after execution.
+
+Source-context support remains unknown until human review.
+The original India Bedrock gate, current source coverage, and AWS acceptance remain pending.
+This implementation does not authorize a new baseline model or private data processing.
+
+## D61 - Approved local VS5 and merged PR13
+
+Date: 2026-10-11.
+Status: Approved by the user.
+
+The user approved the local VS5 demonstration and instructed the agent to merge PR13.
+The approved source commit is `7dbdaf29b99d03993ab27b5deb43db1aae43dc2d`.
+[PR13](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/13) merged into `main` at `dfe49feb6d73df5ba9dc75a0c155f601ba9dbe64`.
+The local integration folder contains that merge commit.
+
+The merge excludes the subsequent evaluation runner and its results.
+AWS deployment, source coverage, and the full quality gates remain pending.
+This approval does not approve an individual assessment finding or establish regulatory compliance.
+
+## D62 - Local OpenAI evidence-date safeguards
+
+Date: 2026-10-11.
+Status: Implementation clarification under D57 and the active complete-application goal.
+Requirements: OP11 through OP16 and OE11 through OE12.
+
+The user deferred AWS authentication and instructed the agent to continue locally.
+The separate evaluation exposed unsupported operational dates and incomplete finding reference lists.
+The [action contract](../delivery/spec-openai-phase-contract.md) controls the correction.
+Version v5 adds exact, examined claim references without changing claim content or status.
+Its full development run completed 13 cases, failed seven cases, and matched eight of 20 expected statuses.
+
+Version v6 excludes Supported from operational responses when selected evidence has no stated interval.
+The provider response check enforces the same condition.
+Existing scope, ownership, evidence, citation, and execution checks remain mandatory.
+Previous saved prompt versions retain their previous behavior.
+
+Four selected development cases completed with v6, using 12 actual OpenAI calls.
+These results include two instruction-injection cases.
+One result is Partial, and three results are Needs review.
+This result does not establish semantic correctness or an independent quality-gate pass.
+The frozen benchmark and earlier failed results remain unchanged.
+AWS acceptance, current regulatory coverage, and the original Bedrock evaluation remain pending.
+
 ## How to add a decision
 
 Add a new entry with:

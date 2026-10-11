@@ -7,7 +7,7 @@ import httpx
 from pydantic import TypeAdapter, ValidationError
 
 from .bedrock_model import ModelFailure, structured_schema
-from .contracts import ContractError, Identifier, OPENAI_PERIOD_PROMPT, OPENAI_PHASE_PROMPTS, OPENAI_SCHEMA_PROMPTS, Passage
+from .contracts import ContractError, Identifier, OPENAI_DATED_PROMPT, OPENAI_GROUNDED_PROMPT, OPENAI_PERIOD_PROMPT, OPENAI_PHASE_PROMPTS, OPENAI_SCHEMA_PROMPTS, Passage, citation_matches
 from .local import model_contract, validated_action
 from .telemetry import TokenUsage
 
@@ -50,6 +50,13 @@ Do not treat a bank's specific review schedule as a conflict with a regulation t
 For example, weekly reviews satisfy a documented periodic review design; actual performance remains unverified without records.
 Do not invent an RBI review interval or recommend alignment to an unstated interval.
 '''
+GROUNDED_PERIOD_PROMPT_V5 = '''
+Supported operational claims require a grounded evidence_period from supplied stated_periods and cited records.
+If operational proof has no stated source interval, use needs_review and keep its evidence_period null.
+Do not infer a missing year from the assessment date, assessment period, policy, or surrounding claims.
+The assessment period defines the requested scope; it does not date the supplied records.
+Keep documented design claims separate from operational claims, including their dates and evidence needs.
+'''
 
 
 def selected_model():
@@ -64,7 +71,7 @@ def selected_model():
     return bedrock
 
 
-def phase_schema(action_type, prompt):
+def phase_schema(action_type, prompt, prompt_version=None):
     """Constrain generation before dispatch; the existing validators remain authoritative."""
     try:
         context=json.loads(prompt); phase=context['phase']; data=context['data']
@@ -96,6 +103,8 @@ def phase_schema(action_type, prompt):
             else:finding['control_ids']['maxItems']=0
             if not any(s['kind']=='evidence' and s.get('stated_periods') for s in context['source_metadata']):
                 definitions['AssessmentClaim']['properties']['evidence_period']={'type':'null'}
+                if prompt_version==OPENAI_DATED_PROMPT:
+                    finding['status']['enum'].remove('supported')
         definitions['Citation']={'anyOf':[{'type':'object','additionalProperties':False,
             'properties':{key:{'type':'string','enum':[value]} for key,value in
                 (p|{'quote':p['text']}).items() if key in ('document_version_id','passage_id','location','quote')},
@@ -132,8 +141,9 @@ class OpenAIModel:
             raise ContractError('invalid_model_request')
         action_type,reply_type = model_contract(snapshot)
         system=request['system']+(ACTION_PROMPT_V2 if snapshot['prompt_version'] in OPENAI_PHASE_PROMPTS else '')
-        if snapshot['prompt_version']==OPENAI_PERIOD_PROMPT:system+=POLICY_EVIDENCE_PROMPT_V4
-        schema=phase_schema(action_type,request['prompt']) if snapshot['prompt_version'] in OPENAI_SCHEMA_PROMPTS else json.loads(structured_schema(action_type))
+        if snapshot['prompt_version'] in (OPENAI_PERIOD_PROMPT,OPENAI_GROUNDED_PROMPT,OPENAI_DATED_PROMPT):system+=POLICY_EVIDENCE_PROMPT_V4
+        if snapshot['prompt_version'] in (OPENAI_GROUNDED_PROMPT,OPENAI_DATED_PROMPT):system+=GROUNDED_PERIOD_PROMPT_V5
+        schema=phase_schema(action_type,request['prompt'],snapshot['prompt_version']) if snapshot['prompt_version'] in OPENAI_SCHEMA_PROMPTS else json.loads(structured_schema(action_type))
         store.reserve(owner,case,identity,token,'model',stamp)
         try:
             store._claimed(store.read_job(owner,case,identity),token,self.clock())
@@ -168,6 +178,21 @@ class OpenAIModel:
             if not isinstance(raw,str) or not raw.strip():raise ContractError('invalid_model_response')
             if body.get('model') != API_MODEL:raise ContractError('model_profile_denied')
             action=validated_action(raw,store,owner,case,identity)
+            if snapshot['prompt_version'] in (OPENAI_GROUNDED_PROMPT,OPENAI_DATED_PROMPT):
+                context=json.loads(request['prompt'])
+                if snapshot['prompt_version']==OPENAI_DATED_PROMPT and any(f.status=='supported' for f in action.findings) and \
+                        not any(s['kind']=='evidence' and s.get('stated_periods') for s in context.get('source_metadata',[])):
+                    raise ContractError('operational_support_unverified')
+                passages={p['passage_id']:p for p in context['passages']}
+                findings=[]
+                for finding in action.findings:
+                    references=[*finding.citations,*[c for claim in finding.claims for c in
+                        (*claim.citations,*claim.examined_exceptions,*claim.conflicting_evidence)]]
+                    if any(not citation_matches(c,passages.get(c.passage_id)) for c in references):
+                        raise ContractError('unexamined_or_invalid_citation')
+                    citations=list({(c.document_version_id,c.passage_id,c.location,c.quote):c for c in references}.values())
+                    findings.append(finding.model_copy(update={'citations':citations}))
+                action=action.model_copy(update={'findings':findings})
             return reply_type(label='Live',action=action,model_id=MODEL,actual_response_model_id=API_MODEL,
                 usage=measured,provider_request_id=provider_id)
         except ContractError as error:

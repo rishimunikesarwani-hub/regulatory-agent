@@ -1117,3 +1117,55 @@ This demonstration covers one fictional policy and one historical clause.
 Held-out quality, current regulatory coverage, and AWS acceptance remain pending.
 VS5 remains a draft under D35.
 The next task is user review of the local demonstration.
+
+## 2026-10-11 - Local VS5 approval and merge
+
+The user approved the local VS5 demonstration and instructed the agent to merge PR13.
+PR13 merged the approved source commit `7dbdaf29b99d03993ab27b5deb43db1aae43dc2d` into `main`.
+The merge commit is `dfe49feb6d73df5ba9dc75a0c155f601ba9dbe64`.
+The local integration folder contains that commit.
+The [merge record](runs/2026-10-11-openai-phase/vs5-approved-merge.json) confirms the remote state.
+The local API remains healthy, and the web application responds successfully.
+
+The subsequent evaluation runner remains separate from the approved merge.
+Its first live result has 5/20 status agreement, eight completed cases, and twelve errors.
+Ten errors occurred during execution or validation. Two errors occurred during fixture preparation.
+
+The runner used 52 model calls. Claim support remains unknown, and the quality gate did not pass.
+The preserved [baseline record](runs/2026-10-11-openai-evaluation/baseline-execution.json) retains these outcomes.
+
+The fixture adapter now preserves untrusted passages as evidence, with their original fixture kind saved.
+All six offline runner checks pass after this correction.
+The correction has no new live evaluation result.
+
+Read-only AWS checks failed because the CLI session expired.
+AWS authentication, activation, deployment, and acceptance remain pending.
+
+## 2026-10-11 - Local evaluation diagnostics and date safeguards
+
+The user deferred AWS authentication and instructed the agent to continue locally.
+The approved PR13 merge remains unchanged.
+The subsequent runner and model corrections remain separate on `work/t9-quality`.
+Requirements OE01 through OE12 and OP11 through OP16 control this work under D60 and D62.
+
+Fixed-code diagnostics identified unsupported source dates and incomplete duplicated reference lists.
+Version v5 preserves validated claim content while completing exact, examined references.
+Its full development run completed 13 cases and failed seven cases.
+Status agreement was 8/20, with no independent quality-gate pass.
+
+Version v6 restricts operational Supported responses when selected evidence has no stated interval.
+Four selected development cases completed with 12 actual OpenAI calls.
+One result was Partial, and three results were Needs review.
+The [development record](runs/2026-10-11-openai-evaluation/development-v6-diagnostics.json) preserves the exact tested source hashes and remaining limits.
+These checks include two instruction-injection cases but do not establish semantic correctness.
+
+Langfuse Cloud returned 13 observations and three generations for one v6 development case.
+All observations ended, model identity matched, and prompt, response, and document content remained absent.
+The [remote record](runs/2026-10-11-openai-evaluation/langfuse-v6-verification.json) confirms these checks.
+The complete backend suite passed 443 checks in 135.597 seconds.
+The browser suite passed 62 checks in 2.4 minutes, and the production build passed.
+Optional diagnostic write failures no longer change assessment processing, while mandatory audit failures still propagate.
+
+The frozen benchmark, expected answers, previous prompt versions, and feedback database remain unchanged.
+Source-context support, independent evaluation, the required Bedrock result, current regulatory coverage, and AWS acceptance remain pending.
+The next task is review of the separate local correction.
