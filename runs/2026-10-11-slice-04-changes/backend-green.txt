@@ -225,8 +225,9 @@ test_ct09_policy_replacement_cannot_change_either_snapshot (test_slice04_changes
 test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent (test_slice04_changes.ChangeSliceTests.test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent) ... ok
 test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment (test_slice04_changes.ChangeSliceTests.test_ct11_interrupted_comparison_save_recovers_without_duplicate_assessment) ... ok
 test_ct12_simultaneous_retries_keep_one_admission_and_one_model_call (test_slice04_changes.ChangeSliceTests.test_ct12_simultaneous_retries_keep_one_admission_and_one_model_call) ... ok
+test_ct13_completed_response_cannot_omit_its_committed_finding (test_slice04_changes.ChangeSliceTests.test_ct13_completed_response_cannot_omit_its_committed_finding) ... ok
 
 ----------------------------------------------------------------------
-Ran 227 tests in 39.401s
+Ran 228 tests in 48.960s
 
 OK

@@ -323,13 +323,15 @@ class Assessments:
     def read(self, owner, case, job_id, cutoff=None):
         run, snapshot = self._run(owner, case, job_id)
         try:
-            limit = instant(cutoff) if cutoff else datetime.now(timezone.utc)
-            if limit.utcoffset() is None:
+            limit = instant(cutoff) if cutoff else None
+            if limit is not None and limit.utcoffset() is None:
                 raise ValueError()
         except ValueError:
             raise invalid('invalid_cutoff') from None
         with self.store.transaction() as db:
             self.store.authorize(owner, case, db)
+            limit = limit or datetime.now(timezone.utc)
+            job = self.store._job(db, owner, case, job_id)
             items = [ReviewItem.model_validate(item) for item in self.reviews._records(db, case, 'finding') if item['run_id'] == run['run_id']]
             events = [event.model_dump() for item in items for event in self.reviews._history(db, case, item.finding_id)]
             trace = [event for event in self.reviews._records(db, case, 'stage_attempt') if event['run_id'] == run['run_id']]
@@ -339,7 +341,6 @@ class Assessments:
             history = [event for event in self.reviews.history(owner, case, item.finding_id)
                        if event.event_kind == 'final_review' and instant(event.committed_at) <= limit]
             finals.append(history[-1] if history else None)
-        job = self.store.read_job(owner, case, job_id)
         obligation, control, _ = self._example(owner, case, job_id, snapshot)
         return {'data_mode': 'controlled_simulation', 'freshness': 'unverified', 'live_model_calls': 0, 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,

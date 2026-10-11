@@ -81,6 +81,7 @@ Return `404` for another case owner's records.
 | VS4-CT10 | The new job keeps the existing call allowance, deadline, validated citations, and saved trace. |
 | VS4-CT11 | An interrupted comparison save permits a retry without a second assessment. |
 | VS4-CT12 | Simultaneous identical requests keep one comparison, one new assessment, and one controlled model call. |
+| VS4-CT13 | A completed response must include its committed finding from the same database read. |
 | VS4-BT01 | Compare an added requirement, inspect both passages, open the new assessment, and save its independent review. |
 | VS4-BT02 | Cosmetic and wording changes keep the earlier assessment and review visible. |
 | VS4-BT03 | Reload restores saved comparisons and both assessment histories. |

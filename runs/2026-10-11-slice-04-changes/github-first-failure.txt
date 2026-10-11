@@ -1,0 +1,91 @@
+checks	Check the complete local slice	﻿2026-10-11T03:00:54.4344414Z ##[group]Run npm --prefix src/web test -- --config playwright.changes.config.ts
+checks	Check the complete local slice	2026-10-11T03:00:54.4345319Z ^[[36;1mnpm --prefix src/web test -- --config playwright.changes.config.ts^[[0m
+checks	Check the complete local slice	2026-10-11T03:00:54.4408238Z shell: /usr/bin/bash -e {0}
+checks	Check the complete local slice	2026-10-11T03:00:54.4408510Z env:
+checks	Check the complete local slice	2026-10-11T03:00:54.4408787Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.13/x64
+checks	Check the complete local slice	2026-10-11T03:00:54.4409241Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+checks	Check the complete local slice	2026-10-11T03:00:54.4409682Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+checks	Check the complete local slice	2026-10-11T03:00:54.4410069Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+checks	Check the complete local slice	2026-10-11T03:00:54.4410476Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.13/x64
+checks	Check the complete local slice	2026-10-11T03:00:54.4410887Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.13/x64/lib
+checks	Check the complete local slice	2026-10-11T03:00:54.4411408Z ##[endgroup]
+checks	Check the complete local slice	2026-10-11T03:00:54.5556137Z
+checks	Check the complete local slice	2026-10-11T03:00:54.5576681Z > regulatory-agent-web@0.1.0 test
+checks	Check the complete local slice	2026-10-11T03:00:54.5586136Z > playwright test --config playwright.changes.config.ts
+checks	Check the complete local slice	2026-10-11T03:00:54.5586850Z
+checks	Check the complete local slice	2026-10-11T03:00:56.7862421Z [WebServer] INFO:     Started server process [3398]
+checks	Check the complete local slice	2026-10-11T03:00:56.7863027Z [WebServer] INFO:     Waiting for application startup.
+checks	Check the complete local slice	2026-10-11T03:00:56.7863481Z [WebServer] INFO:     Application startup complete.
+checks	Check the complete local slice	2026-10-11T03:00:56.7864479Z [WebServer] INFO:     Uvicorn running on http://127.0.0.1:8141 (Press CTRL+C to quit)
+checks	Check the complete local slice	2026-10-11T03:00:57.3049324Z
+checks	Check the complete local slice	2026-10-11T03:00:57.3050038Z Running 38 tests using 1 worker
+checks	Check the complete local slice	2026-10-11T03:00:57.3050435Z
+checks	Check the complete local slice	2026-10-11T03:01:00.9023559Z   ✓   1 tests/assessment.spec.ts:23:1 › VS3-BT01 assessment, exact citation, saved approval and refresh (2.8s)
+checks	Check the complete local slice	2026-10-11T03:01:02.3679217Z   ✓   2 tests/assessment.spec.ts:44:1 › VS3-BT02 edited and rejected reviews keep the original finding and evidence requests (1.4s)
+checks	Check the complete local slice	2026-10-11T03:01:03.8108656Z   ✓   3 tests/assessment.spec.ts:65:1 › VS3-BT03 mobile review keeps the draft after stale revision and checks uncertain saves (1.4s)
+checks	Check the complete local slice	2026-10-11T03:01:05.7438035Z   ✓   4 tests/assessment.spec.ts:91:1 › VS3-BT04 failed refresh cannot authorize another uncertain review save (1.9s)
+checks	Check the complete local slice	2026-10-11T03:01:06.8032784Z   ✓   5 tests/assessment.spec.ts:106:1 › VS3-BT05 expired assessment access clears private findings and review drafts (1.0s)
+checks	Check the complete local slice	2026-10-11T03:01:07.9033858Z   ✓   6 tests/assessment.spec.ts:116:1 › VS3-BT06 a new case cannot inherit the previous assessment state (1.1s)
+checks	Check the complete local slice	2026-10-11T03:01:09.5456088Z   ✓   7 tests/aws-documents.spec.ts:95:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload (1.6s)
+checks	Check the complete local slice	2026-10-11T03:01:10.9626967Z   ✓   8 tests/aws-documents.spec.ts:111:1 › VS2-AWS-BT02 uncertain finalization confirms the existing upload after reload (1.4s)
+checks	Check the complete local slice	2026-10-11T03:01:11.9424047Z   ✓   9 tests/aws-documents.spec.ts:122:1 › VS2-AWS-BT03 exact source pages support mobile navigation (960ms)
+checks	Check the complete local slice	2026-10-11T03:01:12.8362555Z   ✓  10 tests/aws-documents.spec.ts:131:1 › VS2-AWS-BT04 expired access clears private sources and upload state (878ms)
+checks	Check the complete local slice	2026-10-11T03:01:13.8137999Z   ✓  11 tests/aws-documents.spec.ts:140:1 › VS2-AWS-BT02 failed S3 transfer resumes the same reserved upload (960ms)
+checks	Check the complete local slice	2026-10-11T03:01:14.6831928Z   ✓  12 tests/aws-documents.spec.ts:153:1 › VS2-AWS-BT02 unfinished reservation can be cancelled without showing a saved source (850ms)
+checks	Check the complete local slice	2026-10-11T03:01:15.3320836Z   ✓  13 tests/cases.spec.ts:20:1 › VS1-BT03 requested sign-in stays centered on desktop and mobile (619ms)
+checks	Check the complete local slice	2026-10-11T03:01:16.4957224Z   ✓  14 tests/cases.spec.ts:44:1 › VS1-BT01 sign in, create, leave, reopen and reload a real saved case (1.1s)
+checks	Check the complete local slice	2026-10-11T03:01:16.9056621Z   ✓  15 tests/cases.spec.ts:64:1 › VS1-BT02 empty and loading states have a clear action (390ms)
+checks	Check the complete local slice	2026-10-11T03:01:17.5301543Z   ✓  16 tests/cases.spec.ts:79:1 › VS1-BT02 failed save keeps the draft and never shows success (605ms)
+checks	Check the complete local slice	2026-10-11T03:01:18.0607283Z   ✓  17 tests/cases.spec.ts:96:1 › VS1-BT02 save is disabled in flight and uncertain transport needs a list check (512ms)
+checks	Check the complete local slice	2026-10-11T03:01:18.5496154Z   ✓  18 tests/cases.spec.ts:116:1 › VS1-BT02 expired session clears case data and returns to sign in (473ms)
+checks	Check the complete local slice	2026-10-11T03:01:19.4313193Z   ✓  19 tests/cases.spec.ts:125:1 › VS1-BT02 unavailable or denied case provides return navigation (863ms)
+checks	Check the complete local slice	2026-10-11T03:01:20.2266198Z   ✓  20 tests/cases.spec.ts:139:1 › VS1-BT03 narrow viewport and keyboard complete the saved case flow (777ms)
+checks	Check the complete local slice	2026-10-11T03:01:20.5829309Z   ✓  21 tests/cases.spec.ts:159:1 › VS1 authentication configuration fails closed without Cognito settings (342ms)
+checks	Check the complete local slice	2026-10-11T03:01:21.2581297Z   ✓  22 tests/cases.spec.ts:166:1 › VS1-BT04 delayed case list preserves keyboard focus during form entry (657ms)
+checks	Check the complete local slice	2026-10-11T03:01:21.8184031Z   ✓  23 tests/cases.spec.ts:192:1 › VS1 AWS mode never fabricates a local signed-in session (541ms)
+checks	Check the complete local slice	2026-10-11T03:01:22.1839930Z   ✓  24 tests/cases.spec.ts:203:1 › VS1 callback state mismatch is rejected and temporary values are removed (355ms)
+checks	Check the complete local slice	2026-10-11T03:01:22.5834019Z   ✓  25 tests/cases.spec.ts:214:1 › VS1 malformed configuration also clears an OAuth callback (386ms)
+checks	Check the complete local slice	2026-10-11T03:01:23.6717187Z   ✓  26 tests/cases.spec.ts:223:1 › VS1-BT01 cloud sign-in returns to the selected case after a reload (1.1s)
+checks	Check the complete local slice	2026-10-11T03:01:24.0486819Z   ✓  27 tests/cases.spec.ts:256:1 › VS1 case resume rejects a return URL before exchanging a sign-in code (356ms)
+checks	Check the complete local slice	2026-10-11T03:01:25.9794415Z   ✓  28 tests/changes.spec.ts:24:1 › VS4-BT01 added requirement creates an independent review and preserves the original (1.9s)
+checks	Check the complete local slice	2026-10-11T03:01:56.1100793Z   ✘  29 tests/changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review (30.1s)
+checks	Check the complete local slice	2026-10-11T03:01:59.4625705Z   ✓  30 tests/changes.spec.ts:62:1 › VS4-BT03 reload restores comparisons and separate review histories (2.7s)
+checks	Check the complete local slice	2026-10-11T03:02:00.7411009Z   ✓  31 tests/changes.spec.ts:79:1 › VS4-BT05 review saves wait for the selected assessment to finish loading (1.3s)
+checks	Check the complete local slice	2026-10-11T03:02:02.0860381Z   ✓  32 tests/changes.spec.ts:97:1 › VS4-BT04 mobile keyboard controls and source passages fit the viewport (1.3s)
+checks	Check the complete local slice	2026-10-11T03:02:03.3504849Z   ✓  33 tests/documents.spec.ts:25:1 › VS2-BT01 upload, inspect source lines, refresh and reopen the same version (1.2s)
+checks	Check the complete local slice	2026-10-11T03:02:04.4174432Z   ✓  34 tests/documents.spec.ts:40:1 › VS2-BT02 replacement leaves the earlier version available (1.1s)
+checks	Check the complete local slice	2026-10-11T03:02:05.5870283Z   ✓  35 tests/documents.spec.ts:52:1 › VS2-BT03 malformed input is rejected and source text cannot execute HTML (1.1s)
+checks	Check the complete local slice	2026-10-11T03:02:06.4546413Z   ✓  36 tests/documents.spec.ts:63:1 › VS2-BT04 source inspection supports keyboard focus and mobile layout (846ms)
+checks	Check the complete local slice	2026-10-11T03:02:07.5525825Z   ✓  37 tests/documents.spec.ts:74:1 › VS2-BT05 an uncertain upload requires checking saved versions before retry (1.1s)
+checks	Check the complete local slice	2026-10-11T03:02:08.4377269Z   ✓  38 tests/documents.spec.ts:92:1 › VS2-BT06 original download preserves the uploaded bytes (865ms)
+checks	Check the complete local slice	2026-10-11T03:02:08.5226925Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5235844Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5244509Z   1) tests/changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review
+checks	Check the complete local slice	2026-10-11T03:02:08.5246573Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5247181Z     Test timeout of 30000ms exceeded.
+checks	Check the complete local slice	2026-10-11T03:02:08.5247855Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5248432Z     Error: locator.click: Test timeout of 30000ms exceeded.
+checks	Check the complete local slice	2026-10-11T03:02:08.5249407Z     Call log:
+checks	Check the complete local slice	2026-10-11T03:02:08.5250252Z       - waiting for getByRole('button', { name: 'Save review', exact: true })
+checks	Check the complete local slice	2026-10-11T03:02:08.5251220Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5251895Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5252700Z       17 |   const result = page.getByRole('region', {name: 'Assessment result', exact: true});
+checks	Check the complete local slice	2026-10-11T03:02:08.5254324Z       18 |   await expect(result).toContainText('Privileged sessions must be logged and reviewed each week.');
+checks	Check the complete local slice	2026-10-11T03:02:08.5256061Z     > 19 |   await page.getByRole('button', {name: 'Save review', exact: true}).click();
+checks	Check the complete local slice	2026-10-11T03:02:08.5257663Z          |                                                                      ^
+checks	Check the complete local slice	2026-10-11T03:02:08.5259155Z       20 |   await expect(result).toContainText('Approved · Revision 1');
+checks	Check the complete local slice	2026-10-11T03:02:08.5261054Z       21 |   return {result, changes: page.getByRole('region', {name: 'Regulatory changes', exact: true}), original: page.url()};
+checks	Check the complete local slice	2026-10-11T03:02:08.5263251Z       22 | }
+checks	Check the complete local slice	2026-10-11T03:02:08.5266171Z         at baseline (/home/runner/work/regulatory-agent/regulatory-agent/src/web/tests/changes.spec.ts:19:70)
+checks	Check the complete local slice	2026-10-11T03:02:08.5268098Z         at /home/runner/work/regulatory-agent/regulatory-agent/src/web/tests/changes.spec.ts:50:39
+checks	Check the complete local slice	2026-10-11T03:02:08.5268926Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5269834Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+checks	Check the complete local slice	2026-10-11T03:02:08.5271490Z     ../../runs/2026-10-11-slice-04-changes/browser-artifacts/changes-VS4-BT02-wording-a-94cbc-reserve-the-original-review/test-failed-1.png
+checks	Check the complete local slice	2026-10-11T03:02:08.5273211Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+checks	Check the complete local slice	2026-10-11T03:02:08.5273855Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5275004Z     Error Context: ../../runs/2026-10-11-slice-04-changes/browser-artifacts/changes-VS4-BT02-wording-a-94cbc-reserve-the-original-review/error-context.md
+checks	Check the complete local slice	2026-10-11T03:02:08.5276421Z
+checks	Check the complete local slice	2026-10-11T03:02:08.5276769Z   1 failed
+checks	Check the complete local slice	2026-10-11T03:02:08.5277861Z     tests/changes.spec.ts:49:1 › VS4-BT02 wording and cosmetic changes preserve the original review
+checks	Check the complete local slice	2026-10-11T03:02:08.5278959Z   37 passed (1.2m)
+checks	Check the complete local slice	2026-10-11T03:02:08.5522838Z ##[error]Process completed with exit code 1.

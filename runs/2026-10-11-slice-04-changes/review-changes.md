@@ -37,7 +37,7 @@ This passing result is not a failing-test record.
 
 | Check | Result | Evidence |
 |---|---|---|
-| All backend checks | 227 passed | [Backend results](backend-green.txt) |
+| All backend checks | 228 passed | [Backend results](backend-green.txt) |
 | All browser suites | 38 passed | [Browser results](browser-green.txt) |
 | TypeScript and frontend build | Return code `0` | [Build results](frontend-build.txt) |
 | Desktop interface | Inspected | [Desktop screenshot](changes-desktop.png) |
@@ -53,6 +53,23 @@ The added simulated requirement affects `ACCESS-01` and gives a new pending revi
 The earlier approved finding stays unchanged.
 Cosmetic and wording changes do not start another assessment in these fixed examples.
 Source date changes stay visible independently of the requirement classification.
+
+## GitHub failure and consistent database reads
+
+The first GitHub run `38106934698` failed one browser check and passed 37 browser checks.
+It used commit `0bdf761a132015d97aa59d64adb3d1cbb3860df4`.
+The [failed log](github-first-failure.txt) and [page artifacts](github-first-artifacts/) stay recorded.
+The API could read findings before persistence and then read a later completed job state.
+That response showed a completed assessment without its committed finding.
+
+VS4-CT13 reproduced this race before the correction.
+The [failing result](consistent-read-red.txt) shows the missing finding.
+The shared assessment read now gets its job, findings, review events, and traces in one transaction.
+The default review cutoff starts inside that transaction.
+This correction also applies to the earlier historical assessment flow.
+The earlier [227-check result](backend-first-green.txt) and [38-check result](browser-first-green.txt) stay unchanged.
+
+Updated GitHub checks must pass before this branch can merge after user acceptance.
 
 ## Language and meaning review
 

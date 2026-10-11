@@ -28,7 +28,7 @@ The backend suite passed 189 checks. The combined browser suite passed 26 checks
 The user approved VS3 local acceptance and authorized VS4 local development on 2026-10-11.
 PR9 merged into `main` after run `38105951972` passed its checks. AWS acceptance stays pending.
 The [VS4 contract](spec-slice-04-changes.md) controls simulated versions and independent assessment reviews.
-VS4 local checks passed 227 backend checks, 38 browser checks, and the frontend build.
+VS4 local checks passed 228 backend checks, 38 browser checks, and the frontend build after the consistent-read correction.
 Local user review and AWS acceptance are pending.
 The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
 The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.

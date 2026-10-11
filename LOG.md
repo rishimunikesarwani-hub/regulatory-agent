@@ -619,6 +619,20 @@ CloudFront verification and failed-stack recovery still block deployment.
 No manual Support case ID has been confirmed.
 Next: complete VS4 GitHub checks and obtain local user feedback before merge or VS5 development.
 
+## 2026-10-11 - VS4 consistent-read regression corrected
+
+GitHub run `38106934698` failed one browser check after the initial local checks passed.
+Its page state showed a completed assessment without a finding.
+The API had read findings and job state in different transactions.
+A worker could save the finding and finalize the job between those reads.
+
+VS4-CT13 reproduced the missing-finding response before the code changed.
+The shared read now gets job state and dependent records in one database transaction.
+Its default cutoff starts inside the transaction.
+All 228 backend checks passed after the correction.
+The earlier results and the GitHub failure stay recorded.
+Next: finish the updated combined browser and GitHub checks before the VS4 review handoff.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.

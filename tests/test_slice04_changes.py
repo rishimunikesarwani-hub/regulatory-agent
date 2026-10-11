@@ -195,3 +195,28 @@ class ChangeSliceTests(unittest.TestCase):
         self.assertEqual(len(self.call('GET', self.flow.url).json()['runs']), 2)
         result = self.flow.result({'job_id': responses[0].json()['new_job_id']})
         self.assertEqual(result['job']['model_calls'], 1)
+
+    def test_ct13_completed_response_cannot_omit_its_committed_finding(self):
+        from regulatory_agent.local import Store
+        with patch('fastapi.BackgroundTasks.add_task'):
+            queued = self.call('POST', self.flow.url, json=self.selection).json()
+        original = Store.read_job
+        finished = False
+        def finish_during_read(store, owner, case, job):
+            nonlocal finished
+            if not finished:
+                finished = True
+                response = self.call('POST', f"{self.flow.url}/{queued['job_id']}/resume")
+                self.assertEqual(response.status_code, 202, response.text)
+            return original(store, owner, case, job)
+        with patch.object(Store, 'read_job', new=finish_during_read):
+            result = self.flow.result(queued)
+        if result['job']['state'] == 'completed':
+            self.assertEqual(len(result['findings']), 1, 'Completed state must use the same committed read as its findings.')
+        else:
+            self.assertIn(result['job']['state'], ('queued', 'running'))
+            self.call('POST', f"{self.flow.url}/{queued['job_id']}/resume")
+        final = self.flow.result(queued)
+        self.assertEqual(final['job']['state'], 'completed')
+        self.assertEqual(len(final['findings']), 1)
+        self.assertEqual(final['summary']['pending'], 1)
