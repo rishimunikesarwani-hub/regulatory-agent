@@ -56,6 +56,7 @@ The resulting report hid a finding that its record read already returned.
 CA16 reproduces this ordering failure.
 The default cutoff now follows the record read.
 Explicit historical cutoffs remain unchanged.
+
 The corrected complete local run passed 363 backend checks in 227.216 seconds.
 All 54 browser checks and 19 focused API checks also passed.
 
