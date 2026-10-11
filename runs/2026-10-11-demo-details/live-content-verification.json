@@ -1,0 +1,120 @@
+{
+  "verified_at": "2026-10-11T16:43:01.353132+00:00",
+  "source_commit": "055439e723d8411d0b025bfd1e130401f2d13eca",
+  "case_id": "c3e3bf82fb554cdb9fe38b3fe0ffd2b8",
+  "job_id": "b2625ab96a3e4963ad51b9e0087df75c",
+  "trace_id": "4727d3c936979d2600dcf98dddc691c5",
+  "state": "completed",
+  "model_calls": 3,
+  "prompt_version": "assessment-vs5-openai-period-v6",
+  "uploaded_documents": [
+    {
+      "filename": "fictional-access-policy.txt",
+      "document_version_id": "bf2d198fc7df4570a5795ec931e83b76",
+      "sha256": "0e3e856e5d2abd22b1401d5bea4be9ceb5812bfe8d20fa64464f5586399f56ab"
+    },
+    {
+      "filename": "fictional-backup-policy.txt",
+      "document_version_id": "86db5f0c08fa4b5e8c2046a76c4acaaa",
+      "sha256": "5a6f675d9539fc087aa7d83e65bcf776a353ce64bf2fc86026fd9a0f552619aa"
+    }
+  ],
+  "checks": [
+    {
+      "name": "generate-assessment",
+      "phase": "assessment",
+      "action": "propose_findings",
+      "input_present": true,
+      "output_present": true,
+      "selected_passage_count": 12,
+      "bank_document_ids_in_context": [
+        "86db5f0c08fa4b5e8c2046a76c4acaaa",
+        "bf2d198fc7df4570a5795ec931e83b76"
+      ],
+      "input_sha256": "ea1137f5dddeef204b0d1d9d39c6bec447fdfaf2671b7aec9fc8172486d91e68",
+      "output_sha256": "2960bbb390336437d5082459dddb644c0873a5e0545f9095d11ac0ca43f86c78"
+    },
+    {
+      "name": "extract-controls",
+      "phase": "find_controls",
+      "action": "find_controls",
+      "input_present": true,
+      "output_present": true,
+      "selected_passage_count": 8,
+      "bank_document_ids_in_context": [
+        "86db5f0c08fa4b5e8c2046a76c4acaaa",
+        "bf2d198fc7df4570a5795ec931e83b76"
+      ],
+      "input_sha256": "39bea5f63398ffb28c77ba046afdecb2ac9a91916595a3898e150c82655d6601",
+      "output_sha256": "08b1364b79d0ed2ad49fcf858bcacff29d5e1312b424004c807c1b20f11059b7"
+    },
+    {
+      "name": "extract-obligations",
+      "phase": "retrieve_obligations",
+      "action": "retrieve_obligations",
+      "input_present": true,
+      "output_present": true,
+      "selected_passage_count": 4,
+      "bank_document_ids_in_context": [],
+      "input_sha256": "b599ee10d05162612dc523a381d84b05ae4ed010df50a2c717c5110782e73fdf",
+      "output_sha256": "48d410ac76b6b3c5f1cefba47623b02bf05029e8b29f7b0a5988898f3b604c81"
+    }
+  ],
+  "content_capture": "fictional-local",
+  "exports": {
+    "json": {
+      "bytes": 43566,
+      "sha256": "2d9a6067dad3b889e68b61c9814f2b7572e8d74b6ef33713f1d7110144fd2be4"
+    },
+    "markdown": {
+      "bytes": 44066,
+      "sha256": "53a92abb84a854124fb01bc9afd138cb5b6e26dbcd6ab8a445fe76a4c09840f5"
+    }
+  },
+  "application_working_tree_sha256": {
+    "src\\regulatory_agent\\__init__.py": "b45f9d5c65c71fee24aba4cdfaa9e5866da64f1fe7a2ce2e2dc55bbb1c3e611c",
+    "src\\regulatory_agent\\api.py": "70eec3b99b7c001cde89cd419032c32f4c0d06813be6a306a5e403efffb13a59",
+    "src\\regulatory_agent\\assessment_pipeline.py": "5f979950e03bb7e7bca77b2f0dfd493d43341c298b90c2ef964cfe193edf398f",
+    "src\\regulatory_agent\\assessment_selection.py": "be55a8bdc0e7cb6b19b669019079d4e42ff6b20dc890def11a198761ed859d40",
+    "src\\regulatory_agent\\assessment_worker.py": "a92ceccd77503de31c7e46be1abccb5d24dcb1716cf3f9f8017b2afaa5da7b1e",
+    "src\\regulatory_agent\\assessments.py": "08384dd7b37017d523c151e298035d736dced7cff401d960a757c590233c2ca3",
+    "src\\regulatory_agent\\aws_assessment_api.py": "e237036460818adc093db7a91adc1b93f9aa5f81c8692574ef6b61f3de22f647",
+    "src\\regulatory_agent\\aws_assessments.py": "55e52fb235d8635d2f6e599b8ed14c28c02ac550b2c0bf05cf8a75df4bb4944c",
+    "src\\regulatory_agent\\aws_cases.py": "015b48bfb21db66d1ccb6b6b48c6af6f476dba6084965f69e990f9fe95adafc8",
+    "src\\regulatory_agent\\aws_document_objects.py": "5b7427fad6192ebfa290dd6cf89e038d2537af0049ca08ddeb13a124dda85289",
+    "src\\regulatory_agent\\aws_documents.py": "87e07e38b825546c80539dfe6cc4ad332477e75a3dd83898bea6a1876376fa6c",
+    "src\\regulatory_agent\\aws_execution.py": "3950b7e132bbfb84bed3b502d0305874a249d86f77c392d80db15b29d0c88281",
+    "src\\regulatory_agent\\aws_jobs.py": "dded51a8dcd6b3d392d3acc1c1228f87f96ae6ca6b9c40311420d6be79c9861a",
+    "src\\regulatory_agent\\aws_records.py": "d1cde565f44b0b4bbf1b1ef2b7ef6c07b506c743e1584a958677fd1a6bd0836f",
+    "src\\regulatory_agent\\bedrock_model.py": "fc71578ff9c22ce45c74e851128f4948ec500ad83148fa8fee92b6bf96d0e913",
+    "src\\regulatory_agent\\cases.py": "9050732e92336f6525ca2f6e45bac14f441fdde5180e602c79bda80ba4a02924",
+    "src\\regulatory_agent\\comparison_api.py": "af57a060aceaacdc9b42d397918c2cf26a58deb4901f1a22499649fd9d0f6c98",
+    "src\\regulatory_agent\\comparison_jobs.py": "5d90f1f37e787b3317f2cf995081bc16a1f705a3c4073dcd63d90401204ffc81",
+    "src\\regulatory_agent\\contract_types.py": "4931e74e9e6c618c1b8c38244ca7dc5b6042584735b8efa67201677ae0a55c23",
+    "src\\regulatory_agent\\contracts.py": "ae422d401c95452a219744a2d1903627b3558bdf62ba07a2c63da2404b364463",
+    "src\\regulatory_agent\\document_extractor.py": "e94734c5637583726ce5859bad137f106891514bb5795f4582f8f19fddd39f33",
+    "src\\regulatory_agent\\documents.py": "826f9161c9d3091d341d05004ea0c65c674a4284993a3ac2b1db507d9f15aa99",
+    "src\\regulatory_agent\\evaluation.py": "441a86ff34cdb5e29de10d533c6de57f3eafd86c912773fd503b7a16dd79402b",
+    "src\\regulatory_agent\\evidence_periods.py": "54ee9ba7220d3eb0f5655abd0f40c37caae2b36d9a1012fa8f9be975e70689dd",
+    "src\\regulatory_agent\\langfuse_trace.py": "688d25e9ad09819aa046ba8272c00506eeb82a57b8cf93985150e7eab33ff3b8",
+    "src\\regulatory_agent\\local.py": "9c169e3bffdcb0edaa59a4ad5afb09f7f228354feb34541af66f3e8d95482c67",
+    "src\\regulatory_agent\\offline.py": "eb6a79817ef645e9881fc84f5b5c434cd2af38f9bb0fb8bd6cd6ac1cba259c0b",
+    "src\\regulatory_agent\\openai_model.py": "cbe9d5d514f2d276a6888aaf59dc8e6b1b547b9ef56fc3e18ad748a3f431fcf0",
+    "src\\regulatory_agent\\ports.py": "f4797c1bcd8a968005b56876d86634cba4e4cbca37b3a90e7ed1667bf929adf1",
+    "src\\regulatory_agent\\regulatory_changes.py": "a8f58ce81291dd872b95843cd3eac8fa38008ee6dce72de269ef3f5f8081100f",
+    "src\\regulatory_agent\\retrieval.py": "be6c9d6318fc2d0a14949422628269e09e7ae8dce9a5b93eda1f3a31a701517e",
+    "src\\regulatory_agent\\reviews.py": "a781fc4f70e80d829f2f848cbe6ec9362b28b2133cb3d4ae8c3edc6afb6f8a18",
+    "src\\regulatory_agent\\telemetry.py": "1f91d270c6cacd5abdcc29dc2b3fd5285a494d79771d952a0c074840a48c2d31"
+  },
+  "demo_url": "http://127.0.0.1:5185/?case=c3e3bf82fb554cdb9fe38b3fe0ffd2b8&assessment=b2625ab96a3e4963ad51b9e0087df75c",
+  "langfuse_url": "https://cloud.langfuse.com/project/cmv3uoong0300ad0m5f2emtu2/traces/4727d3c936979d2600dcf98dddc691c5",
+  "limits": [
+    "Fictional data only.",
+    "No independent model-quality or AWS acceptance claim.",
+    "Service exports verified; no native browser download-event claim."
+  ],
+  "selected_generation_url": "https://cloud.langfuse.com/project/cmv3uoong0300ad0m5f2emtu2/traces/4727d3c936979d2600dcf98dddc691c5?observation=94b8849466cd0ca8",
+  "native_chrome_batch_saved": true,
+  "native_chrome_completed_assessment": true,
+  "native_chrome_generation_input_output_visible": true
+}

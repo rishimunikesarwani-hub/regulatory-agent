@@ -1207,3 +1207,19 @@ These results cover all 66 browser checks. TypeScript and the frontend build pas
 
 The live content-capture check remains pending at this source commit.
 AWS deployment, provider coverage, and independent model quality remain pending.
+
+## 2026-10-11 - Live batch and Langfuse content verification
+
+Chrome saved two fictional policy files as separate sources in one batch.
+The selected assessment completed with both bank documents and one historical regulatory version.
+The supervised worker made three actual OpenAI calls.
+Remote Langfuse readback contains each generation's system message, selected source context, prompt version, schema, and assistant response.
+The existing generation hierarchy remains unchanged.
+The visible response is Needs review, and no human review decision was saved.
+
+JSON and Markdown service exports passed separate checks.
+The committed application source passed GitHub checks, including all 445 backend tests and 66 browser tests.
+AWS deployment was skipped.
+PR15 contains the authorized correction and remains a draft for local review.
+Earlier saved jobs and the accepted PR14 integration source remain unchanged.
+Independent model quality, regulatory coverage, and AWS acceptance remain pending.
