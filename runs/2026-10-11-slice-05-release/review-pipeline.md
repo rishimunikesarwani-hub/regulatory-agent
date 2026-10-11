@@ -26,6 +26,12 @@ Interrupted processing keeps an explicit unknown or interrupted record.
 | `backend-pipeline-crt-final.txt` | All 260 checks passed with the final locked SDK dependency. |
 | `sdk-login-red.txt` | Client construction needed the official SDK extra. |
 | `sdk-login-dependency-green.txt` | Client construction passed after adding the required dependency. |
+| `pipeline-public-boundary-red.txt` | The original guard also rejected real public regulations. |
+| `backend-pipeline-public-final.txt` | All 261 checks passed after separating public regulations from private bank input. |
+
+Public regulatory records can use an allowed RBI URL without a fictional-data flag.
+Private bank input remains blocked.
+This URL check does not establish content authenticity, coverage, or freshness.
 
 Native SDK login support needs `awscrt==0.36.0`.
 The dependency change preserves all 26 earlier locked versions.

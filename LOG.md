@@ -819,3 +819,8 @@ The user has received the manual sign-in command for the existing profile.
 No live inference or deployment occurred.
 D45 records this clarification within the approved VS5 scope.
 Next: verify the final combined commit and complete API admission, source selection, and worker supervision.
+
+A failing source-boundary check found that the first pipeline guard also rejected real public regulations.
+The correction keeps the private-bank restriction and permits public regulations with an allowed RBI authority URL.
+The URL check does not establish authenticity or freshness.
+All 261 backend checks passed after this correction.

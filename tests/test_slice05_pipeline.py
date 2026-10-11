@@ -145,6 +145,7 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(result['state'],'failed');self.assertEqual(model.dispatches,0)
         self.new_run()
         with self.store.transaction() as db:
+            db.execute("UPDATE documents SET original=? WHERE id=?",(assessment_flow.POLICY,self.policy['document']['document_version_id']))
             record=copy.deepcopy(self.regulation);record['obligation_scopes']['O-1']=['not-a-passage']
             db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='document' AND id='rules:v1'",(json.dumps(record),self.case))
         result,_,model=self.execute(model=ControlledModel([]))
@@ -273,6 +274,28 @@ class PipelineTests(unittest.TestCase):
         with self.store.transaction() as db:
             db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='finding' AND id=?",(json.dumps(item),self.case,item['finding_id']))
         with self.assertRaises(Exception):self.service.export(self.owner,self.case,self.job_id,'json')
+
+    def test_pt15_public_regulatory_input_is_distinct_from_private_bank_input(self):
+        public=copy.deepcopy(self.regulation)
+        public['document'].update(synthetic=False,source_url='https://www.rbi.org.in/Scripts/NotificationUser.aspx?Id=12562&Mode=0')
+        with self.store.transaction() as db:
+            db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='document' AND id='rules:v1'",(json.dumps(public),self.case))
+        result,_,_=self.execute()
+        self.assertEqual(result['state'],'completed')
+        for invalid in ('private_bank','unverified_public_url'):
+            self.new_run()
+            with self.store.transaction() as db:
+                if invalid=='private_bank':
+                    document=copy.deepcopy(self.policy);document['document']['synthetic']=False
+                    doc=document['document'];key=f"{doc['source_id']}:{doc['version']}"
+                else:
+                    policy=self.policy['document']
+                    db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='document' AND id=?",
+                        (json.dumps(self.policy),self.case,f"{policy['source_id']}:{policy['version']}"))
+                    document=copy.deepcopy(public);document['document']['source_url']='https://example.invalid/rules';key='rules:v1'
+                db.execute("UPDATE records SET body=? WHERE case_id=? AND kind='document' AND id=?",(json.dumps(document),self.case,key))
+            result,_,model=self.execute()
+            self.assertEqual(result['state'],'failed');self.assertEqual(model.dispatches,0)
 
     def test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete(self):
         model=ControlledModel([self.extraction()]);pipeline=self.Pipeline(self.service,model)

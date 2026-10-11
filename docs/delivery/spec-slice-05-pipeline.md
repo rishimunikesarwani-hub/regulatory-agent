@@ -10,6 +10,10 @@ Those integrations remain necessary for the complete application.
 Use the existing immutable snapshots, case documents, jobs, reviews, and model interface.
 Keep current assessments blocked until source verification under D20 is available.
 Keep private input blocked until the required processing checks pass.
+A synthetic snapshot identifies fictional bank input.
+Real public regulations do not need a synthetic-data flag.
+Validate their allowed RBI authority URL before model access.
+An allowed URL does not establish freshness or content authenticity.
 
 ## Source selection and retrieval
 
@@ -93,6 +97,7 @@ Do not claim that this synchronous pipeline alone enforces a hard wall-clock dea
 | VS5-PT12 | Presentation validates the execution claim within its database transaction. |
 | VS5-PT13 | Declared live processing keeps correct export labels and required stage metadata. Controlled provider stubs do not prove live access. |
 | VS5-PT14 | Exports validate claim, exception, and conflict citations as well as finding citations. |
+| VS5-PT15 | Real public regulations with an allowed authority URL remain distinct from unverified private bank documents. |
 
 Write failing behavior checks before implementation.
 Run the combined backend suite after shared contract changes.

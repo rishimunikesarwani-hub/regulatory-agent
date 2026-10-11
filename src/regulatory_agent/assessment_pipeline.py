@@ -8,7 +8,7 @@ import uuid
 
 from pydantic import ValidationError
 
-from .contracts import ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date
+from .contracts import ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date, public_url
 from .local import encoded, validated_action
 from .telemetry import AttemptTimer, StageAttempt, TokenUsage, VersionMetadata
 
@@ -54,8 +54,12 @@ class AssessmentPipeline:
         for source in sources:
             validated = SourceRead.model_validate({key: source[key] for key in ('document', 'passages')})
             doc = validated.document
-            if doc.case_id != case or snapshot['selected_versions'].get(doc.source_id) != doc.version or not doc.synthetic:
+            if doc.case_id != case or snapshot['selected_versions'].get(doc.source_id) != doc.version:
                 raise ContractError('source_scope_denied')
+            if not doc.synthetic:
+                if doc.kind != 'regulation' or not doc.source_url:
+                    raise ContractError('private_source_processing_unverified')
+                public_url(doc.source_url)
             for value in (doc.publication_date, doc.effective_date):
                 if value is not None:iso_date(value)
             if doc.kind=='regulation' and doc.effective_date and doc.effective_date > snapshot['assessment_date']:
