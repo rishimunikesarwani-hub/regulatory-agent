@@ -1,7 +1,7 @@
 # VS3 integration candidate
 
 Date: 2026-10-11.
-Status: Preparation within authorized VS3 development. User acceptance is pending.
+Status: The user approved VS3 local acceptance on 2026-10-11. Updated PR9 checks must pass before merge.
 
 An integration candidate is a Git branch for checks of combined application changes before acceptance.
 It is not the accepted `main` version.
@@ -15,7 +15,8 @@ Reserve web port `5193`, feedback API port `8192`, and test API port `8193`.
 Keep test records in `runs/private/slice-03-integration/browser-tests.sqlite`.
 Keep the VS3 review worktree, feedback database, and running services unchanged.
 Do not merge this candidate into `main` before VS3 acceptance.
-Do not start VS4 or deploy AWS resources from this candidate.
+Start authorized VS4 development from the accepted integration commit after merge.
+Keep AWS deployment pending until its release conditions pass.
 
 ## Combined behavior
 
@@ -46,7 +47,7 @@ Save different failing and passing records for this integration check.
 ## Remaining conditions
 
 These checks do not establish live model quality or deployed AWS acceptance.
-The user review remains pending.
+The user approved VS3 and VS4 development with the message "approved vs3 and development of vs4".
 CloudFront account verification remains necessary before deployment.
 The selected Bedrock profile remains `in.openai.gpt-5.6-luna`.
 Model metadata alone does not prove runtime permissions or successful inference.

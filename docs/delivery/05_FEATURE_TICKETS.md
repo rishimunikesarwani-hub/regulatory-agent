@@ -25,7 +25,8 @@ Its templates and cloud protocol are prepared. Deployment and AWS acceptance rem
 
 VS3 local checks passed in its isolated review worktree.
 The backend suite passed 189 checks. The combined browser suite passed 26 checks.
-VS3 user acceptance, integration into `main`, and AWS acceptance stay pending.
+The user approved VS3 local acceptance and authorized VS4 local development on 2026-10-11.
+Integration into `main` needs the updated PR9 checks. AWS acceptance stays pending.
 The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
 The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.

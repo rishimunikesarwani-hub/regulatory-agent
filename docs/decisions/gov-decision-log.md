@@ -585,6 +585,22 @@ Keep earlier evidence and acceptance history unchanged.
 Model profile metadata does not establish runtime permissions, invocation logging, or live model quality.
 No product scope, AWS release condition, or earlier approval record changes.
 
+## D40 - VS3 acceptance and VS4 authorization
+
+Date: 2026-10-11.
+Status: Approved by the user in this conversation.
+
+The user wrote "approved vs3 and development of vs4".
+This approval meets D35's local review condition for VS3.
+Update PR9 with the combined candidate and this acceptance record.
+Merge its exact checked commit after the updated GitHub checks pass.
+Start VS4 in its own branch, worktree, ports, and databases.
+Use the VS4 version-comparison contract before new behavior tests and code.
+
+Earlier evidence and approval history stay unchanged.
+AWS account verification and deployed acceptance stay pending.
+No feature scope, model, budget, or external-message permission changes.
+
 ## How to add a decision
 
 Add a new entry with:

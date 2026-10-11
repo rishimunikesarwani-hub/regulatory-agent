@@ -580,6 +580,20 @@ CloudFront verification and failed-stack recovery remain necessary.
 Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
 Next: obtain VS3 user acceptance and AWS verification.
 
+## 2026-10-11 - VS3 accepted and VS4 authorized
+
+The user approved VS3 local acceptance and authorized VS4 development in this conversation.
+The combined candidate passed 215 backend checks, 33 browser checks, and the frontend build.
+GitHub run `38085941862` passed for application commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
+The later candidate commits changed documentation only.
+Updated PR9 checks must pass before merge into `main`.
+
+VS4 must compare specified versions and keep earlier assessments and human reviews unchanged.
+AWS account verification and failed-stack recovery still block deployment.
+The manual Support request has no confirmed case ID.
+Live assessment and complete project acceptance stay pending.
+Next: merge checked PR9 and start the isolated VS4 contract and failing tests.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.
