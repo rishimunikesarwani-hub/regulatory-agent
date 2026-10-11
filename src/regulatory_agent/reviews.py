@@ -2,6 +2,7 @@
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 import json
+import time
 import uuid
 
 from .contracts import (ContractError, ReviewCohort, ReviewDecision, ReviewItem, ReviewOutcomeReport,
@@ -108,7 +109,7 @@ class Reviews:
             raise ContractError("record_too_large")
         db.execute("INSERT INTO records VALUES (?,?,?,?)", (case, kind, identity, text))
 
-    def present(self, owner, case, item):
+    def present(self, owner, case, item, *, execution_token=None):
         item = ReviewItem.model_validate(item.model_dump())
         snapshot = self.store.get(owner, case, "snapshot", item.snapshot_id)
         selected_versions = {f"{name}:{version}" for name, version in snapshot["selected_versions"].items()}
@@ -120,6 +121,8 @@ class Reviews:
             if row is None:
                 raise ContractError("run_not_found")
             run = json.loads(row[0])
+            if execution_token is not None:
+                self.store._claimed(self.store._job(db, owner, case, run['job_id']), execution_token, time.time())
             if any(getattr(item, field) != run[field] for field in ("snapshot_id", "model_id", "prompt_version", "data_mode")):
                 raise ContractError("item_run_mismatch")
             existing = self._records(db, case, "finding")

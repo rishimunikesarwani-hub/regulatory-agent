@@ -189,6 +189,28 @@ class Control(Contract):
     citations: list[Citation] = Field(min_length=1)
 
 
+class EvidencePeriod(Contract):
+    start: str
+    end: str
+    _dates = field_validator('start', 'end')(iso_date)
+
+    @model_validator(mode='after')
+    def ordered(self):
+        if self.start > self.end:
+            raise ValueError('Invalid evidence period')
+        return self
+
+
+class AssessmentClaim(Contract):
+    obligation_element: Text
+    citations: list[Citation] = Field(min_length=1)
+    reason: Text
+    operational: bool
+    evidence_period: EvidencePeriod | None
+    examined_exceptions: list[Citation]
+    conflicting_evidence: list[Citation]
+
+
 class Finding(Contract):
     finding_id: Identifier
     snapshot_id: Identifier
@@ -201,6 +223,7 @@ class Finding(Contract):
     remedy: str | None
     gap_kind: Literal["control", "evidence"] | None
     applicability_reason: str | None = None
+    claims: list[AssessmentClaim] = Field(default_factory=list)
 
     @model_validator(mode="after")
     def evidence(self):
@@ -476,6 +499,7 @@ class ModelAction(Contract):
     findings: list[Finding] = Field(default_factory=list)
     obligations: list[Obligation] = Field(default_factory=list, max_length=20)
     controls: list[Control] = Field(default_factory=list)
+    retrieval_query: str | None = Field(default=None, min_length=1, max_length=1000)
 
 
 class ModelReply(Contract):

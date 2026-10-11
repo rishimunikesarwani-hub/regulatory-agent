@@ -308,7 +308,7 @@ class Assessments:
             item = ReviewItem(**finding.model_dump(), run_id=run['run_id'], primary_recommendation=finding.remedy,
                 available_at=datetime.now(timezone.utc).isoformat(), model_id=MODEL, prompt_version=snapshot['prompt_version'],
                 data_mode='controlled_simulation', source_version_ids=[f'{name}:{version}' for name, version in snapshot['selected_versions'].items()])
-            self.reviews.present(owner, case, item)
+            self.reviews.present(owner, case, item, execution_token=job['token'])
             return {'accounted_obligations': [obligation.obligation_id], 'finding_id': item.finding_id}
 
         # ponytail: one short trusted example; use a separate worker before live model execution.
@@ -345,12 +345,19 @@ class Assessments:
             history = [event for event in events if event['finding_id'] == item.finding_id and event['event_kind'] == 'final_review']
             latest = max(history, key=lambda event: event['revision'], default=None)
             finals.append(ReviewDecision.model_validate(latest) if latest else None)
-        obligation, control, _ = self._example(owner, case, job_id, snapshot)
-        return {'data_mode': 'controlled_simulation', 'freshness': 'unverified', 'live_model_calls': 0, 'cost_usd': None,
+        if snapshot['prompt_version'] in {PROMPT, 'controlled-vs4-v1'}:
+            obligation, control, _ = self._example(owner, case, job_id, snapshot)
+            obligations, controls = [obligation.model_dump()], [control.model_dump()]
+        else:
+            obligations = job['stages'].get('obligations', {}).get('obligations', [])
+            controls = job['stages'].get('controls', {}).get('controls', [])
+        return {'data_mode': run['data_mode'], 'freshness': 'unverified',
+            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else job['model_calls'], 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,
-            'obligation': obligation.model_dump(), 'control': control.model_dump(), 'findings': [item.model_dump() for item in eligible],
+            'obligation': obligations[0] if obligations else None, 'control': controls[0] if controls else None,
+            'obligations': obligations, 'controls': controls, 'findings': [item.model_dump() for item in eligible],
             'reviews': sorted(events, key=lambda e: e['revision']),
-            'summary': {'metric_definition_version': 'd24-v1', 'cutoff': limit.isoformat(), 'data_mode': 'controlled_simulation',
+            'summary': {'metric_definition_version': 'd24-v1', 'cutoff': limit.isoformat(), 'data_mode': run['data_mode'],
                         'run_id': run['run_id'], **counts(eligible, finals)},
             'trace': {'run_id': run['run_id'], 'attempts': trace}}
 
@@ -366,7 +373,9 @@ class Assessments:
         snapshot = result['snapshot']
         sources = self._sources(owner, case, snapshot)
         for finding in result['findings']:
-            for citation in finding['citations']:
+            citations = finding['citations'] + [citation for claim in finding.get('claims', [])
+                for key in ('citations', 'examined_exceptions', 'conflicting_evidence') for citation in claim[key]]
+            for citation in citations:
                 if not any(source['document']['document_version_id'] == citation['document_version_id']
                         and passage['passage_id'] == citation['passage_id'] and passage['location'] == citation['location']
                         and citation['quote'] in passage['text'] for source in sources for passage in source['passages']):
@@ -377,8 +386,10 @@ class Assessments:
         state = result['job']['state']
         export_state = 'failed' if state == 'failed' else 'completed' if state == 'completed' and not unchecked else 'partial'
         label = {'completed':'Assessment export', 'partial':'Partial export', 'failed':'Failed assessment export'}[export_state]
+        processing = 'Simulated processing' if result['data_mode']=='controlled_simulation' else 'Live model processing'
+        data_label = 'Fictional bank data' if snapshot['synthetic'] else 'Authorized bank data'
         report = result | {'job': {key:value for key,value in result['job'].items() if key != 'lease_until'},
-            'state': export_state, 'label': f'{label} · Simulated processing · Fictional bank data',
+            'state': export_state, 'label': f'{label} · {processing} · {data_label}',
             'sources': sources, 'source_urls': sorted({s.get('source_url') for s in sources if s.get('source_url')}),
             'authority_verified_at': result['job']['authority_verified_at'], 'unchecked_obligations': unchecked,
             'cost_status': 'unknown', 'report_cutoff': result['summary']['cutoff'],
@@ -388,11 +399,15 @@ class Assessments:
                 'recommendation_availability': {'through':result['summary']['cutoff'], 'end_inclusive':True},
                 'runtime_selection': {'job_id':job_id, 'job_admitted_at':datetime.fromtimestamp(result['job']['created_at'], timezone.utc).isoformat(),
                     'job_state_time_basis':'observed_current_state'}},
-            'limitations': ['Controlled example only. No live model call occurred.',
+            'limitations': [
                 'Current regulatory status is unverified. This report does not certify bank compliance.',
                 'A policy alone does not prove operational execution.', 'Human approval measures review decisions, not assessment accuracy.',
-                'Token usage and inference or total system cost are unknown.',
+                'Available token usage appears in recorded attempts. Inference and total system costs remain unknown.',
                 'The observed job state is current. The report cutoff controls saved findings, reviews, and trace events.']}
+        if result['data_mode']=='controlled_simulation':
+            report['limitations'].insert(0, 'Controlled example only. No live model call occurred.')
+        else:
+            report['limitations'].insert(0, 'Live model processing does not establish held-out quality or current-source completeness.')
         if unchecked or export_state != 'completed':
             report['limitations'].append('The assessment is incomplete or failed. Examine unchecked scope and the saved stop reason.')
         if format == 'json':
@@ -426,6 +441,7 @@ def markdown_export(report):
         ('Observed job state', report['job']), ('Report cutoff', report['report_cutoff']),
         ('Freshness and authority verification', {'freshness':report['freshness'], 'authority_verified_at':report['authority_verified_at']}),
         ('Obligation', report['obligation']), ('Mapped control', report['control']),
+        ('Selected obligations', report['obligations']), ('Extracted controls', report['controls']),
         ('Original findings and recommendation IDs', report['findings']), ('Saved review events', report['reviews'])]
     text = '# The Regulator assessment report\n\n'+''.join(f'## {title}\n\n{quoted(value)}\n' for title,value in sections)
     text += '## Review summary\n\n'+''.join(f'{key}: {"Not measured" if value is None else value}\n\n' for key,value in report['summary'].items())

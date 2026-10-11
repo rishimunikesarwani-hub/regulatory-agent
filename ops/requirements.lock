@@ -13,6 +13,8 @@ anyio==4.15.1
     #   -c ops/requirements.lock
     #   httpx
     #   starlette
+awscrt==0.36.0
+    # via botocore
 boto3==1.43.111
     # via
     #   -c ops/requirements.lock
@@ -72,7 +74,9 @@ pydantic-core==2.50.0
     #   -c ops/requirements.lock
     #   pydantic
 pypdf==6.20.0
-    # via -r ops/requirements.in
+    # via
+    #   -c ops/requirements.lock
+    #   -r ops/requirements.in
 python-dateutil==2.9.0.post0
     # via
     #   -c ops/requirements.lock

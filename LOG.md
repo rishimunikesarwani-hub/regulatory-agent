@@ -799,3 +799,23 @@ D44 records the implementation clarification.
 The adapter does not complete the assessment worker or establish live model quality.
 AWS authentication has expired. No live inference or deployment occurred.
 Next: check the final combined commit and continue full-scope processing.
+
+## 2026-10-11 - Selected-scope pipeline
+
+The pipeline specification was committed before nine missing-implementation checks failed.
+Four additional failing checks exposed context allocation, late presentation, export labels, and nested citation validation.
+A terminal-state check then exposed an incomplete audit record after a known extraction failure.
+The corrected pipeline preserves claim records, known periods, selected sources, stable finding IDs, and unchecked obligations.
+It processes all admitted selected obligations within the existing shared allowance.
+The controlled checks cover all five statuses and independent repeated assessments.
+An interrupted delivery reuses its validated output without duplicate inference.
+Fourteen pipeline checks pass. The combined backend suite passed 260 checks before the SDK dependency addition.
+All 260 checks also passed with the final locked SDK dependency.
+The SDK initially failed client construction with `MissingDependencyException`.
+The required `crt` extra added `awscrt==0.36.0` without changing the 26 earlier package versions.
+Client construction now passes. The live profile check returns `LoginRefreshRequired`.
+The CLI also reports an expired login session.
+The user has received the manual sign-in command for the existing profile.
+No live inference or deployment occurred.
+D45 records this clarification within the approved VS5 scope.
+Next: verify the final combined commit and complete API admission, source selection, and worker supervision.

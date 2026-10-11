@@ -265,6 +265,8 @@ def validated_action(raw, store, owner, case, identity):
     if any(o.obligation_id not in snapshot['selected_obligations'] for o in action.obligations):
         raise ContractError('model_obligation_scope_denied')
     citations = [c for record in (*action.findings, *action.obligations, *action.controls) for c in record.citations]
+    citations += [c for finding in action.findings for claim in finding.claims
+                  for c in (*claim.citations, *claim.examined_exceptions, *claim.conflicting_evidence)]
     if citations:
         saved_versions = {store.get(owner, case, 'document', key)['document']['document_version_id'] for key in allowed}
         if any(c.document_version_id not in saved_versions for c in citations):

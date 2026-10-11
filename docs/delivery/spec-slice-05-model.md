@@ -77,6 +77,8 @@ Run the existing backend suite after the shared contract changes.
 
 The current AWS login session has expired.
 Renew authentication before live profile, permissions, logging, and synthetic-inference checks.
+Install the SDK's `crt` extra for profiles created through `aws login`.
+Keep the existing locked package versions when adding this required dependency.
 The CLI version is `2.37.12`.
 The installed boto3 version is `1.43.111`.
 SDK inspection confirmed the native Converse `outputConfig.textFormat.structure.jsonSchema` request shape.

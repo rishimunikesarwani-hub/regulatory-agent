@@ -673,6 +673,29 @@ These checks do not establish live access, source completeness, model quality, o
 The complete assessment worker and its independent deadline remain unfinished.
 Provider selection under D20 and user acceptance under D35 remain pending.
 
+## D45 - Selected-scope historical processing
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+The [pipeline contract](../delivery/spec-slice-05-pipeline.md) extends processing beyond the fixed example.
+It processes each admitted selected obligation with the same bounded model interface.
+Saved scope maps connect selected obligation IDs to their original regulatory passages.
+Keyword ranking keeps selected versions, kinds, known periods, candidate IDs, selected IDs, and context limits.
+Structured claims keep source references, examined exceptions, conflicts, reasons, and known or unknown evidence periods.
+
+Presentation checks the execution claim inside its database transaction.
+Exports validate nested claim references and retain the declared processing mode.
+Available numeric usage survives failed responses.
+Interrupted validated output can resume without duplicate inference or findings.
+The SDK's `crt` extra supports the existing login profile.
+All 26 earlier locked package versions remain unchanged.
+
+The current interface still uses the earlier controlled example.
+General API admission, source selection, and the independent worker supervisor remain unfinished.
+The software checks do not establish live access, contextual model quality, or current regulatory completeness.
+Provider selection under D20, AWS verification, and VS5 acceptance under D35 remain pending.
+
 ## How to add a decision
 
 Add a new entry with:

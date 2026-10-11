@@ -1,0 +1,86 @@
+test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields) ... ERROR
+test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection (test_slice05_pipeline.PipelineTests.test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection) ... ERROR
+test_pt03_owner_scope_and_original_integrity_prevent_inference (test_slice05_pipeline.PipelineTests.test_pt03_owner_scope_and_original_integrity_prevent_inference) ... ERROR
+test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present) ... ERROR
+test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions) ... ERROR
+test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope) ... ERROR
+test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference) ... ERROR
+test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text) ... ERROR
+test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete) ... ERROR
+
+======================================================================
+ERROR: test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields (test_slice05_pipeline.PipelineTests.test_pt01_all_selected_obligations_preserve_claims_sources_and_unknown_fields)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection (test_slice05_pipeline.PipelineTests.test_pt02_ranking_filters_versions_kinds_and_known_periods_before_selection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt03_owner_scope_and_original_integrity_prevent_inference (test_slice05_pipeline.PipelineTests.test_pt03_owner_scope_and_original_integrity_prevent_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt04_invalid_support_quotes_and_unexamined_passages_never_present (test_slice05_pipeline.PipelineTests.test_pt04_invalid_support_quotes_and_unexamined_passages_never_present)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt05_refinement_and_inspection_are_bounded_actions (test_slice05_pipeline.PipelineTests.test_pt05_refinement_and_inspection_are_bounded_actions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope (test_slice05_pipeline.PipelineTests.test_pt06_later_failure_keeps_usable_findings_and_unchecked_scope)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt07_resume_reuses_validated_output_without_duplicate_inference (test_slice05_pipeline.PipelineTests.test_pt07_resume_reuses_validated_output_without_duplicate_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt08_failed_dispatch_retains_usage_without_private_error_text (test_slice05_pipeline.PipelineTests.test_pt08_failed_dispatch_retains_usage_without_private_error_text)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+======================================================================
+ERROR: test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete (test_slice05_pipeline.PipelineTests.test_pt09_audit_failure_late_response_and_stale_claim_cannot_complete)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_pipeline.py", line 23, in setUp
+    from regulatory_agent.assessment_pipeline import AssessmentPipeline
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_pipeline'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (errors=9)

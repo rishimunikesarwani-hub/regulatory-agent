@@ -88,6 +88,11 @@ Do not claim that this synchronous pipeline alone enforces a hard wall-clock dea
 | VS5-PT07 | Resumed validated output does not repeat inference or create duplicate findings. |
 | VS5-PT08 | Failed dispatched calls keep available numeric usage and safe request IDs in terminal audit records. |
 | VS5-PT09 | Audit failure, late output, and stale execution claims cannot produce a completed job. |
+| VS5-PT10 | Regulatory scope and bank candidates share one context allowance. |
+| VS5-PT11 | All five statuses and repeated assessments preserve independent finding identities. |
+| VS5-PT12 | Presentation validates the execution claim within its database transaction. |
+| VS5-PT13 | Declared live processing keeps correct export labels and required stage metadata. Controlled provider stubs do not prove live access. |
+| VS5-PT14 | Exports validate claim, exception, and conflict citations as well as finding citations. |
 
 Write failing behavior checks before implementation.
 Run the combined backend suite after shared contract changes.
