@@ -148,6 +148,8 @@ Use them only with these meanings.
 | Integration candidate | Git | A branch for checks of combined application changes before acceptance. |
 | Simulated amendment | Software tests | A constructed regulatory change for a fixed test. It is not an actual authority event. |
 | Version comparison | Bank assurance | An examination of two specified source versions and their effects on selected obligations and controls. |
+| Model interpretation | AI and bank assurance | A model proposal about a requirement and its meaning. Citation resolution does not prove correct semantic support. |
+| Whitespace normalization | Software | A comparison operation that replaces whitespace sequences with one space and removes outer whitespace. |
 | Job | Software | A recorded unit of background work with progress and a final state. |
 | Live evaluation | Evaluation | An evaluation that calls the actual model or service instead of a controlled test response. |
 | Loopback | Networks | A network connection from a computer to that same computer. |

@@ -87,6 +87,12 @@ Template schema and security validation remain pending tool approval.
 Native version comparisons, source verification, live evaluations, and deployed acceptance remain required.
 Hosted Lambda acceptance remains unverified.
 
+The [change validation component](spec-slice-05-change-validation.md) prepares specified regulatory source pairs and validates model interpretations.
+Its checks keep source hashes, dates, citations, selected obligations, and earlier control mappings.
+Future requirements cannot request assessment processing for an earlier date.
+Missing metadata stays unknown.
+Complete comparison admission, model processing, native routes, and browser acceptance remain unfinished.
+
 The feedback process must use the current application commit.
 Renew the expired AWS authentication before live model checks.
 The locked SDK includes its `crt` extra for the existing `aws login` profile.

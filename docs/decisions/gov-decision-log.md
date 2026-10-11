@@ -885,6 +885,24 @@ Native version comparisons, provider selection, source verification, live evalua
 AWS authentication and CloudFront acceptance remain pending.
 VS5 remains a draft under D35.
 
+## D54 - Regulatory change validation
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and REQ-F02.
+Requirements: REQ-F02, REQ-X02, REQ-X03, and REQ-X08.
+
+The [change validation contract](../delivery/spec-slice-05-change-validation.md) defines specified source pairs and citation-supported model interpretation records.
+It keeps the baseline obligation scope and permits affected controls only from the earlier mapping.
+Publication dates and effective dates have different meanings.
+Future requirements cannot cause an assessment for an earlier date.
+Missing metadata stays unknown.
+
+Validation cannot establish correct semantic interpretation or current source coverage.
+Durable comparison admission, bounded model processing, native routes, and browser acceptance remain required.
+Applicable changed requirements must cause a new snapshot without changing previous findings or human reviews.
+Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

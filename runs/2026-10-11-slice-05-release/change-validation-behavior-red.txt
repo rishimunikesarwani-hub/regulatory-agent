@@ -1,0 +1,452 @@
+test_vc01_context_keeps_exact_pair_selected_scope_and_independent_dates (test_slice05_change_validation.ChangeValidationTests.test_vc01_context_keeps_exact_pair_selected_scope_and_independent_dates) ... ERROR
+test_vc02_changed_requirements_keep_citations_and_only_baseline_mappings (test_slice05_change_validation.ChangeValidationTests.test_vc02_changed_requirements_keep_citations_and_only_baseline_mappings) ... ERROR
+test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) ... 
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='case_id') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='case_id') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='source_id') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='kind') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='version') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='document_version_id') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='version') ... FAIL
+  test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='publication_date') ... FAIL
+test_vc04_original_hash_metadata_and_authority_are_trust_boundaries (test_slice05_change_validation.ChangeValidationTests.test_vc04_original_hash_metadata_and_authority_are_trust_boundaries) ... FAIL
+test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) ... 
+  test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='duplicate') ... FAIL
+  test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='wrong-version') ... FAIL
+  test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='too-many') ... FAIL
+  test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='too-large') ... FAIL
+test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) ... 
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='snapshot_id') ... FAIL
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='older_version_id') ... FAIL
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='newer_version_id') ... FAIL
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='omit') ... FAIL
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='duplicate') ... FAIL
+  test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='extra') ... FAIL
+test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) ... 
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='wrong-side') ... FAIL
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='missing-side') ... FAIL
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='invented') ... FAIL
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='location') ... FAIL
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='quote') ... FAIL
+  test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='blank') ... FAIL
+test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) ... 
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['INVENTED']) ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['BACKUP-01']) ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['ACCESS-01', 'ACCESS-01']) ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='unchanged') ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='wording_only') ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='appearance_only') ... FAIL
+  test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='undetermined') ... FAIL
+test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) ... FAIL
+test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) ... 
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='added_requirement') ... FAIL
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='withdrawn_requirement') ... FAIL
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='changed_requirement') ... FAIL
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='conditions') ... FAIL
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='exceptions') ... FAIL
+  test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='applicability') ... FAIL
+test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) ... FAIL
+test_vc10_future_effective_change_needs_selection_review_without_earlier_assessment (test_slice05_change_validation.ChangeValidationTests.test_vc10_future_effective_change_needs_selection_review_without_earlier_assessment) ... ERROR
+test_vc11_withdrawal_and_unknown_metadata_keep_evidence_and_uncertainty (test_slice05_change_validation.ChangeValidationTests.test_vc11_withdrawal_and_unknown_metadata_keep_evidence_and_uncertainty) ... ERROR
+test_vc12_preparation_and_validation_do_not_mutate_saved_inputs (test_slice05_change_validation.ChangeValidationTests.test_vc12_preparation_and_validation_do_not_mutate_saved_inputs) ... ok
+
+======================================================================
+ERROR: test_vc01_context_keeps_exact_pair_selected_scope_and_independent_dates (test_slice05_change_validation.ChangeValidationTests.test_vc01_context_keeps_exact_pair_selected_scope_and_independent_dates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 58, in test_vc01_context_keeps_exact_pair_selected_scope_and_independent_dates
+    self.assertEqual(pair['selected_obligations'],['rule-a','rule-b'])
+                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'selected_obligations'
+
+======================================================================
+ERROR: test_vc02_changed_requirements_keep_citations_and_only_baseline_mappings (test_slice05_change_validation.ChangeValidationTests.test_vc02_changed_requirements_keep_citations_and_only_baseline_mappings)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 68, in test_vc02_changed_requirements_keep_citations_and_only_baseline_mappings
+    self.assertTrue(result['assessment_required']); self.assertTrue(result['selection_review_required'])
+                    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'assessment_required'
+
+======================================================================
+ERROR: test_vc10_future_effective_change_needs_selection_review_without_earlier_assessment (test_slice05_change_validation.ChangeValidationTests.test_vc10_future_effective_change_needs_selection_review_without_earlier_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 153, in test_vc10_future_effective_change_needs_selection_review_without_earlier_assessment
+    self.assertFalse(result['assessment_required']);self.assertTrue(result['selection_review_required'])
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'assessment_required'
+
+======================================================================
+ERROR: test_vc11_withdrawal_and_unknown_metadata_keep_evidence_and_uncertainty (test_slice05_change_validation.ChangeValidationTests.test_vc11_withdrawal_and_unknown_metadata_keep_evidence_and_uncertainty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 159, in test_vc11_withdrawal_and_unknown_metadata_keep_evidence_and_uncertainty
+    self.assertEqual(result['changes'][0]['basis'][1],self.citation(self.newer))
+                     ~~~~~~^^^^^^^^^^^
+KeyError: 'changes'
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='case_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='case_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='source_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='kind')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='older', field='version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='document_version_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails (test_slice05_change_validation.ChangeValidationTests.test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails) (side='newer', field='publication_date')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 80, in test_vc03_wrong_case_source_selection_identical_or_reversed_pair_fails
+    with self.subTest(side=side,field=field),self.assertRaises(ContractError):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc04_original_hash_metadata_and_authority_are_trust_boundaries (test_slice05_change_validation.ChangeValidationTests.test_vc04_original_hash_metadata_and_authority_are_trust_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 84, in test_vc04_original_hash_metadata_and_authority_are_trust_boundaries
+    with self.assertRaises(ContractError):prepare_pair(self.snapshot,self.older,self.newer,b'changed',self.new_raw)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 101, in test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate
+    with self.subTest(change=change),self.assertRaises(ContractError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='wrong-version')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 101, in test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate
+    with self.subTest(change=change),self.assertRaises(ContractError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='too-many')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 101, in test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate
+    with self.subTest(change=change),self.assertRaises(ContractError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate (test_slice05_change_validation.ChangeValidationTests.test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate) (change='too-large')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 101, in test_vc05_duplicate_wrong_version_and_over_limit_context_never_truncate
+    with self.subTest(change=change),self.assertRaises(ContractError):
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='snapshot_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 107, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='older_version_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 107, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (field='newer_version_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 107, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='omit')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 113, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='duplicate')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 113, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc06_forged_pair_and_unselected_or_missing_obligations_fail (test_slice05_change_validation.ChangeValidationTests.test_vc06_forged_pair_and_unselected_or_missing_obligations_fail) (change='extra')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 113, in test_vc06_forged_pair_and_unselected_or_missing_obligations_fail
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='wrong-side')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='missing-side')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='invented')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='location')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='quote')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote (test_slice05_change_validation.ChangeValidationTests.test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote) (change='blank')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 126, in test_vc07_every_reference_resolves_to_its_exact_side_location_and_quote
+    with self.subTest(change=change),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['INVENTED'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 131, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(controls=controls),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['BACKUP-01'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 131, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(controls=controls),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (controls=['ACCESS-01', 'ACCESS-01'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 131, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(controls=controls),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='unchanged')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 134, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='wording_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 134, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='appearance_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 134, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping) (kind='undetermined')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 134, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping (test_slice05_change_validation.ChangeValidationTests.test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 136, in test_vc08_affected_controls_cannot_be_invented_or_borrowed_from_another_mapping
+    with self.assertRaises(ContractError):validate_changes(self.pair(),self.reply(),findings)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='added_requirement')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 142, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='withdrawn_requirement')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 142, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (kind='changed_requirement')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 142, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(kind=kind),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='conditions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 146, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='exceptions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 146, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions) (field='applicability')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 146, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.subTest(field=field),self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_vc09_classifications_keep_required_before_after_conditions_and_exceptions (test_slice05_change_validation.ChangeValidationTests.test_vc09_classifications_keep_required_before_after_conditions_and_exceptions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_change_validation.py", line 148, in test_vc09_classifications_keep_required_before_after_conditions_and_exceptions
+    with self.assertRaises(ContractError):validate_changes(self.pair(),reply,self.findings)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.013s
+
+FAILED (failures=40, errors=4)

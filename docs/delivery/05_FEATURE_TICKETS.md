@@ -236,6 +236,9 @@ An exact quote match is not sufficient evidence of contextual support.
 
 Add model-selected tool actions with validation, controlled retrieval refinement, and explicit version comparisons. Expand only to the approved obligation scope.
 
+The [change validation contract](spec-slice-05-change-validation.md) defines source-pair checks and interpretation validation.
+Complete model and native comparison integration remain pending.
+
 Acceptance:
 - [ ] The agent selects permitted tools through structured actions with validation.
 - [ ] Use one bounded agent with code orchestration and the approved model. Keep the model unchanged. Add no automatic router or autonomous second reviewer.

@@ -56,6 +56,9 @@ Do not report success from a process exit code alone.
 | VS5-W14 | Deadline or lease exhaustion during renewal remains a timeout. Saved deadlines, counters, and replacement-claim protections remain unchanged. |
 
 An exhausted deadline or lease during renewal is a timeout.
+W14 starts with a saved call reservation and an expired lease.
+Its child process does not reserve another call.
+The test must not depend on child startup before the first renewal.
 A replacement claim remains a claim-loss result.
 
 Write failing checks before implementation.
