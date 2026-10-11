@@ -8,9 +8,9 @@ import uuid
 
 from pydantic import ValidationError
 
-from .assessments import SELECTED_PROMPT
+from .assessments import PERIOD_PROMPT, SELECTED_PROMPT
 
-from .contracts import ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date, public_url
+from .contracts import Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date, public_url
 from .local import encoded, validated_action
 from .telemetry import AttemptTimer, StageAttempt, TokenUsage, VersionMetadata
 
@@ -20,27 +20,34 @@ def ranked_context(sources, selected_versions, *, query, kinds, assessment_date,
     requested = EvidencePeriod.model_validate(period) if period else None
     if not 0 <= max_passages <= 20 or not 0 <= max_bytes <= 64_000:
         raise ContractError('context_limit_invalid')
-    candidates, unknown = [], []
+    candidates, unknown, companions = [], [], {}
     for source in sources:
         document = source['document']
         if selected_versions.get(document['source_id']) != document['version'] or document['kind'] not in kinds:
             continue
-        known = EvidencePeriod.model_validate(source['evidence_period']) if source.get('evidence_period') else None
-        if known and (known.end > assessment_date or requested and (known.end < requested.start or known.start > requested.end)):
-            continue
-        if document['kind'] == 'evidence' and known is None:
-            unknown.append(document['document_version_id'])
-        candidates.extend(source['passages'])
+        legacy = EvidencePeriod.model_validate(source['evidence_period']) if 'stated_periods' not in source and source.get('evidence_period') else None
+        periods = {v['citations'][-1]['passage_id']:v for v in source.get('stated_periods',[])}
+        lookup = {p['passage_id']:p for p in source['passages']}
+        for passage in source['passages']:
+            declared = periods.get(passage['passage_id'])
+            known = EvidencePeriod.model_validate(declared['period']) if declared else legacy
+            if known and (known.end > assessment_date or requested and (known.end < requested.start or known.start > requested.end)):
+                continue
+            if document['kind'] == 'evidence' and known is None:
+                unknown.append(document['document_version_id'])
+            candidates.append(passage)
+            companions[passage['passage_id']] = [lookup[c['passage_id']] for c in declared['citations'][:-1]] if declared else []
     words = set(re.findall(r'[a-z0-9]+', query.lower()))
     def score(passage):
         tokens = re.findall(r'[a-z0-9]+', passage['text'].lower())
         return len(words.intersection(tokens)) / math.sqrt(max(1, len(tokens)))
     ordered = sorted(candidates, key=lambda p: (-score(p), p['passage_id']))
-    selected, size = [], 0
+    selected, size, selected_ids = [], 0, set()
     for passage in ordered:
-        length = len(passage['text'].encode())
-        if len(selected) < max_passages and size + length <= max_bytes:
-            selected.append(passage); size += length
+        bundle = [p for p in companions[passage['passage_id']] + [passage] if p['passage_id'] not in selected_ids]
+        length = sum(len(p['text'].encode()) for p in bundle)
+        if len(selected) + len(bundle) <= max_passages and size + length <= max_bytes:
+            selected.extend(bundle); size += length; selected_ids.update(p['passage_id'] for p in bundle)
     return {'candidate_passage_ids': [p['passage_id'] for p in ordered],
             'selected_passage_ids': [p['passage_id'] for p in selected], 'passages': selected,
             'selected_bytes': size, 'unknown_period_version_ids': sorted(set(unknown))}
@@ -66,10 +73,6 @@ class AssessmentPipeline:
                 if value is not None:iso_date(value)
             if doc.kind=='regulation' and doc.effective_date and doc.effective_date > snapshot['assessment_date']:
                 raise ContractError('source_not_effective')
-            if doc.kind != 'regulation':
-                original = self.service.documents.read(owner, case, doc.document_version_id)
-                if any(original[key] != source[key] for key in ('document', 'passages')):
-                    raise ContractError('source_integrity_failure')
             if source.get('evidence_period'):
                 EvidencePeriod.model_validate(source['evidence_period'])
             by_id = {p.passage_id: p for p in validated.passages}
@@ -97,8 +100,9 @@ class AssessmentPipeline:
             stage=stage, operation=operation, state='unknown', dispatched=False,
             started_at=timer.started_at, finished_at=None, duration_seconds=None,
             versions=VersionMetadata(application='vs5-v1',
-                schema='vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1', extraction='vs2-v1',
-                chunking='source-locations-v1', retrieval='keyword-vs5-v1', prompt=run['prompt_version'],
+                schema='vs5-selection-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
+                extraction='vs2-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs2-v1',
+                chunking='source-locations-v1', retrieval='keyword-period-vs5-v1' if run['prompt_version']==PERIOD_PROMPT else 'keyword-vs5-v1', prompt=run['prompt_version'],
                 model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else 'india-converse-v1'),
             model_id=run['model_id'] if operation=='model' else None,
             unused_allowance=24-job['model_calls'] if operation=='model' else None,
@@ -171,7 +175,8 @@ class AssessmentPipeline:
                 'bank_profile':snapshot['bank_profile'], 'assessment_date':snapshot['assessment_date'], 'data':data,
                 'passages':context['passages'], 'candidate_passage_ids':context['candidate_passage_ids'],
                 'source_metadata':[{'document_version_id':s['document']['document_version_id'], 'kind':s['document']['kind'],
-                    'evidence_period':s.get('evidence_period')} for s in sources],
+                    'evidence_period':s.get('evidence_period')} | ({'stated_periods':[v for v in s['stated_periods']
+                        if all(c['passage_id'] in context['selected_passage_ids'] for c in v['citations'])]} if 'stated_periods' in s else {}) for s in sources],
                 'unknown_period_version_ids':context['unknown_period_version_ids']})
             if len(prompt.encode()) > 400_000:
                 raise ContractError('model_context_limit')
@@ -184,7 +189,9 @@ class AssessmentPipeline:
                     'Use supported, partial, gap, needs_review, or not_applicable as appropriate. Not applicable needs a cited applicability reason. '
                     'Every finding needs cited claims, examined exceptions and conflicts, a known or null evidence period, and one nonblank primary remedy. '
                     'Use only the requested phase and supplied passage IDs. Never claim that unexamined documents were checked. '
-                    'For assessment, inspect supplied candidates, request at most one refinement, or propose exactly one finding for the requested obligation.',
+                    'For assessment, inspect supplied candidates, request at most one refinement, or propose exactly one finding for the requested obligation.'
+                    + (' Stated evidence periods declare dates only, not record completeness or actual control operation. Use a known claim period only within a cited record interval; otherwise keep it null.'
+                       if snapshot['prompt_version']==PERIOD_PROMPT else ''),
                  'prompt':prompt, 'max_tokens':8192})
             completed['result'] = reply
             self.store._claimed(self.store.read_job(owner, case, run['job_id']), token, time.time())
@@ -218,11 +225,21 @@ class AssessmentPipeline:
                 raise ContractError('claim_citation_not_in_finding')
             if claim.evidence_period and claim.evidence_period.end > snapshot['assessment_date']:
                 raise ContractError('claim_period_invalid')
-            if finding.status == 'supported' and claim.operational:
-                period = claim.evidence_period
-                evidence = [by_version[c.document_version_id] for c in claim.citations if by_version[c.document_version_id]['document']['kind']=='evidence']
-                if period is None or not evidence or not any(s.get('evidence_period') and s['evidence_period']['start'] <= period.start <= period.end <= s['evidence_period']['end'] for s in evidence):
-                    raise ContractError('operational_support_unverified')
+            period = claim.evidence_period
+            evidence = [by_version[c.document_version_id] for c in claim.citations if by_version[c.document_version_id]['document']['kind']=='evidence']
+            grounded = False
+            if period and snapshot['prompt_version']==PERIOD_PROMPT:
+                cited = {c.passage_id for c in claim.citations}
+                for source in evidence:
+                    for stated in source['stated_periods']:
+                        if stated['citations'][-1]['passage_id'] in cited and stated['period']['start'] <= period.start <= period.end <= stated['period']['end'] and all(c['passage_id'] in context['selected_passage_ids'] for c in stated['citations']):
+                            self._check_citations(map(Citation.model_validate,stated['citations']),context['passages'])
+                            grounded = True
+                if not grounded: raise ContractError('claim_period_unverified')
+            elif period:
+                grounded = any(s.get('evidence_period') and s['evidence_period']['start'] <= period.start <= period.end <= s['evidence_period']['end'] for s in evidence)
+            if finding.status == 'supported' and claim.operational and (period is None or not grounded):
+                raise ContractError('operational_support_unverified')
         if finding.status == 'gap' and (finding.gap_kind != 'control' or finding.evidence_condition == 'missing'):
             raise ContractError('unsupported_control_gap')
         return Finding.model_validate(finding.model_dump() | {

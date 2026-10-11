@@ -201,7 +201,8 @@ The full acceptance inventory below remains pending outside that example.
 
 VS5 adds controlled [selected-scope processing](spec-slice-05-pipeline.md) and [local worker supervision](spec-slice-05-worker.md).
 The [admission API](spec-slice-05-admission.md) and [selection interface](spec-slice-05-selection-ui.md) now connect owned fictional uploads to saved historical scope.
-Grounded evidence periods, current-source verification, live behavior, and held-out quality gates remain pending.
+The [period contract](spec-slice-05-evidence-periods.md) adds grounded stated dates with controlled local checks.
+Current-source verification, live behavior, and held-out quality gates remain pending.
 
 **Dependencies:** VS3 uses the selected T3 document and source behavior, with its T2 contracts.
 

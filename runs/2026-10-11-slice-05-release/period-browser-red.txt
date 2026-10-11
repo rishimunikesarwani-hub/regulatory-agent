@@ -1,0 +1,55 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts --grep VS5-EP11
+[WebServer] (node:5972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [34288]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:18128) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\selection.spec.ts:4:1 › VS5-EP11 source inspection shows stated dates and their exact grounding without claiming operation (6.7s)
+
+
+  1) tests\selection.spec.ts:4:1 › VS5-EP11 source inspection shows stated dates and their exact grounding without claiming operation
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Assessment source', exact: true })
+    Expected substring: "Stated evidence periods"
+    Received string:    "Assessment sourceClose sourcecustom-fiction.txtSaved fictional bank document version.Source: c22dec356b9e4ccb84463176b15e7764 · Version: 1 · Kind: evidenceDocument: b5c9281824084ce6bcc7642ff543304aLine 1FICTIONAL DATA ONLYLine 2The control requires access-log review. Owner and frequency are not stated."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('dialog', { name: 'Assessment source', exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Assessment source', exact: true })
+        13 × locator resolved to <dialog open="" aria-labelledby="assessment-source-title">…</dialog>
+           - unexpected value "Assessment sourceClose sourcecustom-fiction.txtSaved fictional bank document version.Source: c22dec356b9e4ccb84463176b15e7764 · Version: 1 · Kind: evidenceDocument: b5c9281824084ce6bcc7642ff543304aLine 1FICTIONAL DATA ONLYLine 2The control requires access-log review. Owner and frequency are not stated."
+
+
+      14 |     {name:`Inspect ${s.bank.passages[0].location}`,exact:true}).first().click();
+      15 |   const source = page.getByRole('dialog',{name:'Assessment source',exact:true});
+    > 16 |   await expect(source).toContainText('Stated evidence periods');
+         |                        ^
+      17 |   await expect(source).toContainText('2024-04-01 to 2024-04-07');
+      18 |   await expect(source).toContainText('Row 2');
+      19 |   await expect(source).toContainText('These dates do not establish complete records or actual control operation.');
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:16:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-EP11-source--22843--without-claiming-operation\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-EP11-source--22843--without-claiming-operation\error-context.md
+
+  1 failed
+    tests\selection.spec.ts:4:1 › VS5-EP11 source inspection shows stated dates and their exact grounding without claiming operation

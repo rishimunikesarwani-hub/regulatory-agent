@@ -9,7 +9,7 @@ import time
 import uuid
 
 from pydantic import ValidationError
-from .contracts import ContractError, ModelAction, ModelReply, SELECTED_PROMPT, Snapshot
+from .contracts import ContractError, ModelAction, ModelReply, SELECTED_PROMPTS, Snapshot
 
 
 def encoded(value):
@@ -92,7 +92,7 @@ class Store:
 
     def sources(self, owner, case, snapshot):
         refs = snapshot.get('selected_document_ids', {})
-        if snapshot['prompt_version'] == SELECTED_PROMPT and not refs:
+        if snapshot['prompt_version'] in SELECTED_PROMPTS and not refs:
             raise ContractError('artifact_scope_missing')
         if refs and refs.keys() != snapshot['selected_versions'].keys():
             raise ContractError('artifact_scope_invalid')

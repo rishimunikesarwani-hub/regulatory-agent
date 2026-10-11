@@ -1,6 +1,37 @@
 import { expect, test, type Page } from '@playwright/test';
 const evidence = process.env.BROWSER_EVIDENCE_DIR || '../../runs/2026-10-11-slice-05-release';
 
+test('VS5-EP11 source inspection shows stated dates and their exact grounding without claiming operation', async ({page}) => {
+  const s = await setup(page); await s.choose();
+  const uploaded = await page.request.post(`${s.root}/documents`,{data:Buffer.from(
+    'FICTIONAL DATA ONLY\n2024-04-01 to 2024-04-07: Access records were reviewed.\n'),headers:{
+    'Content-Type':'application/octet-stream','X-Filename':'dated-fiction.txt','X-Document-Kind':'evidence','X-Synthetic':'true'}});
+  expect(uploaded.status()).toBe(201);
+  const dated = await uploaded.json();
+  const record = dated.passages[1];
+  const citation = {document_version_id:dated.document.document_version_id,passage_id:record.passage_id,
+    location:record.location,quote:'2024-04-01 to 2024-04-07'};
+  dated.stated_periods = [{period:{start:'2024-04-01',end:'2024-04-07'},citations:[citation]}];
+  s.result.findings[0].citations.push(citation);
+  s.result.snapshot.selected_versions[dated.document.source_id] = dated.document.version;
+  await page.route(`${s.root}/assessments/selection-browser-run/sources/${dated.document.document_version_id}`,
+    route => route.fulfill({json:dated}));
+  await s.selection.getByRole('button',{name:'Run selected assessment with live model',exact:true}).click();
+  await page.getByRole('region',{name:'Assessment result',exact:true}).getByRole('button',
+    {name:`Inspect ${record.location}`,exact:true}).first().click();
+  const source = page.getByRole('dialog',{name:'Assessment source',exact:true});
+  await expect(source).toContainText('Stated evidence periods');
+  await expect(source).toContainText('2024-04-01 to 2024-04-07');
+  await expect(source).toContainText(record.location);
+  await expect(source).toContainText('These dates do not establish complete records or actual control operation.');
+  await source.screenshot({path:`${evidence}/period-source-desktop.png`});
+  await page.getByRole('button',{name:'Close source',exact:true}).click();
+  dated.stated_periods = [];
+  await page.getByRole('region',{name:'Assessment result',exact:true}).getByRole('button',
+    {name:`Inspect ${record.location}`,exact:true}).first().click();
+  await expect(source).toContainText('Stated evidence period: Unknown');
+});
+
 // Browser conformance uses controlled responses. These checks never dispatch Bedrock.
 async function setup(page: Page, state = 'completed') {
   await page.goto('/');

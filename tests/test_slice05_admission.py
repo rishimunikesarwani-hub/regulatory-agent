@@ -58,7 +58,7 @@ class AdmissionTests(unittest.TestCase):
         self.assertEqual(snapshot['selected_obligations'], self.obligations)
         self.assertEqual(snapshot['selected_versions'], self.request.selected_versions)
         self.assertEqual(run['data_mode'], 'synthetic_live')
-        self.assertEqual(snapshot['prompt_version'], 'assessment-vs5-selected-v1')
+        self.assertEqual(snapshot['prompt_version'], 'assessment-vs5-selected-period-v1')
         self.assertEqual(self.store.read_job(self.owner, self.case, run['job_id'])['label'], 'Live')
         sources = self.service._sources(self.owner, self.case, snapshot)
         self.assertEqual(len(sources), 2)
@@ -216,7 +216,7 @@ class AdmissionTests(unittest.TestCase):
         self.assertEqual(viewed['data_mode'],'synthetic_live')
         self.assertEqual(len(viewed['obligations']),2)
         self.assertEqual(len(viewed['controls']),1)
-        self.assertTrue(all(t['versions']['schema_version']=='vs5-selection-v1' for t in viewed['trace']['attempts']))
+        self.assertTrue(all(t['versions']['schema_version']=='vs5-selection-period-v1' for t in viewed['trace']['attempts']))
         exported = json.loads(self.service.export(self.owner,self.case,run['job_id'],'json'))
         self.assertEqual(len(exported['findings']),2)
 

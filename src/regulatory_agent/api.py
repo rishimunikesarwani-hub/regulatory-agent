@@ -13,7 +13,7 @@ from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, au
                     error_body, invalid_request, not_found, unavailable)
 from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest, ExportRequest
 from .documents import Documents, rejected
-from .assessments import Assessments, SELECTED_PROMPT
+from .assessments import Assessments, SELECTED_PROMPTS
 
 
 def create_app(service=None, *, store=None, environment=None, development_user=None, commit_sha=None):
@@ -182,7 +182,7 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
     def resume_assessment(case_id: str, job_id: str, background: BackgroundTasks, identity=Depends(assessment_owner)):
         service = assessment_service(identity, case_id)
         result = service.read(identity, case_id, job_id)
-        background.add_task(service.run_selected if result['snapshot']['prompt_version']==SELECTED_PROMPT else service.run,
+        background.add_task(service.run_selected if result['snapshot']['prompt_version'] in SELECTED_PROMPTS else service.run,
                             identity, case_id, job_id)
         return result['job']
 

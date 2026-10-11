@@ -188,6 +188,15 @@ Use the metric names and formulas from the [measurement contract](testing/spec-m
 
 ## Review procedure
 
+### VS5 period terms
+
+| Term | Permitted project meaning |
+|---|---|
+| Stated period | A date interval declared by an original evidence record. |
+| Period grounding | Exact source citations that establish a stated interval. |
+
+A stated period does not establish complete records or actual control operation.
+
 ### VS2 cloud terms
 
 | Term | Permitted project meaning |

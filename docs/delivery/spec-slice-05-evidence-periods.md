@@ -45,7 +45,7 @@ Send period metadata only for passages in the model's selected context.
 Keep the existing twenty-passage, 64,000-byte, and 24-call limits.
 Do not treat metadata from unexamined passages as claim support.
 
-Require each known claim period to match a stated interval in a cited evidence record.
+Require each known claim period to be within a stated interval in a cited evidence record.
 Require all period-grounding citations to be in the selected context.
 A period from another passage in the same document is not sufficient.
 Keep operational supported findings blocked when their cited period is unknown.
@@ -55,6 +55,7 @@ Keep the existing original findings and separate human decisions.
 
 Use `assessment-vs5-selected-period-v1` for new selected runs.
 Use `vs5-selection-period-v1` and `vs2-period-v1` for their schema and extraction records.
+Use `keyword-period-vs5-v1` for their retrieval records.
 Keep earlier protocols, snapshots, processing paths, and stored source records unchanged.
 Require immutable artifact references for both selected protocols.
 

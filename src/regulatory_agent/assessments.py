@@ -9,7 +9,7 @@ import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import Citation, ContractError, Control, Finding, Obligation, ReviewDecision, ReviewItem, SELECTED_PROMPT, Snapshot, StartAssessment
+from .contracts import Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -190,9 +190,16 @@ class Assessments:
 
     def _sources(self, owner, case, snapshot):
         sources = self.store.sources(owner, case, snapshot)
-        if snapshot.get('selected_document_ids'):
-            for source in sources:
-                if source['document']['kind']=='regulation': self._public_original(owner, case, source)
+        for source in sources:
+            if source['document']['kind']=='regulation':
+                if snapshot.get('selected_document_ids'): self._public_original(owner, case, source)
+            else:
+                original = self.documents.read(owner, case, source['document']['document_version_id'])
+                if any(original[key] != source[key] for key in ('document', 'passages')):
+                    raise ContractError('source_integrity_failure')
+        if snapshot['prompt_version'] == PERIOD_PROMPT:
+            from .evidence_periods import with_periods
+            return [with_periods(s) for s in sources]
         return sources
 
     def _public_original(self, owner, case, source):
@@ -207,7 +214,7 @@ class Assessments:
     def run_selected(self, owner, case, job_id):
         from .assessment_worker import bedrock_child, supervise
         run, snapshot = self._run(owner, case, job_id)
-        if run['data_mode'] != 'synthetic_live' or snapshot['prompt_version'] != SELECTED_PROMPT:
+        if run['data_mode'] != 'synthetic_live' or snapshot['prompt_version'] not in SELECTED_PROMPTS:
             raise invalid('selected_processing_scope_invalid')
         return supervise(self.store, owner, case, job_id, bedrock_child,
             args=(str(self.store.path), os.environ.get('BEDROCK_PROFILE')))

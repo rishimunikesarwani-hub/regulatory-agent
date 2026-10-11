@@ -6,7 +6,7 @@ import re
 import uuid
 
 from .assessment_pipeline import AssessmentPipeline
-from .assessments import MODEL, ROOT, SELECTED_PROMPT, invalid
+from .assessments import MODEL, PERIOD_PROMPT, ROOT, invalid
 from .cases import CaseError, not_found
 from .contracts import ContractError, Snapshot, SourceRead, public_url
 from .local import BlobStore
@@ -126,7 +126,7 @@ class AssessmentSelection:
         snapshot = Snapshot(snapshot_id=identity, case_id=case, bank_profile=profile.bank_profile,
             selected_versions=request.selected_versions, selected_obligations=request.selected_obligations,
             selected_document_ids={s['document']['source_id']:s['document']['document_version_id'] for s in selected},
-            assessment_date=request.assessment_date, mode=request.mode, prompt_version=SELECTED_PROMPT,
+            assessment_date=request.assessment_date, mode=request.mode, prompt_version=PERIOD_PROMPT,
             model_version=MODEL, synthetic=True)
         pipeline._sources(owner, case, snapshot.model_dump())
         self.store.save_snapshot(owner, snapshot)

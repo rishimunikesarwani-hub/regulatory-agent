@@ -1,0 +1,86 @@
+test_ep05_actual_selected_upload_processes_grounded_period_without_extra_inference (test_slice05_periods.PeriodIntegrationTests.test_ep05_actual_selected_upload_processes_grounded_period_without_extra_inference) ... FAIL
+test_ep06_uncited_or_unknown_period_does_not_support_claim (test_slice05_periods.PeriodIntegrationTests.test_ep06_uncited_or_unknown_period_does_not_support_claim) ... ok
+test_ep07_prior_protocol_and_source_records_remain_unchanged (test_slice05_periods.PeriodIntegrationTests.test_ep07_prior_protocol_and_source_records_remain_unchanged) ... ok
+test_ep08_corrupted_source_copy_cannot_supply_inspection_dates (test_slice05_periods.PeriodIntegrationTests.test_ep08_corrupted_source_copy_cannot_supply_inspection_dates) ... FAIL
+test_ep09_selected_period_export_survives_upload_replacement (test_slice05_periods.PeriodIntegrationTests.test_ep09_selected_period_export_survives_upload_replacement) ... ERROR
+test_ep10_only_context_period_metadata_reaches_model (test_slice05_periods.PeriodIntegrationTests.test_ep10_only_context_period_metadata_reaches_model) ... FAIL
+test_ep01_explicit_intervals_keep_exact_quotes_and_original_passages (test_slice05_periods.PeriodParsingTests.test_ep01_explicit_intervals_keep_exact_quotes_and_original_passages) ... ERROR
+test_ep02_invalid_conflicting_isolated_and_filename_dates_stay_unknown (test_slice05_periods.PeriodParsingTests.test_ep02_invalid_conflicting_isolated_and_filename_dates_stay_unknown) ... ERROR
+test_ep03_csv_uses_explicit_columns_and_preserves_header_and_record (test_slice05_periods.PeriodParsingTests.test_ep03_csv_uses_explicit_columns_and_preserves_header_and_record) ... ERROR
+test_ep04_passage_period_filters_and_csv_grounding_fit_context_allowance (test_slice05_periods.PeriodParsingTests.test_ep04_passage_period_filters_and_csv_grounding_fit_context_allowance) ... ERROR
+
+======================================================================
+ERROR: test_ep09_selected_period_export_survives_upload_replacement (test_slice05_periods.PeriodIntegrationTests.test_ep09_selected_period_export_survives_upload_replacement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 181, in test_ep09_selected_period_export_survives_upload_replacement
+    self.assertEqual(source['stated_periods'][0]['period'],PERIOD)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'stated_periods'
+
+======================================================================
+ERROR: test_ep01_explicit_intervals_keep_exact_quotes_and_original_passages (test_slice05_periods.PeriodParsingTests.test_ep01_explicit_intervals_keep_exact_quotes_and_original_passages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 27, in setUp
+    from regulatory_agent.evidence_periods import with_periods
+ModuleNotFoundError: No module named 'regulatory_agent.evidence_periods'
+
+======================================================================
+ERROR: test_ep02_invalid_conflicting_isolated_and_filename_dates_stay_unknown (test_slice05_periods.PeriodParsingTests.test_ep02_invalid_conflicting_isolated_and_filename_dates_stay_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 27, in setUp
+    from regulatory_agent.evidence_periods import with_periods
+ModuleNotFoundError: No module named 'regulatory_agent.evidence_periods'
+
+======================================================================
+ERROR: test_ep03_csv_uses_explicit_columns_and_preserves_header_and_record (test_slice05_periods.PeriodParsingTests.test_ep03_csv_uses_explicit_columns_and_preserves_header_and_record)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 27, in setUp
+    from regulatory_agent.evidence_periods import with_periods
+ModuleNotFoundError: No module named 'regulatory_agent.evidence_periods'
+
+======================================================================
+ERROR: test_ep04_passage_period_filters_and_csv_grounding_fit_context_allowance (test_slice05_periods.PeriodParsingTests.test_ep04_passage_period_filters_and_csv_grounding_fit_context_allowance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 27, in setUp
+    from regulatory_agent.evidence_periods import with_periods
+ModuleNotFoundError: No module named 'regulatory_agent.evidence_periods'
+
+======================================================================
+FAIL: test_ep05_actual_selected_upload_processes_grounded_period_without_extra_inference (test_slice05_periods.PeriodIntegrationTests.test_ep05_actual_selected_upload_processes_grounded_period_without_extra_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 136, in test_ep05_actual_selected_upload_processes_grounded_period_without_extra_inference
+    self.assertEqual(snapshot['prompt_version'],PERIOD_PROMPT)
+AssertionError: 'assessment-vs5-selected-v1' != 'assessment-vs5-selected-period-v1'
+- assessment-vs5-selected-v1
++ assessment-vs5-selected-period-v1
+?                         +++++++
+
+
+======================================================================
+FAIL: test_ep08_corrupted_source_copy_cannot_supply_inspection_dates (test_slice05_periods.PeriodIntegrationTests.test_ep08_corrupted_source_copy_cannot_supply_inspection_dates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 175, in test_ep08_corrupted_source_copy_cannot_supply_inspection_dates
+    with self.assertRaises(ContractError): self.service.source(self.owner,self.case,run['job_id'],identity)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ContractError not raised
+
+======================================================================
+FAIL: test_ep10_only_context_period_metadata_reaches_model (test_slice05_periods.PeriodIntegrationTests.test_ep10_only_context_period_metadata_reaches_model)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_periods.py", line 194, in test_ep10_only_context_period_metadata_reaches_model
+    self.assertTrue(periods); self.assertLessEqual(len(periods),20)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [] is not true
+
+----------------------------------------------------------------------
+Ran 10 tests in 6.003s
+
+FAILED (failures=3, errors=5)
