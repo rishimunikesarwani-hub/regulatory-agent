@@ -1,0 +1,11 @@
+test_rw01_and_rw04_backend_frontend_and_evidence_agree (test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) ... ok
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWiringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) ... ok
+test_rw03_stack_flag_mismatch_stops_before_asset_upload (test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) ... ok
+test_rw05_workflow_preserves_explicit_approval_and_scope (test_aws_release_wiring.ReleaseWiringTests.test_rw05_workflow_preserves_explicit_approval_and_scope) ... ok
+test_rw06_only_successful_assessment_checks_extend_the_verified_scope (test_aws_release_wiring.ReleaseWiringTests.test_rw06_only_successful_assessment_checks_extend_the_verified_scope) ... ok
+test_rw06_successful_document_checks_cannot_verify_enabled_assessments (test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.770s
+
+OK

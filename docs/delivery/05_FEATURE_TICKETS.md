@@ -437,7 +437,16 @@ Ticket DD-T01 implements DD01 through DD12 in the [demo details contract](spec-d
 It adds explicitly enabled fictional model content and sequential batch uploads through existing adapters.
 Offline checks and a separate live readback must establish the stated behavior.
 
+## Combined AWS release settings
+
+Ticket RW-T01 implements RW01 through RW07 in the [AWS release settings contract](spec-aws-release-wiring.md).
+It connects the explicit assessment flag to the stack output, frontend configuration, and scoped release evidence.
+Offline tests verify deployment settings and failure behavior.
+Deployed assessment, review, citation, and export checks require the actual AWS services.
+All existing VS5 release conditions remain necessary.
+
 ## Historical planning dates
+
 
 D27 replaces the earlier horizontal sequence below.
 These dated targets remain as planning history, not current delivery instructions.

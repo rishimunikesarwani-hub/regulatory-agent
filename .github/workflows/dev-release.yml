@@ -11,6 +11,11 @@ name: Check and release development
         required: true
         type: boolean
         default: false
+      enable_assessments:
+        description: Enable assessments only after all VS5 release conditions pass for the reviewed main commit
+        required: true
+        type: boolean
+        default: false
 concurrency:
   group: regulatory-agent-development
   cancel-in-progress: false
@@ -76,6 +81,8 @@ jobs:
       AWS_DEV_RUNTIME_ROLE_ARN: ${{ vars.AWS_DEV_RUNTIME_ROLE_ARN }}
       AWS_DEV_ARTIFACT_BUCKET: ${{ vars.AWS_DEV_ARTIFACT_BUCKET }}
       AWS_DEV_MONTHLY_BUDGET_USD: ${{ vars.AWS_DEV_MONTHLY_BUDGET_USD }}
+      AWS_DEV_ASSESSMENTS_ENABLED: ${{ inputs.enable_assessments && 'true' || 'false' }}
+      AWS_DEV_ASSESSMENT_RELEASE_APPROVED_SHA: ${{ vars.AWS_DEV_ASSESSMENT_RELEASE_APPROVED_SHA }}
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
@@ -102,6 +109,7 @@ jobs:
         id: browser
         env:
           DEPLOYED_URL: ${{ steps.deployment.outputs.frontend_url }}
+          DEPLOYED_ASSESSMENTS_ENABLED: ${{ env.AWS_DEV_ASSESSMENTS_ENABLED }}
           COGNITO_TEST_USERNAME: ${{ secrets.COGNITO_TEST_USERNAME }}
           COGNITO_TEST_PASSWORD: ${{ secrets.COGNITO_TEST_PASSWORD }}
         run: npm --prefix src/web run test:deployed
@@ -110,6 +118,7 @@ jobs:
         env:
           BROWSER_RESULT: ${{ steps.browser.outcome }}
           DEPLOYMENT_RESULT: ${{ steps.deployment.outcome }}
+          ASSESSMENT_BROWSER_RESULT: ${{ inputs.enable_assessments && steps.browser.outcome || 'not_run' }}
         run: python ops/record_release.py
       - name: Keep the release evidence
         if: always()

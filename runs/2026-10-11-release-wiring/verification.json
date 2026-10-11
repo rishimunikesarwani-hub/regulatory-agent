@@ -1,0 +1,42 @@
+{
+  "base_commit": "8816e000ad57d164f9dc26c928a482de8dce81eb",
+  "red_before_implementation": {
+    "test_count": 4,
+    "failures": 11,
+    "errors": 2,
+    "receipt": "backend-red.txt"
+  },
+  "combined_backend_regression": {
+    "passed": 449,
+    "seconds": 329.179,
+    "receipt": "backend-green.txt",
+    "scope": "Initial four release tests plus all 445 existing checks."
+  },
+  "final_release_checks": {
+    "passed": 6,
+    "receipt": "backend-wiring-green-v2.txt",
+    "scope": "Includes the two final workflow and release-scope checks."
+  },
+  "browser_regression": {
+    "passed": 66,
+    "receipt": "browser-green.txt",
+    "web_port": 5186,
+    "api_port": 8153,
+    "database": "runs/private/vs5-release-wiring/browser-tests.sqlite",
+    "scope": "Complete local suite, including controlled AWS adapters. No deployed AWS claim."
+  },
+  "frontend_build": "PASS",
+  "aws_operations": 0,
+  "live_model_calls": 0,
+  "deployed_assessment_flow": "Prepared and type checked; not executed.",
+  "template_lint": "Not run; configured validator unavailable.",
+  "template_security_validation": "Not run; validator unavailable.",
+  "content_capture": "Unchanged fictional local exception.",
+  "remaining": [
+    "AWS authentication renewal deferred by user.",
+    "CloudFront account verification unconfirmed.",
+    "Independent quality gate not passed.",
+    "D20 source provider selection and current coverage pending.",
+    "Actual deployed service flow and permission acceptance pending."
+  ]
+}

@@ -1075,6 +1075,44 @@ Private content, credentials, hidden reasoning, and reviewer text remain exclude
 The application uses its existing upload flow for each selected file.
 AWS deployment and independent model-quality acceptance remain pending.
 
+## D65 - PR15 local acceptance
+
+Date: 2026-10-11.
+Status: Approved by the user's local review answer.
+
+The user approved PR15 and authorized its merge.
+Approved head: `fea263b84cea854cb13770ce9316d4f32ab1eb20`.
+The named GitHub checks passed on that head.
+PR15 merged at `8816e000ad57d164f9dc26c928a482de8dce81eb`.
+
+The local `main` worktree now contains that merge.
+The running demonstration preserves its verified application source and saved cases.
+AWS acceptance and independent model quality remain pending.
+
+## D66 - Combined development release settings
+
+Date: 2026-10-11.
+Status: Implementation correction within the approved VS5 release goal.
+
+The release script omitted the template's assessment setting and frontend configuration field.
+The deployed browser test checked identity, cases, and documents only.
+The [release settings contract](../delivery/spec-aws-release-wiring.md) controls this correction.
+
+Keep the assessment default false.
+Require explicit operator approval for the exact commit before an enabled assessment release.
+That approval records a release decision. It does not replace quality, account, permission, or service checks.
+
+Keep all existing VS5 release conditions.
+Match the requested setting, stack output, and frontend configuration.
+Record the acceptance scope and assessment browser result separately.
+
+Prepare the deployed assessment, human review, citation, and export checks.
+Run them only during the authorized AWS release.
+No AWS resource or account agreement changed during local development.
+The D64 content exception remains local and fictional.
+Affected acceptance cases: RW01 through RW07.
+Ticket: RW-T01.
+
 ## How to add a decision
 
 Add a new entry with:

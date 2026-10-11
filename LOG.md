@@ -1223,3 +1223,25 @@ AWS deployment was skipped.
 PR15 contains the authorized correction and remains a draft for local review.
 Earlier saved jobs and the accepted PR14 integration source remain unchanged.
 Independent model quality, regulatory coverage, and AWS acceptance remain pending.
+
+## 2026-10-11 - Approved PR15 and combined release settings
+
+The user approved PR15 and its merge under D35.
+Main now contains merge `8816e000ad57d164f9dc26c928a482de8dce81eb`.
+The running local demonstration keeps its verified source and saved cases.
+
+The isolated release correction follows its specification, failing checks, implementation, and passing checks.
+SAM receives the explicit assessment setting. The script verifies the matching stack output before frontend upload.
+The frontend configuration and release record preserve that setting.
+An enabled release needs operator approval for its exact commit after the existing release conditions pass.
+
+The combined regression passed 449 backend checks and 66 browser checks.
+Six final release checks and the frontend build passed.
+The two additional final checks cover workflow settings and release evidence scope.
+The new deployed assessment test includes real admission, completion, citations, saved human review, and both exports.
+That deployed test remains unexecuted.
+
+No AWS resource changed. No live model call ran during this correction.
+Local template lint and security validation remain pending because their tools are unavailable.
+AWS authentication, account verification, provider coverage, and independent model-quality conditions remain pending.
+Read `runs/2026-10-11-release-wiring/verification.json` for the exact evidence scope.

@@ -412,6 +412,7 @@ Resources:
     Properties:
       LogGroupName: {Fn::Sub: '/aws/lambda/${AssessmentWorker}'}
 Outputs:
+  AssessmentsEnabled: {Value: {Ref: AssessmentsEnabled}}
   FrontendUrl: {Value: {Fn::Sub: 'https://${Frontend.DomainName}'}}
   FrontendBucket: {Value: {Ref: FrontendBucket}}
   DistributionId: {Value: {Ref: Frontend}}

@@ -83,6 +83,11 @@ def main():
     os.chdir(ROOT)
     account, stack = configuration(os.environ)
     commit = os.environ["GITHUB_SHA"]
+    enabled = os.environ.get("AWS_DEV_ASSESSMENTS_ENABLED", "false")
+    if enabled not in ("true", "false"):
+        raise ValueError("Assessment release setting must be true or false")
+    if enabled == "true" and os.environ.get("AWS_DEV_ASSESSMENT_RELEASE_APPROVED_SHA") != commit:
+        raise ValueError("Assessment release requires approval for the exact commit after its release conditions pass")
     if command("git", "rev-parse", "HEAD", capture=True).strip() != commit:
         raise ValueError("Checkout does not match the tested commit")
     dirty = command("git", "status", "--porcelain", "--untracked-files=all", "--", "src", "ops", ".github", "data/contracts", "data/sources", "pyproject.toml", capture=True)
@@ -100,15 +105,19 @@ def main():
             "--role-arn", os.environ["AWS_DEV_EXECUTION_ROLE_ARN"], "--region", "ap-south-1",
             "--capabilities", "CAPABILITY_IAM", "--parameter-overrides", f"CommitSha={commit}",
             f"CaseRuntimeRoleArn={os.environ['AWS_DEV_RUNTIME_ROLE_ARN']}",
+            f"AssessmentsEnabled={enabled}",
             "--no-confirm-changeset", "--no-fail-on-empty-changeset")
     result = json.loads(command("aws", "cloudformation", "describe-stacks", "--stack-name", stack,
                                 "--region", "ap-south-1", "--output", "json", capture=True))
     outputs = {value["OutputKey"]: value["OutputValue"] for value in result["Stacks"][0]["Outputs"]}
     if outputs["CommitSha"] != commit:
         raise ValueError("Deployed commit output mismatch")
+    if outputs.get("AssessmentsEnabled") != enabled:
+        raise ValueError("Deployed assessment setting output mismatch")
     dist = ROOT / "src/web/dist"
     config = dict(mode="aws", api_url=outputs["ApiUrl"], cognito_domain=outputs["CognitoDomain"],
-                  user_pool_client_id=outputs["UserPoolClientId"], redirect_uri=outputs["FrontendUrl"] + "/", commit_sha=commit)
+                  user_pool_client_id=outputs["UserPoolClientId"], redirect_uri=outputs["FrontendUrl"] + "/", commit_sha=commit,
+                  assessments_enabled=outputs["AssessmentsEnabled"] == "true")
     (dist / "config.json").write_text(json.dumps(config), encoding="utf-8")
     command("aws", "s3", "sync", str(dist), "s3://" + outputs["FrontendBucket"], "--region", "ap-south-1",
             "--cache-control", "no-cache", "--only-show-errors")
@@ -118,9 +127,11 @@ def main():
             "--id", invalidation["Invalidation"]["Id"])
     record = dict(commit=commit, url=outputs["FrontendUrl"], api_url=outputs["ApiUrl"], environment="development",
                   recorded_at=datetime.now(timezone.utc).isoformat(), status="deployed_pending_browser",
+                  assessments_enabled=enabled == "true",
                   integration_checks="passed", browser_checks="pending", stack=stack, region="ap-south-1",
                   limitations=["Fictional cases only.", "Private uploads are disabled.",
-                               "Regulatory assessment is not in this slice.", "No production deployment."])
+                               "Assessment AWS acceptance is pending." if enabled == "true" else "Regulatory assessments are disabled.",
+                               "No production deployment."])
     path = ROOT / "runs/releases/development.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, indent=2), encoding="utf-8")
