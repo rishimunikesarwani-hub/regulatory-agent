@@ -1169,3 +1169,23 @@ Optional diagnostic write failures no longer change assessment processing, while
 The frozen benchmark, expected answers, previous prompt versions, and feedback database remain unchanged.
 Source-context support, independent evaluation, the required Bedrock result, current regulatory coverage, and AWS acceptance remain pending.
 The next task is review of the separate local correction.
+
+## 2026-10-11 - Updated local policy demonstration
+
+The local interface completed a fictional-policy assessment with prompt v6 on source commit `167e37e36737b3a4c8c13768e1ae979c5fb571e3`.
+It used three actual OpenAI calls and returned Needs review for missing operational records.
+The interface opened the uploaded policy at its cited source.
+The saved run record shows the model, prompt version, token counts, and successful processing stages.
+The earlier approved v4 assessment remains unchanged.
+
+Langfuse Cloud returned 13 ended observations and three nested model generations for this assessment.
+Prompts, responses, and document text remained absent from the trace.
+JSON and Markdown service exports passed verification.
+Browser download-event capture timed out, so this manual event check remains unverified.
+The complete browser regression suite passed its export checks.
+
+[PR14](https://github.com/rishimunikesarwani-hub/regulatory-agent/pull/14) contains the separate local correction.
+GitHub checks passed for source commit `167e37e36737b3a4c8c13768e1ae979c5fb571e3`.
+The [policy record](runs/2026-10-11-openai-evaluation/live-policy-v6-verification.json) contains verification results and limits.
+The local preview remains open in Chrome.
+AWS authentication remains deferred at the user's request.

@@ -1,0 +1,98 @@
+{
+  "trace_id": "69b5ecc6e77eac6f71d309622183a079",
+  "case_id": "6d4a8cc91d764336927cef7ec90e727b",
+  "job_id": "43789811fea64d85be2327a00ce05ccb",
+  "prompt_version": "assessment-vs5-openai-period-v6",
+  "source_commit": "167e37e36737b3a4c8c13768e1ae979c5fb571e3",
+  "application_working_tree_sha256": {
+    "src\\regulatory_agent\\__init__.py": "b45f9d5c65c71fee24aba4cdfaa9e5866da64f1fe7a2ce2e2dc55bbb1c3e611c",
+    "src\\regulatory_agent\\api.py": "70eec3b99b7c001cde89cd419032c32f4c0d06813be6a306a5e403efffb13a59",
+    "src\\regulatory_agent\\assessment_pipeline.py": "01851d00abb6ed292e8348eb389f4f5e2b00214a73984460b2faeecf68f69555",
+    "src\\regulatory_agent\\assessment_selection.py": "c358e7545a0dde12eb548365190d918cdc31efa6b3bbcc0cd930e23988bf213d",
+    "src\\regulatory_agent\\assessment_worker.py": "a92ceccd77503de31c7e46be1abccb5d24dcb1716cf3f9f8017b2afaa5da7b1e",
+    "src\\regulatory_agent\\assessments.py": "08384dd7b37017d523c151e298035d736dced7cff401d960a757c590233c2ca3",
+    "src\\regulatory_agent\\aws_assessment_api.py": "e237036460818adc093db7a91adc1b93f9aa5f81c8692574ef6b61f3de22f647",
+    "src\\regulatory_agent\\aws_assessments.py": "55e52fb235d8635d2f6e599b8ed14c28c02ac550b2c0bf05cf8a75df4bb4944c",
+    "src\\regulatory_agent\\aws_cases.py": "015b48bfb21db66d1ccb6b6b48c6af6f476dba6084965f69e990f9fe95adafc8",
+    "src\\regulatory_agent\\aws_document_objects.py": "5b7427fad6192ebfa290dd6cf89e038d2537af0049ca08ddeb13a124dda85289",
+    "src\\regulatory_agent\\aws_documents.py": "87e07e38b825546c80539dfe6cc4ad332477e75a3dd83898bea6a1876376fa6c",
+    "src\\regulatory_agent\\aws_execution.py": "3950b7e132bbfb84bed3b502d0305874a249d86f77c392d80db15b29d0c88281",
+    "src\\regulatory_agent\\aws_jobs.py": "dded51a8dcd6b3d392d3acc1c1228f87f96ae6ca6b9c40311420d6be79c9861a",
+    "src\\regulatory_agent\\aws_records.py": "d1cde565f44b0b4bbf1b1ef2b7ef6c07b506c743e1584a958677fd1a6bd0836f",
+    "src\\regulatory_agent\\bedrock_model.py": "fc71578ff9c22ce45c74e851128f4948ec500ad83148fa8fee92b6bf96d0e913",
+    "src\\regulatory_agent\\cases.py": "9050732e92336f6525ca2f6e45bac14f441fdde5180e602c79bda80ba4a02924",
+    "src\\regulatory_agent\\comparison_api.py": "af57a060aceaacdc9b42d397918c2cf26a58deb4901f1a22499649fd9d0f6c98",
+    "src\\regulatory_agent\\comparison_jobs.py": "5d90f1f37e787b3317f2cf995081bc16a1f705a3c4073dcd63d90401204ffc81",
+    "src\\regulatory_agent\\contract_types.py": "4931e74e9e6c618c1b8c38244ca7dc5b6042584735b8efa67201677ae0a55c23",
+    "src\\regulatory_agent\\contracts.py": "ae422d401c95452a219744a2d1903627b3558bdf62ba07a2c63da2404b364463",
+    "src\\regulatory_agent\\document_extractor.py": "e94734c5637583726ce5859bad137f106891514bb5795f4582f8f19fddd39f33",
+    "src\\regulatory_agent\\documents.py": "826f9161c9d3091d341d05004ea0c65c674a4284993a3ac2b1db507d9f15aa99",
+    "src\\regulatory_agent\\evaluation.py": "441a86ff34cdb5e29de10d533c6de57f3eafd86c912773fd503b7a16dd79402b",
+    "src\\regulatory_agent\\evidence_periods.py": "54ee9ba7220d3eb0f5655abd0f40c37caae2b36d9a1012fa8f9be975e70689dd",
+    "src\\regulatory_agent\\langfuse_trace.py": "a559dd483603cc8d0f49e7167f7ac351739947ccd2f2a942e3dcf7665aee9d4e",
+    "src\\regulatory_agent\\local.py": "9c169e3bffdcb0edaa59a4ad5afb09f7f228354feb34541af66f3e8d95482c67",
+    "src\\regulatory_agent\\offline.py": "eb6a79817ef645e9881fc84f5b5c434cd2af38f9bb0fb8bd6cd6ac1cba259c0b",
+    "src\\regulatory_agent\\openai_model.py": "701ca53aba6b0f7ecf644e8290a13f8bb9dd98599936f826c7d6329da75e8e08",
+    "src\\regulatory_agent\\ports.py": "f4797c1bcd8a968005b56876d86634cba4e4cbca37b3a90e7ed1667bf929adf1",
+    "src\\regulatory_agent\\regulatory_changes.py": "a8f58ce81291dd872b95843cd3eac8fa38008ee6dce72de269ef3f5f8081100f",
+    "src\\regulatory_agent\\retrieval.py": "be6c9d6318fc2d0a14949422628269e09e7ae8dce9a5b93eda1f3a31a701517e",
+    "src\\regulatory_agent\\reviews.py": "a781fc4f70e80d829f2f848cbe6ec9362b28b2133cb3d4ae8c3edc6afb6f8a18",
+    "src\\regulatory_agent\\telemetry.py": "1f91d270c6cacd5abdcc29dc2b3fd5285a494d79771d952a0c074840a48c2d31"
+  },
+  "observation_count": 13,
+  "generation_count": 3,
+  "all_observations_ended": true,
+  "content_capture_absent": true,
+  "generation_models": [
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-mini-2025-04-14",
+    "gpt-4.1-mini-2025-04-14"
+  ],
+  "generation_usage": [
+    {
+      "input": 4268,
+      "output": 544,
+      "cache_read_input_tokens": 0,
+      "total": 4812
+    },
+    {
+      "input": 3127,
+      "output": 212,
+      "cache_read_input_tokens": 0,
+      "total": 3339
+    },
+    {
+      "input": 3098,
+      "output": 564,
+      "cache_read_input_tokens": 0,
+      "total": 3662
+    }
+  ],
+  "generation_parent_types": [
+    "AGENT",
+    "SPAN",
+    "SPAN"
+  ],
+  "generations_nested_under_agent": true,
+  "observation_names": [
+    "save-result",
+    "validate-result",
+    "generate-assessment",
+    "select-context",
+    "retrieve-evidence",
+    "extract-controls",
+    "select-context",
+    "extract-evidence",
+    "extract-obligations",
+    "select-context",
+    "extract-evidence",
+    "verify-sources",
+    "assess-regulatory-evidence"
+  ],
+  "langfuse_url": "https://cloud.langfuse.com/project/cmv3uoong0300ad0m5f2emtu2/traces/69b5ecc6e77eac6f71d309622183a079",
+  "limits": [
+    "One fictional development case only.",
+    "No semantic source-context review.",
+    "Not an independent quality-gate pass."
+  ]
+}
