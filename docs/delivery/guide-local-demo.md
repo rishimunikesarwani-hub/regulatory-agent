@@ -58,6 +58,8 @@ Different databases keep manual feedback and test records separate.
 The launcher rejects invalid ports and occupied ports before it starts servers.
 API-only operation uses `--api-only` and does not require frontend dependencies.
 
+Source archives do not require Git for startup. They report `source-archive` instead of a commit identifier.
+
 ## Demonstration
 
 1. Save a fictional bank case.

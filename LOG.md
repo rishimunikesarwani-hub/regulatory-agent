@@ -1240,3 +1240,9 @@ No model call or AWS operation occurred. A fresh dependency installation was not
 The accepted demonstration and the reviewed PR16 head remain unchanged.
 GitHub checks and local review are pending for this correction.
 Independent model quality, current regulatory-source coverage, and AWS acceptance remain pending.
+
+The added LS07 check failed before the source-archive correction.
+All seven startup checks then passed.
+An extracted source archive started its actual API without Git metadata or frontend dependencies.
+Its health response reported source-archive instead of a commit. The archived launcher matched the reviewed working source.
+The archive check reused locked Python dependencies. It did not make a model call.

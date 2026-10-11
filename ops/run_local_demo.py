@@ -62,7 +62,7 @@ def main():
         with socket.socket() as probe:
             try:probe.bind(('127.0.0.1',int(value)))
             except OSError:raise SystemExit('A required local port is already in use. Select different ports.') from None
-    env['COMMIT_SHA']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+    env['COMMIT_SHA']=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip() if (ROOT/'.git').exists() else 'source-archive'
     children=[]
     try:
         children.append(subprocess.Popen([sys.executable,'-m','uvicorn','regulatory_agent.api:app','--app-dir','src',

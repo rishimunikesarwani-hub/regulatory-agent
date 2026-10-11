@@ -1079,7 +1079,7 @@ AWS deployment and independent model-quality acceptance remain pending.
 
 Date: 2026-10-11.
 Status: Authorized by the user's instruction to skip AWS for now and continue development.
-Requirements: REQ-X06, LD09, and LS01 through LS06.
+Requirements: REQ-X06, LD09, and LS01 through LS07.
 
 Defer AWS activity while local development continues.
 Keep the original AWS release and model-quality requirements pending.

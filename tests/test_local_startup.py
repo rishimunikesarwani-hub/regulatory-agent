@@ -24,12 +24,14 @@ class LocalStartupTests(unittest.TestCase):
         vite.parent.mkdir(parents=True)
         vite.write_text('// fixture', encoding='utf-8')
         self.env = {'MODEL_PROVIDER': 'openai', 'OPENAI_API_KEY': 'fixture-private-key'}
+        self.git_missing = False
 
     def run_launcher(self, *arguments):
         output = io.StringIO()
         with patch.object(launcher, 'ROOT', self.root), patch.dict(os.environ, self.env, clear=True), \
                 patch.object(sys, 'argv', ['run_local_demo.py', *arguments]), \
-                patch.object(launcher.subprocess, 'check_output', return_value='fixture-commit'), \
+                patch.object(launcher.subprocess, 'check_output', return_value='fixture-commit',
+                    side_effect=FileNotFoundError('Git is not installed') if self.git_missing else None), \
                 patch.object(launcher.subprocess, 'Popen') as process, contextlib.redirect_stdout(output):
             process.return_value.wait.return_value = 0
             process.return_value.poll.return_value = 0
@@ -110,6 +112,18 @@ class LocalStartupTests(unittest.TestCase):
         self.assertEqual(self.run_launcher('--check'), 0)
         self.assertEqual(self.calls, [])
         self.assertIn('Langfuse keys configured: False', self.output)
+
+    def test_ls07_source_archive_starts_without_git_and_retains_honest_version_identity(self):
+        with socket.socket() as available:
+            available.bind(('127.0.0.1', 0))
+            port = str(available.getsockname()[1])
+        self.git_missing = True
+        self.assertEqual(self.run_launcher('--api-only', '--api-port', port), 0)
+        self.assertEqual(self.calls[0].kwargs['env']['COMMIT_SHA'], 'source-archive')
+        (self.root/'.git').write_text('gitdir: fixture', encoding='utf-8')
+        self.git_missing = False
+        self.assertEqual(self.run_launcher('--api-only', '--api-port', port), 0)
+        self.assertEqual(self.calls[0].kwargs['env']['COMMIT_SHA'], 'fixture-commit')
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
   "observed_at": "2026-10-11T18:06:37.518438+00:00",
   "base_commit": "8816e000ad57d164f9dc26c928a482de8dce81eb",
   "source_state": "uncommitted local-startup correction over approved main",
-  "startup_tests_passed": 6,
+  "startup_tests_passed": 7,
   "provider_regression_tests_passed": 14,
   "red": {
     "failures": 4,
@@ -28,5 +28,21 @@
     "Independent model quality remains unverified.",
     "Current regulatory-source coverage remains unverified.",
     "AWS deployment and acceptance remain pending."
-  ]
+  ],
+  "archive_red": {
+    "errors": 1,
+    "previous_checks_passed": 6
+  },
+  "source_archive": {
+    "git_metadata_present": false,
+    "api_health": {
+      "status": "ok",
+      "commit_sha": "source-archive"
+    },
+    "api_port": 8162,
+    "api_only": true,
+    "launcher_sha256": "e51c88e25ab50676d2a3afcc894430e6a1d5af7b5b35d842e2263b2b3d785297",
+    "launcher_matches_worktree": true,
+    "dependency_installation": "Reused installed locked Python dependencies. No frontend dependency was supplied to the API-only archive."
+  }
 }

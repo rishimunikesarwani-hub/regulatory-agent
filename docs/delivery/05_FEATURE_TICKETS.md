@@ -439,10 +439,11 @@ Offline checks and a separate live readback must establish the stated behavior.
 
 ## Local startup correction
 
-Ticket LS-T01 implements LS01 through LS06 in the [local startup contract](spec-local-startup.md).
+Ticket LS-T01 implements LS01 through LS07 in the [local startup contract](spec-local-startup.md).
 It supplies an empty configuration template and portable setup instructions.
 It checks missing keys, dependencies, occupied ports, and private database locations before startup.
 AWS credentials and Langfuse keys remain unnecessary for local model operation.
+Source archives start without Git and use a different runtime version label.
 Software checks and real local startup verification have separate evidence records.
 
 ## Historical planning dates

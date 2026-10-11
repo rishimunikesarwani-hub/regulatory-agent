@@ -1,7 +1,7 @@
 # Portable local startup
 
 Date: 2026-10-11. Decision: D67.
-Requirements: REQ-X06, LD09, and LS01 through LS06.
+Requirements: REQ-X06, LD09, and LS01 through LS07.
 
 The user deferred AWS and authorized continued local development.
 This correction lets a developer start the accepted local application after downloading its source.
@@ -25,6 +25,7 @@ Keep the existing demonstration on ports `5185` and `8150` unchanged.
 | LS04 | Invalid ports, equal ports, and database paths outside `runs/private/` stop startup. |
 | LS05 | Missing frontend dependencies give setup instructions before child processes start. API-only operation does not require frontend dependencies. |
 | LS06 | The repository supplies an empty key template and setup instructions without machine-specific paths. Langfuse remains optional. |
+| LS07 | A source archive starts without Git metadata or a Git executable. Its runtime version is `source-archive`, not a commit claim. |
 
 Configuration checks do not dispatch a model request or establish API credit.
 The default ports and database remain compatible with the accepted demonstration.
@@ -41,3 +42,4 @@ Keep software checks separate from live model-quality evaluations.
 **Child process:** A program that the launcher starts.
 **Port:** A numbered network endpoint used by a local server.
 **Configuration template:** A file with setting names and no credentials.
+**Source archive:** A downloaded copy of repository files without Git metadata.

@@ -32,6 +32,7 @@ The template contains no credentials. Git excludes the private file and local da
 
 Open [the local application](http://127.0.0.1:5185/).
 Configuration checks do not verify API credit or dispatch model requests.
+GitHub ZIP downloads do not require Git for startup. Their runtime version is `source-archive`.
 Use fictional bank documents only in this local OpenAI mode.
 
 The [local guide](docs/delivery/guide-local-demo.md) gives optional tracing settings and separate port and database settings.
