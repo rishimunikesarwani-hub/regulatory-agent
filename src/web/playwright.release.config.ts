@@ -6,7 +6,7 @@ process.env.BROWSER_EVIDENCE_DIR = '../../runs/2026-10-11-slice-05-release';
 const python = process.platform === 'win32' ? '"../../.venv/Scripts/python.exe"' : 'python';
 
 export default defineConfig({
-  testDir: './tests', testMatch: ['cases.spec.ts', 'documents.spec.ts', 'aws-documents.spec.ts', 'assessment.spec.ts', 'changes.spec.ts', 'release.spec.ts'],
+  testDir: './tests', testMatch: ['cases.spec.ts', 'documents.spec.ts', 'aws-documents.spec.ts', 'assessment.spec.ts', 'changes.spec.ts', 'release.spec.ts', 'selection.spec.ts'],
   workers: 1, retries: 0, reporter: 'list',
   outputDir: '../../runs/2026-10-11-slice-05-release/browser-artifacts',
   use: { baseURL: 'http://127.0.0.1:5185', browserName: 'chromium', screenshot: 'only-on-failure' },

@@ -1,0 +1,164 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts selection.spec.ts
+[WebServer] (node:9384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [31800]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 6 tests using 1 worker
+
+(node:9884) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\selection.spec.ts:56:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission (2.0s)
+(node:34900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\selection.spec.ts:77:1 › VS5-SB02 queued selected run shows scope and recorded counters without a finding (1.6s)
+(node:8280) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\selection.spec.ts:89:1 › VS5-SB03 each selected finding uses its own citations and review revision (1.5s)
+(node:38452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 tests\selection.spec.ts:120:1 › VS5-SB04 uncertain selected admission keeps scope and retry identity (1.6s)
+(node:40744) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  5 tests\selection.spec.ts:135:1 › VS5-SB05 mobile keyboard selection keeps historical verification limits visible (1.5s)
+(node:32396) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 tests\selection.spec.ts:146:1 › VS5-SB06 partial live result retains findings and exact unchecked scope (1.7s)
+
+
+  1) tests\selection.spec.ts:56:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:57:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB01-real-ca-76f41-ce-exact-selected-admission\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB01-real-ca-76f41-ce-exact-selected-admission\error-context.md
+
+  2) tests\selection.spec.ts:77:1 › VS5-SB02 queued selected run shows scope and recorded counters without a finding
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:78:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB02-queued--55858--counters-without-a-finding\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB02-queued--55858--counters-without-a-finding\error-context.md
+
+  3) tests\selection.spec.ts:89:1 › VS5-SB03 each selected finding uses its own citations and review revision
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:90:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB03-each-se-ffc32-tations-and-review-revision\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB03-each-se-ffc32-tations-and-review-revision\error-context.md
+
+  4) tests\selection.spec.ts:120:1 › VS5-SB04 uncertain selected admission keeps scope and retry identity
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:121:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB04-uncerta-9a7c9-ps-scope-and-retry-identity\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB04-uncerta-9a7c9-ps-scope-and-retry-identity\error-context.md
+
+  5) tests\selection.spec.ts:135:1 › VS5-SB05 mobile keyboard selection keeps historical verification limits visible
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:137:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB05-mobile--ee4bd-verification-limits-visible\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB05-mobile--ee4bd-verification-limits-visible\error-context.md
+
+  6) tests\selection.spec.ts:146:1 › VS5-SB06 partial live result retains findings and exact unchecked scope
+
+    TypeError: Cannot read properties of undefined (reading 'passages')
+
+      25 |     applicability:'Applicability needs review.', conditions:['Selected condition.'], exceptions:['Selected exception.'],
+      26 |     citations:[citation(regulatory, regulatory.passages.find((p:any) => p.passage_id === c.scope_passage_ids.at(-1)))]}));
+    > 27 |   const bankCitation = citation(bank, bank.passages[0]);
+         |                                            ^
+      28 |   const findings = requirements.map((o:any, i:number) => ({finding_id:`selection-finding-${i}`, obligation_id:o.obligation_id,
+      29 |     control_ids:['selected-control'], status:'needs_review', evidence_condition:'missing', gap_kind:'evidence',
+      30 |     rationale:`Original selected finding ${i}.`, primary_recommendation:`Request dated records for finding ${i}.`,
+        at setup (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:27:44)
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\selection.spec.ts:147:13
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB06-partial-bb0ba-s-and-exact-unchecked-scope\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-artifacts\selection-VS5-SB06-partial-bb0ba-s-and-exact-unchecked-scope\error-context.md
+
+  6 failed
+    tests\selection.spec.ts:56:1 › VS5-SB01 real catalog and arbitrary upload produce exact selected admission
+    tests\selection.spec.ts:77:1 › VS5-SB02 queued selected run shows scope and recorded counters without a finding
+    tests\selection.spec.ts:89:1 › VS5-SB03 each selected finding uses its own citations and review revision
+    tests\selection.spec.ts:120:1 › VS5-SB04 uncertain selected admission keeps scope and retry identity
+    tests\selection.spec.ts:135:1 › VS5-SB05 mobile keyboard selection keeps historical verification limits visible
+    tests\selection.spec.ts:146:1 › VS5-SB06 partial live result retains findings and exact unchecked scope

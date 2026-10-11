@@ -886,3 +886,27 @@ Repeated refinements exhausted the shared allowance at 24 calls.
 That partial run retained 11 findings and nine unchecked obligations.
 The GitHub checkpoint at `7f2a75c` passed 261 backend checks, 42 browser checks, and the frontend build.
 Its deployment job was skipped.
+
+
+## 2026-10-11 - Selected historical interface
+
+The selection specification commit preceded a corrected missing-control browser failure.
+The first browser attempt exposed a test timing error before implementation.
+The corrected setup waits for the uploaded version before reading its catalog.
+
+The interface now selects owned bank versions, saved historical clauses, and a date.
+It keeps the earlier controlled example accessible through a different action.
+Each finding uses its own review revision and source references.
+Queued and partial results retain recorded calls, available usage, and unchecked scope.
+Unknown values remain unknown.
+
+All 48 browser checks passed with the implemented interface.
+Seven focused checks also passed after adding the replacement-version check.
+Type checks and the frontend build passed.
+The mobile selection controls passed visual inspection and the page-width check.
+
+The new browser model responses are controlled fixtures, not evidence of live inference.
+No external provider was integrated. No live inference or deployment occurred.
+D48 records this clarification within D42's approved VS5 scope.
+
+Next: verify the combined commit and continue grounded periods, source integration, live quality gates, and AWS acceptance.

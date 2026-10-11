@@ -56,6 +56,7 @@ Keep the aggregate review measures for the complete assessment.
 | VS5-SB04 | An uncertain admission preserves scope and reuses its request key after refresh. |
 | VS5-SB05 | Mobile keyboard selection has no page overflow. Current verification limits stay visible. |
 | VS5-SB06 | A failed live run keeps partial findings and the exact unchecked scope. |
+| VS5-SB07 | Selecting a replacement keeps one version per source and sends its exact version. |
 
 Use controlled browser responses for native processing in default checks.
 Do not dispatch an external model from browser checks.

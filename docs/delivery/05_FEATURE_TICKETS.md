@@ -200,7 +200,8 @@ The fixed historical example keeps conditions, citations, missing evidence, and 
 The full acceptance inventory below remains pending outside that example.
 
 VS5 adds controlled [selected-scope processing](spec-slice-05-pipeline.md) and [local worker supervision](spec-slice-05-worker.md).
-Admission, source-selection integration, live behavior, and held-out quality gates remain pending.
+The [admission API](spec-slice-05-admission.md) and [selection interface](spec-slice-05-selection-ui.md) now connect owned fictional uploads to saved historical scope.
+Grounded evidence periods, current-source verification, live behavior, and held-out quality gates remain pending.
 
 **Dependencies:** VS3 uses the selected T3 document and source behavior, with its T2 contracts.
 
@@ -283,7 +284,7 @@ Acceptance:
 
 ## T7 — Review interface
 
-**Status:** Not started.
+**Status:** Local flows are implemented. VS5 review, live quality, and cloud acceptance remain pending.
 
 **Dependencies:** Each slice starts frontend and backend work after agreement on its shared T2 API contract.
 

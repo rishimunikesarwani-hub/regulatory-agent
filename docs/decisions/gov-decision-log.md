@@ -742,6 +742,26 @@ The selection interface, evidence-period integration, current verification, and 
 VS5 remains a draft under D35.
 
 
+## D48 - Selected historical interface
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-F03–REQ-F08 and REQ-X03–REQ-X06.
+
+The [interface contract](../delivery/spec-slice-05-selection-ui.md) connects the D47 catalog and admission API to local selection controls.
+The reviewer selects bank versions, historical clauses, and a date.
+The existing controlled example remains accessible through a different action.
+The interface identifies fictional inputs with live model processing and keeps current assessments unavailable.
+
+Each selected finding uses its own review revision and source references.
+Queued and partial runs keep their recorded state, call count, and unchecked scope visible.
+Available token counts remain numeric. Unknown costs and evidence periods remain unknown.
+
+Default browser checks use controlled native-processing responses and make no external model call.
+They do not establish live access, complete regulatory coverage, or assessment quality.
+Provider selection under D20, grounded evidence periods, live quality gates, and AWS acceptance remain pending.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

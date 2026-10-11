@@ -50,8 +50,15 @@ The [local supervisor](spec-slice-05-worker.md) now runs the pipeline in a separ
 It stops hung workers and preserves the saved deadline, counters, audit records, and partial results.
 The [selected-admission API](spec-slice-05-admission.md) now binds owned uploads and saved historical clauses to exact document artifacts.
 It keeps current verification and complete regulatory coverage unverified.
-The selection interface, external source integration, and the AWS worker adapter remain unfinished.
-The existing feedback interface still uses the controlled historical example.
+
+The [selection interface](spec-slice-05-selection-ui.md) now connects these records to the local reviewer flow.
+Each selected finding keeps its own review revision and source inspection.
+The interface distinguishes controlled processing from fictional inputs with live processing.
+It shows queued and partial results, unchecked scope, recorded calls, and available token counts.
+Unknown costs, owners, frequencies, and evidence periods remain unknown.
+
+External source integration and the AWS worker adapter remain unfinished.
+The feedback process must use the current application commit.
 Renew the expired AWS authentication before live model checks.
 The locked SDK includes its `crt` extra for the existing `aws login` profile.
 Client construction passes. Live profile verification still returns `LoginRefreshRequired`.
