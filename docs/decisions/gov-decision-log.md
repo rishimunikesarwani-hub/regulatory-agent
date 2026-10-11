@@ -637,6 +637,25 @@ Keep the approved complete scope and live evaluation conditions.
 This approval does not establish live model quality, current regulatory coverage, or deployed AWS acceptance.
 No Support case ID or account verification completion has been confirmed.
 
+## D43 — VS5 export and release work
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+VS4 merged through PR12 at `4ffdd0713961a64da7d20ad91232c761f1dc07cd` after run `38107994304` passed.
+The [VS5 contract](../delivery/spec-slice-05-release.md) keeps all remaining first-release conditions.
+Local export work reuses immutable snapshots, case ownership, source inspection, saved review events, and safe traces.
+Reports use one saved review cutoff and explicit single-assessment filters.
+Current job state and historical review outcomes have different time bases.
+Exports do not create jobs, dispatch model calls, or change reviews.
+Keep older trace application and prompt versions unchanged.
+
+The user authorized research of RBI-source API options.
+The [research record](../references/ref-regulatory-api-options.md) gives the options and one public transport probe.
+Provider selection and current-source verification remain pending under D20.
+No complete-source, live model, evaluation, or AWS acceptance claim changes.
+VS5 user acceptance remains pending under D35.
+
 ## How to add a decision
 
 Add a new entry with:

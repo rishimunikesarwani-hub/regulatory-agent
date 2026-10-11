@@ -1,0 +1,105 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.release.config.ts release.spec.ts --output
+../../runs/2026-10-11-slice-05-release/browser-red-artifacts
+[WebServer] (node:23036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [22396]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8151 (Press CTRL+C to quit)
+
+Running 3 tests using 1 worker
+
+(node:26584) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\release.spec.ts:25:1 › VS5-BT01 JSON and Markdown downloads preserve saved review and exact sources (30.1s)
+(node:38332) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 tests\release.spec.ts:53:1 › VS5-BT02 export failure preserves saved review and retry succeeds (30.1s)
+(node:38560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 tests\release.spec.ts:68:1 › VS5-BT03 mobile keyboard download keeps labels and does not overflow (30.1s)
+
+
+  1) tests\release.spec.ts:25:1 › VS5-BT01 JSON and Markdown downloads preserve saved review and exact sources
+
+    Test timeout of 30000ms exceeded.
+
+    Error: page.waitForEvent: Test timeout of 30000ms exceeded.
+    =========================== logs ===========================
+    waiting for event "download"
+    ============================================================
+
+      29 |   await expect(result).toContainText('Approved · Revision 1');
+      30 |   const expected = await result.locator('.identifier').first().innerText();
+    > 31 |   const [json] = await Promise.all([page.waitForEvent('download'),page.getByRole('button',{name:'Download JSON',exact:true}).click()]);
+         |                                          ^
+      32 |   const report = JSON.parse(await text(json));
+      33 |   expect(report.summary.approved).toBe(1);
+      34 |   expect(report.summary.approval_rate).toBe(1);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\release.spec.ts:31:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT01-JSON-and--78a3d-ed-review-and-exact-sources\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT01-JSON-and--78a3d-ed-review-and-exact-sources\error-context.md
+
+  2) tests\release.spec.ts:53:1 › VS5-BT02 export failure preserves saved review and retry succeeds
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Download JSON', exact: true })
+
+
+      58 |   const job = new URL(page.url()).searchParams.get('assessment');
+      59 |   await page.route('**/assessments/*/export*',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({message:'Export unavailable.',next_action:'Retry the export.'})}),{times:1});
+    > 60 |   await page.getByRole('button',{name:'Download JSON',exact:true}).click();
+         |                                                                    ^
+      61 |   await expect(page.getByRole('alert')).toContainText('Export unavailable');
+      62 |   await expect(result).toContainText('Approved · Revision 1');
+      63 |   expect(new URL(page.url()).searchParams.get('assessment')).toBe(job);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\release.spec.ts:60:68
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT02-export-fa-184ac-d-review-and-retry-succeeds\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT02-export-fa-184ac-d-review-and-retry-succeeds\error-context.md
+
+  3) tests\release.spec.ts:68:1 › VS5-BT03 mobile keyboard download keeps labels and does not overflow
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.focus: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Download JSON', exact: true })
+
+
+      70 |   const result = await assessment(page);
+      71 |   const download = page.getByRole('button',{name:'Download JSON',exact:true});
+    > 72 |   await download.focus();
+         |                  ^
+      73 |   const [file] = await Promise.all([page.waitForEvent('download'),page.keyboard.press('Enter')]);
+      74 |   expect(JSON.parse(await text(file)).label).toContain('Simulated');
+      75 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\web\tests\release.spec.ts:72:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT03-mobile-ke-e01a7-abels-and-does-not-overflow\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-11-slice-05-release\browser-red-artifacts\release-VS5-BT03-mobile-ke-e01a7-abels-and-does-not-overflow\error-context.md
+
+  3 failed
+    tests\release.spec.ts:25:1 › VS5-BT01 JSON and Markdown downloads preserve saved review and exact sources
+    tests\release.spec.ts:53:1 › VS5-BT02 export failure preserves saved review and retry succeeds ─
+    tests\release.spec.ts:68:1 › VS5-BT03 mobile keyboard download keeps labels and does not overflow

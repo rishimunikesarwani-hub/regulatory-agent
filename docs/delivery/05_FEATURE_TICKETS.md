@@ -31,6 +31,9 @@ The [VS4 contract](spec-slice-04-changes.md) controls simulated versions and ind
 VS4 local checks passed 228 backend checks, 38 browser checks, and the frontend build after the consistent-read correction.
 The user approved VS4 locally and authorized its merge and VS5 local development on 2026-10-11.
 AWS acceptance is pending.
+VS4 merged through PR12 after GitHub run `38107994304` passed for its final commit.
+VS5 local development uses the [release contract](spec-slice-05-release.md).
+Exports are in progress. Full source, model, evaluation, and AWS acceptance remain incomplete.
 The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
 The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
@@ -333,7 +336,7 @@ Available credits are not evidence of model access. They do not permit unlimited
 
 ## T9 — Quality and submission evidence
 
-**Status:** Not started.
+**Status:** In progress in VS5. Local exports and release evidence are under development. Live quality and submission acceptance remain pending.
 
 **Dependencies:** Each slice supplies development release evidence. VS5 needs applicable T8 cloud checks and the completed T1 held-out set.
 

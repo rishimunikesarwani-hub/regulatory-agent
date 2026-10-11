@@ -11,7 +11,7 @@ from starlette.exceptions import HTTPException
 
 from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, authentication_error,
                     error_body, invalid_request, not_found, unavailable)
-from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest
+from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest, ExportRequest
 from .documents import Documents, rejected
 from .assessments import Assessments
 
@@ -156,6 +156,14 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
     @app.get('/api/cases/{case_id}/assessments/{job_id}')
     def read_assessment(case_id: str, job_id: str, cutoff: str | None = None, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).read(identity, case_id, job_id, cutoff)
+
+    @app.post('/api/cases/{case_id}/assessments/{job_id}/export')
+    def export_assessment(case_id: str, job_id: str, body: ExportRequest, cutoff: str | None = None,
+                          identity=Depends(assessment_owner)):
+        data = assessment_service(identity, case_id).export(identity, case_id, job_id, body.format, cutoff)
+        extension = 'json' if body.format == 'json' else 'md'
+        return Response(data, media_type='application/json' if body.format == 'json' else 'text/markdown; charset=utf-8',
+                        headers={'Content-Disposition': f'attachment; filename="assessment-{job_id}.{extension}"'})
 
     @app.post('/api/cases/{case_id}/assessments/{job_id}/resume', status_code=202)
     def resume_assessment(case_id: str, job_id: str, background: BackgroundTasks, identity=Depends(assessment_owner)):

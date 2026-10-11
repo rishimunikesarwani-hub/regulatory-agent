@@ -764,3 +764,19 @@ The final trace correction passed all 228 backend checks.
 GitHub must check the final commit before merge.
 AWS verification, live providers, model quality, and complete project acceptance remain pending.
 Next: merge the checked VS4 commit and start the separate VS5 worktree.
+
+## 2026-10-11 ? VS4 merged and VS5 started
+
+PR12 merged the approved VS4 commit after GitHub passed 228 backend checks, 38 browser checks, and the build.
+The integration commit is `4ffdd0713961a64da7d20ad91232c761f1dc07cd`.
+VS5 uses its separate worktree, branch, ports, and databases.
+Its release contract was committed before the failing export tests.
+Local JSON and Markdown exports preserve source versions, review cutoffs, safe traces, and incomplete scope.
+A captured-event correction prevents separate review reads from changing report counts.
+A delayed-download check reproduced cancellation during a refresh of the same assessment.
+The correction keeps downloads connected to their selected job.
+New traces use `vs5-v1`. Older saved traces remain unchanged.
+The user authorized RBI-source API research. One public-only Jina transport probe succeeded.
+Provider selection, complete source verification, live model quality, and AWS acceptance remain pending.
+No Support case ID has been confirmed. No deployment occurred.
+Next: finish local export checks and continue the remaining VS5 release conditions.

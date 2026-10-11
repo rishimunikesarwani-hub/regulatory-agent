@@ -32,6 +32,7 @@ Include the immutable snapshot, selected versions, assessment date, findings, ci
 Include original recommendation IDs, saved reviewer content, applicable review events, counts, denominators, and the metric definition.
 Include authority URLs, verification time, freshness, job state, stop reason, unchecked obligations, and limitations.
 Include safe trace versions, recorded attempts, durations, usage, and missing cost labels.
+Use `vs5-v1` for new processing traces. Preserve older saved application and prompt versions.
 Keep controlled processing and synthetic data labels visible.
 Keep private evidence only in the authorized downloaded report.
 Do not include worker tokens, execution claims, raw prompts, hidden reasoning, or credentials.
@@ -63,6 +64,7 @@ Repeated exports at one cutoff must produce identical bytes.
 | VS5-BT01 | Download both formats after review. Match saved review counts and exact versions. |
 | VS5-BT02 | Export failure keeps the selected assessment and saved review. A retry can succeed. |
 | VS5-BT03 | Mobile and keyboard operation have no horizontal overflow. Downloads keep synthetic labels. |
+| VS5-BT04 | A refresh of the same assessment cannot discard an export or prevent later downloads. |
 
 Record failing behavior checks before implementation.
 Then run all backend checks, the frontend build, and all slice browser checks.

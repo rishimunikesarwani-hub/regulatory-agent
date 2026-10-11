@@ -1,12 +1,14 @@
 """One controlled historical example using the existing durable job and review services."""
 from datetime import datetime, timezone
 import hashlib
+import html
 import json
 from pathlib import Path
+import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import Citation, ContractError, Control, Finding, Obligation, ReviewItem, Snapshot, StartAssessment
+from .contracts import Citation, ContractError, Control, Finding, Obligation, ReviewDecision, ReviewItem, Snapshot, StartAssessment
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -241,7 +243,7 @@ class Assessments:
         event = StageAttempt(event_id=uuid.uuid4().hex, run_id=run['run_id'], job_id=run['job_id'], snapshot_id=run['snapshot_id'],
             stage_id=stage, attempt_id=uuid.uuid4().hex, stage=stage, operation=operation, state=state,
             dispatched=state not in {'skipped', 'not_applicable'}, **timer.finish(),
-            versions=VersionMetadata(application='vs4-v1', schema='t2-v1', extraction='vs2-v1', chunking='source-locations-v1',
+            versions=VersionMetadata(application='vs5-v1', schema='t2-v1', extraction='vs2-v1', chunking='source-locations-v1',
                 retrieval='fixed-example-v1', prompt=run['prompt_version'], model_configuration='controlled-response-v1'),
             model_id=MODEL if operation == 'model' else None, artifact_ids=tuple(artifacts), original_processing_event_id=original,
             candidate_passage_ids=tuple(candidates), selected_passage_ids=tuple(selected), errors=(error,) if error else ())
@@ -336,19 +338,66 @@ class Assessments:
             events = [event.model_dump() for item in items for event in self.reviews._history(db, case, item.finding_id)]
             trace = [event for event in self.reviews._records(db, case, 'stage_attempt') if event['run_id'] == run['run_id']]
         eligible = [item for item in items if instant(item.available_at) <= limit]
+        events = [event for event in events if instant(event['committed_at']) <= limit]
+        trace = [event for event in trace if instant(event['finished_at'] or event['started_at']) <= limit]
         finals = []
         for item in eligible:
-            history = [event for event in self.reviews.history(owner, case, item.finding_id)
-                       if event.event_kind == 'final_review' and instant(event.committed_at) <= limit]
-            finals.append(history[-1] if history else None)
+            history = [event for event in events if event['finding_id'] == item.finding_id and event['event_kind'] == 'final_review']
+            latest = max(history, key=lambda event: event['revision'], default=None)
+            finals.append(ReviewDecision.model_validate(latest) if latest else None)
         obligation, control, _ = self._example(owner, case, job_id, snapshot)
         return {'data_mode': 'controlled_simulation', 'freshness': 'unverified', 'live_model_calls': 0, 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,
-            'obligation': obligation.model_dump(), 'control': control.model_dump(), 'findings': [item.model_dump() for item in items],
+            'obligation': obligation.model_dump(), 'control': control.model_dump(), 'findings': [item.model_dump() for item in eligible],
             'reviews': sorted(events, key=lambda e: e['revision']),
             'summary': {'metric_definition_version': 'd24-v1', 'cutoff': limit.isoformat(), 'data_mode': 'controlled_simulation',
                         'run_id': run['run_id'], **counts(eligible, finals)},
             'trace': {'run_id': run['run_id'], 'attempts': trace}}
+
+    def export(self, owner, case, job_id, format, cutoff=None):
+        if cutoff:
+            try:
+                stamp = instant(cutoff)
+                if stamp.utcoffset() is None or stamp > datetime.now(timezone.utc):
+                    raise ValueError()
+            except ValueError:
+                raise invalid('invalid_cutoff') from None
+        result = self.read(owner, case, job_id, cutoff)
+        snapshot = result['snapshot']
+        sources = self._sources(owner, case, snapshot)
+        for finding in result['findings']:
+            for citation in finding['citations']:
+                if not any(source['document']['document_version_id'] == citation['document_version_id']
+                        and passage['passage_id'] == citation['passage_id'] and passage['location'] == citation['location']
+                        and citation['quote'] in passage['text'] for source in sources for passage in source['passages']):
+                    raise CaseError(422, 'export_citation_invalid', 'A saved citation could not be verified.',
+                                    'Review the saved sources before exporting this assessment.')
+        presented = {finding['obligation_id'] for finding in result['findings']}
+        unchecked = [obligation for obligation in snapshot['selected_obligations'] if obligation not in presented]
+        state = result['job']['state']
+        export_state = 'failed' if state == 'failed' else 'completed' if state == 'completed' and not unchecked else 'partial'
+        label = {'completed':'Assessment export', 'partial':'Partial export', 'failed':'Failed assessment export'}[export_state]
+        report = result | {'job': {key:value for key,value in result['job'].items() if key != 'lease_until'},
+            'state': export_state, 'label': f'{label} · Simulated processing · Fictional bank data',
+            'sources': sources, 'source_urls': sorted({s.get('source_url') for s in sources if s.get('source_url')}),
+            'authority_verified_at': result['job']['authority_verified_at'], 'unchecked_obligations': unchecked,
+            'cost_status': 'unknown', 'report_cutoff': result['summary']['cutoff'],
+            'cohort': {'kind':'single_assessment', 'case_id':case, 'run_id':result['summary']['run_id'],
+                'snapshot_id':snapshot['snapshot_id'], 'model_id':snapshot['model_version'],
+                'prompt_version':snapshot['prompt_version'], 'data_mode':result['data_mode'],
+                'recommendation_availability': {'through':result['summary']['cutoff'], 'end_inclusive':True},
+                'runtime_selection': {'job_id':job_id, 'job_admitted_at':datetime.fromtimestamp(result['job']['created_at'], timezone.utc).isoformat(),
+                    'job_state_time_basis':'observed_current_state'}},
+            'limitations': ['Controlled example only. No live model call occurred.',
+                'Current regulatory status is unverified. This report does not certify bank compliance.',
+                'A policy alone does not prove operational execution.', 'Human approval measures review decisions, not assessment accuracy.',
+                'Token usage and inference or total system cost are unknown.',
+                'The observed job state is current. The report cutoff controls saved findings, reviews, and trace events.']}
+        if unchecked or export_state != 'completed':
+            report['limitations'].append('The assessment is incomplete or failed. Examine unchecked scope and the saved stop reason.')
+        if format == 'json':
+            return (json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2, allow_nan=False)+'\n').encode('utf-8')
+        return markdown_export(report).encode('utf-8')
 
     def review(self, owner, case, job_id, finding_id, request):
         run, _ = self._run(owner, case, job_id)
@@ -363,3 +412,25 @@ class Assessments:
                 'The review was not saved. Its content or revision needs review.', 'Keep your draft. Refresh the saved review before another attempt.') from None
         self._trace(owner, case, run, 'review_event', timer, operation='storage', artifacts=(event.event_id,))
         return event
+
+
+def markdown_export(report):
+    """Untrusted source and reviewer text is quoted and escaped, never executable markup."""
+    def quoted(value):
+        text = json.dumps(value, ensure_ascii=False, indent=2) if not isinstance(value, str) else value
+        safe = re.sub(r'([\\`*_{}\[\]#+!|>~])', r'\\\1', html.escape(text, quote=False))
+        return '\n'.join('> '+line for line in safe.splitlines())+'\n'
+
+    sections = [('Export status', report['label']), ('Snapshot and selected versions', report['snapshot']),
+        ('Cohort filters and time bases', report['cohort']),
+        ('Observed job state', report['job']), ('Report cutoff', report['report_cutoff']),
+        ('Freshness and authority verification', {'freshness':report['freshness'], 'authority_verified_at':report['authority_verified_at']}),
+        ('Obligation', report['obligation']), ('Mapped control', report['control']),
+        ('Original findings and recommendation IDs', report['findings']), ('Saved review events', report['reviews'])]
+    text = '# The Regulator assessment report\n\n'+''.join(f'## {title}\n\n{quoted(value)}\n' for title,value in sections)
+    text += '## Review summary\n\n'+''.join(f'{key}: {"Not measured" if value is None else value}\n\n' for key,value in report['summary'].items())
+    text += '## Recorded runtime\n\ncost: Unknown\n\n'+quoted(report['trace'])+'\n'
+    text += '## Unchecked obligations\n\n'+quoted(report['unchecked_obligations'])+'\n'
+    for source in report['sources']:
+        text += '## Source Version\n\n'+quoted(source)+'\n'
+    return text+'## Limitations\n\n'+quoted('\n'.join(report['limitations']))

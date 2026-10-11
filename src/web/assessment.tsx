@@ -40,6 +40,34 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
   const editedFinding = useRef('');
   const root = `${config.api_url}/api/cases/${encodeURIComponent(caseId)}`;
 
+  const [exporting, setExporting] = useState(false);
+  const requestedJob = useRef('');
+  async function download(format: 'json' | 'markdown'): Promise<void> {
+    if (!result) return;
+    const selected = result;
+    requestedJob.current = selected.job.job_id;
+    setExporting(true); setError('');
+    try {
+      const response = await fetch(`${root}/assessments/${encodeURIComponent(selected.job.job_id)}/export?cutoff=${encodeURIComponent(selected.summary.cutoff)}`, {
+        method: 'POST', credentials: 'omit', cache: 'no-store', headers: {...authHeaders(config), 'Content-Type': 'application/json'},
+        body: JSON.stringify({format}), signal: AbortSignal.timeout(20_000),
+      });
+      if (response.status === 401) throw new Error('expired');
+      if (!response.ok) {
+        const failure = await response.json();
+        throw new AssessmentError(response.status, `${failure.message || 'Export unavailable.'} ${failure.next_action || 'Retry the export.'}`);
+      }
+      const file = await response.blob();
+      if (!active.current || requestedJob.current !== selected.job.job_id) return;
+      const url = URL.createObjectURL(file);
+      const link = document.createElement('a');
+      link.href = url; link.download = `assessment-${selected.job.job_id}.${format === 'json' ? 'json' : 'md'}`;
+      document.body.appendChild(link); link.click(); link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch (cause) { if (requestedJob.current === selected.job.job_id) failed(cause); }
+    finally { if (active.current) setExporting(false); }
+  }
+
   async function request(path: string, body?: object): Promise<any> {
     const response = await fetch(root + path, { method: body ? 'POST' : 'GET', credentials: 'omit', cache: 'no-store',
       headers: { ...authHeaders(config), ...(body ? { 'Content-Type': 'application/json' } : {}) },
@@ -63,6 +91,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
     setComparison(current => current || savedComparisons.comparisons.at(-1) || null);
   }
   async function open(job: string): Promise<boolean> {
+    requestedJob.current = job;
     const current = ++generation.current;
     setError(''); setBusy(true);
     try {
@@ -207,8 +236,15 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
           <label htmlFor="review-reason">Review reason</label><textarea id="review-reason" maxLength={4000} required={outcome !== 'approved'} value={reason} onChange={e => setReason(e.target.value)} />
           <button type="submit" disabled={uncertain}>Save review</button></fieldset></form></article>}</div>
       <section className="panel review-summary"><h3>Saved review outcomes</h3><p>Approved: {result.summary.approved} · Edited: {result.summary.edited} · Rejected: {result.summary.rejected} · Pending: {result.summary.pending}</p><p>Eligible: {result.summary.eligible} · Reviewed: {result.summary.reviewed}</p><p>Approval without edits: {percent(result.summary.approval_rate)}</p><p>Edit rate: {percent(result.summary.edit_rate)} · Rejection rate: {percent(result.summary.rejection_rate)}</p><p>Adoption with or without edits: {percent(result.summary.adoption_rate)}</p><p>Review coverage: {percent(result.summary.review_coverage)}</p>
-        <p className="field-hint">These figures measure human review decisions. They do not measure correctness. Latest final decisions count at the shown cutoff.</p><p className="field-hint">Cutoff: {result.summary.cutoff} · Definition: d24-v1</p>
+        <p className="field-hint">These figures measure human review decisions for this assessment only. They do not measure correctness. Latest final decisions count at the shown cutoff.</p><p className="field-hint">Cutoff: {result.summary.cutoff} · Definition: d24-v1</p>
         {result.reviews.map(r => <article className="review-event" key={r.event_id}><h4>{titles[r.disposition || r.event_kind]} · Revision {r.revision}</h4>{r.accepted_content && <><p>{r.accepted_content.rationale}</p><p>{r.accepted_content.recommendation}</p></>}{r.reason && <p>Reason: {r.reason}</p>}</article>)}</section>
+      <section className="panel" aria-label="Export assessment"><h3>Export assessment</h3>
+        <p>Download the saved versions, source passages, findings, and human reviews at the displayed cutoff.</p>
+        <p className="field-hint">{result.job.state === 'completed' ? 'Controlled simulation. Current regulatory status is unverified.' : 'Partial or failed assessment. The report keeps its job state and unchecked scope.'} Usage and cost remain unknown.</p>
+        <div className="source-heading"><button className="secondary" disabled={busy || exporting} onClick={() => void download('json')}>Download JSON</button>
+          <button className="secondary" disabled={busy || exporting} onClick={() => void download('markdown')}>Download Markdown</button></div>
+        {exporting && <p role="status">Preparing export…</p>}
+      </section>
       <details className="panel run-record"><summary>Saved run record</summary><p className="field-hint">Assessment date: {result.snapshot.assessment_date} · Controlled dispatches: {result.job.model_calls} · Live model calls: 0 · Usage and cost: not measured</p><p className="identifier">Job: {result.job.job_id}</p>
         <ul>{result.trace.attempts.map(t => <li key={t.event_id}>{t.stage.replaceAll('_', ' ')}: {t.state} · {t.duration_seconds === null ? 'Duration unknown' : `${t.duration_seconds.toFixed(4)} s`}</li>)}</ul>
         <p className="identifier">Saved versions: {Object.entries(result.snapshot.selected_versions).map(([id, version]) => `${id}:${version}`).join(', ')}</p></details>
