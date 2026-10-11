@@ -158,6 +158,14 @@ class Store:
             self._save_job(db, job)
             return job[field]
 
+    def renew(self, owner, case, identity, token, now=None):
+        now = time.time() if now is None else now
+        with self.transaction() as db:
+            job = self._job(db, owner, case, identity)
+            self._claimed(job, token, now)
+            job['lease_until'] = min(now + 30, job['deadline'])
+            self._save_job(db, job)
+
     def save_stage(self, owner, case, identity, token, stage, output, now=None):
         now = time.time() if now is None else now
         serialized = encoded(output)

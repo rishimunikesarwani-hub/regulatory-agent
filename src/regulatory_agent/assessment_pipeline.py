@@ -224,11 +224,12 @@ class AssessmentPipeline:
         return Finding.model_validate(finding.model_dump() | {
             'finding_id':uuid.uuid5(uuid.NAMESPACE_URL, f"{run['run_id']}:{obligation['obligation_id']}").hex})
 
-    def run(self, owner, case, job_id):
+    def run(self, owner, case, job_id, *, execution_token=None):
         run, snapshot = self.service._run(owner, case, job_id)
-        token = self.store.claim(owner, case, job_id)
+        token = self.store.claim(owner, case, job_id) if execution_token is None else execution_token
         if token is None:
             return self.store.read_job(owner, case, job_id)
+        self.store._claimed(self.store.read_job(owner, case, job_id), token, time.time())
         try:
             self._interrupt_attempts(owner, case, run, token)
             with self._processing(owner, case, run, token, 'source-check', 'source_verification', 'internal'):

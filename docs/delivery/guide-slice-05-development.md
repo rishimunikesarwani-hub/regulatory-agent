@@ -46,7 +46,9 @@ Download failures do not start another assessment or remove saved reviews.
 The [bounded model adapter](spec-slice-05-model.md) uses native SDK clients with controlled responses for local checks.
 Its ten checks cover routing, reservations, output validation, usage, deadlines, selected citations, and SDK configuration.
 The adapter now connects to the [selected-scope pipeline](spec-slice-05-pipeline.md) for admitted historical runs.
-General API admission, source selection, and the independent worker supervisor remain unfinished.
+The [local supervisor](spec-slice-05-worker.md) now runs the pipeline in a separate process.
+It stops hung workers and preserves the saved deadline, counters, audit records, and partial results.
+General API admission, source selection, and the AWS worker adapter remain unfinished.
 The existing feedback interface still uses the controlled historical example.
 Renew the expired AWS authentication before live model checks.
 The locked SDK includes its `crt` extra for the existing `aws login` profile.

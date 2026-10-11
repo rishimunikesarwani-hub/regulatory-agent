@@ -168,6 +168,9 @@ Use them only with these meanings.
 | Retrieval | AI | Selection of passages from permitted documents for the task. |
 | Review item | Product measurement | One original finding and its primary recommendation for one selected obligation in one assessment run. |
 | Run | Software | One recorded execution of an assessment or evaluation. Use this term as a noun. |
+| Supervisor | Software | A separate process that controls the assessment worker. |
+| Execution lease | Software | A time-limited permission that lets the current worker process a saved job. |
+| Monotonic clock | Software | A clock that measures elapsed time without changes to the system date or time. |
 | Schema | Software | The specified structure and constraints of data. |
 | Snapshot | Software | A fixed copy of selected assessment inputs and versions. |
 | Source span | Retrieval | A labeled part of an original page, paragraph, or row. Its identity does not depend on chunk boundaries. |

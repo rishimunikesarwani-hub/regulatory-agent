@@ -1,0 +1,86 @@
+test_w01_pipeline_completes_with_supervisor_claim_in_spawned_process (test_slice05_worker.WorkerTests.test_w01_pipeline_completes_with_supervisor_claim_in_spawned_process) ... ERROR
+test_w02_hung_child_is_stopped_without_late_write (test_slice05_worker.WorkerTests.test_w02_hung_child_is_stopped_without_late_write) ... ERROR
+test_w03_timeout_retains_findings_calls_and_unknown_usage (test_slice05_worker.WorkerTests.test_w03_timeout_retains_findings_calls_and_unknown_usage) ... ERROR
+test_w04_child_exception_is_not_completion_or_console_disclosure (test_slice05_worker.WorkerTests.test_w04_child_exception_is_not_completion_or_console_disclosure) ... ERROR
+test_w05_wrong_owner_duplicate_and_terminal_delivery_start_no_child (test_slice05_worker.WorkerTests.test_w05_wrong_owner_duplicate_and_terminal_delivery_start_no_child) ... ERROR
+test_w06_exhausted_deadline_does_not_start_child_or_reset_clock (test_slice05_worker.WorkerTests.test_w06_exhausted_deadline_does_not_start_child_or_reset_clock) ... ERROR
+test_w07_lease_renewal_preserves_budget_and_rejects_newer_claim (test_slice05_worker.WorkerTests.test_w07_lease_renewal_preserves_budget_and_rejects_newer_claim) ... ERROR
+test_w08_stale_supervisor_does_not_finalize_replacement_claim (test_slice05_worker.WorkerTests.test_w08_stale_supervisor_does_not_finalize_replacement_claim) ... ERROR
+test_w09_audit_failure_cannot_report_completion (test_slice05_worker.WorkerTests.test_w09_audit_failure_cannot_report_completion) ... ERROR
+
+======================================================================
+ERROR: test_w01_pipeline_completes_with_supervisor_claim_in_spawned_process (test_slice05_worker.WorkerTests.test_w01_pipeline_completes_with_supervisor_claim_in_spawned_process)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w02_hung_child_is_stopped_without_late_write (test_slice05_worker.WorkerTests.test_w02_hung_child_is_stopped_without_late_write)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w03_timeout_retains_findings_calls_and_unknown_usage (test_slice05_worker.WorkerTests.test_w03_timeout_retains_findings_calls_and_unknown_usage)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w04_child_exception_is_not_completion_or_console_disclosure (test_slice05_worker.WorkerTests.test_w04_child_exception_is_not_completion_or_console_disclosure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w05_wrong_owner_duplicate_and_terminal_delivery_start_no_child (test_slice05_worker.WorkerTests.test_w05_wrong_owner_duplicate_and_terminal_delivery_start_no_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w06_exhausted_deadline_does_not_start_child_or_reset_clock (test_slice05_worker.WorkerTests.test_w06_exhausted_deadline_does_not_start_child_or_reset_clock)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w07_lease_renewal_preserves_budget_and_rejects_newer_claim (test_slice05_worker.WorkerTests.test_w07_lease_renewal_preserves_budget_and_rejects_newer_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w08_stale_supervisor_does_not_finalize_replacement_claim (test_slice05_worker.WorkerTests.test_w08_stale_supervisor_does_not_finalize_replacement_claim)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+======================================================================
+ERROR: test_w09_audit_failure_cannot_report_completion (test_slice05_worker.WorkerTests.test_w09_audit_failure_cannot_report_completion)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_worker.py", line 53, in setUp
+    from regulatory_agent.assessment_worker import supervise
+ModuleNotFoundError: No module named 'regulatory_agent.assessment_worker'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.003s
+
+FAILED (errors=9)

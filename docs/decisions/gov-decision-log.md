@@ -696,6 +696,29 @@ General API admission, source selection, and the independent worker supervisor r
 The software checks do not establish live access, contextual model quality, or current regulatory completeness.
 Provider selection under D20, AWS verification, and VS5 acceptance under D35 remain pending.
 
+## D46 - Independent local worker supervision
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-X02, REQ-X08, and the existing job deadline contract.
+
+The [worker contract](../delivery/spec-slice-05-worker.md) adds a separate local supervisor without another dependency.
+The supervisor reserves the existing claim and renews its execution lease.
+The pipeline uses that inherited claim without acquiring another claim.
+The original deadline and counters remain unchanged.
+The supervisor stops a hung child before finalization.
+
+Saved findings, validated outputs, dispatched calls, unknown usage, and unchecked scope remain available.
+The supervisor saves interrupted audit records and finalization in one transaction.
+Windows startup argument validation prevents a failed serialization from launching an untracked child.
+Empty inherited claims receive the same rejection as stale claims.
+
+Controlled software checks do not establish live model quality or AWS timeout behavior.
+Catastrophic supervisor termination and operating-system failure remain outside the local evidence.
+General admission, source-selection integration, provider selection under D20, and live quality gates remain unfinished.
+AWS authentication needs renewal. VS5 remains a draft under D35.
+
+
 ## How to add a decision
 
 Add a new entry with:

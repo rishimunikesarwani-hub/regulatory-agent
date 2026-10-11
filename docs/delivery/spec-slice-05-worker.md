@@ -5,6 +5,7 @@ Authorization: D42 permits local VS5 development.
 Parent contracts: [Pipeline](spec-slice-05-pipeline.md) and [Technical Blueprint](../architecture/02_TECHNICAL_BLUEPRINT.md#7-retries-and-failures).
 
 A supervisor is a separate process that controls the assessment worker.
+Read the [project glossary](../guide-ste100-writing.md) for execution lease and monotonic clock definitions.
 Use Python process controls without another dependency.
 Keep this local adapter separate from the future AWS queue and Lambda adapter.
 
@@ -48,6 +49,10 @@ Do not report success from a process exit code alone.
 | VS5-W07 | Lease renewal cannot change the deadline, counters, or a newer claim. |
 | VS5-W08 | A stale supervisor cannot change a replacement worker's job. |
 | VS5-W09 | Audit persistence failure cannot produce a completed job. |
+| VS5-W10 | A process-start failure leaves a safe failed state without a child or inference. |
+| VS5-W11 | The waiting supervisor renews the lease without extending the deadline. |
+| VS5-W12 | An unapproved data mode cannot construct native model clients. |
+| VS5-W13 | An empty or stale inherited claim cannot acquire another claim. |
 
 Write failing checks before implementation.
 Use shortened remaining time on the existing saved 600-second budget for local timeout checks.

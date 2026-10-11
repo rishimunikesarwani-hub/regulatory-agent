@@ -697,6 +697,30 @@ GitHub checks completed without failure for candidate commit `dc23501e94a5540ff2
 Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
 Its deployment job was skipped.
 All 263 combined backend checks passed after the maximum-scope checks were added.
+
+## 2026-10-11 - Independent local worker supervision
+
+The worker specification was committed before nine missing-implementation checks failed.
+The supervisor now runs admitted historical jobs in a separate process.
+It reserves the existing execution claim and renews its lease.
+It preserves the original deadline and model-call counters.
+It stops a hung child before saving interrupted audit records and failed or partial results.
+
+A Windows startup check reproduced a launched child after argument serialization failed.
+Argument validation now occurs before process startup.
+Another failing check reproduced acceptance of an empty inherited claim.
+The pipeline now rejects empty and stale inherited claims without acquiring another claim.
+
+Thirteen worker checks and all 276 combined backend checks pass.
+The earlier `83bcc7e` checkpoint passed 263 backend checks, 42 browser checks, and the frontend build on GitHub.
+Its deployment job was skipped.
+D46 records local supervision within the approved VS5 scope.
+Controlled software checks do not establish live model quality or deployed timeout behavior.
+
+General admission, source selection, current verification, and the AWS worker adapter remain unfinished.
+AWS authentication needs renewal. No live inference or deployment occurred.
+VS5 remains a draft.
+Next: verify the combined commit, then connect general historical admission and source selection to the interface.
 The candidate branch is saved remotely.
 The `main` integration branch and original VS3 review branch are unchanged.
 
