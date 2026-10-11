@@ -174,7 +174,9 @@ class AssessmentPipeline:
         attempt = self._begin_attempt(owner, case, run, token, key, stage, operation, **context)
         completed = {}
         try:
-            yield completed
+            from .langfuse_trace import model_observation
+            with model_observation(self._trace_observations.get(attempt[0].event_id) if operation=='model' else None):
+                yield completed
         except Exception as error:
             self._finish_attempt(owner, case, run, token, attempt, state='failed', result=completed.get('result'), error=error)
             raise

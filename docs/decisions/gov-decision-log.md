@@ -1044,6 +1044,37 @@ This result does not establish semantic correctness or an independent quality-ga
 The frozen benchmark and earlier failed results remain unchanged.
 AWS acceptance, current regulatory coverage, and the original Bedrock evaluation remain pending.
 
+## D63 - PR14 local acceptance
+
+Date: 2026-10-11.
+Status: Approved by the user's explicit local correction review.
+
+The user approved PR14 and authorized its merge.
+GitHub merged reviewed head `e396df3f62cb9b5bed0de53067687190b86f9afb` into `main`.
+The merge commit is `940e9297cc1ee34f7ed34d964046e527f11d72f6`.
+The approved source passed 443 backend tests, 62 browser tests, and GitHub checks.
+AWS deployment was skipped.
+
+The subsequent 20-case development run completed 60 model calls and 40 service exports.
+Status agreement was nine of 20 cases.
+This approval does not establish an independent model-quality pass or AWS acceptance.
+
+## D64 - Fictional content capture and batch upload
+
+Date: 2026-10-11.
+Status: Authorized by the user's trace screenshot and multiple-document request.
+Requirements: DD01 through DD12.
+
+The user requested visible model input and output after inspecting a metadata-only Langfuse trace.
+The user also requested multiple uploaded documents.
+The [demo details contract](../delivery/spec-demo-details.md) controls this change.
+An explicit local setting permits fictional model messages and responses in Langfuse.
+This limited exception replaces D57 and D58's content restrictions only for eligible local fictional OpenAI runs.
+Private content, credentials, hidden reasoning, and reviewer text remain excluded.
+
+The application uses its existing upload flow for each selected file.
+AWS deployment and independent model-quality acceptance remain pending.
+
 ## How to add a decision
 
 Add a new entry with:

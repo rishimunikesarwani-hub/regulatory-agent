@@ -1,8 +1,39 @@
-"""Optional metadata-only tracing. Local audit persistence remains authoritative."""
+"""Optional tracing with explicitly enabled fictional local content."""
+from contextlib import contextmanager
+from contextvars import ContextVar
 from functools import lru_cache
 import hashlib
 import os
 from urllib.parse import urlsplit
+
+_model_observation=ContextVar('model_observation',default=None)
+
+
+def content_capture_enabled():
+    return os.environ.get('APP_ENV')=='local' and os.environ.get('LANGFUSE_CAPTURE_CONTENT')=='fictional-local'
+
+
+@contextmanager
+def model_observation(observation):
+    token=_model_observation.set(observation)
+    try:yield
+    finally:_model_observation.reset(token)
+
+
+def capture_model_content(snapshot, *, input=None, output=None, parameters=None):
+    observation=_model_observation.get()
+    if observation is None or not content_capture_enabled() or snapshot.get('synthetic') is not True or \
+            snapshot.get('mode')!='historical' or not snapshot.get('model_version','').startswith('openai:'):
+        return False
+    try:
+        update={'metadata':{'prompt_version':snapshot['prompt_version'],'content_capture':'fictional-local'}}
+        if input is not None:update['input']=input
+        if output is not None:update['output']=output
+        if parameters is not None:update['model_parameters']=parameters
+        observation.update(**update)
+        return True
+    except Exception:
+        return False
 
 
 def configured():
@@ -35,7 +66,8 @@ def start_job(run, *, client=None, comparison=False):
             client=_client()
         return client.start_observation(name='compare-regulatory-requirements' if comparison else 'assess-regulatory-evidence',
             as_type='agent',trace_context={'trace_id':trace_id(run['job_id'])},
-            metadata={'demo':'fictional','feature':'comparison' if comparison else 'assessment','content_capture':'disabled'})
+            metadata={'demo':'fictional','feature':'comparison' if comparison else 'assessment',
+                'content_capture':'fictional-local' if content_capture_enabled() and run.get('model_id','').startswith('openai:') else 'disabled'})
     except Exception:
         return None
 

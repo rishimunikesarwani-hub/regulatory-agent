@@ -1,0 +1,811 @@
+# The Regulator assessment report
+
+## Export status
+
+> Assessment export · Simulated processing · Fictional bank data
+
+## Snapshot and selected versions
+
+> \{
+>   "assessment\_date": "2024-04-08",
+>   "bank\_profile": \{
+>     "name": "Fictional export bank 1791736161563"
+>   \},
+>   "case\_id": "41bb0e8725984180aecbdb090e695a4b",
+>   "mode": "historical",
+>   "model\_version": "in.openai.gpt-5.6-luna",
+>   "prompt\_version": "controlled-vs3-v1",
+>   "selected\_document\_ids": \{\},
+>   "selected\_obligations": \[
+>     "RBI-IT-19b"
+>   \],
+>   "selected\_versions": \{
+>     "RBI-IT-2023": "2023-11-07",
+>     "e1437a50f15e4a06810f7db032d4e4a8": "1"
+>   \},
+>   "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>   "synthetic": true
+> \}
+
+## Cohort filters and time bases
+
+> \{
+>   "kind": "single\_assessment",
+>   "case\_id": "41bb0e8725984180aecbdb090e695a4b",
+>   "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>   "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>   "model\_id": "in.openai.gpt-5.6-luna",
+>   "prompt\_version": "controlled-vs3-v1",
+>   "data\_mode": "controlled\_simulation",
+>   "recommendation\_availability": \{
+>     "through": "2026-10-11T16:29:24.397998\+00:00",
+>     "end\_inclusive": true
+>   \},
+>   "runtime\_selection": \{
+>     "job\_id": "992ba781c68149f286fe598e493c0a58",
+>     "job\_admitted\_at": "2026-10-11T16:29:23.418839\+00:00",
+>     "job\_state\_time\_basis": "observed\_current\_state"
+>   \}
+> \}
+
+## Observed job state
+
+> \{
+>   "authority\_verified\_at": null,
+>   "case\_id": "41bb0e8725984180aecbdb090e695a4b",
+>   "created\_at": 1791736163.418839,
+>   "deadline": 1791736763.603991,
+>   "finished\_at": 1791736163.9204836,
+>   "freshness": "unverified",
+>   "job\_id": "992ba781c68149f286fe598e493c0a58",
+>   "label": "Simulated",
+>   "model\_calls": 1,
+>   "retrieval\_calls": 0,
+>   "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>   "stage": "persistence",
+>   "started\_at": 1791736163.603991,
+>   "state": "completed",
+>   "stop\_reason": null,
+>   "unchecked\_obligations": \[\]
+> \}
+
+## Report cutoff
+
+> 2026-10-11T16:29:24.397998\+00:00
+
+## Freshness and authority verification
+
+> \{
+>   "freshness": "unverified",
+>   "authority\_verified\_at": null
+> \}
+
+## Obligation
+
+> \{
+>   "obligation\_id": "RBI-IT-19b",
+>   "requirement": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed.",
+>   "conditions": \[
+>     "Personnel with elevated system access entitlements.",
+>     "Applicability to the listed regulated entities must be established."
+>   \],
+>   "exceptions": \[
+>     "Local Area Banks",
+>     "NBFC-Core Investment Companies"
+>   \],
+>   "applicability": "Unverified for this fictional bank profile.",
+>   "citations": \[
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:19b",
+>       "location": "Clause 19(b)",
+>       "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:2ai",
+>       "location": "Clause 2(a)(i)",
+>       "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:2b",
+>       "location": "Clause 2(b)",
+>       "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+>     \}
+>   \]
+> \}
+
+## Mapped control
+
+> \{
+>   "control\_id": "ACCESS-01",
+>   "statement": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review.",
+>   "purpose": "Privileged session oversight",
+>   "owner": null,
+>   "frequency": "Weekly under the fictional bank policy.",
+>   "citations": \[
+>     \{
+>       "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>       "passage\_id": "2428d1cb27c04198985a1d993f23c45c-2",
+>       "location": "Line 2",
+>       "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
+>     \}
+>   \]
+> \}
+
+## Selected obligations
+
+> \[
+>   \{
+>     "obligation\_id": "RBI-IT-19b",
+>     "requirement": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed.",
+>     "conditions": \[
+>       "Personnel with elevated system access entitlements.",
+>       "Applicability to the listed regulated entities must be established."
+>     \],
+>     "exceptions": \[
+>       "Local Area Banks",
+>       "NBFC-Core Investment Companies"
+>     \],
+>     "applicability": "Unverified for this fictional bank profile.",
+>     "citations": \[
+>       \{
+>         "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>         "passage\_id": "RBI-IT-2023:2023-11-07:19b",
+>         "location": "Clause 19(b)",
+>         "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+>       \},
+>       \{
+>         "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>         "passage\_id": "RBI-IT-2023:2023-11-07:2ai",
+>         "location": "Clause 2(a)(i)",
+>         "quote": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+>       \},
+>       \{
+>         "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>         "passage\_id": "RBI-IT-2023:2023-11-07:2b",
+>         "location": "Clause 2(b)",
+>         "quote": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+>       \}
+>     \]
+>   \}
+> \]
+
+## Extracted controls
+
+> \[
+>   \{
+>     "control\_id": "ACCESS-01",
+>     "statement": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review.",
+>     "purpose": "Privileged session oversight",
+>     "owner": null,
+>     "frequency": "Weekly under the fictional bank policy.",
+>     "citations": \[
+>       \{
+>         "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>         "passage\_id": "2428d1cb27c04198985a1d993f23c45c-2",
+>         "location": "Line 2",
+>         "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
+>       \}
+>     \]
+>   \}
+> \]
+
+## Original findings and recommendation IDs
+
+> \[
+>   \{
+>     "finding\_id": "351e6ba89ac0514f950ece586f43d7e6",
+>     "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>     "obligation\_id": "RBI-IT-19b",
+>     "control\_ids": \[
+>       "ACCESS-01"
+>     \],
+>     "status": "needs\_review",
+>     "evidence\_condition": "missing",
+>     "citations": \[
+>       \{
+>         "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>         "passage\_id": "RBI-IT-2023:2023-11-07:19b",
+>         "location": "Clause 19(b)",
+>         "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+>       \},
+>       \{
+>         "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>         "passage\_id": "2428d1cb27c04198985a1d993f23c45c-2",
+>         "location": "Line 2",
+>         "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
+>       \}
+>     \],
+>     "rationale": "Controlled example. The policy states a control, but this example has no verified operational evidence. Applicability and activity records need human review.",
+>     "remedy": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews.",
+>     "gap\_kind": "evidence",
+>     "applicability\_reason": null,
+>     "claims": \[\],
+>     "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>     "primary\_recommendation": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews.",
+>     "available\_at": "2026-10-11T16:29:23.877898Z",
+>     "model\_id": "in.openai.gpt-5.6-luna",
+>     "prompt\_version": "controlled-vs3-v1",
+>     "data\_mode": "controlled\_simulation",
+>     "source\_version\_ids": \[
+>       "RBI-IT-2023:2023-11-07",
+>       "e1437a50f15e4a06810f7db032d4e4a8:1"
+>     \]
+>   \}
+> \]
+
+## Saved review events
+
+> \[
+>   \{
+>     "event\_kind": "final\_review",
+>     "disposition": "approved",
+>     "accepted\_content": \{
+>       "status": "needs\_review",
+>       "rationale": "Controlled example. The policy states a control, but this example has no verified operational evidence. Applicability and activity records need human review.",
+>       "recommendation": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews."
+>     \},
+>     "reason": null,
+>     "expected\_revision": 0,
+>     "idempotency\_key": "941c6c89-09bc-4b10-9bb6-02028bf7452e",
+>     "event\_id": "3815545eacd34b84be0f3ca66f790547",
+>     "finding\_id": "351e6ba89ac0514f950ece586f43d7e6",
+>     "reviewer\_id": "slice-05-tests",
+>     "committed\_at": "2026-10-11T16:29:24.337518Z",
+>     "revision": 1
+>   \}
+> \]
+
+## Review summary
+
+metric_definition_version: d24-v1
+
+cutoff: 2026-10-11T16:29:24.397998+00:00
+
+data_mode: controlled_simulation
+
+run_id: c56c86d7834e5066a595eb5b0d7250a6
+
+eligible: 1
+
+reviewed: 1
+
+pending: 0
+
+approved: 1
+
+edited: 0
+
+rejected: 0
+
+approval_rate: 1.0
+
+edit_rate: 0.0
+
+rejection_rate: 0.0
+
+adoption_rate: 1.0
+
+review_coverage: 1.0
+
+## Recorded runtime
+
+cost: Unknown
+
+> \{
+>   "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>   "attempts": \[
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "01dee18bc29a42829f6105368c6f1e74",
+>       "candidate\_passage\_ids": \[
+>         "RBI-IT-2023:2023-11-07:2a",
+>         "RBI-IT-2023:2023-11-07:2ai",
+>         "RBI-IT-2023:2023-11-07:2b",
+>         "RBI-IT-2023:2023-11-07:19a",
+>         "RBI-IT-2023:2023-11-07:19b",
+>         "RBI-IT-2023:2023-11-07:19c",
+>         "RBI-IT-2023:2023-11-07:29a",
+>         "RBI-IT-2023:2023-11-07:29b",
+>         "RBI-IT-2023:2023-11-07:29e",
+>         "2428d1cb27c04198985a1d993f23c45c-1",
+>         "2428d1cb27c04198985a1d993f23c45c-2",
+>         "2428d1cb27c04198985a1d993f23c45c-3"
+>       \],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "08765fdf0f334a09af508ca5decd789e",
+>       "finished\_at": "2026-10-11T16:29:23.741891Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "retrieval",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[
+>         "RBI-IT-2023:2023-11-07:19b",
+>         "RBI-IT-2023:2023-11-07:2ai",
+>         "RBI-IT-2023:2023-11-07:2b",
+>         "2428d1cb27c04198985a1d993f23c45c-2"
+>       \],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "retrieval",
+>       "stage\_id": "retrieval",
+>       "started\_at": "2026-10-11T16:29:23.741891Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "8b733f5beef64aafb51375577009ae6b",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.031000000017229468,
+>       "errors": \[\],
+>       "event\_id": "0fe6d6a98bd742988465ebaabbc44c53",
+>       "finished\_at": "2026-10-11T16:29:23.821358Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": "in.openai.gpt-5.6-luna",
+>       "operation": "model",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "model\_call",
+>       "stage\_id": "model\_call",
+>       "started\_at": "2026-10-11T16:29:23.795568Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[
+>         "2428d1cb27c04198985a1d993f23c45c"
+>       \],
+>       "attempt\_id": "108c04ce79d343e3a4a68d0ba64767a9",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": false,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "6a5d3b958ba24e479546f8ac88292ca8",
+>       "finished\_at": "2026-10-11T16:29:23.679120Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": "2428d1cb27c04198985a1d993f23c45c",
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "extraction",
+>       "stage\_id": "extraction",
+>       "started\_at": "2026-10-11T16:29:23.679120Z",
+>       "state": "skipped",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "99d987fbc1a047e3a67df2c806ecef2f",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.01600000000325963,
+>       "errors": \[\],
+>       "event\_id": "6a82c0bf96ee4352b067db1221d5ec78",
+>       "finished\_at": "2026-10-11T16:29:23.888495Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "storage",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "persistence",
+>       "stage\_id": "persistence",
+>       "started\_at": "2026-10-11T16:29:23.874905Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[
+>         "3815545eacd34b84be0f3ca66f790547"
+>       \],
+>       "attempt\_id": "68589d4c72bc49eaa303f56d0b62957e",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.014999999984866008,
+>       "errors": \[\],
+>       "event\_id": "6b6badfd6552483996865b7c4f98ef36",
+>       "finished\_at": "2026-10-11T16:29:24.347782Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "storage",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "review\_event",
+>       "stage\_id": "review\_event",
+>       "started\_at": "2026-10-11T16:29:24.335520Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "2c0fbff786884435a9362f8ade7d6a0e",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "d24a3e88062e43bbab8f271467efd486",
+>       "finished\_at": "2026-10-11T16:29:23.846713Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "validation",
+>       "stage\_id": "validation",
+>       "started\_at": "2026-10-11T16:29:23.845228Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "fb2177c0d9e1417b87d50f8bd6f36adc",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "e9707f5288364a1e878ac4337114bc3e",
+>       "finished\_at": "2026-10-11T16:29:23.767292Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[
+>         "RBI-IT-2023:2023-11-07:19b",
+>         "RBI-IT-2023:2023-11-07:2ai",
+>         "RBI-IT-2023:2023-11-07:2b",
+>         "2428d1cb27c04198985a1d993f23c45c-2"
+>       \],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "context\_selection",
+>       "stage\_id": "context\_selection",
+>       "started\_at": "2026-10-11T16:29:23.767292Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "19d14cc4c3ce4851887033c442c9b387",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "f665d083959a4ba3b51448443add6cd4",
+>       "finished\_at": "2026-10-11T16:29:23.652118Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "992ba781c68149f286fe598e493c0a58",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "c56c86d7834e5066a595eb5b0d7250a6",
+>       "stage": "source\_verification",
+>       "stage\_id": "source\_verification",
+>       "started\_at": "2026-10-11T16:29:23.648117Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \}
+>   \]
+> \}
+
+## Unchecked obligations
+
+> \[\]
+
+## Source Version
+
+> \{
+>   "document": \{
+>     "case\_id": "41bb0e8725984180aecbdb090e695a4b",
+>     "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>     "kind": "regulation",
+>     "sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+>     "source\_id": "RBI-IT-2023",
+>     "synthetic": false,
+>     "version": "2023-11-07"
+>   \},
+>   "effective\_date": "2024-04-01",
+>   "filename": "Master Direction on Information Technology Governance, Risk, Controls and Assurance Practices",
+>   "format": "html",
+>   "freshness": "unverified",
+>   "passages": \[
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 2(a)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:2a",
+>       "text": "These Directions shall be applicable to the following entities (collectively referred to as ‘regulated entities’ or ’REs’ in these directions):"
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 2(a)(i)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:2ai",
+>       "text": "all Banking Companies 1 , Corresponding New Banks and State Bank of India as defined under subsections (c), (da) and (nc) of section 5 of the Banking Regulation Act, 1949 (collectively referred to as ‘commercial banks’ hereinafter)."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 2(b)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:2b",
+>       "text": "These Directions shall not be applicable to: Local Area Banks NBFC-Core Investment Companies"
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 19(a)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:19a",
+>       "text": "Access to information assets shall be allowed only where a valid business need exists. REs shall have documented standards and procedures, which are approved by the ITSC and kept up to date for administering need-based access to an information system."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 19(b)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:19b",
+>       "text": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 19(c)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:19c",
+>       "text": "REs shall adopt multi-factor authentication for privileged users of i) critical information systems and ii) for critical activities, basis the RE’s risk assessment."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 29(a)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:29a",
+>       "text": "Periodicity of DR drills for critical information systems shall be at least on a half-yearly basis and for other information systems, as per RE’s risk assessment."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 29(b)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:29b",
+>       "text": "Any major issues observed during the DR drill shall be resolved and tested again to ensure successful conduct of drill before the next cycle."
+>     \},
+>     \{
+>       "document\_version\_id": "RBI-IT-2023:2023-11-07",
+>       "location": "Clause 29(e)",
+>       "passage\_id": "RBI-IT-2023:2023-11-07:29e",
+>       "text": "REs shall backup data and periodically restore such backed-up data to check its usability. The integrity of such backup data shall be preserved along with securing it from unauthorised access."
+>     \}
+>   \],
+>   "publication\_date": "2023-11-07",
+>   "source\_url": "https://www.rbi.org.in/Scripts/BS\_ViewMasDirections.aspx?id=12562"
+> \}
+
+## Source Version
+
+> \{
+>   "document": \{
+>     "case\_id": "41bb0e8725984180aecbdb090e695a4b",
+>     "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>     "effective\_date": null,
+>     "kind": "policy",
+>     "publication\_date": null,
+>     "sha256": "e5b255e307bc926270d6a12c7499dce86350ab981325fd74264c344af32f9e6f",
+>     "source\_id": "e1437a50f15e4a06810f7db032d4e4a8",
+>     "source\_url": null,
+>     "storage\_reference": "2428d1cb27c04198985a1d993f23c45c",
+>     "synthetic": true,
+>     "version": "1"
+>   \},
+>   "filename": "policy.txt",
+>   "format": "txt",
+>   "passages": \[
+>     \{
+>       "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>       "location": "Line 1",
+>       "passage\_id": "2428d1cb27c04198985a1d993f23c45c-1",
+>       "text": "Synthetic demo. Fictional bank policy."
+>     \},
+>     \{
+>       "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>       "location": "Line 2",
+>       "passage\_id": "2428d1cb27c04198985a1d993f23c45c-2",
+>       "text": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
+>     \},
+>     \{
+>       "document\_version\_id": "2428d1cb27c04198985a1d993f23c45c",
+>       "location": "Line 3",
+>       "passage\_id": "2428d1cb27c04198985a1d993f23c45c-3",
+>       "text": "Weekly timing is bank policy, not an RBI-specified interval."
+>     \}
+>   \],
+>   "units": 1,
+>   "uploaded\_at": "2026-10-11T16:29:22.704115\+00:00"
+> \}
+
+## Limitations
+
+> Controlled example only. No live model call occurred.
+> Current regulatory status is unverified. This report does not certify bank compliance.
+> A policy alone does not prove operational execution.
+> Human approval measures review decisions, not assessment accuracy.
+> Available token usage appears in recorded attempts. Inference and total system costs remain unknown.
+> The observed job state is current. The report cutoff controls saved findings, reviews, and trace events.

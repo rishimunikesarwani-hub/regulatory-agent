@@ -21,7 +21,8 @@ class DocumentError extends Error {
 export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { config: Config; caseId: string; onExpired: (reason: unknown) => boolean; onUploaded?: () => void }) {
   const [sources, setSources] = useState<Source[]>([]);
   const [evidence, setEvidence] = useState<Evidence | null>(null);
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
+  const file = files[0] ?? null;
   const [kind, setKind] = useState('policy');
   const [replacement, setReplacement] = useState('');
   const [fictional, setFictional] = useState(false);
@@ -106,30 +107,34 @@ export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { conf
     history.replaceState(null, '', url.pathname + url.search);
   }
 
-  async function confirmed(document: Source['document']): Promise<void> {
+  async function confirmed(document: Source['document'], reset = true): Promise<void> {
     if (document.case_id !== caseId || document.synthetic !== true || !document.document_version_id) throw new Error('invalid_upload');
     if (!active.current) return;
-    savePending(null); setFile(null); setFictional(false); setUncertain(false);
-    if (fileInput.current) fileInput.current.value = '';
+    savePending(null); setUncertain(false);
+    if (reset) {
+      setFiles(files.slice(1));
+      if (files.length <= 1) { setFictional(false); if (fileInput.current) fileInput.current.value = ''; }
+    }
     await refresh(); await inspect(document.document_version_id);
+    onUploaded?.();
     setNotice('Document saved. Earlier versions remain available.');
   }
 
-  async function cloudUpload(metadata: UploadMetadata, key: string): Promise<void> {
+  async function cloudUpload(metadata: UploadMetadata, key: string, selectedFile = file, batch = false): Promise<void> {
     savePending({ key, id: pendingNow.current?.key === key ? pendingNow.current.id : undefined, request: metadata });
     const grant = await (await request('', { method: 'POST', body: JSON.stringify(metadata),
       headers: { 'Content-Type': 'application/json', 'Idempotency-Key': key } }, true)).json() as Grant;
     if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$/.test(grant.upload_id)) throw new Error('invalid_upload');
     savePending({ key, id: grant.upload_id, request: metadata });
-    if (grant.state === 'finalized' && grant.document) { await confirmed(grant.document); return; }
+    if (grant.state === 'finalized' && grant.document) { await confirmed(grant.document, !batch); return; }
     if (grant.state === 'uploaded') {
       const result = await (await request(`/${encodeURIComponent(grant.upload_id)}/finalize`, { method: 'POST' }, true)).json() as UploadStatus;
       if (!result.document) throw new Error('invalid_upload');
-      await confirmed(result.document); return;
+      await confirmed(result.document, !batch); return;
     }
     const authorization = grant.authorization;
     if (grant.state !== 'reserved' || !authorization || authorization.upload_id !== grant.upload_id ||
-      authorization.eligible_for_assessment !== false || !grant.fields || !file) throw new Error('invalid_upload');
+      authorization.eligible_for_assessment !== false || !grant.fields || !selectedFile) throw new Error('invalid_upload');
     const destination = new URL(authorization.destination);
     if (destination.protocol !== 'https:' || !/^[a-z0-9][a-z0-9.-]*\.s3\.ap-south-1\.amazonaws\.com$/.test(destination.hostname) ||
       destination.username || destination.password || destination.search || destination.hash ||
@@ -139,12 +144,12 @@ export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { conf
       if (typeof value !== 'string' || name === 'file') throw new Error('invalid_storage');
       form.append(name, value);
     }
-    form.append('file', file);
+    form.append('file', selectedFile);
     const transfer = await fetch(destination.href, { method: 'POST', body: form, credentials: 'omit', signal: AbortSignal.timeout(60_000) });
     if (!transfer.ok) throw new Error('upload_transfer');
     const result = await (await request(`/${encodeURIComponent(grant.upload_id)}/finalize`, { method: 'POST' }, true)).json() as UploadStatus;
     if (!result.document) throw new Error('invalid_upload');
-    await confirmed(result.document);
+    await confirmed(result.document, !batch);
   }
 
   async function checkUpload(cancel = false): Promise<void> {
@@ -183,30 +188,38 @@ export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { conf
   async function upload(event: FormEvent): Promise<void> {
     event.preventDefault();
     if (!file || !fictional || busy || uncertain) return;
-    if (file.size > 10_000_000) { setError('The file exceeds the 10 MB limit. Use a smaller document.'); return; }
+    if (replacement && files.length > 1) { setError('Select one file to replace a source.'); return; }
+    if (files.length > 10 - sources.length) { setError(`Select at most ${10 - sources.length} remaining files for this case.`); return; }
+    if (files.some(f => f.size > 10_000_000)) { setError('A file exceeds the 10 MB limit. Use smaller documents.'); return; }
     setBusy(true); setError(''); setNotice('');
+    const selected = [...files]; let savedCount = 0;
     try {
-      if (config.mode === 'aws') {
-        await cloudUpload({ filename: file.name, kind, size_bytes: file.size, synthetic: true,
-          ...(replacement ? { source_id: replacement } : {}) }, crypto.randomUUID());
-        return;
+      for (const selectedFile of selected) {
+        setNotice(`Saving ${savedCount + 1} of ${selected.length}: ${selectedFile.name}`);
+        if (config.mode === 'aws') {
+          await cloudUpload({ filename: selectedFile.name, kind, size_bytes: selectedFile.size, synthetic: true,
+            ...(replacement ? { source_id: replacement } : {}) }, crypto.randomUUID(), selectedFile, true);
+        } else {
+          const saved = await (await request('', { method: 'POST', body: selectedFile, headers: {
+            'Content-Type': 'application/octet-stream', 'X-Filename': encodeURIComponent(selectedFile.name),
+            'X-Document-Kind': kind, 'X-Synthetic': 'true', ...(replacement ? { 'X-Source-Id': replacement } : {}),
+          } })).json() as Evidence;
+          await confirmed(saved.document, false);
+        }
+        if (!active.current) return;
+        savedCount++; setFiles(selected.slice(savedCount));
       }
-      const saved = await (await request('', { method: 'POST', body: file, headers: {
-        'Content-Type': 'application/octet-stream', 'X-Filename': encodeURIComponent(file.name),
-        'X-Document-Kind': kind, 'X-Synthetic': 'true', ...(replacement ? { 'X-Source-Id': replacement } : {}),
-      } })).json() as Evidence;
-      if (!active.current) return;
-      setFile(null); setFictional(false);
+      setFictional(false);
       if (fileInput.current) fileInput.current.value = '';
-      await refresh();
-      await inspect(saved.document.document_version_id);
-      onUploaded?.();
-      setNotice('Document saved. Earlier versions remain available.');
+      setNotice(selected.length === 1 ? 'Document saved. Earlier versions remain available.' : `${savedCount} documents saved. Earlier versions remain available.`);
     } catch (reason) {
       // An interrupted POST might have saved. Require a list refresh before retrying.
       if (config.mode === 'aws' && reason instanceof DocumentError && reason.status < 500 && !pendingNow.current?.id) savePending(null);
       if (!(reason instanceof DocumentError) || reason.status >= 500) setUncertain(true);
-      failed(reason, 'The upload could not be confirmed. Refresh documents before you try again.');
+      setFiles(selected.slice(savedCount));
+      setNotice(`${savedCount} of ${selected.length} files confirmed. Remaining files: ${selected.slice(savedCount).map(f => f.name).join(', ')}.`);
+      const message = reason instanceof DocumentError ? reason.message : 'The upload could not be confirmed. Refresh documents before you try again.';
+      if (active.current && !onExpired(reason)) setError(`${savedCount} of ${selected.length} files confirmed. ${message}`);
     } finally { if (active.current) setBusy(false); }
   }
 
@@ -244,9 +257,10 @@ export function DocumentsPanel({ config, caseId, onExpired, onUploaded }: { conf
         <button className="secondary" disabled={busy} onClick={() => void checkUpload(true)}>Cancel unfinished upload</button>{' '}</>}
       <button className="secondary" disabled={busy || !file || !fictional} onClick={() => void resumeUpload()}>Resume upload</button></div>}
     <div className="document-layout"><div className="document-controls"><section className="panel" aria-labelledby="upload-heading">
-      <h3 id="upload-heading">Upload a fictional document</h3><p className="field-hint">Text PDF, DOCX, TXT, or CSV. Maximum 10 MB per file and 10 saved versions per case.</p>
+      <h3 id="upload-heading">Upload fictional documents</h3><p className="field-hint">Text PDF, DOCX, TXT, or CSV. Select multiple new sources with the same role. Maximum 10 MB per file and 10 saved versions per case.</p>
       <form onSubmit={event => void upload(event)}><fieldset disabled={busy || loading}>
-        <label htmlFor="document-file">Document file</label><input id="document-file" type="file" accept=".pdf,.docx,.txt,.csv" ref={fileInput} required onChange={event => setFile(event.target.files?.[0] ?? null)} />
+        <label htmlFor="document-file">Document file</label><input id="document-file" type="file" multiple accept=".pdf,.docx,.txt,.csv" ref={fileInput} onChange={event => setFiles(Array.from(event.target.files ?? []))} />
+        {files.length > 0 && <p className="field-hint">Selected: {files.map(f => f.name).join(', ')}</p>}
         <label htmlFor="document-kind">Document role</label><select id="document-kind" value={kind} onChange={event => setKind(event.target.value)}>
           <option value="profile">Bank profile</option><option value="policy">Policy</option><option value="control">Control</option><option value="evidence">Evidence</option></select>
         <label htmlFor="replace-source">Replace source</label><select id="replace-source" value={replacement} onChange={event => setReplacement(event.target.value)}>

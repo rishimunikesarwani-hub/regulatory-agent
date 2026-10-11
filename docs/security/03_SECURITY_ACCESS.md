@@ -260,8 +260,9 @@ Local substitutes are not proof that these cloud controls work.
 
 The [local demo contract](../delivery/spec-local-demo-openai.md) permits OpenAI processing of fictional bank inputs and public historical regulations.
 It does not establish India residency or authorize private bank inputs.
-Langfuse receives safe execution measurements only.
-Prompts, responses, documents, owner identifiers, review text, credentials, and hidden reasoning remain excluded.
+Langfuse receives safe execution measurements by default.
+The [D64 exception](../delivery/spec-demo-details.md) permits fictional model messages and responses in explicitly enabled local OpenAI runs.
+Private documents, owner identifiers, review text, credentials, and hidden reasoning remain excluded.
 Credentials remain in ignored server configuration.
 The [execution tracing contract](../delivery/spec-langfuse-tracing.md) excludes automatic framework capture and uses explicit permitted fields.
 This exception does not change AWS production controls.

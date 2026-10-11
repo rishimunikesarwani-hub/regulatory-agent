@@ -3,7 +3,8 @@
 Date: 2026-10-11. Source: The user's Langfuse skill and application tracing request.
 
 This contract extends LD06 through LD08 under D57.
-The metadata-only privacy boundary stays in effect.
+Metadata-only tracing remains the default.
+The [D64 exception](spec-demo-details.md) permits fictional model content in explicitly enabled local runs.
 
 ## Requirements
 
@@ -13,7 +14,8 @@ The metadata-only privacy boundary stays in effect.
 - LF04: Mark model calls as `generation` and retrieval as `retriever`. Keep actual model identity and numeric token counts.
 - LF05: End observations after success, failure, or interruption. End an observation even if its metadata update fails.
 - LF06: Keep local audit storage mandatory. Optional tracing failures must not change assessment results or repeat model calls.
-- LF07: Exclude prompts, responses, source passages, reviewer text, owner identifiers, credentials, and hidden reasoning.
+- LF07: Exclude content by default. DD01 through DD06 permit fictional model messages and responses under D64.
+  Reviewer text, owner identifiers, credentials, and hidden reasoning remain excluded.
 - LF08: Use an isolated OpenTelemetry provider. Export only explicit Langfuse observations.
 - LF09: Flush the worker's trace queue before normal process exit. Forced process termination can prevent remote delivery.
 

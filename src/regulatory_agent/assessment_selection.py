@@ -86,11 +86,11 @@ class AssessmentSelection:
                     'source_id':doc['source_id'], 'version':doc['version'], 'label':passages[scope[-1]]['location'],
                     'scope_passage_ids':scope})
         model=selected_model()
-        from .langfuse_trace import configured
+        from .langfuse_trace import configured, content_capture_enabled
         return {'sources':sources, 'obligations':obligations, 'freshness':'unverified', 'current_available':False,
                 'coverage':'saved historical excerpts', 'data_mode':'synthetic_live', 'model_id':model,
                 'demo_services':{'openai_key_configured':bool(os.environ.get('OPENAI_API_KEY')) if model.startswith('openai:') else False,
-                                 'langfuse_configured':configured()}}
+                                 'langfuse_configured':configured(), 'langfuse_content_capture':configured() and content_capture_enabled()}}
 
     def admit(self, owner, case, request):
         profile = self.service.cases.read(owner, case)

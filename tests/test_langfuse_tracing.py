@@ -70,10 +70,14 @@ class LangfuseTracingTests(unittest.TestCase):
         fixture.run=fixture.reviews.admit(fixture.owner,fixture.case,'tracing-run',fixture.snapshot.snapshot_id,'synthetic_live')
         fixture.job_id=fixture.run['job_id']
         actions=iter([fixture.extraction(),fixture.controls(),fixture.proposed(),fixture.proposed('O-2')])
+        self.provider_requests=[]
+        self.provider_outputs=[]
         def respond(request):
+            self.provider_requests.append(json.loads(request.content))
+            content=next(actions); self.provider_outputs.append(content)
             return httpx.Response(200,json={'model':'gpt-4.1-mini-2025-04-14',
                 'usage':{'prompt_tokens':100,'completion_tokens':50},
-                'choices':[{'finish_reason':'stop','message':{'content':next(actions)}}]})
+                'choices':[{'finish_reason':'stop','message':{'content':content}}]})
         with httpx.Client(transport=httpx.MockTransport(respond)) as provider, \
                 patch.object(tracing,'configured',return_value=True), patch.object(tracing,'_client',return_value=self.client):
             outcome,_,_=fixture.execute(model=OpenAIModel('offline-test',client=provider))
@@ -84,7 +88,35 @@ class LangfuseTracingTests(unittest.TestCase):
         parent=next(s for s in spans if s.context.span_id==extract.parent.span_id)
         self.assertEqual(parent.name,'extract-evidence')
         self.assertTrue(any(s.attributes.get('langfuse.observation.type')=='retriever' for s in spans))
-        self.assertTrue(all('owner' not in str(s.attributes) for s in spans))
+        self.assertNotIn(fixture.owner,str([s.attributes for s in spans]))
+
+    def test_dd01_dd05_actual_model_messages_and_responses_without_credentials(self):
+        with patch.dict(os.environ, {'APP_ENV':'local','LANGFUSE_CAPTURE_CONTENT':'fictional-local'}):
+            self.test_lf02_pipeline_nests_extraction_and_generation()
+        generations=[s for s in self.exporter.get_finished_spans() if s.attributes.get('langfuse.observation.type')=='generation']
+        self.assertEqual(len(generations),4)
+        for span,request,response in zip(generations,self.provider_requests,self.provider_outputs):
+            self.assertEqual(json.loads(span.attributes['langfuse.observation.input']),request['messages'])
+            self.assertEqual(json.loads(span.attributes['langfuse.observation.output']),{'role':'assistant','content':response})
+            self.assertIn('prompt_version',str(span.attributes))
+            self.assertIn('response_format',str(span.attributes))
+        self.assertNotIn('offline-test',str([s.attributes for s in generations]))
+
+    def test_dd01_dd02_dd05_disabled_capture_and_failure_isolation(self):
+        snapshot={'synthetic':True,'mode':'historical','model_version':'openai:gpt-4.1-mini-2025-04-14','prompt_version':'example'}
+        observation=MagicMock()
+        with tracing.model_observation(observation):
+            for setting,change in [({},{}),({'LANGFUSE_CAPTURE_CONTENT':'fictional-local'},{}),({'APP_ENV':'production','LANGFUSE_CAPTURE_CONTENT':'fictional-local'},{}),
+                    ({'APP_ENV':'local','LANGFUSE_CAPTURE_CONTENT':'fictional-local'},{'synthetic':False}),
+                    ({'APP_ENV':'local','LANGFUSE_CAPTURE_CONTENT':'fictional-local'},{'mode':'current'}),
+                    ({'APP_ENV':'local','LANGFUSE_CAPTURE_CONTENT':'fictional-local'},{'model_version':'bedrock:example'})]:
+                with patch.dict(os.environ,setting,clear=True):
+                    self.assertFalse(tracing.capture_model_content(snapshot|change,input=[{'role':'user','content':'PRIVATE'}]))
+            observation.update.assert_not_called()
+            observation.update.side_effect=RuntimeError('PRIVATE')
+            with patch.dict(os.environ,{'APP_ENV':'local','LANGFUSE_CAPTURE_CONTENT':'fictional-local'},clear=True):
+                self.assertFalse(tracing.capture_model_content(snapshot,output={'role':'assistant','content':'fictional'}))
+        self.assertFalse(tracing.capture_model_content(snapshot,output='outside observation'))
 
     def test_lf05_lf06_root_update_failure_is_isolated(self):
         root=MagicMock(); root.update.side_effect=RuntimeError('PRIVATE')
