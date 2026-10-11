@@ -1,0 +1,11 @@
+{
+  "approved_head": "fea263b84cea854cb13770ce9316d4f32ab1eb20",
+  "merge_commit": "8816e000ad57d164f9dc26c928a482de8dce81eb",
+  "pr": 15,
+  "state": "MERGED",
+  "merged_at": "2026-10-11T17:03:32Z",
+  "authorization": "User approved local PR15 and its merge.",
+  "checks_run": 38156974354,
+  "checks": "SUCCESS",
+  "deployment": "SKIPPED"
+}

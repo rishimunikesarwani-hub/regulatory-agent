@@ -1,0 +1,261 @@
+python.exe : test_rw01_and_rw04_backend_frontend_and_evidence_agree 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) ... 
+At line:2 char:26
++ ... TH = 'src'; & 'C:/Users/Be Flith Rich/My Project Folder/ET-Hackathon/ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (test_rw01_and_r...nce_agree) ... :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  test_rw01_and_rw04_backend_frontend_and_evidence_agree 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) (requested=None) 
+... FAIL
+  test_rw01_and_rw04_backend_frontend_and_evidence_agree 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) (requested='true') 
+... FAIL
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWiringT
+ests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) ... 
+  test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWirin
+gTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='yes', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') ... FAIL
+  test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWirin
+gTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='TRUE', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') ... FAIL
+  test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWirin
+gTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa') ... FAIL
+  test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWirin
+gTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='true', 
+approval=None) ... FAIL
+  test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseWirin
+gTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='true', 
+approval='bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb') ... FAIL
+test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) ... 
+  test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed=None) ... FAIL
+  test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed='invalid') ... FAIL
+  test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed='true') ... FAIL
+  test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) 
+(requested='true', observed='false') ... FAIL
+test_rw06_successful_document_checks_cannot_verify_enabled_assessments 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) 
+... 
+  test_rw06_successful_document_checks_cannot_verify_enabled_assessments 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) 
+(enabled=False) ... ERROR
+  test_rw06_successful_document_checks_cannot_verify_enabled_assessments 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) 
+(enabled=True) ... ERROR
+
+======================================================================
+ERROR: test_rw06_successful_document_checks_cannot_verify_enabled_assessments 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) 
+(enabled=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 81, in 
+test_rw06_successful_document_checks_cannot_verify_enabled_assessments
+    self.assertEqual(record['acceptance_scope'],'identity_cases_documents')
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'acceptance_scope'
+
+======================================================================
+ERROR: test_rw06_successful_document_checks_cannot_verify_enabled_assessments 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw06_successful_document_checks_cannot_verify_enabled_assessments) 
+(enabled=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 81, in 
+test_rw06_successful_document_checks_cannot_verify_enabled_assessments
+    self.assertEqual(record['acceptance_scope'],'identity_cases_documents')
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^^
+KeyError: 'acceptance_scope'
+
+======================================================================
+FAIL: test_rw01_and_rw04_backend_frontend_and_evidence_agree 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) (requested=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 51, in 
+test_rw01_and_rw04_backend_frontend_and_evidence_agree
+    self.assertIn(f'AssessmentsEnabled={str(expected).lower()}',deploy)
+AssertionError: 'AssessmentsEnabled=false' not found in ('sam', 'deploy', '--template-file', 
+'runs/private/sam-build/template.yaml', '--stack-name', 'regulatory-agent-dev-s01', '--s3-bucket', 
+'fictional-dev-artifacts', '--s3-prefix', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '--role-arn', 
+'arn:aws:iam::123456789012:role/development/cloudformation', '--region', 'ap-south-1', '--capabilities', 
+'CAPABILITY_IAM', '--parameter-overrides', 'CommitSha=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 
+'CaseRuntimeRoleArn=arn:aws:iam::123456789012:role/regulatory-agent-dev-case-runtime', '--no-confirm-changeset', 
+'--no-fail-on-empty-changeset')
+
+======================================================================
+FAIL: test_rw01_and_rw04_backend_frontend_and_evidence_agree 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw01_and_rw04_backend_frontend_and_evidence_agree) (requested='true')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 51, in 
+test_rw01_and_rw04_backend_frontend_and_evidence_agree
+    self.assertIn(f'AssessmentsEnabled={str(expected).lower()}',deploy)
+AssertionError: 'AssessmentsEnabled=true' not found in ('sam', 'deploy', '--template-file', 
+'runs/private/sam-build/template.yaml', '--stack-name', 'regulatory-agent-dev-s01', '--s3-bucket', 
+'fictional-dev-artifacts', '--s3-prefix', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '--role-arn', 
+'arn:aws:iam::123456789012:role/development/cloudformation', '--region', 'ap-south-1', '--capabilities', 
+'CAPABILITY_IAM', '--parameter-overrides', 'CommitSha=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 
+'CaseRuntimeRoleArn=arn:aws:iam::123456789012:role/regulatory-agent-dev-case-runtime', '--no-confirm-changeset', 
+'--no-fail-on-empty-changeset')
+
+======================================================================
+FAIL: test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseW
+iringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='yes', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 62, in 
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands
+    command.assert_not_called()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", 
+line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'command' to not have been called. Called 1 times.
+Calls: [call('git', 'rev-parse', 'HEAD', capture=True),
+ call().strip(),
+ call().strip().__ne__('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')].
+
+======================================================================
+FAIL: test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseW
+iringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='TRUE', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 62, in 
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands
+    command.assert_not_called()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", 
+line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'command' to not have been called. Called 1 times.
+Calls: [call('git', 'rev-parse', 'HEAD', capture=True),
+ call().strip(),
+ call().strip().__ne__('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')].
+
+======================================================================
+FAIL: test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseW
+iringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='', 
+approval='aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 62, in 
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands
+    command.assert_not_called()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", 
+line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'command' to not have been called. Called 1 times.
+Calls: [call('git', 'rev-parse', 'HEAD', capture=True),
+ call().strip(),
+ call().strip().__ne__('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')].
+
+======================================================================
+FAIL: test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseW
+iringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='true', 
+approval=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 62, in 
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands
+    command.assert_not_called()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", 
+line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'command' to not have been called. Called 1 times.
+Calls: [call('git', 'rev-parse', 'HEAD', capture=True),
+ call().strip(),
+ call().strip().__ne__('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')].
+
+======================================================================
+FAIL: test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands (test_aws_release_wiring.ReleaseW
+iringTests.test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands) (setting='true', 
+approval='bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 62, in 
+test_rw02_rejects_invalid_flag_or_missing_exact_commit_approval_before_commands
+    command.assert_not_called()
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\unittest\mock.py", 
+line 910, in assert_not_called
+    raise AssertionError(msg)
+AssertionError: Expected 'command' to not have been called. Called 1 times.
+Calls: [call('git', 'rev-parse', 'HEAD', capture=True),
+ call().strip(),
+ call().strip().__ne__('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')].
+
+======================================================================
+FAIL: test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 66, in 
+test_rw03_stack_flag_mismatch_stops_before_asset_upload
+    with self.subTest(requested=requested,observed=observed),self.assertRaises(ValueError):
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed='invalid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 66, in 
+test_rw03_stack_flag_mismatch_stops_before_asset_upload
+    with self.subTest(requested=requested,observed=observed),self.assertRaises(ValueError):
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) (requested=None, 
+observed='true')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 66, in 
+test_rw03_stack_flag_mismatch_stops_before_asset_upload
+    with self.subTest(requested=requested,observed=observed),self.assertRaises(ValueError):
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rw03_stack_flag_mismatch_stops_before_asset_upload 
+(test_aws_release_wiring.ReleaseWiringTests.test_rw03_stack_flag_mismatch_stops_before_asset_upload) 
+(requested='true', observed='false')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project 
+Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-release-wiring\tests\test_aws_release_wiring.py", line 66, in 
+test_rw03_stack_flag_mismatch_stops_before_asset_upload
+    with self.subTest(requested=requested,observed=observed),self.assertRaises(ValueError):
+                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.373s
+
+FAILED (failures=11, errors=2)

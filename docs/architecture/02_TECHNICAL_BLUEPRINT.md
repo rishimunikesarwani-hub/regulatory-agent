@@ -462,7 +462,16 @@ Reviewer approval does not replace the existing assessment quality gates.
 
 T8 must test the AWS integration. T8 must also give the configuration lesson with steps in sequence.
 
+## Combined AWS release settings
+
+The [AWS release settings contract](../delivery/spec-aws-release-wiring.md) connects the deployment flag to backend and frontend configuration.
+Assessments remain disabled by default.
+An enabled release requires approval for its exact commit after the existing release conditions pass.
+Its release evidence must identify the features verified by deployed browser checks.
+The local OpenAI exception does not enable OpenAI or private content capture in AWS.
+
 ## Submission-day local demo
+
 
 D57 authorizes the [OpenAI and Langfuse local demo](../delivery/spec-local-demo-openai.md).
 New local snapshots select the OpenAI provider before admission.

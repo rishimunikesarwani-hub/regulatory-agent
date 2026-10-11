@@ -1,0 +1,24 @@
+{
+  "issue": "ASD-STE100 Issue 9",
+  "scope": [
+    "New release contract",
+    "D65 and D66",
+    "Requested blueprint, ticket, and workspace additions"
+  ],
+  "protected_items": [
+    "Exact commits",
+    "RW01-RW07",
+    "AWS variable names",
+    "False default",
+    "Operator approval",
+    "No AWS mutation",
+    "Pending quality and account conditions"
+  ],
+  "meaning_review": "Reviewed against the release audit and approved VS5 contracts. No release gate removed. Operator approval does not measure quality.",
+  "dictionary_review": "Selected technical terms use the project glossary. Complete dictionary meaning review remains incomplete.",
+  "limits": [
+    "No full ASD compliance claim.",
+    "No AWS template lint or security validator execution.",
+    "No deployed assessment execution."
+  ]
+}
