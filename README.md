@@ -2,6 +2,41 @@
 
 The application connects regulatory requirements to bank controls, evidence, findings, and proposed corrections.
 
+## Run the local demo
+
+The local application supports fictional document uploads, historical assessments, source citations, saved reviews, and report downloads.
+Live assessments need your own OpenAI API key with available API credit.
+Langfuse Cloud keys are optional. AWS credentials are not necessary for this local mode.
+
+Use Windows PowerShell with `uv` and Node.js `24.18.0` installed.
+Run these commands from the downloaded repository folder:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File ops/setup.ps1
+Push-Location src/web
+npm ci
+Pop-Location
+New-Item -ItemType Directory -Force runs/private | Out-Null
+if (-not (Test-Path -LiteralPath runs/private/local-demo.env)) { Copy-Item .env.example runs/private/local-demo.env }
+notepad runs/private/local-demo.env
+```
+
+Set `OPENAI_API_KEY` in the private file.
+Keep `MODEL_PROVIDER=openai`.
+The template contains no credentials. Git excludes the private file and local database.
+
+```powershell
+.venv/Scripts/python.exe ops/run_local_demo.py --check
+.venv/Scripts/python.exe ops/run_local_demo.py
+```
+
+Open [the local application](http://127.0.0.1:5185/).
+Configuration checks do not verify API credit or dispatch model requests.
+Use fictional bank documents only in this local OpenAI mode.
+
+The [local guide](docs/delivery/guide-local-demo.md) gives optional tracing settings and separate port and database settings.
+AWS deployment, current regulatory-source coverage, and independent model quality remain unverified.
+
 ## Start here
 
 Read the [project handbook](docs/guide-start-here.md). It gives links to the five specifications, the decision history, and the test plans.
@@ -13,7 +48,7 @@ The local user can sign in, make a fictional case, save it, and reopen it.
 The [verification records](runs/2026-10-10-autonomous-build/) contain the test results.
 
 AWS templates and the development release pipeline are prepared.
-AWS sign-in and deployment are unverified because the user must make an AWS account.
+AWS deployment and application acceptance remain unverified. The user deferred AWS work while local development continues.
 The eight assessment features and their quality requirements remain in scope.
 
 Use the [first-slice guide](docs/delivery/guide-slice-01-development.md) for local setup and AWS preparation.

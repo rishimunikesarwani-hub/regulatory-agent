@@ -1,0 +1,19 @@
+test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values (test_local_startup.LocalStartupTests.test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values) ... ok
+test_ls02_selected_ports_and_private_database_reach_both_servers (test_local_startup.LocalStartupTests.test_ls02_selected_ports_and_private_database_reach_both_servers) ... ok
+test_ls03_busy_port_preserves_existing_server_and_starts_no_children (test_local_startup.LocalStartupTests.test_ls03_busy_port_preserves_existing_server_and_starts_no_children) ... ok
+test_ls04_invalid_settings_start_no_children (test_local_startup.LocalStartupTests.test_ls04_invalid_settings_start_no_children) ... usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+                         [--web-port WEB_PORT] [--api-port API_PORT]
+                         [--db-path DB_PATH]
+run_local_demo.py: error: argument --web-port: Use a port between 1 and 65535.
+usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+                         [--web-port WEB_PORT] [--api-port API_PORT]
+                         [--db-path DB_PATH]
+run_local_demo.py: error: argument --api-port: Use a port between 1 and 65535.
+ok
+test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start (test_local_startup.LocalStartupTests.test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start) ... ok
+test_ls06_template_has_empty_keys_and_optional_tracing (test_local_startup.LocalStartupTests.test_ls06_template_has_empty_keys_and_optional_tracing) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.054s
+
+OK

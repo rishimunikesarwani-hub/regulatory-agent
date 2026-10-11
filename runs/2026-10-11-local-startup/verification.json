@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-11T18:06:37.518438+00:00",
+  "base_commit": "8816e000ad57d164f9dc26c928a482de8dce81eb",
+  "source_state": "uncommitted local-startup correction over approved main",
+  "startup_tests_passed": 6,
+  "provider_regression_tests_passed": 14,
+  "red": {
+    "failures": 4,
+    "errors": 1,
+    "already_passing": 1
+  },
+  "real_launcher": {
+    "session": 12036,
+    "web_port": 5187,
+    "api_port": 8160,
+    "database": "runs/private/local-startup/feedback.sqlite",
+    "case_id": "78cf65a1f891492fad603916d07405de",
+    "fictional_documents_uploaded": 2,
+    "reopened_after_reload": true,
+    "source_text_inspected": true,
+    "browser_console_errors": 0
+  },
+  "new_model_calls": 0,
+  "dependencies": "Reused installed locked dependencies through ignored junctions. A fresh dependency installation was not repeated.",
+  "aws": "Deferred by user. No AWS operation.",
+  "ci": "Pending for the new branch.",
+  "limits": [
+    "Independent model quality remains unverified.",
+    "Current regulatory-source coverage remains unverified.",
+    "AWS deployment and acceptance remain pending."
+  ]
+}

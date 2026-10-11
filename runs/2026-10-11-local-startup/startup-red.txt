@@ -1,0 +1,85 @@
+test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values (test_local_startup.LocalStartupTests.test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values) ... FAIL
+test_ls02_selected_ports_and_private_database_reach_both_servers (test_local_startup.LocalStartupTests.test_ls02_selected_ports_and_private_database_reach_both_servers) ... usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --web-port 5187 --api-port 8160 --db-path runs/private/local-startup/feedback.sqlite
+ERROR
+test_ls03_busy_port_preserves_existing_server_and_starts_no_children (test_local_startup.LocalStartupTests.test_ls03_busy_port_preserves_existing_server_and_starts_no_children) ... usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --api-port 59089
+FAIL
+test_ls04_invalid_settings_start_no_children (test_local_startup.LocalStartupTests.test_ls04_invalid_settings_start_no_children) ... usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --web-port 0
+usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --api-port 65536
+usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --web-port 8160 --api-port 8160
+usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --db-path published.sqlite
+usage: run_local_demo.py [-h] [--env-file ENV_FILE] [--api-only] [--check]
+run_local_demo.py: error: unrecognized arguments: --db-path runs/private/../../published.sqlite
+ok
+test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start (test_local_startup.LocalStartupTests.test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start) ... FAIL
+test_ls06_template_has_empty_keys_and_optional_tracing (test_local_startup.LocalStartupTests.test_ls06_template_has_empty_keys_and_optional_tracing) ... FAIL
+
+======================================================================
+ERROR: test_ls02_selected_ports_and_private_database_reach_both_servers (test_local_startup.LocalStartupTests.test_ls02_selected_ports_and_private_database_reach_both_servers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 56, in test_ls02_selected_ports_and_private_database_reach_both_servers
+    self.assertEqual(self.run_launcher('--web-port', '5187', '--api-port', '8160',
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 37, in run_launcher
+    result = launcher.main()
+             ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\ops\run_local_demo.py", line 32, in main
+    args=parser.parse_args(); env=load_environment(args.env_file)
+         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\argparse.py", line 1908, in parse_args
+    self.error(msg)
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\argparse.py", line 2650, in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+  File "C:\Users\Be Flith Rich\AppData\Roaming\uv\python\cpython-3.12.13-windows-x86_64-none\Lib\argparse.py", line 2637, in exit
+    _sys.exit(status)
+SystemExit: 2
+
+======================================================================
+FAIL: test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values (test_local_startup.LocalStartupTests.test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 46, in test_ls01_missing_key_check_and_start_fail_without_children_or_secret_values
+    with self.assertRaisesRegex(SystemExit, 'Set OPENAI_API_KEY'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SystemExit not raised
+
+======================================================================
+FAIL: test_ls03_busy_port_preserves_existing_server_and_starts_no_children (test_local_startup.LocalStartupTests.test_ls03_busy_port_preserves_existing_server_and_starts_no_children)
+----------------------------------------------------------------------
+SystemExit: 2
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 74, in test_ls03_busy_port_preserves_existing_server_and_starts_no_children
+    with self.assertRaisesRegex(SystemExit, 'already in use'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "already in use" does not match "2"
+
+======================================================================
+FAIL: test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start (test_local_startup.LocalStartupTests.test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 89, in test_ls05_missing_frontend_has_actionable_error_but_api_only_can_start
+    with self.assertRaisesRegex(SystemExit, 'npm ci'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: SystemExit not raised
+
+======================================================================
+FAIL: test_ls06_template_has_empty_keys_and_optional_tracing (test_local_startup.LocalStartupTests.test_ls06_template_has_empty_keys_and_optional_tracing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-vs5-local-startup\tests\test_local_startup.py", line 99, in test_ls06_template_has_empty_keys_and_optional_tracing
+    self.assertEqual(env.get('MODEL_PROVIDER'), 'openai')
+AssertionError: None != 'openai'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.064s
+
+FAILED (failures=4, errors=1)

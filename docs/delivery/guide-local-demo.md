@@ -6,36 +6,57 @@ It does not establish current regulatory coverage or production readiness.
 
 ## Configuration
 
-1. Open the ignored file `runs/private/local-demo.env`.
+1. If the private file is absent, copy `.env.example` to `runs/private/local-demo.env`.
 2. Put your OpenAI API key in `OPENAI_API_KEY`.
-3. Put your Langfuse project public key in `LANGFUSE_PUBLIC_KEY`.
-4. Put your Langfuse project secret key in `LANGFUSE_SECRET_KEY`.
-5. Set `LANGFUSE_BASE_URL` to your project region URL.
+3. For optional tracing, put your Langfuse project public key in `LANGFUSE_PUBLIC_KEY`.
+4. For optional tracing, put your Langfuse project secret key in `LANGFUSE_SECRET_KEY`.
+5. For optional tracing, set `LANGFUSE_BASE_URL` to your project region URL.
 6. Keep `MODEL_PROVIDER=openai`.
 
 Do not send keys in chat or put them in browser configuration.
-Langfuse receives measurements without prompts or responses.
+
+Langfuse tracing is optional. Model operation does not require Langfuse keys.
+The default trace contains measurements without prompts or responses.
+
+Set `LANGFUSE_CAPTURE_CONTENT=fictional-local` only for the eligible fictional runs defined by [D64](spec-demo-details.md).
+
+That setting permits model messages, selected context, and responses in generation observations.
+It does not permit credentials, hidden reasoning, or private bank content.
+
 The configured OpenAI model is `gpt-4.1-mini-2025-04-14`.
 Provider credentials do not prove that the account has available quota.
 
 ## Start
 
-Run these commands from the VS5 worktree:
+Complete the dependency setup in the [README](../../README.md#run-the-local-demo).
+Run these commands from your downloaded repository folder:
 
 ```powershell
-cd 'C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality'
 .venv/Scripts/python.exe ops/run_local_demo.py --check
 .venv/Scripts/python.exe ops/run_local_demo.py
 ```
 
-The second command gives configuration status without key values.
-The third command starts the API on port `8150` and the interface on port `5185`.
-If either port already has a server, stop the earlier owned server before this command.
+The first command gives configuration status without key values.
+It fails if the OpenAI key is missing. It does not check API credit or make a model request.
+The second command starts the API on port `8150` and the interface on port `5185`.
+If either port already has a server, select different ports.
 The saved database remains `runs/private/slice-05/feedback.sqlite`.
 
 Open [the local app](http://127.0.0.1:5185/) in Chrome.
 Select **Continue with local identity**.
 Local identity is a development login, not Cognito authentication.
+
+Use these settings for the separate local-startup worktree:
+
+```powershell
+.venv/Scripts/python.exe ops/run_local_demo.py --web-port 5187 --api-port 8160 --db-path runs/private/local-startup/feedback.sqlite
+```
+
+Open `http://127.0.0.1:5187/` for that instance.
+Keep each database under `runs/private/`.
+Different databases keep manual feedback and test records separate.
+The launcher rejects invalid ports and occupied ports before it starts servers.
+API-only operation uses `--api-only` and does not require frontend dependencies.
 
 ## Demonstration
 
@@ -59,7 +80,8 @@ The response schema restricts each phase to its permitted actions and supplied c
 
 Langfuse groups stage measurements by the saved job.
 Each execution parent contains nested stages under the [tracing contract](spec-langfuse-tracing.md).
-The trace excludes prompts, responses, and source passages.
+The default trace excludes prompts, responses, and source passages.
+The D64 setting permits eligible fictional content in generation observations only.
 Missing activity records can cause **Needs review** or an evidence gap.
 A policy statement does not prove actual control operation.
 
