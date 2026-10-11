@@ -1,0 +1,28 @@
+test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash) ... ok
+test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages) ... ok
+test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run) ... ok
+test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown) ... ok
+test_oe10_default_cli_runs_without_credentials_or_model_calls (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe10_default_cli_runs_without_credentials_or_model_calls) ... FAIL
+
+======================================================================
+FAIL: test_oe10_default_cli_runs_without_credentials_or_model_calls (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe10_default_cli_runs_without_credentials_or_model_calls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 19, in test_oe10_default_cli_runs_without_credentials_or_model_calls
+    self.assertEqual(run.returncode,0,run.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 148, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 134, in main
+    args=parser.parse_args(); cases,entries,selections,hashes=inputs(ROOT)
+                                                              ^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 32, in inputs
+    from ops.session_a_fixtures import answer_keys
+ModuleNotFoundError: No module named 'ops'
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.437s
+
+FAILED (failures=1)

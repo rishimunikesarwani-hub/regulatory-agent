@@ -1,0 +1,13 @@
+test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash) ... ok
+test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions) ... ok
+test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages) ... ok
+test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run) ... ok
+test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown) ... ok
+test_oe10_default_cli_runs_without_credentials_or_model_calls (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe10_default_cli_runs_without_credentials_or_model_calls) ... ok
+test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content) ... ok
+test_oe12_subsequent_scoring_cannot_establish_held_out_sample (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe12_subsequent_scoring_cannot_establish_held_out_sample) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.178s
+
+OK

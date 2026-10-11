@@ -1,0 +1,44 @@
+{
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t9-quality\\runs\\private\\evaluation-changed-prose.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 129,
+    "findings": [
+      {
+        "line": 13,
+        "check": "paragraph",
+        "message": "Review the paragraph: 10 sentences."
+      }
+    ],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t9-quality\\docs\\testing\\spec-local-openai-evaluation.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 46,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  },
+  "C:\\Users\\Be Flith Rich\\My Project Folder\\ET-Hackathon\\.worktrees\\regulatory-agent-t9-quality\\runs\\2026-10-11-openai-evaluation\\language-review.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 12,
+    "findings": [],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

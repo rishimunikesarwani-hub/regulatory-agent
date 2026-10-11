@@ -1,0 +1,17 @@
+test_op02_old_snapshot_keeps_original_dispatched_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_old_snapshot_keeps_original_dispatched_instructions) ... ok
+test_op02_v2_keeps_phase_instructions_and_original_schema (test_openai_phase_contract.OpenAIPhaseTests.test_op02_v2_keeps_phase_instructions_and_original_schema) ... ok
+test_op02_v3_keeps_its_schema_and_earlier_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_v3_keeps_its_schema_and_earlier_instructions) ... ok
+test_op03_op05_new_request_teaches_phase_and_citation_constraints (test_openai_phase_contract.OpenAIPhaseTests.test_op03_op05_new_request_teaches_phase_and_citation_constraints) ... ok
+test_op09_bad_phase_cannot_spend_or_dispatch_a_call (test_openai_phase_contract.OpenAIPhaseTests.test_op09_bad_phase_cannot_spend_or_dispatch_a_call) ... ok
+test_op09_provider_schema_blocks_wrong_phase_and_invented_citation (test_openai_phase_contract.OpenAIPhaseTests.test_op09_provider_schema_blocks_wrong_phase_and_invented_citation) ... ok
+test_op11_new_admission_pins_distinct_prompt_without_aws (test_openai_phase_contract.OpenAIPhaseTests.test_op11_new_admission_pins_distinct_prompt_without_aws) ... ok
+test_op12_v5_teaches_supported_operational_date_grounding_and_preserves_v4 (test_openai_phase_contract.OpenAIPhaseTests.test_op12_v5_teaches_supported_operational_date_grounding_and_preserves_v4) ... ok
+test_op13_v5_adds_exact_claim_reference_without_changing_content_or_old_reply (test_openai_phase_contract.OpenAIPhaseTests.test_op13_v5_adds_exact_claim_reference_without_changing_content_or_old_reply) ... ok
+test_op14_v5_invalid_or_unexamined_claim_reference_remains_rejected (test_openai_phase_contract.OpenAIPhaseTests.test_op14_v5_invalid_or_unexamined_claim_reference_remains_rejected) ... ok
+test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_rejects_supported_even_when_provider_marks_an_operational_requirement_as_documented) ... ok
+test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema (test_openai_phase_contract.OpenAIPhaseTests.test_op16_v6_schema_excludes_supported_without_interval_and_keeps_v5_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 1.787s
+
+OK

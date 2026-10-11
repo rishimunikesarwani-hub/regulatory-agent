@@ -1,0 +1,1374 @@
+{
+  "execution_mode": "live",
+  "provider": "openai:gpt-4.1-mini-2025-04-14",
+  "prompt_version": "assessment-vs5-openai-period-v4",
+  "source_commit": "7dbdaf29b99d03993ab27b5deb43db1aae43dc2d",
+  "frozen_hashes": {
+    "data/sources/rbi-it-governance-2023.html": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
+    "data/sources/rbi-it-governance-2023-excerpts.txt": "f5c5739f59740c21f2ccb9cd67af558577d54d67464817174075721bb8ad447d",
+    "data/sources/source-manifest.json": "a8d827a123ba4cb688b1bb688d909ad251240f01a07ea181ee21dc3800930521",
+    "data/fixtures/development-inputs.json": "db45d91d870bab329a3c47728e9543106bc04eb10ec1bdf2d82cbfa4126b07c8",
+    "data/fixtures/development-labels.json": "d3bf9d644b3b7d82cc4f663adca68a3559c432c0e7eab92b1b0440488d2aa466",
+    "evals/fixtures/held-out-inputs.json": "8addac6de97d03857f6102069dbec51def954fe19d23575e1e63c2476fb5aac8",
+    "evals/fixtures/held-out-labels.json": "cbbb7ace6b9d9d5eab2ac1716c3017b9cc21b983a0217fb26fa6e09629bfd254"
+  },
+  "selection_sha256": "0c35ad1955ba10c696cd1cb8cb23fa7628029a4482f600df2e2e4222ff5b81b2",
+  "scope": "Fixed fictional benchmark inputs; historical and simulated regulatory sources",
+  "qualified_domain_review": false,
+  "original_bedrock_gate_satisfied": false,
+  "rows": [
+    {
+      "case_id": "EVAL-01",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "537a7548230b488189cf59a49fa99f82",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_56264d115f8246ea87ad93ddcf036765",
+          "usage": {
+            "input_tokens": 3204,
+            "output_tokens": 264,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_82ce4fe2038c41a38df9ab51b37b4fb1",
+          "usage": {
+            "input_tokens": 4173,
+            "output_tokens": 1109,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_999662fd58f843899b7452094ab1ac19",
+          "usage": {
+            "input_tokens": 2475,
+            "output_tokens": 215,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 16.578
+    },
+    {
+      "case_id": "EVAL-02",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "c473b98b419f4053abea744d9a9e1a63",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_d2690a4e8c464a3f8630f11bb23f0c6f",
+          "usage": {
+            "input_tokens": 3228,
+            "output_tokens": 625,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_dbf026186292468aac6e678231cb1ad6",
+          "usage": {
+            "input_tokens": 2879,
+            "output_tokens": 218,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_572ba6b831e345e690512513b43da009",
+          "usage": {
+            "input_tokens": 4688,
+            "output_tokens": 1143,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 19.422
+    },
+    {
+      "case_id": "EVAL-03",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "8690c6ba16ab4b6ba6f751c68df8a022",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_e2c1e6c5e83641b38dad2237df7ae36f",
+          "usage": {
+            "input_tokens": 3214,
+            "output_tokens": 381,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_b5228c4fbc384e269c6b57233904d0ff",
+          "usage": {
+            "input_tokens": 3271,
+            "output_tokens": 562,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_ebe220f2997f467fae0deca15d1a1df8",
+          "usage": {
+            "input_tokens": 4916,
+            "output_tokens": 835,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 15.875
+    },
+    {
+      "case_id": "EVAL-04",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "e98c61af0cff4013ac6de19c627a61c0",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_fe99c147ed7a4f2cb70f8ca65d6d207f",
+          "usage": {
+            "input_tokens": 4626,
+            "output_tokens": 1380,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_1350f124b40a43b0b115322b5d140545",
+          "usage": {
+            "input_tokens": 2815,
+            "output_tokens": 193,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_3cd6a49251984d48956e704adbb1a275",
+          "usage": {
+            "input_tokens": 3230,
+            "output_tokens": 520,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 17.547
+    },
+    {
+      "case_id": "EVAL-05",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true,
+        true
+      ],
+      "job_id": "faa133a7fdc24734bcbe5197911d4e42",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_059b7817f21f47fa8b8e1c776630a2bb",
+          "usage": {
+            "input_tokens": 4058,
+            "output_tokens": 699,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_65a7eefdda384f28a549fc788ef82a21",
+          "usage": {
+            "input_tokens": 3175,
+            "output_tokens": 206,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_b3029c3579f742819fd839350874c327",
+          "usage": {
+            "input_tokens": 2428,
+            "output_tokens": 161,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 11.75
+    },
+    {
+      "case_id": "EVAL-06",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "c201a8209089424a993969937b7cbae0",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 1,
+      "attempts": [
+        {
+          "state": "failed",
+          "dispatched": true,
+          "actual_response_model_id": null,
+          "provider_request_id": null,
+          "usage": {
+            "input_tokens": null,
+            "output_tokens": null,
+            "cache_read_tokens": null,
+            "cache_write_tokens": null
+          },
+          "errors": [
+            "validation_failure"
+          ]
+        }
+      ],
+      "elapsed_seconds": 24.0
+    },
+    {
+      "case_id": "EVAL-07",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "bba0a21ce6e84f24bb5e779e200d8489",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_fbb8c6b3297e41f591529aff7a92d940",
+          "usage": {
+            "input_tokens": 4200,
+            "output_tokens": 902,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_773487bb68e3406a8ea8c0dcec97a748",
+          "usage": {
+            "input_tokens": 3139,
+            "output_tokens": 526,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_65e47805e37048679967f8646bf92be2",
+          "usage": {
+            "input_tokens": 2723,
+            "output_tokens": 205,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 15.187
+    },
+    {
+      "case_id": "EVAL-08",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "job_id": "3a1fa11f08b9456ab05c6e5ea15beeb6",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_74f04214b17c4c80a1a2d0e5df41108d",
+          "usage": {
+            "input_tokens": 2445,
+            "output_tokens": 211,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_7604a34ad3ee487e8f4ed6ea508522df",
+          "usage": {
+            "input_tokens": 4081,
+            "output_tokens": 1126,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_f6125e95303042d3a4b9e4c5bd6790c2",
+          "usage": {
+            "input_tokens": 3182,
+            "output_tokens": 246,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 15.203
+    },
+    {
+      "case_id": "EVAL-09",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "job_id": "781f81ab84414958a9db64c56970b43e",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_407d2bc82b214b5a9ace2286a1f2528c",
+          "usage": {
+            "input_tokens": 3078,
+            "output_tokens": 244,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_9109f704b82b4a90aa352ec86f7e185a",
+          "usage": {
+            "input_tokens": 3612,
+            "output_tokens": 756,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_003c7ef12d264fc5842b38aa73001f3e",
+          "usage": {
+            "input_tokens": 2353,
+            "output_tokens": 192,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 12.156
+    },
+    {
+      "case_id": "EVAL-10",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true
+      ],
+      "job_id": "34f4356423c24bc4a28dae9972dfd732",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_ac8f57212efc436b922e4f4f106db93d",
+          "usage": {
+            "input_tokens": 4060,
+            "output_tokens": 628,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_99959ba84137472991fab98fb9d72099",
+          "usage": {
+            "input_tokens": 3163,
+            "output_tokens": 204,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_0da2d6f2b61a4e0b8e018ff5e3f94181",
+          "usage": {
+            "input_tokens": 2416,
+            "output_tokens": 192,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 11.797
+    },
+    {
+      "case_id": "EVAL-11",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "1646fa1ec6e24ed987664ce50745531d",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_828e1033af404451b1d3bfffc18ce60f",
+          "usage": {
+            "input_tokens": 2641,
+            "output_tokens": 203,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_db5f568e19f04782b76b41b8b22efd48",
+          "usage": {
+            "input_tokens": 3073,
+            "output_tokens": 479,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_8b441378787c485d89e09306aaee1403",
+          "usage": {
+            "input_tokens": 3898,
+            "output_tokens": 547,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 12.984
+    },
+    {
+      "case_id": "EVAL-12",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true,
+        true
+      ],
+      "job_id": "32268abe598b41a1a989f567099a0e50",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_48bae8f8e84341759df626e32c5980ab",
+          "usage": {
+            "input_tokens": 3892,
+            "output_tokens": 592,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_95a192ac9c604b0ba67d8ae7c72ad0be",
+          "usage": {
+            "input_tokens": 2637,
+            "output_tokens": 201,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_9bb6a173c3884e12b10208910d19c588",
+          "usage": {
+            "input_tokens": 3069,
+            "output_tokens": 477,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 13.766
+    },
+    {
+      "case_id": "EVAL-13",
+      "status": "partial",
+      "citations_resolve": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ],
+      "job_id": "50c6c847b062498d8e636c135c0bb6c6",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_61b233dc65674f5dabf631e06a4d6703",
+          "usage": {
+            "input_tokens": 3434,
+            "output_tokens": 956,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_4d7202432acc498abc9aff58ad0eb2b1",
+          "usage": {
+            "input_tokens": 2341,
+            "output_tokens": 209,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_b7959699d98c42058501e145d511b2b4",
+          "usage": {
+            "input_tokens": 2422,
+            "output_tokens": 167,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 13.719
+    },
+    {
+      "case_id": "EVAL-14",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "83ded709114840b0acf621f19a70cbf9",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_7b8b58b548ea41b489e8c200329cbe4c",
+          "usage": {
+            "input_tokens": 2287,
+            "output_tokens": 186,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_af2389609e0d4220b8b9a568da5df734",
+          "usage": {
+            "input_tokens": 3171,
+            "output_tokens": 603,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_90bc46f6b12c42f7a67d13743855c220",
+          "usage": {
+            "input_tokens": 2364,
+            "output_tokens": 188,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 10.187
+    },
+    {
+      "case_id": "EVAL-15",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "28e80adfe28f42e28bdc7af8c5adb7a5",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_e98d6f2686204b9f874a6f76cab18e98",
+          "usage": {
+            "input_tokens": 3198,
+            "output_tokens": 960,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_b66ac9d96ee4454d89cb0b3e4943f5c9",
+          "usage": {
+            "input_tokens": 2381,
+            "output_tokens": 167,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_7aefb666af434fc28591f216f0f88d85",
+          "usage": {
+            "input_tokens": 2308,
+            "output_tokens": 196,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 11.813
+    },
+    {
+      "case_id": "EVAL-16",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": "7f0c692df1274c43819d431c3fb30c3e",
+      "job_state": "failed",
+      "stop_reason": "pipeline_failed",
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_170884680f114783b158460883c700bb",
+          "usage": {
+            "input_tokens": 2277,
+            "output_tokens": 182,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_c54dc5ef3d0c4c61ba1510e77e3fbe19",
+          "usage": {
+            "input_tokens": 2346,
+            "output_tokens": 189,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_9dc83bdeffda475ebdc89abd2f8b086d",
+          "usage": {
+            "input_tokens": 3131,
+            "output_tokens": 638,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 10.719
+    },
+    {
+      "case_id": "EVAL-17",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": null,
+      "error_type": "ValidationError",
+      "elapsed_seconds": 0.063
+    },
+    {
+      "case_id": "EVAL-18",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true
+      ],
+      "job_id": "206b838d6e9a4330bce9a5e6b663e24e",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_d227aedd63a5419d88f13a66e61a6cf7",
+          "usage": {
+            "input_tokens": 3065,
+            "output_tokens": 483,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_197fa4417c54419283c61dfbab9f78a6",
+          "usage": {
+            "input_tokens": 3899,
+            "output_tokens": 524,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_ff57ead8db9a4ceb8c39fc3351948669",
+          "usage": {
+            "input_tokens": 2652,
+            "output_tokens": 201,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 14.125
+    },
+    {
+      "case_id": "EVAL-19",
+      "status": "needs_review",
+      "citations_resolve": [
+        true,
+        true,
+        true
+      ],
+      "job_id": "f2ea31f5b6234bdba89957e59e7451ba",
+      "job_state": "completed",
+      "stop_reason": null,
+      "model_calls": 3,
+      "attempts": [
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_4634eae91e534aa7b37a6445b8b39c82",
+          "usage": {
+            "input_tokens": 2317,
+            "output_tokens": 182,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_6c9ce32c8090404ab356c133286598aa",
+          "usage": {
+            "input_tokens": 2960,
+            "output_tokens": 573,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        },
+        {
+          "state": "succeeded",
+          "dispatched": true,
+          "actual_response_model_id": "gpt-4.1-mini-2025-04-14",
+          "provider_request_id": "req_855f1b02453043dd937b4fa98fc4aee3",
+          "usage": {
+            "input_tokens": 2244,
+            "output_tokens": 193,
+            "cache_read_tokens": 0,
+            "cache_write_tokens": null
+          },
+          "errors": []
+        }
+      ],
+      "elapsed_seconds": 10.641
+    },
+    {
+      "case_id": "EVAL-20",
+      "status": "error",
+      "citations_resolve": [],
+      "job_id": null,
+      "error_type": "ValidationError",
+      "elapsed_seconds": 0.062
+    }
+  ],
+  "assessment_metrics": {
+    "metric_definition_version": "d24-v1",
+    "split": "held_out",
+    "execution_mode": "live",
+    "same_operator_review": true,
+    "cases": [
+      {
+        "case_id": "EVAL-01",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-02",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-03",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-04",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-05",
+        "expected_status": "partial",
+        "actual_status": "needs_review",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status"
+        ]
+      },
+      {
+        "case_id": "EVAL-06",
+        "expected_status": "partial",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-07",
+        "expected_status": "gap",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-08",
+        "expected_status": "gap",
+        "actual_status": "needs_review",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status"
+        ]
+      },
+      {
+        "case_id": "EVAL-09",
+        "expected_status": "needs_review",
+        "actual_status": "needs_review",
+        "correct": true,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": []
+      },
+      {
+        "case_id": "EVAL-10",
+        "expected_status": "needs_review",
+        "actual_status": "needs_review",
+        "correct": true,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": []
+      },
+      {
+        "case_id": "EVAL-11",
+        "expected_status": "not_applicable",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-12",
+        "expected_status": "needs_review",
+        "actual_status": "needs_review",
+        "correct": true,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": []
+      },
+      {
+        "case_id": "EVAL-13",
+        "expected_status": "gap",
+        "actual_status": "partial",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status"
+        ]
+      },
+      {
+        "case_id": "EVAL-14",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-15",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-16",
+        "expected_status": "supported",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-17",
+        "expected_status": "needs_review",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      },
+      {
+        "case_id": "EVAL-18",
+        "expected_status": "needs_review",
+        "actual_status": "needs_review",
+        "correct": true,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": []
+      },
+      {
+        "case_id": "EVAL-19",
+        "expected_status": "needs_review",
+        "actual_status": "needs_review",
+        "correct": true,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": []
+      },
+      {
+        "case_id": "EVAL-20",
+        "expected_status": "needs_review",
+        "actual_status": "error",
+        "correct": false,
+        "citation_support_pass": false,
+        "critical_false_supported": false,
+        "error_categories": [
+          "incorrect_status",
+          "invalid_citations"
+        ]
+      }
+    ],
+    "primary_agreement": {
+      "numerator": 5,
+      "denominator": 20,
+      "value": 0.25,
+      "status": "measured"
+    },
+    "confusion_matrix": {
+      "supported": {
+        "supported": 0,
+        "partial": 0,
+        "gap": 0,
+        "needs_review": 0,
+        "not_applicable": 0,
+        "error": 7,
+        "malformed": 0,
+        "missing": 0,
+        "abstained": 0
+      },
+      "partial": {
+        "supported": 0,
+        "partial": 0,
+        "gap": 0,
+        "needs_review": 1,
+        "not_applicable": 0,
+        "error": 1,
+        "malformed": 0,
+        "missing": 0,
+        "abstained": 0
+      },
+      "gap": {
+        "supported": 0,
+        "partial": 1,
+        "gap": 0,
+        "needs_review": 1,
+        "not_applicable": 0,
+        "error": 1,
+        "malformed": 0,
+        "missing": 0,
+        "abstained": 0
+      },
+      "needs_review": {
+        "supported": 0,
+        "partial": 0,
+        "gap": 0,
+        "needs_review": 5,
+        "not_applicable": 0,
+        "error": 2,
+        "malformed": 0,
+        "missing": 0,
+        "abstained": 0
+      },
+      "not_applicable": {
+        "supported": 0,
+        "partial": 0,
+        "gap": 0,
+        "needs_review": 0,
+        "not_applicable": 0,
+        "error": 1,
+        "malformed": 0,
+        "missing": 0,
+        "abstained": 0
+      }
+    },
+    "per_status": {
+      "supported": {
+        "required": 7,
+        "correct": 0
+      },
+      "partial": {
+        "required": 2,
+        "correct": 0
+      },
+      "gap": {
+        "required": 3,
+        "correct": 0
+      },
+      "needs_review": {
+        "required": 7,
+        "correct": 5
+      },
+      "not_applicable": {
+        "required": 1,
+        "correct": 0
+      }
+    },
+    "outcome_counts": {
+      "supported": 0,
+      "partial": 1,
+      "gap": 0,
+      "needs_review": 7,
+      "not_applicable": 0,
+      "error": 12,
+      "malformed": 0,
+      "missing": 0,
+      "abstained": 0
+    },
+    "unexpected_abstention_count": 2,
+    "error_categories": {
+      "retrieval_misses": 0,
+      "incorrect_mappings": 0,
+      "unsupported_claims": 0,
+      "invalid_citations": 12,
+      "decisive_omissions": 0,
+      "incorrect_status": 15,
+      "poor_remedies": 0
+    },
+    "citation_resolution": {
+      "numerator": 34,
+      "denominator": 34,
+      "value": 1.0,
+      "status": "measured"
+    },
+    "citation_support": {
+      "numerator": null,
+      "denominator": 34,
+      "value": null,
+      "status": "not_measured"
+    },
+    "unknown_citation_check_count": 34,
+    "citation_failure_case_ids": [
+      "EVAL-01",
+      "EVAL-02",
+      "EVAL-03",
+      "EVAL-04",
+      "EVAL-05",
+      "EVAL-06",
+      "EVAL-07",
+      "EVAL-08",
+      "EVAL-09",
+      "EVAL-10",
+      "EVAL-11",
+      "EVAL-12",
+      "EVAL-13",
+      "EVAL-14",
+      "EVAL-15",
+      "EVAL-16",
+      "EVAL-17",
+      "EVAL-18",
+      "EVAL-19",
+      "EVAL-20"
+    ],
+    "critical_case_count": 6,
+    "critical_false_supported_case_ids": [],
+    "gates": {
+      "held_out_sample": true,
+      "primary_agreement": false,
+      "citation_support": false,
+      "critical_false_supported": true
+    },
+    "quality_gates_pass": false
+  },
+  "limits": [
+    "Claim support needs human context review.",
+    "No qualified domain review.",
+    "Current source coverage and AWS acceptance remain unverified.",
+    "Original Bedrock quality gate remains pending."
+  ],
+  "harness_working_tree_sha256": {
+    "ops/run_openai_evaluation.py": "294482ccf1a52265e01c97ef3aedca9c9c355c369abff3b3d57426a44f37d42a",
+    "evals/fixtures/local-openai-selections.json": "0c35ad1955ba10c696cd1cb8cb23fa7628029a4482f600df2e2e4222ff5b81b2"
+  },
+  "diagnosis": {
+    "preparation_fixture_kind_errors": [
+      "EVAL-17",
+      "EVAL-20"
+    ],
+    "execution_or_validation_errors": 10,
+    "actual_model_calls": 52,
+    "semantic_support": "not measured",
+    "independent_holdout": "not established"
+  },
+  "metric_category_limit": "Error categories from the shared scorer do not establish the runtime cause of these failures."
+}

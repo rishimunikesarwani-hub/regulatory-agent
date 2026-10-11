@@ -1,0 +1,26 @@
+{
+  "format_version": 1,
+  "source": "Frozen input obligation_scope fields; no expected answers",
+  "cases": {
+    "EVAL-01": "29e",
+    "EVAL-02": "19b",
+    "EVAL-03": "19a",
+    "EVAL-04": "19b",
+    "EVAL-05": "19b",
+    "EVAL-06": "19c",
+    "EVAL-07": "29a",
+    "EVAL-08": "29b",
+    "EVAL-09": "19c",
+    "EVAL-10": "19b",
+    "EVAL-11": "19b",
+    "EVAL-12": "19b",
+    "EVAL-13": "access",
+    "EVAL-14": "access",
+    "EVAL-15": "access",
+    "EVAL-16": "access",
+    "EVAL-17": "19b",
+    "EVAL-18": "19b",
+    "EVAL-19": "access",
+    "EVAL-20": "19b"
+  }
+}

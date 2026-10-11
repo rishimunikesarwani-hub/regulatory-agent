@@ -1,0 +1,28 @@
+test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash) ... ok
+test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions) ... ERROR
+test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages) ... ok
+test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run) ... ok
+test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown) ... ok
+test_oe10_default_cli_runs_without_credentials_or_model_calls (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe10_default_cli_runs_without_credentials_or_model_calls) ... ok
+
+======================================================================
+ERROR: test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 73, in test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions
+    service,run=prepare(ROOT,store,case,sources,selections[case['case_id']])
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py", line 65, in prepare
+    SourceRead.model_validate({k:source[k] for k in ('document','passages')})
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\.venv\Lib\site-packages\pydantic\main.py", line 790, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for SourceRead
+document.kind
+  Input should be 'regulation', 'profile', 'policy', 'control' or 'evidence' [type=literal_error, input_value='untrusted', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/literal_error
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.555s
+
+FAILED (errors=1)

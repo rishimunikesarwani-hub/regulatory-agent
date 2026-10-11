@@ -1,0 +1,29 @@
+test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash) ... ok
+test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_adversarial_fixture_text_uses_evidence_role_without_becoming_instructions) ... ok
+test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages) ... ok
+test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run) ... ok
+test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown) ... ok
+test_oe10_default_cli_runs_without_credentials_or_model_calls (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe10_default_cli_runs_without_credentials_or_model_calls) ... ok
+test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content) ... ERROR
+test_oe12_subsequent_scoring_cannot_establish_held_out_sample (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe12_subsequent_scoring_cannot_establish_held_out_sample) ... FAIL
+
+======================================================================
+ERROR: test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 17, in test_oe11_diagnostic_child_keeps_fixed_codes_after_mandatory_audit_without_content
+    from ops.run_openai_evaluation import diagnostic_child
+ImportError: cannot import name 'diagnostic_child' from 'ops.run_openai_evaluation' (C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\ops\run_openai_evaluation.py)
+
+======================================================================
+FAIL: test_oe12_subsequent_scoring_cannot_establish_held_out_sample (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe12_subsequent_scoring_cannot_establish_held_out_sample)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 44, in test_oe12_subsequent_scoring_cannot_establish_held_out_sample
+    self.assertFalse(report['gates']['held_out_sample'])
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.135s
+
+FAILED (failures=1, errors=1)

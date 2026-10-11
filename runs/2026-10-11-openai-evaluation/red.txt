@@ -1,0 +1,41 @@
+test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash) ... ERROR
+test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages) ... ERROR
+test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run) ... ERROR
+test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown) ... ERROR
+
+======================================================================
+ERROR: test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 14, in test_oe01_oe02_frozen_inputs_exclude_answers_and_reject_changed_hash
+    from ops.run_openai_evaluation import inputs
+ModuleNotFoundError: No module named 'ops.run_openai_evaluation'
+
+======================================================================
+ERROR: test_oe04_oe05_source_scope_preserves_frozen_passages (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe04_oe05_source_scope_preserves_frozen_passages)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 27, in test_oe04_oe05_source_scope_preserves_frozen_passages
+    from ops.run_openai_evaluation import inputs,prepare
+ModuleNotFoundError: No module named 'ops.run_openai_evaluation'
+
+======================================================================
+ERROR: test_oe06_output_directory_cannot_use_feedback_or_existing_run (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe06_output_directory_cannot_use_feedback_or_existing_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 46, in test_oe06_output_directory_cannot_use_feedback_or_existing_run
+    from ops.run_openai_evaluation import output_directory
+ModuleNotFoundError: No module named 'ops.run_openai_evaluation'
+
+======================================================================
+ERROR: test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown (test_local_openai_evaluation.LocalOpenAIEvaluationTests.test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_openai_evaluation.py", line 57, in test_oe07_oe09_errors_stay_in_denominator_and_support_stays_unknown
+    from ops.run_openai_evaluation import score
+ModuleNotFoundError: No module named 'ops.run_openai_evaluation'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.003s
+
+FAILED (errors=4)
