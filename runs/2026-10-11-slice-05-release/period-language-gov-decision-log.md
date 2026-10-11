@@ -19,4 +19,3 @@ No model call or dependency was added for extraction.
 Controlled local checks do not establish live model access, quality, or current regulatory completeness.
 Provider selection, live evaluations, and AWS acceptance remain pending.
 VS5 remains a draft under D35.
-

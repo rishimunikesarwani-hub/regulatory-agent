@@ -6,4 +6,3 @@
 | Period grounding | Exact source citations that establish a stated interval. |
 
 A stated period does not establish complete records or actual control operation.
-
