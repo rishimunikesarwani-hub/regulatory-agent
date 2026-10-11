@@ -9,9 +9,9 @@
 > \{
 >   "assessment\_date": "2024-04-08",
 >   "bank\_profile": \{
->     "name": "Fictional export bank 1791708138160"
+>     "name": "Fictional export bank 1791709826330"
 >   \},
->   "case\_id": "7cb6d94782614730923140911f4000eb",
+>   "case\_id": "a84e54aae5e1458292e7713421b27d7f",
 >   "mode": "historical",
 >   "model\_version": "in.openai.gpt-5.6-luna",
 >   "prompt\_version": "controlled-vs3-v1",
@@ -20,10 +20,10 @@
 >     "RBI-IT-19b"
 >   \],
 >   "selected\_versions": \{
->     "036f71b76dc6455aaca264853f90ce1d": "1",
+>     "0d73cdff08b14b21bb0db54417312ccc": "1",
 >     "RBI-IT-2023": "2023-11-07"
 >   \},
->   "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>   "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >   "synthetic": true
 > \}
 
@@ -31,19 +31,19 @@
 
 > \{
 >   "kind": "single\_assessment",
->   "case\_id": "7cb6d94782614730923140911f4000eb",
->   "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->   "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>   "case\_id": "a84e54aae5e1458292e7713421b27d7f",
+>   "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>   "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >   "model\_id": "in.openai.gpt-5.6-luna",
 >   "prompt\_version": "controlled-vs3-v1",
 >   "data\_mode": "controlled\_simulation",
 >   "recommendation\_availability": \{
->     "through": "2026-10-11T08:42:20.125204\+00:00",
+>     "through": "2026-10-11T09:10:29.446977\+00:00",
 >     "end\_inclusive": true
 >   \},
 >   "runtime\_selection": \{
->     "job\_id": "1795d80c671048d388ea04def6cad152",
->     "job\_admitted\_at": "2026-10-11T08:42:19.229579\+00:00",
+>     "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+>     "job\_admitted\_at": "2026-10-11T09:10:27.430769\+00:00",
 >     "job\_state\_time\_basis": "observed\_current\_state"
 >   \}
 > \}
@@ -52,18 +52,18 @@
 
 > \{
 >   "authority\_verified\_at": null,
->   "case\_id": "7cb6d94782614730923140911f4000eb",
->   "created\_at": 1791708139.229579,
->   "deadline": 1791708739.3129969,
->   "finished\_at": 1791708139.5784588,
+>   "case\_id": "a84e54aae5e1458292e7713421b27d7f",
+>   "created\_at": 1791709827.430769,
+>   "deadline": 1791710427.5452719,
+>   "finished\_at": 1791709828.1397138,
 >   "freshness": "unverified",
->   "job\_id": "1795d80c671048d388ea04def6cad152",
+>   "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
 >   "label": "Simulated",
 >   "model\_calls": 1,
 >   "retrieval\_calls": 0,
->   "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>   "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >   "stage": "persistence",
->   "started\_at": 1791708139.3129969,
+>   "started\_at": 1791709827.5452719,
 >   "state": "completed",
 >   "stop\_reason": null,
 >   "unchecked\_obligations": \[\]
@@ -71,7 +71,7 @@
 
 ## Report cutoff
 
-> 2026-10-11T08:42:20.125204\+00:00
+> 2026-10-11T09:10:29.446977\+00:00
 
 ## Freshness and authority verification
 
@@ -126,8 +126,8 @@
 >   "frequency": "Weekly under the fictional bank policy.",
 >   "citations": \[
 >     \{
->       "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
->       "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+>       "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
+>       "passage\_id": "00ebca878990404d876bc7070547e2fd-2",
 >       "location": "Line 2",
 >       "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
 >     \}
@@ -183,8 +183,8 @@
 >     "frequency": "Weekly under the fictional bank policy.",
 >     "citations": \[
 >       \{
->         "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
->         "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+>         "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
+>         "passage\_id": "00ebca878990404d876bc7070547e2fd-2",
 >         "location": "Line 2",
 >         "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
 >       \}
@@ -196,8 +196,8 @@
 
 > \[
 >   \{
->     "finding\_id": "3dac04990c2058c2ad3bfaffdaaf5bd8",
->     "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>     "finding\_id": "8a74dd250fb95320b012ed1a5e071da8",
+>     "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >     "obligation\_id": "RBI-IT-19b",
 >     "control\_ids": \[
 >       "ACCESS-01"
@@ -212,8 +212,8 @@
 >         "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
 >       \},
 >       \{
->         "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
->         "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+>         "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
+>         "passage\_id": "00ebca878990404d876bc7070547e2fd-2",
 >         "location": "Line 2",
 >         "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
 >       \}
@@ -223,14 +223,14 @@
 >     "gap\_kind": "evidence",
 >     "applicability\_reason": null,
 >     "claims": \[\],
->     "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>     "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >     "primary\_recommendation": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews.",
->     "available\_at": "2026-10-11T08:42:19.531461Z",
+>     "available\_at": "2026-10-11T09:10:28.079970Z",
 >     "model\_id": "in.openai.gpt-5.6-luna",
 >     "prompt\_version": "controlled-vs3-v1",
 >     "data\_mode": "controlled\_simulation",
 >     "source\_version\_ids": \[
->       "036f71b76dc6455aaca264853f90ce1d:1",
+>       "0d73cdff08b14b21bb0db54417312ccc:1",
 >       "RBI-IT-2023:2023-11-07"
 >     \]
 >   \}
@@ -249,11 +249,11 @@
 >     \},
 >     "reason": null,
 >     "expected\_revision": 0,
->     "idempotency\_key": "59b0e364-f489-451b-affd-ef1bc72d7edd",
->     "event\_id": "cedb6d608b0f401ab7e1c4b4c9b103f4",
->     "finding\_id": "3dac04990c2058c2ad3bfaffdaaf5bd8",
+>     "idempotency\_key": "b2d05f7e-b0c2-4eea-b6a7-7cb14731b76c",
+>     "event\_id": "7bcb04dd3bed4de787c9009e56b11085",
+>     "finding\_id": "8a74dd250fb95320b012ed1a5e071da8",
 >     "reviewer\_id": "slice-05-tests",
->     "committed\_at": "2026-10-11T08:42:20.090455Z",
+>     "committed\_at": "2026-10-11T09:10:29.410727Z",
 >     "revision": 1
 >   \}
 > \]
@@ -262,11 +262,11 @@
 
 metric_definition_version: d24-v1
 
-cutoff: 2026-10-11T08:42:20.125204+00:00
+cutoff: 2026-10-11T09:10:29.446977+00:00
 
 data_mode: controlled_simulation
 
-run_id: 56d085a0aa9c5629867d1cce3edbbec0
+run_id: 48cfc2b5eae85def8d431a2125652cdd
 
 eligible: 1
 
@@ -295,62 +295,16 @@ review_coverage: 1.0
 cost: Unknown
 
 > \{
->   "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>   "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >   "attempts": \[
 >     \{
 >       "actual\_response\_model\_id": null,
->       "artifact\_ids": \[
->         "cedb6d608b0f401ab7e1c4b4c9b103f4"
->       \],
->       "attempt\_id": "f026872b4ae14f86bac4eb8b4f90cfbb",
->       "candidate\_passage\_ids": \[\],
->       "dispatched": true,
->       "duration\_seconds": 0.014999999984866008,
->       "errors": \[\],
->       "event\_id": "01d39717889c42d09ca1d0a4e28a48d8",
->       "finished\_at": "2026-10-11T08:42:20.102577Z",
->       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
->       "model\_id": null,
->       "operation": "storage",
->       "original\_processing\_event\_id": null,
->       "provider\_request\_id": null,
->       "retry\_index": 0,
->       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "selected\_passage\_ids": \[\],
->       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "stage": "review\_event",
->       "stage\_id": "review\_event",
->       "started\_at": "2026-10-11T08:42:20.089446Z",
->       "state": "succeeded",
->       "streaming": false,
->       "unused\_allowance": null,
->       "usage": \{
->         "cache\_read\_tokens": null,
->         "cache\_write\_tokens": null,
->         "input\_tokens": null,
->         "output\_tokens": null
->       \},
->       "versions": \{
->         "application": "vs5-v1",
->         "chunking": "source-locations-v1",
->         "extraction": "vs2-v1",
->         "model\_configuration": "controlled-response-v1",
->         "prompt": "controlled-vs3-v1",
->         "retrieval": "fixed-example-v1",
->         "schema\_version": "t2-v1"
->       \}
->     \},
->     \{
->       "actual\_response\_model\_id": null,
 >       "artifact\_ids": \[\],
->       "attempt\_id": "2179aafe3d79432bb9ff3fdc26b292ba",
+>       "attempt\_id": "bbfd2a33f973479bbb7c5813b72ceb22",
 >       "candidate\_passage\_ids": \[
->         "68858e1be8e540618a9d96f3cf7074a7-1",
->         "68858e1be8e540618a9d96f3cf7074a7-2",
->         "68858e1be8e540618a9d96f3cf7074a7-3",
+>         "00ebca878990404d876bc7070547e2fd-1",
+>         "00ebca878990404d876bc7070547e2fd-2",
+>         "00ebca878990404d876bc7070547e2fd-3",
 >         "RBI-IT-2023:2023-11-07:2a",
 >         "RBI-IT-2023:2023-11-07:2ai",
 >         "RBI-IT-2023:2023-11-07:2b",
@@ -364,28 +318,28 @@ cost: Unknown
 >       "dispatched": true,
 >       "duration\_seconds": 0.0,
 >       "errors": \[\],
->       "event\_id": "0dc9c82d229949f2bb6553e32c575762",
->       "finished\_at": "2026-10-11T08:42:19.377581Z",
+>       "event\_id": "18e692fb51394497845d25b8ebacc7d6",
+>       "finished\_at": "2026-10-11T09:10:27.741145Z",
 >       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
 >       "model\_id": null,
 >       "operation": "retrieval",
 >       "original\_processing\_event\_id": null,
 >       "provider\_request\_id": null,
 >       "retry\_index": 0,
 >       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "selected\_passage\_ids": \[
 >         "RBI-IT-2023:2023-11-07:19b",
 >         "RBI-IT-2023:2023-11-07:2ai",
 >         "RBI-IT-2023:2023-11-07:2b",
->         "68858e1be8e540618a9d96f3cf7074a7-2"
+>         "00ebca878990404d876bc7070547e2fd-2"
 >       \],
 >       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "stage": "retrieval",
 >       "stage\_id": "retrieval",
->       "started\_at": "2026-10-11T08:42:19.377581Z",
+>       "started\_at": "2026-10-11T09:10:27.741145Z",
 >       "state": "succeeded",
 >       "streaming": false,
 >       "unused\_allowance": null,
@@ -408,72 +362,28 @@ cost: Unknown
 >     \{
 >       "actual\_response\_model\_id": null,
 >       "artifact\_ids": \[\],
->       "attempt\_id": "663a59d9917440a58c3608f4aed2a45b",
+>       "attempt\_id": "48ac8549a61343e194fb3543fcf48d97",
 >       "candidate\_passage\_ids": \[\],
 >       "dispatched": true,
->       "duration\_seconds": 0.030999999988125637,
+>       "duration\_seconds": 0.01600000000325963,
 >       "errors": \[\],
->       "event\_id": "1cf2dafc749244d29d1e1c76f06a40bf",
->       "finished\_at": "2026-10-11T08:42:19.480154Z",
+>       "event\_id": "4343c6a702c94a7fadfbf991daf9a0e7",
+>       "finished\_at": "2026-10-11T09:10:27.569159Z",
 >       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
->       "model\_id": "in.openai.gpt-5.6-luna",
->       "operation": "model",
->       "original\_processing\_event\_id": null,
->       "provider\_request\_id": null,
->       "retry\_index": 0,
->       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "selected\_passage\_ids": \[\],
->       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "stage": "model\_call",
->       "stage\_id": "model\_call",
->       "started\_at": "2026-10-11T08:42:19.448616Z",
->       "state": "succeeded",
->       "streaming": false,
->       "unused\_allowance": null,
->       "usage": \{
->         "cache\_read\_tokens": null,
->         "cache\_write\_tokens": null,
->         "input\_tokens": null,
->         "output\_tokens": null
->       \},
->       "versions": \{
->         "application": "vs5-v1",
->         "chunking": "source-locations-v1",
->         "extraction": "vs2-v1",
->         "model\_configuration": "controlled-response-v1",
->         "prompt": "controlled-vs3-v1",
->         "retrieval": "fixed-example-v1",
->         "schema\_version": "t2-v1"
->       \}
->     \},
->     \{
->       "actual\_response\_model\_id": null,
->       "artifact\_ids": \[\],
->       "attempt\_id": "9f59302397264efbaee773cddc82b4a8",
->       "candidate\_passage\_ids": \[\],
->       "dispatched": true,
->       "duration\_seconds": 0.0,
->       "errors": \[\],
->       "event\_id": "700b105a721f4778ab1a107554ff8fbf",
->       "finished\_at": "2026-10-11T08:42:19.327225Z",
->       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
 >       "model\_id": null,
 >       "operation": "internal",
 >       "original\_processing\_event\_id": null,
 >       "provider\_request\_id": null,
 >       "retry\_index": 0,
 >       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "selected\_passage\_ids": \[\],
 >       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "stage": "source\_verification",
 >       "stage\_id": "source\_verification",
->       "started\_at": "2026-10-11T08:42:19.324998Z",
+>       "started\_at": "2026-10-11T09:10:27.560558Z",
 >       "state": "succeeded",
 >       "streaming": false,
 >       "unused\_allowance": null,
@@ -496,121 +406,28 @@ cost: Unknown
 >     \{
 >       "actual\_response\_model\_id": null,
 >       "artifact\_ids": \[\],
->       "attempt\_id": "b96efd3a62fe4ac582e0386805c94dff",
+>       "attempt\_id": "7208a110a71d4ed7b9f5226d72a06356",
 >       "candidate\_passage\_ids": \[\],
 >       "dispatched": true,
->       "duration\_seconds": 0.0159999999741558,
+>       "duration\_seconds": 0.046999999991385266,
 >       "errors": \[\],
->       "event\_id": "98bdaaba1d07407ebc3d7b05930ef915",
->       "finished\_at": "2026-10-11T08:42:19.540459Z",
+>       "event\_id": "8f9dbd4ee107492a9d1cefe46f6c90a9",
+>       "finished\_at": "2026-10-11T09:10:28.096321Z",
 >       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
 >       "model\_id": null,
 >       "operation": "storage",
 >       "original\_processing\_event\_id": null,
 >       "provider\_request\_id": null,
 >       "retry\_index": 0,
 >       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "selected\_passage\_ids": \[\],
 >       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "stage": "persistence",
 >       "stage\_id": "persistence",
->       "started\_at": "2026-10-11T08:42:19.529462Z",
->       "state": "succeeded",
->       "streaming": false,
->       "unused\_allowance": null,
->       "usage": \{
->         "cache\_read\_tokens": null,
->         "cache\_write\_tokens": null,
->         "input\_tokens": null,
->         "output\_tokens": null
->       \},
->       "versions": \{
->         "application": "vs5-v1",
->         "chunking": "source-locations-v1",
->         "extraction": "vs2-v1",
->         "model\_configuration": "controlled-response-v1",
->         "prompt": "controlled-vs3-v1",
->         "retrieval": "fixed-example-v1",
->         "schema\_version": "t2-v1"
->       \}
->     \},
->     \{
->       "actual\_response\_model\_id": null,
->       "artifact\_ids": \[\],
->       "attempt\_id": "db8d1f082e4c4140929869fc1ac6b7f3",
->       "candidate\_passage\_ids": \[\],
->       "dispatched": true,
->       "duration\_seconds": 0.0,
->       "errors": \[\],
->       "event\_id": "a9d1242fa57b4a5ba79dca2e9580416d",
->       "finished\_at": "2026-10-11T08:42:19.396621Z",
->       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
->       "model\_id": null,
->       "operation": "internal",
->       "original\_processing\_event\_id": null,
->       "provider\_request\_id": null,
->       "retry\_index": 0,
->       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "selected\_passage\_ids": \[
->         "RBI-IT-2023:2023-11-07:19b",
->         "RBI-IT-2023:2023-11-07:2ai",
->         "RBI-IT-2023:2023-11-07:2b",
->         "68858e1be8e540618a9d96f3cf7074a7-2"
->       \],
->       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "stage": "context\_selection",
->       "stage\_id": "context\_selection",
->       "started\_at": "2026-10-11T08:42:19.396621Z",
->       "state": "succeeded",
->       "streaming": false,
->       "unused\_allowance": null,
->       "usage": \{
->         "cache\_read\_tokens": null,
->         "cache\_write\_tokens": null,
->         "input\_tokens": null,
->         "output\_tokens": null
->       \},
->       "versions": \{
->         "application": "vs5-v1",
->         "chunking": "source-locations-v1",
->         "extraction": "vs2-v1",
->         "model\_configuration": "controlled-response-v1",
->         "prompt": "controlled-vs3-v1",
->         "retrieval": "fixed-example-v1",
->         "schema\_version": "t2-v1"
->       \}
->     \},
->     \{
->       "actual\_response\_model\_id": null,
->       "artifact\_ids": \[\],
->       "attempt\_id": "1468b9399d1644698a54d6ac1eb355b3",
->       "candidate\_passage\_ids": \[\],
->       "dispatched": true,
->       "duration\_seconds": 0.0,
->       "errors": \[\],
->       "event\_id": "e03a1e556fed4d6081037899b8a1814d",
->       "finished\_at": "2026-10-11T08:42:19.509459Z",
->       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
->       "model\_id": null,
->       "operation": "internal",
->       "original\_processing\_event\_id": null,
->       "provider\_request\_id": null,
->       "retry\_index": 0,
->       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "selected\_passage\_ids": \[\],
->       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
->       "stage": "validation",
->       "stage\_id": "validation",
->       "started\_at": "2026-10-11T08:42:19.509459Z",
+>       "started\_at": "2026-10-11T09:10:28.062427Z",
 >       "state": "succeeded",
 >       "streaming": false,
 >       "unused\_allowance": null,
@@ -633,31 +450,214 @@ cost: Unknown
 >     \{
 >       "actual\_response\_model\_id": null,
 >       "artifact\_ids": \[
->         "68858e1be8e540618a9d96f3cf7074a7"
+>         "7bcb04dd3bed4de787c9009e56b11085"
 >       \],
->       "attempt\_id": "92fe3a5ced9443b2aa86a04c664a9819",
+>       "attempt\_id": "247ee955803b4392b39e0841cae5008f",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "9ecc1d9d8c8b4ed1bb4ec39940f7ba2b",
+>       "finished\_at": "2026-10-11T09:10:29.419905Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+>       "model\_id": null,
+>       "operation": "storage",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "stage": "review\_event",
+>       "stage\_id": "review\_event",
+>       "started\_at": "2026-10-11T09:10:29.409156Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "e360f8ebdb32402485b0dbca0bf95dcb",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "a0919bdcdbb24ad9b38e976eca1cd5f5",
+>       "finished\_at": "2026-10-11T09:10:27.807397Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "selected\_passage\_ids": \[
+>         "RBI-IT-2023:2023-11-07:19b",
+>         "RBI-IT-2023:2023-11-07:2ai",
+>         "RBI-IT-2023:2023-11-07:2b",
+>         "00ebca878990404d876bc7070547e2fd-2"
+>       \],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "stage": "context\_selection",
+>       "stage\_id": "context\_selection",
+>       "started\_at": "2026-10-11T09:10:27.807397Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[
+>         "00ebca878990404d876bc7070547e2fd"
+>       \],
+>       "attempt\_id": "0f9ef1594dc64dbead9908692fa87084",
 >       "candidate\_passage\_ids": \[\],
 >       "dispatched": false,
 >       "duration\_seconds": 0.0,
 >       "errors": \[\],
->       "event\_id": "ed3b357ca736449a914a68a18edde14c",
->       "finished\_at": "2026-10-11T08:42:19.353297Z",
+>       "event\_id": "a4fa5aa138f346b8a52e26a0de841aa0",
+>       "finished\_at": "2026-10-11T09:10:27.623251Z",
 >       "first\_token\_seconds": null,
->       "job\_id": "1795d80c671048d388ea04def6cad152",
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
 >       "model\_id": null,
 >       "operation": "internal",
->       "original\_processing\_event\_id": "68858e1be8e540618a9d96f3cf7074a7",
+>       "original\_processing\_event\_id": "00ebca878990404d876bc7070547e2fd",
 >       "provider\_request\_id": null,
 >       "retry\_index": 0,
 >       "returned\_bytes": null,
->       "run\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "selected\_passage\_ids": \[\],
 >       "selected\_text\_bytes": null,
->       "snapshot\_id": "56d085a0aa9c5629867d1cce3edbbec0",
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
 >       "stage": "extraction",
 >       "stage\_id": "extraction",
->       "started\_at": "2026-10-11T08:42:19.353297Z",
+>       "started\_at": "2026-10-11T09:10:27.623251Z",
 >       "state": "skipped",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "0ff45e17915545c08fcdb1c84ee60ab7",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.0,
+>       "errors": \[\],
+>       "event\_id": "a9451350bdae471c85edce3c6547851b",
+>       "finished\_at": "2026-10-11T09:10:27.962872Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+>       "model\_id": null,
+>       "operation": "internal",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "stage": "validation",
+>       "stage\_id": "validation",
+>       "started\_at": "2026-10-11T09:10:27.962872Z",
+>       "state": "succeeded",
+>       "streaming": false,
+>       "unused\_allowance": null,
+>       "usage": \{
+>         "cache\_read\_tokens": null,
+>         "cache\_write\_tokens": null,
+>         "input\_tokens": null,
+>         "output\_tokens": null
+>       \},
+>       "versions": \{
+>         "application": "vs5-v1",
+>         "chunking": "source-locations-v1",
+>         "extraction": "vs2-v1",
+>         "model\_configuration": "controlled-response-v1",
+>         "prompt": "controlled-vs3-v1",
+>         "retrieval": "fixed-example-v1",
+>         "schema\_version": "t2-v1"
+>       \}
+>     \},
+>     \{
+>       "actual\_response\_model\_id": null,
+>       "artifact\_ids": \[\],
+>       "attempt\_id": "bb07b52d32d04cc5be15ab952941d2a1",
+>       "candidate\_passage\_ids": \[\],
+>       "dispatched": true,
+>       "duration\_seconds": 0.030999999988125637,
+>       "errors": \[\],
+>       "event\_id": "fd1f8d48cd31453caa96bc90164834a2",
+>       "finished\_at": "2026-10-11T09:10:27.929864Z",
+>       "first\_token\_seconds": null,
+>       "job\_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+>       "model\_id": "in.openai.gpt-5.6-luna",
+>       "operation": "model",
+>       "original\_processing\_event\_id": null,
+>       "provider\_request\_id": null,
+>       "retry\_index": 0,
+>       "returned\_bytes": null,
+>       "run\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "selected\_passage\_ids": \[\],
+>       "selected\_text\_bytes": null,
+>       "snapshot\_id": "48cfc2b5eae85def8d431a2125652cdd",
+>       "stage": "model\_call",
+>       "stage\_id": "model\_call",
+>       "started\_at": "2026-10-11T09:10:27.901084Z",
+>       "state": "succeeded",
 >       "streaming": false,
 >       "unused\_allowance": null,
 >       "usage": \{
@@ -687,15 +687,15 @@ cost: Unknown
 
 > \{
 >   "document": \{
->     "case\_id": "7cb6d94782614730923140911f4000eb",
->     "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
+>     "case\_id": "a84e54aae5e1458292e7713421b27d7f",
+>     "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
 >     "effective\_date": null,
 >     "kind": "policy",
 >     "publication\_date": null,
 >     "sha256": "e5b255e307bc926270d6a12c7499dce86350ab981325fd74264c344af32f9e6f",
->     "source\_id": "036f71b76dc6455aaca264853f90ce1d",
+>     "source\_id": "0d73cdff08b14b21bb0db54417312ccc",
 >     "source\_url": null,
->     "storage\_reference": "68858e1be8e540618a9d96f3cf7074a7",
+>     "storage\_reference": "00ebca878990404d876bc7070547e2fd",
 >     "synthetic": true,
 >     "version": "1"
 >   \},
@@ -703,33 +703,33 @@ cost: Unknown
 >   "format": "txt",
 >   "passages": \[
 >     \{
->       "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
+>       "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
 >       "location": "Line 1",
->       "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-1",
+>       "passage\_id": "00ebca878990404d876bc7070547e2fd-1",
 >       "text": "Synthetic demo. Fictional bank policy."
 >     \},
 >     \{
->       "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
+>       "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
 >       "location": "Line 2",
->       "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+>       "passage\_id": "00ebca878990404d876bc7070547e2fd-2",
 >       "text": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
 >     \},
 >     \{
->       "document\_version\_id": "68858e1be8e540618a9d96f3cf7074a7",
+>       "document\_version\_id": "00ebca878990404d876bc7070547e2fd",
 >       "location": "Line 3",
->       "passage\_id": "68858e1be8e540618a9d96f3cf7074a7-3",
+>       "passage\_id": "00ebca878990404d876bc7070547e2fd-3",
 >       "text": "Weekly timing is bank policy, not an RBI-specified interval."
 >     \}
 >   \],
 >   "units": 1,
->   "uploaded\_at": "2026-10-11T08:42:18.945712\+00:00"
+>   "uploaded\_at": "2026-10-11T09:10:27.179884\+00:00"
 > \}
 
 ## Source Version
 
 > \{
 >   "document": \{
->     "case\_id": "7cb6d94782614730923140911f4000eb",
+>     "case\_id": "a84e54aae5e1458292e7713421b27d7f",
 >     "document\_version\_id": "RBI-IT-2023:2023-11-07",
 >     "kind": "regulation",
 >     "sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",

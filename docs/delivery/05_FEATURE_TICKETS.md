@@ -259,7 +259,8 @@ Acceptance:
 The local assessment and review routes are implemented in VS3 through VS5.
 The [cloud job component](spec-slice-05-cloud-jobs.md) now has controlled native SDK checks.
 The [cloud record component](spec-slice-05-cloud-records.md) connects the shared pipeline to native findings, attempts, reviews, and exports.
-Complete cloud admission, API, queue, and worker integration remain unfinished.
+The [native execution component](spec-slice-05-cloud-execution.md) adds historical admission, SQS transport, and native worker cleanup.
+Complete API, source packaging, queue resources, worker IAM, and deployed integration remain unfinished.
 
 **Dependencies:** VS1 starts with T2 case contracts. Each later slice adds its API, job, or review behavior.
 

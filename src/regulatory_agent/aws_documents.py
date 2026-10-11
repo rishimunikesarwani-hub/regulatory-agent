@@ -208,3 +208,12 @@ class CloudDocuments:
     def download(self, owner, case, identity):
         source = self._source(owner, case, identity)
         return {'url': self.objects.download(owner, case, source['original'], source['filename'])}
+
+    def read_full(self, owner, case, identity):
+        """Internal assessment read. Verify the pinned original before using extracted text."""
+        source=self._source(owner,case,identity)
+        self.objects.read(owner,case,source['original'])
+        extracted=json.loads(self.objects.read_extraction(owner,case,source['extraction']))
+        passages=[Passage(passage_id=f'{identity}-{i+1}',document_version_id=identity,**p).model_dump()
+                  for i,p in enumerate(extracted['passages'])]
+        return self._public(source)|{'passages':passages}

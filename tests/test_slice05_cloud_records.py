@@ -212,6 +212,7 @@ class CloudRecordTests(unittest.TestCase):
         class Documents:
             def read(inner,owner,case,identity,**kwargs):
                 self.cases.read(owner,case); return copy.deepcopy(sources[identity])
+            read_full=read
         self.service.documents=Documents()
         if fail_audit:
             original=self.reviews.attempt

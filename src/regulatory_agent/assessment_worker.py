@@ -47,15 +47,20 @@ def _stop(store, owner, case, job_id, token, reason):
     return job
 
 
-def supervise(store, owner, case, job_id, target, *, args=()):
+def supervise(store, owner, case, job_id, target, *, args=(), stop=_stop, available_seconds=None):
     """One child per saved claim. The parent owns the remaining deadline and lease."""
+    if available_seconds is not None:
+        saved=store.read_job(owner,case,job_id)
+        needed=600 if saved['deadline'] is None else max(0,saved['deadline']-time.time())
+        if available_seconds()<needed+15:
+            raise ContractError('worker_time_unavailable')
     token = store.claim(owner, case, job_id)
     job = store.read_job(owner, case, job_id)
     if token is None:
         return job
     remaining = job['deadline'] - time.time()
     if remaining <= 0:
-        return _stop(store, owner, case, job_id, token, 'worker_timeout')
+        return stop(store, owner, case, job_id, token, 'worker_timeout')
     end = time.monotonic() + remaining
     process = multiprocessing.get_context('spawn').Process(name=f'assessment-{job_id}',
         target=_execute, args=(target, (*args, owner, case, job_id, token)), daemon=True)
@@ -66,6 +71,7 @@ def supervise(store, owner, case, job_id, target, *, args=()):
         process.start()
         while process.is_alive():
             remaining = end - time.monotonic()
+            if available_seconds is not None: remaining=min(remaining,available_seconds()-15)
             if remaining <= 0:
                 reason = 'worker_timeout'
                 break
@@ -88,7 +94,7 @@ def supervise(store, owner, case, job_id, target, *, args=()):
             if process.is_alive():
                 raise ContractError('worker_stop_failed')
         process.close()
-    return _stop(store, owner, case, job_id, token, reason)
+    return stop(store, owner, case, job_id, token, reason)
 
 
 def bedrock_child(database_path, profile, owner, case, job_id, token):

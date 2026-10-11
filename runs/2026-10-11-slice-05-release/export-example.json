@@ -1,29 +1,29 @@
 {
   "authority_verified_at": null,
   "cohort": {
-    "case_id": "7cb6d94782614730923140911f4000eb",
+    "case_id": "a84e54aae5e1458292e7713421b27d7f",
     "data_mode": "controlled_simulation",
     "kind": "single_assessment",
     "model_id": "in.openai.gpt-5.6-luna",
     "prompt_version": "controlled-vs3-v1",
     "recommendation_availability": {
       "end_inclusive": true,
-      "through": "2026-10-11T08:42:20.125204+00:00"
+      "through": "2026-10-11T09:10:29.446977+00:00"
     },
-    "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
+    "run_id": "48cfc2b5eae85def8d431a2125652cdd",
     "runtime_selection": {
-      "job_admitted_at": "2026-10-11T08:42:19.229579+00:00",
-      "job_id": "1795d80c671048d388ea04def6cad152",
+      "job_admitted_at": "2026-10-11T09:10:27.430769+00:00",
+      "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
       "job_state_time_basis": "observed_current_state"
     },
-    "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0"
+    "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd"
   },
   "control": {
     "citations": [
       {
-        "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+        "document_version_id": "00ebca878990404d876bc7070547e2fd",
         "location": "Line 2",
-        "passage_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+        "passage_id": "00ebca878990404d876bc7070547e2fd-2",
         "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
       }
     ],
@@ -37,9 +37,9 @@
     {
       "citations": [
         {
-          "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+          "document_version_id": "00ebca878990404d876bc7070547e2fd",
           "location": "Line 2",
-          "passage_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+          "passage_id": "00ebca878990404d876bc7070547e2fd-2",
           "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
         }
       ],
@@ -56,7 +56,7 @@
   "findings": [
     {
       "applicability_reason": null,
-      "available_at": "2026-10-11T08:42:19.531461Z",
+      "available_at": "2026-10-11T09:10:28.079970Z",
       "citations": [
         {
           "document_version_id": "RBI-IT-2023:2023-11-07",
@@ -65,9 +65,9 @@
           "quote": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
         },
         {
-          "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+          "document_version_id": "00ebca878990404d876bc7070547e2fd",
           "location": "Line 2",
-          "passage_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+          "passage_id": "00ebca878990404d876bc7070547e2fd-2",
           "quote": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
         }
       ],
@@ -77,7 +77,7 @@
       ],
       "data_mode": "controlled_simulation",
       "evidence_condition": "missing",
-      "finding_id": "3dac04990c2058c2ad3bfaffdaaf5bd8",
+      "finding_id": "8a74dd250fb95320b012ed1a5e071da8",
       "gap_kind": "evidence",
       "model_id": "in.openai.gpt-5.6-luna",
       "obligation_id": "RBI-IT-19b",
@@ -85,10 +85,10 @@
       "prompt_version": "controlled-vs3-v1",
       "rationale": "Controlled example. The policy states a control, but this example has no verified operational evidence. Applicability and activity records need human review.",
       "remedy": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews.",
-      "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
-      "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+      "run_id": "48cfc2b5eae85def8d431a2125652cdd",
+      "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
       "source_version_ids": [
-        "036f71b76dc6455aaca264853f90ce1d:1",
+        "0d73cdff08b14b21bb0db54417312ccc:1",
         "RBI-IT-2023:2023-11-07"
       ],
       "status": "needs_review"
@@ -97,18 +97,18 @@
   "freshness": "unverified",
   "job": {
     "authority_verified_at": null,
-    "case_id": "7cb6d94782614730923140911f4000eb",
-    "created_at": 1791708139.229579,
-    "deadline": 1791708739.3129969,
-    "finished_at": 1791708139.5784588,
+    "case_id": "a84e54aae5e1458292e7713421b27d7f",
+    "created_at": 1791709827.430769,
+    "deadline": 1791710427.5452719,
+    "finished_at": 1791709828.1397138,
     "freshness": "unverified",
-    "job_id": "1795d80c671048d388ea04def6cad152",
+    "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
     "label": "Simulated",
     "model_calls": 1,
     "retrieval_calls": 0,
-    "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+    "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
     "stage": "persistence",
-    "started_at": 1791708139.3129969,
+    "started_at": 1791709827.5452719,
     "state": "completed",
     "stop_reason": null,
     "unchecked_obligations": []
@@ -191,7 +191,7 @@
       "requirement": "Personnel with elevated system access entitlements shall be closely supervised with all their systems activities logged and periodically reviewed."
     }
   ],
-  "report_cutoff": "2026-10-11T08:42:20.125204+00:00",
+  "report_cutoff": "2026-10-11T09:10:29.446977+00:00",
   "reviews": [
     {
       "accepted_content": {
@@ -199,13 +199,13 @@
         "recommendation": "Confirm applicability. Request dated session records, supervisor sign-offs, complete activity logs, and completed periodic reviews.",
         "status": "needs_review"
       },
-      "committed_at": "2026-10-11T08:42:20.090455Z",
+      "committed_at": "2026-10-11T09:10:29.410727Z",
       "disposition": "approved",
-      "event_id": "cedb6d608b0f401ab7e1c4b4c9b103f4",
+      "event_id": "7bcb04dd3bed4de787c9009e56b11085",
       "event_kind": "final_review",
       "expected_revision": 0,
-      "finding_id": "3dac04990c2058c2ad3bfaffdaaf5bd8",
-      "idempotency_key": "59b0e364-f489-451b-affd-ef1bc72d7edd",
+      "finding_id": "8a74dd250fb95320b012ed1a5e071da8",
+      "idempotency_key": "b2d05f7e-b0c2-4eea-b6a7-7cb14731b76c",
       "reason": null,
       "reviewer_id": "slice-05-tests",
       "revision": 1
@@ -214,9 +214,9 @@
   "snapshot": {
     "assessment_date": "2024-04-08",
     "bank_profile": {
-      "name": "Fictional export bank 1791708138160"
+      "name": "Fictional export bank 1791709826330"
     },
-    "case_id": "7cb6d94782614730923140911f4000eb",
+    "case_id": "a84e54aae5e1458292e7713421b27d7f",
     "mode": "historical",
     "model_version": "in.openai.gpt-5.6-luna",
     "prompt_version": "controlled-vs3-v1",
@@ -225,10 +225,10 @@
       "RBI-IT-19b"
     ],
     "selected_versions": {
-      "036f71b76dc6455aaca264853f90ce1d": "1",
+      "0d73cdff08b14b21bb0db54417312ccc": "1",
       "RBI-IT-2023": "2023-11-07"
     },
-    "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+    "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
     "synthetic": true
   },
   "source_urls": [
@@ -237,15 +237,15 @@
   "sources": [
     {
       "document": {
-        "case_id": "7cb6d94782614730923140911f4000eb",
-        "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+        "case_id": "a84e54aae5e1458292e7713421b27d7f",
+        "document_version_id": "00ebca878990404d876bc7070547e2fd",
         "effective_date": null,
         "kind": "policy",
         "publication_date": null,
         "sha256": "e5b255e307bc926270d6a12c7499dce86350ab981325fd74264c344af32f9e6f",
-        "source_id": "036f71b76dc6455aaca264853f90ce1d",
+        "source_id": "0d73cdff08b14b21bb0db54417312ccc",
         "source_url": null,
-        "storage_reference": "68858e1be8e540618a9d96f3cf7074a7",
+        "storage_reference": "00ebca878990404d876bc7070547e2fd",
         "synthetic": true,
         "version": "1"
       },
@@ -253,30 +253,30 @@
       "format": "txt",
       "passages": [
         {
-          "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+          "document_version_id": "00ebca878990404d876bc7070547e2fd",
           "location": "Line 1",
-          "passage_id": "68858e1be8e540618a9d96f3cf7074a7-1",
+          "passage_id": "00ebca878990404d876bc7070547e2fd-1",
           "text": "Synthetic demo. Fictional bank policy."
         },
         {
-          "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+          "document_version_id": "00ebca878990404d876bc7070547e2fd",
           "location": "Line 2",
-          "passage_id": "68858e1be8e540618a9d96f3cf7074a7-2",
+          "passage_id": "00ebca878990404d876bc7070547e2fd-2",
           "text": "Control ACCESS-01 requires supervision of privileged sessions, complete activity logging, and a weekly review."
         },
         {
-          "document_version_id": "68858e1be8e540618a9d96f3cf7074a7",
+          "document_version_id": "00ebca878990404d876bc7070547e2fd",
           "location": "Line 3",
-          "passage_id": "68858e1be8e540618a9d96f3cf7074a7-3",
+          "passage_id": "00ebca878990404d876bc7070547e2fd-3",
           "text": "Weekly timing is bank policy, not an RBI-specified interval."
         }
       ],
       "units": 1,
-      "uploaded_at": "2026-10-11T08:42:18.945712+00:00"
+      "uploaded_at": "2026-10-11T09:10:27.179884+00:00"
     },
     {
       "document": {
-        "case_id": "7cb6d94782614730923140911f4000eb",
+        "case_id": "a84e54aae5e1458292e7713421b27d7f",
         "document_version_id": "RBI-IT-2023:2023-11-07",
         "kind": "regulation",
         "sha256": "d742aece8d2b5d74240e83e4d2ec6150a57f2076c02a9c878528ad6c42151786",
@@ -353,7 +353,7 @@
     "adoption_rate": 1.0,
     "approval_rate": 1.0,
     "approved": 1,
-    "cutoff": "2026-10-11T08:42:20.125204+00:00",
+    "cutoff": "2026-10-11T09:10:29.446977+00:00",
     "data_mode": "controlled_simulation",
     "edit_rate": 0.0,
     "edited": 0,
@@ -364,64 +364,18 @@
     "rejection_rate": 0.0,
     "review_coverage": 1.0,
     "reviewed": 1,
-    "run_id": "56d085a0aa9c5629867d1cce3edbbec0"
+    "run_id": "48cfc2b5eae85def8d431a2125652cdd"
   },
   "trace": {
     "attempts": [
       {
         "actual_response_model_id": null,
-        "artifact_ids": [
-          "cedb6d608b0f401ab7e1c4b4c9b103f4"
-        ],
-        "attempt_id": "f026872b4ae14f86bac4eb8b4f90cfbb",
-        "candidate_passage_ids": [],
-        "dispatched": true,
-        "duration_seconds": 0.014999999984866008,
-        "errors": [],
-        "event_id": "01d39717889c42d09ca1d0a4e28a48d8",
-        "finished_at": "2026-10-11T08:42:20.102577Z",
-        "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
-        "model_id": null,
-        "operation": "storage",
-        "original_processing_event_id": null,
-        "provider_request_id": null,
-        "retry_index": 0,
-        "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "selected_passage_ids": [],
-        "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "stage": "review_event",
-        "stage_id": "review_event",
-        "started_at": "2026-10-11T08:42:20.089446Z",
-        "state": "succeeded",
-        "streaming": false,
-        "unused_allowance": null,
-        "usage": {
-          "cache_read_tokens": null,
-          "cache_write_tokens": null,
-          "input_tokens": null,
-          "output_tokens": null
-        },
-        "versions": {
-          "application": "vs5-v1",
-          "chunking": "source-locations-v1",
-          "extraction": "vs2-v1",
-          "model_configuration": "controlled-response-v1",
-          "prompt": "controlled-vs3-v1",
-          "retrieval": "fixed-example-v1",
-          "schema_version": "t2-v1"
-        }
-      },
-      {
-        "actual_response_model_id": null,
         "artifact_ids": [],
-        "attempt_id": "2179aafe3d79432bb9ff3fdc26b292ba",
+        "attempt_id": "bbfd2a33f973479bbb7c5813b72ceb22",
         "candidate_passage_ids": [
-          "68858e1be8e540618a9d96f3cf7074a7-1",
-          "68858e1be8e540618a9d96f3cf7074a7-2",
-          "68858e1be8e540618a9d96f3cf7074a7-3",
+          "00ebca878990404d876bc7070547e2fd-1",
+          "00ebca878990404d876bc7070547e2fd-2",
+          "00ebca878990404d876bc7070547e2fd-3",
           "RBI-IT-2023:2023-11-07:2a",
           "RBI-IT-2023:2023-11-07:2ai",
           "RBI-IT-2023:2023-11-07:2b",
@@ -435,28 +389,28 @@
         "dispatched": true,
         "duration_seconds": 0.0,
         "errors": [],
-        "event_id": "0dc9c82d229949f2bb6553e32c575762",
-        "finished_at": "2026-10-11T08:42:19.377581Z",
+        "event_id": "18e692fb51394497845d25b8ebacc7d6",
+        "finished_at": "2026-10-11T09:10:27.741145Z",
         "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
         "model_id": null,
         "operation": "retrieval",
         "original_processing_event_id": null,
         "provider_request_id": null,
         "retry_index": 0,
         "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
         "selected_passage_ids": [
           "RBI-IT-2023:2023-11-07:19b",
           "RBI-IT-2023:2023-11-07:2ai",
           "RBI-IT-2023:2023-11-07:2b",
-          "68858e1be8e540618a9d96f3cf7074a7-2"
+          "00ebca878990404d876bc7070547e2fd-2"
         ],
         "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
         "stage": "retrieval",
         "stage_id": "retrieval",
-        "started_at": "2026-10-11T08:42:19.377581Z",
+        "started_at": "2026-10-11T09:10:27.741145Z",
         "state": "succeeded",
         "streaming": false,
         "unused_allowance": null,
@@ -479,72 +433,28 @@
       {
         "actual_response_model_id": null,
         "artifact_ids": [],
-        "attempt_id": "663a59d9917440a58c3608f4aed2a45b",
+        "attempt_id": "48ac8549a61343e194fb3543fcf48d97",
         "candidate_passage_ids": [],
         "dispatched": true,
-        "duration_seconds": 0.030999999988125637,
+        "duration_seconds": 0.01600000000325963,
         "errors": [],
-        "event_id": "1cf2dafc749244d29d1e1c76f06a40bf",
-        "finished_at": "2026-10-11T08:42:19.480154Z",
+        "event_id": "4343c6a702c94a7fadfbf991daf9a0e7",
+        "finished_at": "2026-10-11T09:10:27.569159Z",
         "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
-        "model_id": "in.openai.gpt-5.6-luna",
-        "operation": "model",
-        "original_processing_event_id": null,
-        "provider_request_id": null,
-        "retry_index": 0,
-        "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "selected_passage_ids": [],
-        "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "stage": "model_call",
-        "stage_id": "model_call",
-        "started_at": "2026-10-11T08:42:19.448616Z",
-        "state": "succeeded",
-        "streaming": false,
-        "unused_allowance": null,
-        "usage": {
-          "cache_read_tokens": null,
-          "cache_write_tokens": null,
-          "input_tokens": null,
-          "output_tokens": null
-        },
-        "versions": {
-          "application": "vs5-v1",
-          "chunking": "source-locations-v1",
-          "extraction": "vs2-v1",
-          "model_configuration": "controlled-response-v1",
-          "prompt": "controlled-vs3-v1",
-          "retrieval": "fixed-example-v1",
-          "schema_version": "t2-v1"
-        }
-      },
-      {
-        "actual_response_model_id": null,
-        "artifact_ids": [],
-        "attempt_id": "9f59302397264efbaee773cddc82b4a8",
-        "candidate_passage_ids": [],
-        "dispatched": true,
-        "duration_seconds": 0.0,
-        "errors": [],
-        "event_id": "700b105a721f4778ab1a107554ff8fbf",
-        "finished_at": "2026-10-11T08:42:19.327225Z",
-        "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
         "model_id": null,
         "operation": "internal",
         "original_processing_event_id": null,
         "provider_request_id": null,
         "retry_index": 0,
         "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
         "selected_passage_ids": [],
         "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
         "stage": "source_verification",
         "stage_id": "source_verification",
-        "started_at": "2026-10-11T08:42:19.324998Z",
+        "started_at": "2026-10-11T09:10:27.560558Z",
         "state": "succeeded",
         "streaming": false,
         "unused_allowance": null,
@@ -567,121 +477,28 @@
       {
         "actual_response_model_id": null,
         "artifact_ids": [],
-        "attempt_id": "b96efd3a62fe4ac582e0386805c94dff",
+        "attempt_id": "7208a110a71d4ed7b9f5226d72a06356",
         "candidate_passage_ids": [],
         "dispatched": true,
-        "duration_seconds": 0.0159999999741558,
+        "duration_seconds": 0.046999999991385266,
         "errors": [],
-        "event_id": "98bdaaba1d07407ebc3d7b05930ef915",
-        "finished_at": "2026-10-11T08:42:19.540459Z",
+        "event_id": "8f9dbd4ee107492a9d1cefe46f6c90a9",
+        "finished_at": "2026-10-11T09:10:28.096321Z",
         "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
         "model_id": null,
         "operation": "storage",
         "original_processing_event_id": null,
         "provider_request_id": null,
         "retry_index": 0,
         "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
         "selected_passage_ids": [],
         "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
         "stage": "persistence",
         "stage_id": "persistence",
-        "started_at": "2026-10-11T08:42:19.529462Z",
-        "state": "succeeded",
-        "streaming": false,
-        "unused_allowance": null,
-        "usage": {
-          "cache_read_tokens": null,
-          "cache_write_tokens": null,
-          "input_tokens": null,
-          "output_tokens": null
-        },
-        "versions": {
-          "application": "vs5-v1",
-          "chunking": "source-locations-v1",
-          "extraction": "vs2-v1",
-          "model_configuration": "controlled-response-v1",
-          "prompt": "controlled-vs3-v1",
-          "retrieval": "fixed-example-v1",
-          "schema_version": "t2-v1"
-        }
-      },
-      {
-        "actual_response_model_id": null,
-        "artifact_ids": [],
-        "attempt_id": "db8d1f082e4c4140929869fc1ac6b7f3",
-        "candidate_passage_ids": [],
-        "dispatched": true,
-        "duration_seconds": 0.0,
-        "errors": [],
-        "event_id": "a9d1242fa57b4a5ba79dca2e9580416d",
-        "finished_at": "2026-10-11T08:42:19.396621Z",
-        "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
-        "model_id": null,
-        "operation": "internal",
-        "original_processing_event_id": null,
-        "provider_request_id": null,
-        "retry_index": 0,
-        "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "selected_passage_ids": [
-          "RBI-IT-2023:2023-11-07:19b",
-          "RBI-IT-2023:2023-11-07:2ai",
-          "RBI-IT-2023:2023-11-07:2b",
-          "68858e1be8e540618a9d96f3cf7074a7-2"
-        ],
-        "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "stage": "context_selection",
-        "stage_id": "context_selection",
-        "started_at": "2026-10-11T08:42:19.396621Z",
-        "state": "succeeded",
-        "streaming": false,
-        "unused_allowance": null,
-        "usage": {
-          "cache_read_tokens": null,
-          "cache_write_tokens": null,
-          "input_tokens": null,
-          "output_tokens": null
-        },
-        "versions": {
-          "application": "vs5-v1",
-          "chunking": "source-locations-v1",
-          "extraction": "vs2-v1",
-          "model_configuration": "controlled-response-v1",
-          "prompt": "controlled-vs3-v1",
-          "retrieval": "fixed-example-v1",
-          "schema_version": "t2-v1"
-        }
-      },
-      {
-        "actual_response_model_id": null,
-        "artifact_ids": [],
-        "attempt_id": "1468b9399d1644698a54d6ac1eb355b3",
-        "candidate_passage_ids": [],
-        "dispatched": true,
-        "duration_seconds": 0.0,
-        "errors": [],
-        "event_id": "e03a1e556fed4d6081037899b8a1814d",
-        "finished_at": "2026-10-11T08:42:19.509459Z",
-        "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
-        "model_id": null,
-        "operation": "internal",
-        "original_processing_event_id": null,
-        "provider_request_id": null,
-        "retry_index": 0,
-        "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "selected_passage_ids": [],
-        "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
-        "stage": "validation",
-        "stage_id": "validation",
-        "started_at": "2026-10-11T08:42:19.509459Z",
+        "started_at": "2026-10-11T09:10:28.062427Z",
         "state": "succeeded",
         "streaming": false,
         "unused_allowance": null,
@@ -704,31 +521,214 @@
       {
         "actual_response_model_id": null,
         "artifact_ids": [
-          "68858e1be8e540618a9d96f3cf7074a7"
+          "7bcb04dd3bed4de787c9009e56b11085"
         ],
-        "attempt_id": "92fe3a5ced9443b2aa86a04c664a9819",
+        "attempt_id": "247ee955803b4392b39e0841cae5008f",
+        "candidate_passage_ids": [],
+        "dispatched": true,
+        "duration_seconds": 0.0,
+        "errors": [],
+        "event_id": "9ecc1d9d8c8b4ed1bb4ec39940f7ba2b",
+        "finished_at": "2026-10-11T09:10:29.419905Z",
+        "first_token_seconds": null,
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+        "model_id": null,
+        "operation": "storage",
+        "original_processing_event_id": null,
+        "provider_request_id": null,
+        "retry_index": 0,
+        "returned_bytes": null,
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "selected_passage_ids": [],
+        "selected_text_bytes": null,
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "stage": "review_event",
+        "stage_id": "review_event",
+        "started_at": "2026-10-11T09:10:29.409156Z",
+        "state": "succeeded",
+        "streaming": false,
+        "unused_allowance": null,
+        "usage": {
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "versions": {
+          "application": "vs5-v1",
+          "chunking": "source-locations-v1",
+          "extraction": "vs2-v1",
+          "model_configuration": "controlled-response-v1",
+          "prompt": "controlled-vs3-v1",
+          "retrieval": "fixed-example-v1",
+          "schema_version": "t2-v1"
+        }
+      },
+      {
+        "actual_response_model_id": null,
+        "artifact_ids": [],
+        "attempt_id": "e360f8ebdb32402485b0dbca0bf95dcb",
+        "candidate_passage_ids": [],
+        "dispatched": true,
+        "duration_seconds": 0.0,
+        "errors": [],
+        "event_id": "a0919bdcdbb24ad9b38e976eca1cd5f5",
+        "finished_at": "2026-10-11T09:10:27.807397Z",
+        "first_token_seconds": null,
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+        "model_id": null,
+        "operation": "internal",
+        "original_processing_event_id": null,
+        "provider_request_id": null,
+        "retry_index": 0,
+        "returned_bytes": null,
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "selected_passage_ids": [
+          "RBI-IT-2023:2023-11-07:19b",
+          "RBI-IT-2023:2023-11-07:2ai",
+          "RBI-IT-2023:2023-11-07:2b",
+          "00ebca878990404d876bc7070547e2fd-2"
+        ],
+        "selected_text_bytes": null,
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "stage": "context_selection",
+        "stage_id": "context_selection",
+        "started_at": "2026-10-11T09:10:27.807397Z",
+        "state": "succeeded",
+        "streaming": false,
+        "unused_allowance": null,
+        "usage": {
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "versions": {
+          "application": "vs5-v1",
+          "chunking": "source-locations-v1",
+          "extraction": "vs2-v1",
+          "model_configuration": "controlled-response-v1",
+          "prompt": "controlled-vs3-v1",
+          "retrieval": "fixed-example-v1",
+          "schema_version": "t2-v1"
+        }
+      },
+      {
+        "actual_response_model_id": null,
+        "artifact_ids": [
+          "00ebca878990404d876bc7070547e2fd"
+        ],
+        "attempt_id": "0f9ef1594dc64dbead9908692fa87084",
         "candidate_passage_ids": [],
         "dispatched": false,
         "duration_seconds": 0.0,
         "errors": [],
-        "event_id": "ed3b357ca736449a914a68a18edde14c",
-        "finished_at": "2026-10-11T08:42:19.353297Z",
+        "event_id": "a4fa5aa138f346b8a52e26a0de841aa0",
+        "finished_at": "2026-10-11T09:10:27.623251Z",
         "first_token_seconds": null,
-        "job_id": "1795d80c671048d388ea04def6cad152",
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
         "model_id": null,
         "operation": "internal",
-        "original_processing_event_id": "68858e1be8e540618a9d96f3cf7074a7",
+        "original_processing_event_id": "00ebca878990404d876bc7070547e2fd",
         "provider_request_id": null,
         "retry_index": 0,
         "returned_bytes": null,
-        "run_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
         "selected_passage_ids": [],
         "selected_text_bytes": null,
-        "snapshot_id": "56d085a0aa9c5629867d1cce3edbbec0",
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
         "stage": "extraction",
         "stage_id": "extraction",
-        "started_at": "2026-10-11T08:42:19.353297Z",
+        "started_at": "2026-10-11T09:10:27.623251Z",
         "state": "skipped",
+        "streaming": false,
+        "unused_allowance": null,
+        "usage": {
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "versions": {
+          "application": "vs5-v1",
+          "chunking": "source-locations-v1",
+          "extraction": "vs2-v1",
+          "model_configuration": "controlled-response-v1",
+          "prompt": "controlled-vs3-v1",
+          "retrieval": "fixed-example-v1",
+          "schema_version": "t2-v1"
+        }
+      },
+      {
+        "actual_response_model_id": null,
+        "artifact_ids": [],
+        "attempt_id": "0ff45e17915545c08fcdb1c84ee60ab7",
+        "candidate_passage_ids": [],
+        "dispatched": true,
+        "duration_seconds": 0.0,
+        "errors": [],
+        "event_id": "a9451350bdae471c85edce3c6547851b",
+        "finished_at": "2026-10-11T09:10:27.962872Z",
+        "first_token_seconds": null,
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+        "model_id": null,
+        "operation": "internal",
+        "original_processing_event_id": null,
+        "provider_request_id": null,
+        "retry_index": 0,
+        "returned_bytes": null,
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "selected_passage_ids": [],
+        "selected_text_bytes": null,
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "stage": "validation",
+        "stage_id": "validation",
+        "started_at": "2026-10-11T09:10:27.962872Z",
+        "state": "succeeded",
+        "streaming": false,
+        "unused_allowance": null,
+        "usage": {
+          "cache_read_tokens": null,
+          "cache_write_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "versions": {
+          "application": "vs5-v1",
+          "chunking": "source-locations-v1",
+          "extraction": "vs2-v1",
+          "model_configuration": "controlled-response-v1",
+          "prompt": "controlled-vs3-v1",
+          "retrieval": "fixed-example-v1",
+          "schema_version": "t2-v1"
+        }
+      },
+      {
+        "actual_response_model_id": null,
+        "artifact_ids": [],
+        "attempt_id": "bb07b52d32d04cc5be15ab952941d2a1",
+        "candidate_passage_ids": [],
+        "dispatched": true,
+        "duration_seconds": 0.030999999988125637,
+        "errors": [],
+        "event_id": "fd1f8d48cd31453caa96bc90164834a2",
+        "finished_at": "2026-10-11T09:10:27.929864Z",
+        "first_token_seconds": null,
+        "job_id": "7ac9d29686a5439ca7fbf1d9e8cea1c7",
+        "model_id": "in.openai.gpt-5.6-luna",
+        "operation": "model",
+        "original_processing_event_id": null,
+        "provider_request_id": null,
+        "retry_index": 0,
+        "returned_bytes": null,
+        "run_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "selected_passage_ids": [],
+        "selected_text_bytes": null,
+        "snapshot_id": "48cfc2b5eae85def8d431a2125652cdd",
+        "stage": "model_call",
+        "stage_id": "model_call",
+        "started_at": "2026-10-11T09:10:27.901084Z",
+        "state": "succeeded",
         "streaming": false,
         "unused_allowance": null,
         "usage": {
@@ -748,7 +748,7 @@
         }
       }
     ],
-    "run_id": "56d085a0aa9c5629867d1cce3edbbec0"
+    "run_id": "48cfc2b5eae85def8d431a2125652cdd"
   },
   "unchecked_obligations": []
 }

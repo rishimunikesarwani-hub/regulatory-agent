@@ -27,15 +27,15 @@ class _Text(HTMLParser):
 
 
 class AssessmentSelection:
+    root = ROOT
     def __init__(self, service):
         self.service = service
         self.store = service.store
         self.blobs = BlobStore(self.store.path.with_suffix('.sources'), self.store)
 
-    @staticmethod
-    def _raw(manifest):
-        path = (ROOT / manifest['raw_path']).resolve()
-        if not path.is_relative_to((ROOT / 'data/sources').resolve()):
+    def _raw(self, manifest):
+        path = (self.root / manifest['raw_path']).resolve()
+        if not path.is_relative_to((self.root / 'data/sources').resolve()):
             raise ContractError('source_path_denied')
         raw = path.read_bytes()
         if hashlib.sha256(raw).hexdigest() != manifest['sha256']:
@@ -45,7 +45,7 @@ class AssessmentSelection:
     def _catalog_sources(self, owner, case):
         self.service.cases.read(owner, case)
         sources = []
-        for entry in json.loads((ROOT / 'data/sources/source-manifest.json').read_text(encoding='utf-8'))['versions']:
+        for entry in json.loads((self.root / 'data/sources/source-manifest.json').read_text(encoding='utf-8'))['versions']:
             if entry['synthetic']: continue
             public_url(entry['source_url'])
             raw = self._raw(entry)
@@ -70,7 +70,7 @@ class AssessmentSelection:
                 'source_url':entry['source_url'], 'publication_date':entry['publication_date'],
                 'effective_date':entry['effective_date'], 'authority':entry['authority'],
                 'freshness':'unverified', 'coverage':'saved historical excerpts'})
-        return sources + [self.service.documents.read(owner, case, s['document']['document_version_id'])
+        return sources + [self.service._bank_source(owner, case, s['document']['document_version_id'])
                           for s in self.service.documents.list(owner, case)['sources']]
 
     def catalog(self, owner, case):
@@ -116,13 +116,7 @@ class AssessmentSelection:
         pipeline._context(list(mandatory.values()))
         if sum(len(p['text'].encode()) for s in selected for p in s['passages']) > 400_000:
             raise ContractError('source_extraction_limit')
-        entries = json.loads((ROOT / 'data/sources/source-manifest.json').read_text(encoding='utf-8'))['versions']
-        for source in selected:
-            doc = source['document']
-            if doc['kind']=='regulation':
-                entry = next(e for e in entries if e['document_id']==doc['source_id'] and e['version_id']==doc['version'])
-                self.blobs.put(owner, case, source['original_blob'], self._raw(entry))
-            self.store.put(owner, case, 'document', doc['document_version_id'], source)
+        self._persist_sources(owner, case, selected)
         snapshot = Snapshot(snapshot_id=identity, case_id=case, bank_profile=profile.bank_profile,
             selected_versions=request.selected_versions, selected_obligations=request.selected_obligations,
             selected_document_ids={s['document']['source_id']:s['document']['document_version_id'] for s in selected},
@@ -131,3 +125,12 @@ class AssessmentSelection:
         pipeline._sources(owner, case, snapshot.model_dump())
         self.store.save_snapshot(owner, snapshot)
         return self.service.reviews.admit(owner, case, identity, identity, 'synthetic_live')
+
+    def _persist_sources(self, owner, case, selected):
+        entries = json.loads((self.root / 'data/sources/source-manifest.json').read_text(encoding='utf-8'))['versions']
+        for source in selected:
+            doc = source['document']
+            if doc['kind']=='regulation':
+                entry = next(e for e in entries if e['document_id']==doc['source_id'] and e['version_id']==doc['version'])
+                self.blobs.put(owner, case, source['original_blob'], self._raw(entry))
+            self.store.put(owner, case, 'document', doc['document_version_id'], source)

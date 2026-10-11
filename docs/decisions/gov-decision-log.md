@@ -827,6 +827,27 @@ Cloud assessment routes remain disabled.
 Provider selection, live quality, AWS authentication, and CloudFront acceptance remain pending.
 VS5 remains a draft under D35.
 
+## D52 - Native admission and SQS execution
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X05, REQ-X07, and REQ-X08.
+
+The [native execution contract](../delivery/spec-slice-05-cloud-execution.md) connects shared selection to native admission and identifier-only SQS messages.
+Internal bank reads include all passages and verify pinned originals.
+Repeated admission preserves original object versions and the saved run.
+The worker keeps native job claims, counters, deadlines, partial results, and interrupted attempts.
+An acknowledgement requires saved terminal state.
+The run snapshot must equal the job's immutable original snapshot.
+The shared process supervisor uses native cleanup without a multiprocessing queue or pool.
+
+Controlled native checks do not establish hosted Lambda acceptance, current-source coverage, or live quality.
+Cloud assessment routes remain disabled.
+API integration, source packaging, queue resources, event-source mapping, and worker IAM remain unfinished.
+D30 still prohibits reserved concurrency for the first deployment.
+Provider selection, AWS authentication, and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

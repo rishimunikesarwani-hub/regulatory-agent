@@ -937,3 +937,16 @@ The local suite passed 327 backend checks and 51 browser checks before the final
 The final focused suite passed 16 cloud record checks after that correction.
 Missing dispatch audit data shows Unknown instead of zero live calls.
 D51 records the implementation boundary and remaining queue, API, source, live quality, and deployed acceptance work.
+
+## 2026-10-11 - Native admission and SQS execution
+
+Shared selection now admits native historical runs with versioned private S3 originals and DynamoDB records.
+Internal bank reads include all passages and verify the pinned original.
+Identifier-only SQS messages preserve one admission through uncertain acknowledgements and repeated delivery.
+Native worker cleanup preserves the original deadline, counters, partial results, and unknown audit evidence.
+Failing checks exposed premature acknowledgement and changed run snapshots.
+The corrected handler requires saved terminal state and the job's original snapshot.
+The 15 focused checks pass.
+The final local suite passed 343 backend checks, 51 browser checks, and the frontend build.
+D52 records the component boundary.
+Cloud API, source packaging, queue resources, event-source mapping, worker IAM, source verification, live quality, and deployment remain unfinished.

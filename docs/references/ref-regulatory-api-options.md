@@ -10,9 +10,11 @@ The official [RBI RSS documentation](https://www.rbi.org.in/Scripts/rss.aspx) de
 RSS is useful for discovery.
 It does not provide full-text completeness or amendment verification by itself.
 
-The [RBIH API introduction](https://rbih.tech/docs/intro) lists identity verification, financial, property, and lending services.
-Those listed services do not establish an API for regulatory texts.
-The RBIH name alone does not establish the required coverage.
+The RBIH [Unified Lending Interface](https://rbihub.in/projects/unified-lending-interface) page describes land records, credit data, and verification services.
+The [ULI service catalog](https://docs.rbihub.in/unified-lending-interface/services) also describes lending services.
+Neither source establishes an API for regulatory texts.
+The earlier `rbih.tech/docs/intro` reference has unverified affiliation.
+Do not use that earlier URL as authority evidence.
 
 The [Jina Reader documentation](https://jina.ai/reader/) describes URL-to-text retrieval and JSON output.
 It provides options to bypass cached content and respect source-site robot rules.
@@ -41,6 +43,7 @@ The [probe receipt](../../runs/2026-10-11-slice-05-release/provider-probe.json) 
 The target was the saved public RBI IT direction URL.
 The response returned HTTP `200`, JSON, and `66,305` text characters.
 Checks found the expected title, privileged-access passage, and backup passage.
+
 The request contained no private case content.
 The request bypassed cached content and requested source-site robot-rule checks.
 The research saved response metadata, not private source content.
@@ -54,10 +57,12 @@ The application still blocks current assessments.
 Use Jina Reader only as a candidate for a public-source prototype.
 Keep RBI documents as the authority.
 Do not interpret a provider fetch time as proof of regulatory currency.
+
 Review the complete selected regulation and its authoritative amendment references.
 Compare returned content with the complete official source.
 Reject missing text, stale copies, redirects outside the permitted domains, and changed selected versions.
 Record the permitted source scope, coverage limits, publication dates, effective dates, checks, and preserved source versions.
+
 Make provider selection explicit before application integration.
 Keep private case data outside the regulatory API.
 Keep current assessments blocked until the complete verification contract passes.

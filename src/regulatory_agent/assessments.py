@@ -188,13 +188,16 @@ class Assessments:
         run = json.loads(row[0])
         return run, self.store.get(owner, case, 'snapshot', run['snapshot_id'])
 
+    def _bank_source(self, owner, case, version_id):
+        return self.documents.read(owner,case,version_id)
+
     def _sources(self, owner, case, snapshot):
         sources = self.store.sources(owner, case, snapshot)
         for source in sources:
             if source['document']['kind']=='regulation':
                 if snapshot.get('selected_document_ids'): self._public_original(owner, case, source)
             else:
-                original = self.documents.read(owner, case, source['document']['document_version_id'])
+                original = self._bank_source(owner, case, source['document']['document_version_id'])
                 if any(original[key] != source[key] for key in ('document', 'passages')):
                     raise ContractError('source_integrity_failure')
         if snapshot['prompt_version'] == PERIOD_PROMPT:
@@ -392,7 +395,8 @@ class Assessments:
             obligations = job['stages'].get('obligations', {}).get('obligations', [])
             controls = job['stages'].get('controls', {}).get('controls', [])
         return {'data_mode': run['data_mode'], 'freshness': 'unverified',
-            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else None if any(t['operation']=='model' and t['state']=='unknown' for t in trace)
+            'live_model_calls': 0 if run['data_mode']=='controlled_simulation' else None if any(t['operation']=='model' and
+                (t['state']=='unknown' or 'unknown_outcome' in t['errors']) for t in trace)
                 else sum(t['operation']=='model' and t['dispatched'] for t in trace), 'cost_usd': None,
             'job': {key: value for key, value in job.items() if key not in {'token', 'stages'}}, 'snapshot': snapshot,
             'obligation': obligations[0] if obligations else None, 'control': controls[0] if controls else None,

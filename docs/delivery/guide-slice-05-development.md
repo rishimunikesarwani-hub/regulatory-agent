@@ -74,7 +74,10 @@ An unused reservation remains consumed, but its known absence of dispatch is rec
 The [cloud record component](spec-slice-05-cloud-records.md) now connects the shared pipeline to native finding, attempt, and review persistence.
 Its controlled checks include complete and partial assessments, concurrent reviews, original content, historical cutoffs, and exports.
 An incomplete dispatch audit shows Unknown instead of zero live calls.
-Queue delivery, cloud admission, the cloud assessment API, and deployed acceptance remain unfinished.
+The [native execution component](spec-slice-05-cloud-execution.md) now connects historical admission, identifier-only SQS messages, and native worker cleanup.
+Its checks cover full bank reads, uncertain acknowledgements, expired deliveries, snapshot binding, and stopped children.
+The cloud assessment API, source packaging, queue resources, event-source mapping, and worker IAM remain unfinished.
+Hosted Lambda acceptance remains unverified.
 
 The feedback process must use the current application commit.
 Renew the expired AWS authentication before live model checks.

@@ -14,6 +14,7 @@ Store regulatory originals in private, versioned S3 objects.
 Keep the original references unchanged when admission repeats.
 Reject changed selections with an existing admission key.
 Save the snapshot, job, and run before queue delivery.
+Verify that the run snapshot equals the job's pinned snapshot before processing or delivery.
 Keep current-source verification unavailable until D20 passes.
 
 ## Delivery
@@ -69,6 +70,7 @@ Do not change the account quota.
 | VS5-CE12 | Unknown attempts become interrupted. Incomplete dispatch evidence remains unknown. |
 | VS5-CE13 | Replaced claims reject cleanup writes and finalization. Uncertain storage errors require redelivery. |
 | VS5-CE14 | A real supervised child stops at the deadline without a late write or private console output. |
+| VS5-CE15 | A changed run snapshot cannot replace the job's original snapshot during delivery or processing. |
 
 Write failing checks before implementation.
 Use controlled native SDK responses without external traffic or live inference.

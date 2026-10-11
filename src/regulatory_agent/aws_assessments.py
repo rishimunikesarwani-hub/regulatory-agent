@@ -103,6 +103,9 @@ class CloudAssessments(Assessments):
         self.cases,self.documents,self.store=cases,documents,store
         self.reviews=CloudReviews(store)
 
+    def _bank_source(self, owner, case, version_id):
+        return self.documents.read_full(owner,case,version_id)
+
     def list(self, owner, case):
         return {'runs':self.store.records(owner,case,'run')}
 
@@ -111,7 +114,9 @@ class CloudAssessments(Assessments):
         for run in self.list(owner,case)['runs']:
             if run['job_id']==job_id:
                 if run['snapshot_id']!=job['snapshot_id']: raise ContractError('run_snapshot_scope_invalid')
-                return run,self.store.get(owner,case,'snapshot',run['snapshot_id'])
+                snapshot=self.store.get(owner,case,'snapshot',run['snapshot_id'])
+                if snapshot!=self.store.snapshot(owner,case,job_id): raise ContractError('run_snapshot_scope_invalid')
+                return run,snapshot
         raise not_found()
 
     def _public_original(self, owner, case, source):
@@ -132,4 +137,5 @@ class CloudAssessments(Assessments):
     def source_original(self, owner, case, job_id, version_id):
         source=self.source(owner,case,job_id,version_id)
         if source['document']['kind']=='regulation': return self._public_original(owner,case,source),'historical-regulation.html'
-        return self.documents.read(owner,case,version_id,original=True)
+        stored=self.documents._source(owner,case,version_id)
+        return self.documents.objects.read(owner,case,stored['original']),stored['filename']
