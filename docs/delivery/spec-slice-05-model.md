@@ -37,6 +37,7 @@ Return no model reasoning blocks or raw provider response in the application res
 Disable SDK inference retries with `total_max_attempts=1`.
 Reserve the saved model-call allowance before each inference dispatch.
 Count failed, malformed, rejected, timed-out, and uncertain dispatched calls.
+Keep available numeric usage and request identifiers on failed responses.
 Keep the allowance unchanged when authentication, profile verification, or local request validation prevents inference.
 Application retries must reserve another call.
 Reject a late response after the saved job deadline.
@@ -46,6 +47,8 @@ Do not claim that socket timeouts alone enforce that deadline.
 Accept only a complete text response with `end_turn`.
 Reject truncated responses, blocked responses, tool instructions, invalid JSON, and actions outside the selected snapshot.
 Reject citations to source versions outside the snapshot.
+Resolve citation version IDs through the saved records for the selected source versions.
+Keep source/version lookup keys separate from saved document version IDs.
 Leave exact passage and contextual-support validation to the assessment pipeline before persistence.
 Never put prompts, returned content, or provider error messages in operational logs.
 Return safe error identifiers.
@@ -62,6 +65,8 @@ Return safe error identifiers.
 | VS5-MT06 | Wrong owner, inactive profile, non-India destinations, and unverified private input prevent inference. |
 | VS5-MT07 | Expired deadlines and exhausted allowances prevent dispatch. A late response cannot become a valid result. |
 | VS5-MT08 | Forbidden request fields and oversized input fail before provider access. Controlled responses remain compatible. |
+| VS5-MT09 | Citations use selected saved document IDs. Unselected IDs and substituted lookup keys fail. |
+| VS5-MT10 | Client configuration cannot change Regions, endpoints, retry counts, or bounded socket timeouts. |
 
 Save failing checks before adapter implementation.
 Use native SDK clients with fake credentials and SDK response stubs for default checks.

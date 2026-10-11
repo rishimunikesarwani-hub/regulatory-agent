@@ -244,17 +244,32 @@ class ControlledModel:
             raw = next(self.responses)
             if not isinstance(raw, str) or len(raw.encode()) > 400_000:
                 raise ContractError("invalid_model_response")
-            action = ModelAction.model_validate_json(raw)
-            job = store.read_job(owner, case, identity)
-            snapshot = store.get(owner, case, "snapshot", job["snapshot_id"])
-            allowed = {f"{doc}:{version}" for doc, version in snapshot["selected_versions"].items()}
-            if action.snapshot_id != snapshot["snapshot_id"] or not set(action.document_version_ids) <= allowed:
-                raise ContractError("model_scope_denied")
-            if any(f.snapshot_id != snapshot["snapshot_id"] or f.obligation_id not in snapshot["selected_obligations"] for f in action.findings):
-                raise ContractError("model_finding_scope_denied")
-            return ModelReply(action=action)
+            return ModelReply(action=validated_action(raw, store, owner, case, identity))
         except (ValidationError, StopIteration):
             raise ContractError("invalid_model_response") from None
+
+
+def validated_action(raw, store, owner, case, identity):
+    """Share the saved-snapshot boundary between controlled and live dispatch adapters."""
+    try:
+        action = ModelAction.model_validate_json(raw)
+    except ValidationError:
+        raise ContractError('invalid_model_response') from None
+    job = store.read_job(owner, case, identity)
+    snapshot = store.get(owner, case, 'snapshot', job['snapshot_id'])
+    allowed = {f'{doc}:{version}' for doc, version in snapshot['selected_versions'].items()}
+    if action.snapshot_id != snapshot['snapshot_id'] or not set(action.document_version_ids) <= allowed:
+        raise ContractError('model_scope_denied')
+    if any(f.snapshot_id != snapshot['snapshot_id'] or f.obligation_id not in snapshot['selected_obligations'] for f in action.findings):
+        raise ContractError('model_finding_scope_denied')
+    if any(o.obligation_id not in snapshot['selected_obligations'] for o in action.obligations):
+        raise ContractError('model_obligation_scope_denied')
+    citations = [c for record in (*action.findings, *action.obligations, *action.controls) for c in record.citations]
+    if citations:
+        saved_versions = {store.get(owner, case, 'document', key)['document']['document_version_id'] for key in allowed}
+        if any(c.document_version_id not in saved_versions for c in citations):
+            raise ContractError('model_citation_scope_denied')
+    return action
 
 
 class LocalRunner:

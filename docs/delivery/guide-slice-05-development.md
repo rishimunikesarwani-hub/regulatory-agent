@@ -43,6 +43,12 @@ Download failures do not start another assessment or remove saved reviews.
 
 ## Remaining work
 
+The [bounded model adapter](spec-slice-05-model.md) uses native SDK clients with controlled responses for local checks.
+Its ten checks cover routing, reservations, output validation, usage, deadlines, selected citations, and SDK configuration.
+The adapter is not connected to the complete assessment worker yet.
+The existing feedback interface still uses the controlled historical example.
+Renew the expired AWS authentication before live model checks.
+
 VS5 remains in progress.
 Exports are one part of the complete release scope.
 Read the [regulatory API research](../references/ref-regulatory-api-options.md) before provider selection under D20.

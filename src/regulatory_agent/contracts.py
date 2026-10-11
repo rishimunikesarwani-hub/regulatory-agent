@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 
 from pydantic import Field, field_validator, model_validator
 from .contract_types import Contract, Identifier
-from .telemetry import StageAttempt
+from .telemetry import StageAttempt, TokenUsage
 
 
 class ContractError(ValueError):
@@ -474,11 +474,17 @@ class ModelAction(Contract):
     document_version_ids: list[Identifier]
     passage_ids: list[Identifier] = Field(default_factory=list)
     findings: list[Finding] = Field(default_factory=list)
+    obligations: list[Obligation] = Field(default_factory=list, max_length=20)
+    controls: list[Control] = Field(default_factory=list)
 
 
 class ModelReply(Contract):
-    label: Literal["Simulated"] = "Simulated"
+    label: Literal["Simulated", "Live"] = "Simulated"
     action: ModelAction
+    model_id: Identifier | None = None
+    actual_response_model_id: Identifier | None = None
+    provider_request_id: Identifier | None = None
+    usage: TokenUsage = Field(default_factory=TokenUsage)
 
 
 class RegulatoryRequest(Contract):

@@ -656,6 +656,23 @@ Provider selection and current-source verification remain pending under D20.
 No complete-source, live model, evaluation, or AWS acceptance claim changes.
 VS5 user acceptance remains pending under D35.
 
+## D44 - Bounded model dispatch
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+
+The [model adapter contract](../delivery/spec-slice-05-model.md) connects the saved dispatch allowance to native Bedrock Converse.
+The adapter keeps the selected India profile, case ownership, source selection, and synthetic-input restriction.
+The SDK does not repeat an inference request automatically.
+Available numeric usage and request IDs remain available after an unusable response.
+Source/version lookup keys and saved document IDs have different purposes.
+Citation checks resolve the selected records before comparing saved document IDs.
+
+Native SDK checks use fake credentials and controlled responses.
+These checks do not establish live access, source completeness, model quality, or private-processing approval.
+The complete assessment worker and its independent deadline remain unfinished.
+Provider selection under D20 and user acceptance under D35 remain pending.
+
 ## How to add a decision
 
 Add a new entry with:

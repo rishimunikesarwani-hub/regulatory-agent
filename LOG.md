@@ -780,3 +780,22 @@ The user authorized RBI-source API research. One public-only Jina transport prob
 Provider selection, complete source verification, live model quality, and AWS acceptance remain pending.
 No Support case ID has been confirmed. No deployment occurred.
 Next: finish local export checks and continue the remaining VS5 release conditions.
+
+## 2026-10-11 - Bounded Bedrock adapter
+
+The model contract was committed before the first eight failing adapter checks.
+Native SDK checks cover the pinned India profile, strict output shape, and call reservations.
+They also cover nullable extraction fields and safe usage metadata.
+A failing check reproduced lost token usage on truncated responses.
+The adapter now keeps available usage while rejecting those responses.
+A full backend check exposed a citation identifier mismatch in the shared validator.
+A focused check reproduced that mismatch before its correction.
+The validator now compares citation IDs with the selected saved document IDs.
+The existing controlled assessment flow passes again.
+Ten adapter checks pass with fake credentials and controlled SDK responses.
+The full backend suite passed 245 checks before the final configuration check was added.
+The final combined backend suite passed all 246 checks.
+D44 records the implementation clarification.
+The adapter does not complete the assessment worker or establish live model quality.
+AWS authentication has expired. No live inference or deployment occurred.
+Next: check the final combined commit and continue full-scope processing.

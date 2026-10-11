@@ -1,0 +1,33 @@
+python.exe : E
+At line:2 char:30
++ ... src;tests'; & .venv/Scripts/python.exe -m unittest test_slice05_bedro ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (E:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+======================================================================
+ERROR: test_mt09_citations_use_selected_saved_document_identity
+(test_slice05_bedrock.BedrockDispatchTests.test_mt09_citations_use_selected_saved_document_identity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 178, in
+test_mt09_citations_use_selected_saved_document_identity
+    self.assertEqual(self.dispatch().action.controls[0].citations[0].document_version_id,'uploaded-version-1')
+                     ^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_slice05_bedrock.py", line 64, in dispatch
+    return self.adapter.dispatch(self.store,owner,'case-1',self.job['job_id'],self.token,request or
+self.request,now=self.now)
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project
+Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\src\regulatory_agent\bedrock_model.py", line 129, in
+dispatch
+    raise ModelFailure(str(error),usage=measured,provider_request_id=provider_id) from None
+regulatory_agent.bedrock_model.ModelFailure: model_citation_scope_denied
+
+----------------------------------------------------------------------
+Ran 1 test in 0.274s
+
+FAILED (errors=1)
