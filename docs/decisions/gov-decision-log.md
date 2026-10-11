@@ -959,6 +959,38 @@ The exception does not replace the AWS private-data boundary or establish the or
 Earlier snapshots, findings, reviews, and approval history stay unchanged.
 AWS acceptance and current regulatory coverage remain pending.
 
+## D58 - Langfuse execution hierarchy
+
+Date: 2026-10-11.
+Status: Approved by the user's explicit skill installation and application tracing request.
+Requirements: LD06 through LD08 and LF01 through LF09.
+
+The user requested the official Langfuse skill and application tracing with current best practices.
+The [execution tracing contract](../delivery/spec-langfuse-tracing.md) controls this work.
+One execution parent contains stage observations with stable operation names.
+Each model request retains its separate generation observation.
+The integration excludes automatic content capture and uses an isolated provider.
+
+D57's metadata-only restriction takes precedence over general recommendations to capture prompts, responses, and reasoning.
+Tracing remains optional and cannot replace local audit storage.
+Remote verification does not establish held-out quality or AWS acceptance.
+
+## D59 - Local fictional-policy action instructions
+
+Date: 2026-10-11.
+Status: Implementation clarification under the user's local fictional-policy demonstration request.
+Requirements: LD01 through LD09 and OP01 through OP10.
+
+The user stated that AWS restrictions must not prevent local model calls or Langfuse Cloud observations.
+The [OpenAI action contract](../delivery/spec-openai-phase-contract.md) specifies the local correction.
+New OpenAI assessments use a different prompt version with explicit phase and citation instructions.
+The response schema limits actions, unused fields, selected identifiers, and exact source citations before dispatch.
+The instruction distinguishes documented policy controls from evidence of actual operation.
+
+The correction keeps earlier snapshots and their instructions unchanged.
+It preserves evidence validation, ownership checks, call allowances, and the metadata-only tracing boundary.
+AWS acceptance and held-out model quality remain separate requirements.
+
 ## How to add a decision
 
 Add a new entry with:

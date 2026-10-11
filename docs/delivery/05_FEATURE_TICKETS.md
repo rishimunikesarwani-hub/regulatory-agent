@@ -399,6 +399,21 @@ The [operation guide](guide-local-demo.md) gives local startup and demonstration
 Live access and trace delivery need different evidence from controlled checks.
 AWS deployment and original release quality gates remain pending.
 
+## D58 execution tracing
+
+Ticket LF-T01 implements LF01 through LF09 in the [execution tracing contract](spec-langfuse-tracing.md).
+It includes nested operations, stable names, lifecycle checks, and metadata-only remote verification.
+`tests/test_langfuse_tracing.py` contains the local acceptance checks.
+`runs/2026-10-11-langfuse-tracing/` contains the verification records.
+
+## Local OpenAI phase correction
+
+Ticket OP-T01 implements OP01 through OP10 in the [OpenAI action contract](spec-openai-phase-contract.md).
+It includes versioned instructions, phase-specific response schemas, exact source citations, and local fictional-policy processing.
+`tests/test_openai_phase_contract.py` contains the offline acceptance checks.
+`runs/2026-10-11-openai-phase/` contains the software and live verification records.
+AWS activation does not control this local flow.
+
 ## Historical planning dates
 
 D27 replaces the earlier horizontal sequence below.

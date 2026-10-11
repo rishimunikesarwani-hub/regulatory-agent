@@ -9,7 +9,7 @@ import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import COMPARISON_PROMPT, Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment, citation_matches
+from .contracts import COMPARISON_PROMPT, Citation, ContractError, Control, Finding, Obligation, PERIOD_PROMPT, PERIOD_PROMPTS, ReviewDecision, ReviewItem, SELECTED_PROMPT, SELECTED_PROMPTS, Snapshot, StartAssessment, citation_matches
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -200,7 +200,7 @@ class Assessments:
                 original = self._bank_source(owner, case, source['document']['document_version_id'])
                 if any(original[key] != source[key] for key in ('document', 'passages')):
                     raise ContractError('source_integrity_failure')
-        if snapshot['prompt_version'] == PERIOD_PROMPT:
+        if snapshot['prompt_version'] in PERIOD_PROMPTS:
             from .evidence_periods import with_periods
             return [with_periods(s) for s in sources]
         return sources

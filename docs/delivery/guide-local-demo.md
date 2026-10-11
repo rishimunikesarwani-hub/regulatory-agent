@@ -53,7 +53,12 @@ Local identity is a development login, not Cognito authentication.
 12. Open the Langfuse project trace list.
 
 The saved run record identifies the OpenAI model and numeric token counts.
+New OpenAI assessments save prompt version `assessment-vs5-openai-period-v4`.
+The response schema restricts each phase to its permitted actions and supplied citations.
+
 Langfuse groups stage measurements by the saved job.
+Each execution parent contains nested stages under the [tracing contract](spec-langfuse-tracing.md).
+The trace excludes prompts, responses, and source passages.
 Missing activity records can cause **Needs review** or an evidence gap.
 A policy statement does not prove actual control operation.
 
@@ -63,7 +68,14 @@ Do not describe these examples as real RBI amendments.
 
 ## Remaining checks
 
-Live OpenAI access and Langfuse delivery need working credentials and a successful demonstration.
+The [trace verification record](../../runs/2026-10-11-langfuse-tracing/live-verification.json) confirms remote delivery from a fictional OpenAI execution.
+That assessment failed during execution.
+
+The local fictional-policy demonstration completed on 2026-10-11 after the prompt correction.
+Its three model calls produced one cited finding that requested missing operational records.
+The [policy verification record](../../runs/2026-10-11-openai-phase/live-policy-verification.json) gives the checked scope and remaining limits.
+Held-out model quality remains unverified.
+
 An optional trace-export failure does not repeat the assessment.
 The mandatory local audit remains available in the saved run record.
 AWS deployment, current source verification, and the original model evaluation gates remain pending.

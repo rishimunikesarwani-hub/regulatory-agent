@@ -9,7 +9,7 @@ import uuid
 from .assessment_pipeline import AssessmentPipeline
 from .assessments import PERIOD_PROMPT, ROOT, invalid
 from .cases import CaseError, not_found
-from .contracts import ContractError, Snapshot, SourceRead, public_url
+from .contracts import ContractError, Snapshot, SourceRead, public_url, OPENAI_PERIOD_PROMPT
 from .local import BlobStore
 from .openai_model import selected_model
 
@@ -123,11 +123,13 @@ class AssessmentSelection:
         if sum(len(p['text'].encode()) for s in selected for p in s['passages']) > 400_000:
             raise ContractError('source_extraction_limit')
         self._persist_sources(owner, case, selected)
+        model=selected_model()
         snapshot = Snapshot(snapshot_id=identity, case_id=case, bank_profile=profile.bank_profile,
             selected_versions=request.selected_versions, selected_obligations=request.selected_obligations,
             selected_document_ids={s['document']['source_id']:s['document']['document_version_id'] for s in selected},
-            assessment_date=request.assessment_date, mode=request.mode, prompt_version=PERIOD_PROMPT,
-            model_version=selected_model(), synthetic=True)
+            assessment_date=request.assessment_date, mode=request.mode,
+            prompt_version=OPENAI_PERIOD_PROMPT if model.startswith('openai:') else PERIOD_PROMPT,
+            model_version=model, synthetic=True)
         pipeline._sources(owner, case, snapshot.model_dump())
         self.store.save_snapshot(owner, snapshot)
         return self.service.reviews.admit(owner, case, identity, identity, 'synthetic_live')

@@ -8,7 +8,7 @@ import uuid
 
 from pydantic import ValidationError
 
-from .assessments import PERIOD_PROMPT, SELECTED_PROMPT
+from .assessments import PERIOD_PROMPT, PERIOD_PROMPTS, SELECTED_PROMPT
 
 from .contracts import COMPARISON_PROMPT, Citation, ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, citation_matches, iso_date, public_url
 from .local import encoded, validated_action
@@ -58,6 +58,26 @@ class AssessmentPipeline:
         self.service, self.model = assessments, model
         self.store, self.reviews = assessments.store, assessments.reviews
         self._trace_observations = {}
+        self._trace_stack = []
+        self._trace_root = None
+
+    def _start_trace(self, run, *, comparison=False):
+        if run['data_mode']=='synthetic_live':
+            from .langfuse_trace import start_job
+            self._trace_root=start_job(run,comparison=comparison)
+
+    def _end_trace(self, owner, case, job_id):
+        from .langfuse_trace import export_attempt, finish_job
+        for event_id, observation in self._trace_observations.items():
+            if observation is not None:
+                export_attempt({'state':'interrupted'},observation=observation)
+        self._trace_observations.clear(); self._trace_stack.clear()
+        try:
+            job=self.store.read_job(owner,case,job_id)
+        except Exception:
+            job={'state':'unknown'}
+        finish_job(self._trace_root,job)
+        self._trace_root=None
 
     def _sources(self, owner, case, snapshot):
         sources, scopes, seen = self.service._sources(owner, case, snapshot), {}, set()
@@ -101,9 +121,9 @@ class AssessmentPipeline:
             stage=stage, operation=operation, state='unknown', dispatched=False,
             started_at=timer.started_at, finished_at=None, duration_seconds=None,
             versions=VersionMetadata(application='vs5-v1',
-                schema='vs5-comparison-v1' if run['prompt_version']==COMPARISON_PROMPT else 'vs5-selection-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
-                extraction='vs2-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs2-v1',
-                chunking='source-locations-v1', retrieval='specified-comparison-vs5-v1' if run['prompt_version']==COMPARISON_PROMPT else 'keyword-period-vs5-v1' if run['prompt_version']==PERIOD_PROMPT else 'keyword-vs5-v1', prompt=run['prompt_version'],
+                schema='vs5-comparison-v1' if run['prompt_version']==COMPARISON_PROMPT else 'vs5-selection-period-v1' if run['prompt_version'] in PERIOD_PROMPTS else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
+                extraction='vs2-period-v1' if run['prompt_version'] in PERIOD_PROMPTS else 'vs2-v1',
+                chunking='source-locations-v1', retrieval='specified-comparison-vs5-v1' if run['prompt_version']==COMPARISON_PROMPT else 'keyword-period-vs5-v1' if run['prompt_version'] in PERIOD_PROMPTS else 'keyword-vs5-v1', prompt=run['prompt_version'],
                 model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else
                     'openai-demo-v1' if run['model_id'].startswith('openai:') else 'india-converse-v1'),
             model_id=run['model_id'] if operation=='model' else None,
@@ -112,7 +132,10 @@ class AssessmentPipeline:
         self.reviews.attempt(owner,case,event,execution_token=token)
         if run['data_mode']=='synthetic_live':
             from .langfuse_trace import start_attempt
-            self._trace_observations[event.event_id]=start_attempt(event.model_dump(mode='json'))
+            parent=next((self._trace_observations[key] for key in reversed(self._trace_stack)
+                if self._trace_observations[key] is not None),self._trace_root)
+            self._trace_observations[event.event_id]=start_attempt(event.model_dump(mode='json'),parent=parent)
+            self._trace_stack.append(event.event_id)
         return event, timer
 
     def _finish_attempt(self, owner, case, run, token, attempt, *, state='succeeded', result=None, error=None):
@@ -134,6 +157,7 @@ class AssessmentPipeline:
         if run['data_mode']=='synthetic_live':
             from .langfuse_trace import export_attempt
             export_attempt(terminal.model_dump(mode='json'),observation=self._trace_observations.pop(event.event_id,None))
+            if event.event_id in self._trace_stack:self._trace_stack.remove(event.event_id)
 
     def _interrupt_attempts(self, owner, case, run, token):
         job=self.store.read_job(owner,case,run['job_id']); self.store._claimed(job,token,time.time())
@@ -189,7 +213,7 @@ class AssessmentPipeline:
                     'Use only the requested phase and supplied passage IDs. Never claim that unexamined documents were checked. '
                     'For assessment, inspect supplied candidates, request at most one refinement, or propose exactly one finding for the requested obligation.'
                     + (' Stated evidence periods declare dates only, not record completeness or actual control operation. Use a known claim period only within a cited record interval; otherwise keep it null.'
-                       if snapshot['prompt_version']==PERIOD_PROMPT else ''),
+                       if snapshot['prompt_version'] in PERIOD_PROMPTS else ''),
                  'prompt':prompt, 'max_tokens':8192})
             completed['result'] = reply
             self.store._claimed(self.store.read_job(owner, case, run['job_id']), token, time.time())
@@ -226,7 +250,7 @@ class AssessmentPipeline:
             period = claim.evidence_period
             evidence = [by_version[c.document_version_id] for c in claim.citations if by_version[c.document_version_id]['document']['kind']=='evidence']
             grounded = False
-            if period and snapshot['prompt_version']==PERIOD_PROMPT:
+            if period and snapshot['prompt_version'] in PERIOD_PROMPTS:
                 cited = {c.passage_id for c in claim.citations}
                 for source in evidence:
                     for stated in source['stated_periods']:
@@ -249,6 +273,7 @@ class AssessmentPipeline:
         if token is None:
             return self.store.read_job(owner, case, job_id)
         self.store._claimed(self.store.read_job(owner, case, job_id), token, time.time())
+        self._start_trace(run)
         try:
             self._interrupt_attempts(owner, case, run, token)
             with self._processing(owner, case, run, token, 'source-check', 'source_verification', 'internal'):
@@ -336,4 +361,6 @@ class AssessmentPipeline:
             accounted = {o for stage in job['stages'].values() for o in stage.get('accounted_obligations', [])}
             unchecked = [o for o in snapshot['selected_obligations'] if o not in accounted]
             self.store.finalize(owner, case, job_id, token, 'partial' if accounted else 'failed', unchecked, reason='pipeline_failed')
+        finally:
+            self._end_trace(owner,case,job_id)
         return self.store.read_job(owner, case, job_id)

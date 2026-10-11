@@ -31,6 +31,12 @@ The existing browser checks protect upload, source inspection, reviews, exports,
 A live demo needs working OpenAI and Langfuse project credentials.
 Controlled tests cannot establish live provider access, trace delivery, or semantic quality.
 
+The [execution tracing contract](spec-langfuse-tracing.md) extends LD06 through LD08 with requirements LF01 through LF09.
+It specifies parent operations, stable names, failure handling, and remote verification.
+
+The [OpenAI action contract](spec-openai-phase-contract.md) specifies the corrected instructions for new local assessments.
+It preserves earlier prompt versions and all evidence validation requirements.
+
 ## Terms
 
 **Model provider:** The service that processes a model request.

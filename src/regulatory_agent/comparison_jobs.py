@@ -3,7 +3,7 @@ import time
 import uuid
 
 from .assessment_pipeline import AssessmentPipeline
-from .contracts import COMPARISON_PROMPT, ComparisonRequest, ContractError, Control, PERIOD_PROMPT, SELECTED_PROMPTS, Snapshot
+from .contracts import COMPARISON_PROMPT, ComparisonRequest, ContractError, Control, PERIOD_PROMPT, OPENAI_PERIOD_PROMPT, SELECTED_PROMPTS, Snapshot
 from .local import encoded, identifier, validated_action
 from .regulatory_changes import prepare_pair, validate_changes
 from .openai_model import MODEL as OPENAI_MODEL
@@ -182,6 +182,7 @@ class Comparisons:
         token=execution_token or self.store.claim(owner,case,identity)
         if token is None:return self.store.read_job(owner,case,identity)
         self.store._claimed(self.store.read_job(owner,case,identity),token,time.time())
+        self.pipeline._start_trace(run,comparison=True)
         try:
             self.pipeline._interrupt_attempts(owner,case,run,token)
             with self.pipeline._processing(owner,case,run,token,'comparison-originals','source_verification','internal'):
@@ -238,6 +239,8 @@ class Comparisons:
             # A finalization failure must remain retryable, not change completed results into failure.
             if not unchecked:raise
             self.store.finalize(owner,case,identity,token,'partial' if done else 'failed',unchecked,'comparison_failed')
+        finally:
+            self.pipeline._end_trace(owner,case,identity)
         return self.store.read_job(owner,case,identity)
 
     def read(self, owner, case, identity):
@@ -271,7 +274,8 @@ class Comparisons:
         name=record['pair']['newer_source']['document']['source_id']
         version=record['pair']['newer_source']['document']['version']
         baseline=record['baseline_snapshot']; sid=self._identity(owner,case,'reassessment:'+identity)
-        snapshot=Snapshot.model_validate(baseline|{'snapshot_id':sid,'prompt_version':PERIOD_PROMPT,
+        snapshot=Snapshot.model_validate(baseline|{'snapshot_id':sid,
+            'prompt_version':OPENAI_PERIOD_PROMPT if baseline['model_version'].startswith('openai:') else PERIOD_PROMPT,
             'selected_versions':baseline['selected_versions']|{name:version},
             'selected_document_ids':baseline['selected_document_ids']|{name:record['request']['newer_version_id']}})
         self.pipeline._sources(owner,case,snapshot.model_dump())

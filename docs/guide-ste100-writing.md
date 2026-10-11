@@ -54,6 +54,9 @@ Do not use a technical-term exception for an ordinary word with an unapproved me
 D57 defines model provider, Langfuse, and structured output in the [local demo contract](delivery/spec-local-demo-openai.md#terms).
 These software technical nouns keep the meanings given in that contract.
 
+The [execution tracing contract](delivery/spec-langfuse-tracing.md) defines OpenTelemetry, observation, parent observation, and trace ID.
+These software technical nouns describe execution measurements.
+
 Keep these items unchanged when exact text is necessary:
 
 - Requirement, decision, test, and ticket IDs.

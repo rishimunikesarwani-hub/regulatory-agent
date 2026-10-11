@@ -1,0 +1,32 @@
+test_op01_new_admission_pins_distinct_prompt_without_aws (test_openai_phase_contract.OpenAIPhaseTests.test_op01_new_admission_pins_distinct_prompt_without_aws) ... ok
+test_op02_old_snapshot_keeps_original_dispatched_instructions (test_openai_phase_contract.OpenAIPhaseTests.test_op02_old_snapshot_keeps_original_dispatched_instructions) ... ok
+test_op03_op05_new_request_teaches_phase_and_citation_constraints (test_openai_phase_contract.OpenAIPhaseTests.test_op03_op05_new_request_teaches_phase_and_citation_constraints) ... ok
+test_op09_provider_schema_blocks_wrong_phase_and_invented_citation (test_openai_phase_contract.OpenAIPhaseTests.test_op09_provider_schema_blocks_wrong_phase_and_invented_citation) ... FAIL
+
+======================================================================
+FAIL: test_op09_provider_schema_blocks_wrong_phase_and_invented_citation (test_openai_phase_contract.OpenAIPhaseTests.test_op09_provider_schema_blocks_wrong_phase_and_invented_citation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_openai_phase_contract.py", line 53, in test_op09_provider_schema_blocks_wrong_phase_and_invented_citation
+    self.assertEqual(schema['properties']['action']['enum'],['retrieve_obligations'])
+AssertionError: Lists differ: ['ret[13 chars]ions', 'find_controls', 'inspect_evidence', 'r[32 chars]ngs'] != ['ret[13 chars]ions']
+
+First list contains 4 additional elements.
+First extra element 1:
+'find_controls'
+
+- ['retrieve_obligations',
+?                        ^
+
++ ['retrieve_obligations']
+?                        ^
+
+-  'find_controls',
+-  'inspect_evidence',
+-  'refine_retrieval',
+-  'propose_findings']
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.387s
+
+FAILED (failures=1)

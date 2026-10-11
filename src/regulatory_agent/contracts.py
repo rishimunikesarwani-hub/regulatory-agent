@@ -21,7 +21,13 @@ Status = Literal["supported", "partial", "gap", "needs_review", "not_applicable"
 State = Literal["queued", "running", "completed", "partial", "failed"]
 SELECTED_PROMPT = 'assessment-vs5-selected-v1'
 PERIOD_PROMPT = 'assessment-vs5-selected-period-v1'
-SELECTED_PROMPTS = frozenset((SELECTED_PROMPT, PERIOD_PROMPT))
+OPENAI_ACTION_PROMPT = 'assessment-vs5-openai-period-v2'
+OPENAI_SCHEMA_PROMPT = 'assessment-vs5-openai-period-v3'
+OPENAI_PERIOD_PROMPT = 'assessment-vs5-openai-period-v4'
+OPENAI_SCHEMA_PROMPTS = frozenset((OPENAI_SCHEMA_PROMPT, OPENAI_PERIOD_PROMPT))
+OPENAI_PHASE_PROMPTS = frozenset((OPENAI_ACTION_PROMPT, *OPENAI_SCHEMA_PROMPTS))
+PERIOD_PROMPTS = frozenset((PERIOD_PROMPT, *OPENAI_PHASE_PROMPTS))
+SELECTED_PROMPTS = frozenset((SELECTED_PROMPT, *PERIOD_PROMPTS))
 
 
 def iso_date(value):

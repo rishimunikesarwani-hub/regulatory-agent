@@ -469,6 +469,7 @@ New local snapshots select the OpenAI provider before admission.
 Saved jobs keep their original provider.
 The existing worker, allowance, deadline, validation, review, and export services remain in use.
 Langfuse receives safe measurements after local audit storage.
+The [execution tracing contract](../delivery/spec-langfuse-tracing.md) specifies an isolated provider and nested execution operations under D58.
 AWS deployment and live source coverage remain pending.
 
 [Next: Security and access](../security/03_SECURITY_ACCESS.md)

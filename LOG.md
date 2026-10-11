@@ -1065,3 +1065,55 @@ The [verification records](runs/2026-10-11-local-demo/) contain red and green re
 OpenAI and Langfuse keys remain unavailable in the checked environment and private configuration.
 Live provider access, trace delivery, semantic quality, current source coverage, and AWS acceptance remain unverified.
 VS5 remains a draft under D35.
+
+## 2026-10-11 - Langfuse execution tracing
+
+The user requested installation of the official Langfuse skill and tracing with current best practices.
+The skill is installed in `C:/Users/Be Flith Rich/.codex/skills/langfuse`.
+D58 and the [tracing contract](docs/delivery/spec-langfuse-tracing.md) control this work.
+
+Live assessment and comparison executions now have an agent parent with nested stage observations.
+Stable names identify operations without per-run values.
+Model generations retain actual model identity and numeric token counts.
+The integration uses an isolated provider and ends unfinished observations.
+Optional tracing failures do not change mandatory local audit behavior.
+Prompts, responses, documents, reviewer text, owner identifiers, credentials, and hidden reasoning remain excluded.
+
+The complete backend suite passed 422 checks before the additional interruption test.
+The final tracing suite passed all six checks.
+`git diff --check` passed after line-ending correction.
+The [remote verification record](runs/2026-10-11-langfuse-tracing/live-verification.json) confirms eight observations and two OpenAI generations.
+The Langfuse CLI retrieved and checked the hierarchy, end times, model, token counts, and excluded content.
+
+The fictional temporary assessment failed during execution.
+Trace delivery verification does not establish successful assessment or model quality.
+The task did not change the existing Riverbank case, restart services, deploy, or publish.
+A successful live demonstration, held-out evaluation, current source verification, and AWS acceptance remain pending.
+
+## 2026-10-11 - Completed local fictional-policy demonstration
+
+D59 and the [OpenAI action contract](docs/delivery/spec-openai-phase-contract.md) control this correction.
+New OpenAI assessments use `assessment-vs5-openai-period-v4`.
+Phase instructions and response schemas constrain actions, selected identifiers, and exact source citations.
+Earlier snapshots retain their saved instruction and schema behavior.
+The correction preserves evidence validation, ownership, execution allowances, and mandatory local audit storage.
+
+The fictional policy completed an assessment against historical RBI Clause 19(b) without AWS credentials or service activation.
+All three OpenAI calls succeeded.
+The result requests operational records and retains the bank's weekly review schedule.
+The interface shows the finding and opens its original policy source.
+All citations resolve, and JSON and Markdown exports passed verification.
+
+Langfuse Cloud contains 13 observations, including three model generations.
+Remote retrieval confirmed model identity, token counts, and the exclusion of prompts, responses, and document text.
+The [live verification record](runs/2026-10-11-openai-phase/live-policy-verification.json) records source hashes and the tested working-tree state.
+
+The complete backend suite passed 430 checks in 167.808 seconds.
+The browser suite passed 62 checks in 2.4 minutes on an isolated test port.
+TypeScript checks and the production build passed.
+The [verification records](runs/2026-10-11-openai-phase/) preserve failing tests and subsequent passing results.
+
+This demonstration covers one fictional policy and one historical clause.
+Held-out quality, current regulatory coverage, and AWS acceptance remain pending.
+VS5 remains a draft under D35.
+The next task is user review of the local demonstration.

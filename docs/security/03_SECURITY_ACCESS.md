@@ -263,6 +263,7 @@ It does not establish India residency or authorize private bank inputs.
 Langfuse receives safe execution measurements only.
 Prompts, responses, documents, owner identifiers, review text, credentials, and hidden reasoning remain excluded.
 Credentials remain in ignored server configuration.
+The [execution tracing contract](../delivery/spec-langfuse-tracing.md) excludes automatic framework capture and uses explicit permitted fields.
 This exception does not change AWS production controls.
 
 [Next: Frontend specification](../frontend/04_FRONTEND_SPEC.md)
