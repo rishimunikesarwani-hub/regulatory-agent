@@ -633,6 +633,25 @@ All 228 backend checks passed after the correction.
 The earlier results and the GitHub failure stay recorded.
 Next: finish the updated combined browser and GitHub checks before the VS4 review handoff.
 
+## 2026-10-11 - VS4 GitHub checks passed and feedback services started
+
+GitHub run `38107343124` passed for `c641c78ee289933f95a3c7dec1e6dc948679327a`.
+It verified 228 backend checks, 38 browser checks, and the frontend build.
+Deployment was skipped.
+Draft PR12 contains the controlled VS4 flow and the consistent-read correction.
+It stays outside `main` until local user acceptance.
+
+The feedback interface and API are active on ports `5184` and `8140`.
+The API health record identifies the checked application commit.
+A fictional review case contains the earlier and changed assessments.
+Both human reviews are pending. No reviewer outcome was added to this feedback example.
+The browser showed both saved passages, the affected control, and the new pending finding.
+The feedback database and handoff record stay under ignored `runs/private/slice-04/`.
+Earlier VS2 and VS3 feedback APIs stayed healthy.
+
+AWS verification, live model work, and complete project acceptance stay pending.
+Next: obtain local VS4 feedback before merge and VS5 development.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.

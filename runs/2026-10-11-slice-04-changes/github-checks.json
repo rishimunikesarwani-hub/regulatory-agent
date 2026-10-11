@@ -1,0 +1,136 @@
+{
+  "conclusion": "success",
+  "headSha": "c641c78ee289933f95a3c7dec1e6dc948679327a",
+  "jobs": [
+    {
+      "completedAt": "2026-10-11T03:08:54Z",
+      "conclusion": "success",
+      "databaseId": 114375528339,
+      "name": "checks",
+      "startedAt": "2026-10-11T03:06:57Z",
+      "status": "completed",
+      "steps": [
+        {
+          "completedAt": "2026-10-11T03:06:59Z",
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "startedAt": "2026-10-11T03:06:58Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:07:01Z",
+          "conclusion": "success",
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 2,
+          "startedAt": "2026-10-11T03:06:59Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:07:11Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 3,
+          "startedAt": "2026-10-11T03:07:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:07:16Z",
+          "conclusion": "success",
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "number": 4,
+          "startedAt": "2026-10-11T03:07:11Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:07:50Z",
+          "conclusion": "success",
+          "name": "Install locked dependencies",
+          "number": 5,
+          "startedAt": "2026-10-11T03:07:16Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:05Z",
+          "conclusion": "success",
+          "name": "Check backend and shared contracts",
+          "number": 6,
+          "startedAt": "2026-10-11T03:07:50Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:06Z",
+          "conclusion": "success",
+          "name": "Build the interface",
+          "number": 7,
+          "startedAt": "2026-10-11T03:08:05Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:49Z",
+          "conclusion": "success",
+          "name": "Check the complete local slice",
+          "number": 8,
+          "startedAt": "2026-10-11T03:08:06Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:51Z",
+          "conclusion": "success",
+          "name": "Keep check evidence",
+          "number": 9,
+          "startedAt": "2026-10-11T03:08:49Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:51Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "number": 16,
+          "startedAt": "2026-10-11T03:08:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:51Z",
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+          "number": 17,
+          "startedAt": "2026-10-11T03:08:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:52Z",
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "number": 18,
+          "startedAt": "2026-10-11T03:08:51Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-11T03:08:52Z",
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 19,
+          "startedAt": "2026-10-11T03:08:52Z",
+          "status": "completed"
+        }
+      ],
+      "url": "https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38107343124/job/114375528339"
+    },
+    {
+      "completedAt": "2026-10-11T03:08:55Z",
+      "conclusion": "skipped",
+      "databaseId": 114375849380,
+      "name": "deploy-development",
+      "startedAt": "2026-10-11T03:08:55Z",
+      "status": "completed",
+      "steps": [],
+      "url": "https://github.com/rishimunikesarwani-hub/regulatory-agent/actions/runs/38107343124/job/114375849380"
+    }
+  ],
+  "status": "completed",
+  "backend_passed": 228,
+  "browser_passed": 38,
+  "frontend_build_passed": true,
+  "deployed": false
+}

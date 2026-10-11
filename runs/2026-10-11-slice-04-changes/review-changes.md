@@ -69,7 +69,11 @@ The default review cutoff starts inside that transaction.
 This correction also applies to the earlier historical assessment flow.
 The earlier [227-check result](backend-first-green.txt) and [38-check result](browser-first-green.txt) stay unchanged.
 
-Updated GitHub checks must pass before this branch can merge after user acceptance.
+The updated GitHub run `38107343124` passed for `c641c78ee289933f95a3c7dec1e6dc948679327a`.
+It passed 228 backend checks, 38 browser checks, and the frontend build.
+Deployment was skipped.
+The [GitHub receipt](github-checks.json) records the checked commit and job outcomes.
+The branch still needs local user acceptance before merge.
 
 ## Language and meaning review
 
@@ -91,6 +95,6 @@ Current assessments and controlled AWS assessment routes stay blocked.
 CloudFront verification and failed-stack recovery still block deployment.
 No Support case ID has been confirmed.
 
-Next: complete the GitHub checks and obtain local VS4 user acceptance.
+Next: obtain local VS4 user acceptance.
 Keep VS4 outside `main` until that acceptance.
 Keep VS5 and the complete project marked incomplete.
