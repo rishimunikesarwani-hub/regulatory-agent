@@ -76,7 +76,15 @@ Its controlled checks include complete and partial assessments, concurrent revie
 An incomplete dispatch audit shows Unknown instead of zero live calls.
 The [native execution component](spec-slice-05-cloud-execution.md) now connects historical admission, identifier-only SQS messages, and native worker cleanup.
 Its checks cover full bank reads, uncertain acknowledgements, expired deliveries, snapshot binding, and stopped children.
-The cloud assessment API, source packaging, queue resources, event-source mapping, and worker IAM remain unfinished.
+The [cloud API component](spec-slice-05-cloud-api.md) now prepares authenticated assessment routes, source pages, reviews, and private report downloads.
+Pinned source references avoid duplicate expanded bank records.
+
+Verified public source files enter the deployment package.
+Queue resources, a conditional worker, and fixed runtime permissions are prepared.
+Cloud assessment deployment remains disabled by default.
+
+Template schema and security validation remain pending tool approval.
+Native version comparisons, source verification, live evaluations, and deployed acceptance remain required.
 Hosted Lambda acceptance remains unverified.
 
 The feedback process must use the current application commit.

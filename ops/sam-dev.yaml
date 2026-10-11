@@ -15,6 +15,13 @@ Parameters:
   CaseRuntimeRoleArn:
     Type: String
     AllowedPattern: 'arn:aws:iam::[0-9]{12}:role/regulatory-agent-dev-case-runtime'
+  AssessmentsEnabled:
+    Type: String
+    Default: 'false'
+    AllowedValues: ['false', 'true']
+    Description: Enable only after the remaining VS5 release conditions pass.
+Conditions:
+  AssessmentsEnabled: {Fn::Equals: [{Ref: AssessmentsEnabled}, 'true']}
 Rules:
   MumbaiOnly:
     Assertions:
@@ -230,7 +237,7 @@ Resources:
       Handler: regulatory_agent.aws_cases.handler
       Runtime: python3.12
       Architectures: [x86_64]
-      MemorySize: 512
+      MemorySize: 1024
       Timeout: 29
       Environment:
         Variables:
@@ -241,7 +248,36 @@ Resources:
           USER_POOL_ID: {Ref: UserPool}
           USER_POOL_CLIENT_ID: {Ref: UserPoolClient}
           COMMIT_SHA: {Ref: CommitSha}
+          ASSESSMENTS_ENABLED: {Ref: AssessmentsEnabled}
+          ASSESSMENT_QUEUE_URL: {Fn::If: [AssessmentsEnabled, {Ref: AssessmentQueue}, '']}
       Events:
+        AssessmentSelection:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessment-selection', Method: GET, PayloadFormatVersion: '2.0'}
+        SelectedAssessment:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/selected', Method: POST, PayloadFormatVersion: '2.0'}
+        ListAssessments:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments', Method: GET, PayloadFormatVersion: '2.0'}
+        ReadAssessment:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        ResumeAssessment:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}/resume', Method: POST, PayloadFormatVersion: '2.0'}
+        ExportAssessment:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}/export', Method: POST, PayloadFormatVersion: '2.0'}
+        AssessmentSource:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}', Method: GET, PayloadFormatVersion: '2.0'}
+        AssessmentOriginal:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}/original', Method: GET, PayloadFormatVersion: '2.0'}
+        FindingReview:
+          Type: HttpApi
+          Properties: {ApiId: {Ref: HttpApi}, Path: '/api/cases/{case_id}/assessments/{job_id}/findings/{finding_id}/reviews', Method: POST, PayloadFormatVersion: '2.0'}
         CreateCase:
           Type: HttpApi
           Properties: {ApiId: {Ref: HttpApi}, Path: /api/cases, Method: POST, PayloadFormatVersion: '2.0'}
@@ -286,6 +322,77 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       LogGroupName: {Fn::Sub: '/aws/lambda/${CaseFunction}'}
+  AssessmentDeadLetterQueue:
+    Type: AWS::SQS::Queue
+    Condition: AssessmentsEnabled
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      QueueName: regulatory-agent-dev-assessments-dead
+      SqsManagedSseEnabled: true
+      MessageRetentionPeriod: 1209600
+      RedriveAllowPolicy:
+        redrivePermission: byQueue
+        sourceQueueArns: [{Fn::Sub: 'arn:aws:sqs:ap-south-1:${AWS::AccountId}:regulatory-agent-dev-assessments'}]
+  AssessmentQueue:
+    Type: AWS::SQS::Queue
+    Condition: AssessmentsEnabled
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      QueueName: regulatory-agent-dev-assessments
+      SqsManagedSseEnabled: true
+      VisibilityTimeout: 3960
+      MessageRetentionPeriod: 86400
+      RedrivePolicy: {deadLetterTargetArn: {Fn::GetAtt: [AssessmentDeadLetterQueue, Arn]}, maxReceiveCount: 5}
+  AssessmentQueuePolicy:
+    Type: AWS::SQS::QueuePolicy
+    Condition: AssessmentsEnabled
+    Properties:
+      Queues: [{Ref: AssessmentQueue}, {Ref: AssessmentDeadLetterQueue}]
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: sqs:*
+            Resource: [{Fn::GetAtt: [AssessmentQueue, Arn]}, {Fn::GetAtt: [AssessmentDeadLetterQueue, Arn]}]
+            Condition: {Bool: {'aws:SecureTransport': false}}
+  AssessmentWorker:
+    Type: AWS::Serverless::Function
+    Condition: AssessmentsEnabled
+    Properties:
+      FunctionName: {Fn::Sub: '${AWS::StackName}-assessment-worker'}
+      Role: {Fn::Sub: 'arn:aws:iam::${AWS::AccountId}:role/regulatory-agent-dev-assessment-worker'}
+      CodeUri: ../runs/private/sam-package/
+      Handler: regulatory_agent.aws_execution.handler
+      Runtime: python3.12
+      Architectures: [x86_64]
+      MemorySize: 1024
+      Timeout: 660
+      Environment:
+        Variables:
+          APP_ENV: aws
+          CASES_TABLE: {Ref: CasesTable}
+          DOCUMENTS_BUCKET: {Ref: DocumentsBucket}
+          AWS_ACCOUNT_ID: {Ref: 'AWS::AccountId'}
+          ASSESSMENT_QUEUE_ARN: {Fn::GetAtt: [AssessmentQueue, Arn]}
+          COMMIT_SHA: {Ref: CommitSha}
+      Events:
+        QueuedAssessment:
+          Type: SQS
+          Properties:
+            Queue: {Fn::GetAtt: [AssessmentQueue, Arn]}
+            BatchSize: 1
+            FunctionResponseTypes: [ReportBatchItemFailures]
+            ScalingConfig: {MaximumConcurrency: 2}
+  AssessmentWorkerLogGroup:
+    Type: AWS::Logs::LogGroup
+    Condition: AssessmentsEnabled
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      LogGroupName: {Fn::Sub: '/aws/lambda/${AssessmentWorker}'}
 Outputs:
   FrontendUrl: {Value: {Fn::Sub: 'https://${Frontend.DomainName}'}}
   FrontendBucket: {Value: {Ref: FrontendBucket}}

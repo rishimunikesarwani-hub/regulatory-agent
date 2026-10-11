@@ -22,6 +22,9 @@ class CloudSelection(AssessmentSelection):
         entries=json.loads((self.root/'data/sources/source-manifest.json').read_text(encoding='utf-8'))['versions']
         for source in selected:
             document=source['document']; identity=document['document_version_id']; body=source
+            if document['kind']!='regulation':
+                body=self.service.documents._source(owner,case,identity)
+                if body['document']!=document: raise ContractError('source_integrity_failure')
             if document['kind']=='regulation':
                 metadata=self.store._metadata(owner,case,'document',identity,missing=True)
                 if metadata:
@@ -41,6 +44,12 @@ class CloudSelection(AssessmentSelection):
                 saved=self.store.get(owner,case,'document',identity)
                 if {k:v for k,v in saved.items() if k!='original_ref'}!=source: raise
                 self.service._public_original(owner,case,saved)
+
+    def catalog(self, owner, case):
+        result=super().catalog(owner,case)
+        result['sources']=[{k:v for k,v in source.items() if k not in {'passages','original','extraction','original_ref','original_blob'}}
+                           for source in result['sources']]
+        return result
 
 
 class AssessmentQueue:

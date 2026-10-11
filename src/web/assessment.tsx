@@ -26,6 +26,14 @@ type Comparison = { comparison_id: string; case_id: string; data_mode: string; b
 class AssessmentError extends Error { constructor(readonly status: number, message: string) { super(message); } }
 const titles: Record<string, string> = { approved: 'Approved', edited: 'Edited', rejected: 'Rejected', evidence_request: 'Evidence requested', needs_review: 'Needs review' };
 const percent = (value: number | null) => value === null ? 'Not measured' : `${Math.round(value * 100)}%`;
+function storageURL(value: unknown): string {
+  if (typeof value !== 'string') throw new Error('invalid_storage');
+  const target = new URL(value);
+  if (target.protocol !== 'https:' || !/^[a-z0-9][a-z0-9.-]*\.s3\.ap-south-1\.amazonaws\.com$/.test(target.hostname) ||
+      target.username || target.password || target.port) throw new Error('invalid_storage');
+  return target.href;
+}
+type SourcePage = Source & { offset?: number; passage_count?: number; next_offset?: number | null };
 
 export function AssessmentPanel({ config, caseId, documentRevision, onExpired, onState }: {
   config: Config; caseId: string; documentRevision: number; onExpired: (reason: unknown) => boolean; onState: (state: string) => void;
@@ -34,7 +42,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
   const [regulation, setRegulation] = useState('RBI-IT-2023'), [newerVersion, setNewerVersion] = useState('v2-added');
   const [comparisons, setComparisons] = useState<Comparison[]>([]), [comparison, setComparison] = useState<Comparison | null>(null);
   const [runs, setRuns] = useState<{ job_id: string; job_admitted_at: string }[]>([]);
-  const [result, setResult] = useState<Result | null>(null), [source, setSource] = useState<Source | null>(null);
+  const [result, setResult] = useState<Result | null>(null), [source, setSource] = useState<SourcePage | null>(null);
   const [catalog, setCatalog] = useState<Catalog | null>(null), [selectedRegulation, setSelectedRegulation] = useState('');
   const [selectedBanks, setSelectedBanks] = useState<string[]>([]), [selectedClauses, setSelectedClauses] = useState<string[]>([]);
   const [assessmentDate, setAssessmentDate] = useState(''), [findingId, setFindingId] = useState('');
@@ -66,13 +74,14 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         const failure = await response.json();
         throw new AssessmentError(response.status, `${failure.message || 'Export unavailable.'} ${failure.next_action || 'Retry the export.'}`);
       }
-      const file = await response.blob();
+      const grant = config.mode === 'aws' ? await response.json() : null;
+      const file = config.mode === 'local' ? await response.blob() : null;
       if (!active.current || requestedJob.current !== selected.job.job_id) return;
-      const url = URL.createObjectURL(file);
+      const url = file ? URL.createObjectURL(file) : storageURL(grant.url);
       const link = document.createElement('a');
       link.href = url; link.download = `assessment-${selected.job.job_id}.${format === 'json' ? 'json' : 'md'}`;
       document.body.appendChild(link); link.click(); link.remove();
-      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      if (file) window.setTimeout(() => URL.revokeObjectURL(url), 1000);
     } catch (cause) { if (requestedJob.current === selected.job.job_id) failed(cause); }
     finally { if (active.current) setExporting(false); }
   }
@@ -90,15 +99,17 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
     if (active.current && !onExpired(cause)) setError(cause instanceof AssessmentError ? cause.message : 'The request could not be confirmed. Keep your draft and refresh assessment.');
   }
   async function options(): Promise<void> {
-    const [documents, assessments, savedComparisons, selection] = await Promise.all([request('/documents'), request('/assessments'), request('/comparisons'),
-      config.mode === 'local' ? request('/assessment-selection') : null]);
+    const [documents, assessments, savedComparisons, selection] = await Promise.all([request('/documents'), request('/assessments'),
+      config.mode === 'local' ? request('/comparisons') : null, request('/assessment-selection')]);
     if (!active.current) return;
     const available = documents.sources.filter((s: Source) => s.document.case_id === caseId && s.document.kind === 'policy');
     setPolicies(available); setPolicyId(current => available.some((s: Source) => s.document.document_version_id === current) ? current : available[0]?.document.document_version_id || '');
     setRuns(assessments.runs);
-    if (!Array.isArray(savedComparisons.comparisons) || savedComparisons.comparisons.some((c: Comparison) => c.case_id !== caseId || c.data_mode !== 'controlled_simulation')) throw new Error('invalid_response');
-    setComparisons(savedComparisons.comparisons);
-    setComparison(current => current || savedComparisons.comparisons.at(-1) || null);
+    if (savedComparisons) {
+      if (!Array.isArray(savedComparisons.comparisons) || savedComparisons.comparisons.some((c: Comparison) => c.case_id !== caseId || c.data_mode !== 'controlled_simulation')) throw new Error('invalid_response');
+      setComparisons(savedComparisons.comparisons);
+      setComparison(current => current || savedComparisons.comparisons.at(-1) || null);
+    }
     if (selection) {
       if (selection.data_mode !== 'synthetic_live' || selection.freshness !== 'unverified' || selection.current_available !== false ||
         !Array.isArray(selection.sources) || selection.sources.some((s: Source) => s.document.case_id !== caseId)) throw new Error('invalid_response');
@@ -203,12 +214,14 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
       failed(cause);
     } finally { if (active.current) setBusy(false); }
   }
-  async function inspect(citation: Citation): Promise<void> {
+  async function inspect(citation: Pick<Citation, 'document_version_id'>, offset = 0): Promise<void> {
     if (!result) return;
     const current = generation.current;
     try {
-      const data = await request(`/assessments/${encodeURIComponent(result.job.job_id)}/sources/${encodeURIComponent(citation.document_version_id)}`) as Source;
+      const data = await request(`/assessments/${encodeURIComponent(result.job.job_id)}/sources/${encodeURIComponent(citation.document_version_id)}${config.mode === 'aws' ? `?offset=${offset}` : ''}`) as SourcePage;
       if (data.document.case_id !== caseId || data.document.document_version_id !== citation.document_version_id) throw new Error('invalid_response');
+      if (!Array.isArray(data.passages) || (config.mode === 'aws' && (data.offset !== offset || !Number.isInteger(data.passage_count) ||
+          data.passage_count! < offset + data.passages.length || (data.next_offset !== null && data.next_offset !== offset + 500)))) throw new Error('invalid_response');
       if (active.current && current === generation.current) setSource(data);
     } catch (cause) { failed(cause); }
   }
@@ -240,7 +253,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
   const bankSources = catalog?.sources.filter(s => s.document.kind !== 'regulation') || [];
   const clauses = catalog?.obligations.filter(o => o.document_version_id === selectedRegulation) || [];
   return <section className="assessment-workspace" aria-labelledby="assessment-heading">
-    <div className="page-heading"><div><p className="eyebrow">ASSESSMENT WORKSPACE</p><h2 id="assessment-heading">Assessment</h2><p>Select historical scope or open the controlled example.</p></div>
+    <div className="page-heading"><div><p className="eyebrow">ASSESSMENT WORKSPACE</p><h2 id="assessment-heading">Assessment</h2><p>{config.mode === 'local' ? 'Select historical scope or open the controlled example.' : 'Select historical scope or open a saved assessment.'}</p></div>
       <button className="secondary" disabled={busy} onClick={() => void refresh()}>Refresh assessment</button></div>
     {error && <p className="alert" role="alert">{error}</p>}
     {catalog && <section className="panel assessment-setup selected-setup" aria-label="Selected historical assessment"><h3>Selected historical assessment</h3>
@@ -263,15 +276,16 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         {selectedBanks.length > 9 && <p className="field-hint">Select fewer bank versions before starting the assessment.</p>}
         <button type="submit" disabled={!selectedRegulation || !selectedBanks.length || selectedBanks.length > 9 || !selectedClauses.length || !assessmentDate}>Run selected assessment with live model</button>
       </fieldset></form></section>}
-    <div className="panel assessment-setup"><p>Use the supplied fictional policy. Other documents cannot run this controlled example.</p>
+    {config.mode === 'local' && <div className="panel assessment-setup"><p>Use the supplied fictional policy. Other documents cannot run this controlled example.</p>
       <p className="field-hint"><a download="slice-02-policy.txt" href={`data:text/plain;charset=utf-8,${encodeURIComponent(fixture)}`}>Download the fictional policy</a>, then upload it as a policy document.</p>
       <label htmlFor="assessment-policy">Policy version</label><select id="assessment-policy" value={policyId} disabled={busy} onChange={e => setPolicyId(e.target.value)}><option value="">Upload a fictional policy first</option>{policies.map(s => <option key={s.document.document_version_id} value={s.document.document_version_id}>{s.filename} · Version {s.document.version}</option>)}</select>
       <label htmlFor="assessment-regulation">Regulatory source</label><select id="assessment-regulation" value={regulation} disabled={busy || uncertain} onChange={e => {setRegulation(e.target.value); startDraft.current = null;}}><option value="RBI-IT-2023">RBI clause 19(b) · historical 2023 version</option><option value="SIM-ACCESS">Simulated access rule · v1</option></select>
       <p className="field-hint">{regulation === 'SIM-ACCESS' ? 'Simulated date: 8 May 2024. These changes are fictional, not RBI amendments.' : 'Historical date: 8 April 2024. Current regulatory status is unverified.'} No live model call is made.</p>
       <button disabled={busy || uncertain || !policyId} onClick={() => void start()}>Run controlled assessment</button>
       {runs.length > 0 && <><label htmlFor="saved-assessment">Saved assessments</label><select id="saved-assessment" disabled={busy} value={result?.job.job_id || ''} onChange={e => { setSource(null); setReason(''); setEdited({status: 'needs_review', rationale: '', recommendation: ''}); reviewDraft.current = null; void open(e.target.value); }}><option value="">Select a saved assessment</option>{runs.map(r => <option key={r.job_id} value={r.job_id}>{new Date(r.job_admitted_at).toLocaleString()} · {r.job_id.slice(0, 8)}</option>)}</select></>}
-      {!result && <p className="assessment-notice">{runs.length ? 'Select a saved assessment to inspect its result.' : 'No assessment has run.'}</p>}</div>
-    <section className="panel changes-workspace" aria-label="Regulatory changes"><h2>Regulatory changes</h2><span className="badge">Synthetic regulatory simulation</span>
+      {!result && <p className="assessment-notice">{runs.length ? 'Select a saved assessment to inspect its result.' : 'No assessment has run.'}</p>}</div>}
+    {config.mode === 'aws' && runs.length > 0 && <div className="panel"><label htmlFor="cloud-saved-assessment">Saved assessments</label><select id="cloud-saved-assessment" disabled={busy} value={result?.job.job_id || ''} onChange={e => {setSource(null); void open(e.target.value);}}><option value="">Select a saved assessment</option>{runs.map(r => <option key={r.job_id} value={r.job_id}>{new Date(r.job_admitted_at).toLocaleString()} · {r.job_id.slice(0,8)}</option>)}</select></div>}
+    {config.mode === 'local' && <section className="panel changes-workspace" aria-label="Regulatory changes"><h2>Regulatory changes</h2><span className="badge">Synthetic regulatory simulation</span>
       <p>Compare specified fictional versions. Earlier assessments and human reviews stay unchanged.</p>
       <p className="field-hint">These examples do not establish current regulatory coverage or live model quality.</p>
       {result?.snapshot.selected_versions['SIM-ACCESS'] === 'v1' && result.job.state === 'completed' ? <>
@@ -286,7 +300,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         <details><summary>Source metadata changes</summary>{Object.entries(comparison.metadata_changes).map(([name, values]) => <p key={name}>{name.replaceAll('_', ' ')}: {values.older} → {values.newer}</p>)}<p>Dates and text changes do not automatically establish a changed obligation.</p></details>
         <div className="citation-actions"><button className="secondary" disabled={busy} onClick={() => void open(comparison.baseline_job_id)}>Open previous assessment</button>{comparison.new_job_id && <button disabled={busy} onClick={() => void open(comparison.new_job_id!)}>Open new assessment</button>}</div>
       </div>}
-    </section>
+    </section>}
     {result && <section className="assessment-result" aria-label="Assessment result">
       <div className="assessment-result-heading"><span className="badge">{controlled ? 'Controlled simulation' : 'Fictional inputs · Live model processing'}</span><h3>{finding ? titles[finding.status] || finding.status : `Assessment ${result.job.state}`}</h3>
         <p>{controlled ? 'This is a fixed example.' : 'This assessment uses selected historical excerpts and fictional bank documents.'} It does not establish compliance or current regulatory coverage.</p>
@@ -327,6 +341,6 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         <ul>{result.trace.attempts.map(t => <li key={t.event_id}>{t.stage.replaceAll('_', ' ')}: {t.state} · {t.duration_seconds === null ? 'Duration unknown' : `${t.duration_seconds.toFixed(4)} s`} · Input tokens: {t.usage?.input_tokens ?? 'Unknown'} · Output tokens: {t.usage?.output_tokens ?? 'Unknown'}</li>)}</ul>
         <p className="identifier">Saved versions: {Object.entries(result.snapshot.selected_versions).map(([id, version]) => `${id}:${version}`).join(', ')}</p></details>
     </section>}
-    {source && <dialog ref={dialog} aria-labelledby="assessment-source-title" onClose={() => setSource(null)}><div className="source-heading"><h3 id="assessment-source-title">Assessment source</h3><button className="secondary" onClick={() => dialog.current?.close()}>Close source</button></div><p>{source.filename}</p><p className="field-hint">{source.label || (source.document.kind === 'regulation' ? 'Current status unverified. Saved historical source only.' : 'Saved fictional bank document version.')}</p><p className="identifier">Source: {source.document.source_id} · Version: {source.document.version} · Kind: {source.document.kind}</p><p className="identifier source-version">Document: {source.document.document_version_id}</p>{source.document.kind === 'evidence' && source.stated_periods !== undefined && <section aria-label="Stated evidence periods"><h4>Stated evidence periods</h4><p className="field-hint">These dates do not establish complete records or actual control operation.</p>{source.stated_periods.length ? source.stated_periods.map((v,i) => <article className="passage" key={i}><h4>{v.period.start} to {v.period.end}</h4>{v.citations.map(c => <blockquote key={c.passage_id}><p>{c.location}</p><pre>{c.quote}</pre></blockquote>)}</article>) : <p>Stated evidence period: Unknown</p>}</section>}{source.passages.map(p => <article className="passage" key={p.passage_id}><h4>{p.location}</h4><pre>{p.text}</pre></article>)}</dialog>}
+    {source && <dialog ref={dialog} aria-labelledby="assessment-source-title" onClose={() => setSource(null)}><div className="source-heading"><h3 id="assessment-source-title">Assessment source</h3><button className="secondary" onClick={() => dialog.current?.close()}>Close source</button></div><p>{source.filename}</p><p className="field-hint">{source.label || (source.document.kind === 'regulation' ? 'Current status unverified. Saved historical source only.' : 'Saved fictional bank document version.')}</p><p className="identifier">Source: {source.document.source_id} · Version: {source.document.version} · Kind: {source.document.kind}</p><p className="identifier source-version">Document: {source.document.document_version_id}</p>{source.document.kind === 'evidence' && source.stated_periods !== undefined && <section aria-label="Stated evidence periods"><h4>Stated evidence periods</h4><p className="field-hint">These dates do not establish complete records or actual control operation.</p>{source.stated_periods.length ? source.stated_periods.map((v,i) => <article className="passage" key={i}><h4>{v.period.start} to {v.period.end}</h4>{v.citations.map(c => <blockquote key={c.passage_id}><p>{c.location}</p><pre>{c.quote}</pre></blockquote>)}</article>) : <p>Stated evidence period: Unknown</p>}</section>}{source.passages.map(p => <article className="passage" key={p.passage_id}><h4>{p.location}</h4><pre>{p.text}</pre></article>)}{config.mode === 'aws' && <div className="source-heading"><p>Passages {(source.offset || 0) + 1} to {(source.offset || 0) + source.passages.length} of {source.passage_count}</p><button className="secondary" disabled={!source.offset} onClick={() => void inspect(source.document, Math.max(0, source.offset! - 500))}>Previous source passages</button><button className="secondary" disabled={source.next_offset === null} onClick={() => void inspect(source.document, source.next_offset!)}>Next source passages</button></div>}</dialog>}
   </section>;
 }

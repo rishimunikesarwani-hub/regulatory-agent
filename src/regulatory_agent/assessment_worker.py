@@ -78,9 +78,9 @@ def supervise(store, owner, case, job_id, target, *, args=(), stop=_stop, availa
             process.join(min(5, remaining))
             if process.is_alive() and time.monotonic() < end:
                 store.renew(owner, case, job_id, token)
-    except ContractError:
+    except ContractError as error:
         # A newer claim owns finalization. Cleanup still stops this parent's child.
-        reason = 'worker_claim_lost'
+        reason = 'worker_timeout' if str(error) == 'deadline_or_lease_exhausted' else 'worker_claim_lost'
     except Exception:
         reason = 'worker_start_failed' if process.pid is None else 'worker_supervisor_failed'
     finally:

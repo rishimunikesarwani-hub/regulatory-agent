@@ -72,16 +72,18 @@ class DeploymentContractTests(unittest.TestCase):
         self.assertEqual(condition["token.actions.githubusercontent.com:sub"],
                          "repo:rishimunikesarwani-hub@292392448/regulatory-agent@1412648942:environment:development")
 
-    def test_lambda_role_has_only_case_document_and_log_access(self):
+    def test_lambda_role_has_only_owned_records_documents_queue_and_log_access(self):
         function = self.template["Resources"]["CaseFunction"]["Properties"]
         self.assertEqual(function["Role"], {"Ref": "CaseRuntimeRoleArn"})
         self.assertNotIn("Policies", function)
         bootstrap = yaml.safe_load((ROOT / "ops/aws-development-bootstrap.yaml").read_text())
         policies = bootstrap["Resources"]["CaseRuntimeRole"]["Properties"]["Policies"]
         actions = {action for policy in policies for statement in policy["PolicyDocument"]["Statement"] for action in statement["Action"]}
-        self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query",
+        self.assertEqual(actions, {"dynamodb:PutItem", "dynamodb:GetItem", "dynamodb:Query", 'dynamodb:ConditionCheckItem', 'sqs:SendMessage',
                                   "logs:CreateLogStream", "logs:PutLogEvents", 's3:GetBucketLocation', 's3:GetBucketVersioning',
                                   's3:GetObject', 's3:GetObjectVersion', 's3:PutObject'})
+        queue = [statement for policy in policies for statement in policy['PolicyDocument']['Statement'] if 'sqs:SendMessage' in statement['Action']]
+        self.assertEqual(queue[0]['Resource'], {'Fn::Sub':'arn:aws:sqs:ap-south-1:${AWS::AccountId}:regulatory-agent-dev-assessments'})
         execution = bootstrap["Resources"]["CloudFormationRole"]["Properties"]["Policies"]
         iam_actions = {action for policy in execution for statement in policy["PolicyDocument"]["Statement"]
                        for action in statement["Action"] if action.startswith("iam:")}

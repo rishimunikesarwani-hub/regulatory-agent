@@ -185,6 +185,17 @@ class WorkerTests(unittest.TestCase):
         self.assertEqual(result['model_calls'], 1)
         self.assertEqual(result['stop_reason'], 'worker_timeout')
 
+    def test_w14_renewal_crossing_deadline_keeps_timeout_and_original_budget(self):
+        deadline=self.remaining(6)
+        marker=self.store.path.parent/'renewal-race-late.txt'
+        with patch.object(self.store,'renew',side_effect=ContractError('deadline_or_lease_exhausted')):
+            result=self.supervise(self.store,*self.scope,hanging_child,args=(str(self.store.path),str(marker)))
+        self.assertEqual(result['stop_reason'],'worker_timeout')
+        self.assertEqual(result['deadline'],deadline)
+        self.assertEqual(result['model_calls'],1)
+        self.assertFalse(marker.exists())
+        self.assertFalse(any(p.name.startswith('assessment-') for p in multiprocessing.active_children()))
+
     def test_w12_native_client_is_not_constructed_for_an_unapproved_data_mode(self):
         from regulatory_agent.assessment_worker import bedrock_child
         token = self.store.claim(*self.scope)

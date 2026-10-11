@@ -848,6 +848,39 @@ D30 still prohibits reserved concurrency for the first deployment.
 Provider selection, AWS authentication, and CloudFront acceptance remain pending.
 VS5 remains a draft under D35.
 
+## D53 - Native assessment API and deployment preparation
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42 and the approved AWS blueprint.
+Requirements: REQ-X02, REQ-X03, REQ-X05, REQ-X07, and REQ-X08.
+
+The [cloud API contract](../delivery/spec-slice-05-cloud-api.md) connects authenticated native admission, reports, review records, source pages, and private downloads.
+Case ownership is checked before assessment client construction.
+
+Native bank source records keep pinned original and extraction references.
+Internal processing reads all verified passages.
+Public source inspection uses stable passage identifiers and pages.
+Reports use private, versioned S3 objects with checksum verification before download signing.
+
+The deployment package contains application code and verified public source files.
+The package excludes private fixtures and unrelated source files.
+Previous packages remain in a private archive.
+
+The SAM template prepares encrypted queues, a dead-letter queue, and a bounded Lambda worker.
+The bootstrap template defines fixed runtime roles and scoped resource permissions.
+Assessment deployment remains disabled by default.
+The frontend supports selected cloud assessments behind that release flag.
+D30 still prohibits reserved concurrency for the first deployment.
+
+W14 records deadline or lease exhaustion during renewal as timeout.
+The correction preserves saved deadlines, counters, and replacement-claim protection.
+
+Controlled SDK and browser checks do not establish deployed AWS permissions or live model quality.
+CloudFormation schema and security validation remain pending tool approval.
+Native version comparisons, provider selection, source verification, live evaluations, and deployed acceptance remain required.
+AWS authentication and CloudFront acceptance remain pending.
+VS5 remains a draft under D35.
+
 ## How to add a decision
 
 Add a new entry with:

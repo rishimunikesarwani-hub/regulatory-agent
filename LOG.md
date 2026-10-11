@@ -950,3 +950,19 @@ The 15 focused checks pass.
 The final local suite passed 343 backend checks, 51 browser checks, and the frontend build.
 D52 records the component boundary.
 Cloud API, source packaging, queue resources, event-source mapping, worker IAM, source verification, live quality, and deployment remain unfinished.
+
+## 2026-10-11 - Native assessment API and deployment preparation
+
+The cloud API connects native selection, job reports, human reviews, source pages, and private report downloads.
+Large bank documents use pinned source references instead of duplicate expanded records.
+
+The deployment package includes verified public sources and preserves previous packages in a private archive.
+Conditional queues, a Lambda worker, and fixed runtime permissions are prepared.
+Cloud assessment deployment remains disabled by default.
+The frontend supports selected cloud assessments, source pagination, and private artifact downloads behind that flag.
+
+The 18 focused backend checks and three controlled cloud browser checks pass.
+W14 reproduces deadline exhaustion during lease renewal.
+The correction preserves timeout classification, the original deadline, counters, and replacement-claim protection.
+The final complete suite passed 362 backend checks, 54 browser checks, and the frontend build.
+D53 records the component boundary and remaining validation, comparison, provider, quality, and deployed acceptance conditions.

@@ -134,8 +134,32 @@ class CloudAssessments(Assessments):
         trace=[v for v in self.store.records(owner,case,'stage_attempt') if v['run_id']==run['run_id']]
         return job,items,events,trace
 
+    def _bank_record(self, owner, case, version_id):
+        stored=self.store.get(owner,case,'document',version_id)
+        if 'original' in stored: return stored
+        original=self.documents._source(owner,case,version_id)
+        if original['document']!=stored['document']: raise ContractError('source_integrity_failure')
+        return original
+
     def source_original(self, owner, case, job_id, version_id):
         source=self.source(owner,case,job_id,version_id)
         if source['document']['kind']=='regulation': return self._public_original(owner,case,source),'historical-regulation.html'
-        stored=self.documents._source(owner,case,version_id)
-        return self.documents.objects.read(owner,case,stored['original']),stored['filename']
+        stored=self._bank_record(owner,case,version_id)
+        raw=self.store.objects.read(owner,case,stored['original'])
+        if hashlib.sha256(raw).hexdigest()!=source['document']['sha256']: raise ContractError('source_integrity_failure')
+        return raw,stored['filename']
+
+    def source_page(self, owner, case, job_id, version_id, *, offset=0):
+        from .aws_documents import source_read
+        from .documents import rejected
+        _,snapshot=self._run(owner,case,job_id)
+        if version_id not in snapshot['selected_document_ids'].values(): raise not_found()
+        source=self.store.get(owner,case,'document',version_id)
+        if source['document']['kind']!='regulation' and 'passages' not in source:
+            return source_read(self.store.objects,owner,case,source,offset=offset)
+        if source['document']['kind']=='regulation': self._public_original(owner,case,source)
+        passages=source['passages']
+        if type(offset) is not int or not 0<=offset<len(passages): raise rejected()
+        return {k:v for k,v in source.items() if k not in {'original_ref','original_blob'}}|{
+            'passages':passages[offset:offset+500],'offset':offset,'passage_count':len(passages),
+            'next_offset':offset+500 if offset+500<len(passages) else None}

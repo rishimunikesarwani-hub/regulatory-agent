@@ -12,8 +12,12 @@ from .local import Store, encoded, identifier
 
 
 class DynamoRecords(DynamoJobs):
-    sources = Store.sources
     save_snapshot = Store.save_snapshot
+
+    def sources(self, owner, case, snapshot):
+        from .aws_documents import source_read
+        return [source_read(self.objects,owner,case,s) if s['document']['kind']!='regulation' and 'passages' not in s else s
+                for s in Store.sources(self,owner,case,snapshot)]
 
     @staticmethod
     def record_key(owner, case, kind, identity):

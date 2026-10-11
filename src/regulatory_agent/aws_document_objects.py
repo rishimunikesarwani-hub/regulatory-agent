@@ -36,7 +36,8 @@ class S3DocumentObjects:
 
     def _target(self, url):
         parsed = urlsplit(url)
-        if parsed.scheme != 'https' or parsed.hostname != f'{self.bucket}.s3.ap-south-1.amazonaws.com':
+        if (parsed.scheme != 'https' or parsed.hostname != f'{self.bucket}.s3.ap-south-1.amazonaws.com'
+                or parsed.username or parsed.password or parsed.port not in {None,443}):
             raise unavailable()
         return url
 
@@ -85,7 +86,7 @@ class S3DocumentObjects:
         return {'upload_id': upload, 'key': key, 'version_id': version, 'size_bytes': size,
                 'sha256': hashlib.sha256(data).hexdigest()}, data
 
-    def _read(self, owner, case, reference, limit):
+    def _reference(self, owner, case, reference, limit):
         self.cases.read(owner, case)
         if not isinstance(reference, dict):
             raise not_found()
@@ -97,9 +98,13 @@ class S3DocumentObjects:
         size = reference.get('size_bytes')
         if type(size) is not int or not 0 < size <= limit:
             raise unavailable()
+        return key,version,size
+
+    def _read(self, owner, case, reference, limit):
+        key,version,size=self._reference(owner,case,reference,limit)
         self._ready()
         data = self._bytes(key, version, size)
-        if hashlib.sha256(data).hexdigest() != digest:
+        if hashlib.sha256(data).hexdigest() != reference['sha256']:
             raise unavailable()
         return data
 
@@ -131,7 +136,37 @@ class S3DocumentObjects:
         self.cases.read(owner, case)
         upload_request({'x-filename': quote(filename, safe=''), 'x-document-kind': 'policy', 'x-synthetic': 'true'}, reference.get('size_bytes'))
         self.read(owner, case, reference)
+        return self._signed(reference,filename)
+
+    def _signed(self, reference, filename):
         return self._target(self.client.generate_presigned_url('get_object', Params={
             'Bucket': self.bucket, 'Key': reference['key'], 'VersionId': reference['version_id'],
             'ExpectedBucketOwner': self.account, 'ResponseContentType': 'application/octet-stream',
             'ResponseContentDisposition': "attachment; filename*=UTF-8''" + quote(filename, safe='')}, ExpiresIn=300))
+
+    def download_extraction(self, owner, case, reference, filename):
+        self.read_extraction(owner,case,reference)
+        return self._signed(reference,filename)
+
+    def save_report(self, owner, case, identity, data):
+        if not isinstance(identity,str) or not identity.startswith('report-'): raise not_found()
+        key=self._key(owner,case,identity+'-report')
+        if not isinstance(data,bytes) or not 0<len(data)<=128_000_000: raise unavailable()
+        self._ready(); digest=hashlib.sha256(data).digest(); checksum=base64.b64encode(digest).decode()
+        result=self.client.put_object(Bucket=self.bucket,Key=key,Body=data,ContentType='application/octet-stream',
+            ServerSideEncryption='AES256',ExpectedBucketOwner=self.account,ChecksumSHA256=checksum)
+        version=result.get('VersionId')
+        if not isinstance(version,str) or not version or version=='null' or result.get('ServerSideEncryption')!='AES256' or \
+                result.get('ChecksumSHA256')!=checksum: raise unavailable()
+        return {'upload_id':identity+'-report','key':key,'version_id':version,'size_bytes':len(data),'sha256':digest.hex()}
+
+    def download_report(self, owner, case, reference, filename):
+        key,version,size=self._reference(owner,case,reference,128_000_000)
+        identity=reference['upload_id']
+        if not identity.startswith('report-') or not identity.endswith('-report'): raise not_found()
+        self._ready()
+        head=self.client.head_object(Bucket=self.bucket,Key=key,VersionId=version,ExpectedBucketOwner=self.account,ChecksumMode='ENABLED')
+        checksum=base64.b64encode(bytes.fromhex(reference['sha256'])).decode()
+        if head.get('VersionId')!=version or head.get('ContentLength')!=size or head.get('ServerSideEncryption')!='AES256' or \
+                head.get('ChecksumSHA256')!=checksum or head.get('ChecksumType','FULL_OBJECT')!='FULL_OBJECT': raise unavailable()
+        return self._signed(reference,filename)
