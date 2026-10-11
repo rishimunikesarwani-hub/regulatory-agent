@@ -80,7 +80,8 @@ npm --prefix src/web test -- --config playwright.changes.config.ts
 
 ## Remaining conditions
 
-Keep VS4 at the local user-review condition before merge and VS5 development.
+The user approved VS4 locally and authorized its merge and VS5 development on 2026-10-11.
+Merge the final checked commit before VS5 development.
 CloudFront account verification and failed-stack recovery still block AWS deployment.
 No Support case ID has been confirmed.
 The prepared AWS document storage and permission changes have not been applied.

@@ -228,6 +228,6 @@ test_ct12_simultaneous_retries_keep_one_admission_and_one_model_call (test_slice
 test_ct13_completed_response_cannot_omit_its_committed_finding (test_slice04_changes.ChangeSliceTests.test_ct13_completed_response_cannot_omit_its_committed_finding) ... ok
 
 ----------------------------------------------------------------------
-Ran 228 tests in 48.960s
+Ran 228 tests in 49.692s
 
 OK

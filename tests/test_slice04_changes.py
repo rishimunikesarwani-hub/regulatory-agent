@@ -156,6 +156,9 @@ class ChangeSliceTests(unittest.TestCase):
         self.assertEqual(result['job']['deadline'] - result['job']['started_at'], 600)
         stages = {attempt['stage'] for attempt in result['trace']['attempts']}
         self.assertTrue({'retrieval', 'model_call', 'validation', 'persistence'} <= stages)
+        for attempt in result['trace']['attempts']:
+            self.assertEqual(attempt['versions']['prompt'], result['snapshot']['prompt_version'])
+            self.assertEqual(attempt['versions']['application'], 'vs4-v1')
         for citation in result['findings'][0]['citations']:
             source = self.call('GET', f"{self.flow.url}/{comparison['new_job_id']}/sources/{citation['document_version_id']}").json()
             self.assertTrue(any(p['location'] == citation['location'] and citation['quote'] in p['text'] for p in source['passages']))

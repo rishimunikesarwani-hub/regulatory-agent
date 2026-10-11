@@ -27,7 +27,8 @@ Keep database files under ignored `runs/private/` directories.
 
 VS2 local work and its controlled AWS extension are integrated.
 The user approved VS3 locally. Its checked integration merged through PR9.
-VS4 is selected for local development. VS5 stays reserved.
+The user approved VS4 locally and authorized its merge.
+VS5 is selected for local development after that merge.
 VS4 browser checks use API port `8141` and their own browser-test database.
 The VS2 AWS browser checks use API port `8191` and their own browser-test database.
 Its feedback ports are reserved. Feedback services are not running from that worktree.

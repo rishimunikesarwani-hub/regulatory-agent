@@ -1,0 +1,19 @@
+test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent (test_slice04_changes.ChangeSliceTests.test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent) ... FAIL
+
+======================================================================
+FAIL: test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent (test_slice04_changes.ChangeSliceTests.test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t5-agent\tests\test_slice04_changes.py", line 160, in test_ct10_new_job_keeps_budget_and_citations_and_resume_is_idempotent
+    self.assertEqual(attempt['versions']['prompt'], result['snapshot']['prompt_version'])
+AssertionError: 'controlled-vs3-v1' != 'controlled-vs4-v1'
+- controlled-vs3-v1
+?              ^
++ controlled-vs4-v1
+?              ^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.737s
+
+FAILED (failures=1)

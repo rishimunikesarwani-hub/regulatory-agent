@@ -623,6 +623,20 @@ AWS mode must not expose controlled assessment or comparison actions.
 No approved feature scope, model, budget, or AWS release condition changes.
 VS4 local review and deployed acceptance stay pending.
 
+## D42 — VS4 local acceptance and VS5 authorization
+
+Date: 2026-10-11.
+Status: Approved by the user's review response.
+
+The user approved VS4 local acceptance, its merge, and VS5 local development while AWS verification remains pending.
+The response satisfies the D35 local review condition for VS4.
+The [VS4 contract](../delivery/spec-slice-04-changes.md) and its saved checks control the completed local behavior.
+Merge the final VS4 commit after its GitHub checks pass.
+Start VS5 in its separate branch, worktree, ports, and test database.
+Keep the approved complete scope and live evaluation conditions.
+This approval does not establish live model quality, current regulatory coverage, or deployed AWS acceptance.
+No Support case ID or account verification completion has been confirmed.
+
 ## How to add a decision
 
 Add a new entry with:

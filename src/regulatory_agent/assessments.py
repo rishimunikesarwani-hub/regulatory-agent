@@ -241,8 +241,8 @@ class Assessments:
         event = StageAttempt(event_id=uuid.uuid4().hex, run_id=run['run_id'], job_id=run['job_id'], snapshot_id=run['snapshot_id'],
             stage_id=stage, attempt_id=uuid.uuid4().hex, stage=stage, operation=operation, state=state,
             dispatched=state not in {'skipped', 'not_applicable'}, **timer.finish(),
-            versions=VersionMetadata(application='vs3-v1', schema='t2-v1', extraction='vs2-v1', chunking='source-locations-v1',
-                retrieval='fixed-example-v1', prompt=PROMPT, model_configuration='controlled-response-v1'),
+            versions=VersionMetadata(application='vs4-v1', schema='t2-v1', extraction='vs2-v1', chunking='source-locations-v1',
+                retrieval='fixed-example-v1', prompt=run['prompt_version'], model_configuration='controlled-response-v1'),
             model_id=MODEL if operation == 'model' else None, artifact_ids=tuple(artifacts), original_processing_event_id=original,
             candidate_passage_ids=tuple(candidates), selected_passage_ids=tuple(selected), errors=(error,) if error else ())
         with self.store.transaction() as db:

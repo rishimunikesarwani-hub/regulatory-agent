@@ -53,6 +53,8 @@ PR9 merged after its updated GitHub checks passed.
 The [integration candidate](delivery/spec-slice-03-integration.md) contains VS3 and current `main` changes for different checks.
 The candidate passed 215 backend checks and 33 browser checks before the user gave approval.
 VS4 local development uses the [version-comparison contract](delivery/spec-slice-04-changes.md).
+The user approved VS4 local acceptance and authorized VS5 local development on 2026-10-11.
+The [approval record](decisions/gov-decision-log.md#d42--vs4-local-acceptance-and-vs5-authorization) permits the checked VS4 merge.
 AWS application acceptance stays pending.
 Read the [VS2 development guide](delivery/guide-slice-02-development.md) for local review.
 The [workspace guide](delivery/guide-slice-workspaces.md) controls the current branches, ports, and databases.

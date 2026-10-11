@@ -652,6 +652,19 @@ Earlier VS2 and VS3 feedback APIs stayed healthy.
 AWS verification, live model work, and complete project acceptance stay pending.
 Next: obtain local VS4 feedback before merge and VS5 development.
 
+## 2026-10-11 - VS4 trace labels corrected
+
+The final source review found that the shared trace builder still used the VS3 prompt constant.
+VS4 snapshots and review items already had the correct `controlled-vs4-v1` prompt version.
+The extended VS4-CT10 check failed for the incorrect trace label before code changed.
+The trace builder now reads the saved run's prompt version.
+It identifies the current application as `vs4-v1`.
+Earlier saved traces stay unchanged.
+
+The comparison and human-review behavior stay unchanged.
+Local VS4 acceptance and AWS acceptance are still pending.
+Next: finish the updated metadata checks and keep the review build available.
+
 ## 2026-10-11 - Isolated VS3 integration candidate
 
 The candidate branch is `work/t4-integration-candidate` in a different worktree.
@@ -742,3 +755,12 @@ AWS account verification and failed-stack recovery still block deployment.
 The prepared document storage and runtime permissions have not been applied.
 Live model integration and complete project acceptance remain pending.
 Next: obtain VS3 user acceptance and AWS verification.
+
+## 2026-10-11 ? VS4 acceptance and VS5 authorization
+
+The user approved VS4 local acceptance, its merge, and VS5 local development.
+D42 records that approval.
+The final trace correction passed all 228 backend checks.
+GitHub must check the final commit before merge.
+AWS verification, live providers, model quality, and complete project acceptance remain pending.
+Next: merge the checked VS4 commit and start the separate VS5 worktree.

@@ -75,6 +75,16 @@ Deployment was skipped.
 The [GitHub receipt](github-checks.json) records the checked commit and job outcomes.
 The branch still needs local user acceptance before merge.
 
+## Trace version correction
+
+The final source review found an older constant in the shared trace builder.
+New simulated jobs had the correct prompt version in their snapshot and review item.
+Their trace still used the VS3 prompt label.
+The [failing check](trace-version-red.txt) reproduced that mismatch before the correction.
+The trace builder now uses the saved run's prompt version and the current `vs4-v1` application label.
+Earlier saved traces stay unchanged as historical evidence.
+The comparison, findings, and review behavior stay unchanged.
+
 ## Language and meaning review
 
 The official ASD-STE100 Issue 9 reference was available from the ignored project reference directory.
@@ -95,6 +105,7 @@ Current assessments and controlled AWS assessment routes stay blocked.
 CloudFront verification and failed-stack recovery still block deployment.
 No Support case ID has been confirmed.
 
-Next: obtain local VS4 user acceptance.
-Keep VS4 outside `main` until that acceptance.
+The user approved VS4 local acceptance and authorized its merge and VS5 local development on 2026-10-11.
+The trace correction passed all 228 backend checks.
+Next: merge the final commit after its GitHub checks pass.
 Keep VS5 and the complete project marked incomplete.
