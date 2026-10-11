@@ -1,0 +1,17 @@
+test_a01_catalog_lists_owned_sources_and_explicit_limits (test_slice05_admission.AdmissionTests.test_a01_catalog_lists_owned_sources_and_explicit_limits) ... ok
+test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted (test_slice05_admission.AdmissionTests.test_a02_multiple_clauses_and_arbitrary_fictional_policy_are_admitted) ... ok
+test_a03_explicit_artifacts_do_not_rewrite_legacy_records (test_slice05_admission.AdmissionTests.test_a03_explicit_artifacts_do_not_rewrite_legacy_records) ... ok
+test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run (test_slice05_admission.AdmissionTests.test_a04_invalid_ownership_scope_versions_and_current_mode_start_no_run) ... ok
+test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request (test_slice05_admission.AdmissionTests.test_a05_retry_after_replacement_keeps_snapshot_and_conflicts_on_changed_request) ... ok
+test_a06_citation_reads_and_export_use_selected_artifacts (test_slice05_admission.AdmissionTests.test_a06_citation_reads_and_export_use_selected_artifacts) ... ok
+test_a07_archived_public_and_original_bank_corruption_prevent_inference (test_slice05_admission.AdmissionTests.test_a07_archived_public_and_original_bank_corruption_prevent_inference) ... ok
+test_a08_http_admission_dispatch_and_resume_keep_server_configuration (test_slice05_admission.AdmissionTests.test_a08_http_admission_dispatch_and_resume_keep_server_configuration) ... ok
+test_a09_original_download_preserves_bytes_and_denies_outside_versions (test_slice05_admission.AdmissionTests.test_a09_original_download_preserves_bytes_and_denies_outside_versions) ... ok
+test_a10_invalid_artifact_binding_and_oversized_context_fail_closed (test_slice05_admission.AdmissionTests.test_a10_invalid_artifact_binding_and_oversized_context_fail_closed) ... ok
+test_a11_admitted_snapshot_runs_through_full_selected_pipeline (test_slice05_admission.AdmissionTests.test_a11_admitted_snapshot_runs_through_full_selected_pipeline) ... ok
+test_a12_corrupt_archive_cannot_be_inspected_or_exported (test_slice05_admission.AdmissionTests.test_a12_corrupt_archive_cannot_be_inspected_or_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 14.282s
+
+OK

@@ -719,6 +719,29 @@ General admission, source-selection integration, provider selection under D20, a
 AWS authentication needs renewal. VS5 remains a draft under D35.
 
 
+## D47 - Selected historical admission and artifact references
+
+Date: 2026-10-11.
+Status: Implementation clarification within D42's approved local development.
+Requirements: REQ-F03–REQ-F08 and REQ-X02–REQ-X06.
+
+The [admission contract](../delivery/spec-slice-05-admission.md) connects selected historical scope to the existing pipeline and separate worker.
+It accepts owned fictional uploads without the earlier fixed policy hash requirement.
+The catalog exposes saved real-source excerpts and keeps current verification unavailable.
+It does not approve or integrate an external provider under D20.
+
+Snapshots now contain exact document artifact references in addition to canonical source versions.
+The shared resolver serves processing, citation validation, inspection, and exports.
+Legacy reports keep their original records and lookup paths.
+Public original bytes remain in authorized storage with checksum validation.
+
+The selected protocol uses `assessment-vs5-selected-v1` and `vs5-selection-v1`.
+The server controls processing configuration and labels.
+Controlled checks do not establish live access, complete source coverage, or model quality.
+The selection interface, evidence-period integration, current verification, and AWS acceptance remain unfinished.
+VS5 remains a draft under D35.
+
+
 ## How to add a decision
 
 Add a new entry with:

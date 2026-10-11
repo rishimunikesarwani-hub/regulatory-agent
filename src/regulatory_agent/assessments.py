@@ -3,12 +3,13 @@ from datetime import datetime, timezone
 import hashlib
 import html
 import json
+import os
 from pathlib import Path
 import re
 import uuid
 
 from .cases import CaseError, not_found
-from .contracts import Citation, ContractError, Control, Finding, Obligation, ReviewDecision, ReviewItem, Snapshot, StartAssessment
+from .contracts import Citation, ContractError, Control, Finding, Obligation, ReviewDecision, ReviewItem, SELECTED_PROMPT, Snapshot, StartAssessment
 from .local import ControlledModel, LocalRunner, encoded
 from .reviews import Reviews, counts, instant
 from .telemetry import AttemptTimer, StageAttempt, VersionMetadata
@@ -188,7 +189,36 @@ class Assessments:
         return run, self.store.get(owner, case, 'snapshot', run['snapshot_id'])
 
     def _sources(self, owner, case, snapshot):
-        return [self.store.get(owner, case, 'document', f'{name}:{version}') for name, version in snapshot['selected_versions'].items()]
+        sources = self.store.sources(owner, case, snapshot)
+        if snapshot.get('selected_document_ids'):
+            for source in sources:
+                if source['document']['kind']=='regulation': self._public_original(owner, case, source)
+        return sources
+
+    def _public_original(self, owner, case, source):
+        if not source.get('original_blob'):
+            raise ContractError('source_original_missing')
+        from .local import BlobStore
+        raw = BlobStore(self.store.path.with_suffix('.sources'), self.store).read(owner, case, source['original_blob'])
+        if hashlib.sha256(raw).hexdigest() != source['document']['sha256']:
+            raise ContractError('source_integrity_failure')
+        return raw
+
+    def run_selected(self, owner, case, job_id):
+        from .assessment_worker import bedrock_child, supervise
+        run, snapshot = self._run(owner, case, job_id)
+        if run['data_mode'] != 'synthetic_live' or snapshot['prompt_version'] != SELECTED_PROMPT:
+            raise invalid('selected_processing_scope_invalid')
+        return supervise(self.store, owner, case, job_id, bedrock_child,
+            args=(str(self.store.path), os.environ.get('BEDROCK_PROFILE')))
+
+    def source_original(self, owner, case, job_id, version_id):
+        source = self.source(owner, case, job_id, version_id)
+        if source['document']['kind'] != 'regulation':
+            return self.documents.read(owner, case, version_id, original=True)
+        if not source.get('original_blob'):
+            raise not_found()
+        return self._public_original(owner, case, source), 'historical-regulation.html'
 
     def source(self, owner, case, job_id, version_id):
         _, snapshot = self._run(owner, case, job_id)

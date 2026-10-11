@@ -173,6 +173,7 @@ Use them only with these meanings.
 | Monotonic clock | Software | A clock that measures elapsed time without changes to the system date or time. |
 | Schema | Software | The specified structure and constraints of data. |
 | Snapshot | Software | A fixed copy of selected assessment inputs and versions. |
+| Artifact reference | Software | The ID of an exact saved document used by an assessment snapshot. |
 | Source span | Retrieval | A labeled part of an original page, paragraph, or row. Its identity does not depend on chunk boundaries. |
 | Stage trace | Software | Records that connect the attempts and results in one stage. |
 | Telemetry | Software | Recorded runtime measurements and event data. |

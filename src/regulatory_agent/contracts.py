@@ -19,6 +19,7 @@ class ContractError(ValueError):
 Text = Annotated[str, Field(min_length=1, max_length=400_000)]
 Status = Literal["supported", "partial", "gap", "needs_review", "not_applicable"]
 State = Literal["queued", "running", "completed", "partial", "failed"]
+SELECTED_PROMPT = 'assessment-vs5-selected-v1'
 
 
 def iso_date(value):
@@ -107,6 +108,16 @@ class Snapshot(Selection):
     prompt_version: Identifier
     model_version: Identifier
     synthetic: bool
+    selected_document_ids: dict[Identifier, Identifier] = Field(default_factory=dict, max_length=10)
+
+    @model_validator(mode='after')
+    def artifact_scope(self):
+        if self.prompt_version == SELECTED_PROMPT and not self.selected_document_ids:
+            raise ValueError('artifact_scope_missing')
+        if self.selected_document_ids and (self.selected_document_ids.keys() != self.selected_versions.keys()
+                or len(set(self.selected_document_ids.values())) != len(self.selected_document_ids)):
+            raise ValueError('artifact_scope_invalid')
+        return self
 
 
 class Citation(Contract):

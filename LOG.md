@@ -721,6 +721,36 @@ General admission, source selection, current verification, and the AWS worker ad
 AWS authentication needs renewal. No live inference or deployment occurred.
 VS5 remains a draft.
 Next: verify the combined commit, then connect general historical admission and source selection to the interface.
+
+## 2026-10-11 - Selected historical assessment admission
+
+The admission specification was committed before ten missing-implementation checks failed.
+The catalog now exposes owned bank versions and saved real-source clause scope.
+It verifies original hashes and saved quotations.
+It identifies the excerpt coverage and unverified current status.
+
+New snapshots bind selected sources to exact document artifacts.
+Legacy snapshots and source records remain unchanged.
+The shared resolver connects processing, citation checks, source inspection, and exports.
+The API accepts multiple selected clauses and arbitrary valid fictional uploads.
+It uses the existing separate worker and server-controlled model configuration.
+
+A failing check exposed the old model-action namespace guard.
+New actions now use selected artifact IDs.
+Another failing check exposed missing archive validation during source inspection.
+The common source reader now validates archived originals for inspection and exports.
+The selected protocol uses distinct prompt and schema versions.
+
+Twelve admission checks pass.
+All 288 combined backend checks passed before the final missing-reference guard.
+That guard now prevents new snapshots from using legacy lookup behavior without explicit artifact references.
+All 288 combined backend checks also passed with the final reference guard.
+D47 records this clarification within the approved VS5 scope.
+
+The interface, evidence-period integration, external current-source verification, live quality, and AWS acceptance remain unfinished.
+AWS authentication remains expired. No external source request, live inference, or deployment occurred during this work.
+VS5 remains a draft.
+Next: verify the final combined commit and connect the selection controls to the interface.
 The candidate branch is saved remotely.
 The `main` integration branch and original VS3 review branch are unchanged.
 

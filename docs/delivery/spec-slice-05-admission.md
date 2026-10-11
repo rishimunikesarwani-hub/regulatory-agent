@@ -7,7 +7,7 @@ Parent contracts: [Pipeline](spec-slice-05-pipeline.md), [worker](spec-slice-05-
 
 General admission connects selected source versions to the existing pipeline.
 An artifact reference identifies the exact saved document used by a snapshot.
-Keep artifact references separate from the regulation's authority ID and publication version.
+Keep artifact references separate from source IDs and publication versions.
 Keep the earlier fixed examples and their saved reports accessible.
 
 ## Selection
@@ -41,6 +41,8 @@ Bind every selected source to its exact saved document ID in the snapshot.
 Require all references to match the case, selected source ID, and selected publication version.
 Reject missing or forged references.
 Use the same resolver for pipeline reads, model citation checks, source inspection, and exports.
+Use different prompt and schema versions for explicit artifact references.
+
 Keep legacy snapshots on their original lookup path.
 Do not rewrite their saved records.
 
@@ -77,6 +79,8 @@ Return safe failures without provider text or credentials.
 | VS5-A08 | Selected processing dispatches through the separate worker with server-controlled configuration. |
 | VS5-A09 | Owner-scoped original downloads preserve selected bytes and deny outside versions. |
 | VS5-A10 | Invalid artifact references and excessive selected context fail before admission. |
+| VS5-A11 | The admitted snapshot processes each selected clause through the existing pipeline with controlled provider responses. |
+| VS5-A12 | Source inspection and exports reject a damaged archived original. |
 
 Write failing behavior checks before implementation.
 Record separate results for controlled processing, browser behavior, and live checks.

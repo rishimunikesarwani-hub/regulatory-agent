@@ -83,6 +83,9 @@ class Reviews:
                     raise ContractError("immutable_run")
             else:
                 self._insert(db, case, "run", run_id, body)
+            current = self.store._job(db, owner, case, job['job_id'])
+            current['label'] = 'Live' if data_mode in {'live', 'synthetic_live'} else 'Simulated'
+            self.store._save_job(db, current)
         return body
 
     @staticmethod

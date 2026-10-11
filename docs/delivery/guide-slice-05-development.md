@@ -48,7 +48,9 @@ Its ten checks cover routing, reservations, output validation, usage, deadlines,
 The adapter now connects to the [selected-scope pipeline](spec-slice-05-pipeline.md) for admitted historical runs.
 The [local supervisor](spec-slice-05-worker.md) now runs the pipeline in a separate process.
 It stops hung workers and preserves the saved deadline, counters, audit records, and partial results.
-General API admission, source selection, and the AWS worker adapter remain unfinished.
+The [selected-admission API](spec-slice-05-admission.md) now binds owned uploads and saved historical clauses to exact document artifacts.
+It keeps current verification and complete regulatory coverage unverified.
+The selection interface, external source integration, and the AWS worker adapter remain unfinished.
 The existing feedback interface still uses the controlled historical example.
 Renew the expired AWS authentication before live model checks.
 The locked SDK includes its `crt` extra for the existing `aws login` profile.

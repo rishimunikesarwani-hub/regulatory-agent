@@ -13,7 +13,7 @@ from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, au
                     error_body, invalid_request, not_found, unavailable)
 from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment, ComparisonRequest, ExportRequest
 from .documents import Documents, rejected
-from .assessments import Assessments
+from .assessments import Assessments, SELECTED_PROMPT
 
 
 def create_app(service=None, *, store=None, environment=None, development_user=None, commit_sha=None):
@@ -149,6 +149,19 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
         background.add_task(service.run, identity, case_id, result['job_id'])
         return result
 
+    @app.get('/api/cases/{case_id}/assessment-selection')
+    def assessment_selection(case_id: str, identity=Depends(assessment_owner)):
+        from .assessment_selection import AssessmentSelection
+        return AssessmentSelection(assessment_service(identity, case_id)).catalog(identity, case_id)
+
+    @app.post('/api/cases/{case_id}/assessments/selected', status_code=202)
+    def start_selected_assessment(case_id: str, body: StartAssessment, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        from .assessment_selection import AssessmentSelection
+        service = assessment_service(identity, case_id)
+        result = AssessmentSelection(service).admit(identity, case_id, body)
+        background.add_task(service.run_selected, identity, case_id, result['job_id'])
+        return result
+
     @app.get('/api/cases/{case_id}/assessments')
     def list_assessments(case_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).list(identity, case_id)
@@ -169,12 +182,19 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
     def resume_assessment(case_id: str, job_id: str, background: BackgroundTasks, identity=Depends(assessment_owner)):
         service = assessment_service(identity, case_id)
         result = service.read(identity, case_id, job_id)
-        background.add_task(service.run, identity, case_id, job_id)
+        background.add_task(service.run_selected if result['snapshot']['prompt_version']==SELECTED_PROMPT else service.run,
+                            identity, case_id, job_id)
         return result['job']
 
     @app.get('/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}')
     def assessment_source(case_id: str, job_id: str, version_id: str, identity=Depends(assessment_owner)):
         return assessment_service(identity, case_id).source(identity, case_id, job_id, version_id)
+
+    @app.get('/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}/original')
+    def original_assessment_source(case_id: str, job_id: str, version_id: str, identity=Depends(assessment_owner)):
+        data, filename = assessment_service(identity, case_id).source_original(identity, case_id, job_id, version_id)
+        return Response(data, media_type='application/octet-stream',
+            headers={'Content-Disposition':"attachment; filename*=UTF-8''" + quote(filename)})
 
     @app.post('/api/cases/{case_id}/assessments/{job_id}/findings/{finding_id}/reviews', status_code=201)
     def save_review(case_id: str, job_id: str, finding_id: str, body: ReviewRequest, identity=Depends(assessment_owner)):

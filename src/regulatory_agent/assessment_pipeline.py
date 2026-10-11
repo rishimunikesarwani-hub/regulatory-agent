@@ -8,6 +8,8 @@ import uuid
 
 from pydantic import ValidationError
 
+from .assessments import SELECTED_PROMPT
+
 from .contracts import ContractError, EvidencePeriod, Finding, ReviewItem, SourceRead, iso_date, public_url
 from .local import encoded, validated_action
 from .telemetry import AttemptTimer, StageAttempt, TokenUsage, VersionMetadata
@@ -94,7 +96,8 @@ class AssessmentPipeline:
             run_id=run['run_id'], job_id=run['job_id'], snapshot_id=run['snapshot_id'], stage_id=key,
             stage=stage, operation=operation, state='unknown', dispatched=False,
             started_at=timer.started_at, finished_at=None, duration_seconds=None,
-            versions=VersionMetadata(application='vs5-v1', schema='vs5-pipeline-v1', extraction='vs2-v1',
+            versions=VersionMetadata(application='vs5-v1',
+                schema='vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1', extraction='vs2-v1',
                 chunking='source-locations-v1', retrieval='keyword-vs5-v1', prompt=run['prompt_version'],
                 model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else 'india-converse-v1'),
             model_id=run['model_id'] if operation=='model' else None,
@@ -163,7 +166,8 @@ class AssessmentPipeline:
     def _call(self, owner, case, run, snapshot, token, key, phase, data, context, sources):
         with self._processing(owner, case, run, token, f'select-{key}', 'context_selection', 'internal') as completed:
             prompt = encoded({'phase':phase, 'snapshot_id':snapshot['snapshot_id'],
-                'document_version_ids':[f'{name}:{version}' for name,version in snapshot['selected_versions'].items()],
+                'document_version_ids':list(snapshot.get('selected_document_ids', {}).values()) or
+                    [f'{name}:{version}' for name,version in snapshot['selected_versions'].items()],
                 'bank_profile':snapshot['bank_profile'], 'assessment_date':snapshot['assessment_date'], 'data':data,
                 'passages':context['passages'], 'candidate_passage_ids':context['candidate_passage_ids'],
                 'source_metadata':[{'document_version_id':s['document']['document_version_id'], 'kind':s['document']['kind'],

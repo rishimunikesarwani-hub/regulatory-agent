@@ -9,7 +9,7 @@ import time
 import uuid
 
 from pydantic import ValidationError
-from .contracts import ContractError, ModelAction, ModelReply, Snapshot
+from .contracts import ContractError, ModelAction, ModelReply, SELECTED_PROMPT, Snapshot
 
 
 def encoded(value):
@@ -89,6 +89,23 @@ class Store:
     def save_snapshot(self, owner, snapshot):
         validated = Snapshot.model_validate(snapshot.model_dump())
         self.put(owner, validated.case_id, "snapshot", validated.snapshot_id, validated.model_dump())
+
+    def sources(self, owner, case, snapshot):
+        refs = snapshot.get('selected_document_ids', {})
+        if snapshot['prompt_version'] == SELECTED_PROMPT and not refs:
+            raise ContractError('artifact_scope_missing')
+        if refs and refs.keys() != snapshot['selected_versions'].keys():
+            raise ContractError('artifact_scope_invalid')
+        sources = []
+        for source, version in snapshot['selected_versions'].items():
+            identity = refs[source] if refs else f'{source}:{version}'
+            saved = self.get(owner, case, 'document', identity)
+            doc = saved['document']
+            if refs and (doc['case_id'] != case or doc['source_id'] != source or doc['version'] != version
+                    or doc['document_version_id'] != identity):
+                raise ContractError('artifact_scope_invalid')
+            sources.append(saved)
+        return sources
 
     def enqueue(self, owner, case, snapshot_id, key, now=None):
         identifier(key)
@@ -265,7 +282,8 @@ def validated_action(raw, store, owner, case, identity):
         raise ContractError('invalid_model_response') from None
     job = store.read_job(owner, case, identity)
     snapshot = store.get(owner, case, 'snapshot', job['snapshot_id'])
-    allowed = {f'{doc}:{version}' for doc, version in snapshot['selected_versions'].items()}
+    allowed = set(snapshot.get('selected_document_ids', {}).values()) or {
+        f'{doc}:{version}' for doc, version in snapshot['selected_versions'].items()}
     if action.snapshot_id != snapshot['snapshot_id'] or not set(action.document_version_ids) <= allowed:
         raise ContractError('model_scope_denied')
     if any(f.snapshot_id != snapshot['snapshot_id'] or f.obligation_id not in snapshot['selected_obligations'] for f in action.findings):
@@ -276,7 +294,7 @@ def validated_action(raw, store, owner, case, identity):
     citations += [c for finding in action.findings for claim in finding.claims
                   for c in (*claim.citations, *claim.examined_exceptions, *claim.conflicting_evidence)]
     if citations:
-        saved_versions = {store.get(owner, case, 'document', key)['document']['document_version_id'] for key in allowed}
+        saved_versions = {s['document']['document_version_id'] for s in store.sources(owner, case, snapshot)}
         if any(c.document_version_id not in saved_versions for c in citations):
             raise ContractError('model_citation_scope_denied')
     return action
