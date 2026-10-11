@@ -2,14 +2,16 @@
 import hashlib
 from html.parser import HTMLParser
 import json
+import os
 import re
 import uuid
 
 from .assessment_pipeline import AssessmentPipeline
-from .assessments import MODEL, PERIOD_PROMPT, ROOT, invalid
+from .assessments import PERIOD_PROMPT, ROOT, invalid
 from .cases import CaseError, not_found
 from .contracts import ContractError, Snapshot, SourceRead, public_url
 from .local import BlobStore
+from .openai_model import selected_model
 
 
 class _Text(HTMLParser):
@@ -83,8 +85,12 @@ class AssessmentSelection:
                 obligations.append({'obligation_id':identity, 'document_version_id':doc['document_version_id'],
                     'source_id':doc['source_id'], 'version':doc['version'], 'label':passages[scope[-1]]['location'],
                     'scope_passage_ids':scope})
+        model=selected_model()
+        from .langfuse_trace import configured
         return {'sources':sources, 'obligations':obligations, 'freshness':'unverified', 'current_available':False,
-                'coverage':'saved historical excerpts', 'data_mode':'synthetic_live', 'model_id':MODEL}
+                'coverage':'saved historical excerpts', 'data_mode':'synthetic_live', 'model_id':model,
+                'demo_services':{'openai_key_configured':bool(os.environ.get('OPENAI_API_KEY')) if model.startswith('openai:') else False,
+                                 'langfuse_configured':configured()}}
 
     def admit(self, owner, case, request):
         profile = self.service.cases.read(owner, case)
@@ -121,7 +127,7 @@ class AssessmentSelection:
             selected_versions=request.selected_versions, selected_obligations=request.selected_obligations,
             selected_document_ids={s['document']['source_id']:s['document']['document_version_id'] for s in selected},
             assessment_date=request.assessment_date, mode=request.mode, prompt_version=PERIOD_PROMPT,
-            model_version=MODEL, synthetic=True)
+            model_version=selected_model(), synthetic=True)
         pipeline._sources(owner, case, snapshot.model_dump())
         self.store.save_snapshot(owner, snapshot)
         return self.service.reviews.admit(owner, case, identity, identity, 'synthetic_live')

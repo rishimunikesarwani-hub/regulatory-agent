@@ -1044,3 +1044,24 @@ No Support case ID or verification completion was confirmed.
 
 Model agreement permission, source-provider selection, validator tool approval, live quality, CloudFront verification, and deployed acceptance remain pending.
 VS5 remains a draft under D35.
+
+## 2026-10-11 - Submission-day local OpenAI and Langfuse demo
+
+D57 records the user's authorization for OpenAI API processing and Langfuse during the AWS activation delay.
+New local historical snapshots identify `openai:gpt-4.1-mini-2025-04-14`.
+The existing supervised worker keeps ownership, execution claims, citations, saved reviews, the 24-call allowance, and the original deadline.
+Earlier snapshots keep their provider.
+Langfuse receives safe measurements without prompts, responses, documents, review text, owner identifiers, or credentials.
+Local audit storage remains mandatory.
+
+The complete backend suite passed 417 tests in 227.979 seconds.
+The final browser suite passed 62 tests in 2.9 minutes.
+The TypeScript checks and production build passed.
+A browser failure exposed a late catalog response that removed a newly uploaded policy from assessment selection.
+A failing reproduction now protects the corrected request-order rule.
+
+The [local demo guide](docs/delivery/guide-local-demo.md) gives configuration, startup, and demonstration steps.
+The [verification records](runs/2026-10-11-local-demo/) contain red and green results.
+OpenAI and Langfuse keys remain unavailable in the checked environment and private configuration.
+Live provider access, trace delivery, semantic quality, current source coverage, and AWS acceptance remain unverified.
+VS5 remains a draft under D35.

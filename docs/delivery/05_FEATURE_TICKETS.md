@@ -390,6 +390,15 @@ Do not tune from held-out answers and still describe those cases as untouched.
 Before you adopt a candidate, make sure that it meets existing quality gates and has a measured benefit.
 An experiment does not automatically replace the approved baseline or enter this P0 delivery sequence.
 
+## D57 submission-day demo
+
+The user authorized the [local OpenAI and Langfuse contract](spec-local-demo-openai.md).
+LD01 through LD09 control provider selection, saved identity, fictional inputs, allowance accounting, output validation, trace privacy, and credential handling.
+The local demo reuses VS1 through VS5 services in the existing VS5 worktree.
+The [operation guide](guide-local-demo.md) gives local startup and demonstration steps.
+Live access and trace delivery need different evidence from controlled checks.
+AWS deployment and original release quality gates remain pending.
+
 ## Historical planning dates
 
 D27 replaces the earlier horizontal sequence below.

@@ -6,6 +6,7 @@ from .assessment_pipeline import AssessmentPipeline
 from .contracts import COMPARISON_PROMPT, ComparisonRequest, ContractError, Control, PERIOD_PROMPT, SELECTED_PROMPTS, Snapshot
 from .local import encoded, identifier, validated_action
 from .regulatory_changes import prepare_pair, validate_changes
+from .openai_model import MODEL as OPENAI_MODEL
 
 
 class Comparisons:
@@ -28,7 +29,7 @@ class Comparisons:
         job=self.store.read_job(owner,case,run['job_id'])
         if job['state']!='completed':raise ContractError('comparison_baseline_unfinished')
         if run['data_mode']!='synthetic_live' or not snapshot['synthetic'] or snapshot['mode']!='historical' or \
-                snapshot['prompt_version'] not in SELECTED_PROMPTS or snapshot['model_version']!='in.openai.gpt-5.6-luna':
+                snapshot['prompt_version'] not in SELECTED_PROMPTS or snapshot['model_version'] not in ('in.openai.gpt-5.6-luna',OPENAI_MODEL):
             raise ContractError('comparison_processing_unverified')
         return run,snapshot,job
 

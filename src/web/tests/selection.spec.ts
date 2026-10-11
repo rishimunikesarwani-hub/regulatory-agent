@@ -86,6 +86,48 @@ async function setup(page: Page, state = 'completed') {
   return {root, caseId, catalog, bank, regulatory, clauses, result, selection, choose};
 }
 
+test('LD-B01 OpenAI local demo identifies its provider and metadata-only Langfuse configuration', async ({page}) => {
+  const s=await setup(page);
+  await page.route(`${s.root}/assessment-selection`,route=>route.fulfill({json:{...s.catalog,
+    model_id:'openai:gpt-4.1-mini-2025-04-14',demo_services:{openai_key_configured:true,langfuse_configured:true}}}));
+  await page.reload();
+  await page.getByRole('button',{name:'Continue with local identity',exact:true}).click();
+  const selection=page.getByRole('region',{name:'Selected historical assessment',exact:true});
+  await expect(selection).toContainText('OpenAI local demo');
+  await expect(selection).toContainText('gpt-4.1-mini-2025-04-14');
+  await expect(selection).toContainText('metadata only');
+  await expect(selection).toContainText('Private bank data is not permitted');
+  await expect(selection).not.toContainText('AWS model access is required');
+});
+
+test('LD-B02 a late catalog response cannot remove a newly uploaded policy', async ({page}) => {
+  let release!: () => void;
+  const gate=new Promise<void>(resolve=>{release=resolve;});
+  let first=true;
+  await page.route('**/assessment-selection',async route=>{
+    const response=await route.fetch();
+    if(first){first=false;await gate;}
+    await route.fulfill({response});
+  });
+  const s=await setup(page);
+  const policy=page.getByLabel('Policy version',{exact:true});
+  await expect(policy.locator('option')).toContainText(['custom-fiction.txt']);
+  const finished=page.waitForResponse(response=>response.url().endsWith('/assessment-selection'));
+  release(); await finished;
+  await page.evaluate(()=>new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve()))));
+  await expect(policy.locator('option')).toContainText(['custom-fiction.txt']);
+  await expect(page.getByRole('button',{name:'Run controlled assessment',exact:true})).toBeEnabled();
+});
+
+test('LD-B03 missing OpenAI key prevents starting a live demo from the interface', async ({page}) => {
+  const s=await setup(page);
+  await page.route(`${s.root}/assessment-selection`,route=>route.fulfill({json:{...s.catalog,
+    model_id:'openai:gpt-4.1-mini-2025-04-14',demo_services:{openai_key_configured:false,langfuse_configured:false}}}));
+  await page.reload(); await page.getByRole('button',{name:'Continue with local identity',exact:true}).click();
+  await expect(s.selection).toContainText('OpenAI key: Missing'); await s.choose();
+  await expect(s.selection.getByRole('button',{name:'Run selected assessment with live model',exact:true})).toBeDisabled();
+});
+
 test('VS5-SB01 real catalog and arbitrary upload produce exact selected admission', async ({page}) => {
   const s = await setup(page);
   await s.choose();

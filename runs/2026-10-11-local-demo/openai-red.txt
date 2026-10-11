@@ -1,0 +1,113 @@
+test_ld01_live_reply_identifies_openai_and_uses_strict_schema (test_local_demo_openai.LocalDemoTests.test_ld01_live_reply_identifies_openai_and_uses_strict_schema) ... ERROR
+test_ld02_provider_selection_is_local_and_explicit (test_local_demo_openai.LocalDemoTests.test_ld02_provider_selection_is_local_and_explicit) ... ERROR
+test_ld03_private_or_current_snapshot_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld03_private_or_current_snapshot_never_dispatches) ... ERROR
+test_ld04_other_owner_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld04_other_owner_never_dispatches) ... ERROR
+test_ld05_rejection_is_safe_and_one_call_no_hidden_retry (test_local_demo_openai.LocalDemoTests.test_ld05_rejection_is_safe_and_one_call_no_hidden_retry) ... ERROR
+test_ld06_deadline_after_reservation_blocks_dispatch (test_local_demo_openai.LocalDemoTests.test_ld06_deadline_after_reservation_blocks_dispatch) ... ERROR
+test_ld07_invalid_scope_or_refusal_never_becomes_a_finding (test_local_demo_openai.LocalDemoTests.test_ld07_invalid_scope_or_refusal_never_becomes_a_finding) ... ERROR
+test_ld08_optional_langfuse_receives_allowlisted_metadata_only (test_local_demo_openai.LocalDemoTests.test_ld08_optional_langfuse_receives_allowlisted_metadata_only) ... ERROR
+test_ld09_langfuse_failure_does_not_fail_local_assessment (test_local_demo_openai.LocalDemoTests.test_ld09_langfuse_failure_does_not_fail_local_assessment) ... ERROR
+test_ld10_invalid_request_and_exhausted_budget_never_dispatch (test_local_demo_openai.LocalDemoTests.test_ld10_invalid_request_and_exhausted_budget_never_dispatch) ... ERROR
+test_ld11_timeout_is_unknown_without_retry (test_local_demo_openai.LocalDemoTests.test_ld11_timeout_is_unknown_without_retry) ... ERROR
+test_ld12_missing_keys_report_safe_configuration_failure (test_local_demo_openai.LocalDemoTests.test_ld12_missing_keys_report_safe_configuration_failure) ... ERROR
+
+======================================================================
+ERROR: test_ld01_live_reply_identifies_openai_and_uses_strict_schema (test_local_demo_openai.LocalDemoTests.test_ld01_live_reply_identifies_openai_and_uses_strict_schema)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld02_provider_selection_is_local_and_explicit (test_local_demo_openai.LocalDemoTests.test_ld02_provider_selection_is_local_and_explicit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld03_private_or_current_snapshot_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld03_private_or_current_snapshot_never_dispatches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld04_other_owner_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld04_other_owner_never_dispatches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld05_rejection_is_safe_and_one_call_no_hidden_retry (test_local_demo_openai.LocalDemoTests.test_ld05_rejection_is_safe_and_one_call_no_hidden_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld06_deadline_after_reservation_blocks_dispatch (test_local_demo_openai.LocalDemoTests.test_ld06_deadline_after_reservation_blocks_dispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld07_invalid_scope_or_refusal_never_becomes_a_finding (test_local_demo_openai.LocalDemoTests.test_ld07_invalid_scope_or_refusal_never_becomes_a_finding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld08_optional_langfuse_receives_allowlisted_metadata_only (test_local_demo_openai.LocalDemoTests.test_ld08_optional_langfuse_receives_allowlisted_metadata_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld09_langfuse_failure_does_not_fail_local_assessment (test_local_demo_openai.LocalDemoTests.test_ld09_langfuse_failure_does_not_fail_local_assessment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld10_invalid_request_and_exhausted_budget_never_dispatch (test_local_demo_openai.LocalDemoTests.test_ld10_invalid_request_and_exhausted_budget_never_dispatch)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld11_timeout_is_unknown_without_retry (test_local_demo_openai.LocalDemoTests.test_ld11_timeout_is_unknown_without_retry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+======================================================================
+ERROR: test_ld12_missing_keys_report_safe_configuration_failure (test_local_demo_openai.LocalDemoTests.test_ld12_missing_keys_report_safe_configuration_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t9-quality\tests\test_local_demo_openai.py", line 17, in setUp
+    from regulatory_agent.openai_model import OpenAIModel, MODEL
+ModuleNotFoundError: No module named 'regulatory_agent.openai_model'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.004s
+
+FAILED (errors=12)

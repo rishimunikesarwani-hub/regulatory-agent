@@ -113,4 +113,10 @@ def bedrock_child(database_path, profile, owner, case, job_id, token):
     from .contracts import COMPARISON_PROMPT
     from .comparison_jobs import Comparisons
     runner=Comparisons if snapshot['prompt_version']==COMPARISON_PROMPT else AssessmentPipeline
-    runner(service, BedrockModel.configured(profile=profile)).run(owner, case, job_id, execution_token=token)
+    from .openai_model import OpenAIModel, MODEL as openai
+    model=OpenAIModel.configured() if snapshot['model_version']==openai else BedrockModel.configured(profile=profile)
+    try:
+        runner(service, model).run(owner, case, job_id, execution_token=token)
+    finally:
+        from .langfuse_trace import flush
+        flush()

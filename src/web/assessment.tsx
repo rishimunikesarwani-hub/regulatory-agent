@@ -20,7 +20,7 @@ type Result = {
   trace: { attempts: { event_id: string; stage: string; state: string; duration_seconds: number | null; usage?: {input_tokens: number | null; output_tokens: number | null} }[] };
 };
 type Source = { document: { case_id: string; source_id: string; version: string; document_version_id: string; kind: string; synthetic?: boolean; publication_date?: string; effective_date?: string; source_url?: string }; label?: string; filename: string; authority?: string; stated_periods?: {period: {start: string; end: string}; citations: Citation[]}[]; passages: { passage_id: string; location: string; text: string }[] };
-type Catalog = { sources: Source[]; obligations: {obligation_id: string; document_version_id: string; label: string}[]; freshness: string; current_available: boolean; data_mode: string };
+type Catalog = { sources: Source[]; obligations: {obligation_id: string; document_version_id: string; label: string}[]; freshness: string; current_available: boolean; data_mode: string; model_id?: string; demo_services?: {openai_key_configured: boolean; langfuse_configured: boolean} };
 type Comparison = { comparison_id: string; case_id: string; data_mode: string; baseline_job_id: string; new_job_id: string | null;
   change_kind: string; obligation_changed: boolean; affected_control_ids: string[]; older_source: Source; newer_source: Source;
   metadata_changes: Record<string, {older: string; newer: string}> };
@@ -56,6 +56,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
   const selectedDraft = useRef<{signature: string; body: object} | null>(null);
   const comparisonDraft = useRef<{signature: string; body: object} | null>(null);
   const editedFinding = useRef('');
+  const optionsGeneration = useRef(0);
   const root = `${config.api_url}/api/cases/${encodeURIComponent(caseId)}`;
 
   const [exporting, setExporting] = useState(false);
@@ -100,9 +101,10 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
     if (active.current && !onExpired(cause)) setError(cause instanceof AssessmentError ? cause.message : 'The request could not be confirmed. Keep your draft and refresh assessment.');
   }
   async function options(): Promise<void> {
+    const current=++optionsGeneration.current;
     const [documents, assessments, savedComparisons, selection] = await Promise.all([request('/documents'), request('/assessments'),
       config.mode === 'local' ? request('/comparisons') : null, request('/assessment-selection')]);
-    if (!active.current) return;
+    if (!active.current || current!==optionsGeneration.current) return;
     const available = documents.sources.filter((s: Source) => s.document.case_id === caseId && s.document.kind === 'policy');
     setPolicies(available); setPolicyId(current => available.some((s: Source) => s.document.document_version_id === current) ? current : available[0]?.document.document_version_id || '');
     setRuns(assessments.runs);
@@ -258,7 +260,8 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
       <button className="secondary" disabled={busy} onClick={() => void refresh()}>Refresh assessment</button></div>
     {error && <p className="alert" role="alert">{error}</p>}
     {catalog && <section className="panel assessment-setup selected-setup" aria-label="Selected historical assessment"><h3>Selected historical assessment</h3>
-      <p>Use fictional bank documents with live model processing. AWS model access is required.</p>
+      <p>{catalog.model_id?.startsWith('openai:') ? 'OpenAI local demo · Fictional bank documents with live model processing.' : 'Use fictional bank documents with live model processing. AWS model access is required.'}</p>
+      {catalog.model_id?.startsWith('openai:') && <p className="field-hint">Model: {catalog.model_id.replace('openai:', '')} · OpenAI key: {catalog.demo_services?.openai_key_configured ? 'Configured' : 'Missing'} · Langfuse: {catalog.demo_services?.langfuse_configured ? 'Configured — metadata only' : 'Not configured'}. Private bank data is not permitted in this demo.</p>}
       <p className="field-hint">Saved historical excerpts · Current status unverified. Current assessments are unavailable until source verification passes.</p>
       <form onSubmit={e => void startSelected(e)}><fieldset disabled={busy || uncertain}>
         <label htmlFor="selected-regulation">Historical regulation version</label><select id="selected-regulation" value={selectedRegulation} onChange={e => {setSelectedRegulation(e.target.value); setSelectedClauses([]);}}>{catalog.sources.filter(s => s.document.kind === 'regulation').map(s => <option key={s.document.document_version_id} value={s.document.document_version_id}>{s.filename} · {s.document.version}</option>)}</select>
@@ -275,7 +278,7 @@ export function AssessmentPanel({ config, caseId, documentRevision, onExpired, o
         <label htmlFor="selected-date">Assessment date</label><input id="selected-date" type="date" required min={regulatory?.document.effective_date} max={new Date().toISOString().slice(0,10)} value={assessmentDate} onChange={e => setAssessmentDate(e.target.value)}/>
         <p className="field-hint">Selected: {selectedBanks.length + (selectedRegulation ? 1 : 0)} documents · {selectedClauses.length} clauses. Unknown evidence periods stay unknown.</p>
         {selectedBanks.length > 9 && <p className="field-hint">Select fewer bank versions before starting the assessment.</p>}
-        <button type="submit" disabled={!selectedRegulation || !selectedBanks.length || selectedBanks.length > 9 || !selectedClauses.length || !assessmentDate}>Run selected assessment with live model</button>
+        <button type="submit" disabled={!selectedRegulation || !selectedBanks.length || selectedBanks.length > 9 || !selectedClauses.length || !assessmentDate || (catalog.model_id?.startsWith('openai:') && !catalog.demo_services?.openai_key_configured)}>Run selected assessment with live model</button>
       </fieldset></form></section>}
     {config.mode === 'local' && <div className="panel assessment-setup"><p>Use the supplied fictional policy. Other documents cannot run this controlled example.</p>
       <p className="field-hint"><a download="slice-02-policy.txt" href={`data:text/plain;charset=utf-8,${encodeURIComponent(fixture)}`}>Download the fictional policy</a>, then upload it as a policy document.</p>

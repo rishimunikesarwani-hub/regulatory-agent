@@ -944,6 +944,21 @@ The current source set has no second verified regulatory version.
 The interface shows this limit instead of creating an amendment from test text.
 VS5 remains a draft under D35.
 
+## D57 - Submission-day local model and trace services
+
+Date: 2026-10-11.
+Status: Approved by the user's explicit local demo request.
+Requirements: REQ-X03, REQ-X08, and LD01 through LD09.
+
+The user requested an OpenAI API fallback and Langfuse because AWS services are unavailable today.
+The [local demo contract](../delivery/spec-local-demo-openai.md) controls this exception.
+New local jobs can use a saved OpenAI model identifier with fictional bank inputs and public historical regulatory text.
+Langfuse receives safe measurements only.
+
+The exception does not replace the AWS private-data boundary or establish the original model quality gates.
+Earlier snapshots, findings, reviews, and approval history stay unchanged.
+AWS acceptance and current regulatory coverage remain pending.
+
 ## How to add a decision
 
 Add a new entry with:

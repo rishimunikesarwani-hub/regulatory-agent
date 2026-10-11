@@ -57,6 +57,7 @@ class AssessmentPipeline:
     def __init__(self, assessments, model):
         self.service, self.model = assessments, model
         self.store, self.reviews = assessments.store, assessments.reviews
+        self._trace_observations = {}
 
     def _sources(self, owner, case, snapshot):
         sources, scopes, seen = self.service._sources(owner, case, snapshot), {}, set()
@@ -103,11 +104,15 @@ class AssessmentPipeline:
                 schema='vs5-comparison-v1' if run['prompt_version']==COMPARISON_PROMPT else 'vs5-selection-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs5-selection-v1' if run['prompt_version']==SELECTED_PROMPT else 'vs5-pipeline-v1',
                 extraction='vs2-period-v1' if run['prompt_version']==PERIOD_PROMPT else 'vs2-v1',
                 chunking='source-locations-v1', retrieval='specified-comparison-vs5-v1' if run['prompt_version']==COMPARISON_PROMPT else 'keyword-period-vs5-v1' if run['prompt_version']==PERIOD_PROMPT else 'keyword-vs5-v1', prompt=run['prompt_version'],
-                model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else 'india-converse-v1'),
+                model_configuration='controlled-response-v1' if run['data_mode']=='controlled_simulation' else
+                    'openai-demo-v1' if run['model_id'].startswith('openai:') else 'india-converse-v1'),
             model_id=run['model_id'] if operation=='model' else None,
             unused_allowance=24-job['model_calls'] if operation=='model' else None,
             candidate_passage_ids=tuple(candidates), selected_passage_ids=tuple(selected), selected_text_bytes=selected_bytes)
         self.reviews.attempt(owner,case,event,execution_token=token)
+        if run['data_mode']=='synthetic_live':
+            from .langfuse_trace import start_attempt
+            self._trace_observations[event.event_id]=start_attempt(event.model_dump(mode='json'))
         return event, timer
 
     def _finish_attempt(self, owner, case, run, token, attempt, *, state='succeeded', result=None, error=None):
@@ -126,6 +131,9 @@ class AssessmentPipeline:
                 selected_passage_ids=tuple(result['selected_passage_ids']), selected_text_bytes=result['selected_bytes'])
         terminal = StageAttempt.model_validate(event.model_dump() | update)
         self.reviews.attempt(owner,case,terminal,execution_token=token,finish=True)
+        if run['data_mode']=='synthetic_live':
+            from .langfuse_trace import export_attempt
+            export_attempt(terminal.model_dump(mode='json'),observation=self._trace_observations.pop(event.event_id,None))
 
     def _interrupt_attempts(self, owner, case, run, token):
         job=self.store.read_job(owner,case,run['job_id']); self.store._claimed(job,token,time.time())

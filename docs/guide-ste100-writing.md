@@ -51,6 +51,9 @@ Do not use a technical-term exception for an ordinary word with an unapproved me
 
 ## Exact text
 
+D57 defines model provider, Langfuse, and structured output in the [local demo contract](delivery/spec-local-demo-openai.md#terms).
+These software technical nouns keep the meanings given in that contract.
+
 Keep these items unchanged when exact text is necessary:
 
 - Requirement, decision, test, and ticket IDs.

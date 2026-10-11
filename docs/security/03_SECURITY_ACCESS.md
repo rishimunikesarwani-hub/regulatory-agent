@@ -256,4 +256,13 @@ Do different checks of the regulatory provider's authority coverage and request 
 Do checks of trace and review-data privacy in the deployed cloud configuration.
 Local substitutes are not proof that these cloud controls work.
 
+## D57 local demo exception
+
+The [local demo contract](../delivery/spec-local-demo-openai.md) permits OpenAI processing of fictional bank inputs and public historical regulations.
+It does not establish India residency or authorize private bank inputs.
+Langfuse receives safe execution measurements only.
+Prompts, responses, documents, owner identifiers, review text, credentials, and hidden reasoning remain excluded.
+Credentials remain in ignored server configuration.
+This exception does not change AWS production controls.
+
 [Next: Frontend specification](../frontend/04_FRONTEND_SPEC.md)

@@ -280,3 +280,12 @@ Selection review confirms the changed regulation and unchanged bank inputs befor
 The interface preserves earlier findings and human reviews.
 The local VS4 simulation keeps its accepted separate flow.
 Current regulatory coverage and correct live interpretation remain unverified.
+
+## D57 local demo services
+
+The [local demo contract](../delivery/spec-local-demo-openai.md) permits OpenAI for new historical demo assessments.
+The interface identifies the model provider and credential configuration status without key values.
+The interface blocks live admission when the OpenAI key is missing.
+Saved run records keep their actual model identity.
+The interface identifies Langfuse configuration as metadata only.
+Configuration status does not establish live access or trace delivery.
