@@ -520,6 +520,21 @@ Keep private AWS upload and storage acceptance pending until the required cloud 
 The user subsequently approved VS2 local acceptance and authorized VS3 local development.
 Complete the VS2 GitHub integration checks before merge.
 
+## D37 - VS3 controlled assessment integration
+
+Date: 2026-10-10.
+Status: Implementation details within the user's approved VS3 local development.
+
+Use the [VS3 contract](../delivery/spec-slice-03-assessment.md) for one controlled historical example and saved human review.
+Use the existing historical RBI source and approved fictional policy fixture.
+Keep the fixed finding visibly controlled and its applicability unverified.
+Do not present this example as an assessment of arbitrary bank documents.
+
+Reuse the existing job store, controlled adapter, source contracts, trace schema, and review service.
+Keep current assessments blocked until the source provider and freshness checks pass.
+Keep the approved baseline model unchanged without claiming a live invocation.
+Record model quality, AWS service connections, and deployed acceptance as unverified.
+
 ## D38 - Accepted VS2 cloud document integration
 
 Date: 2026-10-11.
@@ -551,6 +566,40 @@ The user chose to keep CloudFront while AWS account verification is pending.
 The new cloud permission template has not been applied.
 VS3 remains in its separate review branch until the pending user review.
 No earlier product decision or approval record is replaced.
+
+## D39 - VS3 integration preparation
+
+Date: 2026-10-11.
+Status: Implementation clarification within authorized VS3 local development.
+
+Use a different candidate worktree for checks of VS3 and current accepted `main` changes.
+The [integration contract](../delivery/spec-slice-03-integration.md) gives its ports, database, and check IDs.
+Keep the existing VS3 review build and its feedback records unchanged.
+Keep the user-review condition before merge into `main` and VS4 development.
+
+The candidate keeps cloud document actions and local controlled assessment actions in their permitted modes.
+It includes the accepted delayed-load focus correction.
+Use one browser configuration for all four suites.
+Keep earlier evidence and acceptance history unchanged.
+
+Model profile metadata does not establish runtime permissions, invocation logging, or live model quality.
+No product scope, AWS release condition, or earlier approval record changes.
+
+## D40 - VS3 acceptance and VS4 authorization
+
+Date: 2026-10-11.
+Status: Approved by the user in this conversation.
+
+The user wrote "approved vs3 and development of vs4".
+This approval meets D35's local review condition for VS3.
+Update PR9 with the combined candidate and this acceptance record.
+Merge its exact checked commit after the updated GitHub checks pass.
+Start VS4 in its own branch, worktree, ports, and databases.
+Use the VS4 version-comparison contract before new behavior tests and code.
+
+Earlier evidence and approval history stay unchanged.
+AWS account verification and deployed acceptance stay pending.
+No feature scope, model, budget, or external-message permission changes.
 
 ## How to add a decision
 

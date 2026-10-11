@@ -48,7 +48,7 @@ p { color: #475569; }
 .create-panel h2 { margin-top: 8px; }
 form { margin-top: 24px; }
 label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; }
-input:not([type="checkbox"]) { width: 100%; min-height: 44px; border: 1px solid #94a3b8; border-radius: 8px; padding: 10px 12px; color: #0f172a; background: #fff; }
+input:not([type="checkbox"]):not([type="radio"]) { width: 100%; min-height: 44px; border: 1px solid #94a3b8; border-radius: 8px; padding: 10px 12px; color: #0f172a; background: #fff; }
 .field-hint { margin-top: 8px; font-size: 12px; }
 .checkbox-label { margin: 24px 0; display: flex; align-items: flex-start; gap: 12px; font-weight: 400; }
 input[type="checkbox"] { accent-color: #1d4ed8; width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0; }
@@ -87,6 +87,30 @@ select { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #94a3b8
 .passage h4 { margin: 0 0 12px; font-size: 12px; color: #1d4ed8; }
 .passage pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 14px/1.7 ui-monospace, monospace; }
 .assessment-notice { margin-top: 24px; font-size: 14px; }
+.assessment-workspace { margin-top: 48px; }
+.assessment-setup { max-width: 880px; }
+.assessment-setup label { margin-top: 24px; }
+.assessment-setup > button { margin-top: 20px; }
+.assessment-result-heading { margin: 32px 0 24px; }
+.assessment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.assessment-grid article { min-width: 0; }
+.assessment-grid h3 { margin-top: 0; }
+.assessment-grid h4 { margin: 24px 0 8px; }
+.assessment-grid ul { padding-left: 20px; color: #475569; }
+.citation-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+.review-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 16px 0 24px; }
+.review-options label { display: flex; align-items: center; gap: 8px; margin: 0; }
+input[type="radio"] { width: 20px; height: 20px; accent-color: #1d4ed8; flex-shrink: 0; }
+textarea { display: block; width: 100%; min-height: 100px; resize: vertical; border: 1px solid #94a3b8; border-radius: 8px; padding: 12px; font: inherit; color: #0f172a; }
+.assessment-grid form label:not(.review-options label) { margin-top: 16px; }
+.assessment-grid form button { margin-top: 16px; }
+.review-summary, .run-record { margin-top: 24px; }
+.review-event { margin-top: 24px; padding-top: 16px; border-top: 1px solid #e2e8f0; }
+.review-event h4 { margin: 0 0 8px; }
+.review-event p { margin-top: 8px; }
+.run-record summary { cursor: pointer; }
+dialog { width: min(850px, calc(100vw - 32px)); max-height: 85vh; border: 1px solid #cbd5e1; border-radius: 8px; padding: 24px; color: #0f172a; }
+dialog::backdrop { background: #0f172a80; }
 @media (max-width: 767px) {
   .topbar { padding: 16px; align-items: flex-start; gap: 8px; }
   .brand { font-size: 14px; gap: 8px; max-width: 180px; }
@@ -102,4 +126,6 @@ select { width: 100%; min-height: 44px; padding: 10px; border: 1px solid #94a3b8
   .case-card button { width: 100%; }
   dl > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
   .document-layout { grid-template-columns: minmax(0, 1fr); }
+  .assessment-grid { grid-template-columns: minmax(0, 1fr); }
+  .review-options { grid-template-columns: minmax(0, 1fr); }
 }

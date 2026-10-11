@@ -37,7 +37,7 @@ jobs:
         run: npm --prefix src/web run build
       - name: Check the complete local slice
         run: |
-          npm --prefix src/web test -- --config playwright.aws-documents.config.ts
+          npm --prefix src/web test -- --config playwright.integration.config.ts
       - name: Keep check evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -47,7 +47,12 @@ jobs:
             runs/ci-python.txt
             runs/2026-10-10-autonomous-build/frontend-browser-artifacts/
             runs/2026-10-10-slice-02-documents/frontend-browser-artifacts/
+            runs/2026-10-10-slice-03-assessment/frontend-browser-artifacts/
+            runs/2026-10-10-slice-03-assessment/*.png
+
             runs/2026-10-11-slice-02-aws-documents/browser-artifacts/
+            runs/2026-10-11-slice-03-integration/browser-artifacts/
+            runs/2026-10-11-slice-03-integration/*.png
           if-no-files-found: warn
   deploy-development:
     needs: [checks]

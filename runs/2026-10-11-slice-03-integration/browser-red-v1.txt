@@ -1,0 +1,28 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 test
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...-web@0.1.0 test:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.integration.config.ts
+[WebServer] (node:40640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [26004]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8193 (Press CTRL+C to quit)
+
+Running 33 tests using 1 worker
+
+(node:29132) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 tests\assessment.spec.ts:23:1 › VS3-BT01 assessment, exact citation, saved approval and refresh (3.3s)
+  ok  2 tests\assessment.spec.ts:44:1 › VS3-BT02 edited and rejected reviews keep the original finding and evidence requests (2.6s)
+  ok  3 tests\assessment.spec.ts:65:1 › VS3-BT03 mobile review keeps the draft after stale revision and checks uncertain saves (2.6s)
+  ok  4 tests\assessment.spec.ts:91:1 › VS3-BT04 failed refresh cannot authorize another uncertain review save (2.3s)
+  ok  5 tests\assessment.spec.ts:106:1 › VS3-BT05 expired assessment access clears private findings and review drafts (2.3s)
+  ok  6 tests\assessment.spec.ts:116:1 › VS3-BT06 a new case cannot inherit the previous assessment state (2.4s)
+  x   7 tests\aws-documents.spec.ts:94:1 › VS2-AWS-BT01 direct transfer, replacement, original download and reload (30.1s)
+(node:36000) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)

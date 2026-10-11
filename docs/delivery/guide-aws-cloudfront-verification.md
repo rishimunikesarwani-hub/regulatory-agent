@@ -41,7 +41,29 @@ The request has not been sent.
 Use the AWS console for any requested verification information.
 Do not put credentials or verification documents in chat or project files.
 
-## Resume deployment
+## Current submission check
+
+Date: 2026-10-11.
+
+The AWS console still shows the prepared text in `Issue description`.
+The Support dashboard shows `No open cases`.
+The current case-history view shows `No cases to display.`
+No submitted verification case was visible in these views.
+This is not evidence that AWS is processing the request.
+
+Select `Send message` in the prepared tab.
+Complete the AWS case instructions until a case ID is available.
+Keep any requested identity documents in the AWS verification process only.
+The user selected manual submission. Codex did not send this request.
+
+The command-line Support check returned `SubscriptionRequiredException`.
+The browser console supplied the current submission evidence instead.
+The application stack still has status `ROLLBACK_COMPLETE`.
+No deployment or cloud resource change occurred during these checks.
+
+Read the [handoff check](../../runs/2026-10-11-slice-03-integration/verification-handoff.md) for evidence and limits.
+
+## Resume deployment after verification
 
 Keep CloudFront in the approved hosting design.
 Keep the monthly USD 25 cost alerts.

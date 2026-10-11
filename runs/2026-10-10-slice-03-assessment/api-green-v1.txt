@@ -1,0 +1,153 @@
+test_ct01_controlled_job_binds_snapshot_and_exact_citations (test_slice03_assessment.AssessmentSliceTests.test_ct01_controlled_job_binds_snapshot_and_exact_citations) ... ok
+test_ct02_owner_and_case_checks_cover_every_assessment_operation (test_slice03_assessment.AssessmentSliceTests.test_ct02_owner_and_case_checks_cover_every_assessment_operation) ... ok
+test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot (test_slice03_assessment.AssessmentSliceTests.test_ct03_start_is_idempotent_and_replacement_cannot_change_snapshot) ... ok
+test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked (test_slice03_assessment.AssessmentSliceTests.test_ct04_current_mode_and_forged_or_unsupported_scope_are_blocked) ... ok
+test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits (test_slice03_assessment.AssessmentSliceTests.test_ct05_reviews_keep_original_item_and_reject_stale_or_unchanged_edits) ... ok
+test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes (test_slice03_assessment.AssessmentSliceTests.test_ct06_evidence_requests_and_cutoffs_preserve_final_outcomes) ... ok
+test_ct07_restart_keeps_findings_source_versions_and_reviews (test_slice03_assessment.AssessmentSliceTests.test_ct07_restart_keeps_findings_source_versions_and_reviews) ... ok
+test_ct08_trace_is_safe_and_live_measurements_are_not_invented (test_slice03_assessment.AssessmentSliceTests.test_ct08_trace_is_safe_and_live_measurements_are_not_invented) ... ERROR
+test_ct09_invalid_controlled_citation_cannot_present_a_finding (test_slice03_assessment.AssessmentSliceTests.test_ct09_invalid_controlled_citation_cannot_present_a_finding) ... ok
+test_ct10_admitted_job_resumes_after_worker_interruption (test_slice03_assessment.AssessmentSliceTests.test_ct10_admitted_job_resumes_after_worker_interruption) ... ok
+
+======================================================================
+ERROR: test_ct08_trace_is_safe_and_live_measurements_are_not_invented (test_slice03_assessment.AssessmentSliceTests.test_ct08_trace_is_safe_and_live_measurements_are_not_invented)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\tests\test_slice03_assessment.py", line 176, in test_ct08_trace_is_safe_and_live_measurements_are_not_invented
+    trace = StageTrace.model_validate(result['trace'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\.venv\Lib\site-packages\pydantic\main.py", line 790, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 42 validation errors for StageTrace
+attempts.0.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.512454Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.0.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.521272Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.0.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.0.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.0.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.0.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.1.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.429514Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.1.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.429514Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.1.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.1.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.1.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=['RBI-IT-2023:2023-11-07:...46549c3c6bdbab9dd296-3'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.1.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=['RBI-IT-2023:2023-11-07:...46549c3c6bdbab9dd296-2'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.2.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.494068Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.2.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.494068Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.2.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.2.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.2.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.2.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.3.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.391516Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.3.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.392239Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.3.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.3.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.3.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.3.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.4.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.411433Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.4.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.411433Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.4.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.4.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=['aa9b4015faad46549c3c6bdbab9dd296'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.4.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.4.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.5.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.448253Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.5.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.448253Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.5.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.5.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.5.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.5.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=['RBI-IT-2023:2023-11-07:...46549c3c6bdbab9dd296-2'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.6.started_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.465159Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.6.finished_at
+  Input should be a valid datetime [type=datetime_type, input_value='2026-10-10T18:22:47.473607Z', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/datetime_type
+attempts.6.errors
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.6.artifact_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.6.candidate_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+attempts.6.selected_passage_ids
+  Input should be a valid tuple [type=tuple_type, input_value=[], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.14/v/tuple_type
+
+----------------------------------------------------------------------
+Ran 10 tests in 5.441s
+
+FAILED (errors=1)

@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 
 // Controlled protocol checks. These do not contact Cognito, DynamoDB, or S3.
-const web = 'http://127.0.0.1:5192';
+const web = process.env.LOCAL_TEST_WEB_URL || 'http://127.0.0.1:5192';
 const api = 'https://api.example.test/api/cases/cloud-case';
 const s3 = 'https://test-regulatory-documents.s3.ap-south-1.amazonaws.com';
 const identity = 'https://demo.auth.ap-south-1.amazoncognito.com';
@@ -84,6 +84,7 @@ async function fixture(page: Page, lost = false, paged = false, failedTransfer =
   });
   await page.goto('/?case=cloud-case'); await page.getByRole('button', { name: 'Sign in securely' }).click();
   await expect(page.getByRole('heading', { name: 'Documents', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Run controlled assessment', exact: true })).toHaveCount(0);
   return { saved, counts: () => ({ reserves, transfers }) };
 }
 async function upload(page: Page, text = 'Fictional original policy.') {

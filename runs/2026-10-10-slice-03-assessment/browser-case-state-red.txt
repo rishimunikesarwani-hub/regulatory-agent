@@ -1,0 +1,53 @@
+node.exe : npm notice run regulatory-agent-web@0.1.0 npx
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\Be Flith Rich\AppData\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run ...t-web@0.1.0 npx:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm notice run playwright test --config playwright.assessment.config.ts --grep VS3-BT06
+[WebServer] (node:37088) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] INFO:     Started server process [34048]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8131 (Press CTRL+C to quit)
+
+Running 1 test using 1 worker
+
+(node:29976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\assessment.spec.ts:114:1 › VS3-BT06 a new case cannot inherit the previous assessment state (7.1s)
+
+
+  1) tests\assessment.spec.ts:114:1 › VS3-BT06 a new case cannot inherit the previous assessment state
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Not started', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Not started', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Not started', { exact: true })
+
+
+      119 |   await page.getByLabel('I confirm this case contains fictional data only.', {exact: true}).check();
+      120 |   await page.getByRole('button', {name: 'Save fictional case'}).click();
+    > 121 |   await expect(page.getByText('Not started', {exact: true})).toBeVisible();
+          |                                                              ^
+      122 |   await expect(page.getByRole('region', {name: 'Assessment result'})).not.toBeVisible();
+      123 | });
+      124 |
+        at C:\Users\Be Flith Rich\My Project Folder\ET-Hackathon\.worktrees\regulatory-agent-t4-assessment\src\web\tests\assessment.spec.ts:121:62
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\runs\2026-10-10-slice-03-assessment\frontend-browser-artifacts\assessment-VS3-BT06-a-new--4e2fd-e-previous-assessment-state\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\runs\2026-10-10-slice-03-assessment\frontend-browser-artifacts\assessment-VS3-BT06-a-new--4e2fd-e-previous-assessment-state\error-context.md
+
+  1 failed
+    tests\assessment.spec.ts:114:1 › VS3-BT06 a new case cannot inherit the previous assessment state

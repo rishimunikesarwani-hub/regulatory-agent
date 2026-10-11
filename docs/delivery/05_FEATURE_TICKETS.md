@@ -22,7 +22,13 @@ The user approved VS2 local acceptance and authorized VS3 local development.
 VS2 local integration merged through PR8 after its GitHub checks passed.
 The integrated AWS document flow passed 204 backend checks and 27 browser checks after the focus correction.
 Its templates and cloud protocol are prepared. Deployment and AWS acceptance remain pending.
-VS3 has a separate review branch. Its user review remains pending.
+
+VS3 local checks passed in its isolated review worktree.
+The backend suite passed 189 checks. The combined browser suite passed 26 checks.
+The user approved VS3 local acceptance and authorized VS4 local development on 2026-10-11.
+Integration into `main` needs the updated PR9 checks. AWS acceptance stays pending.
+The [VS3 contract](spec-slice-03-assessment.md) controls the fixed example and saved human review.
+The [integration contract](spec-slice-03-integration.md) controls the different combined test candidate.
 The [VS2 source contract](spec-slice-02-documents.md) defines the local document behavior.
 Extend the accepted local case flow through evidence inspection, one assessment, citation inspection, and a saved review.
 
@@ -181,7 +187,10 @@ Acceptance:
 
 ## T4 — First complete assessment slice
 
-**Status:** Not started.
+**Status:** VS3 local controlled example passed. Full-scope and live acceptance stay pending.
+
+The fixed historical example keeps conditions, citations, missing evidence, and saved human review connected.
+The full acceptance inventory below remains pending outside that example.
 
 **Dependencies:** VS3 uses the selected T3 document and source behavior, with its T2 contracts.
 
@@ -207,7 +216,7 @@ An exact quote match is not sufficient evidence of contextual support.
 
 ## T5 — Bounded agent and regulatory changes
 
-**Status:** Not started.
+**Status:** VS3 uses the existing local bounded runner. Live agent and regulatory-change acceptance stay pending.
 
 **Dependencies:** VS3 uses the first T4 assessment. VS4 adds changes. VS5 extends the approved scope.
 

@@ -486,6 +486,47 @@ Next: complete the checked VS2 integration merge.
 Start the authorized VS3 local slice after that merge.
 Keep the CloudFront verification handoff open.
 
+### VS3 controlled assessment and saved review
+
+Date: 2026-10-11.
+
+VS2 merged through pull request 8 after GitHub checks passed.
+The integration commit is `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
+The integration worktree was updated without changes to the user's Design Ideas.
+The user authorized VS3 local development while AWS verification is pending.
+D37 and the VS3 contract were recorded before implementation.
+
+The assessment HTTP tests failed for missing routes.
+The browser test failed for the missing assessment screen.
+A different negative test found an unsupported operational claim with valid policy quotations.
+The validation correction now rejects that claim before finding presentation.
+The first browser integration run found a different telemetry time-field name.
+The corrected interface uses the existing seconds field.
+
+VS3 now saves one controlled historical assessment and its fixed source snapshot.
+It keeps RBI conditions, exceptions, applicability uncertainty, and exact citations accessible.
+Saved Approved, Edited, Rejected, and evidence-request events keep the initial finding unchanged.
+Review summaries use D24 cutoff and final-outcome rules.
+
+Stale or uncertain saves keep the user's draft.
+A failed refresh cannot enable another uncertain save.
+Expired access clears private findings and review drafts.
+
+The case-switch test failed before the new-case assessment status correction.
+All 189 backend checks and 26 combined browser checks passed.
+The frontend build passed.
+Desktop and mobile assessment screens were inspected.
+The [development guide](docs/delivery/guide-slice-03-development.md) records the isolated feedback services and review steps.
+The [local evidence](runs/2026-10-10-slice-03-assessment/review-local.md) records the test scope and limits.
+
+No live model call was made.
+Current regulatory verification and AWS assessment adapters stay unconfigured.
+CloudFront account verification remains necessary before deployment.
+No Support message was sent by this session.
+No cloud resource was deleted manually.
+
+Next: obtain VS3 local feedback before merge and VS4 development.
+
 ## 2026-10-11 - Accepted VS2 AWS document preparation
 
 VS2 local integration merged through PR8 at `c0413c8b030383a98926acccf06c2bff3d2bdd51`.
@@ -538,6 +579,73 @@ The new storage and permissions have not been deployed.
 CloudFront verification and failed-stack recovery remain necessary.
 Read the [integration receipt](runs/2026-10-11-slice-02-aws-documents/integration-receipt.md).
 Next: obtain VS3 user acceptance and AWS verification.
+
+## 2026-10-11 - VS3 accepted and VS4 authorized
+
+The user approved VS3 local acceptance and authorized VS4 development in this conversation.
+The combined candidate passed 215 backend checks, 33 browser checks, and the frontend build.
+GitHub run `38085941862` passed for application commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
+The later candidate commits changed documentation only.
+Updated PR9 checks must pass before merge into `main`.
+
+VS4 must compare specified versions and keep earlier assessments and human reviews unchanged.
+AWS account verification and failed-stack recovery still block deployment.
+The manual Support request has no confirmed case ID.
+Live assessment and complete project acceptance stay pending.
+Next: merge checked PR9 and start the isolated VS4 contract and failing tests.
+
+## 2026-10-11 - Isolated VS3 integration candidate
+
+The candidate branch is `work/t4-integration-candidate` in a different worktree.
+Its specification and behavior tests preceded the merge from accepted `main`.
+The delayed-load focus check failed against the earlier VS3 source.
+The candidate now includes the accepted focus correction and cloud document flow.
+The controlled assessment and saved review behavior stay unchanged.
+
+The first combined browser attempt stopped after a redirect fixture used the earlier port.
+The fixture now uses the selected configuration and keeps the origin check.
+The combined backend suite completed 215 tests without failure.
+The combined browser suite completed 33 tests without failure.
+The interface build and final TypeScript checks returned code `0`.
+Desktop and mobile screenshots show the combined fictional flow.
+
+Read the [integration review record](runs/2026-10-11-slice-03-integration/review-integration.md) for evidence and limits.
+Read D39 and the [integration contract](docs/delivery/spec-slice-03-integration.md) for the preparation boundary.
+The original VS3 review worktree, database, services, and draft PR9 stayed unchanged.
+No VS3 merge into `main` or VS4 start occurred.
+
+Read-only AWS metadata lists the selected active model profile in Mumbai and Hyderabad only.
+This result does not establish runtime model access or quality.
+The application stack still has status `ROLLBACK_COMPLETE`.
+No model invocation or AWS resource change occurred.
+
+Next: obtain the pending VS3 user decision.
+Keep AWS deployment pending until account verification and failed-stack recovery are complete.
+
+GitHub checks completed without failure for candidate commit `dc23501e94a5540ff286e2eaa6a0d71ceecae2aa`.
+Run `38085941862` completed 215 backend tests and 33 browser tests on Linux.
+Its deployment job was skipped.
+The candidate branch is saved remotely.
+The `main` integration branch and original VS3 review branch are unchanged.
+
+## 2026-10-11 - Pending user actions confirmed
+
+The combined candidate's GitHub check is complete and successful.
+Draft PR9 still has no user acceptance in this conversation.
+The original review branch and accepted `main` source are unchanged.
+
+The Support API returned `SubscriptionRequiredException`.
+The AWS console shows an unsent draft and `No open cases`.
+The current case-history view shows `No cases to display.`
+The application stack still has status `ROLLBACK_COMPLETE`.
+AWS processing of the verification request is not established.
+
+Read the [handoff check](runs/2026-10-11-slice-03-integration/verification-handoff.md) for evidence and user actions.
+No application progress occurred during this gate check.
+The goal stays active after the first consecutive check without application progress.
+No Support message, VS3 merge, VS4 start, or deployment occurred.
+
+Next: the user submits the Support request and gives the pending VS3 review decision.
 Keep live assessment integration and the complete project marked incomplete.
 
 ## 2026-10-11 - Integration keyboard-focus correction

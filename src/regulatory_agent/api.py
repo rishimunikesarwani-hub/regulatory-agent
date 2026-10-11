@@ -1,7 +1,7 @@
 """Local FastAPI entry point for the case slice. AWS uses aws_cases.handler."""
 import os
 
-from fastapi import Depends, FastAPI, Request
+from fastapi import BackgroundTasks, Depends, FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response
@@ -11,8 +11,9 @@ from starlette.exceptions import HTTPException
 
 from .cases import (CaseError, CaseService, SQLiteCases, authenticated_owner, authentication_error,
                     error_body, invalid_request, not_found, unavailable)
-from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity
+from .contracts import CaseCreate, CaseList, CaseRecord, LocalIdentity, ReviewRequest, StartAssessment
 from .documents import Documents, rejected
+from .assessments import Assessments
 
 
 def create_app(service=None, *, store=None, environment=None, development_user=None, commit_sha=None):
@@ -23,6 +24,7 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
         raise ValueError("development_identity_disabled_outside_local")
     app = FastAPI(title="The Regulatory Agent", docs_url=None, redoc_url=None, openapi_url=None)
     documents = None
+    assessments = None
     @app.middleware("http")
     async def private_headers(request, call_next):
         try:
@@ -111,6 +113,46 @@ def create_app(service=None, *, store=None, environment=None, development_user=N
         data, filename = sources(identity, case_id).read(identity, case_id, version_id, original=True)
         return Response(data, media_type="application/octet-stream",
                         headers={"Content-Disposition": "attachment; filename*=UTF-8''" + quote(filename)})
+
+    def assessment_owner(case_id: str, identity=Depends(owner)):
+        cases().read(identity, case_id)
+        return identity
+
+    def assessment_service(identity, case_id):
+        nonlocal assessments
+        if assessments is None:
+            assessments = Assessments(cases(), sources(identity, case_id))
+        return assessments
+
+    @app.post('/api/cases/{case_id}/assessments', status_code=202)
+    def start_assessment(case_id: str, body: StartAssessment, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        service = assessment_service(identity, case_id)
+        result = service.start(identity, case_id, body)
+        background.add_task(service.run, identity, case_id, result['job_id'])
+        return result
+
+    @app.get('/api/cases/{case_id}/assessments')
+    def list_assessments(case_id: str, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).list(identity, case_id)
+
+    @app.get('/api/cases/{case_id}/assessments/{job_id}')
+    def read_assessment(case_id: str, job_id: str, cutoff: str | None = None, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).read(identity, case_id, job_id, cutoff)
+
+    @app.post('/api/cases/{case_id}/assessments/{job_id}/resume', status_code=202)
+    def resume_assessment(case_id: str, job_id: str, background: BackgroundTasks, identity=Depends(assessment_owner)):
+        service = assessment_service(identity, case_id)
+        result = service.read(identity, case_id, job_id)
+        background.add_task(service.run, identity, case_id, job_id)
+        return result['job']
+
+    @app.get('/api/cases/{case_id}/assessments/{job_id}/sources/{version_id}')
+    def assessment_source(case_id: str, job_id: str, version_id: str, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).source(identity, case_id, job_id, version_id)
+
+    @app.post('/api/cases/{case_id}/assessments/{job_id}/findings/{finding_id}/reviews', status_code=201)
+    def save_review(case_id: str, job_id: str, finding_id: str, body: ReviewRequest, identity=Depends(assessment_owner)):
+        return assessment_service(identity, case_id).review(identity, case_id, job_id, finding_id, body).model_dump()
 
     if environment == "local":
         web_port = os.environ.get("LOCAL_WEB_PORT", "5173")
