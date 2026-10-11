@@ -87,6 +87,7 @@ Do not enable cloud assessment routes before the remaining release conditions pa
 | VS5-CA13 | Packaging retains only the permitted source files and rejects changed hashes or paths. |
 | VS5-CA14 | Prepared queue, worker, event mapping, and runtime policies match the approved region and permissions. |
 | VS5-CA15 | Cloud download and source-page browser flows preserve authentication and complete source inspection. |
+| VS5-CA16 | A default report cutoff is captured after its records. Concurrent completion cannot hide already returned findings. Explicit historical cutoffs remain unchanged. |
 
 Write failing checks before implementation.
 Use controlled native SDK responses without credentials, external traffic, or live inference.
