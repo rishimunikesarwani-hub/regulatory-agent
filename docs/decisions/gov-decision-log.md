@@ -875,6 +875,10 @@ D30 still prohibits reserved concurrency for the first deployment.
 W14 records deadline or lease exhaustion during renewal as timeout.
 The correction preserves saved deadlines, counters, and replacement-claim protection.
 
+Default report cutoffs follow their record read.
+Concurrent completion cannot hide returned findings.
+Explicit historical cutoffs remain unchanged.
+
 Controlled SDK and browser checks do not establish deployed AWS permissions or live model quality.
 CloudFormation schema and security validation remain pending tool approval.
 Native version comparisons, provider selection, source verification, live evaluations, and deployed acceptance remain required.

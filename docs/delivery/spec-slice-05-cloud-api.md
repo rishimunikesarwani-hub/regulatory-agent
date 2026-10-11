@@ -10,6 +10,7 @@ Use the existing API Gateway Cognito authorizer and verified access-token claims
 Resolve the owner from the token subject.
 Reject owner fields supplied in request bodies.
 Authorize the case before constructing assessment or queue clients.
+
 Keep assessment routes disabled unless trusted server configuration enables them.
 Do not let a request header or body enable a route.
 Keep current assessments unavailable until D20 passes.
@@ -18,6 +19,7 @@ Keep controlled local assessment routes unavailable in AWS.
 Use the existing selected-assessment, report, source, review, resume, and export paths.
 Validate JSON requests with the existing strict contracts.
 Limit decoded request bodies to 32,000 bytes.
+
 Save admission before sending the job to SQS.
 An uncertain queue send must preserve the original admission key and job.
 Return only public job fields.
@@ -29,11 +31,13 @@ Store exact original and extraction references for each selected bank document.
 Do not store another expanded copy of all bank passages during admission.
 Verify original bytes against the saved document hash.
 Reconstruct complete model inputs from the pinned extraction.
+
 Retain the original references when an upload is replaced.
 Preserve the previously stored source format for existing assessment records.
 Use 500-passage pages for source inspection.
 Keep passage identifiers, locations, counts, and offsets consistent across pages.
 Reject sources outside the saved snapshot.
+
 Keep catalog entries as source metadata and obligation metadata.
 Do not treat catalog entries as complete document reads.
 
@@ -44,10 +48,12 @@ Return a controlled error instead of truncating an oversized JSON response.
 Use a private, versioned S3 artifact for cloud exports.
 Keep the full export content required by the release contract.
 Use a maximum export artifact size of 128,000,000 bytes.
+
 Sign downloads for the exact object version in the configured Mumbai bucket.
 Keep original document downloads scoped to the saved snapshot.
 Verify the report checksum and object metadata before returning its download link.
 Use a five-minute download authorization.
+
 Do not send an access token to the storage URL.
 Repeated exports cannot create model calls, jobs, or review events.
 Do not log download authorizations or private response content.
@@ -58,11 +64,13 @@ Include the historical source manifest and its referenced public files in the La
 Validate source hashes and permitted paths before packaging.
 Do not package private fixtures or held-out labels.
 The deployment check must include committed public source files.
+
 Prepare SQS, its dead-letter queue, the worker, and the event-source mapping in Mumbai.
 Use batch size 1 and partial batch responses.
 Use a 660-second worker timeout and 3,960-second queue visibility timeout.
 Use a maximum receive count of 5 before dead-letter delivery.
 Keep queue contents encrypted.
+
 D30 still prohibits reserved concurrency for the first deployment.
 Prepare fixed runtime permissions through the separate bootstrap template.
 Application deployment cannot change IAM policies.

@@ -965,4 +965,7 @@ The 18 focused backend checks and three controlled cloud browser checks pass.
 W14 reproduces deadline exhaustion during lease renewal.
 The correction preserves timeout classification, the original deadline, counters, and replacement-claim protection.
 The final complete suite passed 362 backend checks, 54 browser checks, and the frontend build.
+GitHub verification then reproduced a concurrent report-cutoff failure.
+CA16 samples the default cutoff after its records while preserving explicit historical cutoffs.
+The corrected local suites passed 363 backend checks, 54 browser checks, and 19 focused API checks.
 D53 records the component boundary and remaining validation, comparison, provider, quality, and deployed acceptance conditions.

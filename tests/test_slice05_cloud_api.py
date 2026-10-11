@@ -140,6 +140,22 @@ class CloudAPITests(unittest.TestCase):
         report=handler(event('GET',path,owner=f.owner),None); self.assertEqual(report['statusCode'],200)
         self.assertEqual(len(json.loads(report['body'])['reviews']),1)
 
+    def test_ca16_default_cutoff_cannot_precede_returned_records(self):
+        from datetime import datetime,timedelta
+        from regulatory_agent.reviews import instant
+        f=records.CloudRecordTests('runTest'); f.setUp(); self.addCleanup(f.doCleanups)
+        item=f.present(); available=instant(item.available_at)
+        clock=[available-timedelta(seconds=1)]; read=f.service._read_records
+        def collected(*args):
+            saved=read(*args); clock[0]=available+timedelta(seconds=1); return saved
+        with patch('regulatory_agent.assessments.datetime') as date, patch.object(f.service,'_read_records',side_effect=collected):
+            date.now.side_effect=lambda zone:clock[0]
+            report=f.service.read(f.owner,f.case,f.job)
+            self.assertEqual(len(report['findings']),1)
+            self.assertGreaterEqual(instant(report['summary']['cutoff']),available)
+            historical=f.service.read(f.owner,f.case,f.job,(available-timedelta(seconds=1)).isoformat())
+            self.assertEqual(len(historical['findings']),0)
+
     def test_ca09_resume_preserves_job_and_excludes_execution_token(self):
         run=self.f.admit(); job=run['job_id']; token=self.f.store.claim(self.owner,self.case,job)
         before=self.f.store.read_job(self.owner,self.case,job)

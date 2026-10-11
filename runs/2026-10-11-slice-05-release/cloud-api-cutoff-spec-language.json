@@ -1,0 +1,40 @@
+{
+  "docs\\delivery\\spec-slice-05-cloud-api.md": {
+    "status": "REVIEW_REQUIRED",
+    "mode": "descriptive",
+    "sentences_examined": 104,
+    "findings": [
+      {
+        "line": 9,
+        "check": "paragraph",
+        "message": "Review the paragraph: 8 sentences."
+      },
+      {
+        "line": 18,
+        "check": "paragraph",
+        "message": "Review the paragraph: 7 sentences."
+      },
+      {
+        "line": 28,
+        "check": "paragraph",
+        "message": "Review the paragraph: 11 sentences."
+      },
+      {
+        "line": 42,
+        "check": "paragraph",
+        "message": "Review the paragraph: 12 sentences."
+      },
+      {
+        "line": 57,
+        "check": "paragraph",
+        "message": "Review the paragraph: 13 sentences."
+      }
+    ],
+    "limits": [
+      "The checker covers selected structural rules only.",
+      "Review vocabulary, approved meanings, grammar, technical terms, and technical accuracy manually.",
+      "Word counts use a limited unit list. Review proper names, abbreviations, labels, and complex Markdown.",
+      "A protected-content match does not prove that the meaning stayed the same."
+    ]
+  }
+}

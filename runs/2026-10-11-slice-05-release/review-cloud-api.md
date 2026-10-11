@@ -50,6 +50,15 @@ The correction classifies deadline or lease exhaustion as timeout.
 Replacement claims still prevent stale finalization.
 The final complete backend run passed all 362 checks in 180.400 seconds.
 
+Exact-commit GitHub verification passed the backend and build checks but failed one browser check.
+A concurrent completion occurred after the default cutoff was sampled.
+The resulting report hid a finding that its record read already returned.
+CA16 reproduces this ordering failure.
+The default cutoff now follows the record read.
+Explicit historical cutoffs remain unchanged.
+The corrected complete local run passed 363 backend checks in 227.216 seconds.
+All 54 browser checks and 19 focused API checks also passed.
+
 CloudFormation schema and security validation remain pending tool availability or installation approval.
 No AWS deployment, account mutation, provider integration, or live inference occurred during this work.
 These checks do not establish live permissions, hosted worker behavior, complete regulatory coverage, or model quality.

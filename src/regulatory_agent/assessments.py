@@ -378,8 +378,8 @@ class Assessments:
                 raise ValueError()
         except ValueError:
             raise invalid('invalid_cutoff') from None
-        limit=limit or datetime.now(timezone.utc)
         job,items,events,trace=self._read_records(owner,case,run)
+        limit=limit or datetime.now(timezone.utc)
         eligible = [item for item in items if instant(item.available_at) <= limit]
         events = [event for event in events if instant(event['committed_at']) <= limit]
         trace = [event for event in trace if instant(event['finished_at'] or event['started_at']) <= limit]
