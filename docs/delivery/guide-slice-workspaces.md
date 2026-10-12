@@ -24,6 +24,7 @@ Keep database files under ignored `runs/private/` directories.
 | VS3 candidate | `regulatory-agent-t4-integration` | `work/t4-integration-candidate` | `5193` | `8192` | `runs/private/slice-03-integration/` |
 | VS4 | `regulatory-agent-t5-agent` | `work/t5-agent` | `5184` | `8140` | `runs/private/slice-04/` |
 | VS5 | `regulatory-agent-t9-quality` | `work/t9-quality` | `5185` | `8150` | `runs/private/slice-05/` |
+| VS5 local startup | `regulatory-agent-vs5-local-startup` | `work/vs5-local-startup` | `5187` | `8160` | `runs/private/local-startup/` |
 
 VS2 local work and its controlled AWS extension are integrated.
 The user approved VS3 locally. Its checked integration merged through PR9.
@@ -31,6 +32,8 @@ The user approved VS4 locally and authorized its merge.
 VS5 is selected for local development after that merge.
 VS4 merged through PR12. VS5 uses that checked integration base.
 VS5 browser checks use API port `8151` and their own browser-test database.
+Local-startup unit checks use temporary databases and do not launch child processes.
+Its real startup verification uses its separate feedback ports and database.
 VS4 browser checks use API port `8141` and their own browser-test database.
 The VS2 AWS browser checks use API port `8191` and their own browser-test database.
 Its feedback ports are reserved. Feedback services are not running from that worktree.

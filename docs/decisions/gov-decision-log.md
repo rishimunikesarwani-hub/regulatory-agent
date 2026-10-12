@@ -1075,6 +1075,24 @@ Private content, credentials, hidden reasoning, and reviewer text remain exclude
 The application uses its existing upload flow for each selected file.
 AWS deployment and independent model-quality acceptance remain pending.
 
+## D67 - Continued local development and portable startup
+
+Date: 2026-10-11.
+Status: Authorized by the user's instruction to skip AWS for now and continue development.
+Requirements: REQ-X06, LD09, and LS01 through LS07.
+
+Defer AWS activity while local development continues.
+Keep the original AWS release and model-quality requirements pending.
+The [local startup contract](../delivery/spec-local-startup.md) controls this VS5 correction.
+Use a different worktree, branch, ports, and database for its verification.
+Keep the accepted local demonstration and PR16's reviewed source unchanged.
+This instruction authorizes local development. It does not approve the pending PR16 merge.
+
+Supply setup instructions that do not depend on this machine's paths.
+Require a configured OpenAI key before startup.
+Keep Langfuse optional and fictional content capture disabled by default.
+Preserve the existing fictional-data and historical-source boundaries.
+
 ## How to add a decision
 
 Add a new entry with:

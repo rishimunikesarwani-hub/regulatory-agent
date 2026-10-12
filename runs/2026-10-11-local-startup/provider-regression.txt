@@ -1,0 +1,19 @@
+test_ld01_live_reply_identifies_openai_and_uses_strict_schema (test_local_demo_openai.LocalDemoTests.test_ld01_live_reply_identifies_openai_and_uses_strict_schema) ... ok
+test_ld02_provider_selection_is_local_and_explicit (test_local_demo_openai.LocalDemoTests.test_ld02_provider_selection_is_local_and_explicit) ... ok
+test_ld03_private_or_current_snapshot_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld03_private_or_current_snapshot_never_dispatches) ... ok
+test_ld04_other_owner_never_dispatches (test_local_demo_openai.LocalDemoTests.test_ld04_other_owner_never_dispatches) ... ok
+test_ld05_rejection_is_safe_and_one_call_no_hidden_retry (test_local_demo_openai.LocalDemoTests.test_ld05_rejection_is_safe_and_one_call_no_hidden_retry) ... ok
+test_ld06_deadline_after_reservation_blocks_dispatch (test_local_demo_openai.LocalDemoTests.test_ld06_deadline_after_reservation_blocks_dispatch) ... ok
+test_ld07_invalid_scope_or_refusal_never_becomes_a_finding (test_local_demo_openai.LocalDemoTests.test_ld07_invalid_scope_or_refusal_never_becomes_a_finding) ... ok
+test_ld08_optional_langfuse_receives_allowlisted_metadata_only (test_local_demo_openai.LocalDemoTests.test_ld08_optional_langfuse_receives_allowlisted_metadata_only) ... ok
+test_ld09_langfuse_failure_does_not_fail_local_assessment (test_local_demo_openai.LocalDemoTests.test_ld09_langfuse_failure_does_not_fail_local_assessment) ... ok
+test_ld10_invalid_request_and_exhausted_budget_never_dispatch (test_local_demo_openai.LocalDemoTests.test_ld10_invalid_request_and_exhausted_budget_never_dispatch) ... ok
+test_ld11_timeout_is_unknown_without_retry (test_local_demo_openai.LocalDemoTests.test_ld11_timeout_is_unknown_without_retry) ... ok
+test_ld12_missing_keys_report_safe_configuration_failure (test_local_demo_openai.LocalDemoTests.test_ld12_missing_keys_report_safe_configuration_failure) ... ok
+test_ld13_complete_pipeline_exports_openai_identity_despite_langfuse_failure (test_local_demo_openai.LocalDemoTests.test_ld13_complete_pipeline_exports_openai_identity_despite_langfuse_failure) ... ok
+test_ld14_installed_langfuse_sdk_exports_metadata_without_content (test_local_demo_openai.LocalDemoTests.test_ld14_installed_langfuse_sdk_exports_metadata_without_content) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 3.827s
+
+OK

@@ -1223,3 +1223,26 @@ AWS deployment was skipped.
 PR15 contains the authorized correction and remains a draft for local review.
 Earlier saved jobs and the accepted PR14 integration source remain unchanged.
 Independent model quality, regulatory coverage, and AWS acceptance remain pending.
+
+## 2026-10-11 - Portable local startup
+
+The user deferred AWS and authorized continued local development under D67.
+The new worktree uses its own branch, ports, and private database.
+The launcher rejects missing keys, invalid settings, occupied ports, and missing frontend dependencies before it starts servers.
+The configuration template contains no credentials. Langfuse remains optional.
+
+The initial startup run recorded four failures and one error across six checks.
+The corrected startup suite passed all six checks. The provider regression suite passed all 14 checks.
+Chrome saved a fictional case and two documents through the real launcher on ports 5187 and 8160.
+The same case, document versions, and source text reopened after a reload.
+No model call or AWS operation occurred. A fresh dependency installation was not repeated.
+
+The accepted demonstration and the reviewed PR16 head remain unchanged.
+GitHub checks and local review are pending for this correction.
+Independent model quality, current regulatory-source coverage, and AWS acceptance remain pending.
+
+The added LS07 check failed before the source-archive correction.
+All seven startup checks then passed.
+An extracted source archive started its actual API without Git metadata or frontend dependencies.
+Its health response reported source-archive instead of a commit. The archived launcher matched the reviewed working source.
+The archive check reused locked Python dependencies. It did not make a model call.

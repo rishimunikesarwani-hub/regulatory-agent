@@ -1,0 +1,23 @@
+{
+  "edition": "ASD-STE100 Issue 9",
+  "reviewed": [
+    "README.md local startup section",
+    "docs/delivery/spec-local-startup.md",
+    "docs/delivery/guide-local-demo.md changed blocks",
+    "D67",
+    "LS-T01",
+    "workspace assignment"
+  ],
+  "meaning": "Preserved optional Langfuse, fictional-only processing, historical scope, pending cloud acceptance, and unchanged default ports. Existing private configuration is not overwritten.",
+  "protected": [
+    "commands",
+    "identifiers",
+    "keys",
+    "ports",
+    "paths",
+    "limits",
+    "historical approval records"
+  ],
+  "vocabulary_review": "Selected project terminology and plain-language choices reviewed. Full dictionary review remains incomplete.",
+  "compliance_claim": false
+}
